@@ -12,6 +12,11 @@ dependencies {
     implementation commons.lang3
     implementation "org.slf4j:slf4j-api:${versions.slf4j}"
     implementation "net.jodah:failsafe:${versions.failsafe}"
+
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.8'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    testCompile 'junit:junit:4.12'
 }
 
 
