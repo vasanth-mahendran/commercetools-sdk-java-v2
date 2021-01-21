@@ -1,0 +1,7 @@
+query ProductId {
+    products {
+        results {
+            id
+        }
+    }
+}

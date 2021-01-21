@@ -1,0 +1,12 @@
+query Prod {
+    products {
+        results {
+            id
+        }
+    }
+},
+mutation T {
+    updateProduct(key:"", version: 1, actions: [{unpublish: {dummy:""}}]) {
+        id
+    }
+}

@@ -1,0 +1,5 @@
+query Sphere {
+    product {
+        id
+    }
+}

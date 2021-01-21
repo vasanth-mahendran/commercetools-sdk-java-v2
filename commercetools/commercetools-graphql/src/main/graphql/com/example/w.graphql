@@ -1,0 +1,5 @@
+mutation W {
+    updateProduct(key:"", version: 1, actions: [{unpublish: {dummy:""}}]) {
+        id
+    }
+}
