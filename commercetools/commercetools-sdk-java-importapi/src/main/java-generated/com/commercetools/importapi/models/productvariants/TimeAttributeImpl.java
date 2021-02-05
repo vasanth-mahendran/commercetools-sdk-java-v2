@@ -2,17 +2,10 @@
 package com.commercetools.importapi.models.productvariants;
 
 import java.time.*;
-import java.time.LocalTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.productvariants.Attribute;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -36,11 +29,11 @@ public final class TimeAttributeImpl implements TimeAttribute {
     TimeAttributeImpl(@JsonProperty("name") final String name, @JsonProperty("value") final java.time.LocalTime value) {
         this.name = name;
         this.value = value;
-        this.type = TimeAttribute.TIME;
+        this.type = TIME;
     }
 
     public TimeAttributeImpl() {
-        this.type = TimeAttribute.TIME;
+        this.type = TIME;
     }
 
     /**

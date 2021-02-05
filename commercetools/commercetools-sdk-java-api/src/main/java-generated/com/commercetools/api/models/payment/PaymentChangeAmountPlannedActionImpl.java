@@ -4,15 +4,8 @@ package com.commercetools.api.models.payment;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.Money;
-import com.commercetools.api.models.payment.PaymentUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class PaymentChangeAmountPlannedActionImpl implements PaymentChange
     PaymentChangeAmountPlannedActionImpl(
             @JsonProperty("amount") final com.commercetools.api.models.common.Money amount) {
         this.amount = amount;
-        this.action = PaymentChangeAmountPlannedAction.CHANGE_AMOUNT_PLANNED;
+        this.action = CHANGE_AMOUNT_PLANNED;
     }
 
     public PaymentChangeAmountPlannedActionImpl() {
-        this.action = PaymentChangeAmountPlannedAction.CHANGE_AMOUNT_PLANNED;
+        this.action = CHANGE_AMOUNT_PLANNED;
     }
 
     public String getAction() {

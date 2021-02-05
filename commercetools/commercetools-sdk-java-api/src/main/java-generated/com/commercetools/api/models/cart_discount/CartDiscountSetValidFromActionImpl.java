@@ -2,17 +2,10 @@
 package com.commercetools.api.models.cart_discount;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart_discount.CartDiscountUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -30,11 +23,11 @@ public final class CartDiscountSetValidFromActionImpl implements CartDiscountSet
     @JsonCreator
     CartDiscountSetValidFromActionImpl(@JsonProperty("validFrom") final java.time.ZonedDateTime validFrom) {
         this.validFrom = validFrom;
-        this.action = CartDiscountSetValidFromAction.SET_VALID_FROM;
+        this.action = SET_VALID_FROM;
     }
 
     public CartDiscountSetValidFromActionImpl() {
-        this.action = CartDiscountSetValidFromAction.SET_VALID_FROM;
+        this.action = SET_VALID_FROM;
     }
 
     public String getAction() {

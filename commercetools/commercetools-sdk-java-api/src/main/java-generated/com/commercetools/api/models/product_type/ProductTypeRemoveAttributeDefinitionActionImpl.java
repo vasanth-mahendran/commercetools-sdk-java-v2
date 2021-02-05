@@ -4,14 +4,8 @@ package com.commercetools.api.models.product_type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.product_type.ProductTypeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -30,11 +24,11 @@ public final class ProductTypeRemoveAttributeDefinitionActionImpl
     @JsonCreator
     ProductTypeRemoveAttributeDefinitionActionImpl(@JsonProperty("name") final String name) {
         this.name = name;
-        this.action = ProductTypeRemoveAttributeDefinitionAction.REMOVE_ATTRIBUTE_DEFINITION;
+        this.action = REMOVE_ATTRIBUTE_DEFINITION;
     }
 
     public ProductTypeRemoveAttributeDefinitionActionImpl() {
-        this.action = ProductTypeRemoveAttributeDefinitionAction.REMOVE_ATTRIBUTE_DEFINITION;
+        this.action = REMOVE_ATTRIBUTE_DEFINITION;
     }
 
     public String getAction() {

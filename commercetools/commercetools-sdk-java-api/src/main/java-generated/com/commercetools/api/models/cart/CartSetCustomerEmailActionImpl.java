@@ -4,14 +4,8 @@ package com.commercetools.api.models.cart;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.CartUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class CartSetCustomerEmailActionImpl implements CartSetCustomerEmai
     @JsonCreator
     CartSetCustomerEmailActionImpl(@JsonProperty("email") final String email) {
         this.email = email;
-        this.action = CartSetCustomerEmailAction.SET_CUSTOMER_EMAIL;
+        this.action = SET_CUSTOMER_EMAIL;
     }
 
     public CartSetCustomerEmailActionImpl() {
-        this.action = CartSetCustomerEmailAction.SET_CUSTOMER_EMAIL;
+        this.action = SET_CUSTOMER_EMAIL;
     }
 
     public String getAction() {

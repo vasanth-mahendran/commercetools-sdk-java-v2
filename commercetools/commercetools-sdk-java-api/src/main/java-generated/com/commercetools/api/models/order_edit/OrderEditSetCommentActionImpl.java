@@ -4,14 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order_edit.OrderEditUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class OrderEditSetCommentActionImpl implements OrderEditSetCommentA
     @JsonCreator
     OrderEditSetCommentActionImpl(@JsonProperty("comment") final String comment) {
         this.comment = comment;
-        this.action = OrderEditSetCommentAction.SET_COMMENT;
+        this.action = SET_COMMENT;
     }
 
     public OrderEditSetCommentActionImpl() {
-        this.action = OrderEditSetCommentAction.SET_COMMENT;
+        this.action = SET_COMMENT;
     }
 
     public String getAction() {

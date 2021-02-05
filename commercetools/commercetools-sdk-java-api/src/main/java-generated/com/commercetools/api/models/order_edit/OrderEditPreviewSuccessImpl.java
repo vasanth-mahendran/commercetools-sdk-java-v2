@@ -4,16 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.MessagePayload;
-import com.commercetools.api.models.order_edit.OrderEditResult;
-import com.commercetools.api.models.order_edit.StagedOrder;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -36,11 +28,11 @@ public final class OrderEditPreviewSuccessImpl implements OrderEditPreviewSucces
             @JsonProperty("messagePayloads") final java.util.List<com.commercetools.api.models.message.MessagePayload> messagePayloads) {
         this.preview = preview;
         this.messagePayloads = messagePayloads;
-        this.type = OrderEditPreviewSuccess.PREVIEW_SUCCESS;
+        this.type = PREVIEW_SUCCESS;
     }
 
     public OrderEditPreviewSuccessImpl() {
-        this.type = OrderEditPreviewSuccess.PREVIEW_SUCCESS;
+        this.type = PREVIEW_SUCCESS;
     }
 
     public String getType() {

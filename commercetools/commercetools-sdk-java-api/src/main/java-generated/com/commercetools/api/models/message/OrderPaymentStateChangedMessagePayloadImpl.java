@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.MessagePayload;
-import com.commercetools.api.models.order.PaymentState;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -35,11 +28,11 @@ public final class OrderPaymentStateChangedMessagePayloadImpl implements OrderPa
             @JsonProperty("oldPaymentState") final com.commercetools.api.models.order.PaymentState oldPaymentState) {
         this.paymentState = paymentState;
         this.oldPaymentState = oldPaymentState;
-        this.type = OrderPaymentStateChangedMessagePayload.ORDER_PAYMENT_STATE_CHANGED;
+        this.type = ORDER_PAYMENT_STATE_CHANGED;
     }
 
     public OrderPaymentStateChangedMessagePayloadImpl() {
-        this.type = OrderPaymentStateChangedMessagePayload.ORDER_PAYMENT_STATE_CHANGED;
+        this.type = ORDER_PAYMENT_STATE_CHANGED;
     }
 
     public String getType() {

@@ -4,15 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.PriceDraft;
-import com.commercetools.api.models.product.ProductUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -38,11 +31,11 @@ public final class ProductChangePriceActionImpl implements ProductChangePriceAct
         this.priceId = priceId;
         this.price = price;
         this.staged = staged;
-        this.action = ProductChangePriceAction.CHANGE_PRICE;
+        this.action = CHANGE_PRICE;
     }
 
     public ProductChangePriceActionImpl() {
-        this.action = ProductChangePriceAction.CHANGE_PRICE;
+        this.action = CHANGE_PRICE;
     }
 
     public String getAction() {

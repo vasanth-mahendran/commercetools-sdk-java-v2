@@ -4,15 +4,8 @@ package com.commercetools.api.models.error;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.error.ErrorObject;
-import com.commercetools.api.models.product.Attribute;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class DuplicateAttributeValueErrorImpl implements DuplicateAttribut
             @JsonProperty("attribute") final com.commercetools.api.models.product.Attribute attribute) {
         this.message = message;
         this.attribute = attribute;
-        this.code = DuplicateAttributeValueError.DUPLICATE_ATTRIBUTE_VALUE;
+        this.code = DUPLICATE_ATTRIBUTE_VALUE;
     }
 
     public DuplicateAttributeValueErrorImpl() {
-        this.code = DuplicateAttributeValueError.DUPLICATE_ATTRIBUTE_VALUE;
+        this.code = DUPLICATE_ATTRIBUTE_VALUE;
     }
 
     public String getCode() {

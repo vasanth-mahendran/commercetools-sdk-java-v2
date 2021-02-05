@@ -2,17 +2,10 @@
 package com.commercetools.api.models.discount_code;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.discount_code.DiscountCodeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class DiscountCodeSetValidFromAndUntilActionImpl implements Discoun
             @JsonProperty("validUntil") final java.time.ZonedDateTime validUntil) {
         this.validFrom = validFrom;
         this.validUntil = validUntil;
-        this.action = DiscountCodeSetValidFromAndUntilAction.SET_VALID_FROM_AND_UNTIL;
+        this.action = SET_VALID_FROM_AND_UNTIL;
     }
 
     public DiscountCodeSetValidFromAndUntilActionImpl() {
-        this.action = DiscountCodeSetValidFromAndUntilAction.SET_VALID_FROM_AND_UNTIL;
+        this.action = SET_VALID_FROM_AND_UNTIL;
     }
 
     public String getAction() {

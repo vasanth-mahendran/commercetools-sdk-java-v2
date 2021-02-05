@@ -4,16 +4,8 @@ package com.commercetools.api.models.error;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.channel.ChannelResourceIdentifier;
-import com.commercetools.api.models.channel.ChannelRoleEnum;
-import com.commercetools.api.models.error.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -39,11 +31,11 @@ public final class MissingRoleOnChannelErrorImpl implements MissingRoleOnChannel
         this.message = message;
         this.channel = channel;
         this.missingRole = missingRole;
-        this.code = MissingRoleOnChannelError.MISSING_ROLE_ON_CHANNEL;
+        this.code = MISSING_ROLE_ON_CHANNEL;
     }
 
     public MissingRoleOnChannelErrorImpl() {
-        this.code = MissingRoleOnChannelError.MISSING_ROLE_ON_CHANNEL;
+        this.code = MISSING_ROLE_ON_CHANNEL;
     }
 
     public String getCode() {

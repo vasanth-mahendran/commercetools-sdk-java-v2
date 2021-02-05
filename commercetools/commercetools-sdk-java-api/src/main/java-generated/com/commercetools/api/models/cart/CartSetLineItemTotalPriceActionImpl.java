@@ -4,15 +4,8 @@ package com.commercetools.api.models.cart;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.CartUpdateAction;
-import com.commercetools.api.models.cart.ExternalLineItemTotalPrice;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class CartSetLineItemTotalPriceActionImpl implements CartSetLineIte
             @JsonProperty("externalTotalPrice") final com.commercetools.api.models.cart.ExternalLineItemTotalPrice externalTotalPrice) {
         this.lineItemId = lineItemId;
         this.externalTotalPrice = externalTotalPrice;
-        this.action = CartSetLineItemTotalPriceAction.SET_LINE_ITEM_TOTAL_PRICE;
+        this.action = SET_LINE_ITEM_TOTAL_PRICE;
     }
 
     public CartSetLineItemTotalPriceActionImpl() {
-        this.action = CartSetLineItemTotalPriceAction.SET_LINE_ITEM_TOTAL_PRICE;
+        this.action = SET_LINE_ITEM_TOTAL_PRICE;
     }
 
     public String getAction() {

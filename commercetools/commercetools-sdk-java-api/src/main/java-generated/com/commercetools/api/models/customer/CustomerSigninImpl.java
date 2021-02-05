@@ -4,15 +4,8 @@ package com.commercetools.api.models.customer;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.CartResourceIdentifier;
-import com.commercetools.api.models.customer.AnonymousCartSignInMode;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -27,6 +20,7 @@ public final class CustomerSigninImpl implements CustomerSignin {
 
     private String password;
 
+    @Deprecated
     private String anonymousCartId;
 
     private com.commercetools.api.models.cart.CartResourceIdentifier anonymousCart;
@@ -64,6 +58,7 @@ public final class CustomerSigninImpl implements CustomerSignin {
         return this.password;
     }
 
+    @Deprecated
     public String getAnonymousCartId() {
         return this.anonymousCartId;
     }
@@ -92,6 +87,7 @@ public final class CustomerSigninImpl implements CustomerSignin {
         this.password = password;
     }
 
+    @Deprecated
     public void setAnonymousCartId(final String anonymousCartId) {
         this.anonymousCartId = anonymousCartId;
     }

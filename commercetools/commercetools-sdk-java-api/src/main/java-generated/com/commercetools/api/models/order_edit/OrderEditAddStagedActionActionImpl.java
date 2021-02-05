@@ -4,15 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
-import com.commercetools.api.models.order_edit.OrderEditUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class OrderEditAddStagedActionActionImpl implements OrderEditAddSta
     OrderEditAddStagedActionActionImpl(
             @JsonProperty("stagedAction") final com.commercetools.api.models.order.StagedOrderUpdateAction stagedAction) {
         this.stagedAction = stagedAction;
-        this.action = OrderEditAddStagedActionAction.ADD_STAGED_ACTION;
+        this.action = ADD_STAGED_ACTION;
     }
 
     public OrderEditAddStagedActionActionImpl() {
-        this.action = OrderEditAddStagedActionAction.ADD_STAGED_ACTION;
+        this.action = ADD_STAGED_ACTION;
     }
 
     public String getAction() {

@@ -4,15 +4,8 @@ package com.commercetools.api.models.category;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.category.CategoryUpdateAction;
-import com.commercetools.api.models.common.LocalizedString;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -30,11 +23,11 @@ public final class CategoryChangeSlugActionImpl implements CategoryChangeSlugAct
     @JsonCreator
     CategoryChangeSlugActionImpl(@JsonProperty("slug") final com.commercetools.api.models.common.LocalizedString slug) {
         this.slug = slug;
-        this.action = CategoryChangeSlugAction.CHANGE_SLUG;
+        this.action = CHANGE_SLUG;
     }
 
     public CategoryChangeSlugActionImpl() {
-        this.action = CategoryChangeSlugAction.CHANGE_SLUG;
+        this.action = CHANGE_SLUG;
     }
 
     public String getAction() {

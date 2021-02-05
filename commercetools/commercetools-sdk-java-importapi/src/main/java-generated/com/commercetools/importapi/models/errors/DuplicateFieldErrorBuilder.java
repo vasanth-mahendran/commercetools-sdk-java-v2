@@ -1,14 +1,9 @@
 
 package com.commercetools.importapi.models.errors;
 
-import java.time.ZonedDateTime;
 import java.util.*;
 
 import javax.annotation.Nullable;
-
-import com.commercetools.importapi.models.errors.DuplicateFieldError;
-import com.commercetools.importapi.models.errors.ErrorObject;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -21,7 +16,7 @@ public final class DuplicateFieldErrorBuilder {
     private String field;
 
     @Nullable
-    private com.fasterxml.jackson.databind.JsonNode duplicateValue;
+    private java.lang.Object duplicateValue;
 
     public DuplicateFieldErrorBuilder message(final String message) {
         this.message = message;
@@ -33,8 +28,7 @@ public final class DuplicateFieldErrorBuilder {
         return this;
     }
 
-    public DuplicateFieldErrorBuilder duplicateValue(
-            @Nullable final com.fasterxml.jackson.databind.JsonNode duplicateValue) {
+    public DuplicateFieldErrorBuilder duplicateValue(@Nullable final java.lang.Object duplicateValue) {
         this.duplicateValue = duplicateValue;
         return this;
     }
@@ -49,7 +43,7 @@ public final class DuplicateFieldErrorBuilder {
     }
 
     @Nullable
-    public com.fasterxml.jackson.databind.JsonNode getDuplicateValue() {
+    public java.lang.Object getDuplicateValue() {
         return this.duplicateValue;
     }
 

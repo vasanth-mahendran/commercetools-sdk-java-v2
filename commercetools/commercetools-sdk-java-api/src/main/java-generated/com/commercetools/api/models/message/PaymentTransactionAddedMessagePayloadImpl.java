@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.MessagePayload;
-import com.commercetools.api.models.payment.Transaction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class PaymentTransactionAddedMessagePayloadImpl implements PaymentT
     PaymentTransactionAddedMessagePayloadImpl(
             @JsonProperty("transaction") final com.commercetools.api.models.payment.Transaction transaction) {
         this.transaction = transaction;
-        this.type = PaymentTransactionAddedMessagePayload.PAYMENT_TRANSACTION_ADDED;
+        this.type = PAYMENT_TRANSACTION_ADDED;
     }
 
     public PaymentTransactionAddedMessagePayloadImpl() {
-        this.type = PaymentTransactionAddedMessagePayload.PAYMENT_TRANSACTION_ADDED;
+        this.type = PAYMENT_TRANSACTION_ADDED;
     }
 
     public String getType() {

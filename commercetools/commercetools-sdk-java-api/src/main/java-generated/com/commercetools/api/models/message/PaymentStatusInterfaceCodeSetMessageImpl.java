@@ -4,14 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.Message;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -73,11 +67,11 @@ public final class PaymentStatusInterfaceCodeSetMessageImpl implements PaymentSt
         this.resourceUserProvidedIdentifiers = resourceUserProvidedIdentifiers;
         this.paymentId = paymentId;
         this.interfaceCode = interfaceCode;
-        this.type = PaymentStatusInterfaceCodeSetMessage.PAYMENT_STATUS_INTERFACE_CODE_SET;
+        this.type = PAYMENT_STATUS_INTERFACE_CODE_SET;
     }
 
     public PaymentStatusInterfaceCodeSetMessageImpl() {
-        this.type = PaymentStatusInterfaceCodeSetMessage.PAYMENT_STATUS_INTERFACE_CODE_SET;
+        this.type = PAYMENT_STATUS_INTERFACE_CODE_SET;
     }
 
     public String getId() {

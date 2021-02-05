@@ -1,21 +1,15 @@
 
 package com.commercetools.importapi.models.errors;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.importapi.models.errors.ConcurrentModificationErrorImpl;
-import com.commercetools.importapi.models.errors.ErrorObject;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
@@ -48,13 +42,13 @@ public interface ConcurrentModificationError extends ErrorObject {
     */
 
     @JsonProperty("conflictedResource")
-    public JsonNode getConflictedResource();
+    public Object getConflictedResource();
 
     public void setSpecifiedVersion(final Long specifiedVersion);
 
     public void setCurrentVersion(final Long currentVersion);
 
-    public void setConflictedResource(final JsonNode conflictedResource);
+    public void setConflictedResource(final Object conflictedResource);
 
     public static ConcurrentModificationError of() {
         return new ConcurrentModificationErrorImpl();

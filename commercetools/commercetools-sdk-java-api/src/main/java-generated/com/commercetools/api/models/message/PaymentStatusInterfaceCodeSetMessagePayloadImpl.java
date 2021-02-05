@@ -4,14 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.MessagePayload;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +28,11 @@ public final class PaymentStatusInterfaceCodeSetMessagePayloadImpl
             @JsonProperty("interfaceCode") final String interfaceCode) {
         this.paymentId = paymentId;
         this.interfaceCode = interfaceCode;
-        this.type = PaymentStatusInterfaceCodeSetMessagePayload.PAYMENT_STATUS_INTERFACE_CODE_SET;
+        this.type = PAYMENT_STATUS_INTERFACE_CODE_SET;
     }
 
     public PaymentStatusInterfaceCodeSetMessagePayloadImpl() {
-        this.type = PaymentStatusInterfaceCodeSetMessagePayload.PAYMENT_STATUS_INTERFACE_CODE_SET;
+        this.type = PAYMENT_STATUS_INTERFACE_CODE_SET;
     }
 
     public String getType() {

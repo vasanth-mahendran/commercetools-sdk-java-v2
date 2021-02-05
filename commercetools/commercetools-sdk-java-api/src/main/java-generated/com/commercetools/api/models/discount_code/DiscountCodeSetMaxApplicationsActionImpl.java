@@ -4,14 +4,8 @@ package com.commercetools.api.models.discount_code;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.discount_code.DiscountCodeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class DiscountCodeSetMaxApplicationsActionImpl implements DiscountC
     @JsonCreator
     DiscountCodeSetMaxApplicationsActionImpl(@JsonProperty("maxApplications") final Long maxApplications) {
         this.maxApplications = maxApplications;
-        this.action = DiscountCodeSetMaxApplicationsAction.SET_MAX_APPLICATIONS;
+        this.action = SET_MAX_APPLICATIONS;
     }
 
     public DiscountCodeSetMaxApplicationsActionImpl() {
-        this.action = DiscountCodeSetMaxApplicationsAction.SET_MAX_APPLICATIONS;
+        this.action = SET_MAX_APPLICATIONS;
     }
 
     public String getAction() {

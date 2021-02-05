@@ -4,14 +4,8 @@ package com.commercetools.api.models.me;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.me.MyPaymentUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class MyPaymentSetMethodInfoMethodActionImpl implements MyPaymentSe
     @JsonCreator
     MyPaymentSetMethodInfoMethodActionImpl(@JsonProperty("method") final String method) {
         this.method = method;
-        this.action = MyPaymentSetMethodInfoMethodAction.SET_METHOD_INFO_METHOD;
+        this.action = SET_METHOD_INFO_METHOD;
     }
 
     public MyPaymentSetMethodInfoMethodActionImpl() {
-        this.action = MyPaymentSetMethodInfoMethodAction.SET_METHOD_INFO_METHOD;
+        this.action = SET_METHOD_INFO_METHOD;
     }
 
     public String getAction() {

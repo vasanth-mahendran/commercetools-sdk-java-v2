@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.Message;
-import com.commercetools.api.models.order.TrackingData;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -77,11 +70,11 @@ public final class ParcelTrackingDataUpdatedMessageImpl implements ParcelTrackin
         this.deliveryId = deliveryId;
         this.parcelId = parcelId;
         this.trackingData = trackingData;
-        this.type = ParcelTrackingDataUpdatedMessage.PARCEL_TRACKING_DATA_UPDATED;
+        this.type = PARCEL_TRACKING_DATA_UPDATED;
     }
 
     public ParcelTrackingDataUpdatedMessageImpl() {
-        this.type = ParcelTrackingDataUpdatedMessage.PARCEL_TRACKING_DATA_UPDATED;
+        this.type = PARCEL_TRACKING_DATA_UPDATED;
     }
 
     public String getId() {

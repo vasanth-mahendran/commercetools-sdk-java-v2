@@ -4,15 +4,8 @@ package com.commercetools.api.models.error;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.ReferenceTypeId;
-import com.commercetools.api.models.error.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -41,11 +34,11 @@ public final class ReferencedResourceNotFoundErrorImpl implements ReferencedReso
         this.typeId = typeId;
         this.id = id;
         this.key = key;
-        this.code = ReferencedResourceNotFoundError.REFERENCED_RESOURCE_NOT_FOUND;
+        this.code = REFERENCED_RESOURCE_NOT_FOUND;
     }
 
     public ReferencedResourceNotFoundErrorImpl() {
-        this.code = ReferencedResourceNotFoundError.REFERENCED_RESOURCE_NOT_FOUND;
+        this.code = REFERENCED_RESOURCE_NOT_FOUND;
     }
 
     public String getCode() {

@@ -4,14 +4,8 @@ package com.commercetools.api.models.subscription;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.subscription.Destination;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class AzureServiceBusDestinationImpl implements AzureServiceBusDest
     @JsonCreator
     AzureServiceBusDestinationImpl(@JsonProperty("connectionString") final String connectionString) {
         this.connectionString = connectionString;
-        this.type = AzureServiceBusDestination.AZURE_SERVICE_BUS;
+        this.type = AZURE_SERVICE_BUS;
     }
 
     public AzureServiceBusDestinationImpl() {
-        this.type = AzureServiceBusDestination.AZURE_SERVICE_BUS;
+        this.type = AZURE_SERVICE_BUS;
     }
 
     public String getType() {

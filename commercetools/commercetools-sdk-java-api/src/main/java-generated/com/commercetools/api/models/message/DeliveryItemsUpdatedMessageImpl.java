@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.Message;
-import com.commercetools.api.models.order.DeliveryItem;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -77,11 +70,11 @@ public final class DeliveryItemsUpdatedMessageImpl implements DeliveryItemsUpdat
         this.deliveryId = deliveryId;
         this.items = items;
         this.oldItems = oldItems;
-        this.type = DeliveryItemsUpdatedMessage.DELIVERY_ITEMS_UPDATED;
+        this.type = DELIVERY_ITEMS_UPDATED;
     }
 
     public DeliveryItemsUpdatedMessageImpl() {
-        this.type = DeliveryItemsUpdatedMessage.DELIVERY_ITEMS_UPDATED;
+        this.type = DELIVERY_ITEMS_UPDATED;
     }
 
     public String getId() {

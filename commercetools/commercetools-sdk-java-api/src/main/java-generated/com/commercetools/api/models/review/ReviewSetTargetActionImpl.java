@@ -4,15 +4,11 @@ package com.commercetools.api.models.review;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.review.ReviewUpdateAction;
+import com.commercetools.api.models.channel.ChannelResourceIdentifier;
+import com.commercetools.api.models.product.ProductResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -25,16 +21,16 @@ public final class ReviewSetTargetActionImpl implements ReviewSetTargetAction {
 
     private String action;
 
-    private com.fasterxml.jackson.databind.JsonNode target;
+    private java.lang.Object target;
 
     @JsonCreator
-    ReviewSetTargetActionImpl(@JsonProperty("target") final com.fasterxml.jackson.databind.JsonNode target) {
+    ReviewSetTargetActionImpl(@JsonProperty("target") final java.lang.Object target) {
         this.target = target;
-        this.action = ReviewSetTargetAction.SET_TARGET;
+        this.action = SET_TARGET;
     }
 
     public ReviewSetTargetActionImpl() {
-        this.action = ReviewSetTargetAction.SET_TARGET;
+        this.action = SET_TARGET;
     }
 
     public String getAction() {
@@ -46,11 +42,21 @@ public final class ReviewSetTargetActionImpl implements ReviewSetTargetAction {
     *  Can be a Product or a Channel.
     *  If <code>target</code> is absent or <code>null</code>, this field will be removed if it exists.</p>
     */
-    public com.fasterxml.jackson.databind.JsonNode getTarget() {
+    public java.lang.Object getTarget() {
         return this.target;
     }
 
-    public void setTarget(final com.fasterxml.jackson.databind.JsonNode target) {
+    @JsonIgnore
+    public void setTarget(final ProductResourceIdentifier target) {
+        this.target = target;
+    }
+
+    @JsonIgnore
+    public void setTarget(final ChannelResourceIdentifier target) {
+        this.target = target;
+    }
+
+    public void setTarget(final java.lang.Object target) {
         this.target = target;
     }
 

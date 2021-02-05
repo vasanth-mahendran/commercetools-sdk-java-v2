@@ -2,17 +2,10 @@
 package com.commercetools.importapi.models.customfields;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.customfields.CustomField;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +26,11 @@ public final class DateTimeSetFieldImpl implements DateTimeSetField {
     @JsonCreator
     DateTimeSetFieldImpl(@JsonProperty("value") final java.util.List<java.time.ZonedDateTime> value) {
         this.value = value;
-        this.type = DateTimeSetField.DATE_TIME_SET;
+        this.type = DATE_TIME_SET;
     }
 
     public DateTimeSetFieldImpl() {
-        this.type = DateTimeSetField.DATE_TIME_SET;
+        this.type = DATE_TIME_SET;
     }
 
     /**

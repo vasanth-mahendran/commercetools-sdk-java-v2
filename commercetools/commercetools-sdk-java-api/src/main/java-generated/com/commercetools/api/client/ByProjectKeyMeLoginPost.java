@@ -3,24 +3,14 @@ package com.commercetools.api.client;
 
 import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
-import java.net.URLEncoder;
-import java.nio.file.Files;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
-import io.vrap.rmf.base.client.utils.Utils;
-import io.vrap.rmf.base.client.utils.json.VrapJsonUtils;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyMeLoginPost
@@ -30,19 +20,18 @@ public class ByProjectKeyMeLoginPost
 
     private String projectKey;
 
-    private com.fasterxml.jackson.databind.JsonNode jsonNode;
+    private Object obj;
 
-    public ByProjectKeyMeLoginPost(final ApiHttpClient apiHttpClient, String projectKey,
-            com.fasterxml.jackson.databind.JsonNode jsonNode) {
+    public ByProjectKeyMeLoginPost(final ApiHttpClient apiHttpClient, String projectKey, Object obj) {
         super(apiHttpClient);
         this.projectKey = projectKey;
-        this.jsonNode = jsonNode;
+        this.obj = obj;
     }
 
     public ByProjectKeyMeLoginPost(ByProjectKeyMeLoginPost t) {
         super(t);
         this.projectKey = t.projectKey;
-        this.jsonNode = t.jsonNode;
+        this.obj = t.obj;
     }
 
     @Override
@@ -53,7 +42,7 @@ public class ByProjectKeyMeLoginPost
             httpRequestPath += "?" + String.join("&", params);
         }
         try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(jsonNode);
+            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(obj);
             return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
         }
         catch (Exception e) {

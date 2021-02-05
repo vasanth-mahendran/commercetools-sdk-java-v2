@@ -4,15 +4,8 @@ package com.commercetools.api.models.order;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.OrderUpdateAction;
-import com.commercetools.api.models.order.TrackingData;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class OrderSetParcelTrackingDataActionImpl implements OrderSetParce
             @JsonProperty("trackingData") final com.commercetools.api.models.order.TrackingData trackingData) {
         this.parcelId = parcelId;
         this.trackingData = trackingData;
-        this.action = OrderSetParcelTrackingDataAction.SET_PARCEL_TRACKING_DATA;
+        this.action = SET_PARCEL_TRACKING_DATA;
     }
 
     public OrderSetParcelTrackingDataActionImpl() {
-        this.action = OrderSetParcelTrackingDataAction.SET_PARCEL_TRACKING_DATA;
+        this.action = SET_PARCEL_TRACKING_DATA;
     }
 
     public String getAction() {

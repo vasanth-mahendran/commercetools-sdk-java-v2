@@ -4,15 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.AssetSource;
-import com.commercetools.api.models.product.ProductUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -48,11 +41,11 @@ public final class ProductSetAssetSourcesActionImpl implements ProductSetAssetSo
         this.assetId = assetId;
         this.assetKey = assetKey;
         this.sources = sources;
-        this.action = ProductSetAssetSourcesAction.SET_ASSET_SOURCES;
+        this.action = SET_ASSET_SOURCES;
     }
 
     public ProductSetAssetSourcesActionImpl() {
-        this.action = ProductSetAssetSourcesAction.SET_ASSET_SOURCES;
+        this.action = SET_ASSET_SOURCES;
     }
 
     public String getAction() {

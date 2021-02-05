@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.ShippingInfo;
-import com.commercetools.api.models.message.Message;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -73,11 +66,11 @@ public final class OrderShippingInfoSetMessageImpl implements OrderShippingInfoS
         this.resourceUserProvidedIdentifiers = resourceUserProvidedIdentifiers;
         this.shippingInfo = shippingInfo;
         this.oldShippingInfo = oldShippingInfo;
-        this.type = OrderShippingInfoSetMessage.ORDER_SHIPPING_INFO_SET;
+        this.type = ORDER_SHIPPING_INFO_SET;
     }
 
     public OrderShippingInfoSetMessageImpl() {
-        this.type = OrderShippingInfoSetMessage.ORDER_SHIPPING_INFO_SET;
+        this.type = ORDER_SHIPPING_INFO_SET;
     }
 
     public String getId() {

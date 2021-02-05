@@ -4,14 +4,8 @@ package com.commercetools.api.models.type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.type.TypeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +27,11 @@ public final class TypeChangeEnumValueOrderActionImpl implements TypeChangeEnumV
             @JsonProperty("keys") final java.util.List<String> keys) {
         this.fieldName = fieldName;
         this.keys = keys;
-        this.action = TypeChangeEnumValueOrderAction.CHANGE_ENUM_VALUE_ORDER;
+        this.action = CHANGE_ENUM_VALUE_ORDER;
     }
 
     public TypeChangeEnumValueOrderActionImpl() {
-        this.action = TypeChangeEnumValueOrderAction.CHANGE_ENUM_VALUE_ORDER;
+        this.action = CHANGE_ENUM_VALUE_ORDER;
     }
 
     public String getAction() {

@@ -4,15 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
-import com.commercetools.api.models.payment.PaymentResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class StagedOrderRemovePaymentActionImpl implements StagedOrderRemo
     StagedOrderRemovePaymentActionImpl(
             @JsonProperty("payment") final com.commercetools.api.models.payment.PaymentResourceIdentifier payment) {
         this.payment = payment;
-        this.action = StagedOrderRemovePaymentAction.REMOVE_PAYMENT;
+        this.action = REMOVE_PAYMENT;
     }
 
     public StagedOrderRemovePaymentActionImpl() {
-        this.action = StagedOrderRemovePaymentAction.REMOVE_PAYMENT;
+        this.action = REMOVE_PAYMENT;
     }
 
     public String getAction() {

@@ -4,15 +4,8 @@ package com.commercetools.api.models.store;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.channel.ChannelResourceIdentifier;
-import com.commercetools.api.models.store.StoreUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class StoreAddSupplyChannelActionImpl implements StoreAddSupplyChan
     StoreAddSupplyChannelActionImpl(
             @JsonProperty("supplyChannel") final com.commercetools.api.models.channel.ChannelResourceIdentifier supplyChannel) {
         this.supplyChannel = supplyChannel;
-        this.action = StoreAddSupplyChannelAction.ADD_SUPPLY_CHANNEL;
+        this.action = ADD_SUPPLY_CHANNEL;
     }
 
     public StoreAddSupplyChannelActionImpl() {
-        this.action = StoreAddSupplyChannelAction.ADD_SUPPLY_CHANNEL;
+        this.action = ADD_SUPPLY_CHANNEL;
     }
 
     public String getAction() {

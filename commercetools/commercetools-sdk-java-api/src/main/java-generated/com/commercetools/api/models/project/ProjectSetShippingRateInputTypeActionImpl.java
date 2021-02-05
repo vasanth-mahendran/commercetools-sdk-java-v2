@@ -4,15 +4,8 @@ package com.commercetools.api.models.project;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.project.ProjectUpdateAction;
-import com.commercetools.api.models.project.ShippingRateInputType;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class ProjectSetShippingRateInputTypeActionImpl implements ProjectS
     ProjectSetShippingRateInputTypeActionImpl(
             @JsonProperty("shippingRateInputType") final com.commercetools.api.models.project.ShippingRateInputType shippingRateInputType) {
         this.shippingRateInputType = shippingRateInputType;
-        this.action = ProjectSetShippingRateInputTypeAction.SET_SHIPPING_RATE_INPUT_TYPE;
+        this.action = SET_SHIPPING_RATE_INPUT_TYPE;
     }
 
     public ProjectSetShippingRateInputTypeActionImpl() {
-        this.action = ProjectSetShippingRateInputTypeAction.SET_SHIPPING_RATE_INPUT_TYPE;
+        this.action = SET_SHIPPING_RATE_INPUT_TYPE;
     }
 
     public String getAction() {

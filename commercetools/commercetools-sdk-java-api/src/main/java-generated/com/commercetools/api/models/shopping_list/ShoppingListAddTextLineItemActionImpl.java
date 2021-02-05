@@ -2,19 +2,10 @@
 package com.commercetools.api.models.shopping_list;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.LocalizedString;
-import com.commercetools.api.models.shopping_list.ShoppingListUpdateAction;
-import com.commercetools.api.models.type.CustomFieldsDraft;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -49,11 +40,11 @@ public final class ShoppingListAddTextLineItemActionImpl implements ShoppingList
         this.quantity = quantity;
         this.addedAt = addedAt;
         this.custom = custom;
-        this.action = ShoppingListAddTextLineItemAction.ADD_TEXT_LINE_ITEM;
+        this.action = ADD_TEXT_LINE_ITEM;
     }
 
     public ShoppingListAddTextLineItemActionImpl() {
-        this.action = ShoppingListAddTextLineItemAction.ADD_TEXT_LINE_ITEM;
+        this.action = ADD_TEXT_LINE_ITEM;
     }
 
     public String getAction() {

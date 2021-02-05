@@ -4,14 +4,8 @@ package com.commercetools.importapi.models.errors;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.errors.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +27,11 @@ public final class InvalidInputImpl implements InvalidInput {
     @JsonCreator
     InvalidInputImpl(@JsonProperty("message") final String message) {
         this.message = message;
-        this.code = InvalidInput.INVALID_INPUT;
+        this.code = INVALID_INPUT;
     }
 
     public InvalidInputImpl() {
-        this.code = InvalidInput.INVALID_INPUT;
+        this.code = INVALID_INPUT;
     }
 
     public String getCode() {

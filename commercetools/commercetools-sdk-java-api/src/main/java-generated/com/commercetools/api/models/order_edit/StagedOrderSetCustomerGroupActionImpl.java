@@ -4,15 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.customer_group.CustomerGroupResourceIdentifier;
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class StagedOrderSetCustomerGroupActionImpl implements StagedOrderS
     StagedOrderSetCustomerGroupActionImpl(
             @JsonProperty("customerGroup") final com.commercetools.api.models.customer_group.CustomerGroupResourceIdentifier customerGroup) {
         this.customerGroup = customerGroup;
-        this.action = StagedOrderSetCustomerGroupAction.SET_CUSTOMER_GROUP;
+        this.action = SET_CUSTOMER_GROUP;
     }
 
     public StagedOrderSetCustomerGroupActionImpl() {
-        this.action = StagedOrderSetCustomerGroupAction.SET_CUSTOMER_GROUP;
+        this.action = SET_CUSTOMER_GROUP;
     }
 
     public String getAction() {

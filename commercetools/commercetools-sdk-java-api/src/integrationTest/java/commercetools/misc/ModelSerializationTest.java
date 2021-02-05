@@ -16,7 +16,6 @@ import com.commercetools.api.models.category.*;
 import com.commercetools.api.models.common.*;
 import com.commercetools.api.models.type.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
@@ -35,7 +34,7 @@ public class ModelSerializationTest {
         String id = "test-id";
         String testString = "test-string";
 
-        Map<String, JsonNode> fieldContainerValues = new HashMap<>();
+        Map<String, Object> fieldContainerValues = new HashMap<>();
         fieldContainerValues.put(key, JsonUtils.getConfiguredObjectMapper().createObjectNode().put("val", testString));
         FieldContainer fieldContainer = FieldContainerBuilder.of().values(fieldContainerValues).build();
 
@@ -89,7 +88,7 @@ public class ModelSerializationTest {
         String id = "test-id";
         String testString = "test-string";
 
-        Map<String, JsonNode> fieldContainerValues = new HashMap<>();
+        Map<String, Object> fieldContainerValues = new HashMap<>();
         fieldContainerValues.put(key, JsonUtils.getConfiguredObjectMapper().createObjectNode().put("val", testString));
         FieldContainer fieldContainer = FieldContainerBuilder.of().values(fieldContainerValues).build();
 

@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.Address;
-import com.commercetools.api.models.message.Message;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -73,11 +66,11 @@ public final class OrderBillingAddressSetMessageImpl implements OrderBillingAddr
         this.resourceUserProvidedIdentifiers = resourceUserProvidedIdentifiers;
         this.address = address;
         this.oldAddress = oldAddress;
-        this.type = OrderBillingAddressSetMessage.ORDER_BILLING_ADDRESS_SET;
+        this.type = ORDER_BILLING_ADDRESS_SET;
     }
 
     public OrderBillingAddressSetMessageImpl() {
-        this.type = OrderBillingAddressSetMessage.ORDER_BILLING_ADDRESS_SET;
+        this.type = ORDER_BILLING_ADDRESS_SET;
     }
 
     public String getId() {

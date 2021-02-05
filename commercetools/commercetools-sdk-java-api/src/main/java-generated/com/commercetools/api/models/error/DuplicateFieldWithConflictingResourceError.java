@@ -1,7 +1,6 @@
 
 package com.commercetools.api.models.error;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
@@ -10,13 +9,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.commercetools.api.models.common.Reference;
-import com.commercetools.api.models.error.DuplicateFieldWithConflictingResourceErrorImpl;
-import com.commercetools.api.models.error.ErrorObject;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -31,7 +26,7 @@ public interface DuplicateFieldWithConflictingResourceError extends ErrorObject 
 
     @NotNull
     @JsonProperty("duplicateValue")
-    public JsonNode getDuplicateValue();
+    public Object getDuplicateValue();
 
     @NotNull
     @Valid
@@ -40,7 +35,7 @@ public interface DuplicateFieldWithConflictingResourceError extends ErrorObject 
 
     public void setField(final String field);
 
-    public void setDuplicateValue(final JsonNode duplicateValue);
+    public void setDuplicateValue(final Object duplicateValue);
 
     public void setConflictingResource(final Reference conflictingResource);
 

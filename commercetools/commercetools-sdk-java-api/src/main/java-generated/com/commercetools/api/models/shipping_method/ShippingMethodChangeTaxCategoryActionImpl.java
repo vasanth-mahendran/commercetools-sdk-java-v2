@@ -4,15 +4,8 @@ package com.commercetools.api.models.shipping_method;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.shipping_method.ShippingMethodUpdateAction;
-import com.commercetools.api.models.tax_category.TaxCategoryResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class ShippingMethodChangeTaxCategoryActionImpl implements Shipping
     ShippingMethodChangeTaxCategoryActionImpl(
             @JsonProperty("taxCategory") final com.commercetools.api.models.tax_category.TaxCategoryResourceIdentifier taxCategory) {
         this.taxCategory = taxCategory;
-        this.action = ShippingMethodChangeTaxCategoryAction.CHANGE_TAX_CATEGORY;
+        this.action = CHANGE_TAX_CATEGORY;
     }
 
     public ShippingMethodChangeTaxCategoryActionImpl() {
-        this.action = ShippingMethodChangeTaxCategoryAction.CHANGE_TAX_CATEGORY;
+        this.action = CHANGE_TAX_CATEGORY;
     }
 
     public String getAction() {

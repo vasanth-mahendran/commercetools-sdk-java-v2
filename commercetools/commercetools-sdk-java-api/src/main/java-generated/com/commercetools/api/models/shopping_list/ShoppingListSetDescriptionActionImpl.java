@@ -4,15 +4,8 @@ package com.commercetools.api.models.shopping_list;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.LocalizedString;
-import com.commercetools.api.models.shopping_list.ShoppingListUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class ShoppingListSetDescriptionActionImpl implements ShoppingListS
     ShoppingListSetDescriptionActionImpl(
             @JsonProperty("description") final com.commercetools.api.models.common.LocalizedString description) {
         this.description = description;
-        this.action = ShoppingListSetDescriptionAction.SET_DESCRIPTION;
+        this.action = SET_DESCRIPTION;
     }
 
     public ShoppingListSetDescriptionActionImpl() {
-        this.action = ShoppingListSetDescriptionAction.SET_DESCRIPTION;
+        this.action = SET_DESCRIPTION;
     }
 
     public String getAction() {

@@ -4,14 +4,8 @@ package com.commercetools.importapi.models.errors;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.errors.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -32,11 +26,11 @@ public final class InvalidScopeErrorImpl implements InvalidScopeError {
     @JsonCreator
     InvalidScopeErrorImpl(@JsonProperty("message") final String message) {
         this.message = message;
-        this.code = InvalidScopeError.INVALID_SCOPE;
+        this.code = INVALID_SCOPE;
     }
 
     public InvalidScopeErrorImpl() {
-        this.code = InvalidScopeError.INVALID_SCOPE;
+        this.code = INVALID_SCOPE;
     }
 
     public String getCode() {

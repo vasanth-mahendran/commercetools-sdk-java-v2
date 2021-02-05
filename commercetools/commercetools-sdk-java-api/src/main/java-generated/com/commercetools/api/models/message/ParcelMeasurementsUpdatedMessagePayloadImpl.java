@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.MessagePayload;
-import com.commercetools.api.models.order.ParcelMeasurements;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -38,11 +31,11 @@ public final class ParcelMeasurementsUpdatedMessagePayloadImpl implements Parcel
         this.deliveryId = deliveryId;
         this.parcelId = parcelId;
         this.measurements = measurements;
-        this.type = ParcelMeasurementsUpdatedMessagePayload.PARCEL_MEASUREMENTS_UPDATED;
+        this.type = PARCEL_MEASUREMENTS_UPDATED;
     }
 
     public ParcelMeasurementsUpdatedMessagePayloadImpl() {
-        this.type = ParcelMeasurementsUpdatedMessagePayload.PARCEL_MEASUREMENTS_UPDATED;
+        this.type = PARCEL_MEASUREMENTS_UPDATED;
     }
 
     public String getType() {

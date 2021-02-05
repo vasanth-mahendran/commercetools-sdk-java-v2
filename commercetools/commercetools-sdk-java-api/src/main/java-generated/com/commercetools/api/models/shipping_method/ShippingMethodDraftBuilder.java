@@ -1,15 +1,9 @@
 
 package com.commercetools.api.models.shipping_method;
 
-import java.time.ZonedDateTime;
 import java.util.*;
 
 import javax.annotation.Nullable;
-
-import com.commercetools.api.models.common.LocalizedString;
-import com.commercetools.api.models.shipping_method.ShippingMethodDraft;
-import com.commercetools.api.models.shipping_method.ZoneRateDraft;
-import com.commercetools.api.models.tax_category.TaxCategoryResourceIdentifier;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -35,6 +29,9 @@ public final class ShippingMethodDraftBuilder {
 
     @Nullable
     private String predicate;
+
+    @Nullable
+    private com.commercetools.api.models.type.CustomFieldsDraft custom;
 
     public ShippingMethodDraftBuilder key(@Nullable final String key) {
         this.key = key;
@@ -85,6 +82,12 @@ public final class ShippingMethodDraftBuilder {
         return this;
     }
 
+    public ShippingMethodDraftBuilder custom(
+            @Nullable final com.commercetools.api.models.type.CustomFieldsDraft custom) {
+        this.custom = custom;
+        return this;
+    }
+
     @Nullable
     public String getKey() {
         return this.key;
@@ -121,9 +124,14 @@ public final class ShippingMethodDraftBuilder {
         return this.predicate;
     }
 
+    @Nullable
+    public com.commercetools.api.models.type.CustomFieldsDraft getCustom() {
+        return this.custom;
+    }
+
     public ShippingMethodDraft build() {
         return new ShippingMethodDraftImpl(key, name, description, localizedDescription, taxCategory, zoneRates,
-            isDefault, predicate);
+            isDefault, predicate, custom);
     }
 
     public static ShippingMethodDraftBuilder of() {
@@ -140,6 +148,7 @@ public final class ShippingMethodDraftBuilder {
         builder.zoneRates = template.getZoneRates();
         builder.isDefault = template.getIsDefault();
         builder.predicate = template.getPredicate();
+        builder.custom = template.getCustom();
         return builder;
     }
 

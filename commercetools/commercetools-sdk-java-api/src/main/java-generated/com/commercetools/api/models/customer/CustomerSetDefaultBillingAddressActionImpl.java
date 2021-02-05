@@ -4,14 +4,8 @@ package com.commercetools.api.models.customer;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.customer.CustomerUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +27,11 @@ public final class CustomerSetDefaultBillingAddressActionImpl implements Custome
             @JsonProperty("addressKey") final String addressKey) {
         this.addressId = addressId;
         this.addressKey = addressKey;
-        this.action = CustomerSetDefaultBillingAddressAction.SET_DEFAULT_BILLING_ADDRESS;
+        this.action = SET_DEFAULT_BILLING_ADDRESS;
     }
 
     public CustomerSetDefaultBillingAddressActionImpl() {
-        this.action = CustomerSetDefaultBillingAddressAction.SET_DEFAULT_BILLING_ADDRESS;
+        this.action = SET_DEFAULT_BILLING_ADDRESS;
     }
 
     public String getAction() {

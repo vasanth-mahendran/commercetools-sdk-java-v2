@@ -4,15 +4,8 @@ package com.commercetools.api.models.type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.type.CustomFieldEnumValue;
-import com.commercetools.api.models.type.FieldType;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class CustomFieldEnumTypeImpl implements CustomFieldEnumType {
     CustomFieldEnumTypeImpl(
             @JsonProperty("values") final java.util.List<com.commercetools.api.models.type.CustomFieldEnumValue> values) {
         this.values = values;
-        this.name = CustomFieldEnumType.ENUM;
+        this.name = ENUM;
     }
 
     public CustomFieldEnumTypeImpl() {
-        this.name = CustomFieldEnumType.ENUM;
+        this.name = ENUM;
     }
 
     public String getName() {

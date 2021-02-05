@@ -4,16 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.product.ProductUpdateAction;
-import com.commercetools.api.models.type.TypeResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -38,14 +30,14 @@ public final class ProductSetAssetCustomTypeActionImpl implements ProductSetAsse
 
     private com.commercetools.api.models.type.TypeResourceIdentifier type;
 
-    private com.fasterxml.jackson.databind.JsonNode fields;
+    private java.lang.Object fields;
 
     @JsonCreator
     ProductSetAssetCustomTypeActionImpl(@JsonProperty("variantId") final Long variantId,
             @JsonProperty("sku") final String sku, @JsonProperty("staged") final Boolean staged,
             @JsonProperty("assetId") final String assetId, @JsonProperty("assetKey") final String assetKey,
             @JsonProperty("type") final com.commercetools.api.models.type.TypeResourceIdentifier type,
-            @JsonProperty("fields") final com.fasterxml.jackson.databind.JsonNode fields) {
+            @JsonProperty("fields") final java.lang.Object fields) {
         this.variantId = variantId;
         this.sku = sku;
         this.staged = staged;
@@ -53,11 +45,11 @@ public final class ProductSetAssetCustomTypeActionImpl implements ProductSetAsse
         this.assetKey = assetKey;
         this.type = type;
         this.fields = fields;
-        this.action = ProductSetAssetCustomTypeAction.SET_ASSET_CUSTOM_TYPE;
+        this.action = SET_ASSET_CUSTOM_TYPE;
     }
 
     public ProductSetAssetCustomTypeActionImpl() {
-        this.action = ProductSetAssetCustomTypeAction.SET_ASSET_CUSTOM_TYPE;
+        this.action = SET_ASSET_CUSTOM_TYPE;
     }
 
     public String getAction() {
@@ -95,7 +87,7 @@ public final class ProductSetAssetCustomTypeActionImpl implements ProductSetAsse
     /**
     *  <p>If set, the custom fields are set to this new value.</p>
     */
-    public com.fasterxml.jackson.databind.JsonNode getFields() {
+    public java.lang.Object getFields() {
         return this.fields;
     }
 
@@ -123,7 +115,7 @@ public final class ProductSetAssetCustomTypeActionImpl implements ProductSetAsse
         this.type = type;
     }
 
-    public void setFields(final com.fasterxml.jackson.databind.JsonNode fields) {
+    public void setFields(final java.lang.Object fields) {
         this.fields = fields;
     }
 

@@ -1,21 +1,15 @@
 
 package com.commercetools.api.models.order;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.order.OrderSetLineItemCustomFieldActionImpl;
-import com.commercetools.api.models.order.OrderUpdateAction;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -33,13 +27,13 @@ public interface OrderSetLineItemCustomFieldAction extends OrderUpdateAction {
     public String getName();
 
     @JsonProperty("value")
-    public JsonNode getValue();
+    public Object getValue();
 
     public void setLineItemId(final String lineItemId);
 
     public void setName(final String name);
 
-    public void setValue(final JsonNode value);
+    public void setValue(final Object value);
 
     public static OrderSetLineItemCustomFieldAction of() {
         return new OrderSetLineItemCustomFieldActionImpl();

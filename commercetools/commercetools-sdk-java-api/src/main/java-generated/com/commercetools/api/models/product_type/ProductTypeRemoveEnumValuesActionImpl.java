@@ -4,14 +4,8 @@ package com.commercetools.api.models.product_type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.product_type.ProductTypeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +27,11 @@ public final class ProductTypeRemoveEnumValuesActionImpl implements ProductTypeR
             @JsonProperty("keys") final java.util.List<String> keys) {
         this.attributeName = attributeName;
         this.keys = keys;
-        this.action = ProductTypeRemoveEnumValuesAction.REMOVE_ENUM_VALUES;
+        this.action = REMOVE_ENUM_VALUES;
     }
 
     public ProductTypeRemoveEnumValuesActionImpl() {
-        this.action = ProductTypeRemoveEnumValuesAction.REMOVE_ENUM_VALUES;
+        this.action = REMOVE_ENUM_VALUES;
     }
 
     public String getAction() {

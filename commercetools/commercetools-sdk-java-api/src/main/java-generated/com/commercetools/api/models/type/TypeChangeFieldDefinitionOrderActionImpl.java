@@ -4,14 +4,8 @@ package com.commercetools.api.models.type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.type.TypeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class TypeChangeFieldDefinitionOrderActionImpl implements TypeChang
     @JsonCreator
     TypeChangeFieldDefinitionOrderActionImpl(@JsonProperty("fieldNames") final java.util.List<String> fieldNames) {
         this.fieldNames = fieldNames;
-        this.action = TypeChangeFieldDefinitionOrderAction.CHANGE_FIELD_DEFINITION_ORDER;
+        this.action = CHANGE_FIELD_DEFINITION_ORDER;
     }
 
     public TypeChangeFieldDefinitionOrderActionImpl() {
-        this.action = TypeChangeFieldDefinitionOrderAction.CHANGE_FIELD_DEFINITION_ORDER;
+        this.action = CHANGE_FIELD_DEFINITION_ORDER;
     }
 
     public String getAction() {

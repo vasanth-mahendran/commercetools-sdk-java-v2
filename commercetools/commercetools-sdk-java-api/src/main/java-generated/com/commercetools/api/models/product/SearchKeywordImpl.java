@@ -4,14 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -24,11 +18,11 @@ public final class SearchKeywordImpl implements SearchKeyword {
 
     private String text;
 
-    private com.fasterxml.jackson.databind.JsonNode suggestTokenizer;
+    private com.commercetools.api.models.product.SuggestTokenizer suggestTokenizer;
 
     @JsonCreator
     SearchKeywordImpl(@JsonProperty("text") final String text,
-            @JsonProperty("suggestTokenizer") final com.fasterxml.jackson.databind.JsonNode suggestTokenizer) {
+            @JsonProperty("suggestTokenizer") final com.commercetools.api.models.product.SuggestTokenizer suggestTokenizer) {
         this.text = text;
         this.suggestTokenizer = suggestTokenizer;
     }
@@ -40,7 +34,7 @@ public final class SearchKeywordImpl implements SearchKeyword {
         return this.text;
     }
 
-    public com.fasterxml.jackson.databind.JsonNode getSuggestTokenizer() {
+    public com.commercetools.api.models.product.SuggestTokenizer getSuggestTokenizer() {
         return this.suggestTokenizer;
     }
 
@@ -48,7 +42,7 @@ public final class SearchKeywordImpl implements SearchKeyword {
         this.text = text;
     }
 
-    public void setSuggestTokenizer(final com.fasterxml.jackson.databind.JsonNode suggestTokenizer) {
+    public void setSuggestTokenizer(final com.commercetools.api.models.product.SuggestTokenizer suggestTokenizer) {
         this.suggestTokenizer = suggestTokenizer;
     }
 

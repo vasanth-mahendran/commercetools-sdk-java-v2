@@ -4,15 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.category.CategoryResourceIdentifier;
-import com.commercetools.api.models.product.ProductUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -38,11 +31,11 @@ public final class ProductAddToCategoryActionImpl implements ProductAddToCategor
         this.category = category;
         this.orderHint = orderHint;
         this.staged = staged;
-        this.action = ProductAddToCategoryAction.ADD_TO_CATEGORY;
+        this.action = ADD_TO_CATEGORY;
     }
 
     public ProductAddToCategoryActionImpl() {
-        this.action = ProductAddToCategoryAction.ADD_TO_CATEGORY;
+        this.action = ADD_TO_CATEGORY;
     }
 
     public String getAction() {

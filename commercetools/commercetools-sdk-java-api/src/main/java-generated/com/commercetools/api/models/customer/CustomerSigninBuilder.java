@@ -1,14 +1,9 @@
 
 package com.commercetools.api.models.customer;
 
-import java.time.ZonedDateTime;
 import java.util.*;
 
 import javax.annotation.Nullable;
-
-import com.commercetools.api.models.cart.CartResourceIdentifier;
-import com.commercetools.api.models.customer.AnonymousCartSignInMode;
-import com.commercetools.api.models.customer.CustomerSignin;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -19,6 +14,7 @@ public final class CustomerSigninBuilder {
 
     private String password;
 
+    @Deprecated
     @Nullable
     private String anonymousCartId;
 
@@ -44,6 +40,7 @@ public final class CustomerSigninBuilder {
         return this;
     }
 
+    @Deprecated
     public CustomerSigninBuilder anonymousCartId(@Nullable final String anonymousCartId) {
         this.anonymousCartId = anonymousCartId;
         return this;
@@ -79,6 +76,7 @@ public final class CustomerSigninBuilder {
         return this.password;
     }
 
+    @Deprecated
     @Nullable
     public String getAnonymousCartId() {
         return this.anonymousCartId;

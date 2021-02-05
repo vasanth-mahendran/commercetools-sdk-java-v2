@@ -4,15 +4,8 @@ package com.commercetools.api.models.order;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.Address;
-import com.commercetools.api.models.order.OrderUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class OrderSetBillingAddressActionImpl implements OrderSetBillingAd
     OrderSetBillingAddressActionImpl(
             @JsonProperty("address") final com.commercetools.api.models.common.Address address) {
         this.address = address;
-        this.action = OrderSetBillingAddressAction.SET_BILLING_ADDRESS;
+        this.action = SET_BILLING_ADDRESS;
     }
 
     public OrderSetBillingAddressActionImpl() {
-        this.action = OrderSetBillingAddressAction.SET_BILLING_ADDRESS;
+        this.action = SET_BILLING_ADDRESS;
     }
 
     public String getAction() {

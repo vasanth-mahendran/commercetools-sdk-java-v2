@@ -1,14 +1,9 @@
 
 package com.commercetools.importapi.models.errors;
 
-import java.time.ZonedDateTime;
 import java.util.*;
 
 import javax.annotation.Nullable;
-
-import com.commercetools.importapi.models.errors.ErrorObject;
-import com.commercetools.importapi.models.errors.ResourceCreationError;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -18,14 +13,14 @@ public final class ResourceCreationErrorBuilder {
     private String message;
 
     @Nullable
-    private com.fasterxml.jackson.databind.JsonNode resource;
+    private java.lang.Object resource;
 
     public ResourceCreationErrorBuilder message(final String message) {
         this.message = message;
         return this;
     }
 
-    public ResourceCreationErrorBuilder resource(@Nullable final com.fasterxml.jackson.databind.JsonNode resource) {
+    public ResourceCreationErrorBuilder resource(@Nullable final java.lang.Object resource) {
         this.resource = resource;
         return this;
     }
@@ -35,7 +30,7 @@ public final class ResourceCreationErrorBuilder {
     }
 
     @Nullable
-    public com.fasterxml.jackson.databind.JsonNode getResource() {
+    public java.lang.Object getResource() {
         return this.resource;
     }
 

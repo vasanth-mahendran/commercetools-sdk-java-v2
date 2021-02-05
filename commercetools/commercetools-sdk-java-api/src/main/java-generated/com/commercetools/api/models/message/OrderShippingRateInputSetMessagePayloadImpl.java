@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.ShippingRateInput;
-import com.commercetools.api.models.message.MessagePayload;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -35,11 +28,11 @@ public final class OrderShippingRateInputSetMessagePayloadImpl implements OrderS
             @JsonProperty("oldShippingRateInput") final com.commercetools.api.models.cart.ShippingRateInput oldShippingRateInput) {
         this.shippingRateInput = shippingRateInput;
         this.oldShippingRateInput = oldShippingRateInput;
-        this.type = OrderShippingRateInputSetMessagePayload.ORDER_SHIPPING_RATE_INPUT_SET;
+        this.type = ORDER_SHIPPING_RATE_INPUT_SET;
     }
 
     public OrderShippingRateInputSetMessagePayloadImpl() {
-        this.type = OrderShippingRateInputSetMessagePayload.ORDER_SHIPPING_RATE_INPUT_SET;
+        this.type = ORDER_SHIPPING_RATE_INPUT_SET;
     }
 
     public String getType() {

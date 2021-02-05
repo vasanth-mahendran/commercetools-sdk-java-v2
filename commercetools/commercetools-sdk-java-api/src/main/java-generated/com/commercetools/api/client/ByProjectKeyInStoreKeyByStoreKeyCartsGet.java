@@ -3,31 +3,21 @@ package com.commercetools.api.client;
 
 import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
-import java.net.URLEncoder;
-import java.nio.file.Files;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
-import io.vrap.rmf.base.client.utils.Utils;
-import io.vrap.rmf.base.client.utils.json.VrapJsonUtils;
 
 /**
 *  <p>Queries carts in a specific Store. The {storeKey} path parameter maps to a Store's key.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyInStoreKeyByStoreKeyCartsGet
-        extends ApiMethod<ByProjectKeyInStoreKeyByStoreKeyCartsGet, com.fasterxml.jackson.databind.JsonNode>
+        extends ApiMethod<ByProjectKeyInStoreKeyByStoreKeyCartsGet, java.lang.Object>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyInStoreKeyByStoreKeyCartsGet>,
         com.commercetools.api.client.SortableTrait<ByProjectKeyInStoreKeyByStoreKeyCartsGet>,
         com.commercetools.api.client.PagingTrait<ByProjectKeyInStoreKeyByStoreKeyCartsGet>,
@@ -63,13 +53,13 @@ public class ByProjectKeyInStoreKeyByStoreKeyCartsGet
     }
 
     @Override
-    public ApiHttpResponse<com.fasterxml.jackson.databind.JsonNode> executeBlocking(Duration timeout) {
+    public ApiHttpResponse<java.lang.Object> executeBlocking(Duration timeout) {
         return blockingWait(execute(), timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.fasterxml.jackson.databind.JsonNode>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.fasterxml.jackson.databind.JsonNode.class);
+    public CompletableFuture<ApiHttpResponse<java.lang.Object>> execute() {
+        return apiHttpClient().execute(this.createHttpRequest(), java.lang.Object.class);
     }
 
     public String getProjectKey() {

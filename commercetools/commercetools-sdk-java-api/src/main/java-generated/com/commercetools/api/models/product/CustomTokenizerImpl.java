@@ -4,14 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.product.SuggestTokenizer;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class CustomTokenizerImpl implements CustomTokenizer {
     @JsonCreator
     CustomTokenizerImpl(@JsonProperty("inputs") final java.util.List<String> inputs) {
         this.inputs = inputs;
-        this.type = CustomTokenizer.CUSTOM;
+        this.type = CUSTOM;
     }
 
     public CustomTokenizerImpl() {
-        this.type = CustomTokenizer.CUSTOM;
+        this.type = CUSTOM;
     }
 
     public String getType() {

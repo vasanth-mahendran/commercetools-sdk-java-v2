@@ -2,23 +2,13 @@
 package com.commercetools.api.models.review;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.BaseResource;
-import com.commercetools.api.models.common.CreatedBy;
-import com.commercetools.api.models.common.LastModifiedBy;
-import com.commercetools.api.models.customer.CustomerReference;
-import com.commercetools.api.models.state.StateReference;
-import com.commercetools.api.models.type.CustomFields;
+import com.commercetools.api.models.channel.ChannelReference;
+import com.commercetools.api.models.product.ProductReference;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -53,7 +43,7 @@ public final class ReviewImpl implements Review {
 
     private String text;
 
-    private com.fasterxml.jackson.databind.JsonNode target;
+    private java.lang.Object target;
 
     private Boolean includedInStatistics;
 
@@ -74,7 +64,7 @@ public final class ReviewImpl implements Review {
             @JsonProperty("key") final String key, @JsonProperty("uniquenessValue") final String uniquenessValue,
             @JsonProperty("locale") final String locale, @JsonProperty("authorName") final String authorName,
             @JsonProperty("title") final String title, @JsonProperty("text") final String text,
-            @JsonProperty("target") final com.fasterxml.jackson.databind.JsonNode target,
+            @JsonProperty("target") final java.lang.Object target,
             @JsonProperty("includedInStatistics") final Boolean includedInStatistics,
             @JsonProperty("rating") final Integer rating,
             @JsonProperty("state") final com.commercetools.api.models.state.StateReference state,
@@ -170,7 +160,7 @@ public final class ReviewImpl implements Review {
     *  <p>Identifies the target of the review.
     *  Can be a Product or a Channel</p>
     */
-    public com.fasterxml.jackson.databind.JsonNode getTarget() {
+    public java.lang.Object getTarget() {
         return this.target;
     }
 
@@ -253,7 +243,17 @@ public final class ReviewImpl implements Review {
         this.text = text;
     }
 
-    public void setTarget(final com.fasterxml.jackson.databind.JsonNode target) {
+    @JsonIgnore
+    public void setTarget(final ProductReference target) {
+        this.target = target;
+    }
+
+    @JsonIgnore
+    public void setTarget(final ChannelReference target) {
+        this.target = target;
+    }
+
+    public void setTarget(final java.lang.Object target) {
         this.target = target;
     }
 

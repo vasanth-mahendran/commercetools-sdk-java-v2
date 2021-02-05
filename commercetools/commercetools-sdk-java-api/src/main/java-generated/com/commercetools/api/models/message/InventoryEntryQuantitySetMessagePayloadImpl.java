@@ -4,14 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.MessagePayload;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -41,11 +35,11 @@ public final class InventoryEntryQuantitySetMessagePayloadImpl implements Invent
         this.newQuantityOnStock = newQuantityOnStock;
         this.oldAvailableQuantity = oldAvailableQuantity;
         this.newAvailableQuantity = newAvailableQuantity;
-        this.type = InventoryEntryQuantitySetMessagePayload.INVENTORY_ENTRY_QUANTITY_SET;
+        this.type = INVENTORY_ENTRY_QUANTITY_SET;
     }
 
     public InventoryEntryQuantitySetMessagePayloadImpl() {
-        this.type = InventoryEntryQuantitySetMessagePayload.INVENTORY_ENTRY_QUANTITY_SET;
+        this.type = INVENTORY_ENTRY_QUANTITY_SET;
     }
 
     public String getType() {

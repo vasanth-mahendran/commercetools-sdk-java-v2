@@ -2,18 +2,10 @@
 package com.commercetools.api.models.payment;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.Money;
-import com.commercetools.api.models.payment.PaymentUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -35,11 +27,11 @@ public final class PaymentSetAuthorizationActionImpl implements PaymentSetAuthor
             @JsonProperty("until") final java.time.ZonedDateTime until) {
         this.amount = amount;
         this.until = until;
-        this.action = PaymentSetAuthorizationAction.SET_AUTHORIZATION;
+        this.action = SET_AUTHORIZATION;
     }
 
     public PaymentSetAuthorizationActionImpl() {
-        this.action = PaymentSetAuthorizationAction.SET_AUTHORIZATION;
+        this.action = SET_AUTHORIZATION;
     }
 
     public String getAction() {

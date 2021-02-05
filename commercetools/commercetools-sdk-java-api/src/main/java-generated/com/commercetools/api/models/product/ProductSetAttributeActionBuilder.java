@@ -1,14 +1,9 @@
 
 package com.commercetools.api.models.product;
 
-import java.time.ZonedDateTime;
 import java.util.*;
 
 import javax.annotation.Nullable;
-
-import com.commercetools.api.models.product.ProductSetAttributeAction;
-import com.commercetools.api.models.product.ProductUpdateAction;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -24,7 +19,7 @@ public final class ProductSetAttributeActionBuilder {
     private String name;
 
     @Nullable
-    private com.fasterxml.jackson.databind.JsonNode value;
+    private java.lang.Object value;
 
     @Nullable
     private Boolean staged;
@@ -44,7 +39,7 @@ public final class ProductSetAttributeActionBuilder {
         return this;
     }
 
-    public ProductSetAttributeActionBuilder value(@Nullable final com.fasterxml.jackson.databind.JsonNode value) {
+    public ProductSetAttributeActionBuilder value(@Nullable final java.lang.Object value) {
         this.value = value;
         return this;
     }
@@ -69,7 +64,7 @@ public final class ProductSetAttributeActionBuilder {
     }
 
     @Nullable
-    public com.fasterxml.jackson.databind.JsonNode getValue() {
+    public java.lang.Object getValue() {
         return this.value;
     }
 

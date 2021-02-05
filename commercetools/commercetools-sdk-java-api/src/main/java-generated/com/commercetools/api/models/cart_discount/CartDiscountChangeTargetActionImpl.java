@@ -4,15 +4,8 @@ package com.commercetools.api.models.cart_discount;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart_discount.CartDiscountTarget;
-import com.commercetools.api.models.cart_discount.CartDiscountUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class CartDiscountChangeTargetActionImpl implements CartDiscountCha
     CartDiscountChangeTargetActionImpl(
             @JsonProperty("target") final com.commercetools.api.models.cart_discount.CartDiscountTarget target) {
         this.target = target;
-        this.action = CartDiscountChangeTargetAction.CHANGE_TARGET;
+        this.action = CHANGE_TARGET;
     }
 
     public CartDiscountChangeTargetActionImpl() {
-        this.action = CartDiscountChangeTargetAction.CHANGE_TARGET;
+        this.action = CHANGE_TARGET;
     }
 
     public String getAction() {

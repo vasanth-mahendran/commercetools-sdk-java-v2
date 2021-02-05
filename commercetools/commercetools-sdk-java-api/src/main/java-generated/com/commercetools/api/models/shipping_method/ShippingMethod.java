@@ -1,7 +1,6 @@
 
 package com.commercetools.api.models.shipping_method;
 
-import java.io.IOException;
 import java.time.*;
 import java.time.ZonedDateTime;
 import java.util.*;
@@ -14,13 +13,11 @@ import com.commercetools.api.models.common.BaseResource;
 import com.commercetools.api.models.common.CreatedBy;
 import com.commercetools.api.models.common.LastModifiedBy;
 import com.commercetools.api.models.common.LocalizedString;
-import com.commercetools.api.models.shipping_method.ShippingMethodImpl;
-import com.commercetools.api.models.shipping_method.ZoneRate;
 import com.commercetools.api.models.tax_category.TaxCategoryReference;
+import com.commercetools.api.models.type.CustomFields;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -99,6 +96,10 @@ public interface ShippingMethod extends BaseResource, com.commercetools.api.mode
     @JsonProperty("predicate")
     public String getPredicate();
 
+    @Valid
+    @JsonProperty("custom")
+    public CustomFields getCustom();
+
     public void setId(final String id);
 
     public void setVersion(final Long version);
@@ -130,6 +131,8 @@ public interface ShippingMethod extends BaseResource, com.commercetools.api.mode
 
     public void setPredicate(final String predicate);
 
+    public void setCustom(final CustomFields custom);
+
     public static ShippingMethod of() {
         return new ShippingMethodImpl();
     }
@@ -150,6 +153,7 @@ public interface ShippingMethod extends BaseResource, com.commercetools.api.mode
         instance.setZoneRates(template.getZoneRates());
         instance.setIsDefault(template.getIsDefault());
         instance.setPredicate(template.getPredicate());
+        instance.setCustom(template.getCustom());
         return instance;
     }
 

@@ -4,18 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.Asset;
-import com.commercetools.api.models.common.Image;
-import com.commercetools.api.models.common.PriceDraft;
-import com.commercetools.api.models.product.Attribute;
-import com.commercetools.api.models.product.ProductUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -56,11 +46,11 @@ public final class ProductAddVariantActionImpl implements ProductAddVariantActio
         this.attributes = attributes;
         this.staged = staged;
         this.assets = assets;
-        this.action = ProductAddVariantAction.ADD_VARIANT;
+        this.action = ADD_VARIANT;
     }
 
     public ProductAddVariantActionImpl() {
-        this.action = ProductAddVariantAction.ADD_VARIANT;
+        this.action = ADD_VARIANT;
     }
 
     public String getAction() {

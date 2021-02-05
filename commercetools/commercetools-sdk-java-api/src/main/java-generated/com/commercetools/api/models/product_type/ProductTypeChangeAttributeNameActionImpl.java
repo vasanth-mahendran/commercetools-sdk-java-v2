@@ -4,14 +4,8 @@ package com.commercetools.api.models.product_type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.product_type.ProductTypeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +27,11 @@ public final class ProductTypeChangeAttributeNameActionImpl implements ProductTy
             @JsonProperty("newAttributeName") final String newAttributeName) {
         this.attributeName = attributeName;
         this.newAttributeName = newAttributeName;
-        this.action = ProductTypeChangeAttributeNameAction.CHANGE_ATTRIBUTE_NAME;
+        this.action = CHANGE_ATTRIBUTE_NAME;
     }
 
     public ProductTypeChangeAttributeNameActionImpl() {
-        this.action = ProductTypeChangeAttributeNameAction.CHANGE_ATTRIBUTE_NAME;
+        this.action = CHANGE_ATTRIBUTE_NAME;
     }
 
     public String getAction() {

@@ -4,14 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class StagedOrderSetCustomerEmailActionImpl implements StagedOrderS
     @JsonCreator
     StagedOrderSetCustomerEmailActionImpl(@JsonProperty("email") final String email) {
         this.email = email;
-        this.action = StagedOrderSetCustomerEmailAction.SET_CUSTOMER_EMAIL;
+        this.action = SET_CUSTOMER_EMAIL;
     }
 
     public StagedOrderSetCustomerEmailActionImpl() {
-        this.action = StagedOrderSetCustomerEmailAction.SET_CUSTOMER_EMAIL;
+        this.action = SET_CUSTOMER_EMAIL;
     }
 
     public String getAction() {

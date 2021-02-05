@@ -1,13 +1,9 @@
 
 package com.commercetools.api.models.product;
 
-import java.time.ZonedDateTime;
 import java.util.*;
 
 import javax.annotation.Nullable;
-
-import com.commercetools.api.models.product.SearchKeyword;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -17,7 +13,7 @@ public final class SearchKeywordBuilder {
     private String text;
 
     @Nullable
-    private com.fasterxml.jackson.databind.JsonNode suggestTokenizer;
+    private com.commercetools.api.models.product.SuggestTokenizer suggestTokenizer;
 
     public SearchKeywordBuilder text(final String text) {
         this.text = text;
@@ -25,7 +21,7 @@ public final class SearchKeywordBuilder {
     }
 
     public SearchKeywordBuilder suggestTokenizer(
-            @Nullable final com.fasterxml.jackson.databind.JsonNode suggestTokenizer) {
+            @Nullable final com.commercetools.api.models.product.SuggestTokenizer suggestTokenizer) {
         this.suggestTokenizer = suggestTokenizer;
         return this;
     }
@@ -35,7 +31,7 @@ public final class SearchKeywordBuilder {
     }
 
     @Nullable
-    public com.fasterxml.jackson.databind.JsonNode getSuggestTokenizer() {
+    public com.commercetools.api.models.product.SuggestTokenizer getSuggestTokenizer() {
         return this.suggestTokenizer;
     }
 

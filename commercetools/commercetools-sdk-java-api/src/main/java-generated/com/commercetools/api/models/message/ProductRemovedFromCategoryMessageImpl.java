@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.category.CategoryReference;
-import com.commercetools.api.models.message.Message;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -74,11 +67,11 @@ public final class ProductRemovedFromCategoryMessageImpl implements ProductRemov
         this.resourceUserProvidedIdentifiers = resourceUserProvidedIdentifiers;
         this.category = category;
         this.staged = staged;
-        this.type = ProductRemovedFromCategoryMessage.PRODUCT_REMOVED_FROM_CATEGORY;
+        this.type = PRODUCT_REMOVED_FROM_CATEGORY;
     }
 
     public ProductRemovedFromCategoryMessageImpl() {
-        this.type = ProductRemovedFromCategoryMessage.PRODUCT_REMOVED_FROM_CATEGORY;
+        this.type = PRODUCT_REMOVED_FROM_CATEGORY;
     }
 
     public String getId() {

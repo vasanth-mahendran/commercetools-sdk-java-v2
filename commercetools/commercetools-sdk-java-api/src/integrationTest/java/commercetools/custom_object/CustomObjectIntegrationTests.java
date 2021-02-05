@@ -1,6 +1,8 @@
 
 package commercetools.custom_object;
 
+import java.util.Map;
+
 import com.commercetools.api.models.custom_object.CustomObject;
 import com.commercetools.api.models.custom_object.CustomObjectDraft;
 import com.commercetools.api.models.custom_object.CustomObjectDraftBuilder;
@@ -45,7 +47,7 @@ public class CustomObjectIntegrationTests {
                 customObjectDraft).executeBlocking().getBody();
 
             Assert.assertNotNull(updatedCustomObject);
-            Assert.assertEquals(updatedCustomObject.getValue().get("value").asText(), "val");
+            Assert.assertEquals(((Map<String, Object>) updatedCustomObject.getValue()).get("value"), "val");
 
             return updatedCustomObject;
         });

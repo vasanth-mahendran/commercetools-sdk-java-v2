@@ -1,7 +1,6 @@
 
 package com.commercetools.api.models.customer;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
@@ -10,12 +9,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.commercetools.api.models.cart.CartResourceIdentifier;
-import com.commercetools.api.models.customer.AnonymousCartSignInMode;
-import com.commercetools.api.models.customer.CustomerSigninImpl;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -30,6 +26,7 @@ public interface CustomerSignin {
     @JsonProperty("password")
     public String getPassword();
 
+    @Deprecated
     @JsonProperty("anonymousCartId")
     public String getAnonymousCartId();
 
@@ -50,6 +47,7 @@ public interface CustomerSignin {
 
     public void setPassword(final String password);
 
+    @Deprecated
     public void setAnonymousCartId(final String anonymousCartId);
 
     public void setAnonymousCart(final CartResourceIdentifier anonymousCart);

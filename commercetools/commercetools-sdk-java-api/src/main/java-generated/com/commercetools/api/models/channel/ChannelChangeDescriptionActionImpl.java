@@ -4,15 +4,8 @@ package com.commercetools.api.models.channel;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.channel.ChannelUpdateAction;
-import com.commercetools.api.models.common.LocalizedString;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class ChannelChangeDescriptionActionImpl implements ChannelChangeDe
     ChannelChangeDescriptionActionImpl(
             @JsonProperty("description") final com.commercetools.api.models.common.LocalizedString description) {
         this.description = description;
-        this.action = ChannelChangeDescriptionAction.CHANGE_DESCRIPTION;
+        this.action = CHANGE_DESCRIPTION;
     }
 
     public ChannelChangeDescriptionActionImpl() {
-        this.action = ChannelChangeDescriptionAction.CHANGE_DESCRIPTION;
+        this.action = CHANGE_DESCRIPTION;
     }
 
     public String getAction() {

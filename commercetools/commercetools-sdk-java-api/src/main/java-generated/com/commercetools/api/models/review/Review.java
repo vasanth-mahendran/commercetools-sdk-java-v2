@@ -1,7 +1,6 @@
 
 package com.commercetools.api.models.review;
 
-import java.io.IOException;
 import java.time.*;
 import java.time.ZonedDateTime;
 import java.util.*;
@@ -10,18 +9,17 @@ import java.util.function.Function;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.commercetools.api.models.channel.ChannelReference;
 import com.commercetools.api.models.common.BaseResource;
 import com.commercetools.api.models.common.CreatedBy;
 import com.commercetools.api.models.common.LastModifiedBy;
 import com.commercetools.api.models.customer.CustomerReference;
-import com.commercetools.api.models.review.ReviewImpl;
+import com.commercetools.api.models.product.ProductReference;
 import com.commercetools.api.models.state.StateReference;
 import com.commercetools.api.models.type.CustomFields;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -92,7 +90,7 @@ public interface Review extends BaseResource, com.commercetools.api.models.Domai
     */
 
     @JsonProperty("target")
-    public JsonNode getTarget();
+    public Object getTarget();
 
     /**
     *  <p>Indicates if this review is taken into account in the ratings statistics of the target.
@@ -149,7 +147,11 @@ public interface Review extends BaseResource, com.commercetools.api.models.Domai
 
     public void setText(final String text);
 
-    public void setTarget(final JsonNode target);
+    public void setTarget(final ProductReference target);
+
+    public void setTarget(final ChannelReference target);
+
+    public void setTarget(final Object target);
 
     public void setIncludedInStatistics(final Boolean includedInStatistics);
 

@@ -4,20 +4,8 @@ package com.commercetools.api.models.cart;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.CartUpdateAction;
-import com.commercetools.api.models.cart.ExternalLineItemTotalPrice;
-import com.commercetools.api.models.cart.ExternalTaxRateDraft;
-import com.commercetools.api.models.cart.ItemShippingDetailsDraft;
-import com.commercetools.api.models.channel.ChannelResourceIdentifier;
-import com.commercetools.api.models.common.Money;
-import com.commercetools.api.models.type.CustomFieldsDraft;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -73,11 +61,11 @@ public final class CartAddLineItemActionImpl implements CartAddLineItemAction {
         this.externalPrice = externalPrice;
         this.externalTotalPrice = externalTotalPrice;
         this.shippingDetails = shippingDetails;
-        this.action = CartAddLineItemAction.ADD_LINE_ITEM;
+        this.action = ADD_LINE_ITEM;
     }
 
     public CartAddLineItemActionImpl() {
-        this.action = CartAddLineItemAction.ADD_LINE_ITEM;
+        this.action = ADD_LINE_ITEM;
     }
 
     public String getAction() {

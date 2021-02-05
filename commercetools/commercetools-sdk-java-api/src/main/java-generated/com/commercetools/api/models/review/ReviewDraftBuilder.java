@@ -1,16 +1,9 @@
 
 package com.commercetools.api.models.review;
 
-import java.time.ZonedDateTime;
 import java.util.*;
 
 import javax.annotation.Nullable;
-
-import com.commercetools.api.models.customer.CustomerResourceIdentifier;
-import com.commercetools.api.models.review.ReviewDraft;
-import com.commercetools.api.models.state.StateResourceIdentifier;
-import com.commercetools.api.models.type.CustomFieldsDraft;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -36,7 +29,7 @@ public final class ReviewDraftBuilder {
     private String text;
 
     @Nullable
-    private com.fasterxml.jackson.databind.JsonNode target;
+    private java.lang.Object target;
 
     @Nullable
     private com.commercetools.api.models.state.StateResourceIdentifier state;
@@ -80,7 +73,7 @@ public final class ReviewDraftBuilder {
         return this;
     }
 
-    public ReviewDraftBuilder target(@Nullable final com.fasterxml.jackson.databind.JsonNode target) {
+    public ReviewDraftBuilder target(@Nullable final java.lang.Object target) {
         this.target = target;
         return this;
     }
@@ -137,7 +130,7 @@ public final class ReviewDraftBuilder {
     }
 
     @Nullable
-    public com.fasterxml.jackson.databind.JsonNode getTarget() {
+    public java.lang.Object getTarget() {
         return this.target;
     }
 

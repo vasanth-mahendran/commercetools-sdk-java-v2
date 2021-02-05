@@ -4,15 +4,8 @@ package com.commercetools.api.models.cart_discount;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart_discount.CartDiscountTarget;
-import com.commercetools.api.models.cart_discount.SelectionMode;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -46,11 +39,11 @@ public final class MultiBuyCustomLineItemsTargetImpl implements MultiBuyCustomLi
         this.discountedQuantity = discountedQuantity;
         this.maxOccurrence = maxOccurrence;
         this.selectionMode = selectionMode;
-        this.type = MultiBuyCustomLineItemsTarget.MULTI_BUY_CUSTOM_LINE_ITEMS;
+        this.type = MULTI_BUY_CUSTOM_LINE_ITEMS;
     }
 
     public MultiBuyCustomLineItemsTargetImpl() {
-        this.type = MultiBuyCustomLineItemsTarget.MULTI_BUY_CUSTOM_LINE_ITEMS;
+        this.type = MULTI_BUY_CUSTOM_LINE_ITEMS;
     }
 
     public String getType() {

@@ -4,15 +4,8 @@ package com.commercetools.api.models.review;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.review.ReviewUpdateAction;
-import com.commercetools.api.models.state.StateResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -35,11 +28,11 @@ public final class ReviewTransitionStateActionImpl implements ReviewTransitionSt
             @JsonProperty("force") final Boolean force) {
         this.state = state;
         this.force = force;
-        this.action = ReviewTransitionStateAction.TRANSITION_STATE;
+        this.action = TRANSITION_STATE;
     }
 
     public ReviewTransitionStateActionImpl() {
-        this.action = ReviewTransitionStateAction.TRANSITION_STATE;
+        this.action = TRANSITION_STATE;
     }
 
     public String getAction() {

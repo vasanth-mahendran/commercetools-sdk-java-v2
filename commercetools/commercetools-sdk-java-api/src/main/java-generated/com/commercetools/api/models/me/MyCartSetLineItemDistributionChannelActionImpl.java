@@ -4,15 +4,8 @@ package com.commercetools.api.models.me;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.channel.ChannelResourceIdentifier;
-import com.commercetools.api.models.me.MyCartUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -35,11 +28,11 @@ public final class MyCartSetLineItemDistributionChannelActionImpl
             @JsonProperty("distributionChannel") final com.commercetools.api.models.channel.ChannelResourceIdentifier distributionChannel) {
         this.lineItemId = lineItemId;
         this.distributionChannel = distributionChannel;
-        this.action = MyCartSetLineItemDistributionChannelAction.SET_LINE_ITEM_DISTRIBUTION_CHANNEL;
+        this.action = SET_LINE_ITEM_DISTRIBUTION_CHANNEL;
     }
 
     public MyCartSetLineItemDistributionChannelActionImpl() {
-        this.action = MyCartSetLineItemDistributionChannelAction.SET_LINE_ITEM_DISTRIBUTION_CHANNEL;
+        this.action = SET_LINE_ITEM_DISTRIBUTION_CHANNEL;
     }
 
     public String getAction() {

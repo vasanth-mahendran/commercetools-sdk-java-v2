@@ -4,15 +4,8 @@ package com.commercetools.api.models.category;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.category.CategoryUpdateAction;
-import com.commercetools.api.models.common.LocalizedString;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -38,11 +31,11 @@ public final class CategorySetAssetDescriptionActionImpl implements CategorySetA
         this.assetId = assetId;
         this.assetKey = assetKey;
         this.description = description;
-        this.action = CategorySetAssetDescriptionAction.SET_ASSET_DESCRIPTION;
+        this.action = SET_ASSET_DESCRIPTION;
     }
 
     public CategorySetAssetDescriptionActionImpl() {
-        this.action = CategorySetAssetDescriptionAction.SET_ASSET_DESCRIPTION;
+        this.action = SET_ASSET_DESCRIPTION;
     }
 
     public String getAction() {

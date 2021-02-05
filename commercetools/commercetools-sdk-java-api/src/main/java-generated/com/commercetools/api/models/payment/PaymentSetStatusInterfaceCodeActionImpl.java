@@ -4,14 +4,8 @@ package com.commercetools.api.models.payment;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.payment.PaymentUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class PaymentSetStatusInterfaceCodeActionImpl implements PaymentSet
     @JsonCreator
     PaymentSetStatusInterfaceCodeActionImpl(@JsonProperty("interfaceCode") final String interfaceCode) {
         this.interfaceCode = interfaceCode;
-        this.action = PaymentSetStatusInterfaceCodeAction.SET_STATUS_INTERFACE_CODE;
+        this.action = SET_STATUS_INTERFACE_CODE;
     }
 
     public PaymentSetStatusInterfaceCodeActionImpl() {
-        this.action = PaymentSetStatusInterfaceCodeAction.SET_STATUS_INTERFACE_CODE;
+        this.action = SET_STATUS_INTERFACE_CODE;
     }
 
     public String getAction() {

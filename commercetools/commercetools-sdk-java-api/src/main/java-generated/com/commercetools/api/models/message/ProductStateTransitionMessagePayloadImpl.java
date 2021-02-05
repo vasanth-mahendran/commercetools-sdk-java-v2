@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.MessagePayload;
-import com.commercetools.api.models.state.StateReference;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -35,11 +28,11 @@ public final class ProductStateTransitionMessagePayloadImpl implements ProductSt
             @JsonProperty("force") final Boolean force) {
         this.state = state;
         this.force = force;
-        this.type = ProductStateTransitionMessagePayload.PRODUCT_STATE_TRANSITION;
+        this.type = PRODUCT_STATE_TRANSITION;
     }
 
     public ProductStateTransitionMessagePayloadImpl() {
-        this.type = ProductStateTransitionMessagePayload.PRODUCT_STATE_TRANSITION;
+        this.type = PRODUCT_STATE_TRANSITION;
     }
 
     public String getType() {

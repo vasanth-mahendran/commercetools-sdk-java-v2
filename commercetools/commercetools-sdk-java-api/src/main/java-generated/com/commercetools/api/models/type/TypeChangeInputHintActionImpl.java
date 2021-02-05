@@ -4,15 +4,8 @@ package com.commercetools.api.models.type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.type.TypeTextInputHint;
-import com.commercetools.api.models.type.TypeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class TypeChangeInputHintActionImpl implements TypeChangeInputHintA
             @JsonProperty("inputHint") final com.commercetools.api.models.type.TypeTextInputHint inputHint) {
         this.fieldName = fieldName;
         this.inputHint = inputHint;
-        this.action = TypeChangeInputHintAction.CHANGE_INPUT_HINT;
+        this.action = CHANGE_INPUT_HINT;
     }
 
     public TypeChangeInputHintActionImpl() {
-        this.action = TypeChangeInputHintAction.CHANGE_INPUT_HINT;
+        this.action = CHANGE_INPUT_HINT;
     }
 
     public String getAction() {

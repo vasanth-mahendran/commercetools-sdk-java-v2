@@ -1,14 +1,9 @@
 
 package com.commercetools.api.models.cart;
 
-import java.time.ZonedDateTime;
 import java.util.*;
 
 import javax.annotation.Nullable;
-
-import com.commercetools.api.models.cart.CartSetCustomLineItemCustomFieldAction;
-import com.commercetools.api.models.cart.CartUpdateAction;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -20,7 +15,7 @@ public final class CartSetCustomLineItemCustomFieldActionBuilder {
     private String name;
 
     @Nullable
-    private com.fasterxml.jackson.databind.JsonNode value;
+    private java.lang.Object value;
 
     public CartSetCustomLineItemCustomFieldActionBuilder customLineItemId(final String customLineItemId) {
         this.customLineItemId = customLineItemId;
@@ -32,8 +27,7 @@ public final class CartSetCustomLineItemCustomFieldActionBuilder {
         return this;
     }
 
-    public CartSetCustomLineItemCustomFieldActionBuilder value(
-            @Nullable final com.fasterxml.jackson.databind.JsonNode value) {
+    public CartSetCustomLineItemCustomFieldActionBuilder value(@Nullable final java.lang.Object value) {
         this.value = value;
         return this;
     }
@@ -47,7 +41,7 @@ public final class CartSetCustomLineItemCustomFieldActionBuilder {
     }
 
     @Nullable
-    public com.fasterxml.jackson.databind.JsonNode getValue() {
+    public java.lang.Object getValue() {
         return this.value;
     }
 

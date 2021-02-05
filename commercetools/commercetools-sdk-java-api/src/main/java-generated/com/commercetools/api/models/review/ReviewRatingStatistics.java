@@ -1,7 +1,6 @@
 
 package com.commercetools.api.models.review;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
@@ -9,12 +8,9 @@ import java.util.function.Function;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.review.ReviewRatingStatisticsImpl;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -58,7 +54,7 @@ public interface ReviewRatingStatistics {
     @NotNull
     @Valid
     @JsonProperty("ratingsDistribution")
-    public JsonNode getRatingsDistribution();
+    public Object getRatingsDistribution();
 
     public void setAverageRating(final Double averageRating);
 
@@ -68,7 +64,7 @@ public interface ReviewRatingStatistics {
 
     public void setCount(final Integer count);
 
-    public void setRatingsDistribution(final JsonNode ratingsDistribution);
+    public void setRatingsDistribution(final Object ratingsDistribution);
 
     public static ReviewRatingStatistics of() {
         return new ReviewRatingStatisticsImpl();

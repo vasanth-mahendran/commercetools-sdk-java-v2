@@ -4,15 +4,8 @@ package com.commercetools.api.models.cart_discount;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart_discount.CartDiscountValueDraft;
-import com.commercetools.api.models.common.Money;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class CartDiscountValueAbsoluteDraftImpl implements CartDiscountVal
     CartDiscountValueAbsoluteDraftImpl(
             @JsonProperty("money") final java.util.List<com.commercetools.api.models.common.Money> money) {
         this.money = money;
-        this.type = CartDiscountValueAbsoluteDraft.ABSOLUTE;
+        this.type = ABSOLUTE;
     }
 
     public CartDiscountValueAbsoluteDraftImpl() {
-        this.type = CartDiscountValueAbsoluteDraft.ABSOLUTE;
+        this.type = ABSOLUTE;
     }
 
     public String getType() {

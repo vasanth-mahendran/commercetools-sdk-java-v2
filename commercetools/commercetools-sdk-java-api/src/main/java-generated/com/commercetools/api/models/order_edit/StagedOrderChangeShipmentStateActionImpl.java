@@ -4,15 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.ShipmentState;
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class StagedOrderChangeShipmentStateActionImpl implements StagedOrd
     StagedOrderChangeShipmentStateActionImpl(
             @JsonProperty("shipmentState") final com.commercetools.api.models.order.ShipmentState shipmentState) {
         this.shipmentState = shipmentState;
-        this.action = StagedOrderChangeShipmentStateAction.CHANGE_SHIPMENT_STATE;
+        this.action = CHANGE_SHIPMENT_STATE;
     }
 
     public StagedOrderChangeShipmentStateActionImpl() {
-        this.action = StagedOrderChangeShipmentStateAction.CHANGE_SHIPMENT_STATE;
+        this.action = CHANGE_SHIPMENT_STATE;
     }
 
     public String getAction() {

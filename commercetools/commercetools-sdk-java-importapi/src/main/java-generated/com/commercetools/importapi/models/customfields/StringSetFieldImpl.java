@@ -4,14 +4,8 @@ package com.commercetools.importapi.models.customfields;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.customfields.CustomField;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -32,11 +26,11 @@ public final class StringSetFieldImpl implements StringSetField {
     @JsonCreator
     StringSetFieldImpl(@JsonProperty("value") final java.util.List<String> value) {
         this.value = value;
-        this.type = StringSetField.STRING_SET;
+        this.type = STRING_SET;
     }
 
     public StringSetFieldImpl() {
-        this.type = StringSetField.STRING_SET;
+        this.type = STRING_SET;
     }
 
     /**

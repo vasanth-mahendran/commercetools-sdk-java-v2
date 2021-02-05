@@ -4,15 +4,8 @@ package com.commercetools.api.models.payment;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.payment.PaymentUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -27,18 +20,18 @@ public final class PaymentSetCustomFieldActionImpl implements PaymentSetCustomFi
 
     private String name;
 
-    private com.fasterxml.jackson.databind.JsonNode value;
+    private java.lang.Object value;
 
     @JsonCreator
     PaymentSetCustomFieldActionImpl(@JsonProperty("name") final String name,
-            @JsonProperty("value") final com.fasterxml.jackson.databind.JsonNode value) {
+            @JsonProperty("value") final java.lang.Object value) {
         this.name = name;
         this.value = value;
-        this.action = PaymentSetCustomFieldAction.SET_CUSTOM_FIELD;
+        this.action = SET_CUSTOM_FIELD;
     }
 
     public PaymentSetCustomFieldActionImpl() {
-        this.action = PaymentSetCustomFieldAction.SET_CUSTOM_FIELD;
+        this.action = SET_CUSTOM_FIELD;
     }
 
     public String getAction() {
@@ -49,7 +42,7 @@ public final class PaymentSetCustomFieldActionImpl implements PaymentSetCustomFi
         return this.name;
     }
 
-    public com.fasterxml.jackson.databind.JsonNode getValue() {
+    public java.lang.Object getValue() {
         return this.value;
     }
 
@@ -57,7 +50,7 @@ public final class PaymentSetCustomFieldActionImpl implements PaymentSetCustomFi
         this.name = name;
     }
 
-    public void setValue(final com.fasterxml.jackson.databind.JsonNode value) {
+    public void setValue(final java.lang.Object value) {
         this.value = value;
     }
 

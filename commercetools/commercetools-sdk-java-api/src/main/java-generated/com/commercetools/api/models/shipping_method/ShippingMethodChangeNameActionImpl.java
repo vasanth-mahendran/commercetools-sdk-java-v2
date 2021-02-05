@@ -4,14 +4,8 @@ package com.commercetools.api.models.shipping_method;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.shipping_method.ShippingMethodUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class ShippingMethodChangeNameActionImpl implements ShippingMethodC
     @JsonCreator
     ShippingMethodChangeNameActionImpl(@JsonProperty("name") final String name) {
         this.name = name;
-        this.action = ShippingMethodChangeNameAction.CHANGE_NAME;
+        this.action = CHANGE_NAME;
     }
 
     public ShippingMethodChangeNameActionImpl() {
-        this.action = ShippingMethodChangeNameAction.CHANGE_NAME;
+        this.action = CHANGE_NAME;
     }
 
     public String getAction() {

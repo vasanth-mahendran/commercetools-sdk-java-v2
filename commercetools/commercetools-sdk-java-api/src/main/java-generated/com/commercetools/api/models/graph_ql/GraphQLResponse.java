@@ -1,21 +1,15 @@
 
 package com.commercetools.api.models.graph_ql;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.graph_ql.GraphQLError;
-import com.commercetools.api.models.graph_ql.GraphQLResponseImpl;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -23,13 +17,13 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface GraphQLResponse {
 
     @JsonProperty("data")
-    public JsonNode getData();
+    public Object getData();
 
     @Valid
     @JsonProperty("errors")
     public List<GraphQLError> getErrors();
 
-    public void setData(final JsonNode data);
+    public void setData(final Object data);
 
     @JsonIgnore
     public void setErrors(final GraphQLError... errors);

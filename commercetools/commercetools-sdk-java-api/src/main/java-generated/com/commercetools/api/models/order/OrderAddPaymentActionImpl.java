@@ -4,15 +4,8 @@ package com.commercetools.api.models.order;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.OrderUpdateAction;
-import com.commercetools.api.models.payment.PaymentResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class OrderAddPaymentActionImpl implements OrderAddPaymentAction {
     OrderAddPaymentActionImpl(
             @JsonProperty("payment") final com.commercetools.api.models.payment.PaymentResourceIdentifier payment) {
         this.payment = payment;
-        this.action = OrderAddPaymentAction.ADD_PAYMENT;
+        this.action = ADD_PAYMENT;
     }
 
     public OrderAddPaymentActionImpl() {
-        this.action = OrderAddPaymentAction.ADD_PAYMENT;
+        this.action = ADD_PAYMENT;
     }
 
     public String getAction() {

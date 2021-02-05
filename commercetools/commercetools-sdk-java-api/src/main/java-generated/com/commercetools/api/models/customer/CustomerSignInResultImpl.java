@@ -4,15 +4,8 @@ package com.commercetools.api.models.customer;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.customer.Customer;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -25,11 +18,11 @@ public final class CustomerSignInResultImpl implements CustomerSignInResult {
 
     private com.commercetools.api.models.customer.Customer customer;
 
-    private com.fasterxml.jackson.databind.JsonNode cart;
+    private com.commercetools.api.models.cart.Cart cart;
 
     @JsonCreator
     CustomerSignInResultImpl(@JsonProperty("customer") final com.commercetools.api.models.customer.Customer customer,
-            @JsonProperty("cart") final com.fasterxml.jackson.databind.JsonNode cart) {
+            @JsonProperty("cart") final com.commercetools.api.models.cart.Cart cart) {
         this.customer = customer;
         this.cart = cart;
     }
@@ -45,7 +38,7 @@ public final class CustomerSignInResultImpl implements CustomerSignInResult {
     *  <p>A cart that is associated to the customer.
     *  Empty if the customer does not have a cart yet.</p>
     */
-    public com.fasterxml.jackson.databind.JsonNode getCart() {
+    public com.commercetools.api.models.cart.Cart getCart() {
         return this.cart;
     }
 
@@ -53,7 +46,7 @@ public final class CustomerSignInResultImpl implements CustomerSignInResult {
         this.customer = customer;
     }
 
-    public void setCart(final com.fasterxml.jackson.databind.JsonNode cart) {
+    public void setCart(final com.commercetools.api.models.cart.Cart cart) {
         this.cart = cart;
     }
 

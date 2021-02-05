@@ -4,15 +4,8 @@ package com.commercetools.api.models.me;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.me.MyShoppingListUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -30,20 +23,19 @@ public final class MyShoppingListSetLineItemCustomFieldActionImpl
 
     private String name;
 
-    private com.fasterxml.jackson.databind.JsonNode value;
+    private java.lang.Object value;
 
     @JsonCreator
     MyShoppingListSetLineItemCustomFieldActionImpl(@JsonProperty("lineItemId") final String lineItemId,
-            @JsonProperty("name") final String name,
-            @JsonProperty("value") final com.fasterxml.jackson.databind.JsonNode value) {
+            @JsonProperty("name") final String name, @JsonProperty("value") final java.lang.Object value) {
         this.lineItemId = lineItemId;
         this.name = name;
         this.value = value;
-        this.action = MyShoppingListSetLineItemCustomFieldAction.SET_LINE_ITEM_CUSTOM_FIELD;
+        this.action = SET_LINE_ITEM_CUSTOM_FIELD;
     }
 
     public MyShoppingListSetLineItemCustomFieldActionImpl() {
-        this.action = MyShoppingListSetLineItemCustomFieldAction.SET_LINE_ITEM_CUSTOM_FIELD;
+        this.action = SET_LINE_ITEM_CUSTOM_FIELD;
     }
 
     public String getAction() {
@@ -58,7 +50,7 @@ public final class MyShoppingListSetLineItemCustomFieldActionImpl
         return this.name;
     }
 
-    public com.fasterxml.jackson.databind.JsonNode getValue() {
+    public java.lang.Object getValue() {
         return this.value;
     }
 
@@ -70,7 +62,7 @@ public final class MyShoppingListSetLineItemCustomFieldActionImpl
         this.name = name;
     }
 
-    public void setValue(final com.fasterxml.jackson.databind.JsonNode value) {
+    public void setValue(final java.lang.Object value) {
         this.value = value;
     }
 

@@ -1,13 +1,7 @@
 
 package com.commercetools.api.models.review;
 
-import java.time.ZonedDateTime;
 import java.util.*;
-
-import javax.annotation.Nullable;
-
-import com.commercetools.api.models.review.ReviewRatingStatistics;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -22,7 +16,7 @@ public final class ReviewRatingStatisticsBuilder {
 
     private Integer count;
 
-    private com.fasterxml.jackson.databind.JsonNode ratingsDistribution;
+    private java.lang.Object ratingsDistribution;
 
     public ReviewRatingStatisticsBuilder averageRating(final Double averageRating) {
         this.averageRating = averageRating;
@@ -44,8 +38,7 @@ public final class ReviewRatingStatisticsBuilder {
         return this;
     }
 
-    public ReviewRatingStatisticsBuilder ratingsDistribution(
-            final com.fasterxml.jackson.databind.JsonNode ratingsDistribution) {
+    public ReviewRatingStatisticsBuilder ratingsDistribution(final java.lang.Object ratingsDistribution) {
         this.ratingsDistribution = ratingsDistribution;
         return this;
     }
@@ -66,7 +59,7 @@ public final class ReviewRatingStatisticsBuilder {
         return this.count;
     }
 
-    public com.fasterxml.jackson.databind.JsonNode getRatingsDistribution() {
+    public java.lang.Object getRatingsDistribution() {
         return this.ratingsDistribution;
     }
 

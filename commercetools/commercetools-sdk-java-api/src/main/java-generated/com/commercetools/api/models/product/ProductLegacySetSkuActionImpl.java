@@ -4,14 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.product.ProductUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +27,11 @@ public final class ProductLegacySetSkuActionImpl implements ProductLegacySetSkuA
             @JsonProperty("variantId") final Integer variantId) {
         this.sku = sku;
         this.variantId = variantId;
-        this.action = ProductLegacySetSkuAction.LEGACY_SET_SKU;
+        this.action = LEGACY_SET_SKU;
     }
 
     public ProductLegacySetSkuActionImpl() {
-        this.action = ProductLegacySetSkuAction.LEGACY_SET_SKU;
+        this.action = LEGACY_SET_SKU;
     }
 
     public String getAction() {

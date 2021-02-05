@@ -4,15 +4,8 @@ package com.commercetools.api.models.subscription;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.subscription.MessageSubscription;
-import com.commercetools.api.models.subscription.SubscriptionUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class SubscriptionSetMessagesActionImpl implements SubscriptionSetM
     SubscriptionSetMessagesActionImpl(
             @JsonProperty("messages") final java.util.List<com.commercetools.api.models.subscription.MessageSubscription> messages) {
         this.messages = messages;
-        this.action = SubscriptionSetMessagesAction.SET_MESSAGES;
+        this.action = SET_MESSAGES;
     }
 
     public SubscriptionSetMessagesActionImpl() {
-        this.action = SubscriptionSetMessagesAction.SET_MESSAGES;
+        this.action = SET_MESSAGES;
     }
 
     public String getAction() {

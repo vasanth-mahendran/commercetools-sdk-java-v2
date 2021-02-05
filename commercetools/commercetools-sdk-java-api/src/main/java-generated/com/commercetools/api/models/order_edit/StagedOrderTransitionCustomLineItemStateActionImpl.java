@@ -2,18 +2,10 @@
 package com.commercetools.api.models.order_edit;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
-import com.commercetools.api.models.state.StateResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -48,11 +40,11 @@ public final class StagedOrderTransitionCustomLineItemStateActionImpl
         this.fromState = fromState;
         this.toState = toState;
         this.actualTransitionDate = actualTransitionDate;
-        this.action = StagedOrderTransitionCustomLineItemStateAction.TRANSITION_CUSTOM_LINE_ITEM_STATE;
+        this.action = TRANSITION_CUSTOM_LINE_ITEM_STATE;
     }
 
     public StagedOrderTransitionCustomLineItemStateActionImpl() {
-        this.action = StagedOrderTransitionCustomLineItemStateAction.TRANSITION_CUSTOM_LINE_ITEM_STATE;
+        this.action = TRANSITION_CUSTOM_LINE_ITEM_STATE;
     }
 
     public String getAction() {

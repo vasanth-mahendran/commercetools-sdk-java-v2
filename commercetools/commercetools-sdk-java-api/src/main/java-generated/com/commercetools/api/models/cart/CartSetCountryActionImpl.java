@@ -4,14 +4,8 @@ package com.commercetools.api.models.cart;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.CartUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class CartSetCountryActionImpl implements CartSetCountryAction {
     @JsonCreator
     CartSetCountryActionImpl(@JsonProperty("country") final String country) {
         this.country = country;
-        this.action = CartSetCountryAction.SET_COUNTRY;
+        this.action = SET_COUNTRY;
     }
 
     public CartSetCountryActionImpl() {
-        this.action = CartSetCountryAction.SET_COUNTRY;
+        this.action = SET_COUNTRY;
     }
 
     public String getAction() {

@@ -4,15 +4,8 @@ package com.commercetools.api.models.order;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.OrderUpdateAction;
-import com.commercetools.api.models.order.ReturnPaymentState;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class OrderSetReturnPaymentStateActionImpl implements OrderSetRetur
             @JsonProperty("paymentState") final com.commercetools.api.models.order.ReturnPaymentState paymentState) {
         this.returnItemId = returnItemId;
         this.paymentState = paymentState;
-        this.action = OrderSetReturnPaymentStateAction.SET_RETURN_PAYMENT_STATE;
+        this.action = SET_RETURN_PAYMENT_STATE;
     }
 
     public OrderSetReturnPaymentStateActionImpl() {
-        this.action = OrderSetReturnPaymentStateAction.SET_RETURN_PAYMENT_STATE;
+        this.action = SET_RETURN_PAYMENT_STATE;
     }
 
     public String getAction() {

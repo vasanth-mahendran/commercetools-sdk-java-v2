@@ -4,16 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.DiscountCodeState;
-import com.commercetools.api.models.discount_code.DiscountCodeReference;
-import com.commercetools.api.models.message.MessagePayload;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -40,11 +32,11 @@ public final class OrderDiscountCodeStateSetMessagePayloadImpl implements OrderD
         this.discountCode = discountCode;
         this.state = state;
         this.oldState = oldState;
-        this.type = OrderDiscountCodeStateSetMessagePayload.ORDER_DISCOUNT_CODE_STATE_SET;
+        this.type = ORDER_DISCOUNT_CODE_STATE_SET;
     }
 
     public OrderDiscountCodeStateSetMessagePayloadImpl() {
-        this.type = OrderDiscountCodeStateSetMessagePayload.ORDER_DISCOUNT_CODE_STATE_SET;
+        this.type = ORDER_DISCOUNT_CODE_STATE_SET;
     }
 
     public String getType() {

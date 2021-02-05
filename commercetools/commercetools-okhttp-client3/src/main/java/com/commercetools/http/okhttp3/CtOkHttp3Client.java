@@ -12,6 +12,9 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import okhttp3.*;
+import okhttp3.internal.http.RealResponseBody;
+import okio.GzipSource;
+import okio.Okio;
 
 import io.vrap.rmf.base.client.ApiHttpHeaders;
 import io.vrap.rmf.base.client.ApiHttpRequest;
@@ -147,5 +150,29 @@ public class CtOkHttp3Client implements VrapHttpClient, AutoCloseable {
         okHttpClient.connectionPool().evictAll();
         if (okHttpClient.cache() != null)
             Objects.requireNonNull(okHttpClient.cache()).close();
+    }
+
+    private static class UnzippingInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Response response = chain.proceed(chain.request());
+            return unzip(response);
+        }
+
+        private Response unzip(final Response response) throws IOException {
+            if (!"gzip".equalsIgnoreCase(response.header("Content-Encoding"))) {
+                return response;
+            }
+
+            if (response.body() == null) {
+                return response;
+            }
+
+            GzipSource responseBody = new GzipSource(response.body().source());
+            Headers strippedHeaders = response.headers().newBuilder().removeAll("Content-Encoding").removeAll(
+                "Content-Length").build();
+            return response.newBuilder().headers(strippedHeaders).body(
+                new RealResponseBody(strippedHeaders, Okio.buffer(responseBody))).build();
+        }
     }
 }

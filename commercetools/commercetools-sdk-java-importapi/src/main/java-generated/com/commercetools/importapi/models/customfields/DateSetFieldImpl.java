@@ -2,17 +2,10 @@
 package com.commercetools.importapi.models.customfields;
 
 import java.time.*;
-import java.time.LocalDate;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.customfields.CustomField;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +26,11 @@ public final class DateSetFieldImpl implements DateSetField {
     @JsonCreator
     DateSetFieldImpl(@JsonProperty("value") final java.util.List<java.time.LocalDate> value) {
         this.value = value;
-        this.type = DateSetField.DATE_SET;
+        this.type = DATE_SET;
     }
 
     public DateSetFieldImpl() {
-        this.type = DateSetField.DATE_SET;
+        this.type = DATE_SET;
     }
 
     /**

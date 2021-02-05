@@ -4,15 +4,8 @@ package com.commercetools.api.models.category;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.category.CategoryResourceIdentifier;
-import com.commercetools.api.models.category.CategoryUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class CategoryChangeParentActionImpl implements CategoryChangeParen
     CategoryChangeParentActionImpl(
             @JsonProperty("parent") final com.commercetools.api.models.category.CategoryResourceIdentifier parent) {
         this.parent = parent;
-        this.action = CategoryChangeParentAction.CHANGE_PARENT;
+        this.action = CHANGE_PARENT;
     }
 
     public CategoryChangeParentActionImpl() {
-        this.action = CategoryChangeParentAction.CHANGE_PARENT;
+        this.action = CHANGE_PARENT;
     }
 
     public String getAction() {

@@ -4,14 +4,8 @@ package com.commercetools.api.models.me;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.me.MyShoppingListUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -30,11 +24,11 @@ public final class MyShoppingListChangeLineItemsOrderActionImpl implements MySho
     MyShoppingListChangeLineItemsOrderActionImpl(
             @JsonProperty("lineItemOrder") final java.util.List<String> lineItemOrder) {
         this.lineItemOrder = lineItemOrder;
-        this.action = MyShoppingListChangeLineItemsOrderAction.CHANGE_LINE_ITEMS_ORDER;
+        this.action = CHANGE_LINE_ITEMS_ORDER;
     }
 
     public MyShoppingListChangeLineItemsOrderActionImpl() {
-        this.action = MyShoppingListChangeLineItemsOrderAction.CHANGE_LINE_ITEMS_ORDER;
+        this.action = CHANGE_LINE_ITEMS_ORDER;
     }
 
     public String getAction() {

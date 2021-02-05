@@ -4,15 +4,8 @@ package com.commercetools.importapi.models.errors;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.common.ProcessingState;
-import com.commercetools.importapi.models.errors.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -38,11 +31,11 @@ public final class InvalidStateTransitionErrorImpl implements InvalidStateTransi
         this.message = message;
         this.currentState = currentState;
         this.newState = newState;
-        this.code = InvalidStateTransitionError.INVALID_TRANSITION;
+        this.code = INVALID_TRANSITION;
     }
 
     public InvalidStateTransitionErrorImpl() {
-        this.code = InvalidStateTransitionError.INVALID_TRANSITION;
+        this.code = INVALID_TRANSITION;
     }
 
     public String getCode() {

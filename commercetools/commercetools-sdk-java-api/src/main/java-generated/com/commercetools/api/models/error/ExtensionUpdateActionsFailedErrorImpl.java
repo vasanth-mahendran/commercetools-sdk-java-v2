@@ -4,17 +4,8 @@ package com.commercetools.api.models.error;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.LocalizedString;
-import com.commercetools.api.models.error.ErrorByExtension;
-import com.commercetools.api.models.error.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,24 +22,24 @@ public final class ExtensionUpdateActionsFailedErrorImpl implements ExtensionUpd
 
     private com.commercetools.api.models.common.LocalizedString localizedMessage;
 
-    private com.fasterxml.jackson.databind.JsonNode extensionExtraInfo;
+    private java.lang.Object extensionExtraInfo;
 
     private com.commercetools.api.models.error.ErrorByExtension errorByExtension;
 
     @JsonCreator
     ExtensionUpdateActionsFailedErrorImpl(@JsonProperty("message") final String message,
             @JsonProperty("localizedMessage") final com.commercetools.api.models.common.LocalizedString localizedMessage,
-            @JsonProperty("extensionExtraInfo") final com.fasterxml.jackson.databind.JsonNode extensionExtraInfo,
+            @JsonProperty("extensionExtraInfo") final java.lang.Object extensionExtraInfo,
             @JsonProperty("errorByExtension") final com.commercetools.api.models.error.ErrorByExtension errorByExtension) {
         this.message = message;
         this.localizedMessage = localizedMessage;
         this.extensionExtraInfo = extensionExtraInfo;
         this.errorByExtension = errorByExtension;
-        this.code = ExtensionUpdateActionsFailedError.EXTENSION_UPDATE_ACTIONS_FAILED;
+        this.code = EXTENSION_UPDATE_ACTIONS_FAILED;
     }
 
     public ExtensionUpdateActionsFailedErrorImpl() {
-        this.code = ExtensionUpdateActionsFailedError.EXTENSION_UPDATE_ACTIONS_FAILED;
+        this.code = EXTENSION_UPDATE_ACTIONS_FAILED;
     }
 
     public String getCode() {
@@ -63,7 +54,7 @@ public final class ExtensionUpdateActionsFailedErrorImpl implements ExtensionUpd
         return this.localizedMessage;
     }
 
-    public com.fasterxml.jackson.databind.JsonNode getExtensionExtraInfo() {
+    public java.lang.Object getExtensionExtraInfo() {
         return this.extensionExtraInfo;
     }
 
@@ -79,7 +70,7 @@ public final class ExtensionUpdateActionsFailedErrorImpl implements ExtensionUpd
         this.localizedMessage = localizedMessage;
     }
 
-    public void setExtensionExtraInfo(final com.fasterxml.jackson.databind.JsonNode extensionExtraInfo) {
+    public void setExtensionExtraInfo(final java.lang.Object extensionExtraInfo) {
         this.extensionExtraInfo = extensionExtraInfo;
     }
 

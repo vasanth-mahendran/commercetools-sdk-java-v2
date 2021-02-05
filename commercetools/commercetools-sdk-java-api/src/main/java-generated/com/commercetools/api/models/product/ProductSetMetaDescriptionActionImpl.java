@@ -4,15 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.LocalizedString;
-import com.commercetools.api.models.product.ProductUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -35,11 +28,11 @@ public final class ProductSetMetaDescriptionActionImpl implements ProductSetMeta
             @JsonProperty("staged") final Boolean staged) {
         this.metaDescription = metaDescription;
         this.staged = staged;
-        this.action = ProductSetMetaDescriptionAction.SET_META_DESCRIPTION;
+        this.action = SET_META_DESCRIPTION;
     }
 
     public ProductSetMetaDescriptionActionImpl() {
-        this.action = ProductSetMetaDescriptionAction.SET_META_DESCRIPTION;
+        this.action = SET_META_DESCRIPTION;
     }
 
     public String getAction() {

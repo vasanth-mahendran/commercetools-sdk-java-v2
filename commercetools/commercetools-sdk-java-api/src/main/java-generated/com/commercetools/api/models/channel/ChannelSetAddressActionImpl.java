@@ -4,15 +4,8 @@ package com.commercetools.api.models.channel;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.channel.ChannelUpdateAction;
-import com.commercetools.api.models.common.Address;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -30,11 +23,11 @@ public final class ChannelSetAddressActionImpl implements ChannelSetAddressActio
     @JsonCreator
     ChannelSetAddressActionImpl(@JsonProperty("address") final com.commercetools.api.models.common.Address address) {
         this.address = address;
-        this.action = ChannelSetAddressAction.SET_ADDRESS;
+        this.action = SET_ADDRESS;
     }
 
     public ChannelSetAddressActionImpl() {
-        this.action = ChannelSetAddressAction.SET_ADDRESS;
+        this.action = SET_ADDRESS;
     }
 
     public String getAction() {

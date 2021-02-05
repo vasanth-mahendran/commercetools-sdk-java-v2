@@ -4,15 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.ExternalTaxAmountDraft;
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -32,11 +25,11 @@ public final class StagedOrderSetShippingMethodTaxAmountActionImpl
     StagedOrderSetShippingMethodTaxAmountActionImpl(
             @JsonProperty("externalTaxAmount") final com.commercetools.api.models.cart.ExternalTaxAmountDraft externalTaxAmount) {
         this.externalTaxAmount = externalTaxAmount;
-        this.action = StagedOrderSetShippingMethodTaxAmountAction.SET_SHIPPING_METHOD_TAX_AMOUNT;
+        this.action = SET_SHIPPING_METHOD_TAX_AMOUNT;
     }
 
     public StagedOrderSetShippingMethodTaxAmountActionImpl() {
-        this.action = StagedOrderSetShippingMethodTaxAmountAction.SET_SHIPPING_METHOD_TAX_AMOUNT;
+        this.action = SET_SHIPPING_METHOD_TAX_AMOUNT;
     }
 
     public String getAction() {

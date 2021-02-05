@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.Address;
-import com.commercetools.api.models.message.MessagePayload;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class CustomerAddressAddedMessagePayloadImpl implements CustomerAdd
     CustomerAddressAddedMessagePayloadImpl(
             @JsonProperty("address") final com.commercetools.api.models.common.Address address) {
         this.address = address;
-        this.type = CustomerAddressAddedMessagePayload.CUSTOMER_ADDRESS_ADDED;
+        this.type = CUSTOMER_ADDRESS_ADDED;
     }
 
     public CustomerAddressAddedMessagePayloadImpl() {
-        this.type = CustomerAddressAddedMessagePayload.CUSTOMER_ADDRESS_ADDED;
+        this.type = CUSTOMER_ADDRESS_ADDED;
     }
 
     public String getType() {

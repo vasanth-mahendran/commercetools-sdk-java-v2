@@ -4,14 +4,8 @@ package com.commercetools.api.models.cart;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.ShippingRateInput;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class ScoreShippingRateInputImpl implements ScoreShippingRateInput 
     @JsonCreator
     ScoreShippingRateInputImpl(@JsonProperty("score") final Double score) {
         this.score = score;
-        this.type = ScoreShippingRateInput.SCORE;
+        this.type = SCORE;
     }
 
     public ScoreShippingRateInputImpl() {
-        this.type = ScoreShippingRateInput.SCORE;
+        this.type = SCORE;
     }
 
     public String getType() {

@@ -4,15 +4,8 @@ package com.commercetools.ml.models.image_search_config;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.ml.models.image_search_config.ImageSearchConfigStatus;
-import com.commercetools.ml.models.image_search_config.ImageSearchConfigUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class ChangeStatusUpdateActionImpl implements ChangeStatusUpdateAct
     ChangeStatusUpdateActionImpl(
             @JsonProperty("status") final com.commercetools.ml.models.image_search_config.ImageSearchConfigStatus status) {
         this.status = status;
-        this.action = ChangeStatusUpdateAction.CHANGE_STATUS;
+        this.action = CHANGE_STATUS;
     }
 
     public ChangeStatusUpdateActionImpl() {
-        this.action = ChangeStatusUpdateAction.CHANGE_STATUS;
+        this.action = CHANGE_STATUS;
     }
 
     public String getAction() {

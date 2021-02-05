@@ -4,15 +4,8 @@ package com.commercetools.importapi.models.producttypes;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.common.ReferenceType;
-import com.commercetools.importapi.models.producttypes.AttributeType;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class AttributeReferenceTypeImpl implements AttributeReferenceType 
     AttributeReferenceTypeImpl(
             @JsonProperty("referenceTypeId") final com.commercetools.importapi.models.common.ReferenceType referenceTypeId) {
         this.referenceTypeId = referenceTypeId;
-        this.name = AttributeReferenceType.REFERENCE;
+        this.name = REFERENCE;
     }
 
     public AttributeReferenceTypeImpl() {
-        this.name = AttributeReferenceType.REFERENCE;
+        this.name = REFERENCE;
     }
 
     public String getName() {

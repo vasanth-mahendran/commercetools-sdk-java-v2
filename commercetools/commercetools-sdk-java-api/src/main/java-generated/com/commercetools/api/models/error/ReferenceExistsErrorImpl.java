@@ -4,15 +4,8 @@ package com.commercetools.api.models.error;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.common.ReferenceTypeId;
-import com.commercetools.api.models.error.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class ReferenceExistsErrorImpl implements ReferenceExistsError {
             @JsonProperty("referencedBy") final com.commercetools.api.models.common.ReferenceTypeId referencedBy) {
         this.message = message;
         this.referencedBy = referencedBy;
-        this.code = ReferenceExistsError.REFERENCE_EXISTS;
+        this.code = REFERENCE_EXISTS;
     }
 
     public ReferenceExistsErrorImpl() {
-        this.code = ReferenceExistsError.REFERENCE_EXISTS;
+        this.code = REFERENCE_EXISTS;
     }
 
     public String getCode() {

@@ -4,15 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.discount_code.DiscountCodeReference;
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class StagedOrderRemoveDiscountCodeActionImpl implements StagedOrde
     StagedOrderRemoveDiscountCodeActionImpl(
             @JsonProperty("discountCode") final com.commercetools.api.models.discount_code.DiscountCodeReference discountCode) {
         this.discountCode = discountCode;
-        this.action = StagedOrderRemoveDiscountCodeAction.REMOVE_DISCOUNT_CODE;
+        this.action = REMOVE_DISCOUNT_CODE;
     }
 
     public StagedOrderRemoveDiscountCodeActionImpl() {
-        this.action = StagedOrderRemoveDiscountCodeAction.REMOVE_DISCOUNT_CODE;
+        this.action = REMOVE_DISCOUNT_CODE;
     }
 
     public String getAction() {

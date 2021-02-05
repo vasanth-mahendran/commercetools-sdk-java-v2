@@ -4,16 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.Message;
-import com.commercetools.api.models.order_edit.OrderEditApplied;
-import com.commercetools.api.models.order_edit.OrderEditReference;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -74,11 +66,11 @@ public final class OrderEditAppliedMessageImpl implements OrderEditAppliedMessag
         this.resourceUserProvidedIdentifiers = resourceUserProvidedIdentifiers;
         this.edit = edit;
         this.result = result;
-        this.type = OrderEditAppliedMessage.ORDER_EDIT_APPLIED;
+        this.type = ORDER_EDIT_APPLIED;
     }
 
     public OrderEditAppliedMessageImpl() {
-        this.type = OrderEditAppliedMessage.ORDER_EDIT_APPLIED;
+        this.type = ORDER_EDIT_APPLIED;
     }
 
     public String getId() {

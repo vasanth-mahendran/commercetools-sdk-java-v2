@@ -4,15 +4,8 @@ package com.commercetools.api.models.product_type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.product_type.AttributeDefinition;
-import com.commercetools.api.models.product_type.ProductTypeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class ProductTypeChangeAttributeOrderActionImpl implements ProductT
     ProductTypeChangeAttributeOrderActionImpl(
             @JsonProperty("attributes") final java.util.List<com.commercetools.api.models.product_type.AttributeDefinition> attributes) {
         this.attributes = attributes;
-        this.action = ProductTypeChangeAttributeOrderAction.CHANGE_ATTRIBUTE_ORDER;
+        this.action = CHANGE_ATTRIBUTE_ORDER;
     }
 
     public ProductTypeChangeAttributeOrderActionImpl() {
-        this.action = ProductTypeChangeAttributeOrderAction.CHANGE_ATTRIBUTE_ORDER;
+        this.action = CHANGE_ATTRIBUTE_ORDER;
     }
 
     public String getAction() {

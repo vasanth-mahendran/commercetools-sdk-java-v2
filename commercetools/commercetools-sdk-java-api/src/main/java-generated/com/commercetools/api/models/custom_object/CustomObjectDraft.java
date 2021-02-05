@@ -1,20 +1,15 @@
 
 package com.commercetools.api.models.custom_object;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.custom_object.CustomObjectDraftImpl;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -37,7 +32,7 @@ public interface CustomObjectDraft {
 
     @NotNull
     @JsonProperty("value")
-    public JsonNode getValue();
+    public Object getValue();
 
     @JsonProperty("version")
     public Long getVersion();
@@ -46,7 +41,7 @@ public interface CustomObjectDraft {
 
     public void setKey(final String key);
 
-    public void setValue(final JsonNode value);
+    public void setValue(final Object value);
 
     public void setVersion(final Long version);
 

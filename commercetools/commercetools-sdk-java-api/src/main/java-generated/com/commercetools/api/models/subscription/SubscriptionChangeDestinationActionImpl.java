@@ -4,15 +4,8 @@ package com.commercetools.api.models.subscription;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.subscription.Destination;
-import com.commercetools.api.models.subscription.SubscriptionUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class SubscriptionChangeDestinationActionImpl implements Subscripti
     SubscriptionChangeDestinationActionImpl(
             @JsonProperty("destination") final com.commercetools.api.models.subscription.Destination destination) {
         this.destination = destination;
-        this.action = SubscriptionChangeDestinationAction.CHANGE_DESTINATION;
+        this.action = CHANGE_DESTINATION;
     }
 
     public SubscriptionChangeDestinationActionImpl() {
-        this.action = SubscriptionChangeDestinationAction.CHANGE_DESTINATION;
+        this.action = CHANGE_DESTINATION;
     }
 
     public String getAction() {

@@ -4,14 +4,8 @@ package com.commercetools.api.models.cart_discount;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart_discount.CartDiscountUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class CartDiscountChangeCartPredicateActionImpl implements CartDisc
     @JsonCreator
     CartDiscountChangeCartPredicateActionImpl(@JsonProperty("cartPredicate") final String cartPredicate) {
         this.cartPredicate = cartPredicate;
-        this.action = CartDiscountChangeCartPredicateAction.CHANGE_CART_PREDICATE;
+        this.action = CHANGE_CART_PREDICATE;
     }
 
     public CartDiscountChangeCartPredicateActionImpl() {
-        this.action = CartDiscountChangeCartPredicateAction.CHANGE_CART_PREDICATE;
+        this.action = CHANGE_CART_PREDICATE;
     }
 
     public String getAction() {

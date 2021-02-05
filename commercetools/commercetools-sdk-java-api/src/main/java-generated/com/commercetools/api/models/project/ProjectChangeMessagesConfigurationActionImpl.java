@@ -4,15 +4,8 @@ package com.commercetools.api.models.project;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.MessageConfigurationDraft;
-import com.commercetools.api.models.project.ProjectUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class ProjectChangeMessagesConfigurationActionImpl implements Proje
     ProjectChangeMessagesConfigurationActionImpl(
             @JsonProperty("messagesConfiguration") final com.commercetools.api.models.message.MessageConfigurationDraft messagesConfiguration) {
         this.messagesConfiguration = messagesConfiguration;
-        this.action = ProjectChangeMessagesConfigurationAction.CHANGE_MESSAGES_CONFIGURATION;
+        this.action = CHANGE_MESSAGES_CONFIGURATION;
     }
 
     public ProjectChangeMessagesConfigurationActionImpl() {
-        this.action = ProjectChangeMessagesConfigurationAction.CHANGE_MESSAGES_CONFIGURATION;
+        this.action = CHANGE_MESSAGES_CONFIGURATION;
     }
 
     public String getAction() {

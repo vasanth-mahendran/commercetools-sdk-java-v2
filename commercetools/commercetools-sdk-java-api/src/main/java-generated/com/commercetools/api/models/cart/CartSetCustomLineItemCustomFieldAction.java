@@ -1,21 +1,15 @@
 
 package com.commercetools.api.models.cart;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.cart.CartSetCustomLineItemCustomFieldActionImpl;
-import com.commercetools.api.models.cart.CartUpdateAction;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -33,13 +27,13 @@ public interface CartSetCustomLineItemCustomFieldAction extends CartUpdateAction
     public String getName();
 
     @JsonProperty("value")
-    public JsonNode getValue();
+    public Object getValue();
 
     public void setCustomLineItemId(final String customLineItemId);
 
     public void setName(final String name);
 
-    public void setValue(final JsonNode value);
+    public void setValue(final Object value);
 
     public static CartSetCustomLineItemCustomFieldAction of() {
         return new CartSetCustomLineItemCustomFieldActionImpl();

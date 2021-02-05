@@ -4,14 +4,10 @@ package com.commercetools.api.models.cart;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
+import com.commercetools.api.models.order.OrderReference;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -22,12 +18,12 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class ReplicaCartDraftImpl implements ReplicaCartDraft {
 
-    private com.fasterxml.jackson.databind.JsonNode reference;
+    private java.lang.Object reference;
 
     private String key;
 
     @JsonCreator
-    ReplicaCartDraftImpl(@JsonProperty("reference") final com.fasterxml.jackson.databind.JsonNode reference,
+    ReplicaCartDraftImpl(@JsonProperty("reference") final java.lang.Object reference,
             @JsonProperty("key") final String key) {
         this.reference = reference;
         this.key = key;
@@ -36,7 +32,7 @@ public final class ReplicaCartDraftImpl implements ReplicaCartDraft {
     public ReplicaCartDraftImpl() {
     }
 
-    public com.fasterxml.jackson.databind.JsonNode getReference() {
+    public java.lang.Object getReference() {
         return this.reference;
     }
 
@@ -47,7 +43,17 @@ public final class ReplicaCartDraftImpl implements ReplicaCartDraft {
         return this.key;
     }
 
-    public void setReference(final com.fasterxml.jackson.databind.JsonNode reference) {
+    @JsonIgnore
+    public void setReference(final CartReference reference) {
+        this.reference = reference;
+    }
+
+    @JsonIgnore
+    public void setReference(final OrderReference reference) {
+        this.reference = reference;
+    }
+
+    public void setReference(final java.lang.Object reference) {
         this.reference = reference;
     }
 

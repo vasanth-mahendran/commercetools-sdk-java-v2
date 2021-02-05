@@ -4,15 +4,8 @@ package com.commercetools.api.models.type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.type.CustomFieldEnumValue;
-import com.commercetools.api.models.type.TypeUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class TypeAddEnumValueActionImpl implements TypeAddEnumValueAction 
             @JsonProperty("value") final com.commercetools.api.models.type.CustomFieldEnumValue value) {
         this.fieldName = fieldName;
         this.value = value;
-        this.action = TypeAddEnumValueAction.ADD_ENUM_VALUE;
+        this.action = ADD_ENUM_VALUE;
     }
 
     public TypeAddEnumValueActionImpl() {
-        this.action = TypeAddEnumValueAction.ADD_ENUM_VALUE;
+        this.action = ADD_ENUM_VALUE;
     }
 
     public String getAction() {

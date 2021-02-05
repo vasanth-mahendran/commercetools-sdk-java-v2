@@ -4,14 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -22,15 +16,15 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class FacetResultTermImpl implements FacetResultTerm {
 
-    private com.fasterxml.jackson.databind.JsonNode term;
+    private java.lang.Object term;
 
     private Long count;
 
     private Long productCount;
 
     @JsonCreator
-    FacetResultTermImpl(@JsonProperty("term") final com.fasterxml.jackson.databind.JsonNode term,
-            @JsonProperty("count") final Long count, @JsonProperty("productCount") final Long productCount) {
+    FacetResultTermImpl(@JsonProperty("term") final java.lang.Object term, @JsonProperty("count") final Long count,
+            @JsonProperty("productCount") final Long productCount) {
         this.term = term;
         this.count = count;
         this.productCount = productCount;
@@ -39,7 +33,7 @@ public final class FacetResultTermImpl implements FacetResultTerm {
     public FacetResultTermImpl() {
     }
 
-    public com.fasterxml.jackson.databind.JsonNode getTerm() {
+    public java.lang.Object getTerm() {
         return this.term;
     }
 
@@ -51,7 +45,7 @@ public final class FacetResultTermImpl implements FacetResultTerm {
         return this.productCount;
     }
 
-    public void setTerm(final com.fasterxml.jackson.databind.JsonNode term) {
+    public void setTerm(final java.lang.Object term) {
         this.term = term;
     }
 

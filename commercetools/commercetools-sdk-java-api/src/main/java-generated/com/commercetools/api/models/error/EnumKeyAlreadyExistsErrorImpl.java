@@ -4,14 +4,8 @@ package com.commercetools.api.models.error;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.error.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -37,11 +31,11 @@ public final class EnumKeyAlreadyExistsErrorImpl implements EnumKeyAlreadyExists
         this.message = message;
         this.conflictingEnumKey = conflictingEnumKey;
         this.conflictingAttributeName = conflictingAttributeName;
-        this.code = EnumKeyAlreadyExistsError.ENUM_KEY_ALREADY_EXISTS;
+        this.code = ENUM_KEY_ALREADY_EXISTS;
     }
 
     public EnumKeyAlreadyExistsErrorImpl() {
-        this.code = EnumKeyAlreadyExistsError.ENUM_KEY_ALREADY_EXISTS;
+        this.code = ENUM_KEY_ALREADY_EXISTS;
     }
 
     public String getCode() {

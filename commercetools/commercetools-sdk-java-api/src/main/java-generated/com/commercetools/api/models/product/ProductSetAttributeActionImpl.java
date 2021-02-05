@@ -4,15 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.product.ProductUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,25 +24,24 @@ public final class ProductSetAttributeActionImpl implements ProductSetAttributeA
 
     private String name;
 
-    private com.fasterxml.jackson.databind.JsonNode value;
+    private java.lang.Object value;
 
     private Boolean staged;
 
     @JsonCreator
     ProductSetAttributeActionImpl(@JsonProperty("variantId") final Long variantId,
             @JsonProperty("sku") final String sku, @JsonProperty("name") final String name,
-            @JsonProperty("value") final com.fasterxml.jackson.databind.JsonNode value,
-            @JsonProperty("staged") final Boolean staged) {
+            @JsonProperty("value") final java.lang.Object value, @JsonProperty("staged") final Boolean staged) {
         this.variantId = variantId;
         this.sku = sku;
         this.name = name;
         this.value = value;
         this.staged = staged;
-        this.action = ProductSetAttributeAction.SET_ATTRIBUTE;
+        this.action = SET_ATTRIBUTE;
     }
 
     public ProductSetAttributeActionImpl() {
-        this.action = ProductSetAttributeAction.SET_ATTRIBUTE;
+        this.action = SET_ATTRIBUTE;
     }
 
     public String getAction() {
@@ -73,7 +65,7 @@ public final class ProductSetAttributeActionImpl implements ProductSetAttributeA
     *  If the attribute exists and a value is provided, the new value is applied.
     *  If the attribute does not exist and a value is provided, it is added as a new attribute.</p>
     */
-    public com.fasterxml.jackson.databind.JsonNode getValue() {
+    public java.lang.Object getValue() {
         return this.value;
     }
 
@@ -93,7 +85,7 @@ public final class ProductSetAttributeActionImpl implements ProductSetAttributeA
         this.name = name;
     }
 
-    public void setValue(final com.fasterxml.jackson.databind.JsonNode value) {
+    public void setValue(final java.lang.Object value) {
         this.value = value;
     }
 

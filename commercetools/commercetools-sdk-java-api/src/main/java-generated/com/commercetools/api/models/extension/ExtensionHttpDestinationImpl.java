@@ -4,15 +4,8 @@ package com.commercetools.api.models.extension;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.extension.ExtensionDestination;
-import com.commercetools.api.models.extension.ExtensionHttpDestinationAuthentication;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class ExtensionHttpDestinationImpl implements ExtensionHttpDestinat
             @JsonProperty("authentication") final com.commercetools.api.models.extension.ExtensionHttpDestinationAuthentication authentication) {
         this.url = url;
         this.authentication = authentication;
-        this.type = ExtensionHttpDestination.HTTP;
+        this.type = HTTP;
     }
 
     public ExtensionHttpDestinationImpl() {
-        this.type = ExtensionHttpDestination.HTTP;
+        this.type = HTTP;
     }
 
     public String getType() {

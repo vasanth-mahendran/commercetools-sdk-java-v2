@@ -4,16 +4,8 @@ package com.commercetools.api.models.cart;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.CartUpdateAction;
-import com.commercetools.api.models.cart.TaxPortionDraft;
-import com.commercetools.api.models.common.Money;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -36,11 +28,11 @@ public final class CartSetCartTotalTaxActionImpl implements CartSetCartTotalTaxA
             @JsonProperty("externalTaxPortions") final java.util.List<com.commercetools.api.models.cart.TaxPortionDraft> externalTaxPortions) {
         this.externalTotalGross = externalTotalGross;
         this.externalTaxPortions = externalTaxPortions;
-        this.action = CartSetCartTotalTaxAction.SET_CART_TOTAL_TAX;
+        this.action = SET_CART_TOTAL_TAX;
     }
 
     public CartSetCartTotalTaxActionImpl() {
-        this.action = CartSetCartTotalTaxAction.SET_CART_TOTAL_TAX;
+        this.action = SET_CART_TOTAL_TAX;
     }
 
     public String getAction() {

@@ -4,14 +4,8 @@ package com.commercetools.api.models.error;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.error.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class AnonymousIdAlreadyInUseErrorImpl implements AnonymousIdAlread
     @JsonCreator
     AnonymousIdAlreadyInUseErrorImpl(@JsonProperty("message") final String message) {
         this.message = message;
-        this.code = AnonymousIdAlreadyInUseError.ANONYMOUS_ID_ALREADY_IN_USE;
+        this.code = ANONYMOUS_ID_ALREADY_IN_USE;
     }
 
     public AnonymousIdAlreadyInUseErrorImpl() {
-        this.code = AnonymousIdAlreadyInUseError.ANONYMOUS_ID_ALREADY_IN_USE;
+        this.code = ANONYMOUS_ID_ALREADY_IN_USE;
     }
 
     public String getCode() {

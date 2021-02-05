@@ -4,14 +4,8 @@ package com.commercetools.api.models.extension;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.extension.ExtensionUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class ExtensionSetTimeoutInMsActionImpl implements ExtensionSetTime
     @JsonCreator
     ExtensionSetTimeoutInMsActionImpl(@JsonProperty("timeoutInMs") final Integer timeoutInMs) {
         this.timeoutInMs = timeoutInMs;
-        this.action = ExtensionSetTimeoutInMsAction.SET_TIMEOUT_IN_MS;
+        this.action = SET_TIMEOUT_IN_MS;
     }
 
     public ExtensionSetTimeoutInMsActionImpl() {
-        this.action = ExtensionSetTimeoutInMsAction.SET_TIMEOUT_IN_MS;
+        this.action = SET_TIMEOUT_IN_MS;
     }
 
     public String getAction() {

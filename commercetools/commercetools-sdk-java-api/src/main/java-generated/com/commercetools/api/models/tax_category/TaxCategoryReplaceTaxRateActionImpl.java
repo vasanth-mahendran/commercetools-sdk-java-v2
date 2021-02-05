@@ -4,15 +4,8 @@ package com.commercetools.api.models.tax_category;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.tax_category.TaxCategoryUpdateAction;
-import com.commercetools.api.models.tax_category.TaxRateDraft;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class TaxCategoryReplaceTaxRateActionImpl implements TaxCategoryRep
             @JsonProperty("taxRate") final com.commercetools.api.models.tax_category.TaxRateDraft taxRate) {
         this.taxRateId = taxRateId;
         this.taxRate = taxRate;
-        this.action = TaxCategoryReplaceTaxRateAction.REPLACE_TAX_RATE;
+        this.action = REPLACE_TAX_RATE;
     }
 
     public TaxCategoryReplaceTaxRateActionImpl() {
-        this.action = TaxCategoryReplaceTaxRateAction.REPLACE_TAX_RATE;
+        this.action = REPLACE_TAX_RATE;
     }
 
     public String getAction() {

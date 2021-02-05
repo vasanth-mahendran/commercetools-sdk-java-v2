@@ -4,15 +4,8 @@ package com.commercetools.api.models.channel;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.channel.ChannelRoleEnum;
-import com.commercetools.api.models.channel.ChannelUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class ChannelAddRolesActionImpl implements ChannelAddRolesAction {
     ChannelAddRolesActionImpl(
             @JsonProperty("roles") final java.util.List<com.commercetools.api.models.channel.ChannelRoleEnum> roles) {
         this.roles = roles;
-        this.action = ChannelAddRolesAction.ADD_ROLES;
+        this.action = ADD_ROLES;
     }
 
     public ChannelAddRolesActionImpl() {
-        this.action = ChannelAddRolesAction.ADD_ROLES;
+        this.action = ADD_ROLES;
     }
 
     public String getAction() {

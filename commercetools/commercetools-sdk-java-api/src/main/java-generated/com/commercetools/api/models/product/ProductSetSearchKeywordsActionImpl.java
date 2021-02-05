@@ -4,15 +4,8 @@ package com.commercetools.api.models.product;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.product.ProductUpdateAction;
-import com.commercetools.api.models.product.SearchKeywords;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -35,11 +28,11 @@ public final class ProductSetSearchKeywordsActionImpl implements ProductSetSearc
             @JsonProperty("staged") final Boolean staged) {
         this.searchKeywords = searchKeywords;
         this.staged = staged;
-        this.action = ProductSetSearchKeywordsAction.SET_SEARCH_KEYWORDS;
+        this.action = SET_SEARCH_KEYWORDS;
     }
 
     public ProductSetSearchKeywordsActionImpl() {
-        this.action = ProductSetSearchKeywordsAction.SET_SEARCH_KEYWORDS;
+        this.action = SET_SEARCH_KEYWORDS;
     }
 
     public String getAction() {

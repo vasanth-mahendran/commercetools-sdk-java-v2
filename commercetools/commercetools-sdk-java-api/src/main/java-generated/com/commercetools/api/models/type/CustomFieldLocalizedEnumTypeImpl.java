@@ -4,15 +4,8 @@ package com.commercetools.api.models.type;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.type.CustomFieldLocalizedEnumValue;
-import com.commercetools.api.models.type.FieldType;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class CustomFieldLocalizedEnumTypeImpl implements CustomFieldLocali
     CustomFieldLocalizedEnumTypeImpl(
             @JsonProperty("values") final java.util.List<com.commercetools.api.models.type.CustomFieldLocalizedEnumValue> values) {
         this.values = values;
-        this.name = CustomFieldLocalizedEnumType.LOCALIZED_ENUM;
+        this.name = LOCALIZED_ENUM;
     }
 
     public CustomFieldLocalizedEnumTypeImpl() {
-        this.name = CustomFieldLocalizedEnumType.LOCALIZED_ENUM;
+        this.name = LOCALIZED_ENUM;
     }
 
     public String getName() {

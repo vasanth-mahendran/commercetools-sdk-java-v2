@@ -4,14 +4,8 @@ package com.commercetools.api.models.inventory;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.inventory.InventoryEntryUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class InventoryEntrySetRestockableInDaysActionImpl implements Inven
     @JsonCreator
     InventoryEntrySetRestockableInDaysActionImpl(@JsonProperty("restockableInDays") final Long restockableInDays) {
         this.restockableInDays = restockableInDays;
-        this.action = InventoryEntrySetRestockableInDaysAction.SET_RESTOCKABLE_IN_DAYS;
+        this.action = SET_RESTOCKABLE_IN_DAYS;
     }
 
     public InventoryEntrySetRestockableInDaysActionImpl() {
-        this.action = InventoryEntrySetRestockableInDaysAction.SET_RESTOCKABLE_IN_DAYS;
+        this.action = SET_RESTOCKABLE_IN_DAYS;
     }
 
     public String getAction() {

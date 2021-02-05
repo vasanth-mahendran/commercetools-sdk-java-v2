@@ -4,15 +4,8 @@ package com.commercetools.api.models.payment;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.payment.PaymentUpdateAction;
-import com.commercetools.api.models.payment.TransactionDraft;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class PaymentAddTransactionActionImpl implements PaymentAddTransact
     PaymentAddTransactionActionImpl(
             @JsonProperty("transaction") final com.commercetools.api.models.payment.TransactionDraft transaction) {
         this.transaction = transaction;
-        this.action = PaymentAddTransactionAction.ADD_TRANSACTION;
+        this.action = ADD_TRANSACTION;
     }
 
     public PaymentAddTransactionActionImpl() {
-        this.action = PaymentAddTransactionAction.ADD_TRANSACTION;
+        this.action = ADD_TRANSACTION;
     }
 
     public String getAction() {

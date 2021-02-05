@@ -1,22 +1,16 @@
 
 package com.commercetools.api.models.order_edit;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.order_edit.OrderEditSetCustomTypeActionImpl;
-import com.commercetools.api.models.order_edit.OrderEditUpdateAction;
 import com.commercetools.api.models.type.TypeResourceIdentifier;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -38,11 +32,11 @@ public interface OrderEditSetCustomTypeAction extends OrderEditUpdateAction {
     */
     @Valid
     @JsonProperty("fields")
-    public JsonNode getFields();
+    public Object getFields();
 
     public void setType(final TypeResourceIdentifier type);
 
-    public void setFields(final JsonNode fields);
+    public void setFields(final Object fields);
 
     public static OrderEditSetCustomTypeAction of() {
         return new OrderEditSetCustomTypeActionImpl();

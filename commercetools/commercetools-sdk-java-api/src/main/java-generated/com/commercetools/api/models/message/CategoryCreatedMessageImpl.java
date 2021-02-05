@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.category.Category;
-import com.commercetools.api.models.message.Message;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -69,11 +62,11 @@ public final class CategoryCreatedMessageImpl implements CategoryCreatedMessage 
         this.resourceVersion = resourceVersion;
         this.resourceUserProvidedIdentifiers = resourceUserProvidedIdentifiers;
         this.category = category;
-        this.type = CategoryCreatedMessage.CATEGORY_CREATED;
+        this.type = CATEGORY_CREATED;
     }
 
     public CategoryCreatedMessageImpl() {
-        this.type = CategoryCreatedMessage.CATEGORY_CREATED;
+        this.type = CATEGORY_CREATED;
     }
 
     public String getId() {

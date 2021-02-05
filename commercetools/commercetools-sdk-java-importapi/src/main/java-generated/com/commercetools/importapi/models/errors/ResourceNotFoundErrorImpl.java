@@ -4,15 +4,8 @@ package com.commercetools.importapi.models.errors;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.errors.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -27,18 +20,18 @@ public final class ResourceNotFoundErrorImpl implements ResourceNotFoundError {
 
     private String message;
 
-    private com.fasterxml.jackson.databind.JsonNode resource;
+    private java.lang.Object resource;
 
     @JsonCreator
     ResourceNotFoundErrorImpl(@JsonProperty("message") final String message,
-            @JsonProperty("resource") final com.fasterxml.jackson.databind.JsonNode resource) {
+            @JsonProperty("resource") final java.lang.Object resource) {
         this.message = message;
         this.resource = resource;
-        this.code = ResourceNotFoundError.RESOURCE_NOT_FOUND;
+        this.code = RESOURCE_NOT_FOUND;
     }
 
     public ResourceNotFoundErrorImpl() {
-        this.code = ResourceNotFoundError.RESOURCE_NOT_FOUND;
+        this.code = RESOURCE_NOT_FOUND;
     }
 
     public String getCode() {
@@ -52,7 +45,7 @@ public final class ResourceNotFoundErrorImpl implements ResourceNotFoundError {
         return this.message;
     }
 
-    public com.fasterxml.jackson.databind.JsonNode getResource() {
+    public java.lang.Object getResource() {
         return this.resource;
     }
 
@@ -60,7 +53,7 @@ public final class ResourceNotFoundErrorImpl implements ResourceNotFoundError {
         this.message = message;
     }
 
-    public void setResource(final com.fasterxml.jackson.databind.JsonNode resource) {
+    public void setResource(final java.lang.Object resource) {
         this.resource = resource;
     }
 

@@ -2,17 +2,10 @@
 package com.commercetools.api.models.subscription;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.subscription.SubscriptionDelivery;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -46,11 +39,11 @@ public final class ResourceCreatedDeliveryImpl implements ResourceCreatedDeliver
         this.resourceUserProvidedIdentifiers = resourceUserProvidedIdentifiers;
         this.version = version;
         this.modifiedAt = modifiedAt;
-        this.notificationType = ResourceCreatedDelivery.RESOURCE_CREATED;
+        this.notificationType = RESOURCE_CREATED;
     }
 
     public ResourceCreatedDeliveryImpl() {
-        this.notificationType = ResourceCreatedDelivery.RESOURCE_CREATED;
+        this.notificationType = RESOURCE_CREATED;
     }
 
     public String getProjectKey() {

@@ -4,15 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
-import com.commercetools.api.models.order.TrackingData;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class StagedOrderSetParcelTrackingDataActionImpl implements StagedO
             @JsonProperty("trackingData") final com.commercetools.api.models.order.TrackingData trackingData) {
         this.parcelId = parcelId;
         this.trackingData = trackingData;
-        this.action = StagedOrderSetParcelTrackingDataAction.SET_PARCEL_TRACKING_DATA;
+        this.action = SET_PARCEL_TRACKING_DATA;
     }
 
     public StagedOrderSetParcelTrackingDataActionImpl() {
-        this.action = StagedOrderSetParcelTrackingDataAction.SET_PARCEL_TRACKING_DATA;
+        this.action = SET_PARCEL_TRACKING_DATA;
     }
 
     public String getAction() {

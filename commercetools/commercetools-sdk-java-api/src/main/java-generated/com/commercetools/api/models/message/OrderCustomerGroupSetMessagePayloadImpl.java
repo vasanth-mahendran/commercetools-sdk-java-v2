@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.customer_group.CustomerGroupReference;
-import com.commercetools.api.models.message.MessagePayload;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -35,11 +28,11 @@ public final class OrderCustomerGroupSetMessagePayloadImpl implements OrderCusto
             @JsonProperty("oldCustomerGroup") final com.commercetools.api.models.customer_group.CustomerGroupReference oldCustomerGroup) {
         this.customerGroup = customerGroup;
         this.oldCustomerGroup = oldCustomerGroup;
-        this.type = OrderCustomerGroupSetMessagePayload.ORDER_CUSTOMER_GROUP_SET;
+        this.type = ORDER_CUSTOMER_GROUP_SET;
     }
 
     public OrderCustomerGroupSetMessagePayloadImpl() {
-        this.type = OrderCustomerGroupSetMessagePayload.ORDER_CUSTOMER_GROUP_SET;
+        this.type = ORDER_CUSTOMER_GROUP_SET;
     }
 
     public String getType() {

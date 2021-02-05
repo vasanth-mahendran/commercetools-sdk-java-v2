@@ -4,14 +4,8 @@ package com.commercetools.api.models.error;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.error.ErrorObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -40,11 +34,11 @@ public final class MissingTaxRateForCountryErrorImpl implements MissingTaxRateFo
         this.taxCategoryId = taxCategoryId;
         this.country = country;
         this.state = state;
-        this.code = MissingTaxRateForCountryError.MISSING_TAX_RATE_FOR_COUNTRY;
+        this.code = MISSING_TAX_RATE_FOR_COUNTRY;
     }
 
     public MissingTaxRateForCountryErrorImpl() {
-        this.code = MissingTaxRateForCountryError.MISSING_TAX_RATE_FOR_COUNTRY;
+        this.code = MISSING_TAX_RATE_FOR_COUNTRY;
     }
 
     public String getCode() {

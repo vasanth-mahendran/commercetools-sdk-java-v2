@@ -4,15 +4,8 @@ package com.commercetools.api.models.state;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.state.StateResourceIdentifier;
-import com.commercetools.api.models.state.StateUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class StateSetTransitionsActionImpl implements StateSetTransitionsA
     StateSetTransitionsActionImpl(
             @JsonProperty("transitions") final java.util.List<com.commercetools.api.models.state.StateResourceIdentifier> transitions) {
         this.transitions = transitions;
-        this.action = StateSetTransitionsAction.SET_TRANSITIONS;
+        this.action = SET_TRANSITIONS;
     }
 
     public StateSetTransitionsActionImpl() {
-        this.action = StateSetTransitionsAction.SET_TRANSITIONS;
+        this.action = SET_TRANSITIONS;
     }
 
     public String getAction() {

@@ -4,14 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.message.MessagePayload;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +27,11 @@ public final class OrderCustomerEmailSetMessagePayloadImpl implements OrderCusto
             @JsonProperty("oldEmail") final String oldEmail) {
         this.email = email;
         this.oldEmail = oldEmail;
-        this.type = OrderCustomerEmailSetMessagePayload.ORDER_CUSTOMER_EMAIL_SET;
+        this.type = ORDER_CUSTOMER_EMAIL_SET;
     }
 
     public OrderCustomerEmailSetMessagePayloadImpl() {
-        this.type = OrderCustomerEmailSetMessagePayload.ORDER_CUSTOMER_EMAIL_SET;
+        this.type = ORDER_CUSTOMER_EMAIL_SET;
     }
 
     public String getType() {

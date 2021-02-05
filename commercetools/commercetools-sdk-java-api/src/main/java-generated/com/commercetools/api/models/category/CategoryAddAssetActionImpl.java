@@ -4,15 +4,8 @@ package com.commercetools.api.models.category;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.category.CategoryUpdateAction;
-import com.commercetools.api.models.common.AssetDraft;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class CategoryAddAssetActionImpl implements CategoryAddAssetAction 
             @JsonProperty("position") final Integer position) {
         this.asset = asset;
         this.position = position;
-        this.action = CategoryAddAssetAction.ADD_ASSET;
+        this.action = ADD_ASSET;
     }
 
     public CategoryAddAssetActionImpl() {
-        this.action = CategoryAddAssetAction.ADD_ASSET;
+        this.action = ADD_ASSET;
     }
 
     public String getAction() {

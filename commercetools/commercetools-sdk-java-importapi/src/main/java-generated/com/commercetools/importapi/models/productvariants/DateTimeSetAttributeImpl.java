@@ -2,17 +2,10 @@
 package com.commercetools.importapi.models.productvariants;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.productvariants.Attribute;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -37,11 +30,11 @@ public final class DateTimeSetAttributeImpl implements DateTimeSetAttribute {
             @JsonProperty("value") final java.util.List<java.time.ZonedDateTime> value) {
         this.name = name;
         this.value = value;
-        this.type = DateTimeSetAttribute.DATETIME_SET;
+        this.type = DATETIME_SET;
     }
 
     public DateTimeSetAttributeImpl() {
-        this.type = DateTimeSetAttribute.DATETIME_SET;
+        this.type = DATETIME_SET;
     }
 
     /**

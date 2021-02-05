@@ -4,16 +4,8 @@ package com.commercetools.api.models.category;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.category.CategoryUpdateAction;
-import com.commercetools.api.models.type.FieldContainer;
-import com.commercetools.api.models.type.TypeResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -36,11 +28,11 @@ public final class CategorySetCustomTypeActionImpl implements CategorySetCustomT
             @JsonProperty("fields") final com.commercetools.api.models.type.FieldContainer fields) {
         this.type = type;
         this.fields = fields;
-        this.action = CategorySetCustomTypeAction.SET_CUSTOM_TYPE;
+        this.action = SET_CUSTOM_TYPE;
     }
 
     public CategorySetCustomTypeActionImpl() {
-        this.action = CategorySetCustomTypeAction.SET_CUSTOM_TYPE;
+        this.action = SET_CUSTOM_TYPE;
     }
 
     public String getAction() {

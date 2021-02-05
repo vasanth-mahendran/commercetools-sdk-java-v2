@@ -4,14 +4,8 @@ package com.commercetools.api.models.tax_category;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.tax_category.TaxCategoryUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class TaxCategorySetDescriptionActionImpl implements TaxCategorySet
     @JsonCreator
     TaxCategorySetDescriptionActionImpl(@JsonProperty("description") final String description) {
         this.description = description;
-        this.action = TaxCategorySetDescriptionAction.SET_DESCRIPTION;
+        this.action = SET_DESCRIPTION;
     }
 
     public TaxCategorySetDescriptionActionImpl() {
-        this.action = TaxCategorySetDescriptionAction.SET_DESCRIPTION;
+        this.action = SET_DESCRIPTION;
     }
 
     public String getAction() {

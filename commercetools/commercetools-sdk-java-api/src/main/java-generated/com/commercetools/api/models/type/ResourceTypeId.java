@@ -1,7 +1,6 @@
 
 package com.commercetools.api.models.type;
 
-import java.lang.String;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -39,6 +38,8 @@ public interface ResourceTypeId {
 
     ResourceTypeId REVIEW = ResourceTypeIdEnum.REVIEW;
 
+    ResourceTypeId SHIPPING_METHOD = ResourceTypeIdEnum.SHIPPING_METHOD;
+
     ResourceTypeId SHOPPING_LIST = ResourceTypeIdEnum.SHOPPING_LIST;
 
     ResourceTypeId SHOPPING_LIST_TEXT_LINE_ITEM = ResourceTypeIdEnum.SHOPPING_LIST_TEXT_LINE_ITEM;
@@ -75,6 +76,8 @@ public interface ResourceTypeId {
         PAYMENT_INTERFACE_INTERACTION("payment-interface-interaction"),
 
         REVIEW("review"),
+
+        SHIPPING_METHOD("shipping-method"),
 
         SHOPPING_LIST("shopping-list"),
 

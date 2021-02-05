@@ -1,7 +1,6 @@
 
 package com.commercetools.api.models.common;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
@@ -9,14 +8,9 @@ import java.util.function.Function;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.common.BaseResource;
-import com.commercetools.api.models.common.PagedQueryResponseImpl;
-import com.commercetools.api.models.product.FacetResults;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -44,12 +38,8 @@ public interface PagedQueryResponse extends com.commercetools.api.models.Resourc
     public List<BaseResource> getResults();
 
     @Valid
-    @JsonProperty("facets")
-    public FacetResults getFacets();
-
-    @Valid
     @JsonProperty("meta")
-    public JsonNode getMeta();
+    public Object getMeta();
 
     public void setLimit(final Long limit);
 
@@ -64,9 +54,7 @@ public interface PagedQueryResponse extends com.commercetools.api.models.Resourc
 
     public void setResults(final List<BaseResource> results);
 
-    public void setFacets(final FacetResults facets);
-
-    public void setMeta(final JsonNode meta);
+    public void setMeta(final Object meta);
 
     public static PagedQueryResponse of() {
         return new PagedQueryResponseImpl();
@@ -79,7 +67,6 @@ public interface PagedQueryResponse extends com.commercetools.api.models.Resourc
         instance.setTotal(template.getTotal());
         instance.setOffset(template.getOffset());
         instance.setResults(template.getResults());
-        instance.setFacets(template.getFacets());
         instance.setMeta(template.getMeta());
         return instance;
     }

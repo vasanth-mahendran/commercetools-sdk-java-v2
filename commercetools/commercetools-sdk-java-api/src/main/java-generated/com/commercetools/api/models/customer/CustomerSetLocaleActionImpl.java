@@ -4,14 +4,8 @@ package com.commercetools.api.models.customer;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.customer.CustomerUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class CustomerSetLocaleActionImpl implements CustomerSetLocaleActio
     @JsonCreator
     CustomerSetLocaleActionImpl(@JsonProperty("locale") final String locale) {
         this.locale = locale;
-        this.action = CustomerSetLocaleAction.SET_LOCALE;
+        this.action = SET_LOCALE;
     }
 
     public CustomerSetLocaleActionImpl() {
-        this.action = CustomerSetLocaleAction.SET_LOCALE;
+        this.action = SET_LOCALE;
     }
 
     public String getAction() {

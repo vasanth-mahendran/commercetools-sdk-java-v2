@@ -4,14 +4,8 @@ package com.commercetools.api.models.payment;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.payment.PaymentUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class PaymentSetKeyActionImpl implements PaymentSetKeyAction {
     @JsonCreator
     PaymentSetKeyActionImpl(@JsonProperty("key") final String key) {
         this.key = key;
-        this.action = PaymentSetKeyAction.SET_KEY;
+        this.action = SET_KEY;
     }
 
     public PaymentSetKeyActionImpl() {
-        this.action = PaymentSetKeyAction.SET_KEY;
+        this.action = SET_KEY;
     }
 
     public String getAction() {

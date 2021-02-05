@@ -4,16 +4,8 @@ package com.commercetools.api.models.cart;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.CartUpdateAction;
-import com.commercetools.api.models.cart.ExternalTaxRateDraft;
-import com.commercetools.api.models.shipping_method.ShippingMethodResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -36,11 +28,11 @@ public final class CartSetShippingMethodActionImpl implements CartSetShippingMet
             @JsonProperty("externalTaxRate") final com.commercetools.api.models.cart.ExternalTaxRateDraft externalTaxRate) {
         this.shippingMethod = shippingMethod;
         this.externalTaxRate = externalTaxRate;
-        this.action = CartSetShippingMethodAction.SET_SHIPPING_METHOD;
+        this.action = SET_SHIPPING_METHOD;
     }
 
     public CartSetShippingMethodActionImpl() {
-        this.action = CartSetShippingMethodAction.SET_SHIPPING_METHOD;
+        this.action = SET_SHIPPING_METHOD;
     }
 
     public String getAction() {

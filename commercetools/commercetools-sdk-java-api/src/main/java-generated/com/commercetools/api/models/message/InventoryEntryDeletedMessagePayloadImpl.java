@@ -4,15 +4,8 @@ package com.commercetools.api.models.message;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.channel.ChannelReference;
-import com.commercetools.api.models.message.MessagePayload;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class InventoryEntryDeletedMessagePayloadImpl implements InventoryE
             @JsonProperty("supplyChannel") final com.commercetools.api.models.channel.ChannelReference supplyChannel) {
         this.sku = sku;
         this.supplyChannel = supplyChannel;
-        this.type = InventoryEntryDeletedMessagePayload.INVENTORY_ENTRY_DELETED;
+        this.type = INVENTORY_ENTRY_DELETED;
     }
 
     public InventoryEntryDeletedMessagePayloadImpl() {
-        this.type = InventoryEntryDeletedMessagePayload.INVENTORY_ENTRY_DELETED;
+        this.type = INVENTORY_ENTRY_DELETED;
     }
 
     public String getType() {

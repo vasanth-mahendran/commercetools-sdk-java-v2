@@ -1,20 +1,15 @@
 
 package com.commercetools.api.models.product;
 
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 import java.util.function.Function;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.product.FacetResultTermImpl;
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.*;
 
-import io.vrap.rmf.base.client.Accessor;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
@@ -23,7 +18,7 @@ public interface FacetResultTerm {
 
     @NotNull
     @JsonProperty("term")
-    public JsonNode getTerm();
+    public Object getTerm();
 
     @NotNull
     @JsonProperty("count")
@@ -32,7 +27,7 @@ public interface FacetResultTerm {
     @JsonProperty("productCount")
     public Long getProductCount();
 
-    public void setTerm(final JsonNode term);
+    public void setTerm(final Object term);
 
     public void setCount(final Long count);
 

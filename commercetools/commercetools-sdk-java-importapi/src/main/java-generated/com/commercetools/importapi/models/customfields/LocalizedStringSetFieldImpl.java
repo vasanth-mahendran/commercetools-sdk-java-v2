@@ -4,15 +4,8 @@ package com.commercetools.importapi.models.customfields;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.importapi.models.common.LocalizedString;
-import com.commercetools.importapi.models.customfields.CustomField;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class LocalizedStringSetFieldImpl implements LocalizedStringSetFiel
     LocalizedStringSetFieldImpl(
             @JsonProperty("value") final java.util.List<com.commercetools.importapi.models.common.LocalizedString> value) {
         this.value = value;
-        this.type = LocalizedStringSetField.LOCALIZED_STRING_SET;
+        this.type = LOCALIZED_STRING_SET;
     }
 
     public LocalizedStringSetFieldImpl() {
-        this.type = LocalizedStringSetField.LOCALIZED_STRING_SET;
+        this.type = LOCALIZED_STRING_SET;
     }
 
     /**

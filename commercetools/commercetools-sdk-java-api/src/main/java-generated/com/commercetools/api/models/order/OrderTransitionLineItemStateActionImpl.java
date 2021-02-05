@@ -2,18 +2,10 @@
 package com.commercetools.api.models.order;
 
 import java.time.*;
-import java.time.ZonedDateTime;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.OrderUpdateAction;
-import com.commercetools.api.models.state.StateResourceIdentifier;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -47,11 +39,11 @@ public final class OrderTransitionLineItemStateActionImpl implements OrderTransi
         this.fromState = fromState;
         this.toState = toState;
         this.actualTransitionDate = actualTransitionDate;
-        this.action = OrderTransitionLineItemStateAction.TRANSITION_LINE_ITEM_STATE;
+        this.action = TRANSITION_LINE_ITEM_STATE;
     }
 
     public OrderTransitionLineItemStateActionImpl() {
-        this.action = OrderTransitionLineItemStateAction.TRANSITION_LINE_ITEM_STATE;
+        this.action = TRANSITION_LINE_ITEM_STATE;
     }
 
     public String getAction() {

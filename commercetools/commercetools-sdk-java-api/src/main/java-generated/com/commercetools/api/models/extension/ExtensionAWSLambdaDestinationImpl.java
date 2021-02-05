@@ -4,14 +4,8 @@ package com.commercetools.api.models.extension;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.extension.ExtensionDestination;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -37,11 +31,11 @@ public final class ExtensionAWSLambdaDestinationImpl implements ExtensionAWSLamb
         this.arn = arn;
         this.accessKey = accessKey;
         this.accessSecret = accessSecret;
-        this.type = ExtensionAWSLambdaDestination.AWS_LAMBDA;
+        this.type = AWS_LAMBDA;
     }
 
     public ExtensionAWSLambdaDestinationImpl() {
-        this.type = ExtensionAWSLambdaDestination.AWS_LAMBDA;
+        this.type = AWS_LAMBDA;
     }
 
     public String getType() {

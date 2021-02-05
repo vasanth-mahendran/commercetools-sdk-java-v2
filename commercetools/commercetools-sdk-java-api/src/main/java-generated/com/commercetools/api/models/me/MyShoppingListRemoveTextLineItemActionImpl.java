@@ -4,14 +4,8 @@ package com.commercetools.api.models.me;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.me.MyShoppingListUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -33,11 +27,11 @@ public final class MyShoppingListRemoveTextLineItemActionImpl implements MyShopp
             @JsonProperty("quantity") final Long quantity) {
         this.textLineItemId = textLineItemId;
         this.quantity = quantity;
-        this.action = MyShoppingListRemoveTextLineItemAction.REMOVE_TEXT_LINE_ITEM;
+        this.action = REMOVE_TEXT_LINE_ITEM;
     }
 
     public MyShoppingListRemoveTextLineItemActionImpl() {
-        this.action = MyShoppingListRemoveTextLineItemAction.REMOVE_TEXT_LINE_ITEM;
+        this.action = REMOVE_TEXT_LINE_ITEM;
     }
 
     public String getAction() {

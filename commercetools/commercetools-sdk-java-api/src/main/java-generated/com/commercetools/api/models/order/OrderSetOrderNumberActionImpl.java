@@ -4,14 +4,8 @@ package com.commercetools.api.models.order;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.OrderUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -29,11 +23,11 @@ public final class OrderSetOrderNumberActionImpl implements OrderSetOrderNumberA
     @JsonCreator
     OrderSetOrderNumberActionImpl(@JsonProperty("orderNumber") final String orderNumber) {
         this.orderNumber = orderNumber;
-        this.action = OrderSetOrderNumberAction.SET_ORDER_NUMBER;
+        this.action = SET_ORDER_NUMBER;
     }
 
     public OrderSetOrderNumberActionImpl() {
-        this.action = OrderSetOrderNumberAction.SET_ORDER_NUMBER;
+        this.action = SET_ORDER_NUMBER;
     }
 
     public String getAction() {

@@ -4,15 +4,8 @@ package com.commercetools.api.models.order_edit;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.cart.TaxCalculationMode;
-import com.commercetools.api.models.order.StagedOrderUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class StagedOrderChangeTaxCalculationModeActionImpl implements Stag
     StagedOrderChangeTaxCalculationModeActionImpl(
             @JsonProperty("taxCalculationMode") final com.commercetools.api.models.cart.TaxCalculationMode taxCalculationMode) {
         this.taxCalculationMode = taxCalculationMode;
-        this.action = StagedOrderChangeTaxCalculationModeAction.CHANGE_TAX_CALCULATION_MODE;
+        this.action = CHANGE_TAX_CALCULATION_MODE;
     }
 
     public StagedOrderChangeTaxCalculationModeActionImpl() {
-        this.action = StagedOrderChangeTaxCalculationModeAction.CHANGE_TAX_CALCULATION_MODE;
+        this.action = CHANGE_TAX_CALCULATION_MODE;
     }
 
     public String getAction() {

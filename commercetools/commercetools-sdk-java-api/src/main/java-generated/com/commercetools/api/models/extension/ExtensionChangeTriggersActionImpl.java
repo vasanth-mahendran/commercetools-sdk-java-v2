@@ -4,15 +4,8 @@ package com.commercetools.api.models.extension;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.extension.ExtensionTrigger;
-import com.commercetools.api.models.extension.ExtensionUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class ExtensionChangeTriggersActionImpl implements ExtensionChangeT
     ExtensionChangeTriggersActionImpl(
             @JsonProperty("triggers") final java.util.List<com.commercetools.api.models.extension.ExtensionTrigger> triggers) {
         this.triggers = triggers;
-        this.action = ExtensionChangeTriggersAction.CHANGE_TRIGGERS;
+        this.action = CHANGE_TRIGGERS;
     }
 
     public ExtensionChangeTriggersActionImpl() {
-        this.action = ExtensionChangeTriggersAction.CHANGE_TRIGGERS;
+        this.action = CHANGE_TRIGGERS;
     }
 
     public String getAction() {

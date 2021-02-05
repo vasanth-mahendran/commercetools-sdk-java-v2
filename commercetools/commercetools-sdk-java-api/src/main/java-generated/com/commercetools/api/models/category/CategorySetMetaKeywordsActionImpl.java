@@ -4,15 +4,8 @@ package com.commercetools.api.models.category;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.category.CategoryUpdateAction;
-import com.commercetools.api.models.common.LocalizedString;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -31,11 +24,11 @@ public final class CategorySetMetaKeywordsActionImpl implements CategorySetMetaK
     CategorySetMetaKeywordsActionImpl(
             @JsonProperty("metaKeywords") final com.commercetools.api.models.common.LocalizedString metaKeywords) {
         this.metaKeywords = metaKeywords;
-        this.action = CategorySetMetaKeywordsAction.SET_META_KEYWORDS;
+        this.action = SET_META_KEYWORDS;
     }
 
     public CategorySetMetaKeywordsActionImpl() {
-        this.action = CategorySetMetaKeywordsAction.SET_META_KEYWORDS;
+        this.action = SET_META_KEYWORDS;
     }
 
     public String getAction() {

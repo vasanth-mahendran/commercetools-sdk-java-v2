@@ -4,15 +4,8 @@ package com.commercetools.api.models.order;
 import java.time.*;
 import java.util.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import com.commercetools.api.models.order.DeliveryItem;
-import com.commercetools.api.models.order.OrderUpdateAction;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
@@ -34,11 +27,11 @@ public final class OrderSetDeliveryItemsActionImpl implements OrderSetDeliveryIt
             @JsonProperty("items") final java.util.List<com.commercetools.api.models.order.DeliveryItem> items) {
         this.deliveryId = deliveryId;
         this.items = items;
-        this.action = OrderSetDeliveryItemsAction.SET_DELIVERY_ITEMS;
+        this.action = SET_DELIVERY_ITEMS;
     }
 
     public OrderSetDeliveryItemsActionImpl() {
-        this.action = OrderSetDeliveryItemsAction.SET_DELIVERY_ITEMS;
+        this.action = SET_DELIVERY_ITEMS;
     }
 
     public String getAction() {
