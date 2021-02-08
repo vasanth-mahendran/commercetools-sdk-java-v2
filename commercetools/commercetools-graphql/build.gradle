@@ -1,11 +1,11 @@
 plugins {
     id 'com.apollographql.apollo' version '2.4.0'
+    id "com.netflix.dgs.codegen" version "4.0.10"
 }
 
-
 dependencies {
-    implementation("com.apollographql.apollo:apollo-runtime:2.4.0")
-    implementation("com.apollographql.apollo:apollo-api-jvm:2.4.0")
+//    implementation("com.apollographql.apollo:apollo-runtime:2.4.0")
+//    implementation("com.apollographql.apollo:apollo-api-jvm:2.4.0")
 
 
     itestImplementation "junit:junit:${versions.junit}"
@@ -16,17 +16,22 @@ dependencies {
     implementation project(':commercetools:commercetools-http-client')
 }
 
+generateJava {
+    schemaPaths = ["${projectDir}/src/main/graphql/"] // List of directories containing schema files
+    packageName = 'com.commercetools.graphql' // The package name to use to generate sources
+    generateClient = true // Enable generating the type safe query API
+}
+
 apollo {
     useSemanticNaming = true
     service("commercetools") {
-        schemaPath = "com/example/schema.json"
+        schemaPath = "schema.json"
         introspection {
             sourceSetName = "main"
             endpointUrl = 'https://api.commercetools.com/test-php-dev-integration-1/graphql'
             headers = [
-                    Authorization: 'Bearer t0MJfdULkn5EagNMhVsUoe4FjVXw-8Rd'
+                    Authorization: 'Bearer 7viFGeHSomRowwtbpKoRSrreDlv6UVX-'
             ]
         }
     }
-
 }
