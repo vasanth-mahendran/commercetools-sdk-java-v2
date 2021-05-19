@@ -19,6 +19,7 @@ plugins {
     id "com.diffplug.spotless" version "5.12.4"
 
     id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
+    id 'org.javamodularity.moduleplugin' version '1.8.3' apply false
 }
 
 import java.text.SimpleDateFormat
@@ -123,7 +124,6 @@ allprojects {
 
     repositories {
         mavenCentral()
-        jcenter()
     }
 
     spotless {
@@ -162,6 +162,8 @@ subprojects { project ->
     apply plugin: 'java'
     apply plugin: 'java-library' // needed to make sure that transitive deps have 'compile' scope
 
+    apply plugin: 'org.javamodularity.moduleplugin'
+
     group='com.commercetools.sdk'
 
     version = globalVersion
@@ -194,15 +196,15 @@ subprojects { project ->
         testImplementation 'pl.pragmatists:JUnitParams:1.1.1'
     }
 
-    task integrationTest(type: Test) {
-        description = "Runs integration tests."
-        group = "verification"
-
-        testClassesDirs = sourceSets.integrationTest.output.classesDirs
-        classpath = sourceSets.integrationTest.runtimeClasspath
-        shouldRunAfter(test)
-    }
-    check.dependsOn(integrationTest)
+//    task integrationTest(type: Test) {
+//        description = "Runs integration tests."
+//        group = "verification"
+//
+//        testClassesDirs = sourceSets.integrationTest.output.classesDirs
+//        classpath = sourceSets.integrationTest.runtimeClasspath
+//        shouldRunAfter(test)
+//    }
+//    check.dependsOn(integrationTest)
 
     task sourcesJar(type: Jar) {
         archiveClassifier = 'sources'
@@ -279,9 +281,6 @@ subprojects { project ->
             sign publishing.publications.Maven
         }
     }
-
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
 }
 
 def exportedProjects= [

@@ -1,4 +1,3 @@
-
 dependencies {
     api project(':rmf:rmf-java-base')
     api "com.fasterxml.jackson.core:jackson-annotations:${versions.jackson}"

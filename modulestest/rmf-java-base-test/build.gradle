@@ -1,0 +1,6 @@
+modularity.standardJavaRelease 11
+
+dependencies {
+    implementation project(':rmf:rmf-java-base')
+    runtimeOnly project(':rmf:rmf-java-base')
+}

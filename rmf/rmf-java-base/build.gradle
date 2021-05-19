@@ -1,3 +1,10 @@
+modularity.mixedJavaRelease 8
+
+test {
+    moduleOptions {
+        runOnClasspath = true
+    }
+}
 
 dependencies {
     implementation "com.google.code.findbugs:jsr305:${versions.findbugs}"
