@@ -37,12 +37,18 @@ public interface TaxMode {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static TaxMode findEnum(String value) {
@@ -55,6 +61,10 @@ public interface TaxMode {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

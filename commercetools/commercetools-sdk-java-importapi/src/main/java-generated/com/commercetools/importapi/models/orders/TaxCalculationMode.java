@@ -32,12 +32,18 @@ public interface TaxCalculationMode {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static TaxCalculationMode findEnum(String value) {
@@ -50,6 +56,10 @@ public interface TaxCalculationMode {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

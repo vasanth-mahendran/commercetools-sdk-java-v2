@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update CustomerGroup by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyCustomerGroupsByIDPost
         extends ApiMethod<ByProjectKeyCustomerGroupsByIDPost, com.commercetools.api.models.customer_group.CustomerGroup>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyCustomerGroupsByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyCustomerGroupsByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomerGroupsByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCustomerGroupsByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyCustomerGroupsByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomerGroupsByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -63,13 +60,16 @@ public class ByProjectKeyCustomerGroupsByIDPost
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.customer_group.CustomerGroup> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.customer_group.CustomerGroup.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer_group.CustomerGroup>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer_group.CustomerGroup>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.customer_group.CustomerGroup.class);
     }
 
@@ -93,10 +93,16 @@ public class ByProjectKeyCustomerGroupsByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCustomerGroupsByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCustomerGroupsByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

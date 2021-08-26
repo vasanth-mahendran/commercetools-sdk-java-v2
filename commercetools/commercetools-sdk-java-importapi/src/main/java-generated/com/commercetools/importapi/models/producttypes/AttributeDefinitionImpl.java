@@ -63,6 +63,14 @@ public final class AttributeDefinitionImpl implements AttributeDefinition {
         return this.name;
     }
 
+    /**
+    *  <p>A localized string is a JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values the corresponding strings used for that language.</p>
+    *  <pre><code class="language-json">{
+    *    &quot;de&quot;: &quot;Hundefutter&quot;,
+    *    &quot;en&quot;: &quot;dog food&quot;
+    *  }
+    *  </code></pre>
+    */
     public com.commercetools.importapi.models.common.LocalizedString getLabel() {
         return this.label;
     }
@@ -75,6 +83,14 @@ public final class AttributeDefinitionImpl implements AttributeDefinition {
         return this.attributeConstraint;
     }
 
+    /**
+    *  <p>A localized string is a JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values the corresponding strings used for that language.</p>
+    *  <pre><code class="language-json">{
+    *    &quot;de&quot;: &quot;Hundefutter&quot;,
+    *    &quot;en&quot;: &quot;dog food&quot;
+    *  }
+    *  </code></pre>
+    */
     public com.commercetools.importapi.models.common.LocalizedString getInputTip() {
         return this.inputTip;
     }
@@ -130,15 +146,28 @@ public final class AttributeDefinitionImpl implements AttributeDefinition {
 
         AttributeDefinitionImpl that = (AttributeDefinitionImpl) o;
 
-        return new EqualsBuilder().append(type, that.type).append(name, that.name).append(label, that.label).append(
-            isRequired, that.isRequired).append(attributeConstraint, that.attributeConstraint).append(inputTip,
-                that.inputTip).append(inputHint, that.inputHint).append(isSearchable, that.isSearchable).isEquals();
+        return new EqualsBuilder().append(type, that.type)
+                .append(name, that.name)
+                .append(label, that.label)
+                .append(isRequired, that.isRequired)
+                .append(attributeConstraint, that.attributeConstraint)
+                .append(inputTip, that.inputTip)
+                .append(inputHint, that.inputHint)
+                .append(isSearchable, that.isSearchable)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(type).append(name).append(label).append(isRequired).append(
-            attributeConstraint).append(inputTip).append(inputHint).append(isSearchable).toHashCode();
+        return new HashCodeBuilder(17, 37).append(type)
+                .append(name)
+                .append(label)
+                .append(isRequired)
+                .append(attributeConstraint)
+                .append(inputTip)
+                .append(inputHint)
+                .append(isSearchable)
+                .toHashCode();
     }
 
 }

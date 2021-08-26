@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete CartDiscount by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyCartDiscountsKeyByKeyDelete extends
         ApiMethod<ByProjectKeyCartDiscountsKeyByKeyDelete, com.commercetools.api.models.cart_discount.CartDiscount>
@@ -22,7 +19,7 @@ public class ByProjectKeyCartDiscountsKeyByKeyDelete extends
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyCartDiscountsKeyByKeyDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyCartDiscountsKeyByKeyDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyCartDiscountsKeyByKeyDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCartDiscountsKeyByKeyDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyCartDiscountsKeyByKeyDelete> {
 
     private String projectKey;
     private String key;
@@ -51,14 +48,17 @@ public class ByProjectKeyCartDiscountsKeyByKeyDelete extends
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscount> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscount> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.cart_discount.CartDiscount.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscount>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.cart_discount.CartDiscount.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscount>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.cart_discount.CartDiscount.class);
     }
 
     public String getProjectKey() {
@@ -85,18 +85,30 @@ public class ByProjectKeyCartDiscountsKeyByKeyDelete extends
         this.key = key;
     }
 
-    public ByProjectKeyCartDiscountsKeyByKeyDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyCartDiscountsKeyByKeyDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyCartDiscountsKeyByKeyDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyCartDiscountsKeyByKeyDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCartDiscountsKeyByKeyDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCartDiscountsKeyByKeyDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

@@ -2,13 +2,15 @@
 package com.commercetools.api.models.project;
 
 import java.util.*;
+import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
+import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public final class ProjectBuilder {
+public final class ProjectBuilder implements Builder<Project> {
 
     private Long version;
 
@@ -36,6 +38,12 @@ public final class ProjectBuilder {
     private com.commercetools.api.models.project.ExternalOAuth externalOAuth;
 
     private com.commercetools.api.models.project.CartsConfiguration carts;
+
+    @Nullable
+    private com.commercetools.api.models.project.SearchIndexingConfiguration searchIndexing;
+
+    @Nullable
+    private com.commercetools.api.models.project.ShoppingListsConfiguration shoppingLists;
 
     public ProjectBuilder version(final Long version) {
         this.version = version;
@@ -92,6 +100,12 @@ public final class ProjectBuilder {
         return this;
     }
 
+    public ProjectBuilder messages(
+            Function<com.commercetools.api.models.message.MessageConfigurationBuilder, com.commercetools.api.models.message.MessageConfigurationBuilder> builder) {
+        this.messages = builder.apply(com.commercetools.api.models.message.MessageConfigurationBuilder.of()).build();
+        return this;
+    }
+
     public ProjectBuilder messages(final com.commercetools.api.models.message.MessageConfiguration messages) {
         this.messages = messages;
         return this;
@@ -104,13 +118,52 @@ public final class ProjectBuilder {
     }
 
     public ProjectBuilder externalOAuth(
+            Function<com.commercetools.api.models.project.ExternalOAuthBuilder, com.commercetools.api.models.project.ExternalOAuthBuilder> builder) {
+        this.externalOAuth = builder.apply(com.commercetools.api.models.project.ExternalOAuthBuilder.of()).build();
+        return this;
+    }
+
+    public ProjectBuilder externalOAuth(
             @Nullable final com.commercetools.api.models.project.ExternalOAuth externalOAuth) {
         this.externalOAuth = externalOAuth;
         return this;
     }
 
+    public ProjectBuilder carts(
+            Function<com.commercetools.api.models.project.CartsConfigurationBuilder, com.commercetools.api.models.project.CartsConfigurationBuilder> builder) {
+        this.carts = builder.apply(com.commercetools.api.models.project.CartsConfigurationBuilder.of()).build();
+        return this;
+    }
+
     public ProjectBuilder carts(final com.commercetools.api.models.project.CartsConfiguration carts) {
         this.carts = carts;
+        return this;
+    }
+
+    public ProjectBuilder searchIndexing(
+            Function<com.commercetools.api.models.project.SearchIndexingConfigurationBuilder, com.commercetools.api.models.project.SearchIndexingConfigurationBuilder> builder) {
+        this.searchIndexing = builder
+                .apply(com.commercetools.api.models.project.SearchIndexingConfigurationBuilder.of())
+                .build();
+        return this;
+    }
+
+    public ProjectBuilder searchIndexing(
+            @Nullable final com.commercetools.api.models.project.SearchIndexingConfiguration searchIndexing) {
+        this.searchIndexing = searchIndexing;
+        return this;
+    }
+
+    public ProjectBuilder shoppingLists(
+            Function<com.commercetools.api.models.project.ShoppingListsConfigurationBuilder, com.commercetools.api.models.project.ShoppingListsConfigurationBuilder> builder) {
+        this.shoppingLists = builder.apply(com.commercetools.api.models.project.ShoppingListsConfigurationBuilder.of())
+                .build();
+        return this;
+    }
+
+    public ProjectBuilder shoppingLists(
+            @Nullable final com.commercetools.api.models.project.ShoppingListsConfiguration shoppingLists) {
+        this.shoppingLists = shoppingLists;
         return this;
     }
 
@@ -165,9 +218,36 @@ public final class ProjectBuilder {
         return this.carts;
     }
 
+    @Nullable
+    public com.commercetools.api.models.project.SearchIndexingConfiguration getSearchIndexing() {
+        return this.searchIndexing;
+    }
+
+    @Nullable
+    public com.commercetools.api.models.project.ShoppingListsConfiguration getShoppingLists() {
+        return this.shoppingLists;
+    }
+
     public Project build() {
+        Objects.requireNonNull(version, Project.class + ": version is missing");
+        Objects.requireNonNull(key, Project.class + ": key is missing");
+        Objects.requireNonNull(name, Project.class + ": name is missing");
+        Objects.requireNonNull(countries, Project.class + ": countries is missing");
+        Objects.requireNonNull(currencies, Project.class + ": currencies is missing");
+        Objects.requireNonNull(languages, Project.class + ": languages is missing");
+        Objects.requireNonNull(createdAt, Project.class + ": createdAt is missing");
+        Objects.requireNonNull(messages, Project.class + ": messages is missing");
+        Objects.requireNonNull(carts, Project.class + ": carts is missing");
         return new ProjectImpl(version, key, name, countries, currencies, languages, createdAt, trialUntil, messages,
-            shippingRateInputType, externalOAuth, carts);
+            shippingRateInputType, externalOAuth, carts, searchIndexing, shoppingLists);
+    }
+
+    /**
+     * builds Project without checking for non null required values
+     */
+    public Project buildUnchecked() {
+        return new ProjectImpl(version, key, name, countries, currencies, languages, createdAt, trialUntil, messages,
+            shippingRateInputType, externalOAuth, carts, searchIndexing, shoppingLists);
     }
 
     public static ProjectBuilder of() {
@@ -188,6 +268,8 @@ public final class ProjectBuilder {
         builder.shippingRateInputType = template.getShippingRateInputType();
         builder.externalOAuth = template.getExternalOAuth();
         builder.carts = template.getCarts();
+        builder.searchIndexing = template.getSearchIndexing();
+        builder.shoppingLists = template.getShoppingLists();
         return builder;
     }
 

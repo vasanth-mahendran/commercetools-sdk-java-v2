@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Create ShippingMethod</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyShippingMethodsPost
         extends ApiMethod<ByProjectKeyShippingMethodsPost, com.commercetools.api.models.shipping_method.ShippingMethod>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyShippingMethodsPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyShippingMethodsPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyShippingMethodsPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyShippingMethodsPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyShippingMethodsPost> {
 
     private String projectKey;
 
@@ -59,13 +56,16 @@ public class ByProjectKeyShippingMethodsPost
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethod> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.shipping_method.ShippingMethod.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethod>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethod>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.shipping_method.ShippingMethod.class);
     }
 
@@ -81,10 +81,16 @@ public class ByProjectKeyShippingMethodsPost
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyShippingMethodsPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyShippingMethodsPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

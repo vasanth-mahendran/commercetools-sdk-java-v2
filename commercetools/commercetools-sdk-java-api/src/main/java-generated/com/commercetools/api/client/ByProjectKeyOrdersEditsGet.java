@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Query edits</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyOrdersEditsGet extends
         ApiMethod<ByProjectKeyOrdersEditsGet, com.commercetools.api.models.order_edit.OrderEditPagedQueryResponse>
@@ -25,7 +22,7 @@ public class ByProjectKeyOrdersEditsGet extends
         com.commercetools.api.client.PagingTrait<ByProjectKeyOrdersEditsGet>,
         com.commercetools.api.client.QueryTrait<ByProjectKeyOrdersEditsGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersEditsGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyOrdersEditsGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyOrdersEditsGet> {
 
     private String projectKey;
 
@@ -52,13 +49,17 @@ public class ByProjectKeyOrdersEditsGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEditPagedQueryResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.api.models.order_edit.OrderEditPagedQueryResponse.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEditPagedQueryResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEditPagedQueryResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.order_edit.OrderEditPagedQueryResponse.class);
     }
 
@@ -94,58 +95,100 @@ public class ByProjectKeyOrdersEditsGet extends
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyOrdersEditsGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyOrdersEditsGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }
 
+    /**
+     * set sort with the specificied value
+     */
     public ByProjectKeyOrdersEditsGet withSort(final String sort) {
         return copy().withQueryParam("sort", sort);
     }
 
+    /**
+     * add additional sort query parameter
+     */
     public ByProjectKeyOrdersEditsGet addSort(final String sort) {
         return copy().addQueryParam("sort", sort);
     }
 
-    public ByProjectKeyOrdersEditsGet withLimit(final Integer limit) {
+    /**
+     * set limit with the specificied value
+     */
+    public ByProjectKeyOrdersEditsGet withLimit(final int limit) {
         return copy().withQueryParam("limit", limit);
     }
 
-    public ByProjectKeyOrdersEditsGet addLimit(final Integer limit) {
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyOrdersEditsGet addLimit(final int limit) {
         return copy().addQueryParam("limit", limit);
     }
 
-    public ByProjectKeyOrdersEditsGet withOffset(final Integer offset) {
+    /**
+     * set offset with the specificied value
+     */
+    public ByProjectKeyOrdersEditsGet withOffset(final int offset) {
         return copy().withQueryParam("offset", offset);
     }
 
-    public ByProjectKeyOrdersEditsGet addOffset(final Integer offset) {
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyOrdersEditsGet addOffset(final int offset) {
         return copy().addQueryParam("offset", offset);
     }
 
-    public ByProjectKeyOrdersEditsGet withWithTotal(final Boolean withTotal) {
+    /**
+     * set withTotal with the specificied value
+     */
+    public ByProjectKeyOrdersEditsGet withWithTotal(final boolean withTotal) {
         return copy().withQueryParam("withTotal", withTotal);
     }
 
-    public ByProjectKeyOrdersEditsGet addWithTotal(final Boolean withTotal) {
+    /**
+     * add additional withTotal query parameter
+     */
+    public ByProjectKeyOrdersEditsGet addWithTotal(final boolean withTotal) {
         return copy().addQueryParam("withTotal", withTotal);
     }
 
+    /**
+     * set where with the specificied value
+     */
     public ByProjectKeyOrdersEditsGet withWhere(final String where) {
         return copy().withQueryParam("where", where);
     }
 
+    /**
+     * add additional where query parameter
+     */
     public ByProjectKeyOrdersEditsGet addWhere(final String where) {
         return copy().addQueryParam("where", where);
     }
 
+    /**
+     * set predicateVar with the specificied value
+     */
     public ByProjectKeyOrdersEditsGet withPredicateVar(final String varName, final String predicateVar) {
         return copy().withQueryParam(String.format("var.%s", varName), predicateVar);
     }
 
+    /**
+     * add additional predicateVar query parameter
+     */
     public ByProjectKeyOrdersEditsGet addPredicateVar(final String varName, final String predicateVar) {
         return copy().addQueryParam(String.format("var.%s", varName), predicateVar);
     }

@@ -41,12 +41,18 @@ public interface TransactionType {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static TransactionType findEnum(String value) {
@@ -59,6 +65,10 @@ public interface TransactionType {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

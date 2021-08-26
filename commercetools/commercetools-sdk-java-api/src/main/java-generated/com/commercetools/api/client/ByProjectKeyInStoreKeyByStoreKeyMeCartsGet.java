@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Query carts</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyInStoreKeyByStoreKeyMeCartsGet extends
         ApiMethod<ByProjectKeyInStoreKeyByStoreKeyMeCartsGet, com.commercetools.api.models.cart.CartPagedQueryResponse>
@@ -23,7 +20,7 @@ public class ByProjectKeyInStoreKeyByStoreKeyMeCartsGet extends
         com.commercetools.api.client.PagingTrait<ByProjectKeyInStoreKeyByStoreKeyMeCartsGet>,
         com.commercetools.api.client.QueryTrait<ByProjectKeyInStoreKeyByStoreKeyMeCartsGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyInStoreKeyByStoreKeyMeCartsGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyInStoreKeyByStoreKeyMeCartsGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyInStoreKeyByStoreKeyMeCartsGet> {
 
     private String projectKey;
     private String storeKey;
@@ -53,14 +50,17 @@ public class ByProjectKeyInStoreKeyByStoreKeyMeCartsGet extends
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.cart.CartPagedQueryResponse> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.cart.CartPagedQueryResponse> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.cart.CartPagedQueryResponse.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart.CartPagedQueryResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.cart.CartPagedQueryResponse.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart.CartPagedQueryResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.cart.CartPagedQueryResponse.class);
     }
 
     public String getProjectKey() {
@@ -103,59 +103,101 @@ public class ByProjectKeyInStoreKeyByStoreKeyMeCartsGet extends
         this.storeKey = storeKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }
 
+    /**
+     * set sort with the specificied value
+     */
     public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withSort(final String sort) {
         return copy().withQueryParam("sort", sort);
     }
 
+    /**
+     * add additional sort query parameter
+     */
     public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addSort(final String sort) {
         return copy().addQueryParam("sort", sort);
     }
 
-    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withLimit(final Integer limit) {
+    /**
+     * set limit with the specificied value
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withLimit(final int limit) {
         return copy().withQueryParam("limit", limit);
     }
 
-    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addLimit(final Integer limit) {
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addLimit(final int limit) {
         return copy().addQueryParam("limit", limit);
     }
 
-    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withOffset(final Integer offset) {
+    /**
+     * set offset with the specificied value
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withOffset(final int offset) {
         return copy().withQueryParam("offset", offset);
     }
 
-    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addOffset(final Integer offset) {
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addOffset(final int offset) {
         return copy().addQueryParam("offset", offset);
     }
 
-    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withWithTotal(final Boolean withTotal) {
+    /**
+     * set withTotal with the specificied value
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withWithTotal(final boolean withTotal) {
         return copy().withQueryParam("withTotal", withTotal);
     }
 
-    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addWithTotal(final Boolean withTotal) {
+    /**
+     * add additional withTotal query parameter
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addWithTotal(final boolean withTotal) {
         return copy().addQueryParam("withTotal", withTotal);
     }
 
+    /**
+     * set where with the specificied value
+     */
     public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withWhere(final String where) {
         return copy().withQueryParam("where", where);
     }
 
+    /**
+     * add additional where query parameter
+     */
     public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addWhere(final String where) {
         return copy().addQueryParam("where", where);
     }
 
+    /**
+     * set predicateVar with the specificied value
+     */
     public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet withPredicateVar(final String varName,
             final String predicateVar) {
         return copy().withQueryParam(String.format("var.%s", varName), predicateVar);
     }
 
+    /**
+     * add additional predicateVar query parameter
+     */
     public ByProjectKeyInStoreKeyByStoreKeyMeCartsGet addPredicateVar(final String varName, final String predicateVar) {
         return copy().addQueryParam(String.format("var.%s", varName), predicateVar);
     }

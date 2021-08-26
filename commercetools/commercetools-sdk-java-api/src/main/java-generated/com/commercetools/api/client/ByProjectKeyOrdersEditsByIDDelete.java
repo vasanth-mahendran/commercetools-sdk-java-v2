@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete OrderEdit by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyOrdersEditsByIDDelete
         extends ApiMethod<ByProjectKeyOrdersEditsByIDDelete, com.commercetools.api.models.order_edit.OrderEdit>
@@ -22,7 +19,7 @@ public class ByProjectKeyOrdersEditsByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyOrdersEditsByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyOrdersEditsByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersEditsByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyOrdersEditsByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyOrdersEditsByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -51,14 +48,17 @@ public class ByProjectKeyOrdersEditsByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.order_edit.OrderEdit.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.order_edit.OrderEdit.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.order_edit.OrderEdit.class);
     }
 
     public String getProjectKey() {
@@ -85,18 +85,30 @@ public class ByProjectKeyOrdersEditsByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyOrdersEditsByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyOrdersEditsByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyOrdersEditsByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyOrdersEditsByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyOrdersEditsByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyOrdersEditsByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

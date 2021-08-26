@@ -29,12 +29,18 @@ public interface ExtensionAction {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static ExtensionAction findEnum(String value) {
@@ -47,6 +53,10 @@ public interface ExtensionAction {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

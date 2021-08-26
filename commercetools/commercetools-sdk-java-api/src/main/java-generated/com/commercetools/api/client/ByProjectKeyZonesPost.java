@@ -12,14 +12,11 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Create Zone</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyZonesPost extends ApiMethod<ByProjectKeyZonesPost, com.commercetools.api.models.zone.Zone>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyZonesPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyZonesPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyZonesPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyZonesPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyZonesPost> {
 
     private String projectKey;
 
@@ -57,13 +54,16 @@ public class ByProjectKeyZonesPost extends ApiMethod<ByProjectKeyZonesPost, com.
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.zone.Zone> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.zone.Zone> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.zone.Zone.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.zone.Zone>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.zone.Zone.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.zone.Zone>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.zone.Zone.class);
     }
 
     public String getProjectKey() {
@@ -78,10 +78,16 @@ public class ByProjectKeyZonesPost extends ApiMethod<ByProjectKeyZonesPost, com.
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyZonesPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyZonesPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

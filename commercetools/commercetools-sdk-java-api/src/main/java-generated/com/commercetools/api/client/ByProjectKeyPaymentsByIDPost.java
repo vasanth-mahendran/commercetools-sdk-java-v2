@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update Payment by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyPaymentsByIDPost
         extends ApiMethod<ByProjectKeyPaymentsByIDPost, com.commercetools.api.models.payment.Payment>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyPaymentsByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyPaymentsByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyPaymentsByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyPaymentsByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyPaymentsByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyPaymentsByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -62,13 +59,17 @@ public class ByProjectKeyPaymentsByIDPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.payment.Payment> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.payment.Payment> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.payment.Payment.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.payment.Payment>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.payment.Payment.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.payment.Payment>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.payment.Payment.class);
     }
 
     public String getProjectKey() {
@@ -91,10 +92,16 @@ public class ByProjectKeyPaymentsByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyPaymentsByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyPaymentsByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

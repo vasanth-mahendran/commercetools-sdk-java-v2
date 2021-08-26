@@ -2,17 +2,19 @@
 package com.commercetools.api.models.me;
 
 import java.util.*;
+import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
+import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public final class MyCartChangeLineItemQuantityActionBuilder {
+public final class MyCartChangeLineItemQuantityActionBuilder implements Builder<MyCartChangeLineItemQuantityAction> {
 
     private String lineItemId;
 
-    private Double quantity;
+    private Long quantity;
 
     @Nullable
     private com.commercetools.api.models.common.Money externalPrice;
@@ -25,14 +27,28 @@ public final class MyCartChangeLineItemQuantityActionBuilder {
         return this;
     }
 
-    public MyCartChangeLineItemQuantityActionBuilder quantity(final Double quantity) {
+    public MyCartChangeLineItemQuantityActionBuilder quantity(final Long quantity) {
         this.quantity = quantity;
+        return this;
+    }
+
+    public MyCartChangeLineItemQuantityActionBuilder externalPrice(
+            Function<com.commercetools.api.models.common.MoneyBuilder, com.commercetools.api.models.common.MoneyBuilder> builder) {
+        this.externalPrice = builder.apply(com.commercetools.api.models.common.MoneyBuilder.of()).build();
         return this;
     }
 
     public MyCartChangeLineItemQuantityActionBuilder externalPrice(
             @Nullable final com.commercetools.api.models.common.Money externalPrice) {
         this.externalPrice = externalPrice;
+        return this;
+    }
+
+    public MyCartChangeLineItemQuantityActionBuilder externalTotalPrice(
+            Function<com.commercetools.api.models.cart.ExternalLineItemTotalPriceBuilder, com.commercetools.api.models.cart.ExternalLineItemTotalPriceBuilder> builder) {
+        this.externalTotalPrice = builder
+                .apply(com.commercetools.api.models.cart.ExternalLineItemTotalPriceBuilder.of())
+                .build();
         return this;
     }
 
@@ -46,7 +62,7 @@ public final class MyCartChangeLineItemQuantityActionBuilder {
         return this.lineItemId;
     }
 
-    public Double getQuantity() {
+    public Long getQuantity() {
         return this.quantity;
     }
 
@@ -61,6 +77,15 @@ public final class MyCartChangeLineItemQuantityActionBuilder {
     }
 
     public MyCartChangeLineItemQuantityAction build() {
+        Objects.requireNonNull(lineItemId, MyCartChangeLineItemQuantityAction.class + ": lineItemId is missing");
+        Objects.requireNonNull(quantity, MyCartChangeLineItemQuantityAction.class + ": quantity is missing");
+        return new MyCartChangeLineItemQuantityActionImpl(lineItemId, quantity, externalPrice, externalTotalPrice);
+    }
+
+    /**
+     * builds MyCartChangeLineItemQuantityAction without checking for non null required values
+     */
+    public MyCartChangeLineItemQuantityAction buildUnchecked() {
         return new MyCartChangeLineItemQuantityActionImpl(lineItemId, quantity, externalPrice, externalTotalPrice);
     }
 

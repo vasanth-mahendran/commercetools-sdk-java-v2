@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
-*  <p>This enumeration describes the operation state of a newly created import operation.</p>
+*  <p>Describes the validation state of a newly created <a href="#importoperation">ImportOperation</a>.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public interface ImportOperationState {
@@ -25,18 +25,11 @@ public interface ImportOperationState {
 
     */
     ImportOperationState VALIDATION_FAILED = ImportOperationStateEnum.VALIDATION_FAILED;
-    /**
-    	<p>The import resource is being deleted.</p>
-
-    */
-    ImportOperationState DELETE = ImportOperationStateEnum.DELETE;
 
     enum ImportOperationStateEnum implements ImportOperationState {
         UNRESOLVED("Unresolved"),
 
-        VALIDATION_FAILED("ValidationFailed"),
-
-        DELETE("Delete");
+        VALIDATION_FAILED("ValidationFailed");
         private final String jsonName;
 
         private ImportOperationStateEnum(final String jsonName) {
@@ -46,12 +39,18 @@ public interface ImportOperationState {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static ImportOperationState findEnum(String value) {
@@ -64,6 +63,10 @@ public interface ImportOperationState {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

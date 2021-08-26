@@ -21,7 +21,7 @@ public class ByProjectKeyOrdersOrderNumberByOrderNumberGet
         extends ApiMethod<ByProjectKeyOrdersOrderNumberByOrderNumberGet, com.commercetools.api.models.order.Order>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyOrdersOrderNumberByOrderNumberGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersOrderNumberByOrderNumberGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyOrdersOrderNumberByOrderNumberGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyOrdersOrderNumberByOrderNumberGet> {
 
     private String projectKey;
     private String orderNumber;
@@ -51,13 +51,16 @@ public class ByProjectKeyOrdersOrderNumberByOrderNumberGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.order.Order.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class);
     }
 
     public String getProjectKey() {
@@ -80,10 +83,16 @@ public class ByProjectKeyOrdersOrderNumberByOrderNumberGet
         this.orderNumber = orderNumber;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyOrdersOrderNumberByOrderNumberGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyOrdersOrderNumberByOrderNumberGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

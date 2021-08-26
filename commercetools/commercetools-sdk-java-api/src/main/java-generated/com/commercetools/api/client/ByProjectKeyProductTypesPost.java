@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Create ProductType</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyProductTypesPost
         extends ApiMethod<ByProjectKeyProductTypesPost, com.commercetools.api.models.product_type.ProductType>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyProductTypesPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductTypesPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyProductTypesPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyProductTypesPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductTypesPost> {
 
     private String projectKey;
 
@@ -58,14 +55,17 @@ public class ByProjectKeyProductTypesPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.product_type.ProductType> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.product_type.ProductType> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.product_type.ProductType.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_type.ProductType>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.product_type.ProductType.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_type.ProductType>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.product_type.ProductType.class);
     }
 
     public String getProjectKey() {
@@ -80,10 +80,16 @@ public class ByProjectKeyProductTypesPost
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyProductTypesPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyProductTypesPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

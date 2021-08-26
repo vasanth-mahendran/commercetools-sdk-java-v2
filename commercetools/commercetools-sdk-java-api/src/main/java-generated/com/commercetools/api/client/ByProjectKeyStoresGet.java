@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Query stores</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyStoresGet
         extends ApiMethod<ByProjectKeyStoresGet, com.commercetools.api.models.store.StorePagedQueryResponse> implements
@@ -24,7 +21,7 @@ public class ByProjectKeyStoresGet
         com.commercetools.api.client.PagingTrait<ByProjectKeyStoresGet>,
         com.commercetools.api.client.QueryTrait<ByProjectKeyStoresGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyStoresGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyStoresGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyStoresGet> {
 
     private String projectKey;
 
@@ -51,13 +48,16 @@ public class ByProjectKeyStoresGet
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.store.StorePagedQueryResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.store.StorePagedQueryResponse.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.store.StorePagedQueryResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.store.StorePagedQueryResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.store.StorePagedQueryResponse.class);
     }
 
@@ -93,58 +93,100 @@ public class ByProjectKeyStoresGet
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyStoresGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyStoresGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }
 
+    /**
+     * set sort with the specificied value
+     */
     public ByProjectKeyStoresGet withSort(final String sort) {
         return copy().withQueryParam("sort", sort);
     }
 
+    /**
+     * add additional sort query parameter
+     */
     public ByProjectKeyStoresGet addSort(final String sort) {
         return copy().addQueryParam("sort", sort);
     }
 
-    public ByProjectKeyStoresGet withLimit(final Integer limit) {
+    /**
+     * set limit with the specificied value
+     */
+    public ByProjectKeyStoresGet withLimit(final int limit) {
         return copy().withQueryParam("limit", limit);
     }
 
-    public ByProjectKeyStoresGet addLimit(final Integer limit) {
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyStoresGet addLimit(final int limit) {
         return copy().addQueryParam("limit", limit);
     }
 
-    public ByProjectKeyStoresGet withOffset(final Integer offset) {
+    /**
+     * set offset with the specificied value
+     */
+    public ByProjectKeyStoresGet withOffset(final int offset) {
         return copy().withQueryParam("offset", offset);
     }
 
-    public ByProjectKeyStoresGet addOffset(final Integer offset) {
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyStoresGet addOffset(final int offset) {
         return copy().addQueryParam("offset", offset);
     }
 
-    public ByProjectKeyStoresGet withWithTotal(final Boolean withTotal) {
+    /**
+     * set withTotal with the specificied value
+     */
+    public ByProjectKeyStoresGet withWithTotal(final boolean withTotal) {
         return copy().withQueryParam("withTotal", withTotal);
     }
 
-    public ByProjectKeyStoresGet addWithTotal(final Boolean withTotal) {
+    /**
+     * add additional withTotal query parameter
+     */
+    public ByProjectKeyStoresGet addWithTotal(final boolean withTotal) {
         return copy().addQueryParam("withTotal", withTotal);
     }
 
+    /**
+     * set where with the specificied value
+     */
     public ByProjectKeyStoresGet withWhere(final String where) {
         return copy().withQueryParam("where", where);
     }
 
+    /**
+     * add additional where query parameter
+     */
     public ByProjectKeyStoresGet addWhere(final String where) {
         return copy().addQueryParam("where", where);
     }
 
+    /**
+     * set predicateVar with the specificied value
+     */
     public ByProjectKeyStoresGet withPredicateVar(final String varName, final String predicateVar) {
         return copy().withQueryParam(String.format("var.%s", varName), predicateVar);
     }
 
+    /**
+     * add additional predicateVar query parameter
+     */
     public ByProjectKeyStoresGet addPredicateVar(final String varName, final String predicateVar) {
         return copy().addQueryParam(String.format("var.%s", varName), predicateVar);
     }

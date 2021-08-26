@@ -20,8 +20,8 @@ public class ByProjectKeyShoppingListsKeyByKeyPost extends
         ApiMethod<ByProjectKeyShoppingListsKeyByKeyPost, com.commercetools.api.models.shopping_list.ShoppingList>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyShoppingListsKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyShoppingListsKeyByKeyPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyShoppingListsKeyByKeyPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyShoppingListsKeyByKeyPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyShoppingListsKeyByKeyPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyShoppingListsKeyByKeyPost> {
 
     private String projectKey;
     private String key;
@@ -62,14 +62,17 @@ public class ByProjectKeyShoppingListsKeyByKeyPost extends
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.shopping_list.ShoppingList.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.shopping_list.ShoppingList.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.shopping_list.ShoppingList.class);
     }
 
     public String getProjectKey() {
@@ -92,10 +95,16 @@ public class ByProjectKeyShoppingListsKeyByKeyPost extends
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyShoppingListsKeyByKeyPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyShoppingListsKeyByKeyPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

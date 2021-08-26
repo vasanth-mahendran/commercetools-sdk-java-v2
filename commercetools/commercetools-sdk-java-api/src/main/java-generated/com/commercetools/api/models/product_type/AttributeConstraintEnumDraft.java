@@ -25,12 +25,18 @@ public interface AttributeConstraintEnumDraft {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static AttributeConstraintEnumDraft findEnum(String value) {
@@ -43,6 +49,10 @@ public interface AttributeConstraintEnumDraft {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

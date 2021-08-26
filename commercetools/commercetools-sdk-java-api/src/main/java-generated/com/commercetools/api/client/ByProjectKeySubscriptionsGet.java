@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Query subscriptions</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeySubscriptionsGet extends
         ApiMethod<ByProjectKeySubscriptionsGet, com.commercetools.api.models.subscription.SubscriptionPagedQueryResponse>
@@ -25,7 +22,7 @@ public class ByProjectKeySubscriptionsGet extends
         com.commercetools.api.client.PagingTrait<ByProjectKeySubscriptionsGet>,
         com.commercetools.api.client.QueryTrait<ByProjectKeySubscriptionsGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeySubscriptionsGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeySubscriptionsGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeySubscriptionsGet> {
 
     private String projectKey;
 
@@ -52,13 +49,17 @@ public class ByProjectKeySubscriptionsGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.subscription.SubscriptionPagedQueryResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.api.models.subscription.SubscriptionPagedQueryResponse.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.subscription.SubscriptionPagedQueryResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.subscription.SubscriptionPagedQueryResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.subscription.SubscriptionPagedQueryResponse.class);
     }
 
@@ -94,58 +95,100 @@ public class ByProjectKeySubscriptionsGet extends
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeySubscriptionsGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeySubscriptionsGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }
 
+    /**
+     * set sort with the specificied value
+     */
     public ByProjectKeySubscriptionsGet withSort(final String sort) {
         return copy().withQueryParam("sort", sort);
     }
 
+    /**
+     * add additional sort query parameter
+     */
     public ByProjectKeySubscriptionsGet addSort(final String sort) {
         return copy().addQueryParam("sort", sort);
     }
 
-    public ByProjectKeySubscriptionsGet withLimit(final Integer limit) {
+    /**
+     * set limit with the specificied value
+     */
+    public ByProjectKeySubscriptionsGet withLimit(final int limit) {
         return copy().withQueryParam("limit", limit);
     }
 
-    public ByProjectKeySubscriptionsGet addLimit(final Integer limit) {
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeySubscriptionsGet addLimit(final int limit) {
         return copy().addQueryParam("limit", limit);
     }
 
-    public ByProjectKeySubscriptionsGet withOffset(final Integer offset) {
+    /**
+     * set offset with the specificied value
+     */
+    public ByProjectKeySubscriptionsGet withOffset(final int offset) {
         return copy().withQueryParam("offset", offset);
     }
 
-    public ByProjectKeySubscriptionsGet addOffset(final Integer offset) {
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeySubscriptionsGet addOffset(final int offset) {
         return copy().addQueryParam("offset", offset);
     }
 
-    public ByProjectKeySubscriptionsGet withWithTotal(final Boolean withTotal) {
+    /**
+     * set withTotal with the specificied value
+     */
+    public ByProjectKeySubscriptionsGet withWithTotal(final boolean withTotal) {
         return copy().withQueryParam("withTotal", withTotal);
     }
 
-    public ByProjectKeySubscriptionsGet addWithTotal(final Boolean withTotal) {
+    /**
+     * add additional withTotal query parameter
+     */
+    public ByProjectKeySubscriptionsGet addWithTotal(final boolean withTotal) {
         return copy().addQueryParam("withTotal", withTotal);
     }
 
+    /**
+     * set where with the specificied value
+     */
     public ByProjectKeySubscriptionsGet withWhere(final String where) {
         return copy().withQueryParam("where", where);
     }
 
+    /**
+     * add additional where query parameter
+     */
     public ByProjectKeySubscriptionsGet addWhere(final String where) {
         return copy().addQueryParam("where", where);
     }
 
+    /**
+     * set predicateVar with the specificied value
+     */
     public ByProjectKeySubscriptionsGet withPredicateVar(final String varName, final String predicateVar) {
         return copy().withQueryParam(String.format("var.%s", varName), predicateVar);
     }
 
+    /**
+     * add additional predicateVar query parameter
+     */
     public ByProjectKeySubscriptionsGet addPredicateVar(final String varName, final String predicateVar) {
         return copy().addQueryParam(String.format("var.%s", varName), predicateVar);
     }

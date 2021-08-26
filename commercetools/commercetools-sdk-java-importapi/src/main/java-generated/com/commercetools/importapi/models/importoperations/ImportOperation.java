@@ -9,6 +9,7 @@ import java.util.function.Function;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.commercetools.importapi.models.common.KeyReference;
 import com.commercetools.importapi.models.common.ProcessingState;
 import com.commercetools.importapi.models.errors.ErrorObject;
 import com.fasterxml.jackson.annotation.*;
@@ -17,85 +18,84 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
-*  <p>Tracks the status of a single import resource as it is imported into the commercetools project.</p>
+*  <p>Shows the import status of a specific resource.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = ImportOperationImpl.class)
 public interface ImportOperation {
 
     /**
-    *  <p>The import operation version.</p>
+    *  <p>The version of the ImportOperation.</p>
     */
     @NotNull
     @JsonProperty("version")
     public Long getVersion();
 
     /**
-    *  <p>The key of the import sink.</p>
+    *  <p>The key of the <a href="/import-sink#importsink">ImportSink</a>.</p>
     */
     @NotNull
     @JsonProperty("importSinkKey")
     public String getImportSinkKey();
 
     /**
-    *  <p>The key of the import resource.</p>
+    *  <p>The key of the resource.</p>
     */
     @NotNull
     @JsonProperty("resourceKey")
     public String getResourceKey();
 
     /**
-    *  <p>The identifier of the operaton that is to be commited</p>
+    *  <p>The ID of the ImportOperation.</p>
     */
     @NotNull
     @JsonProperty("id")
     public String getId();
 
     /**
-    *  <p>The status of the import resource.</p>
+    *  <p>The import status of the resource. Set to <code>Rejected</code> or <code>ValidationFailed</code> if the import of the resource was not successful.</p>
     */
     @NotNull
     @JsonProperty("state")
     public ProcessingState getState();
 
     /**
-    *  <p>When the resource is successfully imported, this represents the imported resource version</p>
+    *  <p>The version of the impmorted resource when the import was successful.</p>
     */
 
     @JsonProperty("resourceVersion")
     public Long getResourceVersion();
 
     /**
-    *  <p>The number of request retries for processing the import resource.</p>
-    */
-    @NotNull
-    @JsonProperty("retryCount")
-    public Integer getRetryCount();
-
-    /**
-    *  <p>If an import resource does not import correctly, the state is set to <code>Rejected</code> or <code>ValidationFailed</code>
-    *  and this property contains the errors.</p>
+    *  <p>Contains an error if the import of the resource was not successful. See <a href="/error">Errors</a>.</p>
     */
     @Valid
     @JsonProperty("errors")
     public List<ErrorObject> getErrors();
 
     /**
-    *  <p>When the import operation was created.</p>
+    *  <p>In case of unresolved status this array will show the unresolved references</p>
+    */
+    @Valid
+    @JsonProperty("unresolvedReferences")
+    public List<KeyReference> getUnresolvedReferences();
+
+    /**
+    *  <p>The time when the ImportOperation was created.</p>
     */
     @NotNull
     @JsonProperty("createdAt")
     public ZonedDateTime getCreatedAt();
 
     /**
-    *  <p>When the import operation was modified.</p>
+    *  <p>The last time When the ImportOperation was modified.</p>
     */
     @NotNull
     @JsonProperty("lastModifiedAt")
     public ZonedDateTime getLastModifiedAt();
 
     /**
-    *  <p>When the import operation expires.</p>
+    *  <p>The expiration time of the ImportOperation.</p>
     */
     @NotNull
     @JsonProperty("expiresAt")
@@ -113,12 +113,15 @@ public interface ImportOperation {
 
     public void setResourceVersion(final Long resourceVersion);
 
-    public void setRetryCount(final Integer retryCount);
-
     @JsonIgnore
     public void setErrors(final ErrorObject... errors);
 
     public void setErrors(final List<ErrorObject> errors);
+
+    @JsonIgnore
+    public void setUnresolvedReferences(final KeyReference... unresolvedReferences);
+
+    public void setUnresolvedReferences(final List<KeyReference> unresolvedReferences);
 
     public void setCreatedAt(final ZonedDateTime createdAt);
 
@@ -138,8 +141,8 @@ public interface ImportOperation {
         instance.setId(template.getId());
         instance.setState(template.getState());
         instance.setResourceVersion(template.getResourceVersion());
-        instance.setRetryCount(template.getRetryCount());
         instance.setErrors(template.getErrors());
+        instance.setUnresolvedReferences(template.getUnresolvedReferences());
         instance.setCreatedAt(template.getCreatedAt());
         instance.setLastModifiedAt(template.getLastModifiedAt());
         instance.setExpiresAt(template.getExpiresAt());

@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete ShippingMethod by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyShippingMethodsByIDDelete extends
         ApiMethod<ByProjectKeyShippingMethodsByIDDelete, com.commercetools.api.models.shipping_method.ShippingMethod>
@@ -22,7 +19,7 @@ public class ByProjectKeyShippingMethodsByIDDelete extends
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyShippingMethodsByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyShippingMethodsByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyShippingMethodsByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyShippingMethodsByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyShippingMethodsByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -52,13 +49,16 @@ public class ByProjectKeyShippingMethodsByIDDelete extends
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethod> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.shipping_method.ShippingMethod.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethod>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethod>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.shipping_method.ShippingMethod.class);
     }
 
@@ -86,18 +86,30 @@ public class ByProjectKeyShippingMethodsByIDDelete extends
         this.ID = ID;
     }
 
-    public ByProjectKeyShippingMethodsByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyShippingMethodsByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyShippingMethodsByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyShippingMethodsByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyShippingMethodsByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyShippingMethodsByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

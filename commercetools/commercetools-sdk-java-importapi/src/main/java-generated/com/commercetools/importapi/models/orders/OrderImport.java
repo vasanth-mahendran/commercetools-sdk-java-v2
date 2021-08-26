@@ -12,7 +12,6 @@ import javax.validation.constraints.NotNull;
 import com.commercetools.importapi.models.common.Address;
 import com.commercetools.importapi.models.common.CustomerGroupKeyReference;
 import com.commercetools.importapi.models.common.CustomerKeyReference;
-import com.commercetools.importapi.models.common.ImportResource;
 import com.commercetools.importapi.models.common.TypedMoney;
 import com.commercetools.importapi.models.customfields.Custom;
 import com.fasterxml.jackson.annotation.*;
@@ -21,26 +20,23 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
-*  <p>Import representation for an order.</p>
-*  <p>In commercetools, you can import an order using the
+*  <p>The data representation for an Order to be imported that is persisted as an <a href="/../api/projects/orders#top">Order</a> in the Project.</p>
+*  <p>In commercetools, you can import an Order using the
 *  <a href="https://docs.commercetools.com/http-api-projects-orders-import.html#create-an-order-by-import">Create Order by Import</a>
-*  endpoint method instead of creating it from a cart.</p>
-*  <p>The order import draft is a snapshot of an order at the time it was imported.</p>
+*  endpoint method instead of creating it from a Cart.</p>
+*  <p>An OrderImport is a snapshot of an order at the time it was imported.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderImportImpl.class)
-public interface OrderImport extends ImportResource {
+public interface OrderImport {
 
     /**
-    *  <p>Maps to <code>Order.orderNumber</code>.</p>
+    *  <p>Maps to <code>Order.orderNumber</code>, String that uniquely identifies an order. It should be unique across a project. Once it's set it cannot be changed.</p>
     */
-
+    @NotNull
     @JsonProperty("orderNumber")
     public String getOrderNumber();
 
-    /**
-    *  <p>References a customer by its key.</p>
-    */
     @Valid
     @JsonProperty("customer")
     public CustomerKeyReference getCustomer();
@@ -67,7 +63,7 @@ public interface OrderImport extends ImportResource {
     public List<CustomLineItemDraft> getCustomLineItems();
 
     /**
-    *  <p>Maps to <code>Order.totalPrice</code>.</p>
+    *  <p>Maps to <code>Order.totalPrice</code>. TypedMoney is what is called BaseMoney in the HTTP API.</p>
     */
     @NotNull
     @Valid
@@ -245,7 +241,6 @@ public interface OrderImport extends ImportResource {
 
     public static OrderImport of(final OrderImport template) {
         OrderImportImpl instance = new OrderImportImpl();
-        instance.setKey(template.getKey());
         instance.setOrderNumber(template.getOrderNumber());
         instance.setCustomer(template.getCustomer());
         instance.setCustomerEmail(template.getCustomerEmail());

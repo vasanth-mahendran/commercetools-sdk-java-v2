@@ -19,7 +19,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 public class ByProjectKeyApiClientsByIDDelete
         extends ApiMethod<ByProjectKeyApiClientsByIDDelete, com.commercetools.api.models.api_client.ApiClient>
         implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyApiClientsByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyApiClientsByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyApiClientsByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -48,14 +48,17 @@ public class ByProjectKeyApiClientsByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.api_client.ApiClient> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.api_client.ApiClient> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.api_client.ApiClient.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.api_client.ApiClient>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.api_client.ApiClient.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.api_client.ApiClient>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.api_client.ApiClient.class);
     }
 
     public String getProjectKey() {

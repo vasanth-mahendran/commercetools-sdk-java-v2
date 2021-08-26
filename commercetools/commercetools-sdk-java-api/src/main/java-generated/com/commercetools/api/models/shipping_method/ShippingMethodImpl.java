@@ -101,10 +101,16 @@ public final class ShippingMethodImpl implements ShippingMethod {
         return this.lastModifiedAt;
     }
 
+    /**
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
+    */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
+    /**
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
+    */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
     }
@@ -229,21 +235,42 @@ public final class ShippingMethodImpl implements ShippingMethod {
 
         ShippingMethodImpl that = (ShippingMethodImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(version, that.version).append(createdAt,
-            that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(lastModifiedBy,
-                that.lastModifiedBy).append(createdBy, that.createdBy).append(key, that.key).append(name,
-                    that.name).append(description, that.description).append(localizedDescription,
-                        that.localizedDescription).append(taxCategory, that.taxCategory).append(zoneRates,
-                            that.zoneRates).append(isDefault, that.isDefault).append(predicate, that.predicate).append(
-                                custom, that.custom).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(version, that.version)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(lastModifiedBy, that.lastModifiedBy)
+                .append(createdBy, that.createdBy)
+                .append(key, that.key)
+                .append(name, that.name)
+                .append(description, that.description)
+                .append(localizedDescription, that.localizedDescription)
+                .append(taxCategory, that.taxCategory)
+                .append(zoneRates, that.zoneRates)
+                .append(isDefault, that.isDefault)
+                .append(predicate, that.predicate)
+                .append(custom, that.custom)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(version).append(createdAt).append(lastModifiedAt).append(
-            lastModifiedBy).append(createdBy).append(key).append(name).append(description).append(
-                localizedDescription).append(taxCategory).append(zoneRates).append(isDefault).append(predicate).append(
-                    custom).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(version)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(lastModifiedBy)
+                .append(createdBy)
+                .append(key)
+                .append(name)
+                .append(description)
+                .append(localizedDescription)
+                .append(taxCategory)
+                .append(zoneRates)
+                .append(isDefault)
+                .append(predicate)
+                .append(custom)
+                .toHashCode();
     }
 
 }

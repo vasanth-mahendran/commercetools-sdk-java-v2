@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete Customer by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyCustomersByIDDelete
         extends ApiMethod<ByProjectKeyCustomersByIDDelete, com.commercetools.api.models.customer.Customer>
@@ -23,7 +20,7 @@ public class ByProjectKeyCustomersByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyCustomersByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyCustomersByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomersByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCustomersByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyCustomersByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -52,13 +49,17 @@ public class ByProjectKeyCustomersByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.customer.Customer> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.customer.Customer> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.customer.Customer.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.Customer>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.customer.Customer.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.Customer>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.customer.Customer.class);
     }
 
     public String getProjectKey() {
@@ -89,26 +90,44 @@ public class ByProjectKeyCustomersByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyCustomersByIDDelete withDataErasure(final Boolean dataErasure) {
+    /**
+     * set dataErasure with the specificied value
+     */
+    public ByProjectKeyCustomersByIDDelete withDataErasure(final boolean dataErasure) {
         return copy().withQueryParam("dataErasure", dataErasure);
     }
 
-    public ByProjectKeyCustomersByIDDelete addDataErasure(final Boolean dataErasure) {
+    /**
+     * add additional dataErasure query parameter
+     */
+    public ByProjectKeyCustomersByIDDelete addDataErasure(final boolean dataErasure) {
         return copy().addQueryParam("dataErasure", dataErasure);
     }
 
-    public ByProjectKeyCustomersByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyCustomersByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyCustomersByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyCustomersByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCustomersByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCustomersByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

@@ -1,7 +1,6 @@
 
 package com.commercetools.importapi.defaultconfig;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -11,21 +10,19 @@ import com.commercetools.importapi.client.ApiRoot;
 import com.commercetools.importapi.client.ByProjectKeyRequestBuilder;
 import com.commercetools.importapi.client.ImportCorrelationIdProvider;
 
-import io.vrap.rmf.base.client.ApiHttpClient;
-import io.vrap.rmf.base.client.ClientFactory;
-import io.vrap.rmf.base.client.HttpClientSupplier;
-import io.vrap.rmf.base.client.VrapHttpClient;
+import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.http.CorrelationIdProvider;
 import io.vrap.rmf.base.client.http.Middleware;
 import io.vrap.rmf.base.client.oauth2.ClientCredentials;
-import io.vrap.rmf.base.client.oauth2.ClientCredentialsTokenSupplier;
 
 public class ImportApiFactory {
 
     public static ByProjectKeyRequestBuilder createForProject(final String projectKey,
             final ClientCredentials credentials, final String tokenEndpoint, final String apiEndpoint) {
-        return createForProject(projectKey, () -> defaultClient(HttpClientSupplier.of(), credentials, tokenEndpoint,
-            apiEndpoint, new ArrayList<>(), new ImportCorrelationIdProvider(projectKey)));
+        return ImportApiRootBuilder.of()
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(new ImportCorrelationIdProvider(projectKey))
+                .buildForProject(projectKey);
     }
 
     public static ByProjectKeyRequestBuilder createForProject(final String projectKey,
@@ -35,114 +32,156 @@ public class ImportApiFactory {
 
     public static ApiRoot create(final ClientCredentials credentials, final String tokenEndpoint,
             final String apiEndpoint) {
-        return create(() -> defaultClient(HttpClientSupplier.of(), credentials, tokenEndpoint, apiEndpoint,
-            new ArrayList<>(), null));
+        return ImportApiRootBuilder.of().defaultClient(apiEndpoint, credentials, tokenEndpoint).build();
     }
 
     public static ApiRoot create(final VrapHttpClient httpClient, final ClientCredentials credentials,
             final String tokenEndpoint, final String apiEndpoint) {
-        return create(
-            () -> defaultClient(() -> httpClient, credentials, tokenEndpoint, apiEndpoint, new ArrayList<>(), null));
+        return ImportApiRootBuilder.of(httpClient).defaultClient(apiEndpoint, credentials, tokenEndpoint).build();
     }
 
     public static ApiRoot create(final VrapHttpClient httpClient, final ClientCredentials credentials,
             final String tokenEndpoint, final String apiEndpoint, final List<Middleware> middlewares) {
-        return create(
-            () -> defaultClient(() -> httpClient, credentials, tokenEndpoint, apiEndpoint, middlewares, null));
+        return ImportApiRootBuilder.of(httpClient)
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addMiddlewares(middlewares)
+                .build();
     }
 
     public static ApiRoot create(final ClientCredentials credentials, final String tokenEndpoint,
             final String apiEndpoint, final CorrelationIdProvider correlationIdProvider) {
-        return create(() -> defaultClient(HttpClientSupplier.of(), credentials, tokenEndpoint, apiEndpoint,
-            new ArrayList<>(), correlationIdProvider));
+        return ImportApiRootBuilder.of()
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .build();
     }
 
     public static ApiRoot create(final VrapHttpClient httpClient, final ClientCredentials credentials,
             final String tokenEndpoint, final String apiEndpoint, final CorrelationIdProvider correlationIdProvider) {
-        return create(() -> defaultClient(() -> httpClient, credentials, tokenEndpoint, apiEndpoint, new ArrayList<>(),
-            correlationIdProvider));
+        return ImportApiRootBuilder.of(httpClient)
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .build();
     }
 
     public static ApiRoot create(final VrapHttpClient httpClient, final ClientCredentials credentials,
             final String tokenEndpoint, final String apiEndpoint, final List<Middleware> middlewares,
             final CorrelationIdProvider correlationIdProvider) {
-        return create(() -> defaultClient(() -> httpClient, credentials, tokenEndpoint, apiEndpoint, middlewares,
-            correlationIdProvider));
+        return ImportApiRootBuilder.of(httpClient)
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .addMiddlewares(middlewares)
+                .build();
     }
 
     public static ApiRoot create(final Supplier<ApiHttpClient> clientSupplier) {
         return ApiRoot.fromClient(clientSupplier.get());
     }
 
+    public static ApiRoot create(final ClientCredentials credentials) {
+        return ImportApiRootBuilder.of().defaultClient(credentials).build();
+    }
+
+    public static ApiRoot create(final ClientCredentials credentials, ServiceRegion serviceRegion) {
+        return ImportApiRootBuilder.of().defaultClient(credentials, serviceRegion).build();
+    }
+
+    public static ApiHttpClient defaultClient(final ClientCredentials credentials) {
+        return ImportApiRootBuilder.of().defaultClient(credentials).buildClient();
+    }
+
     public static ApiHttpClient defaultClient(final ClientCredentials credentials, final String tokenEndpoint,
             final String apiEndpoint) {
-        return defaultClient(HttpClientSupplier.of(), credentials, tokenEndpoint, apiEndpoint, new ArrayList<>(), null);
+        return ImportApiRootBuilder.of().defaultClient(apiEndpoint, credentials, tokenEndpoint).buildClient();
     }
 
     public static ApiHttpClient defaultClient(final ClientCredentials credentials, final String tokenEndpoint,
             final String apiEndpoint, final List<Middleware> middlewares) {
-        return defaultClient(HttpClientSupplier.of(), credentials, tokenEndpoint, apiEndpoint, middlewares, null);
+        return ImportApiRootBuilder.of()
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addMiddlewares(middlewares)
+                .buildClient();
     }
 
     public static ApiHttpClient defaultClient(final VrapHttpClient httpClient, final ClientCredentials credentials,
             final String tokenEndpoint, final String apiEndpoint) {
-        return defaultClient(() -> httpClient, credentials, tokenEndpoint, apiEndpoint, new ArrayList<>(), null);
+        return ImportApiRootBuilder.of(httpClient).defaultClient(apiEndpoint, credentials, tokenEndpoint).buildClient();
     }
 
     public static ApiHttpClient defaultClient(final ClientCredentials credentials, final String tokenEndpoint,
             final String apiEndpoint, final CorrelationIdProvider correlationIdProvider) {
-        return defaultClient(HttpClientSupplier.of(), credentials, tokenEndpoint, apiEndpoint, new ArrayList<>(),
-            correlationIdProvider);
+        return ImportApiRootBuilder.of()
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .buildClient();
     }
 
     public static ApiHttpClient defaultClient(final ClientCredentials credentials, final String tokenEndpoint,
             final String apiEndpoint, final List<Middleware> middlewares,
             final CorrelationIdProvider correlationIdProvider) {
-        return defaultClient(HttpClientSupplier.of(), credentials, tokenEndpoint, apiEndpoint, middlewares,
-            correlationIdProvider);
+        return ImportApiRootBuilder.of()
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .addMiddlewares(middlewares)
+                .buildClient();
     }
 
     public static ApiHttpClient defaultClient(final VrapHttpClient httpClient, final ClientCredentials credentials,
             final String tokenEndpoint, final String apiEndpoint, final CorrelationIdProvider correlationIdProvider) {
-        return defaultClient(() -> httpClient, credentials, tokenEndpoint, apiEndpoint, new ArrayList<>(),
-            correlationIdProvider);
+        return ImportApiRootBuilder.of(httpClient)
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .buildClient();
     }
 
     public static ApiHttpClient defaultClient(final VrapHttpClient httpClient, final ClientCredentials credentials,
             final String tokenEndpoint, final String apiEndpoint, final List<Middleware> middlewares) {
-        return defaultClient(httpClient, credentials, tokenEndpoint, apiEndpoint, middlewares, null);
+        return ImportApiRootBuilder.of(httpClient)
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addMiddlewares(middlewares)
+                .buildClient();
     }
 
     public static ApiHttpClient defaultClient(final VrapHttpClient httpClient, final ClientCredentials credentials,
             final String tokenEndpoint, final String apiEndpoint, final List<Middleware> middlewares,
             @Nullable final CorrelationIdProvider correlationIdProvider) {
-        return defaultClient(() -> httpClient, credentials, tokenEndpoint, apiEndpoint, middlewares,
-            correlationIdProvider);
+        return ImportApiRootBuilder.of(httpClient)
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .addMiddlewares(middlewares)
+                .buildClient();
     }
 
     public static ApiHttpClient defaultClient(final VrapHttpClient httpClient, final ClientCredentials credentials,
             final String tokenEndpoint, final String apiEndpoint, final Supplier<String> userAgentSupplier,
             final List<Middleware> middlewares, @Nullable final CorrelationIdProvider correlationIdProvider) {
-        return defaultClient(() -> httpClient, credentials, tokenEndpoint, apiEndpoint, userAgentSupplier, middlewares,
-            correlationIdProvider);
+        return ImportApiRootBuilder.of(httpClient)
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .withUserAgentSupplier(userAgentSupplier)
+                .addMiddlewares(middlewares)
+                .buildClient();
     }
 
     public static ApiHttpClient defaultClient(final Supplier<VrapHttpClient> httpClientSupplier,
             final ClientCredentials credentials, final String tokenEndpoint, final String apiEndpoint,
             final List<Middleware> middlewares, @Nullable final CorrelationIdProvider correlationIdProvider) {
-        return ClientFactory.create(
-            apiEndpoint, httpClientSupplier.get(), new ClientCredentialsTokenSupplier(credentials.getClientId(),
-                credentials.getClientSecret(), credentials.getScopes(), tokenEndpoint, httpClientSupplier.get()),
-            middlewares, correlationIdProvider);
+        return ImportApiRootBuilder.of(httpClientSupplier.get())
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .addMiddlewares(middlewares)
+                .buildClient();
     }
 
     public static ApiHttpClient defaultClient(final Supplier<VrapHttpClient> httpClientSupplier,
             final ClientCredentials credentials, final String tokenEndpoint, final String apiEndpoint,
             final Supplier<String> userAgentSupplier, final List<Middleware> middlewares,
             @Nullable final CorrelationIdProvider correlationIdProvider) {
-        return ClientFactory.create(apiEndpoint, httpClientSupplier.get(),
-            new ClientCredentialsTokenSupplier(credentials.getClientId(), credentials.getClientSecret(),
-                credentials.getScopes(), tokenEndpoint, httpClientSupplier.get()),
-            userAgentSupplier, middlewares, correlationIdProvider);
+        return ImportApiRootBuilder.of(httpClientSupplier.get())
+                .defaultClient(apiEndpoint, credentials, tokenEndpoint)
+                .addCorrelationIdProvider(correlationIdProvider)
+                .withUserAgentSupplier(userAgentSupplier)
+                .addMiddlewares(middlewares)
+                .buildClient();
     }
 }

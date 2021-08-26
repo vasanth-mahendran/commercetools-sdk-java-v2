@@ -40,9 +40,6 @@ public final class RequiredFieldErrorImpl implements RequiredFieldError {
         return this.code;
     }
 
-    /**
-    *  <p>The error's description.</p>
-    */
     public String getMessage() {
         return this.message;
     }
@@ -72,8 +69,10 @@ public final class RequiredFieldErrorImpl implements RequiredFieldError {
 
         RequiredFieldErrorImpl that = (RequiredFieldErrorImpl) o;
 
-        return new EqualsBuilder().append(code, that.code).append(message, that.message).append(field,
-            that.field).isEquals();
+        return new EqualsBuilder().append(code, that.code)
+                .append(message, that.message)
+                .append(field, that.field)
+                .isEquals();
     }
 
     @Override

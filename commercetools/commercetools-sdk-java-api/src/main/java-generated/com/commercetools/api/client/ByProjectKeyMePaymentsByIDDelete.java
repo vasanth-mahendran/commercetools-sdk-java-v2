@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete MyPayment by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyMePaymentsByIDDelete
         extends ApiMethod<ByProjectKeyMePaymentsByIDDelete, com.commercetools.api.models.me.MyPayment>
@@ -22,7 +19,7 @@ public class ByProjectKeyMePaymentsByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyMePaymentsByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyMePaymentsByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyMePaymentsByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyMePaymentsByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyMePaymentsByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -51,13 +48,16 @@ public class ByProjectKeyMePaymentsByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.me.MyPayment> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.me.MyPayment> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.me.MyPayment.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.me.MyPayment>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.me.MyPayment.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.me.MyPayment>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.me.MyPayment.class);
     }
 
     public String getProjectKey() {
@@ -84,18 +84,30 @@ public class ByProjectKeyMePaymentsByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyMePaymentsByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyMePaymentsByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyMePaymentsByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyMePaymentsByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyMePaymentsByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyMePaymentsByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

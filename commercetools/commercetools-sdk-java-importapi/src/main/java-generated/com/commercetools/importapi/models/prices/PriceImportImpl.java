@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>Imports a product variant's prices.</p>
+*  <p>The data representation for a Price to be imported that is persisted as a <a href="/../api/projects/products#price">Price</a> in the Project.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class PriceImportImpl implements PriceImport {
@@ -82,8 +82,7 @@ public final class PriceImportImpl implements PriceImport {
     }
 
     /**
-    *  <p>Maps to <code>Price.value</code>.</p>
-    *  <p>The Import API <strong>only</strong> supports <code>centPrecision</code> prices.</p>
+    *  <p>Maps to <code>Price.value</code>. TypedMoney is what is called BaseMoney in the HTTP API.</p>
     */
     public com.commercetools.importapi.models.common.TypedMoney getValue() {
         return this.value;
@@ -111,20 +110,16 @@ public final class PriceImportImpl implements PriceImport {
     }
 
     /**
-    *  <p>References a customer group by its key.</p>
-    *  <p>The customer group referenced
-    *  must already exist in the commercetools project, or the
-    *  import operation state is set to <code>Unresolved</code>.</p>
+    *  <p>The Reference to the <a href="/../api/projects/customerGroups#customergroup">CustomerGroup</a> with which the Price is associated.
+    *  If referenced CustomerGroup does not exist, the <code>state</code> of the <a href="/import-operation#importoperation">ImportOperation</a> will be set to <code>Unresolved</code> until the necessary CustomerGroup is created.</p>
     */
     public com.commercetools.importapi.models.common.CustomerGroupKeyReference getCustomerGroup() {
         return this.customerGroup;
     }
 
     /**
-    *  <p>References a channel by its key.</p>
-    *  <p>The channel referenced
-    *  must already exist in the commercetools project, or the
-    *  import operation state is set to <code>Unresolved</code>.</p>
+    *  <p>The Reference to the <a href="/../api/projects/channels#channel">Channel</a> with which the Price is associated.
+    *  If referenced Channel does not exist, the <code>state</code> of the <a href="/import-operation#importoperation">ImportOperation</a> will be set to <code>Unresolved</code> until the necessary Channel is created.</p>
     */
     public com.commercetools.importapi.models.common.ChannelKeyReference getChannel() {
         return this.channel;
@@ -159,20 +154,18 @@ public final class PriceImportImpl implements PriceImport {
     }
 
     /**
-    *  <p>The product variant in which this price is contained.</p>
-    *  <p>The product variant referenced
-    *  must already exist in the commercetools project, or the
-    *  import operation state is set to <code>Unresolved</code>.</p>
+    *  <p>The ProductVariant in which this Price is contained.
+    *  The Reference to the <a href="/../api/projects/products#productvariant">ProductVariant</a> with which the Price is associated.
+    *  If referenced ProductVariant does not exist, the <code>state</code> of the <a href="/import-operation#importoperation">ImportOperation</a> will be set to <code>Unresolved</code> until the necessary ProductVariant is created.</p>
     */
     public com.commercetools.importapi.models.common.ProductVariantKeyReference getProductVariant() {
         return this.productVariant;
     }
 
     /**
-    *  <p>The product in which this product variant containong the price is contained. Maps to <code>ProductVariant.product</code>.</p>
-    *  <p>The product referenced
-    *  must already exist in the commercetools project, or the
-    *  import operation state is set to <code>Unresolved</code>.</p>
+    *  <p>The Product in which the Product Variant containing this Price is contained. Maps to <code>ProductVariant.product</code>.
+    *  The Reference to the <a href="/../api/projects/products#product">Product</a> with which the Price is associated.
+    *  If referenced Product does not exist, the <code>state</code> of the <a href="/import-operation#importoperation">ImportOperation</a> will be set to <code>Unresolved</code> until the necessary Product is created.</p>
     */
     public com.commercetools.importapi.models.common.ProductKeyReference getProduct() {
         return this.product;
@@ -246,18 +239,38 @@ public final class PriceImportImpl implements PriceImport {
 
         PriceImportImpl that = (PriceImportImpl) o;
 
-        return new EqualsBuilder().append(key, that.key).append(value, that.value).append(country, that.country).append(
-            validFrom, that.validFrom).append(validUntil, that.validUntil).append(customerGroup,
-                that.customerGroup).append(channel, that.channel).append(discounted, that.discounted).append(publish,
-                    that.publish).append(tiers, that.tiers).append(custom, that.custom).append(productVariant,
-                        that.productVariant).append(product, that.product).isEquals();
+        return new EqualsBuilder().append(key, that.key)
+                .append(value, that.value)
+                .append(country, that.country)
+                .append(validFrom, that.validFrom)
+                .append(validUntil, that.validUntil)
+                .append(customerGroup, that.customerGroup)
+                .append(channel, that.channel)
+                .append(discounted, that.discounted)
+                .append(publish, that.publish)
+                .append(tiers, that.tiers)
+                .append(custom, that.custom)
+                .append(productVariant, that.productVariant)
+                .append(product, that.product)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(key).append(value).append(country).append(validFrom).append(
-            validUntil).append(customerGroup).append(channel).append(discounted).append(publish).append(tiers).append(
-                custom).append(productVariant).append(product).toHashCode();
+        return new HashCodeBuilder(17, 37).append(key)
+                .append(value)
+                .append(country)
+                .append(validFrom)
+                .append(validUntil)
+                .append(customerGroup)
+                .append(channel)
+                .append(discounted)
+                .append(publish)
+                .append(tiers)
+                .append(custom)
+                .append(productVariant)
+                .append(product)
+                .toHashCode();
     }
 
 }

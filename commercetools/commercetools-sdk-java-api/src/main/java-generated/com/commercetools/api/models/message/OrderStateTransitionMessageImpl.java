@@ -40,6 +40,8 @@ public final class OrderStateTransitionMessageImpl implements OrderStateTransiti
 
     private com.commercetools.api.models.state.StateReference state;
 
+    private com.commercetools.api.models.state.StateReference oldState;
+
     private Boolean force;
 
     @JsonCreator
@@ -53,6 +55,7 @@ public final class OrderStateTransitionMessageImpl implements OrderStateTransiti
             @JsonProperty("resourceVersion") final Long resourceVersion,
             @JsonProperty("resourceUserProvidedIdentifiers") final com.commercetools.api.models.message.UserProvidedIdentifiers resourceUserProvidedIdentifiers,
             @JsonProperty("state") final com.commercetools.api.models.state.StateReference state,
+            @JsonProperty("oldState") final com.commercetools.api.models.state.StateReference oldState,
             @JsonProperty("force") final Boolean force) {
         this.id = id;
         this.version = version;
@@ -65,6 +68,7 @@ public final class OrderStateTransitionMessageImpl implements OrderStateTransiti
         this.resourceVersion = resourceVersion;
         this.resourceUserProvidedIdentifiers = resourceUserProvidedIdentifiers;
         this.state = state;
+        this.oldState = oldState;
         this.force = force;
         this.type = ORDER_STATE_TRANSITION;
     }
@@ -89,10 +93,16 @@ public final class OrderStateTransitionMessageImpl implements OrderStateTransiti
         return this.lastModifiedAt;
     }
 
+    /**
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
+    */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
+    /**
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
+    */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
     }
@@ -119,6 +129,10 @@ public final class OrderStateTransitionMessageImpl implements OrderStateTransiti
 
     public com.commercetools.api.models.state.StateReference getState() {
         return this.state;
+    }
+
+    public com.commercetools.api.models.state.StateReference getOldState() {
+        return this.oldState;
     }
 
     public Boolean getForce() {
@@ -170,6 +184,10 @@ public final class OrderStateTransitionMessageImpl implements OrderStateTransiti
         this.state = state;
     }
 
+    public void setOldState(final com.commercetools.api.models.state.StateReference oldState) {
+        this.oldState = oldState;
+    }
+
     public void setForce(final Boolean force) {
         this.force = force;
     }
@@ -184,20 +202,40 @@ public final class OrderStateTransitionMessageImpl implements OrderStateTransiti
 
         OrderStateTransitionMessageImpl that = (OrderStateTransitionMessageImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(version, that.version).append(createdAt,
-            that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(lastModifiedBy,
-                that.lastModifiedBy).append(createdBy, that.createdBy).append(sequenceNumber,
-                    that.sequenceNumber).append(resource, that.resource).append(resourceVersion,
-                        that.resourceVersion).append(type, that.type).append(resourceUserProvidedIdentifiers,
-                            that.resourceUserProvidedIdentifiers).append(state, that.state).append(force,
-                                that.force).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(version, that.version)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(lastModifiedBy, that.lastModifiedBy)
+                .append(createdBy, that.createdBy)
+                .append(sequenceNumber, that.sequenceNumber)
+                .append(resource, that.resource)
+                .append(resourceVersion, that.resourceVersion)
+                .append(type, that.type)
+                .append(resourceUserProvidedIdentifiers, that.resourceUserProvidedIdentifiers)
+                .append(state, that.state)
+                .append(oldState, that.oldState)
+                .append(force, that.force)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(version).append(createdAt).append(lastModifiedAt).append(
-            lastModifiedBy).append(createdBy).append(sequenceNumber).append(resource).append(resourceVersion).append(
-                type).append(resourceUserProvidedIdentifiers).append(state).append(force).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(version)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(lastModifiedBy)
+                .append(createdBy)
+                .append(sequenceNumber)
+                .append(resource)
+                .append(resourceVersion)
+                .append(type)
+                .append(resourceUserProvidedIdentifiers)
+                .append(state)
+                .append(oldState)
+                .append(force)
+                .toHashCode();
     }
 
 }

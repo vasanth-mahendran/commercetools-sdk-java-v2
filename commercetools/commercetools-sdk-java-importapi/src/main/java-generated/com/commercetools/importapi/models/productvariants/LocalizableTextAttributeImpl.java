@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>This type represents an attribute which value is a localized text.</p>
+*  <p>This type represents an attribute whose value is a localized text.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class LocalizableTextAttributeImpl implements LocalizableTextAttribute {
@@ -50,6 +50,14 @@ public final class LocalizableTextAttributeImpl implements LocalizableTextAttrib
         return this.type;
     }
 
+    /**
+    *  <p>A localized string is a JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values the corresponding strings used for that language.</p>
+    *  <pre><code class="language-json">{
+    *    &quot;de&quot;: &quot;Hundefutter&quot;,
+    *    &quot;en&quot;: &quot;dog food&quot;
+    *  }
+    *  </code></pre>
+    */
     public com.commercetools.importapi.models.common.LocalizedString getValue() {
         return this.value;
     }

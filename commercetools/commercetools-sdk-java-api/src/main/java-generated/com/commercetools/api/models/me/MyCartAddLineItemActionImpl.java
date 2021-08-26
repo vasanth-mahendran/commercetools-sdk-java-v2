@@ -30,7 +30,7 @@ public final class MyCartAddLineItemActionImpl implements MyCartAddLineItemActio
 
     private String sku;
 
-    private Double quantity;
+    private Long quantity;
 
     private com.commercetools.api.models.channel.ChannelResourceIdentifier supplyChannel;
 
@@ -48,7 +48,7 @@ public final class MyCartAddLineItemActionImpl implements MyCartAddLineItemActio
             @JsonProperty("distributionChannel") final com.commercetools.api.models.channel.ChannelResourceIdentifier distributionChannel,
             @JsonProperty("externalTaxRate") final com.commercetools.api.models.cart.ExternalTaxRateDraft externalTaxRate,
             @JsonProperty("productId") final String productId, @JsonProperty("variantId") final Long variantId,
-            @JsonProperty("sku") final String sku, @JsonProperty("quantity") final Double quantity,
+            @JsonProperty("sku") final String sku, @JsonProperty("quantity") final Long quantity,
             @JsonProperty("supplyChannel") final com.commercetools.api.models.channel.ChannelResourceIdentifier supplyChannel,
             @JsonProperty("externalPrice") final com.commercetools.api.models.common.Money externalPrice,
             @JsonProperty("externalTotalPrice") final com.commercetools.api.models.cart.ExternalLineItemTotalPrice externalTotalPrice,
@@ -101,7 +101,7 @@ public final class MyCartAddLineItemActionImpl implements MyCartAddLineItemActio
         return this.sku;
     }
 
-    public Double getQuantity() {
+    public Long getQuantity() {
         return this.quantity;
     }
 
@@ -150,7 +150,7 @@ public final class MyCartAddLineItemActionImpl implements MyCartAddLineItemActio
         this.sku = sku;
     }
 
-    public void setQuantity(final Double quantity) {
+    public void setQuantity(final Long quantity) {
         this.quantity = quantity;
     }
 
@@ -185,20 +185,38 @@ public final class MyCartAddLineItemActionImpl implements MyCartAddLineItemActio
 
         MyCartAddLineItemActionImpl that = (MyCartAddLineItemActionImpl) o;
 
-        return new EqualsBuilder().append(action, that.action).append(custom, that.custom).append(distributionChannel,
-            that.distributionChannel).append(externalTaxRate, that.externalTaxRate).append(productId,
-                that.productId).append(variantId, that.variantId).append(sku, that.sku).append(quantity,
-                    that.quantity).append(supplyChannel, that.supplyChannel).append(externalPrice,
-                        that.externalPrice).append(externalTotalPrice, that.externalTotalPrice).append(shippingDetails,
-                            that.shippingDetails).append(addedAt, that.addedAt).isEquals();
+        return new EqualsBuilder().append(action, that.action)
+                .append(custom, that.custom)
+                .append(distributionChannel, that.distributionChannel)
+                .append(externalTaxRate, that.externalTaxRate)
+                .append(productId, that.productId)
+                .append(variantId, that.variantId)
+                .append(sku, that.sku)
+                .append(quantity, that.quantity)
+                .append(supplyChannel, that.supplyChannel)
+                .append(externalPrice, that.externalPrice)
+                .append(externalTotalPrice, that.externalTotalPrice)
+                .append(shippingDetails, that.shippingDetails)
+                .append(addedAt, that.addedAt)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(action).append(custom).append(distributionChannel).append(
-            externalTaxRate).append(productId).append(variantId).append(sku).append(quantity).append(
-                supplyChannel).append(externalPrice).append(externalTotalPrice).append(shippingDetails).append(
-                    addedAt).toHashCode();
+        return new HashCodeBuilder(17, 37).append(action)
+                .append(custom)
+                .append(distributionChannel)
+                .append(externalTaxRate)
+                .append(productId)
+                .append(variantId)
+                .append(sku)
+                .append(quantity)
+                .append(supplyChannel)
+                .append(externalPrice)
+                .append(externalTotalPrice)
+                .append(shippingDetails)
+                .append(addedAt)
+                .toHashCode();
     }
 
 }

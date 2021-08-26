@@ -37,12 +37,18 @@ public interface SubscriptionHealthStatus {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static SubscriptionHealthStatus findEnum(String value) {
@@ -55,6 +61,10 @@ public interface SubscriptionHealthStatus {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

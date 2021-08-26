@@ -53,13 +53,17 @@ public class ByProjectKeyImportSummariesImportSinkKeyByImportSinkKeyGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importsummaries.ImportSummary> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.importapi.models.importsummaries.ImportSummary.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importsummaries.ImportSummary>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importsummaries.ImportSummary>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.importapi.models.importsummaries.ImportSummary.class);
     }
 

@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete Type by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyTypesKeyByKeyDelete
         extends ApiMethod<ByProjectKeyTypesKeyByKeyDelete, com.commercetools.api.models.type.Type>
@@ -22,7 +19,7 @@ public class ByProjectKeyTypesKeyByKeyDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyTypesKeyByKeyDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyTypesKeyByKeyDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyTypesKeyByKeyDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyTypesKeyByKeyDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyTypesKeyByKeyDelete> {
 
     private String projectKey;
     private String key;
@@ -51,13 +48,16 @@ public class ByProjectKeyTypesKeyByKeyDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.type.Type> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.type.Type> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.type.Type.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.type.Type>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.type.Type.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.type.Type>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.type.Type.class);
     }
 
     public String getProjectKey() {
@@ -84,18 +84,30 @@ public class ByProjectKeyTypesKeyByKeyDelete
         this.key = key;
     }
 
-    public ByProjectKeyTypesKeyByKeyDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyTypesKeyByKeyDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyTypesKeyByKeyDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyTypesKeyByKeyDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyTypesKeyByKeyDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyTypesKeyByKeyDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

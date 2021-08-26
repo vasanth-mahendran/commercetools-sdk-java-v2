@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Get Store by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyStoresByIDGet
         extends ApiMethod<ByProjectKeyStoresByIDGet, com.commercetools.api.models.store.Store>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyStoresByIDGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyStoresByIDGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyStoresByIDGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyStoresByIDGet> {
 
     private String projectKey;
     private String ID;
@@ -49,13 +46,16 @@ public class ByProjectKeyStoresByIDGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.store.Store> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.store.Store> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.store.Store.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.store.Store>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.store.Store.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.store.Store>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.store.Store.class);
     }
 
     public String getProjectKey() {
@@ -78,10 +78,16 @@ public class ByProjectKeyStoresByIDGet
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyStoresByIDGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyStoresByIDGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

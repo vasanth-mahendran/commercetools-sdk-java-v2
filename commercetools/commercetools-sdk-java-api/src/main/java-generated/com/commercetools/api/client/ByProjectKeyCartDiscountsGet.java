@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Query cart-discounts</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyCartDiscountsGet extends
         ApiMethod<ByProjectKeyCartDiscountsGet, com.commercetools.api.models.cart_discount.CartDiscountPagedQueryResponse>
@@ -25,7 +22,7 @@ public class ByProjectKeyCartDiscountsGet extends
         com.commercetools.api.client.PagingTrait<ByProjectKeyCartDiscountsGet>,
         com.commercetools.api.client.QueryTrait<ByProjectKeyCartDiscountsGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyCartDiscountsGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCartDiscountsGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyCartDiscountsGet> {
 
     private String projectKey;
 
@@ -52,13 +49,17 @@ public class ByProjectKeyCartDiscountsGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscountPagedQueryResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.api.models.cart_discount.CartDiscountPagedQueryResponse.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscountPagedQueryResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscountPagedQueryResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.cart_discount.CartDiscountPagedQueryResponse.class);
     }
 
@@ -94,58 +95,100 @@ public class ByProjectKeyCartDiscountsGet extends
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCartDiscountsGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCartDiscountsGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }
 
+    /**
+     * set sort with the specificied value
+     */
     public ByProjectKeyCartDiscountsGet withSort(final String sort) {
         return copy().withQueryParam("sort", sort);
     }
 
+    /**
+     * add additional sort query parameter
+     */
     public ByProjectKeyCartDiscountsGet addSort(final String sort) {
         return copy().addQueryParam("sort", sort);
     }
 
-    public ByProjectKeyCartDiscountsGet withLimit(final Integer limit) {
+    /**
+     * set limit with the specificied value
+     */
+    public ByProjectKeyCartDiscountsGet withLimit(final int limit) {
         return copy().withQueryParam("limit", limit);
     }
 
-    public ByProjectKeyCartDiscountsGet addLimit(final Integer limit) {
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyCartDiscountsGet addLimit(final int limit) {
         return copy().addQueryParam("limit", limit);
     }
 
-    public ByProjectKeyCartDiscountsGet withOffset(final Integer offset) {
+    /**
+     * set offset with the specificied value
+     */
+    public ByProjectKeyCartDiscountsGet withOffset(final int offset) {
         return copy().withQueryParam("offset", offset);
     }
 
-    public ByProjectKeyCartDiscountsGet addOffset(final Integer offset) {
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyCartDiscountsGet addOffset(final int offset) {
         return copy().addQueryParam("offset", offset);
     }
 
-    public ByProjectKeyCartDiscountsGet withWithTotal(final Boolean withTotal) {
+    /**
+     * set withTotal with the specificied value
+     */
+    public ByProjectKeyCartDiscountsGet withWithTotal(final boolean withTotal) {
         return copy().withQueryParam("withTotal", withTotal);
     }
 
-    public ByProjectKeyCartDiscountsGet addWithTotal(final Boolean withTotal) {
+    /**
+     * add additional withTotal query parameter
+     */
+    public ByProjectKeyCartDiscountsGet addWithTotal(final boolean withTotal) {
         return copy().addQueryParam("withTotal", withTotal);
     }
 
+    /**
+     * set where with the specificied value
+     */
     public ByProjectKeyCartDiscountsGet withWhere(final String where) {
         return copy().withQueryParam("where", where);
     }
 
+    /**
+     * add additional where query parameter
+     */
     public ByProjectKeyCartDiscountsGet addWhere(final String where) {
         return copy().addQueryParam("where", where);
     }
 
+    /**
+     * set predicateVar with the specificied value
+     */
     public ByProjectKeyCartDiscountsGet withPredicateVar(final String varName, final String predicateVar) {
         return copy().withQueryParam(String.format("var.%s", varName), predicateVar);
     }
 
+    /**
+     * add additional predicateVar query parameter
+     */
     public ByProjectKeyCartDiscountsGet addPredicateVar(final String varName, final String predicateVar) {
         return copy().addQueryParam(String.format("var.%s", varName), predicateVar);
     }

@@ -5,10 +5,11 @@ import java.util.*;
 
 import javax.annotation.Nullable;
 
+import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public final class ImportOperationBuilder {
+public final class ImportOperationBuilder implements Builder<ImportOperation> {
 
     private Long version;
 
@@ -23,10 +24,11 @@ public final class ImportOperationBuilder {
     @Nullable
     private Long resourceVersion;
 
-    private Integer retryCount;
-
     @Nullable
     private java.util.List<com.commercetools.importapi.models.errors.ErrorObject> errors;
+
+    @Nullable
+    private java.util.List<com.commercetools.importapi.models.common.KeyReference> unresolvedReferences;
 
     private java.time.ZonedDateTime createdAt;
 
@@ -64,11 +66,6 @@ public final class ImportOperationBuilder {
         return this;
     }
 
-    public ImportOperationBuilder retryCount(final Integer retryCount) {
-        this.retryCount = retryCount;
-        return this;
-    }
-
     public ImportOperationBuilder errors(
             @Nullable final com.commercetools.importapi.models.errors.ErrorObject... errors) {
         this.errors = new ArrayList<>(Arrays.asList(errors));
@@ -78,6 +75,18 @@ public final class ImportOperationBuilder {
     public ImportOperationBuilder errors(
             @Nullable final java.util.List<com.commercetools.importapi.models.errors.ErrorObject> errors) {
         this.errors = errors;
+        return this;
+    }
+
+    public ImportOperationBuilder unresolvedReferences(
+            @Nullable final com.commercetools.importapi.models.common.KeyReference... unresolvedReferences) {
+        this.unresolvedReferences = new ArrayList<>(Arrays.asList(unresolvedReferences));
+        return this;
+    }
+
+    public ImportOperationBuilder unresolvedReferences(
+            @Nullable final java.util.List<com.commercetools.importapi.models.common.KeyReference> unresolvedReferences) {
+        this.unresolvedReferences = unresolvedReferences;
         return this;
     }
 
@@ -121,13 +130,14 @@ public final class ImportOperationBuilder {
         return this.resourceVersion;
     }
 
-    public Integer getRetryCount() {
-        return this.retryCount;
-    }
-
     @Nullable
     public java.util.List<com.commercetools.importapi.models.errors.ErrorObject> getErrors() {
         return this.errors;
+    }
+
+    @Nullable
+    public java.util.List<com.commercetools.importapi.models.common.KeyReference> getUnresolvedReferences() {
+        return this.unresolvedReferences;
     }
 
     public java.time.ZonedDateTime getCreatedAt() {
@@ -143,8 +153,24 @@ public final class ImportOperationBuilder {
     }
 
     public ImportOperation build() {
-        return new ImportOperationImpl(version, importSinkKey, resourceKey, id, state, resourceVersion, retryCount,
-            errors, createdAt, lastModifiedAt, expiresAt);
+        Objects.requireNonNull(version, ImportOperation.class + ": version is missing");
+        Objects.requireNonNull(importSinkKey, ImportOperation.class + ": importSinkKey is missing");
+        Objects.requireNonNull(resourceKey, ImportOperation.class + ": resourceKey is missing");
+        Objects.requireNonNull(id, ImportOperation.class + ": id is missing");
+        Objects.requireNonNull(state, ImportOperation.class + ": state is missing");
+        Objects.requireNonNull(createdAt, ImportOperation.class + ": createdAt is missing");
+        Objects.requireNonNull(lastModifiedAt, ImportOperation.class + ": lastModifiedAt is missing");
+        Objects.requireNonNull(expiresAt, ImportOperation.class + ": expiresAt is missing");
+        return new ImportOperationImpl(version, importSinkKey, resourceKey, id, state, resourceVersion, errors,
+            unresolvedReferences, createdAt, lastModifiedAt, expiresAt);
+    }
+
+    /**
+     * builds ImportOperation without checking for non null required values
+     */
+    public ImportOperation buildUnchecked() {
+        return new ImportOperationImpl(version, importSinkKey, resourceKey, id, state, resourceVersion, errors,
+            unresolvedReferences, createdAt, lastModifiedAt, expiresAt);
     }
 
     public static ImportOperationBuilder of() {
@@ -159,8 +185,8 @@ public final class ImportOperationBuilder {
         builder.id = template.getId();
         builder.state = template.getState();
         builder.resourceVersion = template.getResourceVersion();
-        builder.retryCount = template.getRetryCount();
         builder.errors = template.getErrors();
+        builder.unresolvedReferences = template.getUnresolvedReferences();
         builder.createdAt = template.getCreatedAt();
         builder.lastModifiedAt = template.getLastModifiedAt();
         builder.expiresAt = template.getExpiresAt();

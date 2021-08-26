@@ -45,13 +45,17 @@ public class ByProjectKeyImportSinksGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importsinks.ImportSinkPagedResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.importapi.models.importsinks.ImportSinkPagedResponse.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importsinks.ImportSinkPagedResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importsinks.ImportSinkPagedResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.importapi.models.importsinks.ImportSinkPagedResponse.class);
     }
 
@@ -67,24 +71,54 @@ public class ByProjectKeyImportSinksGet extends
         return this.getQueryParam("offset");
     }
 
+    public List<String> getSort() {
+        return this.getQueryParam("sort");
+    }
+
     public void setProjectKey(final String projectKey) {
         this.projectKey = projectKey;
     }
 
-    public ByProjectKeyImportSinksGet withLimit(final Double limit) {
+    /**
+     * set limit with the specificied value
+     */
+    public ByProjectKeyImportSinksGet withLimit(final double limit) {
         return copy().withQueryParam("limit", limit);
     }
 
-    public ByProjectKeyImportSinksGet addLimit(final Double limit) {
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyImportSinksGet addLimit(final double limit) {
         return copy().addQueryParam("limit", limit);
     }
 
-    public ByProjectKeyImportSinksGet withOffset(final Double offset) {
+    /**
+     * set offset with the specificied value
+     */
+    public ByProjectKeyImportSinksGet withOffset(final double offset) {
         return copy().withQueryParam("offset", offset);
     }
 
-    public ByProjectKeyImportSinksGet addOffset(final Double offset) {
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyImportSinksGet addOffset(final double offset) {
         return copy().addQueryParam("offset", offset);
+    }
+
+    /**
+     * set sort with the specificied value
+     */
+    public ByProjectKeyImportSinksGet withSort(final String sort) {
+        return copy().withQueryParam("sort", sort);
+    }
+
+    /**
+     * add additional sort query parameter
+     */
+    public ByProjectKeyImportSinksGet addSort(final String sort) {
+        return copy().addQueryParam("sort", sort);
     }
 
     @Override

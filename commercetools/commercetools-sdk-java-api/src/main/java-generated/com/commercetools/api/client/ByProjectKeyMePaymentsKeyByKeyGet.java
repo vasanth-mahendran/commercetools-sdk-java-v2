@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Get MyPayment by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyMePaymentsKeyByKeyGet
         extends ApiMethod<ByProjectKeyMePaymentsKeyByKeyGet, com.commercetools.api.models.me.MyPayment>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyMePaymentsKeyByKeyGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyMePaymentsKeyByKeyGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyMePaymentsKeyByKeyGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyMePaymentsKeyByKeyGet> {
 
     private String projectKey;
     private String key;
@@ -49,13 +46,16 @@ public class ByProjectKeyMePaymentsKeyByKeyGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.me.MyPayment> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.me.MyPayment> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.me.MyPayment.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.me.MyPayment>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.me.MyPayment.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.me.MyPayment>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.me.MyPayment.class);
     }
 
     public String getProjectKey() {
@@ -78,10 +78,16 @@ public class ByProjectKeyMePaymentsKeyByKeyGet
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyMePaymentsKeyByKeyGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyMePaymentsKeyByKeyGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

@@ -58,10 +58,26 @@ public final class AssetImpl implements Asset {
         return this.sources;
     }
 
+    /**
+    *  <p>A localized string is a JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values the corresponding strings used for that language.</p>
+    *  <pre><code class="language-json">{
+    *    &quot;de&quot;: &quot;Hundefutter&quot;,
+    *    &quot;en&quot;: &quot;dog food&quot;
+    *  }
+    *  </code></pre>
+    */
     public com.commercetools.importapi.models.common.LocalizedString getName() {
         return this.name;
     }
 
+    /**
+    *  <p>A localized string is a JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values the corresponding strings used for that language.</p>
+    *  <pre><code class="language-json">{
+    *    &quot;de&quot;: &quot;Hundefutter&quot;,
+    *    &quot;en&quot;: &quot;dog food&quot;
+    *  }
+    *  </code></pre>
+    */
     public com.commercetools.importapi.models.common.LocalizedString getDescription() {
         return this.description;
     }
@@ -119,14 +135,24 @@ public final class AssetImpl implements Asset {
 
         AssetImpl that = (AssetImpl) o;
 
-        return new EqualsBuilder().append(key, that.key).append(sources, that.sources).append(name, that.name).append(
-            description, that.description).append(tags, that.tags).append(custom, that.custom).isEquals();
+        return new EqualsBuilder().append(key, that.key)
+                .append(sources, that.sources)
+                .append(name, that.name)
+                .append(description, that.description)
+                .append(tags, that.tags)
+                .append(custom, that.custom)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(key).append(sources).append(name).append(description).append(
-            tags).append(custom).toHashCode();
+        return new HashCodeBuilder(17, 37).append(key)
+                .append(sources)
+                .append(name)
+                .append(description)
+                .append(tags)
+                .append(custom)
+                .toHashCode();
     }
 
 }

@@ -123,14 +123,14 @@ public final class CartDiscountImpl implements CartDiscount {
     }
 
     /**
-    *  <p>Present on resources updated after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources updated after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
     /**
-    *  <p>Present on resources created after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
@@ -316,24 +316,52 @@ public final class CartDiscountImpl implements CartDiscount {
 
         CartDiscountImpl that = (CartDiscountImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(version, that.version).append(createdAt,
-            that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(lastModifiedBy,
-                that.lastModifiedBy).append(createdBy, that.createdBy).append(name, that.name).append(key,
-                    that.key).append(description, that.description).append(value, that.value).append(cartPredicate,
-                        that.cartPredicate).append(target, that.target).append(sortOrder, that.sortOrder).append(
-                            isActive, that.isActive).append(validFrom, that.validFrom).append(validUntil,
-                                that.validUntil).append(requiresDiscountCode, that.requiresDiscountCode).append(
-                                    references, that.references).append(stackingMode, that.stackingMode).append(custom,
-                                        that.custom).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(version, that.version)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(lastModifiedBy, that.lastModifiedBy)
+                .append(createdBy, that.createdBy)
+                .append(name, that.name)
+                .append(key, that.key)
+                .append(description, that.description)
+                .append(value, that.value)
+                .append(cartPredicate, that.cartPredicate)
+                .append(target, that.target)
+                .append(sortOrder, that.sortOrder)
+                .append(isActive, that.isActive)
+                .append(validFrom, that.validFrom)
+                .append(validUntil, that.validUntil)
+                .append(requiresDiscountCode, that.requiresDiscountCode)
+                .append(references, that.references)
+                .append(stackingMode, that.stackingMode)
+                .append(custom, that.custom)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(version).append(createdAt).append(lastModifiedAt).append(
-            lastModifiedBy).append(createdBy).append(name).append(key).append(description).append(value).append(
-                cartPredicate).append(target).append(sortOrder).append(isActive).append(validFrom).append(
-                    validUntil).append(requiresDiscountCode).append(references).append(stackingMode).append(
-                        custom).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(version)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(lastModifiedBy)
+                .append(createdBy)
+                .append(name)
+                .append(key)
+                .append(description)
+                .append(value)
+                .append(cartPredicate)
+                .append(target)
+                .append(sortOrder)
+                .append(isActive)
+                .append(validFrom)
+                .append(validUntil)
+                .append(requiresDiscountCode)
+                .append(references)
+                .append(stackingMode)
+                .append(custom)
+                .toHashCode();
     }
 
 }

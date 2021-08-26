@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update Type by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyTypesByIDPost
         extends ApiMethod<ByProjectKeyTypesByIDPost, com.commercetools.api.models.type.Type>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyTypesByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyTypesByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyTypesByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyTypesByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyTypesByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyTypesByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -62,13 +59,16 @@ public class ByProjectKeyTypesByIDPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.type.Type> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.type.Type> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.type.Type.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.type.Type>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.type.Type.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.type.Type>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.type.Type.class);
     }
 
     public String getProjectKey() {
@@ -91,10 +91,16 @@ public class ByProjectKeyTypesByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyTypesByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyTypesByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

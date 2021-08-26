@@ -34,9 +34,6 @@ public final class InvalidCredentialsErrorImpl implements InvalidCredentialsErro
         return this.code;
     }
 
-    /**
-    *  <p>The error's description.</p>
-    */
     public String getMessage() {
         return this.message;
     }

@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete TaxCategory by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyTaxCategoriesKeyByKeyDelete extends
         ApiMethod<ByProjectKeyTaxCategoriesKeyByKeyDelete, com.commercetools.api.models.tax_category.TaxCategory>
@@ -22,7 +19,7 @@ public class ByProjectKeyTaxCategoriesKeyByKeyDelete extends
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyTaxCategoriesKeyByKeyDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyTaxCategoriesKeyByKeyDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyTaxCategoriesKeyByKeyDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyTaxCategoriesKeyByKeyDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyTaxCategoriesKeyByKeyDelete> {
 
     private String projectKey;
     private String key;
@@ -51,14 +48,17 @@ public class ByProjectKeyTaxCategoriesKeyByKeyDelete extends
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.tax_category.TaxCategory.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.tax_category.TaxCategory.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.tax_category.TaxCategory.class);
     }
 
     public String getProjectKey() {
@@ -85,18 +85,30 @@ public class ByProjectKeyTaxCategoriesKeyByKeyDelete extends
         this.key = key;
     }
 
-    public ByProjectKeyTaxCategoriesKeyByKeyDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyTaxCategoriesKeyByKeyDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyTaxCategoriesKeyByKeyDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyTaxCategoriesKeyByKeyDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyTaxCategoriesKeyByKeyDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyTaxCategoriesKeyByKeyDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update TaxCategory by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyTaxCategoriesByIDPost
         extends ApiMethod<ByProjectKeyTaxCategoriesByIDPost, com.commercetools.api.models.tax_category.TaxCategory>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyTaxCategoriesByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyTaxCategoriesByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyTaxCategoriesByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyTaxCategoriesByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyTaxCategoriesByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyTaxCategoriesByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -62,14 +59,17 @@ public class ByProjectKeyTaxCategoriesByIDPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.tax_category.TaxCategory.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.tax_category.TaxCategory.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.tax_category.TaxCategory.class);
     }
 
     public String getProjectKey() {
@@ -92,10 +92,16 @@ public class ByProjectKeyTaxCategoriesByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyTaxCategoriesByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyTaxCategoriesByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

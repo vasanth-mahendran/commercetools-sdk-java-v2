@@ -14,21 +14,18 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>The representation sent to the server when creating or updating an import sink.</p>
+*  <p>The representation sent to the server when creating an <a href="#importsink">ImportSink</a>.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class ImportSinkDraftImpl implements ImportSinkDraft {
-
-    private Long version;
 
     private String key;
 
     private com.commercetools.importapi.models.common.ImportResourceType resourceType;
 
     @JsonCreator
-    ImportSinkDraftImpl(@JsonProperty("version") final Long version, @JsonProperty("key") final String key,
+    ImportSinkDraftImpl(@JsonProperty("key") final String key,
             @JsonProperty("resourceType") final com.commercetools.importapi.models.common.ImportResourceType resourceType) {
-        this.version = version;
         this.key = key;
         this.resourceType = resourceType;
     }
@@ -37,28 +34,19 @@ public final class ImportSinkDraftImpl implements ImportSinkDraft {
     }
 
     /**
-    *  <p>The version of this resource.</p>
-    */
-    public Long getVersion() {
-        return this.version;
-    }
-
-    /**
-    *  <p>The unique key of the import sink.</p>
+    *  <p>User-defined unique identifier of the ImportSink.
+    *  Keys can only contain alphanumeric characters (a-Z, 0-9), underscores and hyphens (_, -).</p>
     */
     public String getKey() {
         return this.key;
     }
 
     /**
-    *  <p>The type of import resource sent to this import sink.</p>
+    *  <p>The <a href="#importresourcetype">resource type</a> to be imported.
+    *  If not given, the ImportSink is able to import all of the supported <a href="#importresourcetype">ImportResourceTypes</a>.</p>
     */
     public com.commercetools.importapi.models.common.ImportResourceType getResourceType() {
         return this.resourceType;
-    }
-
-    public void setVersion(final Long version) {
-        this.version = version;
     }
 
     public void setKey(final String key) {
@@ -79,13 +67,12 @@ public final class ImportSinkDraftImpl implements ImportSinkDraft {
 
         ImportSinkDraftImpl that = (ImportSinkDraftImpl) o;
 
-        return new EqualsBuilder().append(version, that.version).append(key, that.key).append(resourceType,
-            that.resourceType).isEquals();
+        return new EqualsBuilder().append(key, that.key).append(resourceType, that.resourceType).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(version).append(key).append(resourceType).toHashCode();
+        return new HashCodeBuilder(17, 37).append(key).append(resourceType).toHashCode();
     }
 
 }

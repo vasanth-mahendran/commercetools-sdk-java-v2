@@ -17,7 +17,7 @@ public class ByProjectKeyShippingMethodsMatchingLocationGet extends
         ApiMethod<ByProjectKeyShippingMethodsMatchingLocationGet, com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyShippingMethodsMatchingLocationGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyShippingMethodsMatchingLocationGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyShippingMethodsMatchingLocationGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyShippingMethodsMatchingLocationGet> {
 
     private String projectKey;
 
@@ -44,13 +44,16 @@ public class ByProjectKeyShippingMethodsMatchingLocationGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request,
+            com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse.class);
     }
 
@@ -78,34 +81,58 @@ public class ByProjectKeyShippingMethodsMatchingLocationGet extends
         this.projectKey = projectKey;
     }
 
+    /**
+     * set country with the specificied value
+     */
     public ByProjectKeyShippingMethodsMatchingLocationGet withCountry(final String country) {
         return copy().withQueryParam("country", country);
     }
 
+    /**
+     * add additional country query parameter
+     */
     public ByProjectKeyShippingMethodsMatchingLocationGet addCountry(final String country) {
         return copy().addQueryParam("country", country);
     }
 
+    /**
+     * set state with the specificied value
+     */
     public ByProjectKeyShippingMethodsMatchingLocationGet withState(final String state) {
         return copy().withQueryParam("state", state);
     }
 
+    /**
+     * add additional state query parameter
+     */
     public ByProjectKeyShippingMethodsMatchingLocationGet addState(final String state) {
         return copy().addQueryParam("state", state);
     }
 
+    /**
+     * set currency with the specificied value
+     */
     public ByProjectKeyShippingMethodsMatchingLocationGet withCurrency(final String currency) {
         return copy().withQueryParam("currency", currency);
     }
 
+    /**
+     * add additional currency query parameter
+     */
     public ByProjectKeyShippingMethodsMatchingLocationGet addCurrency(final String currency) {
         return copy().addQueryParam("currency", currency);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyShippingMethodsMatchingLocationGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyShippingMethodsMatchingLocationGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

@@ -19,7 +19,7 @@ public class ApiHttpResponse<U> extends Base {
 
     public ApiHttpResponse(final int statusCode, final ApiHttpHeaders headers, final U body, final String message) {
         this.statusCode = statusCode;
-        this.headers = headers;
+        this.headers = Optional.ofNullable(headers).orElse(new ApiHttpHeaders());
         this.body = body;
         this.message = message;
     }
@@ -77,8 +77,10 @@ public class ApiHttpResponse<U> extends Base {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("statusCode", statusCode).append("headers", headers).append(
-            "textInterpretedBody", getSecuredBody()).toString();
+        return new ToStringBuilder(this).append("statusCode", statusCode)
+                .append("headers", headers)
+                .append("textInterpretedBody", getSecuredBody())
+                .toString();
     }
 
     static String tryToFilter(final String input) {

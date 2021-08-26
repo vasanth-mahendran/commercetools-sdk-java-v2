@@ -15,20 +15,20 @@ This repository contains the commercetools platform and import-api java sdks gen
 
 ### Java SDK with Gradle
 
-The latest stable SDK release can be retrieved from [jcenter](https://bintray.com/bintray/jcenter?filterByPkgName=commercetools-sdk-java) with:
+The latest stable SDK release can be retrieved from [Maven Central](https://search.maven.org/search?q=g:com.commercetools.sdk) with:
 
 
 ```gradle
 ext {
     versions = [
-        commercetools: "3.0.0"
+        commercetools: "4.0.0"
     ]
 }
 
 sourceCompatibility = 1.8
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -43,7 +43,7 @@ dependencies {
 
 ```maven
 <properties>
-    <commercetools.version>3.0.0</commercetools.version>
+    <commercetools.version>4.0.0</commercetools.version>
 </properties>
 <dependencies>
     <dependency>
@@ -67,31 +67,6 @@ dependencies {
       <version>${commercetools.version}</version>
     </dependency>
 </dependencies>
-<profiles>
-    <profile>
-        <repositories>
-            <repository>
-                <snapshots>
-                    <enabled>false</enabled>
-                </snapshots>
-                <id>central</id>
-                <name>bintray</name>
-                <url>https://jcenter.bintray.com</url>
-            </repository>
-        </repositories>
-        <pluginRepositories>
-            <pluginRepository>
-                <snapshots>
-                    <enabled>false</enabled>
-                </snapshots>
-                <id>central</id>
-                <name>bintray-plugins</name>
-                <url>https://jcenter.bintray.com</url>
-            </pluginRepository>
-        </pluginRepositories>
-        <id>bintray</id>
-    </profile>
-</profiles>
 ```
 
 ### Modules
@@ -99,6 +74,7 @@ dependencies {
 * `commercetools-http-client`: alias for commercetools-okhttp-client4
 * `commercetools-okhttp-client3`: uses OkHttp client 3.0
 * `commercetools-okhttp-client4`: uses OkHttp client 4.0
+* `commercetools-apachehttp-client`: uses Apache HTTP async client 5.1
 * `commercetools-sdk-java-api`: models and request builders for the product API
 * `commercetools-sdk-java-importapi`: models and request builders for the import API
 * `commercetools-sdk-java-ml`: models and request builders for the machine learning API

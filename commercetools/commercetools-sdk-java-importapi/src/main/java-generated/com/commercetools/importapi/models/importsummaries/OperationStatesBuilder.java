@@ -3,10 +3,11 @@ package com.commercetools.importapi.models.importsummaries;
 
 import java.util.*;
 
+import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public final class OperationStatesBuilder {
+public final class OperationStatesBuilder implements Builder<OperationStates> {
 
     private Long ValidationFailed;
 
@@ -15,10 +16,6 @@ public final class OperationStatesBuilder {
     private Long WaitForMasterVariant;
 
     private Long Imported;
-
-    private Long Delete;
-
-    private Long Deleted;
 
     private Long Rejected;
 
@@ -39,16 +36,6 @@ public final class OperationStatesBuilder {
 
     public OperationStatesBuilder Imported(final Long Imported) {
         this.Imported = Imported;
-        return this;
-    }
-
-    public OperationStatesBuilder Delete(final Long Delete) {
-        this.Delete = Delete;
-        return this;
-    }
-
-    public OperationStatesBuilder Deleted(final Long Deleted) {
-        this.Deleted = Deleted;
         return this;
     }
 
@@ -73,21 +60,24 @@ public final class OperationStatesBuilder {
         return this.Imported;
     }
 
-    public Long getDelete() {
-        return this.Delete;
-    }
-
-    public Long getDeleted() {
-        return this.Deleted;
-    }
-
     public Long getRejected() {
         return this.Rejected;
     }
 
     public OperationStates build() {
-        return new OperationStatesImpl(ValidationFailed, Unresolved, WaitForMasterVariant, Imported, Delete, Deleted,
-            Rejected);
+        Objects.requireNonNull(ValidationFailed, OperationStates.class + ": ValidationFailed is missing");
+        Objects.requireNonNull(Unresolved, OperationStates.class + ": Unresolved is missing");
+        Objects.requireNonNull(WaitForMasterVariant, OperationStates.class + ": WaitForMasterVariant is missing");
+        Objects.requireNonNull(Imported, OperationStates.class + ": Imported is missing");
+        Objects.requireNonNull(Rejected, OperationStates.class + ": Rejected is missing");
+        return new OperationStatesImpl(ValidationFailed, Unresolved, WaitForMasterVariant, Imported, Rejected);
+    }
+
+    /**
+     * builds OperationStates without checking for non null required values
+     */
+    public OperationStates buildUnchecked() {
+        return new OperationStatesImpl(ValidationFailed, Unresolved, WaitForMasterVariant, Imported, Rejected);
     }
 
     public static OperationStatesBuilder of() {
@@ -100,8 +90,6 @@ public final class OperationStatesBuilder {
         builder.Unresolved = template.getUnresolved();
         builder.WaitForMasterVariant = template.getWaitForMasterVariant();
         builder.Imported = template.getImported();
-        builder.Delete = template.getDelete();
-        builder.Deleted = template.getDeleted();
         builder.Rejected = template.getRejected();
         return builder;
     }

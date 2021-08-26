@@ -113,12 +113,18 @@ public interface ReferenceTypeId {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static ReferenceTypeId findEnum(String value) {
@@ -131,6 +137,10 @@ public interface ReferenceTypeId {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

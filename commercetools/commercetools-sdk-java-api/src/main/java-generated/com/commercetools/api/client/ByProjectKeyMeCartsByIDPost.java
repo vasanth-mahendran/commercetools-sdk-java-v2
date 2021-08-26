@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update MyCart by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyMeCartsByIDPost
-        extends ApiMethod<ByProjectKeyMeCartsByIDPost, com.commercetools.api.models.me.MyCart>
+        extends ApiMethod<ByProjectKeyMeCartsByIDPost, com.commercetools.api.models.cart.Cart>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyMeCartsByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyMeCartsByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyMeCartsByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyMeCartsByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyMeCartsByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyMeCartsByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -62,13 +59,16 @@ public class ByProjectKeyMeCartsByIDPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.me.MyCart> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.cart.Cart> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.cart.Cart.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.me.MyCart>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.me.MyCart.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart.Cart>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.cart.Cart.class);
     }
 
     public String getProjectKey() {
@@ -91,10 +91,16 @@ public class ByProjectKeyMeCartsByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyMeCartsByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyMeCartsByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

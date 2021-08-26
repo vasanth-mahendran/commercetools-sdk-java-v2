@@ -14,34 +14,27 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
-*  <p>The representation sent to the server when creating or updating an import sink.</p>
+*  <p>The representation sent to the server when creating an <a href="#importsink">ImportSink</a>.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = ImportSinkDraftImpl.class)
 public interface ImportSinkDraft {
 
     /**
-    *  <p>The version of this resource.</p>
-    */
-
-    @JsonProperty("version")
-    public Long getVersion();
-
-    /**
-    *  <p>The unique key of the import sink.</p>
+    *  <p>User-defined unique identifier of the ImportSink.
+    *  Keys can only contain alphanumeric characters (a-Z, 0-9), underscores and hyphens (_, -).</p>
     */
     @NotNull
     @JsonProperty("key")
     public String getKey();
 
     /**
-    *  <p>The type of import resource sent to this import sink.</p>
+    *  <p>The <a href="#importresourcetype">resource type</a> to be imported.
+    *  If not given, the ImportSink is able to import all of the supported <a href="#importresourcetype">ImportResourceTypes</a>.</p>
     */
-    @NotNull
+
     @JsonProperty("resourceType")
     public ImportResourceType getResourceType();
-
-    public void setVersion(final Long version);
 
     public void setKey(final String key);
 
@@ -53,7 +46,6 @@ public interface ImportSinkDraft {
 
     public static ImportSinkDraft of(final ImportSinkDraft template) {
         ImportSinkDraftImpl instance = new ImportSinkDraftImpl();
-        instance.setVersion(template.getVersion());
         instance.setKey(template.getKey());
         instance.setResourceType(template.getResourceType());
         return instance;

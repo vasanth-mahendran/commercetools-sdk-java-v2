@@ -92,14 +92,14 @@ public final class OrderEditImpl implements OrderEdit {
     }
 
     /**
-    *  <p>Present on resources updated after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
     /**
-    *  <p>Present on resources created after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
@@ -209,18 +209,36 @@ public final class OrderEditImpl implements OrderEdit {
 
         OrderEditImpl that = (OrderEditImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(version, that.version).append(createdAt,
-            that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(lastModifiedBy,
-                that.lastModifiedBy).append(createdBy, that.createdBy).append(key, that.key).append(resource,
-                    that.resource).append(stagedActions, that.stagedActions).append(custom, that.custom).append(result,
-                        that.result).append(comment, that.comment).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(version, that.version)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(lastModifiedBy, that.lastModifiedBy)
+                .append(createdBy, that.createdBy)
+                .append(key, that.key)
+                .append(resource, that.resource)
+                .append(stagedActions, that.stagedActions)
+                .append(custom, that.custom)
+                .append(result, that.result)
+                .append(comment, that.comment)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(version).append(createdAt).append(lastModifiedAt).append(
-            lastModifiedBy).append(createdBy).append(key).append(resource).append(stagedActions).append(custom).append(
-                result).append(comment).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(version)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(lastModifiedBy)
+                .append(createdBy)
+                .append(key)
+                .append(resource)
+                .append(stagedActions)
+                .append(custom)
+                .append(result)
+                .append(comment)
+                .toHashCode();
     }
 
 }

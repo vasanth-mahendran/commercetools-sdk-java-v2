@@ -26,6 +26,11 @@ public interface ImportResourceType {
     */
     ImportResourceType ORDER = ImportResourceTypeEnum.ORDER;
     /**
+    	<p>The order patch import resource type.</p>
+
+    */
+    ImportResourceType ORDER_PATCH = ImportResourceTypeEnum.ORDER_PATCH;
+    /**
     	<p>The price import resource type.</p>
 
     */
@@ -65,6 +70,8 @@ public interface ImportResourceType {
 
         ORDER("order"),
 
+        ORDER_PATCH("order-patch"),
+
         PRICE("price"),
 
         PRODUCT("product"),
@@ -89,12 +96,18 @@ public interface ImportResourceType {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static ImportResourceType findEnum(String value) {
@@ -107,6 +120,10 @@ public interface ImportResourceType {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

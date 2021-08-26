@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update Category by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyCategoriesByIDPost
         extends ApiMethod<ByProjectKeyCategoriesByIDPost, com.commercetools.api.models.category.Category>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyCategoriesByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyCategoriesByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCategoriesByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCategoriesByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyCategoriesByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCategoriesByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -62,13 +59,17 @@ public class ByProjectKeyCategoriesByIDPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.category.Category> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.category.Category> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.category.Category.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.category.Category>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.category.Category.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.category.Category>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.category.Category.class);
     }
 
     public String getProjectKey() {
@@ -91,10 +92,16 @@ public class ByProjectKeyCategoriesByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCategoriesByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCategoriesByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

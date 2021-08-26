@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update MyShoppingList by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyMeShoppingListsKeyByKeyPost extends
-        ApiMethod<ByProjectKeyMeShoppingListsKeyByKeyPost, com.commercetools.api.models.shopping_list.MyShoppingList>
+        ApiMethod<ByProjectKeyMeShoppingListsKeyByKeyPost, com.commercetools.api.models.shopping_list.ShoppingList>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyMeShoppingListsKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyMeShoppingListsKeyByKeyPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyMeShoppingListsKeyByKeyPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyMeShoppingListsKeyByKeyPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyMeShoppingListsKeyByKeyPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyMeShoppingListsKeyByKeyPost> {
 
     private String projectKey;
     private String key;
@@ -62,15 +59,17 @@ public class ByProjectKeyMeShoppingListsKeyByKeyPost extends
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.shopping_list.MyShoppingList> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.shopping_list.ShoppingList.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shopping_list.MyShoppingList>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.shopping_list.MyShoppingList.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.shopping_list.ShoppingList.class);
     }
 
     public String getProjectKey() {
@@ -93,10 +92,16 @@ public class ByProjectKeyMeShoppingListsKeyByKeyPost extends
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyMeShoppingListsKeyByKeyPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyMeShoppingListsKeyByKeyPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

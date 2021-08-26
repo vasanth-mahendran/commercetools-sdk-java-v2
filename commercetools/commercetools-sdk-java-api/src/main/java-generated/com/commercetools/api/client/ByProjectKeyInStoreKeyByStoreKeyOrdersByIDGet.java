@@ -22,7 +22,7 @@ public class ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet
         extends ApiMethod<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet, com.commercetools.api.models.order.Order>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet> {
 
     private String projectKey;
     private String storeKey;
@@ -56,13 +56,16 @@ public class ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.order.Order.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class);
     }
 
     public String getProjectKey() {
@@ -93,10 +96,16 @@ public class ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

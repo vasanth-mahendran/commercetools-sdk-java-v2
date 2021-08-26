@@ -18,8 +18,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyOrdersImportPost
         extends ApiMethod<ByProjectKeyOrdersImportPost, com.commercetools.api.models.order.Order>
-        implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersImportPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyOrdersImportPost> {
+        implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersImportPost> {
 
     private String projectKey;
 
@@ -57,13 +56,16 @@ public class ByProjectKeyOrdersImportPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.order.Order.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class);
     }
 
     public String getProjectKey() {

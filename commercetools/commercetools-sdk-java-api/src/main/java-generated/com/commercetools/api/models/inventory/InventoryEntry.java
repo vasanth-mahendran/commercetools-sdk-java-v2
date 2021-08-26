@@ -9,7 +9,7 @@ import java.util.function.Function;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.channel.ChannelResourceIdentifier;
+import com.commercetools.api.models.channel.ChannelReference;
 import com.commercetools.api.models.common.BaseResource;
 import com.commercetools.api.models.common.CreatedBy;
 import com.commercetools.api.models.common.LastModifiedBy;
@@ -43,14 +43,14 @@ public interface InventoryEntry extends BaseResource, com.commercetools.api.mode
     public ZonedDateTime getLastModifiedAt();
 
     /**
-    *  <p>Present on resources updated after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     @Valid
     @JsonProperty("lastModifiedBy")
     public LastModifiedBy getLastModifiedBy();
 
     /**
-    *  <p>Present on resources created after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     @Valid
     @JsonProperty("createdBy")
@@ -65,7 +65,7 @@ public interface InventoryEntry extends BaseResource, com.commercetools.api.mode
     */
     @Valid
     @JsonProperty("supplyChannel")
-    public ChannelResourceIdentifier getSupplyChannel();
+    public ChannelReference getSupplyChannel();
 
     /**
     *  <p>Overall amount of stock.
@@ -115,7 +115,7 @@ public interface InventoryEntry extends BaseResource, com.commercetools.api.mode
 
     public void setSku(final String sku);
 
-    public void setSupplyChannel(final ChannelResourceIdentifier supplyChannel);
+    public void setSupplyChannel(final ChannelReference supplyChannel);
 
     public void setQuantityOnStock(final Long quantityOnStock);
 

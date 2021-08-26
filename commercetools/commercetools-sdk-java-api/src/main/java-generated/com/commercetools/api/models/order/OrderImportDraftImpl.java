@@ -24,15 +24,15 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
 
     private java.util.List<com.commercetools.api.models.order.LineItemImportDraft> lineItems;
 
-    private java.util.List<com.commercetools.api.models.cart.CustomLineItemDraft> customLineItems;
+    private java.util.List<com.commercetools.api.models.cart.CustomLineItemImportDraft> customLineItems;
 
     private com.commercetools.api.models.common.Money totalPrice;
 
     private com.commercetools.api.models.cart.TaxedPriceDraft taxedPrice;
 
-    private com.commercetools.api.models.common.Address shippingAddress;
+    private com.commercetools.api.models.common.BaseAddress shippingAddress;
 
-    private com.commercetools.api.models.common.Address billingAddress;
+    private com.commercetools.api.models.common.BaseAddress billingAddress;
 
     private com.commercetools.api.models.customer_group.CustomerGroupResourceIdentifier customerGroup;
 
@@ -54,7 +54,7 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
 
     private com.commercetools.api.models.cart.RoundingMode taxRoundingMode;
 
-    private java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses;
+    private java.util.List<com.commercetools.api.models.common.BaseAddress> itemShippingAddresses;
 
     private com.commercetools.api.models.store.StoreResourceIdentifier store;
 
@@ -65,11 +65,11 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
             @JsonProperty("customerId") final String customerId,
             @JsonProperty("customerEmail") final String customerEmail,
             @JsonProperty("lineItems") final java.util.List<com.commercetools.api.models.order.LineItemImportDraft> lineItems,
-            @JsonProperty("customLineItems") final java.util.List<com.commercetools.api.models.cart.CustomLineItemDraft> customLineItems,
+            @JsonProperty("customLineItems") final java.util.List<com.commercetools.api.models.cart.CustomLineItemImportDraft> customLineItems,
             @JsonProperty("totalPrice") final com.commercetools.api.models.common.Money totalPrice,
             @JsonProperty("taxedPrice") final com.commercetools.api.models.cart.TaxedPriceDraft taxedPrice,
-            @JsonProperty("shippingAddress") final com.commercetools.api.models.common.Address shippingAddress,
-            @JsonProperty("billingAddress") final com.commercetools.api.models.common.Address billingAddress,
+            @JsonProperty("shippingAddress") final com.commercetools.api.models.common.BaseAddress shippingAddress,
+            @JsonProperty("billingAddress") final com.commercetools.api.models.common.BaseAddress billingAddress,
             @JsonProperty("customerGroup") final com.commercetools.api.models.customer_group.CustomerGroupResourceIdentifier customerGroup,
             @JsonProperty("country") final String country,
             @JsonProperty("orderState") final com.commercetools.api.models.order.OrderState orderState,
@@ -80,7 +80,7 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
             @JsonProperty("custom") final com.commercetools.api.models.type.CustomFieldsDraft custom,
             @JsonProperty("inventoryMode") final com.commercetools.api.models.cart.InventoryMode inventoryMode,
             @JsonProperty("taxRoundingMode") final com.commercetools.api.models.cart.RoundingMode taxRoundingMode,
-            @JsonProperty("itemShippingAddresses") final java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses,
+            @JsonProperty("itemShippingAddresses") final java.util.List<com.commercetools.api.models.common.BaseAddress> itemShippingAddresses,
             @JsonProperty("store") final com.commercetools.api.models.store.StoreResourceIdentifier store,
             @JsonProperty("origin") final com.commercetools.api.models.cart.CartOrigin origin) {
         this.orderNumber = orderNumber;
@@ -143,7 +143,7 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
     /**
     *  <p>If not given <code>lineItems</code> must not be empty.</p>
     */
-    public java.util.List<com.commercetools.api.models.cart.CustomLineItemDraft> getCustomLineItems() {
+    public java.util.List<com.commercetools.api.models.cart.CustomLineItemImportDraft> getCustomLineItems() {
         return this.customLineItems;
     }
 
@@ -159,11 +159,11 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
         return this.taxedPrice;
     }
 
-    public com.commercetools.api.models.common.Address getShippingAddress() {
+    public com.commercetools.api.models.common.BaseAddress getShippingAddress() {
         return this.shippingAddress;
     }
 
-    public com.commercetools.api.models.common.Address getBillingAddress() {
+    public com.commercetools.api.models.common.BaseAddress getBillingAddress() {
         return this.billingAddress;
     }
 
@@ -233,7 +233,7 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
     /**
     *  <p>Contains addresses for orders with multiple shipping addresses.</p>
     */
-    public java.util.List<com.commercetools.api.models.common.Address> getItemShippingAddresses() {
+    public java.util.List<com.commercetools.api.models.common.BaseAddress> getItemShippingAddresses() {
         return this.itemShippingAddresses;
     }
 
@@ -268,12 +268,13 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
         this.lineItems = lineItems;
     }
 
-    public void setCustomLineItems(final com.commercetools.api.models.cart.CustomLineItemDraft... customLineItems) {
+    public void setCustomLineItems(
+            final com.commercetools.api.models.cart.CustomLineItemImportDraft... customLineItems) {
         this.customLineItems = new ArrayList<>(Arrays.asList(customLineItems));
     }
 
     public void setCustomLineItems(
-            final java.util.List<com.commercetools.api.models.cart.CustomLineItemDraft> customLineItems) {
+            final java.util.List<com.commercetools.api.models.cart.CustomLineItemImportDraft> customLineItems) {
         this.customLineItems = customLineItems;
     }
 
@@ -285,11 +286,11 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
         this.taxedPrice = taxedPrice;
     }
 
-    public void setShippingAddress(final com.commercetools.api.models.common.Address shippingAddress) {
+    public void setShippingAddress(final com.commercetools.api.models.common.BaseAddress shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
 
-    public void setBillingAddress(final com.commercetools.api.models.common.Address billingAddress) {
+    public void setBillingAddress(final com.commercetools.api.models.common.BaseAddress billingAddress) {
         this.billingAddress = billingAddress;
     }
 
@@ -334,12 +335,13 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
         this.taxRoundingMode = taxRoundingMode;
     }
 
-    public void setItemShippingAddresses(final com.commercetools.api.models.common.Address... itemShippingAddresses) {
+    public void setItemShippingAddresses(
+            final com.commercetools.api.models.common.BaseAddress... itemShippingAddresses) {
         this.itemShippingAddresses = new ArrayList<>(Arrays.asList(itemShippingAddresses));
     }
 
     public void setItemShippingAddresses(
-            final java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses) {
+            final java.util.List<com.commercetools.api.models.common.BaseAddress> itemShippingAddresses) {
         this.itemShippingAddresses = itemShippingAddresses;
     }
 
@@ -361,26 +363,56 @@ public final class OrderImportDraftImpl implements OrderImportDraft {
 
         OrderImportDraftImpl that = (OrderImportDraftImpl) o;
 
-        return new EqualsBuilder().append(orderNumber, that.orderNumber).append(customerId, that.customerId).append(
-            customerEmail, that.customerEmail).append(lineItems, that.lineItems).append(customLineItems,
-                that.customLineItems).append(totalPrice, that.totalPrice).append(taxedPrice, that.taxedPrice).append(
-                    shippingAddress, that.shippingAddress).append(billingAddress, that.billingAddress).append(
-                        customerGroup, that.customerGroup).append(country, that.country).append(orderState,
-                            that.orderState).append(shipmentState, that.shipmentState).append(paymentState,
-                                that.paymentState).append(shippingInfo, that.shippingInfo).append(completedAt,
-                                    that.completedAt).append(custom, that.custom).append(inventoryMode,
-                                        that.inventoryMode).append(taxRoundingMode, that.taxRoundingMode).append(
-                                            itemShippingAddresses, that.itemShippingAddresses).append(store,
-                                                that.store).append(origin, that.origin).isEquals();
+        return new EqualsBuilder().append(orderNumber, that.orderNumber)
+                .append(customerId, that.customerId)
+                .append(customerEmail, that.customerEmail)
+                .append(lineItems, that.lineItems)
+                .append(customLineItems, that.customLineItems)
+                .append(totalPrice, that.totalPrice)
+                .append(taxedPrice, that.taxedPrice)
+                .append(shippingAddress, that.shippingAddress)
+                .append(billingAddress, that.billingAddress)
+                .append(customerGroup, that.customerGroup)
+                .append(country, that.country)
+                .append(orderState, that.orderState)
+                .append(shipmentState, that.shipmentState)
+                .append(paymentState, that.paymentState)
+                .append(shippingInfo, that.shippingInfo)
+                .append(completedAt, that.completedAt)
+                .append(custom, that.custom)
+                .append(inventoryMode, that.inventoryMode)
+                .append(taxRoundingMode, that.taxRoundingMode)
+                .append(itemShippingAddresses, that.itemShippingAddresses)
+                .append(store, that.store)
+                .append(origin, that.origin)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(orderNumber).append(customerId).append(customerEmail).append(
-            lineItems).append(customLineItems).append(totalPrice).append(taxedPrice).append(shippingAddress).append(
-                billingAddress).append(customerGroup).append(country).append(orderState).append(shipmentState).append(
-                    paymentState).append(shippingInfo).append(completedAt).append(custom).append(inventoryMode).append(
-                        taxRoundingMode).append(itemShippingAddresses).append(store).append(origin).toHashCode();
+        return new HashCodeBuilder(17, 37).append(orderNumber)
+                .append(customerId)
+                .append(customerEmail)
+                .append(lineItems)
+                .append(customLineItems)
+                .append(totalPrice)
+                .append(taxedPrice)
+                .append(shippingAddress)
+                .append(billingAddress)
+                .append(customerGroup)
+                .append(country)
+                .append(orderState)
+                .append(shipmentState)
+                .append(paymentState)
+                .append(shippingInfo)
+                .append(completedAt)
+                .append(custom)
+                .append(inventoryMode)
+                .append(taxRoundingMode)
+                .append(itemShippingAddresses)
+                .append(store)
+                .append(origin)
+                .toHashCode();
     }
 
 }

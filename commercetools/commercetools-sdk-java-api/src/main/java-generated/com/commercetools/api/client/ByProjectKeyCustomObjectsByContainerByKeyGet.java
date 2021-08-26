@@ -20,7 +20,7 @@ public class ByProjectKeyCustomObjectsByContainerByKeyGet extends
         ApiMethod<ByProjectKeyCustomObjectsByContainerByKeyGet, com.commercetools.api.models.custom_object.CustomObject>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyCustomObjectsByContainerByKeyGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomObjectsByContainerByKeyGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCustomObjectsByContainerByKeyGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyCustomObjectsByContainerByKeyGet> {
 
     private String projectKey;
     private String container;
@@ -53,14 +53,17 @@ public class ByProjectKeyCustomObjectsByContainerByKeyGet extends
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.custom_object.CustomObject> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.custom_object.CustomObject> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.custom_object.CustomObject.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.custom_object.CustomObject>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.custom_object.CustomObject.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.custom_object.CustomObject>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.custom_object.CustomObject.class);
     }
 
     public String getProjectKey() {
@@ -91,10 +94,16 @@ public class ByProjectKeyCustomObjectsByContainerByKeyGet extends
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCustomObjectsByContainerByKeyGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCustomObjectsByContainerByKeyGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

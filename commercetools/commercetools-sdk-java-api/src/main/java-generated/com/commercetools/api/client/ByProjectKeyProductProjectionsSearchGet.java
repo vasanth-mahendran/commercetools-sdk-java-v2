@@ -23,7 +23,7 @@ public class ByProjectKeyProductProjectionsSearchGet extends
         com.commercetools.api.client.PriceselectingTrait<ByProjectKeyProductProjectionsSearchGet>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyProductProjectionsSearchGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductProjectionsSearchGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyProductProjectionsSearchGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyProductProjectionsSearchGet> {
 
     private String projectKey;
 
@@ -50,13 +50,17 @@ public class ByProjectKeyProductProjectionsSearchGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.product.ProductProjectionPagedSearchResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.api.models.product.ProductProjectionPagedSearchResponse.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product.ProductProjectionPagedSearchResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product.ProductProjectionPagedSearchResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.product.ProductProjectionPagedSearchResponse.class);
     }
 
@@ -144,162 +148,282 @@ public class ByProjectKeyProductProjectionsSearchGet extends
         this.projectKey = projectKey;
     }
 
-    public ByProjectKeyProductProjectionsSearchGet withFuzzy(final Boolean fuzzy) {
+    /**
+     * set fuzzy with the specificied value
+     */
+    public ByProjectKeyProductProjectionsSearchGet withFuzzy(final boolean fuzzy) {
         return copy().withQueryParam("fuzzy", fuzzy);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet addFuzzy(final Boolean fuzzy) {
+    /**
+     * add additional fuzzy query parameter
+     */
+    public ByProjectKeyProductProjectionsSearchGet addFuzzy(final boolean fuzzy) {
         return copy().addQueryParam("fuzzy", fuzzy);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet withFuzzyLevel(final Double fuzzyLevel) {
+    /**
+     * set fuzzyLevel with the specificied value
+     */
+    public ByProjectKeyProductProjectionsSearchGet withFuzzyLevel(final double fuzzyLevel) {
         return copy().withQueryParam("fuzzyLevel", fuzzyLevel);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet addFuzzyLevel(final Double fuzzyLevel) {
+    /**
+     * add additional fuzzyLevel query parameter
+     */
+    public ByProjectKeyProductProjectionsSearchGet addFuzzyLevel(final double fuzzyLevel) {
         return copy().addQueryParam("fuzzyLevel", fuzzyLevel);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet withMarkMatchingVariants(final Boolean markMatchingVariants) {
+    /**
+     * set markMatchingVariants with the specificied value
+     */
+    public ByProjectKeyProductProjectionsSearchGet withMarkMatchingVariants(final boolean markMatchingVariants) {
         return copy().withQueryParam("markMatchingVariants", markMatchingVariants);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet addMarkMatchingVariants(final Boolean markMatchingVariants) {
+    /**
+     * add additional markMatchingVariants query parameter
+     */
+    public ByProjectKeyProductProjectionsSearchGet addMarkMatchingVariants(final boolean markMatchingVariants) {
         return copy().addQueryParam("markMatchingVariants", markMatchingVariants);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet withStaged(final Boolean staged) {
+    /**
+     * set staged with the specificied value
+     */
+    public ByProjectKeyProductProjectionsSearchGet withStaged(final boolean staged) {
         return copy().withQueryParam("staged", staged);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet addStaged(final Boolean staged) {
+    /**
+     * add additional staged query parameter
+     */
+    public ByProjectKeyProductProjectionsSearchGet addStaged(final boolean staged) {
         return copy().addQueryParam("staged", staged);
     }
 
+    /**
+     * set filter with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withFilter(final String filter) {
         return copy().withQueryParam("filter", filter);
     }
 
+    /**
+     * add additional filter query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addFilter(final String filter) {
         return copy().addQueryParam("filter", filter);
     }
 
+    /**
+     * set filterFacets with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withFilterFacets(final String filterFacets) {
         return copy().withQueryParam("filter.facets", filterFacets);
     }
 
+    /**
+     * add additional filterFacets query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addFilterFacets(final String filterFacets) {
         return copy().addQueryParam("filter.facets", filterFacets);
     }
 
+    /**
+     * set filterQuery with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withFilterQuery(final String filterQuery) {
         return copy().withQueryParam("filter.query", filterQuery);
     }
 
+    /**
+     * add additional filterQuery query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addFilterQuery(final String filterQuery) {
         return copy().addQueryParam("filter.query", filterQuery);
     }
 
+    /**
+     * set facet with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withFacet(final String facet) {
         return copy().withQueryParam("facet", facet);
     }
 
+    /**
+     * add additional facet query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addFacet(final String facet) {
         return copy().addQueryParam("facet", facet);
     }
 
+    /**
+     * set sort with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withSort(final String sort) {
         return copy().withQueryParam("sort", sort);
     }
 
+    /**
+     * add additional sort query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addSort(final String sort) {
         return copy().addQueryParam("sort", sort);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet withLimit(final Integer limit) {
+    /**
+     * set limit with the specificied value
+     */
+    public ByProjectKeyProductProjectionsSearchGet withLimit(final int limit) {
         return copy().withQueryParam("limit", limit);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet addLimit(final Integer limit) {
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyProductProjectionsSearchGet addLimit(final int limit) {
         return copy().addQueryParam("limit", limit);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet withOffset(final Integer offset) {
+    /**
+     * set offset with the specificied value
+     */
+    public ByProjectKeyProductProjectionsSearchGet withOffset(final int offset) {
         return copy().withQueryParam("offset", offset);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet addOffset(final Integer offset) {
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyProductProjectionsSearchGet addOffset(final int offset) {
         return copy().addQueryParam("offset", offset);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet withWithTotal(final Boolean withTotal) {
+    /**
+     * set withTotal with the specificied value
+     */
+    public ByProjectKeyProductProjectionsSearchGet withWithTotal(final boolean withTotal) {
         return copy().withQueryParam("withTotal", withTotal);
     }
 
-    public ByProjectKeyProductProjectionsSearchGet addWithTotal(final Boolean withTotal) {
+    /**
+     * add additional withTotal query parameter
+     */
+    public ByProjectKeyProductProjectionsSearchGet addWithTotal(final boolean withTotal) {
         return copy().addQueryParam("withTotal", withTotal);
     }
 
+    /**
+     * set priceCurrency with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withPriceCurrency(final String priceCurrency) {
         return copy().withQueryParam("priceCurrency", priceCurrency);
     }
 
+    /**
+     * add additional priceCurrency query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addPriceCurrency(final String priceCurrency) {
         return copy().addQueryParam("priceCurrency", priceCurrency);
     }
 
+    /**
+     * set priceCountry with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withPriceCountry(final String priceCountry) {
         return copy().withQueryParam("priceCountry", priceCountry);
     }
 
+    /**
+     * add additional priceCountry query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addPriceCountry(final String priceCountry) {
         return copy().addQueryParam("priceCountry", priceCountry);
     }
 
+    /**
+     * set priceCustomerGroup with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withPriceCustomerGroup(final String priceCustomerGroup) {
         return copy().withQueryParam("priceCustomerGroup", priceCustomerGroup);
     }
 
+    /**
+     * add additional priceCustomerGroup query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addPriceCustomerGroup(final String priceCustomerGroup) {
         return copy().addQueryParam("priceCustomerGroup", priceCustomerGroup);
     }
 
+    /**
+     * set priceChannel with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withPriceChannel(final String priceChannel) {
         return copy().withQueryParam("priceChannel", priceChannel);
     }
 
+    /**
+     * add additional priceChannel query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addPriceChannel(final String priceChannel) {
         return copy().addQueryParam("priceChannel", priceChannel);
     }
 
+    /**
+     * set localeProjection with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withLocaleProjection(final String localeProjection) {
         return copy().withQueryParam("localeProjection", localeProjection);
     }
 
+    /**
+     * add additional localeProjection query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addLocaleProjection(final String localeProjection) {
         return copy().addQueryParam("localeProjection", localeProjection);
     }
 
+    /**
+     * set storeProjection with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withStoreProjection(final String storeProjection) {
         return copy().withQueryParam("storeProjection", storeProjection);
     }
 
+    /**
+     * add additional storeProjection query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addStoreProjection(final String storeProjection) {
         return copy().addQueryParam("storeProjection", storeProjection);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }
 
+    /**
+     * set text with the specificied value
+     */
     public ByProjectKeyProductProjectionsSearchGet withText(final String locale, final String text) {
         return copy().withQueryParam(String.format("text.%s", locale), text);
     }
 
+    /**
+     * add additional text query parameter
+     */
     public ByProjectKeyProductProjectionsSearchGet addText(final String locale, final String text) {
         return copy().addQueryParam(String.format("text.%s", locale), text);
     }

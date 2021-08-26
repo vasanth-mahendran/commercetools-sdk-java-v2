@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>The Unique AttributeConstraint was violated.</p>
+*  <p>The <code>Unique</code> <a href="/../api/projects/productTypes#attributeconstraint-enum">Attribute Constraint</a> was violated.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class DuplicateAttributeValueErrorImpl implements DuplicateAttributeValueError {
@@ -41,15 +41,12 @@ public final class DuplicateAttributeValueErrorImpl implements DuplicateAttribut
         return this.code;
     }
 
-    /**
-    *  <p>The error's description.</p>
-    */
     public String getMessage() {
         return this.message;
     }
 
     /**
-    *  <p>The conflicting attribute.</p>
+    *  <p>The attribute in conflict.</p>
     */
     public com.commercetools.importapi.models.productvariants.Attribute getAttribute() {
         return this.attribute;
@@ -73,8 +70,10 @@ public final class DuplicateAttributeValueErrorImpl implements DuplicateAttribut
 
         DuplicateAttributeValueErrorImpl that = (DuplicateAttributeValueErrorImpl) o;
 
-        return new EqualsBuilder().append(code, that.code).append(message, that.message).append(attribute,
-            that.attribute).isEquals();
+        return new EqualsBuilder().append(code, that.code)
+                .append(message, that.message)
+                .append(attribute, that.attribute)
+                .isEquals();
     }
 
     @Override

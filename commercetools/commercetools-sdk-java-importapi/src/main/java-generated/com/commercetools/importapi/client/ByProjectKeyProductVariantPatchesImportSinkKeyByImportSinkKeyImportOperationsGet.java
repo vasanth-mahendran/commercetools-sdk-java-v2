@@ -54,13 +54,18 @@ public class ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImport
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importoperations.ImportOperationPagedResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request,
+                com.commercetools.importapi.models.importoperations.ImportOperationPagedResponse.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importoperations.ImportOperationPagedResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importoperations.ImportOperationPagedResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.importapi.models.importoperations.ImportOperationPagedResponse.class);
     }
 
@@ -92,6 +97,10 @@ public class ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImport
         return this.getQueryParam("state");
     }
 
+    public List<String> getDebug() {
+        return this.getQueryParam("debug");
+    }
+
     public void setProjectKey(final String projectKey) {
         this.projectKey = projectKey;
     }
@@ -100,53 +109,99 @@ public class ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImport
         this.importSinkKey = importSinkKey;
     }
 
+    /**
+     * set limit with the specificied value
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet withLimit(
-            final Double limit) {
+            final double limit) {
         return copy().withQueryParam("limit", limit);
     }
 
+    /**
+     * add additional limit query parameter
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet addLimit(
-            final Double limit) {
+            final double limit) {
         return copy().addQueryParam("limit", limit);
     }
 
+    /**
+     * set offset with the specificied value
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet withOffset(
-            final Double offset) {
+            final double offset) {
         return copy().withQueryParam("offset", offset);
     }
 
+    /**
+     * add additional offset query parameter
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet addOffset(
-            final Double offset) {
+            final double offset) {
         return copy().addQueryParam("offset", offset);
     }
 
+    /**
+     * set sort with the specificied value
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet withSort(
             final String sort) {
         return copy().withQueryParam("sort", sort);
     }
 
+    /**
+     * add additional sort query parameter
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet addSort(final String sort) {
         return copy().addQueryParam("sort", sort);
     }
 
+    /**
+     * set resourceKey with the specificied value
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet withResourceKey(
             final String resourceKey) {
         return copy().withQueryParam("resourceKey", resourceKey);
     }
 
+    /**
+     * add additional resourceKey query parameter
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet addResourceKey(
             final String resourceKey) {
         return copy().addQueryParam("resourceKey", resourceKey);
     }
 
+    /**
+     * set state with the specificied value
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet withState(
             final ProcessingState state) {
         return copy().withQueryParam("state", state);
     }
 
+    /**
+     * add additional state query parameter
+     */
     public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet addState(
             final ProcessingState state) {
         return copy().addQueryParam("state", state);
+    }
+
+    /**
+     * set debug with the specificied value
+     */
+    public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet withDebug(
+            final boolean debug) {
+        return copy().withQueryParam("debug", debug);
+    }
+
+    /**
+     * add additional debug query parameter
+     */
+    public ByProjectKeyProductVariantPatchesImportSinkKeyByImportSinkKeyImportOperationsGet addDebug(
+            final boolean debug) {
+        return copy().addQueryParam("debug", debug);
     }
 
     @Override

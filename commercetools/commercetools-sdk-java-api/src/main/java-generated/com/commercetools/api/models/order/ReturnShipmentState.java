@@ -37,12 +37,18 @@ public interface ReturnShipmentState {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static ReturnShipmentState findEnum(String value) {
@@ -55,6 +61,10 @@ public interface ReturnShipmentState {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

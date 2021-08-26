@@ -4,10 +4,12 @@ package com.commercetools.ml.client;
 import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
 
 import java.net.URI;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import io.vrap.rmf.base.client.*;
@@ -44,7 +46,13 @@ public class ByProjectKeyImageSearchPost
             httpRequestPath += "?" + String.join("&", params);
         }
         try {
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            ApiHttpHeaders headers = getHeaders();
+            if (headers.getFirst(ApiHttpHeaders.CONTENT_TYPE) == null) {
+                final String mimeType = Optional.ofNullable(URLConnection.guessContentTypeFromName(file.getName()))
+                        .orElse("application/octet-stream");
+                headers = headers.withHeader(ApiHttpHeaders.CONTENT_TYPE, mimeType);
+            }
+            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), headers,
                 Files.readAllBytes(file.toPath()));
         }
         catch (Exception e) {
@@ -56,13 +64,16 @@ public class ByProjectKeyImageSearchPost
 
     @Override
     public ApiHttpResponse<com.commercetools.ml.models.image_search.ImageSearchResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.ml.models.image_search.ImageSearchResponse.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.ml.models.image_search.ImageSearchResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.ml.models.image_search.ImageSearchResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.ml.models.image_search.ImageSearchResponse.class);
     }
 
@@ -82,19 +93,31 @@ public class ByProjectKeyImageSearchPost
         this.projectKey = projectKey;
     }
 
-    public ByProjectKeyImageSearchPost withLimit(final Integer limit) {
+    /**
+     * set limit with the specificied value
+     */
+    public ByProjectKeyImageSearchPost withLimit(final int limit) {
         return copy().withQueryParam("limit", limit);
     }
 
-    public ByProjectKeyImageSearchPost addLimit(final Integer limit) {
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyImageSearchPost addLimit(final int limit) {
         return copy().addQueryParam("limit", limit);
     }
 
-    public ByProjectKeyImageSearchPost withOffset(final Integer offset) {
+    /**
+     * set offset with the specificied value
+     */
+    public ByProjectKeyImageSearchPost withOffset(final int offset) {
         return copy().withQueryParam("offset", offset);
     }
 
-    public ByProjectKeyImageSearchPost addOffset(final Integer offset) {
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyImageSearchPost addOffset(final int offset) {
         return copy().addQueryParam("offset", offset);
     }
 

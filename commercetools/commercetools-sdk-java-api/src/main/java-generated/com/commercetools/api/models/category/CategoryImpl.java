@@ -119,14 +119,14 @@ public final class CategoryImpl implements Category {
     }
 
     /**
-    *  <p>Present on resources updated after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources updated after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
     /**
-    *  <p>Present on resources created after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
@@ -297,22 +297,50 @@ public final class CategoryImpl implements Category {
 
         CategoryImpl that = (CategoryImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(version, that.version).append(createdAt,
-            that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(lastModifiedBy,
-                that.lastModifiedBy).append(createdBy, that.createdBy).append(name, that.name).append(slug,
-                    that.slug).append(description, that.description).append(ancestors, that.ancestors).append(parent,
-                        that.parent).append(orderHint, that.orderHint).append(externalId, that.externalId).append(
-                            metaTitle, that.metaTitle).append(metaDescription, that.metaDescription).append(
-                                metaKeywords, that.metaKeywords).append(custom, that.custom).append(assets,
-                                    that.assets).append(key, that.key).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(version, that.version)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(lastModifiedBy, that.lastModifiedBy)
+                .append(createdBy, that.createdBy)
+                .append(name, that.name)
+                .append(slug, that.slug)
+                .append(description, that.description)
+                .append(ancestors, that.ancestors)
+                .append(parent, that.parent)
+                .append(orderHint, that.orderHint)
+                .append(externalId, that.externalId)
+                .append(metaTitle, that.metaTitle)
+                .append(metaDescription, that.metaDescription)
+                .append(metaKeywords, that.metaKeywords)
+                .append(custom, that.custom)
+                .append(assets, that.assets)
+                .append(key, that.key)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(version).append(createdAt).append(lastModifiedAt).append(
-            lastModifiedBy).append(createdBy).append(name).append(slug).append(description).append(ancestors).append(
-                parent).append(orderHint).append(externalId).append(metaTitle).append(metaDescription).append(
-                    metaKeywords).append(custom).append(assets).append(key).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(version)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(lastModifiedBy)
+                .append(createdBy)
+                .append(name)
+                .append(slug)
+                .append(description)
+                .append(ancestors)
+                .append(parent)
+                .append(orderHint)
+                .append(externalId)
+                .append(metaTitle)
+                .append(metaDescription)
+                .append(metaKeywords)
+                .append(custom)
+                .append(assets)
+                .append(key)
+                .toHashCode();
     }
 
 }

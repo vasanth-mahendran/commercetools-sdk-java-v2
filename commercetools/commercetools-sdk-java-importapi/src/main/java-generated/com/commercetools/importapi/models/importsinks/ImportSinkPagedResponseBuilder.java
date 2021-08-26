@@ -2,17 +2,21 @@
 package com.commercetools.importapi.models.importsinks;
 
 import java.util.*;
+import java.util.function.Function;
 
+import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public final class ImportSinkPagedResponseBuilder {
+public final class ImportSinkPagedResponseBuilder implements Builder<ImportSinkPagedResponse> {
 
     private Integer limit;
 
     private Long offset;
 
     private Long count;
+
+    private Long total;
 
     private java.util.List<com.commercetools.importapi.models.importsinks.ImportSink> results;
 
@@ -31,9 +35,30 @@ public final class ImportSinkPagedResponseBuilder {
         return this;
     }
 
+    public ImportSinkPagedResponseBuilder total(final Long total) {
+        this.total = total;
+        return this;
+    }
+
     public ImportSinkPagedResponseBuilder results(
             final com.commercetools.importapi.models.importsinks.ImportSink... results) {
         this.results = new ArrayList<>(Arrays.asList(results));
+        return this;
+    }
+
+    public ImportSinkPagedResponseBuilder withResults(
+            Function<com.commercetools.importapi.models.importsinks.ImportSinkBuilder, com.commercetools.importapi.models.importsinks.ImportSinkBuilder> builder) {
+        this.results = new ArrayList<>();
+        this.results.add(builder.apply(com.commercetools.importapi.models.importsinks.ImportSinkBuilder.of()).build());
+        return this;
+    }
+
+    public ImportSinkPagedResponseBuilder plusResults(
+            Function<com.commercetools.importapi.models.importsinks.ImportSinkBuilder, com.commercetools.importapi.models.importsinks.ImportSinkBuilder> builder) {
+        if (this.results == null) {
+            this.results = new ArrayList<>();
+        }
+        this.results.add(builder.apply(com.commercetools.importapi.models.importsinks.ImportSinkBuilder.of()).build());
         return this;
     }
 
@@ -55,12 +80,28 @@ public final class ImportSinkPagedResponseBuilder {
         return this.count;
     }
 
+    public Long getTotal() {
+        return this.total;
+    }
+
     public java.util.List<com.commercetools.importapi.models.importsinks.ImportSink> getResults() {
         return this.results;
     }
 
     public ImportSinkPagedResponse build() {
-        return new ImportSinkPagedResponseImpl(limit, offset, count, results);
+        Objects.requireNonNull(limit, ImportSinkPagedResponse.class + ": limit is missing");
+        Objects.requireNonNull(offset, ImportSinkPagedResponse.class + ": offset is missing");
+        Objects.requireNonNull(count, ImportSinkPagedResponse.class + ": count is missing");
+        Objects.requireNonNull(total, ImportSinkPagedResponse.class + ": total is missing");
+        Objects.requireNonNull(results, ImportSinkPagedResponse.class + ": results is missing");
+        return new ImportSinkPagedResponseImpl(limit, offset, count, total, results);
+    }
+
+    /**
+     * builds ImportSinkPagedResponse without checking for non null required values
+     */
+    public ImportSinkPagedResponse buildUnchecked() {
+        return new ImportSinkPagedResponseImpl(limit, offset, count, total, results);
     }
 
     public static ImportSinkPagedResponseBuilder of() {
@@ -72,6 +113,7 @@ public final class ImportSinkPagedResponseBuilder {
         builder.limit = template.getLimit();
         builder.offset = template.getOffset();
         builder.count = template.getCount();
+        builder.total = template.getTotal();
         builder.results = template.getResults();
         return builder;
     }

@@ -19,7 +19,7 @@ public final class StagedOrderSetShippingAddressAndCustomShippingMethodActionImp
 
     private String action;
 
-    private com.commercetools.api.models.common.Address address;
+    private com.commercetools.api.models.common.BaseAddress address;
 
     private String shippingMethodName;
 
@@ -31,7 +31,7 @@ public final class StagedOrderSetShippingAddressAndCustomShippingMethodActionImp
 
     @JsonCreator
     StagedOrderSetShippingAddressAndCustomShippingMethodActionImpl(
-            @JsonProperty("address") final com.commercetools.api.models.common.Address address,
+            @JsonProperty("address") final com.commercetools.api.models.common.BaseAddress address,
             @JsonProperty("shippingMethodName") final String shippingMethodName,
             @JsonProperty("shippingRate") final com.commercetools.api.models.shipping_method.ShippingRateDraft shippingRate,
             @JsonProperty("taxCategory") final com.commercetools.api.models.tax_category.TaxCategoryResourceIdentifier taxCategory,
@@ -52,7 +52,7 @@ public final class StagedOrderSetShippingAddressAndCustomShippingMethodActionImp
         return this.action;
     }
 
-    public com.commercetools.api.models.common.Address getAddress() {
+    public com.commercetools.api.models.common.BaseAddress getAddress() {
         return this.address;
     }
 
@@ -72,7 +72,7 @@ public final class StagedOrderSetShippingAddressAndCustomShippingMethodActionImp
         return this.externalTaxRate;
     }
 
-    public void setAddress(final com.commercetools.api.models.common.Address address) {
+    public void setAddress(final com.commercetools.api.models.common.BaseAddress address) {
         this.address = address;
     }
 
@@ -103,15 +103,24 @@ public final class StagedOrderSetShippingAddressAndCustomShippingMethodActionImp
 
         StagedOrderSetShippingAddressAndCustomShippingMethodActionImpl that = (StagedOrderSetShippingAddressAndCustomShippingMethodActionImpl) o;
 
-        return new EqualsBuilder().append(action, that.action).append(address, that.address).append(shippingMethodName,
-            that.shippingMethodName).append(shippingRate, that.shippingRate).append(taxCategory,
-                that.taxCategory).append(externalTaxRate, that.externalTaxRate).isEquals();
+        return new EqualsBuilder().append(action, that.action)
+                .append(address, that.address)
+                .append(shippingMethodName, that.shippingMethodName)
+                .append(shippingRate, that.shippingRate)
+                .append(taxCategory, that.taxCategory)
+                .append(externalTaxRate, that.externalTaxRate)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(action).append(address).append(shippingMethodName).append(
-            shippingRate).append(taxCategory).append(externalTaxRate).toHashCode();
+        return new HashCodeBuilder(17, 37).append(action)
+                .append(address)
+                .append(shippingMethodName)
+                .append(shippingRate)
+                .append(taxCategory)
+                .append(externalTaxRate)
+                .toHashCode();
     }
 
 }

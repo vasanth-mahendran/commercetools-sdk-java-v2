@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete Type by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyTypesByIDDelete
         extends ApiMethod<ByProjectKeyTypesByIDDelete, com.commercetools.api.models.type.Type>
@@ -22,7 +19,7 @@ public class ByProjectKeyTypesByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyTypesByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyTypesByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyTypesByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyTypesByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyTypesByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -51,13 +48,16 @@ public class ByProjectKeyTypesByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.type.Type> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.type.Type> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.type.Type.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.type.Type>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.type.Type.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.type.Type>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.type.Type.class);
     }
 
     public String getProjectKey() {
@@ -84,18 +84,30 @@ public class ByProjectKeyTypesByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyTypesByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyTypesByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyTypesByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyTypesByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyTypesByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyTypesByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

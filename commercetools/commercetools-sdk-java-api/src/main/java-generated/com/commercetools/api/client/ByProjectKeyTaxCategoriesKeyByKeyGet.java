@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Get TaxCategory by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyTaxCategoriesKeyByKeyGet
         extends ApiMethod<ByProjectKeyTaxCategoriesKeyByKeyGet, com.commercetools.api.models.tax_category.TaxCategory>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyTaxCategoriesKeyByKeyGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyTaxCategoriesKeyByKeyGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyTaxCategoriesKeyByKeyGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyTaxCategoriesKeyByKeyGet> {
 
     private String projectKey;
     private String key;
@@ -49,14 +46,17 @@ public class ByProjectKeyTaxCategoriesKeyByKeyGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.tax_category.TaxCategory.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.tax_category.TaxCategory.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.tax_category.TaxCategory>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.tax_category.TaxCategory.class);
     }
 
     public String getProjectKey() {
@@ -79,10 +79,16 @@ public class ByProjectKeyTaxCategoriesKeyByKeyGet
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyTaxCategoriesKeyByKeyGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyTaxCategoriesKeyByKeyGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

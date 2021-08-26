@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete Subscription by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeySubscriptionsByIDDelete
         extends ApiMethod<ByProjectKeySubscriptionsByIDDelete, com.commercetools.api.models.subscription.Subscription>
@@ -22,7 +19,7 @@ public class ByProjectKeySubscriptionsByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeySubscriptionsByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeySubscriptionsByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeySubscriptionsByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeySubscriptionsByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeySubscriptionsByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -51,14 +48,17 @@ public class ByProjectKeySubscriptionsByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.subscription.Subscription> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.subscription.Subscription> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.subscription.Subscription.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.subscription.Subscription>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.subscription.Subscription.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.subscription.Subscription>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.subscription.Subscription.class);
     }
 
     public String getProjectKey() {
@@ -85,18 +85,30 @@ public class ByProjectKeySubscriptionsByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeySubscriptionsByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeySubscriptionsByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeySubscriptionsByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeySubscriptionsByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeySubscriptionsByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeySubscriptionsByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

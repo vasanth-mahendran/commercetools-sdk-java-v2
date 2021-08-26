@@ -3,34 +3,44 @@ package com.commercetools.importapi.models.common;
 
 import java.util.*;
 
+import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public final class AssetDimensionsBuilder {
+public final class AssetDimensionsBuilder implements Builder<AssetDimensions> {
 
-    private Double w;
+    private Integer w;
 
-    private Double h;
+    private Integer h;
 
-    public AssetDimensionsBuilder w(final Double w) {
+    public AssetDimensionsBuilder w(final Integer w) {
         this.w = w;
         return this;
     }
 
-    public AssetDimensionsBuilder h(final Double h) {
+    public AssetDimensionsBuilder h(final Integer h) {
         this.h = h;
         return this;
     }
 
-    public Double getW() {
+    public Integer getW() {
         return this.w;
     }
 
-    public Double getH() {
+    public Integer getH() {
         return this.h;
     }
 
     public AssetDimensions build() {
+        Objects.requireNonNull(w, AssetDimensions.class + ": w is missing");
+        Objects.requireNonNull(h, AssetDimensions.class + ": h is missing");
+        return new AssetDimensionsImpl(w, h);
+    }
+
+    /**
+     * builds AssetDimensions without checking for non null required values
+     */
+    public AssetDimensions buildUnchecked() {
         return new AssetDimensionsImpl(w, h);
     }
 

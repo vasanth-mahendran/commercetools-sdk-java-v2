@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update ProductType by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyProductTypesKeyByKeyPost
         extends ApiMethod<ByProjectKeyProductTypesKeyByKeyPost, com.commercetools.api.models.product_type.ProductType>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyProductTypesKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyProductTypesKeyByKeyPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductTypesKeyByKeyPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyProductTypesKeyByKeyPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyProductTypesKeyByKeyPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductTypesKeyByKeyPost> {
 
     private String projectKey;
     private String key;
@@ -62,14 +59,17 @@ public class ByProjectKeyProductTypesKeyByKeyPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.product_type.ProductType> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.product_type.ProductType> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.product_type.ProductType.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_type.ProductType>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.product_type.ProductType.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_type.ProductType>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.product_type.ProductType.class);
     }
 
     public String getProjectKey() {
@@ -92,10 +92,16 @@ public class ByProjectKeyProductTypesKeyByKeyPost
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyProductTypesKeyByKeyPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyProductTypesKeyByKeyPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

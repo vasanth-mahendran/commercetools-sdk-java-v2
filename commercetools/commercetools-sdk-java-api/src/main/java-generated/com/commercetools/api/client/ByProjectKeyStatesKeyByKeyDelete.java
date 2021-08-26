@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete State by Key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyStatesKeyByKeyDelete
         extends ApiMethod<ByProjectKeyStatesKeyByKeyDelete, com.commercetools.api.models.state.State>
@@ -22,7 +19,7 @@ public class ByProjectKeyStatesKeyByKeyDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyStatesKeyByKeyDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyStatesKeyByKeyDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyStatesKeyByKeyDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyStatesKeyByKeyDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyStatesKeyByKeyDelete> {
 
     private String projectKey;
     private String key;
@@ -51,13 +48,16 @@ public class ByProjectKeyStatesKeyByKeyDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.state.State> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.state.State> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.state.State.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.state.State>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.state.State.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.state.State>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.state.State.class);
     }
 
     public String getProjectKey() {
@@ -84,18 +84,30 @@ public class ByProjectKeyStatesKeyByKeyDelete
         this.key = key;
     }
 
-    public ByProjectKeyStatesKeyByKeyDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyStatesKeyByKeyDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyStatesKeyByKeyDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyStatesKeyByKeyDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyStatesKeyByKeyDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyStatesKeyByKeyDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

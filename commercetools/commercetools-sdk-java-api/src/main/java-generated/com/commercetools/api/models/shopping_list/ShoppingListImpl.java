@@ -48,6 +48,8 @@ public final class ShoppingListImpl implements ShoppingList {
 
     private String anonymousId;
 
+    private com.commercetools.api.models.store.StoreKeyReference store;
+
     @JsonCreator
     ShoppingListImpl(@JsonProperty("id") final String id, @JsonProperty("version") final Long version,
             @JsonProperty("createdAt") final java.time.ZonedDateTime createdAt,
@@ -63,7 +65,8 @@ public final class ShoppingListImpl implements ShoppingList {
             @JsonProperty("name") final com.commercetools.api.models.common.LocalizedString name,
             @JsonProperty("slug") final com.commercetools.api.models.common.LocalizedString slug,
             @JsonProperty("textLineItems") final java.util.List<com.commercetools.api.models.shopping_list.TextLineItem> textLineItems,
-            @JsonProperty("anonymousId") final String anonymousId) {
+            @JsonProperty("anonymousId") final String anonymousId,
+            @JsonProperty("store") final com.commercetools.api.models.store.StoreKeyReference store) {
         this.id = id;
         this.version = version;
         this.createdAt = createdAt;
@@ -80,6 +83,7 @@ public final class ShoppingListImpl implements ShoppingList {
         this.slug = slug;
         this.textLineItems = textLineItems;
         this.anonymousId = anonymousId;
+        this.store = store;
     }
 
     public ShoppingListImpl() {
@@ -108,14 +112,14 @@ public final class ShoppingListImpl implements ShoppingList {
     }
 
     /**
-    *  <p>Present on resources updated after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
     /**
-    *  <p>Present on resources created after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
@@ -173,6 +177,10 @@ public final class ShoppingListImpl implements ShoppingList {
     */
     public String getAnonymousId() {
         return this.anonymousId;
+    }
+
+    public com.commercetools.api.models.store.StoreKeyReference getStore() {
+        return this.store;
     }
 
     public void setId(final String id) {
@@ -249,6 +257,10 @@ public final class ShoppingListImpl implements ShoppingList {
         this.anonymousId = anonymousId;
     }
 
+    public void setStore(final com.commercetools.api.models.store.StoreKeyReference store) {
+        this.store = store;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -259,21 +271,46 @@ public final class ShoppingListImpl implements ShoppingList {
 
         ShoppingListImpl that = (ShoppingListImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(version, that.version).append(createdAt,
-            that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(lastModifiedBy,
-                that.lastModifiedBy).append(createdBy, that.createdBy).append(custom, that.custom).append(customer,
-                    that.customer).append(deleteDaysAfterLastModification, that.deleteDaysAfterLastModification).append(
-                        description, that.description).append(key, that.key).append(lineItems, that.lineItems).append(
-                            name, that.name).append(slug, that.slug).append(textLineItems, that.textLineItems).append(
-                                anonymousId, that.anonymousId).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(version, that.version)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(lastModifiedBy, that.lastModifiedBy)
+                .append(createdBy, that.createdBy)
+                .append(custom, that.custom)
+                .append(customer, that.customer)
+                .append(deleteDaysAfterLastModification, that.deleteDaysAfterLastModification)
+                .append(description, that.description)
+                .append(key, that.key)
+                .append(lineItems, that.lineItems)
+                .append(name, that.name)
+                .append(slug, that.slug)
+                .append(textLineItems, that.textLineItems)
+                .append(anonymousId, that.anonymousId)
+                .append(store, that.store)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(version).append(createdAt).append(lastModifiedAt).append(
-            lastModifiedBy).append(createdBy).append(custom).append(customer).append(
-                deleteDaysAfterLastModification).append(description).append(key).append(lineItems).append(name).append(
-                    slug).append(textLineItems).append(anonymousId).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(version)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(lastModifiedBy)
+                .append(createdBy)
+                .append(custom)
+                .append(customer)
+                .append(deleteDaysAfterLastModification)
+                .append(description)
+                .append(key)
+                .append(lineItems)
+                .append(name)
+                .append(slug)
+                .append(textLineItems)
+                .append(anonymousId)
+                .append(store)
+                .toHashCode();
     }
 
 }

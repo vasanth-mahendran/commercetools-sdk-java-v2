@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete Extension by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyExtensionsKeyByKeyDelete
         extends ApiMethod<ByProjectKeyExtensionsKeyByKeyDelete, com.commercetools.api.models.extension.Extension>
@@ -22,7 +19,7 @@ public class ByProjectKeyExtensionsKeyByKeyDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyExtensionsKeyByKeyDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyExtensionsKeyByKeyDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyExtensionsKeyByKeyDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyExtensionsKeyByKeyDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyExtensionsKeyByKeyDelete> {
 
     private String projectKey;
     private String key;
@@ -51,14 +48,17 @@ public class ByProjectKeyExtensionsKeyByKeyDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.extension.Extension.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.extension.Extension.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.extension.Extension.class);
     }
 
     public String getProjectKey() {
@@ -85,18 +85,30 @@ public class ByProjectKeyExtensionsKeyByKeyDelete
         this.key = key;
     }
 
-    public ByProjectKeyExtensionsKeyByKeyDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyExtensionsKeyByKeyDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyExtensionsKeyByKeyDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyExtensionsKeyByKeyDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyExtensionsKeyByKeyDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyExtensionsKeyByKeyDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

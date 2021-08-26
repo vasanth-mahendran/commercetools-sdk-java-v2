@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update Zone by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyZonesKeyByKeyPost
         extends ApiMethod<ByProjectKeyZonesKeyByKeyPost, com.commercetools.api.models.zone.Zone>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyZonesKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyZonesKeyByKeyPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyZonesKeyByKeyPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyZonesKeyByKeyPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyZonesKeyByKeyPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyZonesKeyByKeyPost> {
 
     private String projectKey;
     private String key;
@@ -62,13 +59,16 @@ public class ByProjectKeyZonesKeyByKeyPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.zone.Zone> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.zone.Zone> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.zone.Zone.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.zone.Zone>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.zone.Zone.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.zone.Zone>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.zone.Zone.class);
     }
 
     public String getProjectKey() {
@@ -91,10 +91,16 @@ public class ByProjectKeyZonesKeyByKeyPost
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyZonesKeyByKeyPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyZonesKeyByKeyPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

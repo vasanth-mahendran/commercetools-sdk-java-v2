@@ -21,8 +21,8 @@ import io.vrap.rmf.base.client.utils.Generated;
 public class ByProjectKeyCustomersPost
         extends ApiMethod<ByProjectKeyCustomersPost, com.commercetools.api.models.customer.CustomerSignInResult>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyCustomersPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomersPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCustomersPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyCustomersPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomersPost> {
 
     private String projectKey;
 
@@ -61,13 +61,16 @@ public class ByProjectKeyCustomersPost
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.customer.CustomerSignInResult> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.customer.CustomerSignInResult.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.CustomerSignInResult>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.CustomerSignInResult>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.customer.CustomerSignInResult.class);
     }
 
@@ -83,10 +86,16 @@ public class ByProjectKeyCustomersPost
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCustomersPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCustomersPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

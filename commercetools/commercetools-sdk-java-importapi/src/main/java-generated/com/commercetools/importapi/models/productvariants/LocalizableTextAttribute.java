@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
-*  <p>This type represents an attribute which value is a localized text.</p>
+*  <p>This type represents an attribute whose value is a localized text.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = LocalizableTextAttributeImpl.class)
@@ -23,6 +23,14 @@ public interface LocalizableTextAttribute extends Attribute {
 
     String LTEXT = "ltext";
 
+    /**
+    *  <p>A localized string is a JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values the corresponding strings used for that language.</p>
+    *  <pre><code class="language-json">{
+    *    &quot;de&quot;: &quot;Hundefutter&quot;,
+    *    &quot;en&quot;: &quot;dog food&quot;
+    *  }
+    *  </code></pre>
+    */
     @NotNull
     @Valid
     @JsonProperty("value")

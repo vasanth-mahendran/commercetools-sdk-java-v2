@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>A value for a field conflicts with an existing duplicate value.</p>
+*  <p>The given value already exists for a field that is checked for unique values.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class DuplicateFieldErrorImpl implements DuplicateFieldError {
@@ -44,9 +44,6 @@ public final class DuplicateFieldErrorImpl implements DuplicateFieldError {
         return this.code;
     }
 
-    /**
-    *  <p>The error's description.</p>
-    */
     public String getMessage() {
         return this.message;
     }
@@ -87,14 +84,20 @@ public final class DuplicateFieldErrorImpl implements DuplicateFieldError {
 
         DuplicateFieldErrorImpl that = (DuplicateFieldErrorImpl) o;
 
-        return new EqualsBuilder().append(code, that.code).append(message, that.message).append(field,
-            that.field).append(duplicateValue, that.duplicateValue).isEquals();
+        return new EqualsBuilder().append(code, that.code)
+                .append(message, that.message)
+                .append(field, that.field)
+                .append(duplicateValue, that.duplicateValue)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(code).append(message).append(field).append(
-            duplicateValue).toHashCode();
+        return new HashCodeBuilder(17, 37).append(code)
+                .append(message)
+                .append(field)
+                .append(duplicateValue)
+                .toHashCode();
     }
 
 }

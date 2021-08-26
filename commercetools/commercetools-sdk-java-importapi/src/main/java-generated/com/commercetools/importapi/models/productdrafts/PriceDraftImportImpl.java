@@ -13,6 +13,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+/**
+*  <p>The representation of a Price Draft for the import purpose.</p>
+*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class PriceDraftImportImpl implements PriceDraftImport {
 
@@ -62,6 +65,9 @@ public final class PriceDraftImportImpl implements PriceDraftImport {
     public PriceDraftImportImpl() {
     }
 
+    /**
+    *  <p>TypedMoney is what is called BaseMoney in the HTTP API.</p>
+    */
     public com.commercetools.importapi.models.common.TypedMoney getValue() {
         return this.value;
     }
@@ -175,16 +181,32 @@ public final class PriceDraftImportImpl implements PriceDraftImport {
 
         PriceDraftImportImpl that = (PriceDraftImportImpl) o;
 
-        return new EqualsBuilder().append(value, that.value).append(country, that.country).append(customerGroup,
-            that.customerGroup).append(channel, that.channel).append(validFrom, that.validFrom).append(validUntil,
-                that.validUntil).append(custom, that.custom).append(discounted, that.discounted).append(tiers,
-                    that.tiers).append(key, that.key).isEquals();
+        return new EqualsBuilder().append(value, that.value)
+                .append(country, that.country)
+                .append(customerGroup, that.customerGroup)
+                .append(channel, that.channel)
+                .append(validFrom, that.validFrom)
+                .append(validUntil, that.validUntil)
+                .append(custom, that.custom)
+                .append(discounted, that.discounted)
+                .append(tiers, that.tiers)
+                .append(key, that.key)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(value).append(country).append(customerGroup).append(channel).append(
-            validFrom).append(validUntil).append(custom).append(discounted).append(tiers).append(key).toHashCode();
+        return new HashCodeBuilder(17, 37).append(value)
+                .append(country)
+                .append(customerGroup)
+                .append(channel)
+                .append(validFrom)
+                .append(validUntil)
+                .append(custom)
+                .append(discounted)
+                .append(tiers)
+                .append(key)
+                .toHashCode();
     }
 
 }

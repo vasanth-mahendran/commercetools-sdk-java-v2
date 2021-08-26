@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Get ProductType by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyProductTypesByIDGet
         extends ApiMethod<ByProjectKeyProductTypesByIDGet, com.commercetools.api.models.product_type.ProductType>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyProductTypesByIDGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductTypesByIDGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyProductTypesByIDGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyProductTypesByIDGet> {
 
     private String projectKey;
     private String ID;
@@ -49,14 +46,17 @@ public class ByProjectKeyProductTypesByIDGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.product_type.ProductType> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.product_type.ProductType> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.product_type.ProductType.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_type.ProductType>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.product_type.ProductType.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_type.ProductType>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.product_type.ProductType.class);
     }
 
     public String getProjectKey() {
@@ -79,10 +79,16 @@ public class ByProjectKeyProductTypesByIDGet
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyProductTypesByIDGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyProductTypesByIDGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

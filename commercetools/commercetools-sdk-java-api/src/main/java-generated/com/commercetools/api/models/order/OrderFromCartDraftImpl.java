@@ -16,6 +16,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class OrderFromCartDraftImpl implements OrderFromCartDraft {
 
+    @Deprecated
     private String id;
 
     private com.commercetools.api.models.cart.CartResourceIdentifier cart;
@@ -56,6 +57,7 @@ public final class OrderFromCartDraftImpl implements OrderFromCartDraft {
     /**
     *  <p>The unique id of the cart from which an order is created.</p>
     */
+    @Deprecated
     public String getId() {
         return this.id;
     }
@@ -101,6 +103,7 @@ public final class OrderFromCartDraftImpl implements OrderFromCartDraft {
         return this.state;
     }
 
+    @Deprecated
     public void setId(final String id) {
         this.id = id;
     }
@@ -143,15 +146,28 @@ public final class OrderFromCartDraftImpl implements OrderFromCartDraft {
 
         OrderFromCartDraftImpl that = (OrderFromCartDraftImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(cart, that.cart).append(version, that.version).append(
-            orderNumber, that.orderNumber).append(paymentState, that.paymentState).append(shipmentState,
-                that.shipmentState).append(orderState, that.orderState).append(state, that.state).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(cart, that.cart)
+                .append(version, that.version)
+                .append(orderNumber, that.orderNumber)
+                .append(paymentState, that.paymentState)
+                .append(shipmentState, that.shipmentState)
+                .append(orderState, that.orderState)
+                .append(state, that.state)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(cart).append(version).append(orderNumber).append(
-            paymentState).append(shipmentState).append(orderState).append(state).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(cart)
+                .append(version)
+                .append(orderNumber)
+                .append(paymentState)
+                .append(shipmentState)
+                .append(orderState)
+                .append(state)
+                .toHashCode();
     }
 
 }

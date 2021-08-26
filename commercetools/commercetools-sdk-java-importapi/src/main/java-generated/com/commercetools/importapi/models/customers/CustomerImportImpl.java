@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>Import representation for a customer.</p>
+*  <p>The data representation for a Customer to be imported that is persisted as a <a href="/../api/projects/customers#top">Customer</a> in the Project.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class CustomerImportImpl implements CustomerImport {
@@ -26,6 +26,8 @@ public final class CustomerImportImpl implements CustomerImport {
     private String email;
 
     private String password;
+
+    private java.util.List<com.commercetools.importapi.models.common.StoreKeyReference> stores;
 
     private String firstName;
 
@@ -49,15 +51,15 @@ public final class CustomerImportImpl implements CustomerImport {
 
     private com.commercetools.importapi.models.common.CustomerGroupKeyReference customerGroup;
 
-    private java.util.List<com.commercetools.importapi.models.common.Address> addresses;
+    private java.util.List<com.commercetools.importapi.models.customers.CustomerAddress> addresses;
 
-    private com.commercetools.importapi.models.common.Address defaultBillingAddress;
+    private Integer defaultBillingAddress;
 
-    private com.commercetools.importapi.models.common.Address billingAddresses;
+    private java.util.List<Integer> billingAddresses;
 
-    private com.commercetools.importapi.models.common.Address defaultShippingAddress;
+    private Integer defaultShippingAddress;
 
-    private com.commercetools.importapi.models.common.Address shippingAddresses;
+    private java.util.List<Integer> shippingAddresses;
 
     private String locale;
 
@@ -66,25 +68,27 @@ public final class CustomerImportImpl implements CustomerImport {
     @JsonCreator
     CustomerImportImpl(@JsonProperty("key") final String key,
             @JsonProperty("customerNumber") final String customerNumber, @JsonProperty("email") final String email,
-            @JsonProperty("password") final String password, @JsonProperty("firstName") final String firstName,
-            @JsonProperty("lastName") final String lastName, @JsonProperty("middleName") final String middleName,
-            @JsonProperty("title") final String title, @JsonProperty("salutation") final String salutation,
-            @JsonProperty("externalId") final String externalId,
+            @JsonProperty("password") final String password,
+            @JsonProperty("stores") final java.util.List<com.commercetools.importapi.models.common.StoreKeyReference> stores,
+            @JsonProperty("firstName") final String firstName, @JsonProperty("lastName") final String lastName,
+            @JsonProperty("middleName") final String middleName, @JsonProperty("title") final String title,
+            @JsonProperty("salutation") final String salutation, @JsonProperty("externalId") final String externalId,
             @JsonProperty("dateOfBirth") final java.time.LocalDate dateOfBirth,
             @JsonProperty("companyName") final String companyName, @JsonProperty("vatId") final String vatId,
             @JsonProperty("isEmailVerified") final Boolean isEmailVerified,
             @JsonProperty("customerGroup") final com.commercetools.importapi.models.common.CustomerGroupKeyReference customerGroup,
-            @JsonProperty("addresses") final java.util.List<com.commercetools.importapi.models.common.Address> addresses,
-            @JsonProperty("defaultBillingAddress") final com.commercetools.importapi.models.common.Address defaultBillingAddress,
-            @JsonProperty("billingAddresses") final com.commercetools.importapi.models.common.Address billingAddresses,
-            @JsonProperty("defaultShippingAddress") final com.commercetools.importapi.models.common.Address defaultShippingAddress,
-            @JsonProperty("shippingAddresses") final com.commercetools.importapi.models.common.Address shippingAddresses,
+            @JsonProperty("addresses") final java.util.List<com.commercetools.importapi.models.customers.CustomerAddress> addresses,
+            @JsonProperty("defaultBillingAddress") final Integer defaultBillingAddress,
+            @JsonProperty("billingAddresses") final java.util.List<Integer> billingAddresses,
+            @JsonProperty("defaultShippingAddress") final Integer defaultShippingAddress,
+            @JsonProperty("shippingAddresses") final java.util.List<Integer> shippingAddresses,
             @JsonProperty("locale") final String locale,
             @JsonProperty("custom") final com.commercetools.importapi.models.customfields.Custom custom) {
         this.key = key;
         this.customerNumber = customerNumber;
         this.email = email;
         this.password = password;
+        this.stores = stores;
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
@@ -131,6 +135,13 @@ public final class CustomerImportImpl implements CustomerImport {
     */
     public String getPassword() {
         return this.password;
+    }
+
+    /**
+    *  <p>The References to the Stores with which the Customer is associated. If referenced Stores do not exist, the <code>state</code> of the <a href="/import-operation#importoperation">ImportOperation</a> will be set to <code>Unresolved</code> until the necessary Stores are created.</p>
+    */
+    public java.util.List<com.commercetools.importapi.models.common.StoreKeyReference> getStores() {
+        return this.stores;
     }
 
     /**
@@ -204,10 +215,8 @@ public final class CustomerImportImpl implements CustomerImport {
     }
 
     /**
-    *  <p>References a customer group by its key.</p>
-    *  <p>The customer group referenced
-    *  must already exist in the commercetools project, or the
-    *  import operation state is set to <code>Unresolved</code>.</p>
+    *  <p>The Reference to the <a href="/../api/projects/customerGroups#customergroup">CustomerGroup</a> with which the Customer is associated.
+    *  If referenced CustomerGroup does not exist, the <code>state</code> of the <a href="/import-operation#importoperation">ImportOperation</a> will be set to <code>Unresolved</code> until the necessary CustomerGroup is created.</p>
     */
     public com.commercetools.importapi.models.common.CustomerGroupKeyReference getCustomerGroup() {
         return this.customerGroup;
@@ -216,35 +225,35 @@ public final class CustomerImportImpl implements CustomerImport {
     /**
     *  <p>Maps to <code>Customer.addresses</code>.</p>
     */
-    public java.util.List<com.commercetools.importapi.models.common.Address> getAddresses() {
+    public java.util.List<com.commercetools.importapi.models.customers.CustomerAddress> getAddresses() {
         return this.addresses;
     }
 
     /**
-    *  <p>Maps to <code>Customer.defaultBillingAddress</code>.</p>
+    *  <p>The index of the address in the addresses array. The <code>defaultBillingAddressId</code> of the customer will be set to the ID of that address.</p>
     */
-    public com.commercetools.importapi.models.common.Address getDefaultBillingAddress() {
+    public Integer getDefaultBillingAddress() {
         return this.defaultBillingAddress;
     }
 
     /**
-    *  <p>Maps to <code>Customer.billingAddresses</code>.</p>
+    *  <p>The indices of the billing addresses in the addresses array. The <code>billingAddressIds</code> of the customer will be set to the IDs of that addresses.</p>
     */
-    public com.commercetools.importapi.models.common.Address getBillingAddresses() {
+    public java.util.List<Integer> getBillingAddresses() {
         return this.billingAddresses;
     }
 
     /**
-    *  <p>Maps to <code>Customer.defaultShippingAddress</code>.</p>
+    *  <p>The index of the address in the addresses array. The <code>defaultShippingAddressId</code> of the customer will be set to the ID of that address.</p>
     */
-    public com.commercetools.importapi.models.common.Address getDefaultShippingAddress() {
+    public Integer getDefaultShippingAddress() {
         return this.defaultShippingAddress;
     }
 
     /**
-    *  <p>Maps to <code>Customer.shippingAddresses</code>.</p>
+    *  <p>The indices of the shipping addresses in the addresses array. The <code>shippingAddressIds</code> of the customer will be set to the IDs of that addresses.</p>
     */
-    public com.commercetools.importapi.models.common.Address getShippingAddresses() {
+    public java.util.List<Integer> getShippingAddresses() {
         return this.shippingAddresses;
     }
 
@@ -276,6 +285,14 @@ public final class CustomerImportImpl implements CustomerImport {
 
     public void setPassword(final String password) {
         this.password = password;
+    }
+
+    public void setStores(final com.commercetools.importapi.models.common.StoreKeyReference... stores) {
+        this.stores = new ArrayList<>(Arrays.asList(stores));
+    }
+
+    public void setStores(final java.util.List<com.commercetools.importapi.models.common.StoreKeyReference> stores) {
+        this.stores = stores;
     }
 
     public void setFirstName(final String firstName) {
@@ -323,29 +340,36 @@ public final class CustomerImportImpl implements CustomerImport {
         this.customerGroup = customerGroup;
     }
 
-    public void setAddresses(final com.commercetools.importapi.models.common.Address... addresses) {
+    public void setAddresses(final com.commercetools.importapi.models.customers.CustomerAddress... addresses) {
         this.addresses = new ArrayList<>(Arrays.asList(addresses));
     }
 
-    public void setAddresses(final java.util.List<com.commercetools.importapi.models.common.Address> addresses) {
+    public void setAddresses(
+            final java.util.List<com.commercetools.importapi.models.customers.CustomerAddress> addresses) {
         this.addresses = addresses;
     }
 
-    public void setDefaultBillingAddress(
-            final com.commercetools.importapi.models.common.Address defaultBillingAddress) {
+    public void setDefaultBillingAddress(final Integer defaultBillingAddress) {
         this.defaultBillingAddress = defaultBillingAddress;
     }
 
-    public void setBillingAddresses(final com.commercetools.importapi.models.common.Address billingAddresses) {
+    public void setBillingAddresses(final Integer... billingAddresses) {
+        this.billingAddresses = new ArrayList<>(Arrays.asList(billingAddresses));
+    }
+
+    public void setBillingAddresses(final java.util.List<Integer> billingAddresses) {
         this.billingAddresses = billingAddresses;
     }
 
-    public void setDefaultShippingAddress(
-            final com.commercetools.importapi.models.common.Address defaultShippingAddress) {
+    public void setDefaultShippingAddress(final Integer defaultShippingAddress) {
         this.defaultShippingAddress = defaultShippingAddress;
     }
 
-    public void setShippingAddresses(final com.commercetools.importapi.models.common.Address shippingAddresses) {
+    public void setShippingAddresses(final Integer... shippingAddresses) {
+        this.shippingAddresses = new ArrayList<>(Arrays.asList(shippingAddresses));
+    }
+
+    public void setShippingAddresses(final java.util.List<Integer> shippingAddresses) {
         this.shippingAddresses = shippingAddresses;
     }
 
@@ -367,26 +391,58 @@ public final class CustomerImportImpl implements CustomerImport {
 
         CustomerImportImpl that = (CustomerImportImpl) o;
 
-        return new EqualsBuilder().append(key, that.key).append(customerNumber, that.customerNumber).append(email,
-            that.email).append(password, that.password).append(firstName, that.firstName).append(lastName,
-                that.lastName).append(middleName, that.middleName).append(title, that.title).append(salutation,
-                    that.salutation).append(externalId, that.externalId).append(dateOfBirth, that.dateOfBirth).append(
-                        companyName, that.companyName).append(vatId, that.vatId).append(isEmailVerified,
-                            that.isEmailVerified).append(customerGroup, that.customerGroup).append(addresses,
-                                that.addresses).append(defaultBillingAddress, that.defaultBillingAddress).append(
-                                    billingAddresses, that.billingAddresses).append(defaultShippingAddress,
-                                        that.defaultShippingAddress).append(shippingAddresses,
-                                            that.shippingAddresses).append(locale, that.locale).append(custom,
-                                                that.custom).isEquals();
+        return new EqualsBuilder().append(key, that.key)
+                .append(customerNumber, that.customerNumber)
+                .append(email, that.email)
+                .append(password, that.password)
+                .append(stores, that.stores)
+                .append(firstName, that.firstName)
+                .append(lastName, that.lastName)
+                .append(middleName, that.middleName)
+                .append(title, that.title)
+                .append(salutation, that.salutation)
+                .append(externalId, that.externalId)
+                .append(dateOfBirth, that.dateOfBirth)
+                .append(companyName, that.companyName)
+                .append(vatId, that.vatId)
+                .append(isEmailVerified, that.isEmailVerified)
+                .append(customerGroup, that.customerGroup)
+                .append(addresses, that.addresses)
+                .append(defaultBillingAddress, that.defaultBillingAddress)
+                .append(billingAddresses, that.billingAddresses)
+                .append(defaultShippingAddress, that.defaultShippingAddress)
+                .append(shippingAddresses, that.shippingAddresses)
+                .append(locale, that.locale)
+                .append(custom, that.custom)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(key).append(customerNumber).append(email).append(password).append(
-            firstName).append(lastName).append(middleName).append(title).append(salutation).append(externalId).append(
-                dateOfBirth).append(companyName).append(vatId).append(isEmailVerified).append(customerGroup).append(
-                    addresses).append(defaultBillingAddress).append(billingAddresses).append(
-                        defaultShippingAddress).append(shippingAddresses).append(locale).append(custom).toHashCode();
+        return new HashCodeBuilder(17, 37).append(key)
+                .append(customerNumber)
+                .append(email)
+                .append(password)
+                .append(stores)
+                .append(firstName)
+                .append(lastName)
+                .append(middleName)
+                .append(title)
+                .append(salutation)
+                .append(externalId)
+                .append(dateOfBirth)
+                .append(companyName)
+                .append(vatId)
+                .append(isEmailVerified)
+                .append(customerGroup)
+                .append(addresses)
+                .append(defaultBillingAddress)
+                .append(billingAddresses)
+                .append(defaultShippingAddress)
+                .append(shippingAddresses)
+                .append(locale)
+                .append(custom)
+                .toHashCode();
     }
 
 }

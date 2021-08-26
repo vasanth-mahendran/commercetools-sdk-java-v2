@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update OrderEdit by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyOrdersEditsKeyByKeyPost
         extends ApiMethod<ByProjectKeyOrdersEditsKeyByKeyPost, com.commercetools.api.models.order_edit.OrderEdit>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyOrdersEditsKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyOrdersEditsKeyByKeyPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersEditsKeyByKeyPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyOrdersEditsKeyByKeyPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyOrdersEditsKeyByKeyPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersEditsKeyByKeyPost> {
 
     private String projectKey;
     private String key;
@@ -62,14 +59,17 @@ public class ByProjectKeyOrdersEditsKeyByKeyPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.order_edit.OrderEdit.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.order_edit.OrderEdit.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.order_edit.OrderEdit.class);
     }
 
     public String getProjectKey() {
@@ -92,10 +92,16 @@ public class ByProjectKeyOrdersEditsKeyByKeyPost
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyOrdersEditsKeyByKeyPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyOrdersEditsKeyByKeyPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

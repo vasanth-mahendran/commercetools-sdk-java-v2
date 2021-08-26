@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete ShoppingList by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyShoppingListsKeyByKeyDelete extends
         ApiMethod<ByProjectKeyShoppingListsKeyByKeyDelete, com.commercetools.api.models.shopping_list.ShoppingList>
@@ -23,7 +20,7 @@ public class ByProjectKeyShoppingListsKeyByKeyDelete extends
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyShoppingListsKeyByKeyDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyShoppingListsKeyByKeyDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyShoppingListsKeyByKeyDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyShoppingListsKeyByKeyDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyShoppingListsKeyByKeyDelete> {
 
     private String projectKey;
     private String key;
@@ -52,14 +49,17 @@ public class ByProjectKeyShoppingListsKeyByKeyDelete extends
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.shopping_list.ShoppingList.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.shopping_list.ShoppingList.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shopping_list.ShoppingList>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.shopping_list.ShoppingList.class);
     }
 
     public String getProjectKey() {
@@ -90,26 +90,44 @@ public class ByProjectKeyShoppingListsKeyByKeyDelete extends
         this.key = key;
     }
 
-    public ByProjectKeyShoppingListsKeyByKeyDelete withDataErasure(final Boolean dataErasure) {
+    /**
+     * set dataErasure with the specificied value
+     */
+    public ByProjectKeyShoppingListsKeyByKeyDelete withDataErasure(final boolean dataErasure) {
         return copy().withQueryParam("dataErasure", dataErasure);
     }
 
-    public ByProjectKeyShoppingListsKeyByKeyDelete addDataErasure(final Boolean dataErasure) {
+    /**
+     * add additional dataErasure query parameter
+     */
+    public ByProjectKeyShoppingListsKeyByKeyDelete addDataErasure(final boolean dataErasure) {
         return copy().addQueryParam("dataErasure", dataErasure);
     }
 
-    public ByProjectKeyShoppingListsKeyByKeyDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyShoppingListsKeyByKeyDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyShoppingListsKeyByKeyDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyShoppingListsKeyByKeyDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyShoppingListsKeyByKeyDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyShoppingListsKeyByKeyDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

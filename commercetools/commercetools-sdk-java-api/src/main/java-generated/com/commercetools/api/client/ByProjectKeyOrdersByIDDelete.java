@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete Order by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyOrdersByIDDelete
         extends ApiMethod<ByProjectKeyOrdersByIDDelete, com.commercetools.api.models.order.Order>
@@ -23,7 +20,7 @@ public class ByProjectKeyOrdersByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyOrdersByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyOrdersByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyOrdersByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyOrdersByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -52,13 +49,16 @@ public class ByProjectKeyOrdersByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.order.Order.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class);
     }
 
     public String getProjectKey() {
@@ -89,26 +89,44 @@ public class ByProjectKeyOrdersByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyOrdersByIDDelete withDataErasure(final Boolean dataErasure) {
+    /**
+     * set dataErasure with the specificied value
+     */
+    public ByProjectKeyOrdersByIDDelete withDataErasure(final boolean dataErasure) {
         return copy().withQueryParam("dataErasure", dataErasure);
     }
 
-    public ByProjectKeyOrdersByIDDelete addDataErasure(final Boolean dataErasure) {
+    /**
+     * add additional dataErasure query parameter
+     */
+    public ByProjectKeyOrdersByIDDelete addDataErasure(final boolean dataErasure) {
         return copy().addQueryParam("dataErasure", dataErasure);
     }
 
-    public ByProjectKeyOrdersByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyOrdersByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyOrdersByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyOrdersByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyOrdersByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyOrdersByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

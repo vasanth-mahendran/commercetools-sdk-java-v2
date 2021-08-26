@@ -40,6 +40,10 @@ public final class ProjectImpl implements Project {
 
     private com.commercetools.api.models.project.CartsConfiguration carts;
 
+    private com.commercetools.api.models.project.SearchIndexingConfiguration searchIndexing;
+
+    private com.commercetools.api.models.project.ShoppingListsConfiguration shoppingLists;
+
     @JsonCreator
     ProjectImpl(@JsonProperty("version") final Long version, @JsonProperty("key") final String key,
             @JsonProperty("name") final String name, @JsonProperty("countries") final java.util.List<String> countries,
@@ -50,7 +54,9 @@ public final class ProjectImpl implements Project {
             @JsonProperty("messages") final com.commercetools.api.models.message.MessageConfiguration messages,
             @JsonProperty("shippingRateInputType") final com.commercetools.api.models.project.ShippingRateInputType shippingRateInputType,
             @JsonProperty("externalOAuth") final com.commercetools.api.models.project.ExternalOAuth externalOAuth,
-            @JsonProperty("carts") final com.commercetools.api.models.project.CartsConfiguration carts) {
+            @JsonProperty("carts") final com.commercetools.api.models.project.CartsConfiguration carts,
+            @JsonProperty("searchIndexing") final com.commercetools.api.models.project.SearchIndexingConfiguration searchIndexing,
+            @JsonProperty("shoppingLists") final com.commercetools.api.models.project.ShoppingListsConfiguration shoppingLists) {
         this.version = version;
         this.key = key;
         this.name = name;
@@ -63,6 +69,8 @@ public final class ProjectImpl implements Project {
         this.shippingRateInputType = shippingRateInputType;
         this.externalOAuth = externalOAuth;
         this.carts = carts;
+        this.searchIndexing = searchIndexing;
+        this.shoppingLists = shoppingLists;
     }
 
     public ProjectImpl() {
@@ -134,6 +142,14 @@ public final class ProjectImpl implements Project {
         return this.carts;
     }
 
+    public com.commercetools.api.models.project.SearchIndexingConfiguration getSearchIndexing() {
+        return this.searchIndexing;
+    }
+
+    public com.commercetools.api.models.project.ShoppingListsConfiguration getShoppingLists() {
+        return this.shoppingLists;
+    }
+
     public void setVersion(final Long version) {
         this.version = version;
     }
@@ -195,6 +211,15 @@ public final class ProjectImpl implements Project {
         this.carts = carts;
     }
 
+    public void setSearchIndexing(
+            final com.commercetools.api.models.project.SearchIndexingConfiguration searchIndexing) {
+        this.searchIndexing = searchIndexing;
+    }
+
+    public void setShoppingLists(final com.commercetools.api.models.project.ShoppingListsConfiguration shoppingLists) {
+        this.shoppingLists = shoppingLists;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -205,18 +230,40 @@ public final class ProjectImpl implements Project {
 
         ProjectImpl that = (ProjectImpl) o;
 
-        return new EqualsBuilder().append(version, that.version).append(key, that.key).append(name, that.name).append(
-            countries, that.countries).append(currencies, that.currencies).append(languages, that.languages).append(
-                createdAt, that.createdAt).append(trialUntil, that.trialUntil).append(messages, that.messages).append(
-                    shippingRateInputType, that.shippingRateInputType).append(externalOAuth, that.externalOAuth).append(
-                        carts, that.carts).isEquals();
+        return new EqualsBuilder().append(version, that.version)
+                .append(key, that.key)
+                .append(name, that.name)
+                .append(countries, that.countries)
+                .append(currencies, that.currencies)
+                .append(languages, that.languages)
+                .append(createdAt, that.createdAt)
+                .append(trialUntil, that.trialUntil)
+                .append(messages, that.messages)
+                .append(shippingRateInputType, that.shippingRateInputType)
+                .append(externalOAuth, that.externalOAuth)
+                .append(carts, that.carts)
+                .append(searchIndexing, that.searchIndexing)
+                .append(shoppingLists, that.shoppingLists)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(version).append(key).append(name).append(countries).append(
-            currencies).append(languages).append(createdAt).append(trialUntil).append(messages).append(
-                shippingRateInputType).append(externalOAuth).append(carts).toHashCode();
+        return new HashCodeBuilder(17, 37).append(version)
+                .append(key)
+                .append(name)
+                .append(countries)
+                .append(currencies)
+                .append(languages)
+                .append(createdAt)
+                .append(trialUntil)
+                .append(messages)
+                .append(shippingRateInputType)
+                .append(externalOAuth)
+                .append(carts)
+                .append(searchIndexing)
+                .append(shoppingLists)
+                .toHashCode();
     }
 
 }

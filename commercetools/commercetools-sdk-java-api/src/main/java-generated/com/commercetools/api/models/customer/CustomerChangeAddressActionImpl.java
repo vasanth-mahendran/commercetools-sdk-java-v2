@@ -22,12 +22,12 @@ public final class CustomerChangeAddressActionImpl implements CustomerChangeAddr
 
     private String addressKey;
 
-    private com.commercetools.api.models.common.Address address;
+    private com.commercetools.api.models.common.BaseAddress address;
 
     @JsonCreator
     CustomerChangeAddressActionImpl(@JsonProperty("addressId") final String addressId,
             @JsonProperty("addressKey") final String addressKey,
-            @JsonProperty("address") final com.commercetools.api.models.common.Address address) {
+            @JsonProperty("address") final com.commercetools.api.models.common.BaseAddress address) {
         this.addressId = addressId;
         this.addressKey = addressKey;
         this.address = address;
@@ -50,7 +50,7 @@ public final class CustomerChangeAddressActionImpl implements CustomerChangeAddr
         return this.addressKey;
     }
 
-    public com.commercetools.api.models.common.Address getAddress() {
+    public com.commercetools.api.models.common.BaseAddress getAddress() {
         return this.address;
     }
 
@@ -62,7 +62,7 @@ public final class CustomerChangeAddressActionImpl implements CustomerChangeAddr
         this.addressKey = addressKey;
     }
 
-    public void setAddress(final com.commercetools.api.models.common.Address address) {
+    public void setAddress(final com.commercetools.api.models.common.BaseAddress address) {
         this.address = address;
     }
 
@@ -76,14 +76,20 @@ public final class CustomerChangeAddressActionImpl implements CustomerChangeAddr
 
         CustomerChangeAddressActionImpl that = (CustomerChangeAddressActionImpl) o;
 
-        return new EqualsBuilder().append(action, that.action).append(addressId, that.addressId).append(addressKey,
-            that.addressKey).append(address, that.address).isEquals();
+        return new EqualsBuilder().append(action, that.action)
+                .append(addressId, that.addressId)
+                .append(addressKey, that.addressKey)
+                .append(address, that.address)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(action).append(addressId).append(addressKey).append(
-            address).toHashCode();
+        return new HashCodeBuilder(17, 37).append(action)
+                .append(addressId)
+                .append(addressKey)
+                .append(address)
+                .toHashCode();
     }
 
 }

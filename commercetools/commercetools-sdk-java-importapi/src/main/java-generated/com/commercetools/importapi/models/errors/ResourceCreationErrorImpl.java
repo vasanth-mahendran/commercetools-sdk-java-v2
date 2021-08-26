@@ -38,9 +38,6 @@ public final class ResourceCreationErrorImpl implements ResourceCreationError {
         return this.code;
     }
 
-    /**
-    *  <p>The error's description.</p>
-    */
     public String getMessage() {
         return this.message;
     }
@@ -67,8 +64,10 @@ public final class ResourceCreationErrorImpl implements ResourceCreationError {
 
         ResourceCreationErrorImpl that = (ResourceCreationErrorImpl) o;
 
-        return new EqualsBuilder().append(code, that.code).append(message, that.message).append(resource,
-            that.resource).isEquals();
+        return new EqualsBuilder().append(code, that.code)
+                .append(message, that.message)
+                .append(resource, that.resource)
+                .isEquals();
     }
 
     @Override

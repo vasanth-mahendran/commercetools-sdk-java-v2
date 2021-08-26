@@ -29,12 +29,18 @@ public interface AnonymousCartSignInMode {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static AnonymousCartSignInMode findEnum(String value) {
@@ -47,6 +53,10 @@ public interface AnonymousCartSignInMode {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

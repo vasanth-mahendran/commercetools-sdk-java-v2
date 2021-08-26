@@ -21,7 +21,7 @@ public class ByProjectKeyProductsKeyByKeyGet
         implements com.commercetools.api.client.PriceselectingTrait<ByProjectKeyProductsKeyByKeyGet>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyProductsKeyByKeyGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductsKeyByKeyGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyProductsKeyByKeyGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyProductsKeyByKeyGet> {
 
     private String projectKey;
     private String key;
@@ -50,13 +50,17 @@ public class ByProjectKeyProductsKeyByKeyGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.product.Product> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.product.Product> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.product.Product.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product.Product>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.product.Product.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product.Product>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.product.Product.class);
     }
 
     public String getProjectKey() {
@@ -103,58 +107,100 @@ public class ByProjectKeyProductsKeyByKeyGet
         this.key = key;
     }
 
+    /**
+     * set priceCurrency with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyGet withPriceCurrency(final String priceCurrency) {
         return copy().withQueryParam("priceCurrency", priceCurrency);
     }
 
+    /**
+     * add additional priceCurrency query parameter
+     */
     public ByProjectKeyProductsKeyByKeyGet addPriceCurrency(final String priceCurrency) {
         return copy().addQueryParam("priceCurrency", priceCurrency);
     }
 
+    /**
+     * set priceCountry with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyGet withPriceCountry(final String priceCountry) {
         return copy().withQueryParam("priceCountry", priceCountry);
     }
 
+    /**
+     * add additional priceCountry query parameter
+     */
     public ByProjectKeyProductsKeyByKeyGet addPriceCountry(final String priceCountry) {
         return copy().addQueryParam("priceCountry", priceCountry);
     }
 
+    /**
+     * set priceCustomerGroup with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyGet withPriceCustomerGroup(final String priceCustomerGroup) {
         return copy().withQueryParam("priceCustomerGroup", priceCustomerGroup);
     }
 
+    /**
+     * add additional priceCustomerGroup query parameter
+     */
     public ByProjectKeyProductsKeyByKeyGet addPriceCustomerGroup(final String priceCustomerGroup) {
         return copy().addQueryParam("priceCustomerGroup", priceCustomerGroup);
     }
 
+    /**
+     * set priceChannel with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyGet withPriceChannel(final String priceChannel) {
         return copy().withQueryParam("priceChannel", priceChannel);
     }
 
+    /**
+     * add additional priceChannel query parameter
+     */
     public ByProjectKeyProductsKeyByKeyGet addPriceChannel(final String priceChannel) {
         return copy().addQueryParam("priceChannel", priceChannel);
     }
 
+    /**
+     * set localeProjection with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyGet withLocaleProjection(final String localeProjection) {
         return copy().withQueryParam("localeProjection", localeProjection);
     }
 
+    /**
+     * add additional localeProjection query parameter
+     */
     public ByProjectKeyProductsKeyByKeyGet addLocaleProjection(final String localeProjection) {
         return copy().addQueryParam("localeProjection", localeProjection);
     }
 
+    /**
+     * set storeProjection with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyGet withStoreProjection(final String storeProjection) {
         return copy().withQueryParam("storeProjection", storeProjection);
     }
 
+    /**
+     * add additional storeProjection query parameter
+     */
     public ByProjectKeyProductsKeyByKeyGet addStoreProjection(final String storeProjection) {
         return copy().addQueryParam("storeProjection", storeProjection);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyProductsKeyByKeyGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

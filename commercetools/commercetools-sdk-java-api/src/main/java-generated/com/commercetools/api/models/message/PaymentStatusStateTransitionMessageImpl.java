@@ -90,10 +90,16 @@ public final class PaymentStatusStateTransitionMessageImpl implements PaymentSta
         return this.lastModifiedAt;
     }
 
+    /**
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
+    */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
+    /**
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
+    */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
     }
@@ -185,20 +191,38 @@ public final class PaymentStatusStateTransitionMessageImpl implements PaymentSta
 
         PaymentStatusStateTransitionMessageImpl that = (PaymentStatusStateTransitionMessageImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(version, that.version).append(createdAt,
-            that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(lastModifiedBy,
-                that.lastModifiedBy).append(createdBy, that.createdBy).append(sequenceNumber,
-                    that.sequenceNumber).append(resource, that.resource).append(resourceVersion,
-                        that.resourceVersion).append(type, that.type).append(resourceUserProvidedIdentifiers,
-                            that.resourceUserProvidedIdentifiers).append(state, that.state).append(force,
-                                that.force).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(version, that.version)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(lastModifiedBy, that.lastModifiedBy)
+                .append(createdBy, that.createdBy)
+                .append(sequenceNumber, that.sequenceNumber)
+                .append(resource, that.resource)
+                .append(resourceVersion, that.resourceVersion)
+                .append(type, that.type)
+                .append(resourceUserProvidedIdentifiers, that.resourceUserProvidedIdentifiers)
+                .append(state, that.state)
+                .append(force, that.force)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(version).append(createdAt).append(lastModifiedAt).append(
-            lastModifiedBy).append(createdBy).append(sequenceNumber).append(resource).append(resourceVersion).append(
-                type).append(resourceUserProvidedIdentifiers).append(state).append(force).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(version)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(lastModifiedBy)
+                .append(createdBy)
+                .append(sequenceNumber)
+                .append(resource)
+                .append(resourceVersion)
+                .append(type)
+                .append(resourceUserProvidedIdentifiers)
+                .append(state)
+                .append(force)
+                .toHashCode();
     }
 
 }

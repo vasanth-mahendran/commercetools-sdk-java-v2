@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Get Zone by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyZonesByIDGet
         extends ApiMethod<ByProjectKeyZonesByIDGet, com.commercetools.api.models.zone.Zone>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyZonesByIDGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyZonesByIDGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyZonesByIDGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyZonesByIDGet> {
 
     private String projectKey;
     private String ID;
@@ -49,13 +46,16 @@ public class ByProjectKeyZonesByIDGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.zone.Zone> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.zone.Zone> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.zone.Zone.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.zone.Zone>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.zone.Zone.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.zone.Zone>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.zone.Zone.class);
     }
 
     public String getProjectKey() {
@@ -78,10 +78,16 @@ public class ByProjectKeyZonesByIDGet
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyZonesByIDGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyZonesByIDGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

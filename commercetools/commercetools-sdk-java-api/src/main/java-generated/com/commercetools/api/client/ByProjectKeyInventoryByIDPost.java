@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update InventoryEntry by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyInventoryByIDPost
         extends ApiMethod<ByProjectKeyInventoryByIDPost, com.commercetools.api.models.inventory.InventoryEntry>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyInventoryByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyInventoryByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyInventoryByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyInventoryByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyInventoryByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyInventoryByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -62,14 +59,17 @@ public class ByProjectKeyInventoryByIDPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.inventory.InventoryEntry> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.inventory.InventoryEntry> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.inventory.InventoryEntry.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.inventory.InventoryEntry>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.inventory.InventoryEntry.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.inventory.InventoryEntry>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.inventory.InventoryEntry.class);
     }
 
     public String getProjectKey() {
@@ -92,10 +92,16 @@ public class ByProjectKeyInventoryByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyInventoryByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyInventoryByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

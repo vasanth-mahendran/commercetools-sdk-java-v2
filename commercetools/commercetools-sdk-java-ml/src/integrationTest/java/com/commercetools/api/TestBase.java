@@ -18,12 +18,11 @@ public class TestBase {
     public final String ml_host = ServiceRegion.GCP_EUROPE.getApiUrl();
 
     public final ByProjectKeyRequestBuilder mlApiBuilder = MLApiRootFactory.createForProject(projectKey,
-        ClientCredentials.of().withClientId(clientId).withClientSecret(clientSecret).withScopes("").build(), tokenUrl,
-        ml_host);
+        ClientCredentials.of().withClientId(clientId).withClientSecret(clientSecret).build(), tokenUrl, ml_host);
 
     public static String requireEnvVar(String varName) {
-        return Optional.ofNullable(System.getenv(varName)).orElseThrow(
-            () -> new RuntimeException("Cannot find environment variable '" + varName + "'"));
+        return Optional.ofNullable(System.getenv(varName))
+                .orElseThrow(() -> new RuntimeException("Cannot find environment variable '" + varName + "'"));
     }
 
 }

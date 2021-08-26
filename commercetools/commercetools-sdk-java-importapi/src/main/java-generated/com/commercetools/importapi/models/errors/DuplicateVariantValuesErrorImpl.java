@@ -14,8 +14,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>A given combination of variant values conflicts with an existing one.
-*  Every product variant must have a distinct combination of SKU, prices, and custom attribute values.</p>
+*  <p>The given combination of values of a <a href="/../api/projects/products#productvariant">Product Variant</a> conflicts with an existing one.
+*  Every <a href="/../api/projects/products#productvariant">Product Variant</a> must have a distinct combination of SKU, prices, and custom attribute values.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class DuplicateVariantValuesErrorImpl implements DuplicateVariantValuesError {
@@ -42,9 +42,6 @@ public final class DuplicateVariantValuesErrorImpl implements DuplicateVariantVa
         return this.code;
     }
 
-    /**
-    *  <p>The error's description.</p>
-    */
     public String getMessage() {
         return this.message;
     }
@@ -74,8 +71,10 @@ public final class DuplicateVariantValuesErrorImpl implements DuplicateVariantVa
 
         DuplicateVariantValuesErrorImpl that = (DuplicateVariantValuesErrorImpl) o;
 
-        return new EqualsBuilder().append(code, that.code).append(message, that.message).append(variantValues,
-            that.variantValues).isEquals();
+        return new EqualsBuilder().append(code, that.code)
+                .append(message, that.message)
+                .append(variantValues, that.variantValues)
+                .isEquals();
     }
 
     @Override

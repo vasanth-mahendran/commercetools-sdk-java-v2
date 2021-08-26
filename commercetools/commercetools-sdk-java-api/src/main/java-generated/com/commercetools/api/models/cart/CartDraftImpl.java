@@ -18,6 +18,8 @@ public final class CartDraftImpl implements CartDraft {
 
     private String currency;
 
+    private String key;
+
     private String customerId;
 
     private String customerEmail;
@@ -42,9 +44,9 @@ public final class CartDraftImpl implements CartDraft {
 
     private java.util.List<com.commercetools.api.models.cart.CustomLineItemDraft> customLineItems;
 
-    private com.commercetools.api.models.common.Address shippingAddress;
+    private com.commercetools.api.models.common.BaseAddress shippingAddress;
 
-    private com.commercetools.api.models.common.Address billingAddress;
+    private com.commercetools.api.models.common.BaseAddress billingAddress;
 
     private com.commercetools.api.models.shipping_method.ShippingMethodResourceIdentifier shippingMethod;
 
@@ -60,12 +62,13 @@ public final class CartDraftImpl implements CartDraft {
 
     private com.commercetools.api.models.cart.ShippingRateInputDraft shippingRateInput;
 
-    private java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses;
+    private java.util.List<com.commercetools.api.models.common.BaseAddress> itemShippingAddresses;
 
     private java.util.List<String> discountCodes;
 
     @JsonCreator
-    CartDraftImpl(@JsonProperty("currency") final String currency, @JsonProperty("customerId") final String customerId,
+    CartDraftImpl(@JsonProperty("currency") final String currency, @JsonProperty("key") final String key,
+            @JsonProperty("customerId") final String customerId,
             @JsonProperty("customerEmail") final String customerEmail,
             @JsonProperty("customerGroup") final com.commercetools.api.models.customer_group.CustomerGroupResourceIdentifier customerGroup,
             @JsonProperty("anonymousId") final String anonymousId,
@@ -77,8 +80,8 @@ public final class CartDraftImpl implements CartDraft {
             @JsonProperty("taxCalculationMode") final com.commercetools.api.models.cart.TaxCalculationMode taxCalculationMode,
             @JsonProperty("lineItems") final java.util.List<com.commercetools.api.models.cart.LineItemDraft> lineItems,
             @JsonProperty("customLineItems") final java.util.List<com.commercetools.api.models.cart.CustomLineItemDraft> customLineItems,
-            @JsonProperty("shippingAddress") final com.commercetools.api.models.common.Address shippingAddress,
-            @JsonProperty("billingAddress") final com.commercetools.api.models.common.Address billingAddress,
+            @JsonProperty("shippingAddress") final com.commercetools.api.models.common.BaseAddress shippingAddress,
+            @JsonProperty("billingAddress") final com.commercetools.api.models.common.BaseAddress billingAddress,
             @JsonProperty("shippingMethod") final com.commercetools.api.models.shipping_method.ShippingMethodResourceIdentifier shippingMethod,
             @JsonProperty("externalTaxRateForShippingMethod") final com.commercetools.api.models.cart.ExternalTaxRateDraft externalTaxRateForShippingMethod,
             @JsonProperty("custom") final com.commercetools.api.models.type.CustomFieldsDraft custom,
@@ -86,9 +89,10 @@ public final class CartDraftImpl implements CartDraft {
             @JsonProperty("deleteDaysAfterLastModification") final Long deleteDaysAfterLastModification,
             @JsonProperty("origin") final com.commercetools.api.models.cart.CartOrigin origin,
             @JsonProperty("shippingRateInput") final com.commercetools.api.models.cart.ShippingRateInputDraft shippingRateInput,
-            @JsonProperty("itemShippingAddresses") final java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses,
+            @JsonProperty("itemShippingAddresses") final java.util.List<com.commercetools.api.models.common.BaseAddress> itemShippingAddresses,
             @JsonProperty("discountCodes") final java.util.List<String> discountCodes) {
         this.currency = currency;
+        this.key = key;
         this.customerId = customerId;
         this.customerEmail = customerEmail;
         this.customerGroup = customerGroup;
@@ -122,6 +126,13 @@ public final class CartDraftImpl implements CartDraft {
     */
     public String getCurrency() {
         return this.currency;
+    }
+
+    /**
+    *  <p>User-specific unique identifier of the cart.</p>
+    */
+    public String getKey() {
+        return this.key;
     }
 
     /**
@@ -204,11 +215,11 @@ public final class CartDraftImpl implements CartDraft {
     /**
     *  <p>The shipping address is used to determine the eligible shipping methods and rates as well as the tax rate of the line items.</p>
     */
-    public com.commercetools.api.models.common.Address getShippingAddress() {
+    public com.commercetools.api.models.common.BaseAddress getShippingAddress() {
         return this.shippingAddress;
     }
 
-    public com.commercetools.api.models.common.Address getBillingAddress() {
+    public com.commercetools.api.models.common.BaseAddress getBillingAddress() {
         return this.billingAddress;
     }
 
@@ -270,7 +281,7 @@ public final class CartDraftImpl implements CartDraft {
     *  The addresses captured here are not used to determine eligible shipping methods or the applicable tax rate.
     *  Only the cart's <code>shippingAddress</code> is used for this.</p>
     */
-    public java.util.List<com.commercetools.api.models.common.Address> getItemShippingAddresses() {
+    public java.util.List<com.commercetools.api.models.common.BaseAddress> getItemShippingAddresses() {
         return this.itemShippingAddresses;
     }
 
@@ -283,6 +294,10 @@ public final class CartDraftImpl implements CartDraft {
 
     public void setCurrency(final String currency) {
         this.currency = currency;
+    }
+
+    public void setKey(final String key) {
+        this.key = key;
     }
 
     public void setCustomerId(final String customerId) {
@@ -343,11 +358,11 @@ public final class CartDraftImpl implements CartDraft {
         this.customLineItems = customLineItems;
     }
 
-    public void setShippingAddress(final com.commercetools.api.models.common.Address shippingAddress) {
+    public void setShippingAddress(final com.commercetools.api.models.common.BaseAddress shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
 
-    public void setBillingAddress(final com.commercetools.api.models.common.Address billingAddress) {
+    public void setBillingAddress(final com.commercetools.api.models.common.BaseAddress billingAddress) {
         this.billingAddress = billingAddress;
     }
 
@@ -381,12 +396,13 @@ public final class CartDraftImpl implements CartDraft {
         this.shippingRateInput = shippingRateInput;
     }
 
-    public void setItemShippingAddresses(final com.commercetools.api.models.common.Address... itemShippingAddresses) {
+    public void setItemShippingAddresses(
+            final com.commercetools.api.models.common.BaseAddress... itemShippingAddresses) {
         this.itemShippingAddresses = new ArrayList<>(Arrays.asList(itemShippingAddresses));
     }
 
     public void setItemShippingAddresses(
-            final java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses) {
+            final java.util.List<com.commercetools.api.models.common.BaseAddress> itemShippingAddresses) {
         this.itemShippingAddresses = itemShippingAddresses;
     }
 
@@ -408,32 +424,62 @@ public final class CartDraftImpl implements CartDraft {
 
         CartDraftImpl that = (CartDraftImpl) o;
 
-        return new EqualsBuilder().append(currency, that.currency).append(customerId, that.customerId).append(
-            customerEmail, that.customerEmail).append(customerGroup, that.customerGroup).append(anonymousId,
-                that.anonymousId).append(store, that.store).append(country, that.country).append(inventoryMode,
-                    that.inventoryMode).append(taxMode, that.taxMode).append(taxRoundingMode,
-                        that.taxRoundingMode).append(taxCalculationMode, that.taxCalculationMode).append(lineItems,
-                            that.lineItems).append(customLineItems, that.customLineItems).append(shippingAddress,
-                                that.shippingAddress).append(billingAddress, that.billingAddress).append(shippingMethod,
-                                    that.shippingMethod).append(externalTaxRateForShippingMethod,
-                                        that.externalTaxRateForShippingMethod).append(custom, that.custom).append(
-                                            locale, that.locale).append(deleteDaysAfterLastModification,
-                                                that.deleteDaysAfterLastModification).append(origin,
-                                                    that.origin).append(shippingRateInput,
-                                                        that.shippingRateInput).append(itemShippingAddresses,
-                                                            that.itemShippingAddresses).append(discountCodes,
-                                                                that.discountCodes).isEquals();
+        return new EqualsBuilder().append(currency, that.currency)
+                .append(key, that.key)
+                .append(customerId, that.customerId)
+                .append(customerEmail, that.customerEmail)
+                .append(customerGroup, that.customerGroup)
+                .append(anonymousId, that.anonymousId)
+                .append(store, that.store)
+                .append(country, that.country)
+                .append(inventoryMode, that.inventoryMode)
+                .append(taxMode, that.taxMode)
+                .append(taxRoundingMode, that.taxRoundingMode)
+                .append(taxCalculationMode, that.taxCalculationMode)
+                .append(lineItems, that.lineItems)
+                .append(customLineItems, that.customLineItems)
+                .append(shippingAddress, that.shippingAddress)
+                .append(billingAddress, that.billingAddress)
+                .append(shippingMethod, that.shippingMethod)
+                .append(externalTaxRateForShippingMethod, that.externalTaxRateForShippingMethod)
+                .append(custom, that.custom)
+                .append(locale, that.locale)
+                .append(deleteDaysAfterLastModification, that.deleteDaysAfterLastModification)
+                .append(origin, that.origin)
+                .append(shippingRateInput, that.shippingRateInput)
+                .append(itemShippingAddresses, that.itemShippingAddresses)
+                .append(discountCodes, that.discountCodes)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(currency).append(customerId).append(customerEmail).append(
-            customerGroup).append(anonymousId).append(store).append(country).append(inventoryMode).append(
-                taxMode).append(taxRoundingMode).append(taxCalculationMode).append(lineItems).append(
-                    customLineItems).append(shippingAddress).append(billingAddress).append(shippingMethod).append(
-                        externalTaxRateForShippingMethod).append(custom).append(locale).append(
-                            deleteDaysAfterLastModification).append(origin).append(shippingRateInput).append(
-                                itemShippingAddresses).append(discountCodes).toHashCode();
+        return new HashCodeBuilder(17, 37).append(currency)
+                .append(key)
+                .append(customerId)
+                .append(customerEmail)
+                .append(customerGroup)
+                .append(anonymousId)
+                .append(store)
+                .append(country)
+                .append(inventoryMode)
+                .append(taxMode)
+                .append(taxRoundingMode)
+                .append(taxCalculationMode)
+                .append(lineItems)
+                .append(customLineItems)
+                .append(shippingAddress)
+                .append(billingAddress)
+                .append(shippingMethod)
+                .append(externalTaxRateForShippingMethod)
+                .append(custom)
+                .append(locale)
+                .append(deleteDaysAfterLastModification)
+                .append(origin)
+                .append(shippingRateInput)
+                .append(itemShippingAddresses)
+                .append(discountCodes)
+                .toHashCode();
     }
 
 }

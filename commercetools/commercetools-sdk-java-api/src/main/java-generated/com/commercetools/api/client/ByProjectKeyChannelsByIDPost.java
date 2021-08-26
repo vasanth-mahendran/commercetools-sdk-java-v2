@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update Channel by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyChannelsByIDPost
         extends ApiMethod<ByProjectKeyChannelsByIDPost, com.commercetools.api.models.channel.Channel>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyChannelsByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyChannelsByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyChannelsByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyChannelsByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyChannelsByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyChannelsByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -62,13 +59,17 @@ public class ByProjectKeyChannelsByIDPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.channel.Channel> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.channel.Channel> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.channel.Channel.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.channel.Channel>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.channel.Channel.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.channel.Channel>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.channel.Channel.class);
     }
 
     public String getProjectKey() {
@@ -91,10 +92,16 @@ public class ByProjectKeyChannelsByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyChannelsByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyChannelsByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

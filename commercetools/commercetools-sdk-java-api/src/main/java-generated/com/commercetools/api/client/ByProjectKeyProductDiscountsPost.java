@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Create ProductDiscount</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyProductDiscountsPost extends
         ApiMethod<ByProjectKeyProductDiscountsPost, com.commercetools.api.models.product_discount.ProductDiscount>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyProductDiscountsPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductDiscountsPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyProductDiscountsPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyProductDiscountsPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductDiscountsPost> {
 
     private String projectKey;
 
@@ -59,13 +56,17 @@ public class ByProjectKeyProductDiscountsPost extends
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.product_discount.ProductDiscount> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.api.models.product_discount.ProductDiscount.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_discount.ProductDiscount>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_discount.ProductDiscount>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.product_discount.ProductDiscount.class);
     }
 
@@ -81,10 +82,16 @@ public class ByProjectKeyProductDiscountsPost extends
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyProductDiscountsPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyProductDiscountsPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

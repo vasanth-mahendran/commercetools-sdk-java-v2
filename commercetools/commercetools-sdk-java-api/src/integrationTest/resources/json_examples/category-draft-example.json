@@ -9,6 +9,7 @@
       "sources": [
         {
           "contentType": "application/json",
+          "uri": "https://commercetools.com",
           "dimensions": {
             "w": 5,
             "h": 10
@@ -17,9 +18,7 @@
       ],
       "custom": {
         "fields": {
-          "test-key": {
-            "val": "test-string"
-          }
+          "test-key": "test-string"
         },
         "type": {
           "key": "string type",
@@ -45,9 +44,7 @@
   "orderHint": "test-string",
   "custom": {
     "fields": {
-      "test-key": {
-        "val": "test-string"
-      }
+      "test-key": "test-string"
     },
     "type": {
       "key": "string type",

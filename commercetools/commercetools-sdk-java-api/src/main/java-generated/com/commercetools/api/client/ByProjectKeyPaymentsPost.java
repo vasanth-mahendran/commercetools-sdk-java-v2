@@ -19,8 +19,8 @@ import io.vrap.rmf.base.client.utils.Generated;
 public class ByProjectKeyPaymentsPost
         extends ApiMethod<ByProjectKeyPaymentsPost, com.commercetools.api.models.payment.Payment>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyPaymentsPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyPaymentsPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyPaymentsPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyPaymentsPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyPaymentsPost> {
 
     private String projectKey;
 
@@ -58,13 +58,17 @@ public class ByProjectKeyPaymentsPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.payment.Payment> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.payment.Payment> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.payment.Payment.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.payment.Payment>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.payment.Payment.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.payment.Payment>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.payment.Payment.class);
     }
 
     public String getProjectKey() {
@@ -79,10 +83,16 @@ public class ByProjectKeyPaymentsPost
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyPaymentsPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyPaymentsPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

@@ -14,16 +14,14 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>Import representation for an order.</p>
-*  <p>In commercetools, you can import an order using the
+*  <p>The data representation for an Order to be imported that is persisted as an <a href="/../api/projects/orders#top">Order</a> in the Project.</p>
+*  <p>In commercetools, you can import an Order using the
 *  <a href="https://docs.commercetools.com/http-api-projects-orders-import.html#create-an-order-by-import">Create Order by Import</a>
-*  endpoint method instead of creating it from a cart.</p>
-*  <p>The order import draft is a snapshot of an order at the time it was imported.</p>
+*  endpoint method instead of creating it from a Cart.</p>
+*  <p>An OrderImport is a snapshot of an order at the time it was imported.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class OrderImportImpl implements OrderImport {
-
-    private String key;
 
     private String orderNumber;
 
@@ -70,7 +68,7 @@ public final class OrderImportImpl implements OrderImport {
     private java.util.List<com.commercetools.importapi.models.common.Address> itemShippingAddresses;
 
     @JsonCreator
-    OrderImportImpl(@JsonProperty("key") final String key, @JsonProperty("orderNumber") final String orderNumber,
+    OrderImportImpl(@JsonProperty("orderNumber") final String orderNumber,
             @JsonProperty("customer") final com.commercetools.importapi.models.common.CustomerKeyReference customer,
             @JsonProperty("customerEmail") final String customerEmail,
             @JsonProperty("lineItems") final java.util.List<com.commercetools.importapi.models.orders.LineItemImportDraft> lineItems,
@@ -92,7 +90,6 @@ public final class OrderImportImpl implements OrderImport {
             @JsonProperty("taxCalculationMode") final com.commercetools.importapi.models.orders.TaxCalculationMode taxCalculationMode,
             @JsonProperty("origin") final com.commercetools.importapi.models.orders.CartOrigin origin,
             @JsonProperty("itemShippingAddresses") final java.util.List<com.commercetools.importapi.models.common.Address> itemShippingAddresses) {
-        this.key = key;
         this.orderNumber = orderNumber;
         this.customer = customer;
         this.customerEmail = customerEmail;
@@ -120,20 +117,13 @@ public final class OrderImportImpl implements OrderImport {
     public OrderImportImpl() {
     }
 
-    public String getKey() {
-        return this.key;
-    }
-
     /**
-    *  <p>Maps to <code>Order.orderNumber</code>.</p>
+    *  <p>Maps to <code>Order.orderNumber</code>, String that uniquely identifies an order. It should be unique across a project. Once it's set it cannot be changed.</p>
     */
     public String getOrderNumber() {
         return this.orderNumber;
     }
 
-    /**
-    *  <p>References a customer by its key.</p>
-    */
     public com.commercetools.importapi.models.common.CustomerKeyReference getCustomer() {
         return this.customer;
     }
@@ -160,7 +150,7 @@ public final class OrderImportImpl implements OrderImport {
     }
 
     /**
-    *  <p>Maps to <code>Order.totalPrice</code>.</p>
+    *  <p>Maps to <code>Order.totalPrice</code>. TypedMoney is what is called BaseMoney in the HTTP API.</p>
     */
     public com.commercetools.importapi.models.common.TypedMoney getTotalPrice() {
         return this.totalPrice;
@@ -276,10 +266,6 @@ public final class OrderImportImpl implements OrderImport {
     */
     public java.util.List<com.commercetools.importapi.models.common.Address> getItemShippingAddresses() {
         return this.itemShippingAddresses;
-    }
-
-    public void setKey(final String key) {
-        this.key = key;
     }
 
     public void setOrderNumber(final String orderNumber) {
@@ -399,28 +385,56 @@ public final class OrderImportImpl implements OrderImport {
 
         OrderImportImpl that = (OrderImportImpl) o;
 
-        return new EqualsBuilder().append(key, that.key).append(orderNumber, that.orderNumber).append(customer,
-            that.customer).append(customerEmail, that.customerEmail).append(lineItems, that.lineItems).append(
-                customLineItems, that.customLineItems).append(totalPrice, that.totalPrice).append(taxedPrice,
-                    that.taxedPrice).append(shippingAddress, that.shippingAddress).append(billingAddress,
-                        that.billingAddress).append(customerGroup, that.customerGroup).append(country,
-                            that.country).append(orderState, that.orderState).append(shipmentState,
-                                that.shipmentState).append(paymentState, that.paymentState).append(shippingInfo,
-                                    that.shippingInfo).append(completedAt, that.completedAt).append(custom,
-                                        that.custom).append(inventoryMode, that.inventoryMode).append(taxRoundingMode,
-                                            that.taxRoundingMode).append(taxCalculationMode,
-                                                that.taxCalculationMode).append(origin, that.origin).append(
-                                                    itemShippingAddresses, that.itemShippingAddresses).isEquals();
+        return new EqualsBuilder().append(orderNumber, that.orderNumber)
+                .append(customer, that.customer)
+                .append(customerEmail, that.customerEmail)
+                .append(lineItems, that.lineItems)
+                .append(customLineItems, that.customLineItems)
+                .append(totalPrice, that.totalPrice)
+                .append(taxedPrice, that.taxedPrice)
+                .append(shippingAddress, that.shippingAddress)
+                .append(billingAddress, that.billingAddress)
+                .append(customerGroup, that.customerGroup)
+                .append(country, that.country)
+                .append(orderState, that.orderState)
+                .append(shipmentState, that.shipmentState)
+                .append(paymentState, that.paymentState)
+                .append(shippingInfo, that.shippingInfo)
+                .append(completedAt, that.completedAt)
+                .append(custom, that.custom)
+                .append(inventoryMode, that.inventoryMode)
+                .append(taxRoundingMode, that.taxRoundingMode)
+                .append(taxCalculationMode, that.taxCalculationMode)
+                .append(origin, that.origin)
+                .append(itemShippingAddresses, that.itemShippingAddresses)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(key).append(orderNumber).append(customer).append(
-            customerEmail).append(lineItems).append(customLineItems).append(totalPrice).append(taxedPrice).append(
-                shippingAddress).append(billingAddress).append(customerGroup).append(country).append(orderState).append(
-                    shipmentState).append(paymentState).append(shippingInfo).append(completedAt).append(custom).append(
-                        inventoryMode).append(taxRoundingMode).append(taxCalculationMode).append(origin).append(
-                            itemShippingAddresses).toHashCode();
+        return new HashCodeBuilder(17, 37).append(orderNumber)
+                .append(customer)
+                .append(customerEmail)
+                .append(lineItems)
+                .append(customLineItems)
+                .append(totalPrice)
+                .append(taxedPrice)
+                .append(shippingAddress)
+                .append(billingAddress)
+                .append(customerGroup)
+                .append(country)
+                .append(orderState)
+                .append(shipmentState)
+                .append(paymentState)
+                .append(shippingInfo)
+                .append(completedAt)
+                .append(custom)
+                .append(inventoryMode)
+                .append(taxRoundingMode)
+                .append(taxCalculationMode)
+                .append(origin)
+                .append(itemShippingAddresses)
+                .toHashCode();
     }
 
 }

@@ -20,7 +20,7 @@ public class ByProjectKeyExtensionsByIDGet
         extends ApiMethod<ByProjectKeyExtensionsByIDGet, com.commercetools.api.models.extension.Extension>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyExtensionsByIDGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyExtensionsByIDGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyExtensionsByIDGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyExtensionsByIDGet> {
 
     private String projectKey;
     private String ID;
@@ -49,14 +49,17 @@ public class ByProjectKeyExtensionsByIDGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.extension.Extension.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.extension.Extension.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.extension.Extension.class);
     }
 
     public String getProjectKey() {
@@ -79,10 +82,16 @@ public class ByProjectKeyExtensionsByIDGet
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyExtensionsByIDGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyExtensionsByIDGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

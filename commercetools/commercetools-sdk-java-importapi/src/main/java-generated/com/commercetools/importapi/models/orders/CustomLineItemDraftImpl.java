@@ -69,10 +69,21 @@ public final class CustomLineItemDraftImpl implements CustomLineItemDraft {
     public CustomLineItemDraftImpl() {
     }
 
+    /**
+    *  <p>A localized string is a JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values the corresponding strings used for that language.</p>
+    *  <pre><code class="language-json">{
+    *    &quot;de&quot;: &quot;Hundefutter&quot;,
+    *    &quot;en&quot;: &quot;dog food&quot;
+    *  }
+    *  </code></pre>
+    */
     public com.commercetools.importapi.models.common.LocalizedString getName() {
         return this.name;
     }
 
+    /**
+    *  <p>TypedMoney is what is called BaseMoney in the HTTP API.</p>
+    */
     public com.commercetools.importapi.models.common.TypedMoney getMoney() {
         return this.money;
     }
@@ -81,6 +92,9 @@ public final class CustomLineItemDraftImpl implements CustomLineItemDraft {
         return this.taxedPrice;
     }
 
+    /**
+    *  <p>TypedMoney is what is called BaseMoney in the HTTP API.</p>
+    */
     public com.commercetools.importapi.models.common.TypedMoney getTotalPrice() {
         return this.totalPrice;
     }
@@ -190,18 +204,36 @@ public final class CustomLineItemDraftImpl implements CustomLineItemDraft {
 
         CustomLineItemDraftImpl that = (CustomLineItemDraftImpl) o;
 
-        return new EqualsBuilder().append(name, that.name).append(money, that.money).append(taxedPrice,
-            that.taxedPrice).append(totalPrice, that.totalPrice).append(slug, that.slug).append(quantity,
-                that.quantity).append(state, that.state).append(taxCategory, that.taxCategory).append(taxRate,
-                    that.taxRate).append(externalTaxRate, that.externalTaxRate).append(discountedPricePerQuantity,
-                        that.discountedPricePerQuantity).append(shippingDetails, that.shippingDetails).isEquals();
+        return new EqualsBuilder().append(name, that.name)
+                .append(money, that.money)
+                .append(taxedPrice, that.taxedPrice)
+                .append(totalPrice, that.totalPrice)
+                .append(slug, that.slug)
+                .append(quantity, that.quantity)
+                .append(state, that.state)
+                .append(taxCategory, that.taxCategory)
+                .append(taxRate, that.taxRate)
+                .append(externalTaxRate, that.externalTaxRate)
+                .append(discountedPricePerQuantity, that.discountedPricePerQuantity)
+                .append(shippingDetails, that.shippingDetails)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(name).append(money).append(taxedPrice).append(totalPrice).append(
-            slug).append(quantity).append(state).append(taxCategory).append(taxRate).append(externalTaxRate).append(
-                discountedPricePerQuantity).append(shippingDetails).toHashCode();
+        return new HashCodeBuilder(17, 37).append(name)
+                .append(money)
+                .append(taxedPrice)
+                .append(totalPrice)
+                .append(slug)
+                .append(quantity)
+                .append(state)
+                .append(taxCategory)
+                .append(taxRate)
+                .append(externalTaxRate)
+                .append(discountedPricePerQuantity)
+                .append(shippingDetails)
+                .toHashCode();
     }
 
 }

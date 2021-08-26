@@ -19,8 +19,8 @@ import io.vrap.rmf.base.client.utils.Generated;
 public class ByProjectKeyExtensionsPost
         extends ApiMethod<ByProjectKeyExtensionsPost, com.commercetools.api.models.extension.Extension>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyExtensionsPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyExtensionsPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyExtensionsPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyExtensionsPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyExtensionsPost> {
 
     private String projectKey;
 
@@ -58,14 +58,17 @@ public class ByProjectKeyExtensionsPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.extension.Extension.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.extension.Extension.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.extension.Extension.class);
     }
 
     public String getProjectKey() {
@@ -80,10 +83,16 @@ public class ByProjectKeyExtensionsPost
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyExtensionsPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyExtensionsPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Get DiscountCode by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyDiscountCodesByIDGet
         extends ApiMethod<ByProjectKeyDiscountCodesByIDGet, com.commercetools.api.models.discount_code.DiscountCode>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyDiscountCodesByIDGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyDiscountCodesByIDGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyDiscountCodesByIDGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyDiscountCodesByIDGet> {
 
     private String projectKey;
     private String ID;
@@ -49,14 +46,17 @@ public class ByProjectKeyDiscountCodesByIDGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.discount_code.DiscountCode> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.discount_code.DiscountCode> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.discount_code.DiscountCode.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.discount_code.DiscountCode>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.discount_code.DiscountCode.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.discount_code.DiscountCode>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.discount_code.DiscountCode.class);
     }
 
     public String getProjectKey() {
@@ -79,10 +79,16 @@ public class ByProjectKeyDiscountCodesByIDGet
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyDiscountCodesByIDGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyDiscountCodesByIDGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

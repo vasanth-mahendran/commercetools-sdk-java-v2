@@ -13,15 +13,18 @@ import io.vrap.rmf.base.client.utils.Generated;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+/**
+*  <p>The width and height of the Asset Source.</p>
+*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class AssetDimensionsImpl implements AssetDimensions {
 
-    private Double w;
+    private Integer w;
 
-    private Double h;
+    private Integer h;
 
     @JsonCreator
-    AssetDimensionsImpl(@JsonProperty("w") final Double w, @JsonProperty("h") final Double h) {
+    AssetDimensionsImpl(@JsonProperty("w") final Integer w, @JsonProperty("h") final Integer h) {
         this.w = w;
         this.h = h;
     }
@@ -29,19 +32,25 @@ public final class AssetDimensionsImpl implements AssetDimensions {
     public AssetDimensionsImpl() {
     }
 
-    public Double getW() {
+    /**
+    *  <p>The width of the asset source.</p>
+    */
+    public Integer getW() {
         return this.w;
     }
 
-    public Double getH() {
+    /**
+    *  <p>The height of the asset source.</p>
+    */
+    public Integer getH() {
         return this.h;
     }
 
-    public void setW(final Double w) {
+    public void setW(final Integer w) {
         this.w = w;
     }
 
-    public void setH(final Double h) {
+    public void setH(final Integer h) {
         this.h = h;
     }
 

@@ -12,6 +12,8 @@ import io.vrap.rmf.base.client.utils.Generated;
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public interface ResourceTypeId {
 
+    ResourceTypeId ADDRESS = ResourceTypeIdEnum.ADDRESS;
+
     ResourceTypeId ASSET = ResourceTypeIdEnum.ASSET;
 
     ResourceTypeId CATEGORY = ResourceTypeIdEnum.CATEGORY;
@@ -50,7 +52,11 @@ public interface ResourceTypeId {
 
     ResourceTypeId CUSTOMER_GROUP = ResourceTypeIdEnum.CUSTOMER_GROUP;
 
+    ResourceTypeId STORE = ResourceTypeIdEnum.STORE;
+
     enum ResourceTypeIdEnum implements ResourceTypeId {
+        ADDRESS("address"),
+
         ASSET("asset"),
 
         CATEGORY("category"),
@@ -87,7 +93,9 @@ public interface ResourceTypeId {
 
         CART_DISCOUNT("cart-discount"),
 
-        CUSTOMER_GROUP("customer-group");
+        CUSTOMER_GROUP("customer-group"),
+
+        STORE("store");
         private final String jsonName;
 
         private ResourceTypeIdEnum(final String jsonName) {
@@ -97,12 +105,18 @@ public interface ResourceTypeId {
         public String getJsonName() {
             return jsonName;
         }
+
+        public String toString() {
+            return jsonName;
+        }
     }
 
     @JsonValue
     String getJsonName();
 
     String name();
+
+    String toString();
 
     @JsonCreator
     public static ResourceTypeId findEnum(String value) {
@@ -115,6 +129,10 @@ public interface ResourceTypeId {
             @Override
             public String name() {
                 return value.toUpperCase();
+            }
+
+            public String toString() {
+                return value;
             }
         });
     }

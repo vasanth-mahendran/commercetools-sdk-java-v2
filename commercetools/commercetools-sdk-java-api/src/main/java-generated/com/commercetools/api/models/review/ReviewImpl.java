@@ -116,14 +116,14 @@ public final class ReviewImpl implements Review {
     }
 
     /**
-    *  <p>Present on resources updated after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
     /**
-    *  <p>Present on resources created after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
@@ -287,21 +287,48 @@ public final class ReviewImpl implements Review {
 
         ReviewImpl that = (ReviewImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(version, that.version).append(createdAt,
-            that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(lastModifiedBy,
-                that.lastModifiedBy).append(createdBy, that.createdBy).append(key, that.key).append(uniquenessValue,
-                    that.uniquenessValue).append(locale, that.locale).append(authorName, that.authorName).append(title,
-                        that.title).append(text, that.text).append(target, that.target).append(includedInStatistics,
-                            that.includedInStatistics).append(rating, that.rating).append(state, that.state).append(
-                                customer, that.customer).append(custom, that.custom).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(version, that.version)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(lastModifiedBy, that.lastModifiedBy)
+                .append(createdBy, that.createdBy)
+                .append(key, that.key)
+                .append(uniquenessValue, that.uniquenessValue)
+                .append(locale, that.locale)
+                .append(authorName, that.authorName)
+                .append(title, that.title)
+                .append(text, that.text)
+                .append(target, that.target)
+                .append(includedInStatistics, that.includedInStatistics)
+                .append(rating, that.rating)
+                .append(state, that.state)
+                .append(customer, that.customer)
+                .append(custom, that.custom)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(version).append(createdAt).append(lastModifiedAt).append(
-            lastModifiedBy).append(createdBy).append(key).append(uniquenessValue).append(locale).append(
-                authorName).append(title).append(text).append(target).append(includedInStatistics).append(
-                    rating).append(state).append(customer).append(custom).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(version)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(lastModifiedBy)
+                .append(createdBy)
+                .append(key)
+                .append(uniquenessValue)
+                .append(locale)
+                .append(authorName)
+                .append(title)
+                .append(text)
+                .append(target)
+                .append(includedInStatistics)
+                .append(rating)
+                .append(state)
+                .append(customer)
+                .append(custom)
+                .toHashCode();
     }
 
 }

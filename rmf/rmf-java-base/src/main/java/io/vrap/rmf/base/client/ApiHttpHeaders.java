@@ -75,6 +75,7 @@ public class ApiHttpHeaders extends Base {
     public static final String CONTENT_TYPE = "Content-Type";
     public static final String CONTENT_LENGTH = "Content-Length";
     public static final String X_CORRELATION_ID = "X-Correlation-ID";
+    public static final String X_DEPRECATION_NOTICE = "X-Deprecation-Notice";
 
     private final List<StringHeaderEntry> headers;
 
@@ -122,13 +123,18 @@ public class ApiHttpHeaders extends Base {
 
     @Nullable
     public String getFirst(final String key) {
-        return this.headers.stream().filter(e -> e.getKey().equalsIgnoreCase(key)).map(
-            Map.Entry::getValue).findFirst().orElse(null);
+        return this.headers.stream()
+                .filter(e -> e.getKey().equalsIgnoreCase(key))
+                .map(Map.Entry::getValue)
+                .findFirst()
+                .orElse(null);
     }
 
     public List<String> getHeaderValue(final String key) {
-        return headers.stream().filter(e -> e.getKey().equalsIgnoreCase(key)).map(Map.Entry::getValue).collect(
-            Collectors.toList());
+        return headers.stream()
+                .filter(e -> e.getKey().equalsIgnoreCase(key))
+                .map(Map.Entry::getValue)
+                .collect(Collectors.toList());
     }
 
     public List<Map.Entry<String, String>> getHeaders(final String key) {

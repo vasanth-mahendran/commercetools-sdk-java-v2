@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Create DiscountCode</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyDiscountCodesPost
         extends ApiMethod<ByProjectKeyDiscountCodesPost, com.commercetools.api.models.discount_code.DiscountCode>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyDiscountCodesPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyDiscountCodesPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyDiscountCodesPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyDiscountCodesPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyDiscountCodesPost> {
 
     private String projectKey;
 
@@ -58,14 +55,17 @@ public class ByProjectKeyDiscountCodesPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.discount_code.DiscountCode> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.discount_code.DiscountCode> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.discount_code.DiscountCode.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.discount_code.DiscountCode>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.discount_code.DiscountCode.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.discount_code.DiscountCode>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.discount_code.DiscountCode.class);
     }
 
     public String getProjectKey() {
@@ -80,10 +80,16 @@ public class ByProjectKeyDiscountCodesPost
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyDiscountCodesPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyDiscountCodesPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

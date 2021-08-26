@@ -23,7 +23,7 @@ public class ByProjectKeyCustomObjectsByContainerByKeyDelete extends
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyCustomObjectsByContainerByKeyDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyCustomObjectsByContainerByKeyDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomObjectsByContainerByKeyDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCustomObjectsByContainerByKeyDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyCustomObjectsByContainerByKeyDelete> {
 
     private String projectKey;
     private String container;
@@ -56,14 +56,17 @@ public class ByProjectKeyCustomObjectsByContainerByKeyDelete extends
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.custom_object.CustomObject> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.custom_object.CustomObject> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.custom_object.CustomObject.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.custom_object.CustomObject>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.custom_object.CustomObject.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.custom_object.CustomObject>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.custom_object.CustomObject.class);
     }
 
     public String getProjectKey() {
@@ -102,26 +105,44 @@ public class ByProjectKeyCustomObjectsByContainerByKeyDelete extends
         this.key = key;
     }
 
-    public ByProjectKeyCustomObjectsByContainerByKeyDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyCustomObjectsByContainerByKeyDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyCustomObjectsByContainerByKeyDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyCustomObjectsByContainerByKeyDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
-    public ByProjectKeyCustomObjectsByContainerByKeyDelete withDataErasure(final Boolean dataErasure) {
+    /**
+     * set dataErasure with the specificied value
+     */
+    public ByProjectKeyCustomObjectsByContainerByKeyDelete withDataErasure(final boolean dataErasure) {
         return copy().withQueryParam("dataErasure", dataErasure);
     }
 
-    public ByProjectKeyCustomObjectsByContainerByKeyDelete addDataErasure(final Boolean dataErasure) {
+    /**
+     * add additional dataErasure query parameter
+     */
+    public ByProjectKeyCustomObjectsByContainerByKeyDelete addDataErasure(final boolean dataErasure) {
         return copy().addQueryParam("dataErasure", dataErasure);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCustomObjectsByContainerByKeyDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCustomObjectsByContainerByKeyDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

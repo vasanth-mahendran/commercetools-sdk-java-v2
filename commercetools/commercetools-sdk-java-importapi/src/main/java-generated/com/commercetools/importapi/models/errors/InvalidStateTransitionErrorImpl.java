@@ -42,22 +42,19 @@ public final class InvalidStateTransitionErrorImpl implements InvalidStateTransi
         return this.code;
     }
 
-    /**
-    *  <p>The error's description.</p>
-    */
     public String getMessage() {
         return this.message;
     }
 
     /**
-    *  <p>This enumeration describes the processing state of an import operation.</p>
+    *  <p>Represents the status of a resource under an import process. Every resource has the initial state <code>Unresolved</code>.</p>
     */
     public com.commercetools.importapi.models.common.ProcessingState getCurrentState() {
         return this.currentState;
     }
 
     /**
-    *  <p>This enumeration describes the processing state of an import operation.</p>
+    *  <p>Represents the status of a resource under an import process. Every resource has the initial state <code>Unresolved</code>.</p>
     */
     public com.commercetools.importapi.models.common.ProcessingState getNewState() {
         return this.newState;
@@ -85,14 +82,20 @@ public final class InvalidStateTransitionErrorImpl implements InvalidStateTransi
 
         InvalidStateTransitionErrorImpl that = (InvalidStateTransitionErrorImpl) o;
 
-        return new EqualsBuilder().append(code, that.code).append(message, that.message).append(currentState,
-            that.currentState).append(newState, that.newState).isEquals();
+        return new EqualsBuilder().append(code, that.code)
+                .append(message, that.message)
+                .append(currentState, that.currentState)
+                .append(newState, that.newState)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(code).append(message).append(currentState).append(
-            newState).toHashCode();
+        return new HashCodeBuilder(17, 37).append(code)
+                .append(message)
+                .append(currentState)
+                .append(newState)
+                .toHashCode();
     }
 
 }

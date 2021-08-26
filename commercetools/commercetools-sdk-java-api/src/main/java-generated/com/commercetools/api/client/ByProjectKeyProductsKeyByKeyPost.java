@@ -12,17 +12,14 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update Product by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyProductsKeyByKeyPost
         extends ApiMethod<ByProjectKeyProductsKeyByKeyPost, com.commercetools.api.models.product.Product>
         implements com.commercetools.api.client.PriceselectingTrait<ByProjectKeyProductsKeyByKeyPost>,
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyProductsKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyProductsKeyByKeyPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductsKeyByKeyPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyProductsKeyByKeyPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyProductsKeyByKeyPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductsKeyByKeyPost> {
 
     private String projectKey;
     private String key;
@@ -63,13 +60,17 @@ public class ByProjectKeyProductsKeyByKeyPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.product.Product> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.product.Product> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.product.Product.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product.Product>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.product.Product.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product.Product>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.product.Product.class);
     }
 
     public String getProjectKey() {
@@ -116,58 +117,100 @@ public class ByProjectKeyProductsKeyByKeyPost
         this.key = key;
     }
 
+    /**
+     * set priceCurrency with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyPost withPriceCurrency(final String priceCurrency) {
         return copy().withQueryParam("priceCurrency", priceCurrency);
     }
 
+    /**
+     * add additional priceCurrency query parameter
+     */
     public ByProjectKeyProductsKeyByKeyPost addPriceCurrency(final String priceCurrency) {
         return copy().addQueryParam("priceCurrency", priceCurrency);
     }
 
+    /**
+     * set priceCountry with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyPost withPriceCountry(final String priceCountry) {
         return copy().withQueryParam("priceCountry", priceCountry);
     }
 
+    /**
+     * add additional priceCountry query parameter
+     */
     public ByProjectKeyProductsKeyByKeyPost addPriceCountry(final String priceCountry) {
         return copy().addQueryParam("priceCountry", priceCountry);
     }
 
+    /**
+     * set priceCustomerGroup with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyPost withPriceCustomerGroup(final String priceCustomerGroup) {
         return copy().withQueryParam("priceCustomerGroup", priceCustomerGroup);
     }
 
+    /**
+     * add additional priceCustomerGroup query parameter
+     */
     public ByProjectKeyProductsKeyByKeyPost addPriceCustomerGroup(final String priceCustomerGroup) {
         return copy().addQueryParam("priceCustomerGroup", priceCustomerGroup);
     }
 
+    /**
+     * set priceChannel with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyPost withPriceChannel(final String priceChannel) {
         return copy().withQueryParam("priceChannel", priceChannel);
     }
 
+    /**
+     * add additional priceChannel query parameter
+     */
     public ByProjectKeyProductsKeyByKeyPost addPriceChannel(final String priceChannel) {
         return copy().addQueryParam("priceChannel", priceChannel);
     }
 
+    /**
+     * set localeProjection with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyPost withLocaleProjection(final String localeProjection) {
         return copy().withQueryParam("localeProjection", localeProjection);
     }
 
+    /**
+     * add additional localeProjection query parameter
+     */
     public ByProjectKeyProductsKeyByKeyPost addLocaleProjection(final String localeProjection) {
         return copy().addQueryParam("localeProjection", localeProjection);
     }
 
+    /**
+     * set storeProjection with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyPost withStoreProjection(final String storeProjection) {
         return copy().withQueryParam("storeProjection", storeProjection);
     }
 
+    /**
+     * add additional storeProjection query parameter
+     */
     public ByProjectKeyProductsKeyByKeyPost addStoreProjection(final String storeProjection) {
         return copy().addQueryParam("storeProjection", storeProjection);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyProductsKeyByKeyPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyProductsKeyByKeyPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

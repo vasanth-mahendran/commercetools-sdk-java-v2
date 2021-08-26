@@ -45,13 +45,17 @@ public class ByProjectKeySimilaritiesProductsStatusByTaskIdGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.ml.models.similar_products.SimilarProductsTaskStatus> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.ml.models.similar_products.SimilarProductsTaskStatus.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.ml.models.similar_products.SimilarProductsTaskStatus>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.ml.models.similar_products.SimilarProductsTaskStatus>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.ml.models.similar_products.SimilarProductsTaskStatus.class);
     }
 

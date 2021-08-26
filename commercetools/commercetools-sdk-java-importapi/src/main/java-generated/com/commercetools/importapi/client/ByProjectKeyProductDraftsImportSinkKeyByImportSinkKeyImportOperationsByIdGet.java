@@ -13,7 +13,7 @@ import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
-*  <p>Retrieves the import operation with the given id.</p>
+*  <p>Retrieves the ImportOperation of a given ID.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyProductDraftsImportSinkKeyByImportSinkKeyImportOperationsByIdGet extends
@@ -55,13 +55,17 @@ public class ByProjectKeyProductDraftsImportSinkKeyByImportSinkKeyImportOperatio
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importoperations.ImportOperation> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.importapi.models.importoperations.ImportOperation.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importoperations.ImportOperation>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importoperations.ImportOperation>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.importapi.models.importoperations.ImportOperation.class);
     }
 

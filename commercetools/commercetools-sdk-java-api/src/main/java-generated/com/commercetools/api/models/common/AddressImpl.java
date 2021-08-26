@@ -66,6 +66,8 @@ public final class AddressImpl implements Address {
 
     private String externalId;
 
+    private com.commercetools.api.models.type.CustomFields custom;
+
     @JsonCreator
     AddressImpl(@JsonProperty("id") final String id, @JsonProperty("key") final String key,
             @JsonProperty("title") final String title, @JsonProperty("salutation") final String salutation,
@@ -81,7 +83,8 @@ public final class AddressImpl implements Address {
             @JsonProperty("phone") final String phone, @JsonProperty("mobile") final String mobile,
             @JsonProperty("email") final String email, @JsonProperty("fax") final String fax,
             @JsonProperty("additionalAddressInfo") final String additionalAddressInfo,
-            @JsonProperty("externalId") final String externalId) {
+            @JsonProperty("externalId") final String externalId,
+            @JsonProperty("custom") final com.commercetools.api.models.type.CustomFields custom) {
         this.id = id;
         this.key = key;
         this.title = title;
@@ -107,6 +110,7 @@ public final class AddressImpl implements Address {
         this.fax = fax;
         this.additionalAddressInfo = additionalAddressInfo;
         this.externalId = externalId;
+        this.custom = custom;
     }
 
     public AddressImpl() {
@@ -215,6 +219,10 @@ public final class AddressImpl implements Address {
         return this.externalId;
     }
 
+    public com.commercetools.api.models.type.CustomFields getCustom() {
+        return this.custom;
+    }
+
     public void setId(final String id) {
         this.id = id;
     }
@@ -315,6 +323,10 @@ public final class AddressImpl implements Address {
         this.externalId = externalId;
     }
 
+    public void setCustom(final com.commercetools.api.models.type.CustomFields custom) {
+        this.custom = custom;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -325,25 +337,64 @@ public final class AddressImpl implements Address {
 
         AddressImpl that = (AddressImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(key, that.key).append(title, that.title).append(
-            salutation, that.salutation).append(firstName, that.firstName).append(lastName, that.lastName).append(
-                streetName, that.streetName).append(streetNumber, that.streetNumber).append(additionalStreetInfo,
-                    that.additionalStreetInfo).append(postalCode, that.postalCode).append(city, that.city).append(
-                        region, that.region).append(state, that.state).append(country, that.country).append(company,
-                            that.company).append(department, that.department).append(building, that.building).append(
-                                apartment, that.apartment).append(pOBox, that.pOBox).append(phone, that.phone).append(
-                                    mobile, that.mobile).append(email, that.email).append(fax, that.fax).append(
-                                        additionalAddressInfo, that.additionalAddressInfo).append(externalId,
-                                            that.externalId).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(key, that.key)
+                .append(title, that.title)
+                .append(salutation, that.salutation)
+                .append(firstName, that.firstName)
+                .append(lastName, that.lastName)
+                .append(streetName, that.streetName)
+                .append(streetNumber, that.streetNumber)
+                .append(additionalStreetInfo, that.additionalStreetInfo)
+                .append(postalCode, that.postalCode)
+                .append(city, that.city)
+                .append(region, that.region)
+                .append(state, that.state)
+                .append(country, that.country)
+                .append(company, that.company)
+                .append(department, that.department)
+                .append(building, that.building)
+                .append(apartment, that.apartment)
+                .append(pOBox, that.pOBox)
+                .append(phone, that.phone)
+                .append(mobile, that.mobile)
+                .append(email, that.email)
+                .append(fax, that.fax)
+                .append(additionalAddressInfo, that.additionalAddressInfo)
+                .append(externalId, that.externalId)
+                .append(custom, that.custom)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(key).append(title).append(salutation).append(
-            firstName).append(lastName).append(streetName).append(streetNumber).append(additionalStreetInfo).append(
-                postalCode).append(city).append(region).append(state).append(country).append(company).append(
-                    department).append(building).append(apartment).append(pOBox).append(phone).append(mobile).append(
-                        email).append(fax).append(additionalAddressInfo).append(externalId).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(key)
+                .append(title)
+                .append(salutation)
+                .append(firstName)
+                .append(lastName)
+                .append(streetName)
+                .append(streetNumber)
+                .append(additionalStreetInfo)
+                .append(postalCode)
+                .append(city)
+                .append(region)
+                .append(state)
+                .append(country)
+                .append(company)
+                .append(department)
+                .append(building)
+                .append(apartment)
+                .append(pOBox)
+                .append(phone)
+                .append(mobile)
+                .append(email)
+                .append(fax)
+                .append(additionalAddressInfo)
+                .append(externalId)
+                .append(custom)
+                .toHashCode();
     }
 
 }

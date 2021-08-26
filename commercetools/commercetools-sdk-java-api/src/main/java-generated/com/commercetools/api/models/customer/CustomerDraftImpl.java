@@ -30,6 +30,7 @@ public final class CustomerDraftImpl implements CustomerDraft {
 
     private String title;
 
+    @Deprecated
     private String anonymousCartId;
 
     private com.commercetools.api.models.cart.CartResourceIdentifier anonymousCart;
@@ -42,7 +43,7 @@ public final class CustomerDraftImpl implements CustomerDraft {
 
     private String vatId;
 
-    private java.util.List<com.commercetools.api.models.common.Address> addresses;
+    private java.util.List<com.commercetools.api.models.common.BaseAddress> addresses;
 
     private Long defaultShippingAddress;
 
@@ -78,7 +79,7 @@ public final class CustomerDraftImpl implements CustomerDraft {
             @JsonProperty("anonymousId") final String anonymousId,
             @JsonProperty("dateOfBirth") final java.time.LocalDate dateOfBirth,
             @JsonProperty("companyName") final String companyName, @JsonProperty("vatId") final String vatId,
-            @JsonProperty("addresses") final java.util.List<com.commercetools.api.models.common.Address> addresses,
+            @JsonProperty("addresses") final java.util.List<com.commercetools.api.models.common.BaseAddress> addresses,
             @JsonProperty("defaultShippingAddress") final Long defaultShippingAddress,
             @JsonProperty("shippingAddresses") final java.util.List<Integer> shippingAddresses,
             @JsonProperty("defaultBillingAddress") final Long defaultBillingAddress,
@@ -163,6 +164,7 @@ public final class CustomerDraftImpl implements CustomerDraft {
     /**
     *  <p>Identifies a single cart that will be assigned to the new customer account.</p>
     */
+    @Deprecated
     public String getAnonymousCartId() {
         return this.anonymousCartId;
     }
@@ -196,7 +198,7 @@ public final class CustomerDraftImpl implements CustomerDraft {
     /**
     *  <p>Sets the ID of each address to be unique in the addresses list.</p>
     */
-    public java.util.List<com.commercetools.api.models.common.Address> getAddresses() {
+    public java.util.List<com.commercetools.api.models.common.BaseAddress> getAddresses() {
         return this.addresses;
     }
 
@@ -308,6 +310,7 @@ public final class CustomerDraftImpl implements CustomerDraft {
         this.title = title;
     }
 
+    @Deprecated
     public void setAnonymousCartId(final String anonymousCartId) {
         this.anonymousCartId = anonymousCartId;
     }
@@ -332,11 +335,11 @@ public final class CustomerDraftImpl implements CustomerDraft {
         this.vatId = vatId;
     }
 
-    public void setAddresses(final com.commercetools.api.models.common.Address... addresses) {
+    public void setAddresses(final com.commercetools.api.models.common.BaseAddress... addresses) {
         this.addresses = new ArrayList<>(Arrays.asList(addresses));
     }
 
-    public void setAddresses(final java.util.List<com.commercetools.api.models.common.Address> addresses) {
+    public void setAddresses(final java.util.List<com.commercetools.api.models.common.BaseAddress> addresses) {
         this.addresses = addresses;
     }
 
@@ -411,31 +414,64 @@ public final class CustomerDraftImpl implements CustomerDraft {
 
         CustomerDraftImpl that = (CustomerDraftImpl) o;
 
-        return new EqualsBuilder().append(customerNumber, that.customerNumber).append(email, that.email).append(
-            password, that.password).append(firstName, that.firstName).append(lastName, that.lastName).append(
-                middleName, that.middleName).append(title, that.title).append(anonymousCartId,
-                    that.anonymousCartId).append(anonymousCart, that.anonymousCart).append(anonymousId,
-                        that.anonymousId).append(dateOfBirth, that.dateOfBirth).append(companyName,
-                            that.companyName).append(vatId, that.vatId).append(addresses, that.addresses).append(
-                                defaultShippingAddress, that.defaultShippingAddress).append(shippingAddresses,
-                                    that.shippingAddresses).append(defaultBillingAddress,
-                                        that.defaultBillingAddress).append(billingAddresses,
-                                            that.billingAddresses).append(isEmailVerified, that.isEmailVerified).append(
-                                                externalId, that.externalId).append(customerGroup,
-                                                    that.customerGroup).append(custom, that.custom).append(locale,
-                                                        that.locale).append(salutation, that.salutation).append(key,
-                                                            that.key).append(stores, that.stores).isEquals();
+        return new EqualsBuilder().append(customerNumber, that.customerNumber)
+                .append(email, that.email)
+                .append(password, that.password)
+                .append(firstName, that.firstName)
+                .append(lastName, that.lastName)
+                .append(middleName, that.middleName)
+                .append(title, that.title)
+                .append(anonymousCartId, that.anonymousCartId)
+                .append(anonymousCart, that.anonymousCart)
+                .append(anonymousId, that.anonymousId)
+                .append(dateOfBirth, that.dateOfBirth)
+                .append(companyName, that.companyName)
+                .append(vatId, that.vatId)
+                .append(addresses, that.addresses)
+                .append(defaultShippingAddress, that.defaultShippingAddress)
+                .append(shippingAddresses, that.shippingAddresses)
+                .append(defaultBillingAddress, that.defaultBillingAddress)
+                .append(billingAddresses, that.billingAddresses)
+                .append(isEmailVerified, that.isEmailVerified)
+                .append(externalId, that.externalId)
+                .append(customerGroup, that.customerGroup)
+                .append(custom, that.custom)
+                .append(locale, that.locale)
+                .append(salutation, that.salutation)
+                .append(key, that.key)
+                .append(stores, that.stores)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(customerNumber).append(email).append(password).append(
-            firstName).append(lastName).append(middleName).append(title).append(anonymousCartId).append(
-                anonymousCart).append(anonymousId).append(dateOfBirth).append(companyName).append(vatId).append(
-                    addresses).append(defaultShippingAddress).append(shippingAddresses).append(
-                        defaultBillingAddress).append(billingAddresses).append(isEmailVerified).append(
-                            externalId).append(customerGroup).append(custom).append(locale).append(salutation).append(
-                                key).append(stores).toHashCode();
+        return new HashCodeBuilder(17, 37).append(customerNumber)
+                .append(email)
+                .append(password)
+                .append(firstName)
+                .append(lastName)
+                .append(middleName)
+                .append(title)
+                .append(anonymousCartId)
+                .append(anonymousCart)
+                .append(anonymousId)
+                .append(dateOfBirth)
+                .append(companyName)
+                .append(vatId)
+                .append(addresses)
+                .append(defaultShippingAddress)
+                .append(shippingAddresses)
+                .append(defaultBillingAddress)
+                .append(billingAddresses)
+                .append(isEmailVerified)
+                .append(externalId)
+                .append(customerGroup)
+                .append(custom)
+                .append(locale)
+                .append(salutation)
+                .append(key)
+                .append(stores)
+                .toHashCode();
     }
 
 }

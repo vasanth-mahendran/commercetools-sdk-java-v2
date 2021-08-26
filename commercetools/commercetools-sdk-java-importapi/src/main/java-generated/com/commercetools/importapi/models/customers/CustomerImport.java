@@ -9,9 +9,9 @@ import java.util.function.Function;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.importapi.models.common.Address;
 import com.commercetools.importapi.models.common.CustomerGroupKeyReference;
 import com.commercetools.importapi.models.common.ImportResource;
+import com.commercetools.importapi.models.common.StoreKeyReference;
 import com.commercetools.importapi.models.customfields.Custom;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
-*  <p>Import representation for a customer.</p>
+*  <p>The data representation for a Customer to be imported that is persisted as a <a href="/../api/projects/customers#top">Customer</a> in the Project.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = CustomerImportImpl.class)
@@ -45,6 +45,13 @@ public interface CustomerImport extends ImportResource {
     @NotNull
     @JsonProperty("password")
     public String getPassword();
+
+    /**
+    *  <p>The References to the Stores with which the Customer is associated. If referenced Stores do not exist, the <code>state</code> of the <a href="/import-operation#importoperation">ImportOperation</a> will be set to <code>Unresolved</code> until the necessary Stores are created.</p>
+    */
+    @Valid
+    @JsonProperty("stores")
+    public List<StoreKeyReference> getStores();
 
     /**
     *  <p>Maps to <code>Customer.firstName</code>.</p>
@@ -117,10 +124,8 @@ public interface CustomerImport extends ImportResource {
     public Boolean getIsEmailVerified();
 
     /**
-    *  <p>References a customer group by its key.</p>
-    *  <p>The customer group referenced
-    *  must already exist in the commercetools project, or the
-    *  import operation state is set to <code>Unresolved</code>.</p>
+    *  <p>The Reference to the <a href="/../api/projects/customerGroups#customergroup">CustomerGroup</a> with which the Customer is associated.
+    *  If referenced CustomerGroup does not exist, the <code>state</code> of the <a href="/import-operation#importoperation">ImportOperation</a> will be set to <code>Unresolved</code> until the necessary CustomerGroup is created.</p>
     */
     @Valid
     @JsonProperty("customerGroup")
@@ -129,37 +134,38 @@ public interface CustomerImport extends ImportResource {
     /**
     *  <p>Maps to <code>Customer.addresses</code>.</p>
     */
+    @NotNull
     @Valid
     @JsonProperty("addresses")
-    public List<Address> getAddresses();
+    public List<CustomerAddress> getAddresses();
 
     /**
-    *  <p>Maps to <code>Customer.defaultBillingAddress</code>.</p>
+    *  <p>The index of the address in the addresses array. The <code>defaultBillingAddressId</code> of the customer will be set to the ID of that address.</p>
     */
-    @Valid
+
     @JsonProperty("defaultBillingAddress")
-    public Address getDefaultBillingAddress();
+    public Integer getDefaultBillingAddress();
 
     /**
-    *  <p>Maps to <code>Customer.billingAddresses</code>.</p>
+    *  <p>The indices of the billing addresses in the addresses array. The <code>billingAddressIds</code> of the customer will be set to the IDs of that addresses.</p>
     */
-    @Valid
+
     @JsonProperty("billingAddresses")
-    public Address getBillingAddresses();
+    public List<Integer> getBillingAddresses();
 
     /**
-    *  <p>Maps to <code>Customer.defaultShippingAddress</code>.</p>
+    *  <p>The index of the address in the addresses array. The <code>defaultShippingAddressId</code> of the customer will be set to the ID of that address.</p>
     */
-    @Valid
+
     @JsonProperty("defaultShippingAddress")
-    public Address getDefaultShippingAddress();
+    public Integer getDefaultShippingAddress();
 
     /**
-    *  <p>Maps to <code>Customer.shippingAddresses</code>.</p>
+    *  <p>The indices of the shipping addresses in the addresses array. The <code>shippingAddressIds</code> of the customer will be set to the IDs of that addresses.</p>
     */
-    @Valid
+
     @JsonProperty("shippingAddresses")
-    public Address getShippingAddresses();
+    public List<Integer> getShippingAddresses();
 
     /**
     *  <p>Maps to <code>Customer.locale</code>.</p>
@@ -180,6 +186,11 @@ public interface CustomerImport extends ImportResource {
     public void setEmail(final String email);
 
     public void setPassword(final String password);
+
+    @JsonIgnore
+    public void setStores(final StoreKeyReference... stores);
+
+    public void setStores(final List<StoreKeyReference> stores);
 
     public void setFirstName(final String firstName);
 
@@ -204,17 +215,23 @@ public interface CustomerImport extends ImportResource {
     public void setCustomerGroup(final CustomerGroupKeyReference customerGroup);
 
     @JsonIgnore
-    public void setAddresses(final Address... addresses);
+    public void setAddresses(final CustomerAddress... addresses);
 
-    public void setAddresses(final List<Address> addresses);
+    public void setAddresses(final List<CustomerAddress> addresses);
 
-    public void setDefaultBillingAddress(final Address defaultBillingAddress);
+    public void setDefaultBillingAddress(final Integer defaultBillingAddress);
 
-    public void setBillingAddresses(final Address billingAddresses);
+    @JsonIgnore
+    public void setBillingAddresses(final Integer... billingAddresses);
 
-    public void setDefaultShippingAddress(final Address defaultShippingAddress);
+    public void setBillingAddresses(final List<Integer> billingAddresses);
 
-    public void setShippingAddresses(final Address shippingAddresses);
+    public void setDefaultShippingAddress(final Integer defaultShippingAddress);
+
+    @JsonIgnore
+    public void setShippingAddresses(final Integer... shippingAddresses);
+
+    public void setShippingAddresses(final List<Integer> shippingAddresses);
 
     public void setLocale(final String locale);
 
@@ -230,6 +247,7 @@ public interface CustomerImport extends ImportResource {
         instance.setCustomerNumber(template.getCustomerNumber());
         instance.setEmail(template.getEmail());
         instance.setPassword(template.getPassword());
+        instance.setStores(template.getStores());
         instance.setFirstName(template.getFirstName());
         instance.setLastName(template.getLastName());
         instance.setMiddleName(template.getMiddleName());

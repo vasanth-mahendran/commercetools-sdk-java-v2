@@ -19,8 +19,8 @@ import io.vrap.rmf.base.client.utils.Generated;
 public class ByProjectKeyCategoriesPost
         extends ApiMethod<ByProjectKeyCategoriesPost, com.commercetools.api.models.category.Category>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyCategoriesPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCategoriesPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCategoriesPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyCategoriesPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCategoriesPost> {
 
     private String projectKey;
 
@@ -58,13 +58,17 @@ public class ByProjectKeyCategoriesPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.category.Category> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.category.Category> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.category.Category.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.category.Category>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.category.Category.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.category.Category>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.category.Category.class);
     }
 
     public String getProjectKey() {
@@ -79,10 +83,16 @@ public class ByProjectKeyCategoriesPost
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCategoriesPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCategoriesPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

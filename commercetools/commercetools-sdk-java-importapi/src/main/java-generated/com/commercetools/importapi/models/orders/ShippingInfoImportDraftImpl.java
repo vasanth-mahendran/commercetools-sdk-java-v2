@@ -66,6 +66,9 @@ public final class ShippingInfoImportDraftImpl implements ShippingInfoImportDraf
         return this.shippingMethodName;
     }
 
+    /**
+    *  <p>TypedMoney is what is called BaseMoney in the HTTP API.</p>
+    */
     public com.commercetools.importapi.models.common.TypedMoney getPrice() {
         return this.price;
     }
@@ -92,6 +95,9 @@ public final class ShippingInfoImportDraftImpl implements ShippingInfoImportDraf
         return this.shippingMethod;
     }
 
+    /**
+    *  <p>Note that you can not add a <code>DeliveryItem</code> on import, as <code>LineItems</code> and <code>CustomLineItems</code> are not yet referencable by an <code>id</code>.</p>
+    */
     public java.util.List<com.commercetools.importapi.models.orders.Delivery> getDeliveries() {
         return this.deliveries;
     }
@@ -157,17 +163,30 @@ public final class ShippingInfoImportDraftImpl implements ShippingInfoImportDraf
 
         ShippingInfoImportDraftImpl that = (ShippingInfoImportDraftImpl) o;
 
-        return new EqualsBuilder().append(shippingMethodName, that.shippingMethodName).append(price, that.price).append(
-            shippingRate, that.shippingRate).append(taxRate, that.taxRate).append(taxCategory, that.taxCategory).append(
-                shippingMethod, that.shippingMethod).append(deliveries, that.deliveries).append(discountedPrice,
-                    that.discountedPrice).append(shippingMethodState, that.shippingMethodState).isEquals();
+        return new EqualsBuilder().append(shippingMethodName, that.shippingMethodName)
+                .append(price, that.price)
+                .append(shippingRate, that.shippingRate)
+                .append(taxRate, that.taxRate)
+                .append(taxCategory, that.taxCategory)
+                .append(shippingMethod, that.shippingMethod)
+                .append(deliveries, that.deliveries)
+                .append(discountedPrice, that.discountedPrice)
+                .append(shippingMethodState, that.shippingMethodState)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(shippingMethodName).append(price).append(shippingRate).append(
-            taxRate).append(taxCategory).append(shippingMethod).append(deliveries).append(discountedPrice).append(
-                shippingMethodState).toHashCode();
+        return new HashCodeBuilder(17, 37).append(shippingMethodName)
+                .append(price)
+                .append(shippingRate)
+                .append(taxRate)
+                .append(taxCategory)
+                .append(shippingMethod)
+                .append(deliveries)
+                .append(discountedPrice)
+                .append(shippingMethodState)
+                .toHashCode();
     }
 
 }

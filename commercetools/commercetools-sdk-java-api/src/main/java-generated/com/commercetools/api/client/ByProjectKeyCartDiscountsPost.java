@@ -12,15 +12,12 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Create CartDiscount</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyCartDiscountsPost
         extends ApiMethod<ByProjectKeyCartDiscountsPost, com.commercetools.api.models.cart_discount.CartDiscount>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyCartDiscountsPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCartDiscountsPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCartDiscountsPost> {
+        com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyCartDiscountsPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyCartDiscountsPost> {
 
     private String projectKey;
 
@@ -58,14 +55,17 @@ public class ByProjectKeyCartDiscountsPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscount> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscount> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.cart_discount.CartDiscount.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscount>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.cart_discount.CartDiscount.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart_discount.CartDiscount>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.cart_discount.CartDiscount.class);
     }
 
     public String getProjectKey() {
@@ -80,10 +80,16 @@ public class ByProjectKeyCartDiscountsPost
         this.projectKey = projectKey;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCartDiscountsPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCartDiscountsPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

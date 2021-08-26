@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete ProductType by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyProductTypesByIDDelete
         extends ApiMethod<ByProjectKeyProductTypesByIDDelete, com.commercetools.api.models.product_type.ProductType>
@@ -22,7 +19,7 @@ public class ByProjectKeyProductTypesByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyProductTypesByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyProductTypesByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyProductTypesByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyProductTypesByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyProductTypesByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -51,14 +48,17 @@ public class ByProjectKeyProductTypesByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.product_type.ProductType> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.product_type.ProductType> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.product_type.ProductType.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_type.ProductType>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.product_type.ProductType.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_type.ProductType>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.product_type.ProductType.class);
     }
 
     public String getProjectKey() {
@@ -85,18 +85,30 @@ public class ByProjectKeyProductTypesByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyProductTypesByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyProductTypesByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyProductTypesByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyProductTypesByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyProductTypesByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyProductTypesByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

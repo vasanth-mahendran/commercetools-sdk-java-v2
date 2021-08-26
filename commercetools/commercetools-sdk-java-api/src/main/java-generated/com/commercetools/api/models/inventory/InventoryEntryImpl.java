@@ -30,7 +30,7 @@ public final class InventoryEntryImpl implements InventoryEntry {
 
     private String sku;
 
-    private com.commercetools.api.models.channel.ChannelResourceIdentifier supplyChannel;
+    private com.commercetools.api.models.channel.ChannelReference supplyChannel;
 
     private Long quantityOnStock;
 
@@ -49,7 +49,7 @@ public final class InventoryEntryImpl implements InventoryEntry {
             @JsonProperty("lastModifiedBy") final com.commercetools.api.models.common.LastModifiedBy lastModifiedBy,
             @JsonProperty("createdBy") final com.commercetools.api.models.common.CreatedBy createdBy,
             @JsonProperty("sku") final String sku,
-            @JsonProperty("supplyChannel") final com.commercetools.api.models.channel.ChannelResourceIdentifier supplyChannel,
+            @JsonProperty("supplyChannel") final com.commercetools.api.models.channel.ChannelReference supplyChannel,
             @JsonProperty("quantityOnStock") final Long quantityOnStock,
             @JsonProperty("availableQuantity") final Long availableQuantity,
             @JsonProperty("restockableInDays") final Long restockableInDays,
@@ -93,14 +93,14 @@ public final class InventoryEntryImpl implements InventoryEntry {
     }
 
     /**
-    *  <p>Present on resources updated after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
     /**
-    *  <p>Present on resources created after 1/02/2019 except for events not tracked.</p>
+    *  <p>Present on resources created after 2019-02-01 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
@@ -113,7 +113,7 @@ public final class InventoryEntryImpl implements InventoryEntry {
     /**
     *  <p>Optional connection to a particular supplier.</p>
     */
-    public com.commercetools.api.models.channel.ChannelResourceIdentifier getSupplyChannel() {
+    public com.commercetools.api.models.channel.ChannelReference getSupplyChannel() {
         return this.supplyChannel;
     }
 
@@ -179,7 +179,7 @@ public final class InventoryEntryImpl implements InventoryEntry {
         this.sku = sku;
     }
 
-    public void setSupplyChannel(final com.commercetools.api.models.channel.ChannelResourceIdentifier supplyChannel) {
+    public void setSupplyChannel(final com.commercetools.api.models.channel.ChannelReference supplyChannel) {
         this.supplyChannel = supplyChannel;
     }
 
@@ -213,19 +213,38 @@ public final class InventoryEntryImpl implements InventoryEntry {
 
         InventoryEntryImpl that = (InventoryEntryImpl) o;
 
-        return new EqualsBuilder().append(id, that.id).append(version, that.version).append(createdAt,
-            that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(lastModifiedBy,
-                that.lastModifiedBy).append(createdBy, that.createdBy).append(sku, that.sku).append(supplyChannel,
-                    that.supplyChannel).append(quantityOnStock, that.quantityOnStock).append(availableQuantity,
-                        that.availableQuantity).append(restockableInDays, that.restockableInDays).append(
-                            expectedDelivery, that.expectedDelivery).append(custom, that.custom).isEquals();
+        return new EqualsBuilder().append(id, that.id)
+                .append(version, that.version)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(lastModifiedBy, that.lastModifiedBy)
+                .append(createdBy, that.createdBy)
+                .append(sku, that.sku)
+                .append(supplyChannel, that.supplyChannel)
+                .append(quantityOnStock, that.quantityOnStock)
+                .append(availableQuantity, that.availableQuantity)
+                .append(restockableInDays, that.restockableInDays)
+                .append(expectedDelivery, that.expectedDelivery)
+                .append(custom, that.custom)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(version).append(createdAt).append(lastModifiedAt).append(
-            lastModifiedBy).append(createdBy).append(sku).append(supplyChannel).append(quantityOnStock).append(
-                availableQuantity).append(restockableInDays).append(expectedDelivery).append(custom).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id)
+                .append(version)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(lastModifiedBy)
+                .append(createdBy)
+                .append(sku)
+                .append(supplyChannel)
+                .append(quantityOnStock)
+                .append(availableQuantity)
+                .append(restockableInDays)
+                .append(expectedDelivery)
+                .append(custom)
+                .toHashCode();
     }
 
 }

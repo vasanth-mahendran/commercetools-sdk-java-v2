@@ -14,7 +14,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>A field has an invalid value.</p>
+*  <p>A given field is not supported.
+*  This error occurs, for example, if the field <code>variants</code>, which is not supported by <a href="/product#productimport">Product Import</a>, is sent to the Product Import endpoint.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class InvalidFieldErrorImpl implements InvalidFieldError {
@@ -48,9 +49,6 @@ public final class InvalidFieldErrorImpl implements InvalidFieldError {
         return this.code;
     }
 
-    /**
-    *  <p>The error's description.</p>
-    */
     public String getMessage() {
         return this.message;
     }
@@ -70,7 +68,7 @@ public final class InvalidFieldErrorImpl implements InvalidFieldError {
     }
 
     /**
-    *  <p>A fixed set of allowed values for the field, if any.</p>
+    *  <p>The set of allowed values for the field, if any.</p>
     */
     public java.util.List<java.lang.Object> getAllowedValues() {
         return this.allowedValues;
@@ -106,14 +104,22 @@ public final class InvalidFieldErrorImpl implements InvalidFieldError {
 
         InvalidFieldErrorImpl that = (InvalidFieldErrorImpl) o;
 
-        return new EqualsBuilder().append(code, that.code).append(message, that.message).append(field,
-            that.field).append(invalidValue, that.invalidValue).append(allowedValues, that.allowedValues).isEquals();
+        return new EqualsBuilder().append(code, that.code)
+                .append(message, that.message)
+                .append(field, that.field)
+                .append(invalidValue, that.invalidValue)
+                .append(allowedValues, that.allowedValues)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(code).append(message).append(field).append(invalidValue).append(
-            allowedValues).toHashCode();
+        return new HashCodeBuilder(17, 37).append(code)
+                .append(message)
+                .append(field)
+                .append(invalidValue)
+                .append(allowedValues)
+                .toHashCode();
     }
 
 }

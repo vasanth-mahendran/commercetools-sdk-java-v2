@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete State by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyStatesByIDDelete
         extends ApiMethod<ByProjectKeyStatesByIDDelete, com.commercetools.api.models.state.State>
@@ -22,7 +19,7 @@ public class ByProjectKeyStatesByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyStatesByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyStatesByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyStatesByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyStatesByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyStatesByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -51,13 +48,16 @@ public class ByProjectKeyStatesByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.state.State> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.state.State> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.state.State.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.state.State>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.state.State.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.state.State>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.state.State.class);
     }
 
     public String getProjectKey() {
@@ -84,18 +84,30 @@ public class ByProjectKeyStatesByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyStatesByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyStatesByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyStatesByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyStatesByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyStatesByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyStatesByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

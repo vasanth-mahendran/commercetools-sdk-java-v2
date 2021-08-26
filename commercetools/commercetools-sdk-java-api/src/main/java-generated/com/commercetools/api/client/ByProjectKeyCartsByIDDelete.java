@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete Cart by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyCartsByIDDelete
         extends ApiMethod<ByProjectKeyCartsByIDDelete, com.commercetools.api.models.cart.Cart>
@@ -23,7 +20,7 @@ public class ByProjectKeyCartsByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyCartsByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyCartsByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyCartsByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCartsByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyCartsByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -52,13 +49,16 @@ public class ByProjectKeyCartsByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.cart.Cart> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.cart.Cart> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.cart.Cart.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart.Cart>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.cart.Cart.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart.Cart>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.cart.Cart.class);
     }
 
     public String getProjectKey() {
@@ -89,26 +89,44 @@ public class ByProjectKeyCartsByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyCartsByIDDelete withDataErasure(final Boolean dataErasure) {
+    /**
+     * set dataErasure with the specificied value
+     */
+    public ByProjectKeyCartsByIDDelete withDataErasure(final boolean dataErasure) {
         return copy().withQueryParam("dataErasure", dataErasure);
     }
 
-    public ByProjectKeyCartsByIDDelete addDataErasure(final Boolean dataErasure) {
+    /**
+     * add additional dataErasure query parameter
+     */
+    public ByProjectKeyCartsByIDDelete addDataErasure(final boolean dataErasure) {
         return copy().addQueryParam("dataErasure", dataErasure);
     }
 
-    public ByProjectKeyCartsByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyCartsByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyCartsByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyCartsByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyCartsByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyCartsByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

@@ -20,7 +20,7 @@ public class ByProjectKeyExtensionsKeyByKeyGet
         extends ApiMethod<ByProjectKeyExtensionsKeyByKeyGet, com.commercetools.api.models.extension.Extension>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyExtensionsKeyByKeyGet>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyExtensionsKeyByKeyGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyExtensionsKeyByKeyGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyExtensionsKeyByKeyGet> {
 
     private String projectKey;
     private String key;
@@ -49,14 +49,17 @@ public class ByProjectKeyExtensionsKeyByKeyGet
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.extension.Extension.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.extension.Extension.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.extension.Extension.class);
     }
 
     public String getProjectKey() {
@@ -79,10 +82,16 @@ public class ByProjectKeyExtensionsKeyByKeyGet
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyExtensionsKeyByKeyGet withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyExtensionsKeyByKeyGet addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

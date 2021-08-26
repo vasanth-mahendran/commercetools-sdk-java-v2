@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>The CombinationUnique AttributeConstraint was violated.</p>
+*  <p>The <code>CombinationUnique</code> <a href="/../api/projects/productTypes#attributeconstraint-enum">Attribute Constraint</a> was violated.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class DuplicateAttributeValuesErrorImpl implements DuplicateAttributeValuesError {
@@ -41,9 +41,6 @@ public final class DuplicateAttributeValuesErrorImpl implements DuplicateAttribu
         return this.code;
     }
 
-    /**
-    *  <p>The error's description.</p>
-    */
     public String getMessage() {
         return this.message;
     }
@@ -75,8 +72,10 @@ public final class DuplicateAttributeValuesErrorImpl implements DuplicateAttribu
 
         DuplicateAttributeValuesErrorImpl that = (DuplicateAttributeValuesErrorImpl) o;
 
-        return new EqualsBuilder().append(code, that.code).append(message, that.message).append(attributes,
-            that.attributes).isEquals();
+        return new EqualsBuilder().append(code, that.code)
+                .append(message, that.message)
+                .append(attributes, that.attributes)
+                .isEquals();
     }
 
     @Override

@@ -18,8 +18,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyCustomersPasswordPost
         extends ApiMethod<ByProjectKeyCustomersPasswordPost, com.commercetools.api.models.customer.Customer>
-        implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomersPasswordPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyCustomersPasswordPost> {
+        implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomersPasswordPost> {
 
     private String projectKey;
 
@@ -57,13 +56,17 @@ public class ByProjectKeyCustomersPasswordPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.customer.Customer> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.customer.Customer> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.customer.Customer.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.Customer>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.customer.Customer.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.Customer>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.customer.Customer.class);
     }
 
     public String getProjectKey() {

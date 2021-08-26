@@ -2,15 +2,20 @@
 package com.commercetools.api.models.cart;
 
 import java.util.*;
+import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
+import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public final class CartDraftBuilder {
+public final class CartDraftBuilder implements Builder<CartDraft> {
 
     private String currency;
+
+    @Nullable
+    private String key;
 
     @Nullable
     private String customerId;
@@ -49,10 +54,10 @@ public final class CartDraftBuilder {
     private java.util.List<com.commercetools.api.models.cart.CustomLineItemDraft> customLineItems;
 
     @Nullable
-    private com.commercetools.api.models.common.Address shippingAddress;
+    private com.commercetools.api.models.common.BaseAddress shippingAddress;
 
     @Nullable
-    private com.commercetools.api.models.common.Address billingAddress;
+    private com.commercetools.api.models.common.BaseAddress billingAddress;
 
     @Nullable
     private com.commercetools.api.models.shipping_method.ShippingMethodResourceIdentifier shippingMethod;
@@ -76,13 +81,18 @@ public final class CartDraftBuilder {
     private com.commercetools.api.models.cart.ShippingRateInputDraft shippingRateInput;
 
     @Nullable
-    private java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses;
+    private java.util.List<com.commercetools.api.models.common.BaseAddress> itemShippingAddresses;
 
     @Nullable
     private java.util.List<String> discountCodes;
 
     public CartDraftBuilder currency(final String currency) {
         this.currency = currency;
+        return this;
+    }
+
+    public CartDraftBuilder key(@Nullable final String key) {
+        this.key = key;
         return this;
     }
 
@@ -145,6 +155,22 @@ public final class CartDraftBuilder {
         return this;
     }
 
+    public CartDraftBuilder withLineItems(
+            Function<com.commercetools.api.models.cart.LineItemDraftBuilder, com.commercetools.api.models.cart.LineItemDraftBuilder> builder) {
+        this.lineItems = new ArrayList<>();
+        this.lineItems.add(builder.apply(com.commercetools.api.models.cart.LineItemDraftBuilder.of()).build());
+        return this;
+    }
+
+    public CartDraftBuilder plusLineItems(
+            Function<com.commercetools.api.models.cart.LineItemDraftBuilder, com.commercetools.api.models.cart.LineItemDraftBuilder> builder) {
+        if (this.lineItems == null) {
+            this.lineItems = new ArrayList<>();
+        }
+        this.lineItems.add(builder.apply(com.commercetools.api.models.cart.LineItemDraftBuilder.of()).build());
+        return this;
+    }
+
     public CartDraftBuilder lineItems(
             @Nullable final java.util.List<com.commercetools.api.models.cart.LineItemDraft> lineItems) {
         this.lineItems = lineItems;
@@ -157,6 +183,24 @@ public final class CartDraftBuilder {
         return this;
     }
 
+    public CartDraftBuilder withCustomLineItems(
+            Function<com.commercetools.api.models.cart.CustomLineItemDraftBuilder, com.commercetools.api.models.cart.CustomLineItemDraftBuilder> builder) {
+        this.customLineItems = new ArrayList<>();
+        this.customLineItems
+                .add(builder.apply(com.commercetools.api.models.cart.CustomLineItemDraftBuilder.of()).build());
+        return this;
+    }
+
+    public CartDraftBuilder plusCustomLineItems(
+            Function<com.commercetools.api.models.cart.CustomLineItemDraftBuilder, com.commercetools.api.models.cart.CustomLineItemDraftBuilder> builder) {
+        if (this.customLineItems == null) {
+            this.customLineItems = new ArrayList<>();
+        }
+        this.customLineItems
+                .add(builder.apply(com.commercetools.api.models.cart.CustomLineItemDraftBuilder.of()).build());
+        return this;
+    }
+
     public CartDraftBuilder customLineItems(
             @Nullable final java.util.List<com.commercetools.api.models.cart.CustomLineItemDraft> customLineItems) {
         this.customLineItems = customLineItems;
@@ -164,12 +208,25 @@ public final class CartDraftBuilder {
     }
 
     public CartDraftBuilder shippingAddress(
-            @Nullable final com.commercetools.api.models.common.Address shippingAddress) {
+            Function<com.commercetools.api.models.common.BaseAddressBuilder, com.commercetools.api.models.common.BaseAddressBuilder> builder) {
+        this.shippingAddress = builder.apply(com.commercetools.api.models.common.BaseAddressBuilder.of()).build();
+        return this;
+    }
+
+    public CartDraftBuilder shippingAddress(
+            @Nullable final com.commercetools.api.models.common.BaseAddress shippingAddress) {
         this.shippingAddress = shippingAddress;
         return this;
     }
 
-    public CartDraftBuilder billingAddress(@Nullable final com.commercetools.api.models.common.Address billingAddress) {
+    public CartDraftBuilder billingAddress(
+            Function<com.commercetools.api.models.common.BaseAddressBuilder, com.commercetools.api.models.common.BaseAddressBuilder> builder) {
+        this.billingAddress = builder.apply(com.commercetools.api.models.common.BaseAddressBuilder.of()).build();
+        return this;
+    }
+
+    public CartDraftBuilder billingAddress(
+            @Nullable final com.commercetools.api.models.common.BaseAddress billingAddress) {
         this.billingAddress = billingAddress;
         return this;
     }
@@ -181,8 +238,22 @@ public final class CartDraftBuilder {
     }
 
     public CartDraftBuilder externalTaxRateForShippingMethod(
+            Function<com.commercetools.api.models.cart.ExternalTaxRateDraftBuilder, com.commercetools.api.models.cart.ExternalTaxRateDraftBuilder> builder) {
+        this.externalTaxRateForShippingMethod = builder
+                .apply(com.commercetools.api.models.cart.ExternalTaxRateDraftBuilder.of())
+                .build();
+        return this;
+    }
+
+    public CartDraftBuilder externalTaxRateForShippingMethod(
             @Nullable final com.commercetools.api.models.cart.ExternalTaxRateDraft externalTaxRateForShippingMethod) {
         this.externalTaxRateForShippingMethod = externalTaxRateForShippingMethod;
+        return this;
+    }
+
+    public CartDraftBuilder custom(
+            Function<com.commercetools.api.models.type.CustomFieldsDraftBuilder, com.commercetools.api.models.type.CustomFieldsDraftBuilder> builder) {
+        this.custom = builder.apply(com.commercetools.api.models.type.CustomFieldsDraftBuilder.of()).build();
         return this;
     }
 
@@ -213,13 +284,31 @@ public final class CartDraftBuilder {
     }
 
     public CartDraftBuilder itemShippingAddresses(
-            @Nullable final com.commercetools.api.models.common.Address... itemShippingAddresses) {
+            @Nullable final com.commercetools.api.models.common.BaseAddress... itemShippingAddresses) {
         this.itemShippingAddresses = new ArrayList<>(Arrays.asList(itemShippingAddresses));
         return this;
     }
 
+    public CartDraftBuilder withItemShippingAddresses(
+            Function<com.commercetools.api.models.common.BaseAddressBuilder, com.commercetools.api.models.common.BaseAddressBuilder> builder) {
+        this.itemShippingAddresses = new ArrayList<>();
+        this.itemShippingAddresses
+                .add(builder.apply(com.commercetools.api.models.common.BaseAddressBuilder.of()).build());
+        return this;
+    }
+
+    public CartDraftBuilder plusItemShippingAddresses(
+            Function<com.commercetools.api.models.common.BaseAddressBuilder, com.commercetools.api.models.common.BaseAddressBuilder> builder) {
+        if (this.itemShippingAddresses == null) {
+            this.itemShippingAddresses = new ArrayList<>();
+        }
+        this.itemShippingAddresses
+                .add(builder.apply(com.commercetools.api.models.common.BaseAddressBuilder.of()).build());
+        return this;
+    }
+
     public CartDraftBuilder itemShippingAddresses(
-            @Nullable final java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses) {
+            @Nullable final java.util.List<com.commercetools.api.models.common.BaseAddress> itemShippingAddresses) {
         this.itemShippingAddresses = itemShippingAddresses;
         return this;
     }
@@ -236,6 +325,11 @@ public final class CartDraftBuilder {
 
     public String getCurrency() {
         return this.currency;
+    }
+
+    @Nullable
+    public String getKey() {
+        return this.key;
     }
 
     @Nullable
@@ -299,12 +393,12 @@ public final class CartDraftBuilder {
     }
 
     @Nullable
-    public com.commercetools.api.models.common.Address getShippingAddress() {
+    public com.commercetools.api.models.common.BaseAddress getShippingAddress() {
         return this.shippingAddress;
     }
 
     @Nullable
-    public com.commercetools.api.models.common.Address getBillingAddress() {
+    public com.commercetools.api.models.common.BaseAddress getBillingAddress() {
         return this.billingAddress;
     }
 
@@ -344,7 +438,7 @@ public final class CartDraftBuilder {
     }
 
     @Nullable
-    public java.util.List<com.commercetools.api.models.common.Address> getItemShippingAddresses() {
+    public java.util.List<com.commercetools.api.models.common.BaseAddress> getItemShippingAddresses() {
         return this.itemShippingAddresses;
     }
 
@@ -354,7 +448,18 @@ public final class CartDraftBuilder {
     }
 
     public CartDraft build() {
-        return new CartDraftImpl(currency, customerId, customerEmail, customerGroup, anonymousId, store, country,
+        Objects.requireNonNull(currency, CartDraft.class + ": currency is missing");
+        return new CartDraftImpl(currency, key, customerId, customerEmail, customerGroup, anonymousId, store, country,
+            inventoryMode, taxMode, taxRoundingMode, taxCalculationMode, lineItems, customLineItems, shippingAddress,
+            billingAddress, shippingMethod, externalTaxRateForShippingMethod, custom, locale,
+            deleteDaysAfterLastModification, origin, shippingRateInput, itemShippingAddresses, discountCodes);
+    }
+
+    /**
+     * builds CartDraft without checking for non null required values
+     */
+    public CartDraft buildUnchecked() {
+        return new CartDraftImpl(currency, key, customerId, customerEmail, customerGroup, anonymousId, store, country,
             inventoryMode, taxMode, taxRoundingMode, taxCalculationMode, lineItems, customLineItems, shippingAddress,
             billingAddress, shippingMethod, externalTaxRateForShippingMethod, custom, locale,
             deleteDaysAfterLastModification, origin, shippingRateInput, itemShippingAddresses, discountCodes);
@@ -367,6 +472,7 @@ public final class CartDraftBuilder {
     public static CartDraftBuilder of(final CartDraft template) {
         CartDraftBuilder builder = new CartDraftBuilder();
         builder.currency = template.getCurrency();
+        builder.key = template.getKey();
         builder.customerId = template.getCustomerId();
         builder.customerEmail = template.getCustomerEmail();
         builder.customerGroup = template.getCustomerGroup();

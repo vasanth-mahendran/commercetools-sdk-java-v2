@@ -4,10 +4,12 @@ package com.commercetools.api.client;
 import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
 
 import java.net.URI;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import io.vrap.rmf.base.client.*;
@@ -48,7 +50,13 @@ public class ByProjectKeyProductsByIDImagesPost
             httpRequestPath += "?" + String.join("&", params);
         }
         try {
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            ApiHttpHeaders headers = getHeaders();
+            if (headers.getFirst(ApiHttpHeaders.CONTENT_TYPE) == null) {
+                final String mimeType = Optional.ofNullable(URLConnection.guessContentTypeFromName(file.getName()))
+                        .orElse("application/octet-stream");
+                headers = headers.withHeader(ApiHttpHeaders.CONTENT_TYPE, mimeType);
+            }
+            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), headers,
                 Files.readAllBytes(file.toPath()));
         }
         catch (Exception e) {
@@ -59,13 +67,17 @@ public class ByProjectKeyProductsByIDImagesPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.product.Product> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.product.Product> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.product.Product.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product.Product>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.product.Product.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product.Product>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.product.Product.class);
     }
 
     public String getProjectKey() {
@@ -100,35 +112,59 @@ public class ByProjectKeyProductsByIDImagesPost
         this.ID = ID;
     }
 
+    /**
+     * set filename with the specificied value
+     */
     public ByProjectKeyProductsByIDImagesPost withFilename(final String filename) {
         return copy().withQueryParam("filename", filename);
     }
 
+    /**
+     * add additional filename query parameter
+     */
     public ByProjectKeyProductsByIDImagesPost addFilename(final String filename) {
         return copy().addQueryParam("filename", filename);
     }
 
-    public ByProjectKeyProductsByIDImagesPost withVariant(final Double variant) {
+    /**
+     * set variant with the specificied value
+     */
+    public ByProjectKeyProductsByIDImagesPost withVariant(final long variant) {
         return copy().withQueryParam("variant", variant);
     }
 
-    public ByProjectKeyProductsByIDImagesPost addVariant(final Double variant) {
+    /**
+     * add additional variant query parameter
+     */
+    public ByProjectKeyProductsByIDImagesPost addVariant(final long variant) {
         return copy().addQueryParam("variant", variant);
     }
 
+    /**
+     * set sku with the specificied value
+     */
     public ByProjectKeyProductsByIDImagesPost withSku(final String sku) {
         return copy().withQueryParam("sku", sku);
     }
 
+    /**
+     * add additional sku query parameter
+     */
     public ByProjectKeyProductsByIDImagesPost addSku(final String sku) {
         return copy().addQueryParam("sku", sku);
     }
 
-    public ByProjectKeyProductsByIDImagesPost withStaged(final Boolean staged) {
+    /**
+     * set staged with the specificied value
+     */
+    public ByProjectKeyProductsByIDImagesPost withStaged(final boolean staged) {
         return copy().withQueryParam("staged", staged);
     }
 
-    public ByProjectKeyProductsByIDImagesPost addStaged(final Boolean staged) {
+    /**
+     * add additional staged query parameter
+     */
+    public ByProjectKeyProductsByIDImagesPost addStaged(final boolean staged) {
         return copy().addQueryParam("staged", staged);
     }
 

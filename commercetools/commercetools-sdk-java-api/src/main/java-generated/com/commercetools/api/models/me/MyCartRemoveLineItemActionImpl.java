@@ -20,7 +20,7 @@ public final class MyCartRemoveLineItemActionImpl implements MyCartRemoveLineIte
 
     private String lineItemId;
 
-    private Double quantity;
+    private Long quantity;
 
     private com.commercetools.api.models.common.Money externalPrice;
 
@@ -30,7 +30,7 @@ public final class MyCartRemoveLineItemActionImpl implements MyCartRemoveLineIte
 
     @JsonCreator
     MyCartRemoveLineItemActionImpl(@JsonProperty("lineItemId") final String lineItemId,
-            @JsonProperty("quantity") final Double quantity,
+            @JsonProperty("quantity") final Long quantity,
             @JsonProperty("externalPrice") final com.commercetools.api.models.common.Money externalPrice,
             @JsonProperty("externalTotalPrice") final com.commercetools.api.models.cart.ExternalLineItemTotalPrice externalTotalPrice,
             @JsonProperty("shippingDetailsToRemove") final com.commercetools.api.models.cart.ItemShippingDetailsDraft shippingDetailsToRemove) {
@@ -54,7 +54,7 @@ public final class MyCartRemoveLineItemActionImpl implements MyCartRemoveLineIte
         return this.lineItemId;
     }
 
-    public Double getQuantity() {
+    public Long getQuantity() {
         return this.quantity;
     }
 
@@ -74,7 +74,7 @@ public final class MyCartRemoveLineItemActionImpl implements MyCartRemoveLineIte
         this.lineItemId = lineItemId;
     }
 
-    public void setQuantity(final Double quantity) {
+    public void setQuantity(final Long quantity) {
         this.quantity = quantity;
     }
 
@@ -102,15 +102,24 @@ public final class MyCartRemoveLineItemActionImpl implements MyCartRemoveLineIte
 
         MyCartRemoveLineItemActionImpl that = (MyCartRemoveLineItemActionImpl) o;
 
-        return new EqualsBuilder().append(action, that.action).append(lineItemId, that.lineItemId).append(quantity,
-            that.quantity).append(externalPrice, that.externalPrice).append(externalTotalPrice,
-                that.externalTotalPrice).append(shippingDetailsToRemove, that.shippingDetailsToRemove).isEquals();
+        return new EqualsBuilder().append(action, that.action)
+                .append(lineItemId, that.lineItemId)
+                .append(quantity, that.quantity)
+                .append(externalPrice, that.externalPrice)
+                .append(externalTotalPrice, that.externalTotalPrice)
+                .append(shippingDetailsToRemove, that.shippingDetailsToRemove)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(action).append(lineItemId).append(quantity).append(
-            externalPrice).append(externalTotalPrice).append(shippingDetailsToRemove).toHashCode();
+        return new HashCodeBuilder(17, 37).append(action)
+                .append(lineItemId)
+                .append(quantity)
+                .append(externalPrice)
+                .append(externalTotalPrice)
+                .append(shippingDetailsToRemove)
+                .toHashCode();
     }
 
 }

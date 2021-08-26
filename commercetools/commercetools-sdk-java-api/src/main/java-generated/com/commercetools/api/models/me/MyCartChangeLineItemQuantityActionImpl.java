@@ -20,7 +20,7 @@ public final class MyCartChangeLineItemQuantityActionImpl implements MyCartChang
 
     private String lineItemId;
 
-    private Double quantity;
+    private Long quantity;
 
     private com.commercetools.api.models.common.Money externalPrice;
 
@@ -28,7 +28,7 @@ public final class MyCartChangeLineItemQuantityActionImpl implements MyCartChang
 
     @JsonCreator
     MyCartChangeLineItemQuantityActionImpl(@JsonProperty("lineItemId") final String lineItemId,
-            @JsonProperty("quantity") final Double quantity,
+            @JsonProperty("quantity") final Long quantity,
             @JsonProperty("externalPrice") final com.commercetools.api.models.common.Money externalPrice,
             @JsonProperty("externalTotalPrice") final com.commercetools.api.models.cart.ExternalLineItemTotalPrice externalTotalPrice) {
         this.lineItemId = lineItemId;
@@ -50,7 +50,7 @@ public final class MyCartChangeLineItemQuantityActionImpl implements MyCartChang
         return this.lineItemId;
     }
 
-    public Double getQuantity() {
+    public Long getQuantity() {
         return this.quantity;
     }
 
@@ -66,7 +66,7 @@ public final class MyCartChangeLineItemQuantityActionImpl implements MyCartChang
         this.lineItemId = lineItemId;
     }
 
-    public void setQuantity(final Double quantity) {
+    public void setQuantity(final Long quantity) {
         this.quantity = quantity;
     }
 
@@ -89,15 +89,22 @@ public final class MyCartChangeLineItemQuantityActionImpl implements MyCartChang
 
         MyCartChangeLineItemQuantityActionImpl that = (MyCartChangeLineItemQuantityActionImpl) o;
 
-        return new EqualsBuilder().append(action, that.action).append(lineItemId, that.lineItemId).append(quantity,
-            that.quantity).append(externalPrice, that.externalPrice).append(externalTotalPrice,
-                that.externalTotalPrice).isEquals();
+        return new EqualsBuilder().append(action, that.action)
+                .append(lineItemId, that.lineItemId)
+                .append(quantity, that.quantity)
+                .append(externalPrice, that.externalPrice)
+                .append(externalTotalPrice, that.externalTotalPrice)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(action).append(lineItemId).append(quantity).append(
-            externalPrice).append(externalTotalPrice).toHashCode();
+        return new HashCodeBuilder(17, 37).append(action)
+                .append(lineItemId)
+                .append(quantity)
+                .append(externalPrice)
+                .append(externalTotalPrice)
+                .toHashCode();
     }
 
 }

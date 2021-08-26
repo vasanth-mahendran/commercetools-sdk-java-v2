@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete InventoryEntry by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyInventoryByIDDelete
         extends ApiMethod<ByProjectKeyInventoryByIDDelete, com.commercetools.api.models.inventory.InventoryEntry>
@@ -22,7 +19,7 @@ public class ByProjectKeyInventoryByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyInventoryByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyInventoryByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyInventoryByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyInventoryByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyInventoryByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -51,14 +48,17 @@ public class ByProjectKeyInventoryByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.inventory.InventoryEntry> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.inventory.InventoryEntry> executeBlocking(
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.inventory.InventoryEntry.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.inventory.InventoryEntry>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.inventory.InventoryEntry.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.inventory.InventoryEntry>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.inventory.InventoryEntry.class);
     }
 
     public String getProjectKey() {
@@ -85,18 +85,30 @@ public class ByProjectKeyInventoryByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyInventoryByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyInventoryByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyInventoryByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyInventoryByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyInventoryByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyInventoryByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

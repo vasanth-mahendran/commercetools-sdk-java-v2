@@ -13,6 +13,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+/**
+*  <p>The representation of a Product Variant Draft for the import purpose.</p>
+*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class ProductVariantDraftImportImpl implements ProductVariantDraftImport {
 
@@ -121,14 +124,24 @@ public final class ProductVariantDraftImportImpl implements ProductVariantDraftI
 
         ProductVariantDraftImportImpl that = (ProductVariantDraftImportImpl) o;
 
-        return new EqualsBuilder().append(sku, that.sku).append(key, that.key).append(prices, that.prices).append(
-            attributes, that.attributes).append(images, that.images).append(assets, that.assets).isEquals();
+        return new EqualsBuilder().append(sku, that.sku)
+                .append(key, that.key)
+                .append(prices, that.prices)
+                .append(attributes, that.attributes)
+                .append(images, that.images)
+                .append(assets, that.assets)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(sku).append(key).append(prices).append(attributes).append(
-            images).append(assets).toHashCode();
+        return new HashCodeBuilder(17, 37).append(sku)
+                .append(key)
+                .append(prices)
+                .append(attributes)
+                .append(images)
+                .append(assets)
+                .toHashCode();
     }
 
 }

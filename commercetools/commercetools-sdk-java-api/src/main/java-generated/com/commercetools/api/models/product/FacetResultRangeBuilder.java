@@ -5,10 +5,11 @@ import java.util.*;
 
 import javax.annotation.Nullable;
 
+import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public final class FacetResultRangeBuilder {
+public final class FacetResultRangeBuilder implements Builder<FacetResultRange> {
 
     private Double from;
 
@@ -23,7 +24,7 @@ public final class FacetResultRangeBuilder {
     @Nullable
     private Long productCount;
 
-    private Long total;
+    private Double total;
 
     private Double min;
 
@@ -61,7 +62,7 @@ public final class FacetResultRangeBuilder {
         return this;
     }
 
-    public FacetResultRangeBuilder total(final Long total) {
+    public FacetResultRangeBuilder total(final Double total) {
         this.total = total;
         return this;
     }
@@ -106,7 +107,7 @@ public final class FacetResultRangeBuilder {
         return this.productCount;
     }
 
-    public Long getTotal() {
+    public Double getTotal() {
         return this.total;
     }
 
@@ -123,6 +124,22 @@ public final class FacetResultRangeBuilder {
     }
 
     public FacetResultRange build() {
+        Objects.requireNonNull(from, FacetResultRange.class + ": from is missing");
+        Objects.requireNonNull(fromStr, FacetResultRange.class + ": fromStr is missing");
+        Objects.requireNonNull(to, FacetResultRange.class + ": to is missing");
+        Objects.requireNonNull(toStr, FacetResultRange.class + ": toStr is missing");
+        Objects.requireNonNull(count, FacetResultRange.class + ": count is missing");
+        Objects.requireNonNull(total, FacetResultRange.class + ": total is missing");
+        Objects.requireNonNull(min, FacetResultRange.class + ": min is missing");
+        Objects.requireNonNull(max, FacetResultRange.class + ": max is missing");
+        Objects.requireNonNull(mean, FacetResultRange.class + ": mean is missing");
+        return new FacetResultRangeImpl(from, fromStr, to, toStr, count, productCount, total, min, max, mean);
+    }
+
+    /**
+     * builds FacetResultRange without checking for non null required values
+     */
+    public FacetResultRange buildUnchecked() {
         return new FacetResultRangeImpl(from, fromStr, to, toStr, count, productCount, total, min, max, mean);
     }
 

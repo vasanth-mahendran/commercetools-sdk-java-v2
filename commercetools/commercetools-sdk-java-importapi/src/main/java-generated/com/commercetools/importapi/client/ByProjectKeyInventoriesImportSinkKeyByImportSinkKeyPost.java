@@ -13,7 +13,7 @@ import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
-*  <p>Creates import request for creating new inventories or updating existing ones.</p>
+*  <p>Creates a request for creating new Inventories or updating existing ones.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyInventoriesImportSinkKeyByImportSinkKeyPost extends
@@ -63,13 +63,17 @@ public class ByProjectKeyInventoriesImportSinkKeyByImportSinkKeyPost extends
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importrequests.ImportResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(
+            client.execute(request, com.commercetools.importapi.models.importrequests.ImportResponse.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importrequests.ImportResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importrequests.ImportResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.importapi.models.importrequests.ImportResponse.class);
     }
 

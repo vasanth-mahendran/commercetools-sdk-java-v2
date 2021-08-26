@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Delete Zone by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyZonesByIDDelete
         extends ApiMethod<ByProjectKeyZonesByIDDelete, com.commercetools.api.models.zone.Zone>
@@ -22,7 +19,7 @@ public class ByProjectKeyZonesByIDDelete
         com.commercetools.api.client.ConflictingTrait<ByProjectKeyZonesByIDDelete>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyZonesByIDDelete>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyZonesByIDDelete>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyZonesByIDDelete> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyZonesByIDDelete> {
 
     private String projectKey;
     private String ID;
@@ -51,13 +48,16 @@ public class ByProjectKeyZonesByIDDelete
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.zone.Zone> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.zone.Zone> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.zone.Zone.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.zone.Zone>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.zone.Zone.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.zone.Zone>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.zone.Zone.class);
     }
 
     public String getProjectKey() {
@@ -84,18 +84,30 @@ public class ByProjectKeyZonesByIDDelete
         this.ID = ID;
     }
 
-    public ByProjectKeyZonesByIDDelete withVersion(final Long version) {
+    /**
+     * set version with the specificied value
+     */
+    public ByProjectKeyZonesByIDDelete withVersion(final long version) {
         return copy().withQueryParam("version", version);
     }
 
-    public ByProjectKeyZonesByIDDelete addVersion(final Long version) {
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyZonesByIDDelete addVersion(final long version) {
         return copy().addQueryParam("version", version);
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyZonesByIDDelete withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyZonesByIDDelete addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

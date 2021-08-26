@@ -44,13 +44,17 @@ public class ByProjectKeyRecommendationsGeneralCategoriesGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.ml.models.general_category_recommendations.GeneralCategoryRecommendationPagedQueryResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request,
+            com.commercetools.ml.models.general_category_recommendations.GeneralCategoryRecommendationPagedQueryResponse.class),
+            request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.ml.models.general_category_recommendations.GeneralCategoryRecommendationPagedQueryResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.ml.models.general_category_recommendations.GeneralCategoryRecommendationPagedQueryResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.ml.models.general_category_recommendations.GeneralCategoryRecommendationPagedQueryResponse.class);
     }
 
@@ -86,51 +90,87 @@ public class ByProjectKeyRecommendationsGeneralCategoriesGet extends
         this.projectKey = projectKey;
     }
 
+    /**
+     * set productImageUrl with the specificied value
+     */
     public ByProjectKeyRecommendationsGeneralCategoriesGet withProductImageUrl(final String productImageUrl) {
         return copy().withQueryParam("productImageUrl", productImageUrl);
     }
 
+    /**
+     * add additional productImageUrl query parameter
+     */
     public ByProjectKeyRecommendationsGeneralCategoriesGet addProductImageUrl(final String productImageUrl) {
         return copy().addQueryParam("productImageUrl", productImageUrl);
     }
 
+    /**
+     * set productName with the specificied value
+     */
     public ByProjectKeyRecommendationsGeneralCategoriesGet withProductName(final String productName) {
         return copy().withQueryParam("productName", productName);
     }
 
+    /**
+     * add additional productName query parameter
+     */
     public ByProjectKeyRecommendationsGeneralCategoriesGet addProductName(final String productName) {
         return copy().addQueryParam("productName", productName);
     }
 
-    public ByProjectKeyRecommendationsGeneralCategoriesGet withLimit(final Integer limit) {
+    /**
+     * set limit with the specificied value
+     */
+    public ByProjectKeyRecommendationsGeneralCategoriesGet withLimit(final int limit) {
         return copy().withQueryParam("limit", limit);
     }
 
-    public ByProjectKeyRecommendationsGeneralCategoriesGet addLimit(final Integer limit) {
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyRecommendationsGeneralCategoriesGet addLimit(final int limit) {
         return copy().addQueryParam("limit", limit);
     }
 
-    public ByProjectKeyRecommendationsGeneralCategoriesGet withOffset(final Integer offset) {
+    /**
+     * set offset with the specificied value
+     */
+    public ByProjectKeyRecommendationsGeneralCategoriesGet withOffset(final int offset) {
         return copy().withQueryParam("offset", offset);
     }
 
-    public ByProjectKeyRecommendationsGeneralCategoriesGet addOffset(final Integer offset) {
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyRecommendationsGeneralCategoriesGet addOffset(final int offset) {
         return copy().addQueryParam("offset", offset);
     }
 
-    public ByProjectKeyRecommendationsGeneralCategoriesGet withConfidenceMin(final Double confidenceMin) {
+    /**
+     * set confidenceMin with the specificied value
+     */
+    public ByProjectKeyRecommendationsGeneralCategoriesGet withConfidenceMin(final double confidenceMin) {
         return copy().withQueryParam("confidenceMin", confidenceMin);
     }
 
-    public ByProjectKeyRecommendationsGeneralCategoriesGet addConfidenceMin(final Double confidenceMin) {
+    /**
+     * add additional confidenceMin query parameter
+     */
+    public ByProjectKeyRecommendationsGeneralCategoriesGet addConfidenceMin(final double confidenceMin) {
         return copy().addQueryParam("confidenceMin", confidenceMin);
     }
 
-    public ByProjectKeyRecommendationsGeneralCategoriesGet withConfidenceMax(final Double confidenceMax) {
+    /**
+     * set confidenceMax with the specificied value
+     */
+    public ByProjectKeyRecommendationsGeneralCategoriesGet withConfidenceMax(final double confidenceMax) {
         return copy().withQueryParam("confidenceMax", confidenceMax);
     }
 
-    public ByProjectKeyRecommendationsGeneralCategoriesGet addConfidenceMax(final Double confidenceMax) {
+    /**
+     * add additional confidenceMax query parameter
+     */
+    public ByProjectKeyRecommendationsGeneralCategoriesGet addConfidenceMax(final double confidenceMax) {
         return copy().addQueryParam("confidenceMax", confidenceMax);
     }
 

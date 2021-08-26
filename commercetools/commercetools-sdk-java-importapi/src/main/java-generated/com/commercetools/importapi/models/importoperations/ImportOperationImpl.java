@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>Tracks the status of a single import resource as it is imported into the commercetools project.</p>
+*  <p>Shows the import status of a specific resource.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public final class ImportOperationImpl implements ImportOperation {
@@ -31,9 +31,9 @@ public final class ImportOperationImpl implements ImportOperation {
 
     private Long resourceVersion;
 
-    private Integer retryCount;
-
     private java.util.List<com.commercetools.importapi.models.errors.ErrorObject> errors;
+
+    private java.util.List<com.commercetools.importapi.models.common.KeyReference> unresolvedReferences;
 
     private java.time.ZonedDateTime createdAt;
 
@@ -47,8 +47,8 @@ public final class ImportOperationImpl implements ImportOperation {
             @JsonProperty("resourceKey") final String resourceKey, @JsonProperty("id") final String id,
             @JsonProperty("state") final com.commercetools.importapi.models.common.ProcessingState state,
             @JsonProperty("resourceVersion") final Long resourceVersion,
-            @JsonProperty("retryCount") final Integer retryCount,
             @JsonProperty("errors") final java.util.List<com.commercetools.importapi.models.errors.ErrorObject> errors,
+            @JsonProperty("unresolvedReferences") final java.util.List<com.commercetools.importapi.models.common.KeyReference> unresolvedReferences,
             @JsonProperty("createdAt") final java.time.ZonedDateTime createdAt,
             @JsonProperty("lastModifiedAt") final java.time.ZonedDateTime lastModifiedAt,
             @JsonProperty("expiresAt") final java.time.ZonedDateTime expiresAt) {
@@ -58,8 +58,8 @@ public final class ImportOperationImpl implements ImportOperation {
         this.id = id;
         this.state = state;
         this.resourceVersion = resourceVersion;
-        this.retryCount = retryCount;
         this.errors = errors;
+        this.unresolvedReferences = unresolvedReferences;
         this.createdAt = createdAt;
         this.lastModifiedAt = lastModifiedAt;
         this.expiresAt = expiresAt;
@@ -69,78 +69,77 @@ public final class ImportOperationImpl implements ImportOperation {
     }
 
     /**
-    *  <p>The import operation version.</p>
+    *  <p>The version of the ImportOperation.</p>
     */
     public Long getVersion() {
         return this.version;
     }
 
     /**
-    *  <p>The key of the import sink.</p>
+    *  <p>The key of the <a href="/import-sink#importsink">ImportSink</a>.</p>
     */
     public String getImportSinkKey() {
         return this.importSinkKey;
     }
 
     /**
-    *  <p>The key of the import resource.</p>
+    *  <p>The key of the resource.</p>
     */
     public String getResourceKey() {
         return this.resourceKey;
     }
 
     /**
-    *  <p>The identifier of the operaton that is to be commited</p>
+    *  <p>The ID of the ImportOperation.</p>
     */
     public String getId() {
         return this.id;
     }
 
     /**
-    *  <p>The status of the import resource.</p>
+    *  <p>The import status of the resource. Set to <code>Rejected</code> or <code>ValidationFailed</code> if the import of the resource was not successful.</p>
     */
     public com.commercetools.importapi.models.common.ProcessingState getState() {
         return this.state;
     }
 
     /**
-    *  <p>When the resource is successfully imported, this represents the imported resource version</p>
+    *  <p>The version of the impmorted resource when the import was successful.</p>
     */
     public Long getResourceVersion() {
         return this.resourceVersion;
     }
 
     /**
-    *  <p>The number of request retries for processing the import resource.</p>
-    */
-    public Integer getRetryCount() {
-        return this.retryCount;
-    }
-
-    /**
-    *  <p>If an import resource does not import correctly, the state is set to <code>Rejected</code> or <code>ValidationFailed</code>
-    *  and this property contains the errors.</p>
+    *  <p>Contains an error if the import of the resource was not successful. See <a href="/error">Errors</a>.</p>
     */
     public java.util.List<com.commercetools.importapi.models.errors.ErrorObject> getErrors() {
         return this.errors;
     }
 
     /**
-    *  <p>When the import operation was created.</p>
+    *  <p>In case of unresolved status this array will show the unresolved references</p>
+    */
+    public java.util.List<com.commercetools.importapi.models.common.KeyReference> getUnresolvedReferences() {
+        return this.unresolvedReferences;
+    }
+
+    /**
+    *  <p>The time when the ImportOperation was created.</p>
     */
     public java.time.ZonedDateTime getCreatedAt() {
         return this.createdAt;
     }
 
     /**
-    *  <p>When the import operation was modified.</p>
+    *  <p>The last time When the ImportOperation was modified.</p>
     */
     public java.time.ZonedDateTime getLastModifiedAt() {
         return this.lastModifiedAt;
     }
 
     /**
-    *  <p>When the import operation expires.</p>
+    *  <p>The expiration time of the ImportOperation.</p>
     */
     public java.time.ZonedDateTime getExpiresAt() {
         return this.expiresAt;
@@ -170,16 +169,22 @@ public final class ImportOperationImpl implements ImportOperation {
         this.resourceVersion = resourceVersion;
     }
 
-    public void setRetryCount(final Integer retryCount) {
-        this.retryCount = retryCount;
-    }
-
     public void setErrors(final com.commercetools.importapi.models.errors.ErrorObject... errors) {
         this.errors = new ArrayList<>(Arrays.asList(errors));
     }
 
     public void setErrors(final java.util.List<com.commercetools.importapi.models.errors.ErrorObject> errors) {
         this.errors = errors;
+    }
+
+    public void setUnresolvedReferences(
+            final com.commercetools.importapi.models.common.KeyReference... unresolvedReferences) {
+        this.unresolvedReferences = new ArrayList<>(Arrays.asList(unresolvedReferences));
+    }
+
+    public void setUnresolvedReferences(
+            final java.util.List<com.commercetools.importapi.models.common.KeyReference> unresolvedReferences) {
+        this.unresolvedReferences = unresolvedReferences;
     }
 
     public void setCreatedAt(final java.time.ZonedDateTime createdAt) {
@@ -204,18 +209,34 @@ public final class ImportOperationImpl implements ImportOperation {
 
         ImportOperationImpl that = (ImportOperationImpl) o;
 
-        return new EqualsBuilder().append(version, that.version).append(importSinkKey, that.importSinkKey).append(
-            resourceKey, that.resourceKey).append(id, that.id).append(state, that.state).append(resourceVersion,
-                that.resourceVersion).append(retryCount, that.retryCount).append(errors, that.errors).append(createdAt,
-                    that.createdAt).append(lastModifiedAt, that.lastModifiedAt).append(expiresAt,
-                        that.expiresAt).isEquals();
+        return new EqualsBuilder().append(version, that.version)
+                .append(importSinkKey, that.importSinkKey)
+                .append(resourceKey, that.resourceKey)
+                .append(id, that.id)
+                .append(state, that.state)
+                .append(resourceVersion, that.resourceVersion)
+                .append(errors, that.errors)
+                .append(unresolvedReferences, that.unresolvedReferences)
+                .append(createdAt, that.createdAt)
+                .append(lastModifiedAt, that.lastModifiedAt)
+                .append(expiresAt, that.expiresAt)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(version).append(importSinkKey).append(resourceKey).append(id).append(
-            state).append(resourceVersion).append(retryCount).append(errors).append(createdAt).append(
-                lastModifiedAt).append(expiresAt).toHashCode();
+        return new HashCodeBuilder(17, 37).append(version)
+                .append(importSinkKey)
+                .append(resourceKey)
+                .append(id)
+                .append(state)
+                .append(resourceVersion)
+                .append(errors)
+                .append(unresolvedReferences)
+                .append(createdAt)
+                .append(lastModifiedAt)
+                .append(expiresAt)
+                .toHashCode();
     }
 
 }

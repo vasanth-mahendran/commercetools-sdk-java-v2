@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update Store by key</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyStoresKeyByKeyPost
         extends ApiMethod<ByProjectKeyStoresKeyByKeyPost, com.commercetools.api.models.store.Store>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyStoresKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyStoresKeyByKeyPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyStoresKeyByKeyPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyStoresKeyByKeyPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyStoresKeyByKeyPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyStoresKeyByKeyPost> {
 
     private String projectKey;
     private String key;
@@ -62,13 +59,16 @@ public class ByProjectKeyStoresKeyByKeyPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.store.Store> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.store.Store> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.store.Store.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.store.Store>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.store.Store.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.store.Store>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.store.Store.class);
     }
 
     public String getProjectKey() {
@@ -91,10 +91,16 @@ public class ByProjectKeyStoresKeyByKeyPost
         this.key = key;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyStoresKeyByKeyPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyStoresKeyByKeyPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

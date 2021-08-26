@@ -16,7 +16,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 public class ByProjectKeyShippingMethodsMatchingOrdereditGet extends
         ApiMethod<ByProjectKeyShippingMethodsMatchingOrdereditGet, com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse>
         implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyShippingMethodsMatchingOrdereditGet>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyShippingMethodsMatchingOrdereditGet> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyShippingMethodsMatchingOrdereditGet> {
 
     private String projectKey;
 
@@ -43,13 +43,16 @@ public class ByProjectKeyShippingMethodsMatchingOrdereditGet extends
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse> executeBlocking(
-            Duration timeout) {
-        return blockingWait(execute(), timeout);
+            final ApiHttpClient client, Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request,
+            com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(),
             com.commercetools.api.models.shipping_method.ShippingMethodPagedQueryResponse.class);
     }
 
@@ -73,26 +76,44 @@ public class ByProjectKeyShippingMethodsMatchingOrdereditGet extends
         this.projectKey = projectKey;
     }
 
+    /**
+     * set orderEditId with the specificied value
+     */
     public ByProjectKeyShippingMethodsMatchingOrdereditGet withOrderEditId(final String orderEditId) {
         return copy().withQueryParam("orderEditId", orderEditId);
     }
 
+    /**
+     * add additional orderEditId query parameter
+     */
     public ByProjectKeyShippingMethodsMatchingOrdereditGet addOrderEditId(final String orderEditId) {
         return copy().addQueryParam("orderEditId", orderEditId);
     }
 
+    /**
+     * set country with the specificied value
+     */
     public ByProjectKeyShippingMethodsMatchingOrdereditGet withCountry(final String country) {
         return copy().withQueryParam("country", country);
     }
 
+    /**
+     * add additional country query parameter
+     */
     public ByProjectKeyShippingMethodsMatchingOrdereditGet addCountry(final String country) {
         return copy().addQueryParam("country", country);
     }
 
+    /**
+     * set state with the specificied value
+     */
     public ByProjectKeyShippingMethodsMatchingOrdereditGet withState(final String state) {
         return copy().withQueryParam("state", state);
     }
 
+    /**
+     * add additional state query parameter
+     */
     public ByProjectKeyShippingMethodsMatchingOrdereditGet addState(final String state) {
         return copy().addQueryParam("state", state);
     }

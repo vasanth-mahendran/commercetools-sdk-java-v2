@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update Store by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyStoresByIDPost
         extends ApiMethod<ByProjectKeyStoresByIDPost, com.commercetools.api.models.store.Store>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyStoresByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyStoresByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyStoresByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyStoresByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyStoresByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyStoresByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -62,13 +59,16 @@ public class ByProjectKeyStoresByIDPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.store.Store> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.store.Store> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.store.Store.class), request, timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.store.Store>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(), com.commercetools.api.models.store.Store.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.store.Store>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.store.Store.class);
     }
 
     public String getProjectKey() {
@@ -91,10 +91,16 @@ public class ByProjectKeyStoresByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyStoresByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyStoresByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }

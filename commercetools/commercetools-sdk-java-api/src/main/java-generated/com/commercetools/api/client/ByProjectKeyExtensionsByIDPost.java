@@ -12,16 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
-/**
-*  <p>Update Extension by ID</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyExtensionsByIDPost
         extends ApiMethod<ByProjectKeyExtensionsByIDPost, com.commercetools.api.models.extension.Extension>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyExtensionsByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyExtensionsByIDPost>,
-        com.commercetools.api.client.ErrorableTrait<ByProjectKeyExtensionsByIDPost>,
-        com.commercetools.api.client.DeprecatableTrait<ByProjectKeyExtensionsByIDPost> {
+        com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyExtensionsByIDPost>,
+        com.commercetools.api.client.ErrorableTrait<ByProjectKeyExtensionsByIDPost> {
 
     private String projectKey;
     private String ID;
@@ -62,14 +59,17 @@ public class ByProjectKeyExtensionsByIDPost
     }
 
     @Override
-    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(Duration timeout) {
-        return blockingWait(execute(), timeout);
+    public ApiHttpResponse<com.commercetools.api.models.extension.Extension> executeBlocking(final ApiHttpClient client,
+            Duration timeout) {
+        ApiHttpRequest request = this.createHttpRequest();
+        return blockingWait(client.execute(request, com.commercetools.api.models.extension.Extension.class), request,
+            timeout);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute() {
-        return apiHttpClient().execute(this.createHttpRequest(),
-            com.commercetools.api.models.extension.Extension.class);
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.extension.Extension>> execute(
+            final ApiHttpClient client) {
+        return client.execute(this.createHttpRequest(), com.commercetools.api.models.extension.Extension.class);
     }
 
     public String getProjectKey() {
@@ -92,10 +92,16 @@ public class ByProjectKeyExtensionsByIDPost
         this.ID = ID;
     }
 
+    /**
+     * set expand with the specificied value
+     */
     public ByProjectKeyExtensionsByIDPost withExpand(final String expand) {
         return copy().withQueryParam("expand", expand);
     }
 
+    /**
+     * add additional expand query parameter
+     */
     public ByProjectKeyExtensionsByIDPost addExpand(final String expand) {
         return copy().addQueryParam("expand", expand);
     }
