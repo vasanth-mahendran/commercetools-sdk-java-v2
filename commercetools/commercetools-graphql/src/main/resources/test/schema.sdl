@@ -1,0 +1,11 @@
+
+scalar Country
+
+scalar Locale
+
+interface TestResource {
+  id: String!
+  version: Long
+  country: Country
+  locale: Locale
+}

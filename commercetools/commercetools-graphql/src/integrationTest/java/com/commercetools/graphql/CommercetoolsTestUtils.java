@@ -1,5 +1,5 @@
 /* (C)2021 */
-package com.commercetools;
+package com.commercetools.graphql;
 
 import com.commercetools.api.client.ByProjectKeyRequestBuilder;
 import com.commercetools.api.defaultconfig.ApiFactory;

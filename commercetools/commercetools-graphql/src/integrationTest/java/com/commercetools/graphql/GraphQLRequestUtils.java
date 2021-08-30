@@ -1,5 +1,5 @@
 /* (C)2021 */
-package com.commercetools;
+package com.commercetools.graphql;
 //
 //import com.apollographql.apollo.api.Mutation;
 //import com.apollographql.apollo.api.Operation;

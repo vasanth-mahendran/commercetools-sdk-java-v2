@@ -1,37 +1,42 @@
 plugins {
-    id 'com.apollographql.apollo' version '2.4.0'
-    id "com.netflix.dgs.codegen" version "4.0.10"
+//    id 'com.apollographql.apollo' version '2.4.0'
+    id "com.netflix.dgs.codegen" version "5.0.6"
 }
 
 dependencies {
 //    implementation("com.apollographql.apollo:apollo-runtime:2.4.0")
 //    implementation("com.apollographql.apollo:apollo-api-jvm:2.4.0")
 
-
-    itestImplementation "junit:junit:${versions.junit}"
-    itestImplementation "org.assertj:assertj-core:${versions.assertJ}"
-    itestImplementation 'org.skyscreamer:jsonassert:1.5.0'
-
     implementation project(':commercetools:commercetools-sdk-java-api')
     implementation project(':commercetools:commercetools-http-client')
+
+//    implementation(platform('com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:4.5.1'))
 }
 
 generateJava {
-    schemaPaths = ["${projectDir}/src/main/graphql/"] // List of directories containing schema files
+    schemaPaths = ["${projectDir}/src/main/resources/graphql"] // List of directories containing schema files
     packageName = 'com.commercetools.graphql' // The package name to use to generate sources
     generateClient = true // Enable generating the type safe query API
+    maxProjectionDepth = 1
+    generateBoxedTypes = true
+    generateInterfaces = true
+    typeMapping = [
+            "Country": "String",
+            "Locale": "java.util.Locale",
+            "Long": "Long"
+    ]
 }
 
-apollo {
-    useSemanticNaming = true
-    service("commercetools") {
-        schemaPath = "schema.json"
-        introspection {
-            sourceSetName = "main"
-            endpointUrl = 'https://api.commercetools.com/test-php-dev-integration-1/graphql'
-            headers = [
-                    Authorization: 'Bearer 7viFGeHSomRowwtbpKoRSrreDlv6UVX-'
-            ]
-        }
-    }
-}
+//apollo {
+//    useSemanticNaming = true
+//    service("commercetools") {
+//        schemaPath = "schema.json"
+//        introspection {
+//            sourceSetName = "main"
+//            endpointUrl = 'https://api.commercetools.com/test-php-dev-integration-1/graphql'
+//            headers = [
+//                    Authorization: 'Bearer 7viFGeHSomRowwtbpKoRSrreDlv6UVX-'
+//            ]
+//        }
+//    }
+//}
