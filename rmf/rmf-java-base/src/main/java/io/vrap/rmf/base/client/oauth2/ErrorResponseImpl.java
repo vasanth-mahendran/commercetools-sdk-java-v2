@@ -1,14 +1,15 @@
 
 package io.vrap.rmf.base.client.oauth2;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class ErrorResponseImpl implements ErrorResponse {
 
@@ -28,8 +29,7 @@ public class ErrorResponseImpl implements ErrorResponse {
     ErrorResponseImpl(@JsonProperty("statusCode") final Integer statusCode,
             @JsonProperty("message") final String message, @JsonProperty("error") final String error,
             @JsonProperty("error_description") final String errorDescription,
-            @JsonProperty("error_uri") final String errorUri,
-            @JsonProperty("errors") final List<ErrorObject> errors) {
+            @JsonProperty("error_uri") final String errorUri, @JsonProperty("errors") final List<ErrorObject> errors) {
         this.statusCode = statusCode;
         this.message = message;
         this.error = error;

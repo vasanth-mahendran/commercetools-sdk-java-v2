@@ -3,6 +3,7 @@ package io.vrap.rmf.base.client.oauth2;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -12,7 +13,8 @@ public class InvalidScopeErrorImpl implements InvalidScopeError {
 
     private String message;
 
-    @JsonCreator InvalidScopeErrorImpl(@JsonProperty("message") final String message) {
+    @JsonCreator
+    InvalidScopeErrorImpl(@JsonProperty("message") final String message) {
         this.message = message;
         this.code = INVALID_SCOPE;
     }

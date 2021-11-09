@@ -1,9 +1,9 @@
 
 package io.vrap.rmf.base.client.oauth2;
 
-import io.vrap.rmf.base.client.Builder;
-
 import java.util.Objects;
+
+import io.vrap.rmf.base.client.Builder;
 
 public class UnsupportedGrantTypeErrorBuilder implements Builder<UnsupportedGrantTypeError> {
 

@@ -1,9 +1,9 @@
 
 package io.vrap.rmf.base.client.oauth2;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import java.util.function.Function;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(as = UnsupportedGrantTypeErrorImpl.class)
 public interface UnsupportedGrantTypeError extends ErrorObject {

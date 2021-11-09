@@ -5,13 +5,13 @@ import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
-import io.vrap.rmf.base.client.oauth2.ErrorResponse;
 import net.jodah.failsafe.*;
 import net.jodah.failsafe.event.ExecutionAttemptedEvent;
 
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.error.UnauthorizedException;
 import io.vrap.rmf.base.client.oauth2.AuthException;
+import io.vrap.rmf.base.client.oauth2.ErrorResponse;
 import io.vrap.rmf.base.client.oauth2.TokenSupplier;
 
 /**
@@ -53,7 +53,7 @@ class OAuthMiddlewareImpl implements AutoCloseable, OAuthMiddleware {
             final CircuitBreaker<ApiHttpResponse<byte[]>> circuitBreaker = new CircuitBreaker<ApiHttpResponse<byte[]>>();
             circuitBreaker.handleIf((response, throwable) -> {
                 final Throwable cause = throwable.getCause();
-                if (cause instanceof AuthException &&  ((AuthException) cause).getResponse().getStatusCode() == 400) {
+                if (cause instanceof AuthException && ((AuthException) cause).getResponse().getStatusCode() == 400) {
                     final ApiHttpResponse<ErrorResponse> errorResponse = ResponseSerializer.of()
                             .convertResponse(((AuthException) cause).getResponse(), ErrorResponse.class);
                     return errorResponse.getBody().getErrorDescription().endsWith("suspended");

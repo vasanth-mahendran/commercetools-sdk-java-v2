@@ -1,13 +1,14 @@
 
 package io.vrap.rmf.base.client.oauth2;
 
-import io.vrap.rmf.base.client.Builder;
-
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
+import javax.annotation.Nullable;
+
+import io.vrap.rmf.base.client.Builder;
 
 public class ErrorResponseBuilder implements Builder<ErrorResponse> {
 
@@ -57,8 +58,7 @@ public class ErrorResponseBuilder implements Builder<ErrorResponse> {
         return this;
     }
 
-    public ErrorResponseBuilder errors(
-            @Nullable final List<ErrorObject> errors) {
+    public ErrorResponseBuilder errors(@Nullable final List<ErrorObject> errors) {
         this.errors = errors;
         return this;
     }

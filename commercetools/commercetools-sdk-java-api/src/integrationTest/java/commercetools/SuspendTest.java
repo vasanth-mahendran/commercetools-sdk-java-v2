@@ -32,7 +32,8 @@ public class SuspendTest {
                 : ServiceRegion.valueOf(System.getenv("CTP_REGION"));
 
         final TestClient testApiClient = new TestClient("api", 401, "", HttpClientSupplier.of().get());
-        final TestClient testAuthClient = new TestClient("auth", 400, TestClient.SUSPEND_ERROR, HttpClientSupplier.of().get());
+        final TestClient testAuthClient = new TestClient("auth", 400, TestClient.SUSPEND_ERROR,
+            HttpClientSupplier.of().get());
 
         ApiRootBuilder builder = ApiRootBuilder.of(testApiClient)
                 .defaultClient(region.getApiUrl())
