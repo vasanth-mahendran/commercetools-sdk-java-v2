@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
+import io.vrap.rmf.base.client.oauth2.ErrorResponse;
 import net.jodah.failsafe.*;
 import net.jodah.failsafe.event.ExecutionAttemptedEvent;
 
@@ -51,10 +52,18 @@ class OAuthMiddlewareImpl implements AutoCloseable, OAuthMiddleware {
 
             final CircuitBreaker<ApiHttpResponse<byte[]>> circuitBreaker = new CircuitBreaker<ApiHttpResponse<byte[]>>();
             circuitBreaker.handleIf((response, throwable) -> {
-                if (throwable.getCause() instanceof AuthException) {
-                    return ((AuthException) throwable.getCause()).getResponse().getStatusCode() == 400;
+                final Throwable cause = throwable.getCause();
+                if (cause instanceof AuthException &&  ((AuthException) cause).getResponse().getStatusCode() == 400) {
+                    final ApiHttpResponse<ErrorResponse> errorResponse = ResponseSerializer.of()
+                            .convertResponse(((AuthException) cause).getResponse(), ErrorResponse.class);
+                    return errorResponse.getBody().getErrorDescription().endsWith("suspended");
                 }
-                return response.getStatusCode() == 400;
+                if (response.getStatusCode() == 400) {
+                    final ApiHttpResponse<ErrorResponse> errorResponse = ResponseSerializer.of()
+                            .convertResponse(response, ErrorResponse.class);
+                    return errorResponse.getBody().getErrorDescription().endsWith("suspended");
+                }
+                return false;
             })
                     .withDelay((result, failure, context) -> Duration
                             .ofMillis(Math.min(100 * context.getAttemptCount() * context.getAttemptCount(), 15000)))

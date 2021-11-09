@@ -31,8 +31,8 @@ public class SuspendTest {
         ServiceRegion region = System.getenv("CTP_REGION") == null ? ServiceRegion.GCP_EUROPE_WEST1
                 : ServiceRegion.valueOf(System.getenv("CTP_REGION"));
 
-        final TestClient testApiClient = new TestClient("api", 401, HttpClientSupplier.of().get());
-        final TestClient testAuthClient = new TestClient("auth", 400, HttpClientSupplier.of().get());
+        final TestClient testApiClient = new TestClient("api", 401, "", HttpClientSupplier.of().get());
+        final TestClient testAuthClient = new TestClient("auth", 400, TestClient.SUSPEND_ERROR, HttpClientSupplier.of().get());
 
         ApiRootBuilder builder = ApiRootBuilder.of(testApiClient)
                 .defaultClient(region.getApiUrl())
@@ -187,18 +187,22 @@ public class SuspendTest {
     }
 
     private static class TestClient implements VrapHttpClient {
+        private final static String SUSPEND_ERROR = "{\"statusCode\":400,\"message\":\"Project 'test-project-suspension-1' is suspended\",\"errors\":[{\"code\":\"invalid_scope\",\"message\":\"Project 'test-project-suspension-1' is suspended\"}],\"error\":\"invalid_scope\",\"error_description\":\"Project 'test-project-suspension-1' is suspended\"}";
+
         private final VrapHttpClient httpClient;
         private Boolean suspended;
         private Boolean sendRequest;
         private final String name;
         private final int status;
+        private final String error;
 
-        public TestClient(final String name, final int status, final VrapHttpClient httpClient) {
+        public TestClient(final String name, final int status, final String error, final VrapHttpClient httpClient) {
             this.httpClient = httpClient;
             this.name = name;
             this.suspended = false;
             this.sendRequest = true;
             this.status = status;
+            this.error = error;
         }
 
         @Override
@@ -211,7 +215,7 @@ public class SuspendTest {
                     LOGGER.debug("{}: Client suspended", name);
                 }
                 return CompletableFuture
-                        .completedFuture(new ApiHttpResponse<>(status, null, "".getBytes(StandardCharsets.UTF_8)));
+                        .completedFuture(new ApiHttpResponse<>(status, null, error.getBytes(StandardCharsets.UTF_8)));
             }
             return httpClient.execute(request);
         }
