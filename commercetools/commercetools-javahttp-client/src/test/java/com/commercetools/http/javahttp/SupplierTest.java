@@ -2,6 +2,7 @@
 package com.commercetools.http.javahttp;
 
 import io.vrap.rmf.base.client.HttpClientSupplier;
+
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

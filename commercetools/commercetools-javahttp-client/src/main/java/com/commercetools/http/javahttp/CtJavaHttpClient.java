@@ -1,14 +1,6 @@
 
 package com.commercetools.http.javahttp;
 
-import io.vrap.rmf.base.client.ApiHttpHeaders;
-import io.vrap.rmf.base.client.ApiHttpRequest;
-import io.vrap.rmf.base.client.ApiHttpResponse;
-import io.vrap.rmf.base.client.VrapHttpClient;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.input.AutoCloseInputStream;
-
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +12,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.zip.GZIPInputStream;
+
+import io.vrap.rmf.base.client.ApiHttpHeaders;
+import io.vrap.rmf.base.client.ApiHttpRequest;
+import io.vrap.rmf.base.client.ApiHttpResponse;
+import io.vrap.rmf.base.client.VrapHttpClient;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.input.AutoCloseInputStream;
 
 public class CtJavaHttpClient implements VrapHttpClient, AutoCloseable {
     private final HttpClient javaHttpClient;
@@ -47,7 +47,8 @@ public class CtJavaHttpClient implements VrapHttpClient, AutoCloseable {
 
         if (httpRequest.getBody() != null) {
             builder.method(method, HttpRequest.BodyPublishers.ofByteArray(httpRequest.getBody()));
-        } else {
+        }
+        else {
             builder.method(method, HttpRequest.BodyPublishers.noBody());
         }
         return builder.build();
@@ -61,15 +62,17 @@ public class CtJavaHttpClient implements VrapHttpClient, AutoCloseable {
 
     private static ApiHttpResponse<byte[]> toResponse(final HttpResponse<byte[]> response) {
 
-        final ApiHttpHeaders apiHttpHeaders = new ApiHttpHeaders(response.headers().map().entrySet()
+        final ApiHttpHeaders apiHttpHeaders = new ApiHttpHeaders(response.headers()
+                .map()
+                .entrySet()
                 .stream()
-                .flatMap(
-                    e -> e.getValue().stream().map(value -> ApiHttpHeaders.headerEntry(e.getKey(), value)))
+                .flatMap(e -> e.getValue().stream().map(value -> ApiHttpHeaders.headerEntry(e.getKey(), value)))
                 .collect(Collectors.toList()));
 
         final byte[] bodyNullable = Optional.ofNullable(response.body()).map((entity) -> {
             try {
-                final boolean gzipEncoded = response.headers().firstValue(ApiHttpHeaders.CONTENT_ENCODING)
+                final boolean gzipEncoded = response.headers()
+                        .firstValue(ApiHttpHeaders.CONTENT_ENCODING)
                         .map(v -> v.equalsIgnoreCase("gzip"))
                         .orElse(false);
                 final InputStream body = new ByteArrayInputStream(entity);
