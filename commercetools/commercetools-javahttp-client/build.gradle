@@ -1,0 +1,11 @@
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+
+dependencies {
+    api project(":rmf:rmf-java-base")
+    api "commons-io:commons-io" version commons.io
+
+    implementation "javax.validation:validation-api:${versions.validation}"
+}
