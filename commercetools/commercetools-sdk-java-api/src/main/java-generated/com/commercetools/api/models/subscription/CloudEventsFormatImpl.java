@@ -15,19 +15,19 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class DeliveryCloudEventsFormatImpl implements DeliveryCloudEventsFormat, ModelBase {
+public class CloudEventsFormatImpl implements CloudEventsFormat, ModelBase {
 
     private String type;
 
     private String cloudEventsVersion;
 
     @JsonCreator
-    DeliveryCloudEventsFormatImpl(@JsonProperty("cloudEventsVersion") final String cloudEventsVersion) {
+    CloudEventsFormatImpl(@JsonProperty("cloudEventsVersion") final String cloudEventsVersion) {
         this.cloudEventsVersion = cloudEventsVersion;
         this.type = CLOUD_EVENTS;
     }
 
-    public DeliveryCloudEventsFormatImpl() {
+    public CloudEventsFormatImpl() {
         this.type = CLOUD_EVENTS;
     }
 
@@ -51,7 +51,7 @@ public class DeliveryCloudEventsFormatImpl implements DeliveryCloudEventsFormat,
         if (o == null || getClass() != o.getClass())
             return false;
 
-        DeliveryCloudEventsFormatImpl that = (DeliveryCloudEventsFormatImpl) o;
+        CloudEventsFormatImpl that = (CloudEventsFormatImpl) o;
 
         return new EqualsBuilder().append(type, that.type)
                 .append(cloudEventsVersion, that.cloudEventsVersion)

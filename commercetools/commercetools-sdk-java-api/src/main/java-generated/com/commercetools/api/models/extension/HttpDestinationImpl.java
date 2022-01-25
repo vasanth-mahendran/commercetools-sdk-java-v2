@@ -15,23 +15,23 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ExtensionHttpDestinationImpl implements ExtensionHttpDestination, ModelBase {
+public class HttpDestinationImpl implements HttpDestination, ModelBase {
 
     private String type;
 
     private String url;
 
-    private com.commercetools.api.models.extension.ExtensionHttpDestinationAuthentication authentication;
+    private com.commercetools.api.models.extension.HttpDestinationAuthentication authentication;
 
     @JsonCreator
-    ExtensionHttpDestinationImpl(@JsonProperty("url") final String url,
-            @JsonProperty("authentication") final com.commercetools.api.models.extension.ExtensionHttpDestinationAuthentication authentication) {
+    HttpDestinationImpl(@JsonProperty("url") final String url,
+            @JsonProperty("authentication") final com.commercetools.api.models.extension.HttpDestinationAuthentication authentication) {
         this.url = url;
         this.authentication = authentication;
         this.type = HTTP;
     }
 
-    public ExtensionHttpDestinationImpl() {
+    public HttpDestinationImpl() {
         this.type = HTTP;
     }
 
@@ -43,7 +43,7 @@ public class ExtensionHttpDestinationImpl implements ExtensionHttpDestination, M
         return this.url;
     }
 
-    public com.commercetools.api.models.extension.ExtensionHttpDestinationAuthentication getAuthentication() {
+    public com.commercetools.api.models.extension.HttpDestinationAuthentication getAuthentication() {
         return this.authentication;
     }
 
@@ -52,7 +52,7 @@ public class ExtensionHttpDestinationImpl implements ExtensionHttpDestination, M
     }
 
     public void setAuthentication(
-            final com.commercetools.api.models.extension.ExtensionHttpDestinationAuthentication authentication) {
+            final com.commercetools.api.models.extension.HttpDestinationAuthentication authentication) {
         this.authentication = authentication;
     }
 
@@ -64,7 +64,7 @@ public class ExtensionHttpDestinationImpl implements ExtensionHttpDestination, M
         if (o == null || getClass() != o.getClass())
             return false;
 
-        ExtensionHttpDestinationImpl that = (ExtensionHttpDestinationImpl) o;
+        HttpDestinationImpl that = (HttpDestinationImpl) o;
 
         return new EqualsBuilder().append(type, that.type)
                 .append(url, that.url)

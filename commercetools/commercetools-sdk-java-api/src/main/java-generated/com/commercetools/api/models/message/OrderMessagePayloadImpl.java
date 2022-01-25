@@ -1,10 +1,11 @@
 
-package com.commercetools.api.models.subscription;
+package com.commercetools.api.models.message;
 
 import java.time.*;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.ModelBase;
@@ -14,13 +15,16 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class DeliveryPlatformFormatImpl implements DeliveryPlatformFormat, ModelBase {
+public class OrderMessagePayloadImpl implements OrderMessagePayload, ModelBase {
 
     private String type;
 
     @JsonCreator
-    DeliveryPlatformFormatImpl() {
-        this.type = PLATFORM;
+    OrderMessagePayloadImpl(@JsonProperty("type") final String type) {
+        this.type = type;
+    }
+
+    public OrderMessagePayloadImpl() {
     }
 
     public String getType() {
@@ -35,7 +39,7 @@ public class DeliveryPlatformFormatImpl implements DeliveryPlatformFormat, Model
         if (o == null || getClass() != o.getClass())
             return false;
 
-        DeliveryPlatformFormatImpl that = (DeliveryPlatformFormatImpl) o;
+        OrderMessagePayloadImpl that = (OrderMessagePayloadImpl) o;
 
         return new EqualsBuilder().append(type, that.type).isEquals();
     }

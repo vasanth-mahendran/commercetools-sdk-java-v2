@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ExtensionAWSLambdaDestinationImpl implements ExtensionAWSLambdaDestination, ModelBase {
+public class AWSLambdaDestinationImpl implements AWSLambdaDestination, ModelBase {
 
     private String type;
 
@@ -26,8 +26,7 @@ public class ExtensionAWSLambdaDestinationImpl implements ExtensionAWSLambdaDest
     private String accessSecret;
 
     @JsonCreator
-    ExtensionAWSLambdaDestinationImpl(@JsonProperty("arn") final String arn,
-            @JsonProperty("accessKey") final String accessKey,
+    AWSLambdaDestinationImpl(@JsonProperty("arn") final String arn, @JsonProperty("accessKey") final String accessKey,
             @JsonProperty("accessSecret") final String accessSecret) {
         this.arn = arn;
         this.accessKey = accessKey;
@@ -35,7 +34,7 @@ public class ExtensionAWSLambdaDestinationImpl implements ExtensionAWSLambdaDest
         this.type = AWS_LAMBDA;
     }
 
-    public ExtensionAWSLambdaDestinationImpl() {
+    public AWSLambdaDestinationImpl() {
         this.type = AWS_LAMBDA;
     }
 
@@ -75,7 +74,7 @@ public class ExtensionAWSLambdaDestinationImpl implements ExtensionAWSLambdaDest
         if (o == null || getClass() != o.getClass())
             return false;
 
-        ExtensionAWSLambdaDestinationImpl that = (ExtensionAWSLambdaDestinationImpl) o;
+        AWSLambdaDestinationImpl that = (AWSLambdaDestinationImpl) o;
 
         return new EqualsBuilder().append(type, that.type)
                 .append(arn, that.arn)

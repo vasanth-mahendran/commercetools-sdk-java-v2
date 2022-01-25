@@ -15,20 +15,19 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ExtensionAuthorizationHeaderAuthenticationImpl
-        implements ExtensionAuthorizationHeaderAuthentication, ModelBase {
+public class AuthorizationHeaderAuthenticationImpl implements AuthorizationHeaderAuthentication, ModelBase {
 
     private String type;
 
     private String headerValue;
 
     @JsonCreator
-    ExtensionAuthorizationHeaderAuthenticationImpl(@JsonProperty("headerValue") final String headerValue) {
+    AuthorizationHeaderAuthenticationImpl(@JsonProperty("headerValue") final String headerValue) {
         this.headerValue = headerValue;
         this.type = AUTHORIZATION_HEADER;
     }
 
-    public ExtensionAuthorizationHeaderAuthenticationImpl() {
+    public AuthorizationHeaderAuthenticationImpl() {
         this.type = AUTHORIZATION_HEADER;
     }
 
@@ -52,7 +51,7 @@ public class ExtensionAuthorizationHeaderAuthenticationImpl
         if (o == null || getClass() != o.getClass())
             return false;
 
-        ExtensionAuthorizationHeaderAuthenticationImpl that = (ExtensionAuthorizationHeaderAuthenticationImpl) o;
+        AuthorizationHeaderAuthenticationImpl that = (AuthorizationHeaderAuthenticationImpl) o;
 
         return new EqualsBuilder().append(type, that.type).append(headerValue, that.headerValue).isEquals();
     }

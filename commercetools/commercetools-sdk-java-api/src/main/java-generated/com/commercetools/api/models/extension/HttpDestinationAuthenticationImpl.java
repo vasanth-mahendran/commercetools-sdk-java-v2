@@ -15,16 +15,16 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ExtensionHttpDestinationAuthenticationImpl implements ExtensionHttpDestinationAuthentication, ModelBase {
+public class HttpDestinationAuthenticationImpl implements HttpDestinationAuthentication, ModelBase {
 
     private String type;
 
     @JsonCreator
-    ExtensionHttpDestinationAuthenticationImpl(@JsonProperty("type") final String type) {
+    HttpDestinationAuthenticationImpl(@JsonProperty("type") final String type) {
         this.type = type;
     }
 
-    public ExtensionHttpDestinationAuthenticationImpl() {
+    public HttpDestinationAuthenticationImpl() {
     }
 
     public String getType() {
@@ -39,7 +39,7 @@ public class ExtensionHttpDestinationAuthenticationImpl implements ExtensionHttp
         if (o == null || getClass() != o.getClass())
             return false;
 
-        ExtensionHttpDestinationAuthenticationImpl that = (ExtensionHttpDestinationAuthenticationImpl) o;
+        HttpDestinationAuthenticationImpl that = (HttpDestinationAuthenticationImpl) o;
 
         return new EqualsBuilder().append(type, that.type).isEquals();
     }

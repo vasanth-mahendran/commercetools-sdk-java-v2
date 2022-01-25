@@ -15,19 +15,19 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ExtensionAzureFunctionsAuthenticationImpl implements ExtensionAzureFunctionsAuthentication, ModelBase {
+public class AzureFunctionsAuthenticationImpl implements AzureFunctionsAuthentication, ModelBase {
 
     private String type;
 
     private String key;
 
     @JsonCreator
-    ExtensionAzureFunctionsAuthenticationImpl(@JsonProperty("key") final String key) {
+    AzureFunctionsAuthenticationImpl(@JsonProperty("key") final String key) {
         this.key = key;
         this.type = AZURE_FUNCTIONS;
     }
 
-    public ExtensionAzureFunctionsAuthenticationImpl() {
+    public AzureFunctionsAuthenticationImpl() {
         this.type = AZURE_FUNCTIONS;
     }
 
@@ -51,7 +51,7 @@ public class ExtensionAzureFunctionsAuthenticationImpl implements ExtensionAzure
         if (o == null || getClass() != o.getClass())
             return false;
 
-        ExtensionAzureFunctionsAuthenticationImpl that = (ExtensionAzureFunctionsAuthenticationImpl) o;
+        AzureFunctionsAuthenticationImpl that = (AzureFunctionsAuthenticationImpl) o;
 
         return new EqualsBuilder().append(type, that.type).append(key, that.key).isEquals();
     }

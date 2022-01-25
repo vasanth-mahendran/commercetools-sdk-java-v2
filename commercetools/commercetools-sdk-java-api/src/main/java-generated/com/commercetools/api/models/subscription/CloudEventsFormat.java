@@ -13,8 +13,8 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-@JsonDeserialize(as = DeliveryCloudEventsFormatImpl.class)
-public interface DeliveryCloudEventsFormat extends DeliveryFormat {
+@JsonDeserialize(as = CloudEventsFormatImpl.class)
+public interface CloudEventsFormat extends DeliveryFormat {
 
     String CLOUD_EVENTS = "CloudEvents";
 
@@ -24,25 +24,25 @@ public interface DeliveryCloudEventsFormat extends DeliveryFormat {
 
     public void setCloudEventsVersion(final String cloudEventsVersion);
 
-    public static DeliveryCloudEventsFormat of() {
-        return new DeliveryCloudEventsFormatImpl();
+    public static CloudEventsFormat of() {
+        return new CloudEventsFormatImpl();
     }
 
-    public static DeliveryCloudEventsFormat of(final DeliveryCloudEventsFormat template) {
-        DeliveryCloudEventsFormatImpl instance = new DeliveryCloudEventsFormatImpl();
+    public static CloudEventsFormat of(final CloudEventsFormat template) {
+        CloudEventsFormatImpl instance = new CloudEventsFormatImpl();
         instance.setCloudEventsVersion(template.getCloudEventsVersion());
         return instance;
     }
 
-    public static DeliveryCloudEventsFormatBuilder builder() {
-        return DeliveryCloudEventsFormatBuilder.of();
+    public static CloudEventsFormatBuilder builder() {
+        return CloudEventsFormatBuilder.of();
     }
 
-    public static DeliveryCloudEventsFormatBuilder builder(final DeliveryCloudEventsFormat template) {
-        return DeliveryCloudEventsFormatBuilder.of(template);
+    public static CloudEventsFormatBuilder builder(final CloudEventsFormat template) {
+        return CloudEventsFormatBuilder.of(template);
     }
 
-    default <T> T withDeliveryCloudEventsFormat(Function<DeliveryCloudEventsFormat, T> helper) {
+    default <T> T withCloudEventsFormat(Function<CloudEventsFormat, T> helper) {
         return helper.apply(this);
     }
 }

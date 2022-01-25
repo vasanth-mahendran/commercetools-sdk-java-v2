@@ -13,8 +13,8 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-@JsonDeserialize(as = ExtensionAWSLambdaDestinationImpl.class)
-public interface ExtensionAWSLambdaDestination extends ExtensionDestination {
+@JsonDeserialize(as = AWSLambdaDestinationImpl.class)
+public interface AWSLambdaDestination extends ExtensionDestination {
 
     String AWS_LAMBDA = "AWSLambda";
 
@@ -36,27 +36,27 @@ public interface ExtensionAWSLambdaDestination extends ExtensionDestination {
 
     public void setAccessSecret(final String accessSecret);
 
-    public static ExtensionAWSLambdaDestination of() {
-        return new ExtensionAWSLambdaDestinationImpl();
+    public static AWSLambdaDestination of() {
+        return new AWSLambdaDestinationImpl();
     }
 
-    public static ExtensionAWSLambdaDestination of(final ExtensionAWSLambdaDestination template) {
-        ExtensionAWSLambdaDestinationImpl instance = new ExtensionAWSLambdaDestinationImpl();
+    public static AWSLambdaDestination of(final AWSLambdaDestination template) {
+        AWSLambdaDestinationImpl instance = new AWSLambdaDestinationImpl();
         instance.setArn(template.getArn());
         instance.setAccessKey(template.getAccessKey());
         instance.setAccessSecret(template.getAccessSecret());
         return instance;
     }
 
-    public static ExtensionAWSLambdaDestinationBuilder builder() {
-        return ExtensionAWSLambdaDestinationBuilder.of();
+    public static AWSLambdaDestinationBuilder builder() {
+        return AWSLambdaDestinationBuilder.of();
     }
 
-    public static ExtensionAWSLambdaDestinationBuilder builder(final ExtensionAWSLambdaDestination template) {
-        return ExtensionAWSLambdaDestinationBuilder.of(template);
+    public static AWSLambdaDestinationBuilder builder(final AWSLambdaDestination template) {
+        return AWSLambdaDestinationBuilder.of(template);
     }
 
-    default <T> T withExtensionAWSLambdaDestination(Function<ExtensionAWSLambdaDestination, T> helper) {
+    default <T> T withAWSLambdaDestination(Function<AWSLambdaDestination, T> helper) {
         return helper.apply(this);
     }
 }
