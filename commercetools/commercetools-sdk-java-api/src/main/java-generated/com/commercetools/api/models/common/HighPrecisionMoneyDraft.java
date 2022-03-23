@@ -21,14 +21,16 @@ public interface HighPrecisionMoneyDraft extends TypedMoneyDraft {
 
     String HIGH_PRECISION = "highPrecision";
 
-    /**
-    *  <p>amount in 1 / (10 ^ <code>fractionDigits</code>) of a currency.</p>
-    */
     @NotNull
     @JsonProperty("preciseAmount")
     public Long getPreciseAmount();
 
+    @JsonProperty("centAmount")
+    public Long getCentAmount();
+
     public void setPreciseAmount(final Long preciseAmount);
+
+    public void setCentAmount(final Long centAmount);
 
     public static HighPrecisionMoneyDraft of() {
         return new HighPrecisionMoneyDraftImpl();
