@@ -245,3 +245,59 @@ types:
       public default com.commercetools.api.models.common.Reference toReference() {
           return com.commercetools.api.models.zone.ZoneReference.builder().id(getId()).build();
       }
+  Update:
+    (java-extends): 'com.commercetools.api.models.ResourceUpdate<Update, UpdateAction, UpdateBuilder>'
+  UpdateAction:
+    (java-extends): 'com.commercetools.api.models.ResourceUpdateAction<UpdateAction>'
+  PagedQueryResponse:
+    (java-extends): 'com.commercetools.api.models.ResourcePagedQueryResponse<BaseResource>'
+  ApiClientPagedQueryResponse:
+    (java-extends): 'com.commercetools.api.models.ResourcePagedQueryResponse<ApiClient>'
+  CartPagedQueryResponse:
+    (java-extends): 'com.commercetools.api.models.ResourcePagedQueryResponse<Cart>'
+  CartDraft:
+    (java-extends): 'com.commercetools.api.models.CustomizableDraft<CartDraft>'
+  CartReference:
+    (java-extends): com.commercetools.api.models.Identifiable<Cart>
+  CartResourceIdentifier:
+    (java-extends): com.commercetools.api.models.Identifiable<Cart>
+  CartUpdate:
+    (java-extends): 'com.commercetools.api.models.ResourceUpdate<CartUpdate, CartUpdateAction, CartUpdateBuilder>'
+  CartUpdateAction:
+    (java-extends): 'com.commercetools.api.models.ResourceUpdateAction<CartUpdateAction>'
+  CustomLineItem:
+    (java-extends): 'com.commercetools.api.models.Customizable<CustomLineItem>'
+  CustomLineItemDraft:
+    (java-extends): 'com.commercetools.api.models.CustomizableDraft<CustomLineItemDraft>'
+  LineItem:
+    (java-extends): 'com.commercetools.api.models.Customizable<LineItem>'
+  LineItemDraft:
+    (java-extends): 'com.commercetools.api.models.CustomizableDraft<LineItemDraft>'
+  CartDiscountDraft:
+    (java-extends): 'com.commercetools.api.models.CustomizableDraft<CartDiscountDraft>'
+  CartDiscountPagedQueryResponse:
+    (java-extends): 'com.commercetools.api.models.ResourcePagedQueryResponse<CartDiscount>'
+  CartDiscountReference:
+    (java-extends): com.commercetools.api.models.Identifiable<CartDiscount>
+  CartDiscountResourceIdentifier:
+    (java-extends): com.commercetools.api.models.Identifiable<CartDiscount>
+  CartDiscountUpdateAction:
+    (java-extends): 'com.commercetools.api.models.ResourceUpdateAction<CartDiscountUpdateAction>'
+
+  CartAddCustomLineItemAction:
+    (java-extends): 'com.commercetools.api.models.CustomizableDraft<CartAddCustomLineItemAction>'
+  CartAddLineItemAction:
+    (java-extends): 'com.commercetools.api.models.CustomizableDraft<CartAddLineItemAction>'
+  CategoryDraft:
+    (java-extends): 'com.commercetools.api.models.CustomizableDraft<CategoryDraft>'
+  CategoryPagedQueryResponse:
+    (java-extends): 'com.commercetools.api.models.ResourcePagedQueryResponse<Category>'
+  CategoryReference:
+    (java-extends): com.commercetools.api.models.Identifiable<Category>
+  CategoryResourceIdentifier:
+    (java-extends): com.commercetools.api.models.Identifiable<Category>
+  CategoryUpdate:
+    (java-extends): 'com.commercetools.api.models.ResourceUpdate<CategoryUpdate, CategoryUpdateAction, CategoryUpdateBuilder>'
+  CategoryUpdateAction:
+    (java-extends): 'com.commercetools.api.models.ResourceUpdateAction<CategoryUpdateAction>'
+
