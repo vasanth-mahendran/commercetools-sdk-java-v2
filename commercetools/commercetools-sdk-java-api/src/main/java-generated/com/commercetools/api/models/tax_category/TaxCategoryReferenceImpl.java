@@ -39,19 +39,22 @@ public class TaxCategoryReferenceImpl implements TaxCategoryReference, ModelBase
         this.typeId = ReferenceTypeId.findEnum("tax-category");
     }
 
+    /**
+    *  <p>Type of referenced resource.</p>
+    */
     public com.commercetools.api.models.common.ReferenceTypeId getTypeId() {
         return this.typeId;
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:TaxCategory">TaxCategory</a>.</p>
+    *  <p>Unique ID of the referenced <a href="ctp:api:type:TaxCategory">TaxCategory</a>.</p>
     */
     public String getId() {
         return this.id;
     }
 
     /**
-    *  <p>Contains the representation of the expanded TaxCategory. Only present in responses to requests with <a href="/../api/general-concepts#reference-expansion">Reference Expansion</a> for TaxCategories.</p>
+    *  <p>Contains the representation of the expanded TaxCategory. Only present in responses to requests with <a href="/../api/general-concepts#reference-expansion">Reference Expansion</a> for TaxCategory.</p>
     */
     public com.commercetools.api.models.tax_category.TaxCategory getObj() {
         return this.obj;

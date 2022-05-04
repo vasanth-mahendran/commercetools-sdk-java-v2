@@ -15,9 +15,6 @@ import io.vrap.rmf.base.client.utils.Generated;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-/**
-*  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Review">Review</a>.</p>
-*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ReviewReferenceImpl implements ReviewReference, ModelBase {
 
@@ -39,20 +36,20 @@ public class ReviewReferenceImpl implements ReviewReference, ModelBase {
         this.typeId = ReferenceTypeId.findEnum("review");
     }
 
+    /**
+    *  <p>Type of referenced resource.</p>
+    */
     public com.commercetools.api.models.common.ReferenceTypeId getTypeId() {
         return this.typeId;
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:Review">Review</a>.</p>
+    *  <p>Unique ID of the referenced resource.</p>
     */
     public String getId() {
         return this.id;
     }
 
-    /**
-    *  <p>Contains the representation of the expanded Review. Only present in responses to requests with <a href="/../api/general-concepts#reference-expansion">Reference Expansion</a> for Reviews.</p>
-    */
     public com.commercetools.api.models.review.Review getObj() {
         return this.obj;
     }

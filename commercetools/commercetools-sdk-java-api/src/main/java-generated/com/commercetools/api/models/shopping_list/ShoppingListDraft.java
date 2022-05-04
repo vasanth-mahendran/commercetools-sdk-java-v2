@@ -44,7 +44,7 @@ public interface ShoppingListDraft {
     public LocalizedString getDescription();
 
     /**
-    *  <p>User-defined unique identifier for the ShoppingList.</p>
+    *  <p>User-specific unique identifier for the shopping list.</p>
     */
 
     @JsonProperty("key")

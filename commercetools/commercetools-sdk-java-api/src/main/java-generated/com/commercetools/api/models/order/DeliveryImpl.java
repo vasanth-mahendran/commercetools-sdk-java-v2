@@ -47,9 +47,6 @@ public class DeliveryImpl implements Delivery, ModelBase {
     public DeliveryImpl() {
     }
 
-    /**
-    *  <p>Platform-generated unique identifier of the Delivery.</p>
-    */
     public String getId() {
         return this.id;
     }

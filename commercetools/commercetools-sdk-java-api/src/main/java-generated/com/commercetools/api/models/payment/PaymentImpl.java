@@ -86,9 +86,6 @@ public class PaymentImpl implements Payment, ModelBase {
     public PaymentImpl() {
     }
 
-    /**
-    *  <p>Platform-generated unique identifier of the Payment.</p>
-    */
     public String getId() {
         return this.id;
     }
@@ -180,7 +177,8 @@ public class PaymentImpl implements Payment, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the Payment.</p>
+    *  <p>User-specific unique identifier for the payment (max.
+    *  256 characters).</p>
     */
     public String getKey() {
         return this.key;

@@ -68,7 +68,7 @@ public class ReviewDraftImpl implements ReviewDraft, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier for the Review.</p>
+    *  <p>User-specific unique identifier for the review.</p>
     */
     public String getKey() {
         return this.key;

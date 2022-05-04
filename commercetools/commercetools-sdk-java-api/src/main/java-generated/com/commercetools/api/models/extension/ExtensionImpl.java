@@ -63,7 +63,7 @@ public class ExtensionImpl implements Extension, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the Extension.</p>
+    *  <p>Unique ID of the Extension.</p>
     */
     public String getId() {
         return this.id;
@@ -105,7 +105,8 @@ public class ExtensionImpl implements Extension, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the Extension.</p>
+    *  <p>User-defined unique identifier for the Extension.
+    *  Keys can only contain alphanumeric characters, underscores, and hyphens.</p>
     */
     public String getKey() {
         return this.key;

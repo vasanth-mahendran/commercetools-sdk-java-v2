@@ -23,9 +23,6 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface MyPayment extends com.commercetools.api.models.DomainResource<MyPayment>,
         com.commercetools.api.models.Customizable<MyPayment> {
 
-    /**
-    *  <p>Platform-generated unique identifier of the MyPayment.</p>
-    */
     @NotNull
     @JsonProperty("id")
     public String getId();

@@ -16,9 +16,6 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = CustomerCreateEmailTokenImpl.class)
 public interface CustomerCreateEmailToken {
 
-    /**
-    *  <p>Platform-generated unique identifier of the email token.</p>
-    */
     @NotNull
     @JsonProperty("id")
     public String getId();

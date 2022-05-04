@@ -71,7 +71,7 @@ public class ProductImpl implements Product, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the Product.</p>
+    *  <p>The unique ID of the product.</p>
     */
     public String getId() {
         return this.id;
@@ -107,8 +107,8 @@ public class ProductImpl implements Product, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the Product.
-    *  <em>Product keys are different from ProductVariant keys.</em></p>
+    *  <p>User-specific unique identifier for the product.
+    *  <em>Product keys are different from product variant keys.</em></p>
     */
     public String getKey() {
         return this.key;

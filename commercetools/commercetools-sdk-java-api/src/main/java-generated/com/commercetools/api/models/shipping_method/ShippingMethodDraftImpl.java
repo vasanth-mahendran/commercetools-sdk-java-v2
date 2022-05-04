@@ -61,9 +61,6 @@ public class ShippingMethodDraftImpl implements ShippingMethodDraft, ModelBase {
     public ShippingMethodDraftImpl() {
     }
 
-    /**
-    *  <p>User-defined unique identifier for the ShippingMethod.</p>
-    */
     public String getKey() {
         return this.key;
     }

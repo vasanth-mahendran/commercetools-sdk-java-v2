@@ -70,9 +70,6 @@ public class SubscriptionImpl implements Subscription, ModelBase {
     public SubscriptionImpl() {
     }
 
-    /**
-    *  <p>Platform-generated unique identifier of the Subscription.</p>
-    */
     public String getId() {
         return this.id;
     }
@@ -111,9 +108,6 @@ public class SubscriptionImpl implements Subscription, ModelBase {
         return this.destination;
     }
 
-    /**
-    *  <p>User-defined unique identifier of the Subscription.</p>
-    */
     public String getKey() {
         return this.key;
     }

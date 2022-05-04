@@ -16,9 +16,6 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = DeliveryItemImpl.class)
 public interface DeliveryItem {
 
-    /**
-    *  <p>Platform-generated unique identifier of the DeliveryItem.</p>
-    */
     @NotNull
     @JsonProperty("id")
     public String getId();

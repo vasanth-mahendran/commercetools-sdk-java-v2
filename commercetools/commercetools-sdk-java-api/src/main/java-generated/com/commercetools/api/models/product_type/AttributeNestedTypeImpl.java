@@ -36,9 +36,6 @@ public class AttributeNestedTypeImpl implements AttributeNestedType, ModelBase {
         return this.name;
     }
 
-    /**
-    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:ProductType">ProductType</a>.</p>
-    */
     public com.commercetools.api.models.product_type.ProductTypeReference getTypeReference() {
         return this.typeReference;
     }

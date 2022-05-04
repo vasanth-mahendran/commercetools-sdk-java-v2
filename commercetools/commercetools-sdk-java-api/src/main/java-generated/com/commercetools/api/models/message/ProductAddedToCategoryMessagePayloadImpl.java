@@ -40,9 +40,6 @@ public class ProductAddedToCategoryMessagePayloadImpl implements ProductAddedToC
         return this.type;
     }
 
-    /**
-    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Category">Category</a>.</p>
-    */
     public com.commercetools.api.models.category.CategoryReference getCategory() {
         return this.category;
     }

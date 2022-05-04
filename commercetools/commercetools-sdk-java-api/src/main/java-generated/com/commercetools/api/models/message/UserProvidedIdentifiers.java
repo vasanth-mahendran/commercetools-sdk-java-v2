@@ -17,10 +17,6 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = UserProvidedIdentifiersImpl.class)
 public interface UserProvidedIdentifiers {
 
-    /**
-    *  <p>User-provided unique identifier of the resource.</p>
-    */
-
     @JsonProperty("key")
     public String getKey();
 
@@ -36,6 +32,9 @@ public interface UserProvidedIdentifiers {
     @JsonProperty("sku")
     public String getSku();
 
+    /**
+    *  <p>JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values are the corresponding strings used for that language.</p>
+    */
     @Valid
     @JsonProperty("slug")
     public LocalizedString getSlug();

@@ -102,7 +102,7 @@ public class DiscountCodeImpl implements DiscountCode, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the DiscountCode.</p>
+    *  <p>The unique ID of the discount code.</p>
     */
     public String getId() {
         return this.id;
@@ -143,8 +143,9 @@ public class DiscountCodeImpl implements DiscountCode, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the DiscountCode.
-    *  It is <a href="/../api/projects/carts#add-discountcode">added to a Cart</a> to enable the related CartDiscounts in that Cart.</p>
+    *  <p>Unique identifier of this discount code.
+    *  This value is added to the cart
+    *  to enable the related cart discounts in the cart.</p>
     */
     public String getCode() {
         return this.code;

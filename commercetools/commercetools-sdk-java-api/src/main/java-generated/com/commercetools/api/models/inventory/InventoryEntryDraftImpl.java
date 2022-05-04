@@ -55,7 +55,8 @@ public class InventoryEntryDraftImpl implements InventoryEntryDraft, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier for the InventoryEntry.</p>
+    *  <p>User-defined unique identifier for the InventoryEntry.
+    *  Keys can only contain alphanumeric characters, underscores, and hyphens.</p>
     */
     public String getKey() {
         return this.key;

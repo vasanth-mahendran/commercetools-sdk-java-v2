@@ -63,7 +63,7 @@ public class TextLineItemImpl implements TextLineItem, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the TextLineItem.</p>
+    *  <p>The unique ID of this TextLineItem.</p>
     */
     public String getId() {
         return this.id;

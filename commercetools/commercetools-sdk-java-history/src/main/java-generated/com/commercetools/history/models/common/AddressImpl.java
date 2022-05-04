@@ -113,6 +113,9 @@ public class AddressImpl implements Address, ModelBase {
     public AddressImpl() {
     }
 
+    /**
+    *  <p>Unique ID of the Address.</p>
+    */
     public String getId() {
         return this.id;
     }

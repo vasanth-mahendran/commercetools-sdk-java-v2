@@ -60,7 +60,7 @@ public class OrderFromCartDraftImpl implements OrderFromCartDraft, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the Cart from which you can create an Order.</p>
+    *  <p>The unique id of the cart from which an order is created.</p>
     */
     @Deprecated
     public String getId() {

@@ -82,13 +82,13 @@ public class ShoppingListLineItemImpl implements ShoppingListLineItem, ModelBase
         return this.deactivatedAt;
     }
 
-    /**
-    *  <p>Platform-generated unique identifier of the ShoppingListLineItem.</p>
-    */
     public String getId() {
         return this.id;
     }
 
+    /**
+    *  <p>JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values are the corresponding strings used for that language.</p>
+    */
     public com.commercetools.api.models.common.LocalizedString getName() {
         return this.name;
     }
@@ -97,13 +97,13 @@ public class ShoppingListLineItemImpl implements ShoppingListLineItem, ModelBase
         return this.productId;
     }
 
+    /**
+    *  <p>JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values are the corresponding strings used for that language.</p>
+    */
     public com.commercetools.api.models.common.LocalizedString getProductSlug() {
         return this.productSlug;
     }
 
-    /**
-    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:ProductType">ProductType</a>.</p>
-    */
     public com.commercetools.api.models.product_type.ProductTypeReference getProductType() {
         return this.productType;
     }

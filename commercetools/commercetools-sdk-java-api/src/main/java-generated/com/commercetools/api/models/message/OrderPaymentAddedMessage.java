@@ -20,9 +20,6 @@ public interface OrderPaymentAddedMessage extends Message {
 
     String ORDER_PAYMENT_ADDED = "OrderPaymentAdded";
 
-    /**
-    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Payment">Payment</a>.</p>
-    */
     @NotNull
     @Valid
     @JsonProperty("payment")

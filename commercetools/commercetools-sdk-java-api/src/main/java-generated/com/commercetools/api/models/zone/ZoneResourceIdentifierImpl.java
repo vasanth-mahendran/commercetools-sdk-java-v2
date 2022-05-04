@@ -38,19 +38,22 @@ public class ZoneResourceIdentifierImpl implements ZoneResourceIdentifier, Model
         this.typeId = ReferenceTypeId.findEnum("zone");
     }
 
+    /**
+    *  <p>Type of referenced resource. If given, it must match the expected <a href="#referencetypeid">ReferenceTypeId</a> of the referenced resource.</p>
+    */
     public com.commercetools.api.models.common.ReferenceTypeId getTypeId() {
         return this.typeId;
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:Zone">Zone</a>. Either <code>id</code> or <code>key</code> is required.</p>
+    *  <p>Unique ID of the referenced <a href="ctp:api:type:Zone">Zone</a>. Either <code>id</code> or <code>key</code> is required.</p>
     */
     public String getId() {
         return this.id;
     }
 
     /**
-    *  <p>User-defined unique identifier of the referenced <a href="ctp:api:type:Zone">Zone</a>. Either <code>id</code> or <code>key</code> is required.</p>
+    *  <p>Unique key of the referenced <a href="ctp:api:type:Zone">Zone</a>. Either <code>id</code> or <code>key</code> is required.</p>
     */
     public String getKey() {
         return this.key;

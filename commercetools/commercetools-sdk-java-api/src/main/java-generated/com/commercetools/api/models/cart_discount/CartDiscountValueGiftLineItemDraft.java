@@ -21,9 +21,6 @@ public interface CartDiscountValueGiftLineItemDraft extends CartDiscountValueDra
 
     String GIFT_LINE_ITEM = "giftLineItem";
 
-    /**
-    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Product">Product</a>.</p>
-    */
     @NotNull
     @Valid
     @JsonProperty("product")

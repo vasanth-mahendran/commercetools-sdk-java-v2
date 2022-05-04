@@ -62,7 +62,7 @@ public class ProductTypeImpl implements ProductType, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier for the ProductType.</p>
+    *  <p>The unique ID of the product type.</p>
     */
     public String getId() {
         return this.id;
@@ -98,7 +98,8 @@ public class ProductTypeImpl implements ProductType, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the ProductType.</p>
+    *  <p>User-specific unique identifier for the product type (max.
+    *  256 characters).</p>
     */
     public String getKey() {
         return this.key;

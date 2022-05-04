@@ -41,9 +41,6 @@ public class InventoryPagedQueryResponseImpl implements InventoryPagedQueryRespo
     public InventoryPagedQueryResponseImpl() {
     }
 
-    /**
-    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
-    */
     public Long getLimit() {
         return this.limit;
     }

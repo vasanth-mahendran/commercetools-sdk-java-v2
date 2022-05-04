@@ -25,7 +25,8 @@ public interface InventoryEntryDraft extends com.commercetools.api.models.Custom
     public String getSku();
 
     /**
-    *  <p>User-defined unique identifier for the InventoryEntry.</p>
+    *  <p>User-defined unique identifier for the InventoryEntry.
+    *  Keys can only contain alphanumeric characters, underscores, and hyphens.</p>
     */
 
     @JsonProperty("key")

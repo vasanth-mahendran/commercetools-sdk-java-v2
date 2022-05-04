@@ -42,14 +42,14 @@ public interface ScopedPrice extends com.commercetools.api.models.Customizable<S
     public TypedMoney getCurrentValue();
 
     /**
-    *  <p>A two-digit country code as per <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</p>
+    *  <p>Two-digit country code as per <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</p>
     */
 
     @JsonProperty("country")
     public String getCountry();
 
     /**
-    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     @Valid
     @JsonProperty("customerGroup")

@@ -186,7 +186,7 @@ public class OrderImpl implements Order, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the Order.</p>
+    *  <p>The unique ID of the order.</p>
     */
     public String getId() {
         return this.id;

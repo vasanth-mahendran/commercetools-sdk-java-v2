@@ -138,7 +138,7 @@ public class CustomerImpl implements Customer, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the Customer.</p>
+    *  <p>The unique ID of the customer.</p>
     */
     public String getId() {
         return this.id;
@@ -286,7 +286,9 @@ public class CustomerImpl implements Customer, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the Customer.</p>
+    *  <p>User-specific unique identifier for a customer.
+    *  Must be unique across a project.
+    *  The field can be reset using the Set Key UpdateAction</p>
     */
     public String getKey() {
         return this.key;

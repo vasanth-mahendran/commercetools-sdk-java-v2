@@ -30,9 +30,6 @@ public interface CustomerSignin {
     @JsonProperty("anonymousCartId")
     public String getAnonymousCartId();
 
-    /**
-    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Cart">Cart</a>.</p>
-    */
     @Valid
     @JsonProperty("anonymousCart")
     public CartResourceIdentifier getAnonymousCart();

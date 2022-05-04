@@ -31,7 +31,7 @@ public class MyOrderFromCartDraftImpl implements MyOrderFromCartDraft, ModelBase
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the Cart from which the Platform creates an Order.</p>
+    *  <p>The unique ID of the cart from which an order is created.</p>
     */
     public String getId() {
         return this.id;

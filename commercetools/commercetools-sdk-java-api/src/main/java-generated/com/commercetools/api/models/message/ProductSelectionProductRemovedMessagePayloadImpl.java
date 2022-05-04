@@ -37,9 +37,6 @@ public class ProductSelectionProductRemovedMessagePayloadImpl
         return this.type;
     }
 
-    /**
-    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Product">Product</a>.</p>
-    */
     public com.commercetools.api.models.product.ProductReference getProduct() {
         return this.product;
     }

@@ -86,7 +86,7 @@ public class ProductDiscountImpl implements ProductDiscount, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the ProductDiscount</p>
+    *  <p>The unique ID of the product discount</p>
     */
     public String getId() {
         return this.id;
@@ -126,7 +126,8 @@ public class ProductDiscountImpl implements ProductDiscount, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the ProductDiscount.</p>
+    *  <p>User-specific unique identifier for a product discount.
+    *  Must be unique across a project.</p>
     */
     public String getKey() {
         return this.key;

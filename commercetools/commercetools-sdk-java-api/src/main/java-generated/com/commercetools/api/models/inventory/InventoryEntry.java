@@ -25,7 +25,7 @@ public interface InventoryEntry extends BaseResource, com.commercetools.api.mode
         com.commercetools.api.models.Customizable<InventoryEntry> {
 
     /**
-    *  <p>Platform-generated unique identifier of the InventoryEntry.</p>
+    *  <p>The unique ID of the inventory entry.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -58,7 +58,8 @@ public interface InventoryEntry extends BaseResource, com.commercetools.api.mode
     public CreatedBy getCreatedBy();
 
     /**
-    *  <p>User-defined unique identifier of the InventoryEntry.</p>
+    *  <p>User-defined unique identifier for the InventoryEntry.
+    *  Keys can only contain alphanumeric characters, underscores, and hyphens.</p>
     */
 
     @JsonProperty("key")

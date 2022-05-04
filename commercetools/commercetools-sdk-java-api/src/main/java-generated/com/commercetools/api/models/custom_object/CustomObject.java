@@ -22,9 +22,6 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface CustomObject extends BaseResource, com.commercetools.api.models.DomainResource<CustomObject>,
         com.commercetools.api.models.Referencable<CustomObject> {
 
-    /**
-    *  <p>Platform-generated unique identifier of the CustomObject.</p>
-    */
     @NotNull
     @JsonProperty("id")
     public String getId();
@@ -62,9 +59,6 @@ public interface CustomObject extends BaseResource, com.commercetools.api.models
     @JsonProperty("container")
     public String getContainer();
 
-    /**
-    *  <p>User-defined unique identifier of the CustomObject.</p>
-    */
     @NotNull
     @JsonProperty("key")
     public String getKey();

@@ -16,7 +16,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+*  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class CustomerGroupReferenceImpl implements CustomerGroupReference, ModelBase {
@@ -39,12 +39,15 @@ public class CustomerGroupReferenceImpl implements CustomerGroupReference, Model
         this.typeId = ReferenceTypeId.findEnum("customer-group");
     }
 
+    /**
+    *  <p>Type of referenced resource.</p>
+    */
     public com.commercetools.api.models.common.ReferenceTypeId getTypeId() {
         return this.typeId;
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p>Unique ID of the referenced <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     public String getId() {
         return this.id;

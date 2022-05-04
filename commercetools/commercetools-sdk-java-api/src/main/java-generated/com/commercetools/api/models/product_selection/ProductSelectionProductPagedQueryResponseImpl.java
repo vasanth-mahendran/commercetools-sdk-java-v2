@@ -47,7 +47,7 @@ public class ProductSelectionProductPagedQueryResponseImpl
     }
 
     /**
-    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
+    *  <p>Number of results requested in the query request.</p>
     */
     public Long getLimit() {
         return this.limit;

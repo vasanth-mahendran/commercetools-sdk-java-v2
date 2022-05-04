@@ -30,7 +30,7 @@ public interface CartDraft extends com.commercetools.api.models.CustomizableDraf
     public String getCurrency();
 
     /**
-    *  <p>User-defined unique identifier for the Cart.</p>
+    *  <p>User-specific unique identifier of the cart.</p>
     */
 
     @JsonProperty("key")

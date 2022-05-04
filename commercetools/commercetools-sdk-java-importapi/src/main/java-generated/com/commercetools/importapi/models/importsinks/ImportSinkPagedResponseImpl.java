@@ -46,7 +46,7 @@ public class ImportSinkPagedResponseImpl implements ImportSinkPagedResponse, Mod
     }
 
     /**
-    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
+    *  <p>The number of results requested in the query request.</p>
     */
     public Integer getLimit() {
         return this.limit;

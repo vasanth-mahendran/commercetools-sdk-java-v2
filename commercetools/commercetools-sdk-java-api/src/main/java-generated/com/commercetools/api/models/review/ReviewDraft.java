@@ -22,7 +22,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface ReviewDraft extends com.commercetools.api.models.CustomizableDraft<ReviewDraft> {
 
     /**
-    *  <p>User-defined unique identifier for the Review.</p>
+    *  <p>User-specific unique identifier for the review.</p>
     */
 
     @JsonProperty("key")

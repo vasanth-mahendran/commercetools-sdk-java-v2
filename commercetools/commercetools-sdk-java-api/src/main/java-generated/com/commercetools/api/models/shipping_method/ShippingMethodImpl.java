@@ -85,7 +85,7 @@ public class ShippingMethodImpl implements ShippingMethod, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the ShippingMethod.</p>
+    *  <p>The unique ID of the shipping method.</p>
     */
     public String getId() {
         return this.id;
@@ -121,7 +121,7 @@ public class ShippingMethodImpl implements ShippingMethod, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the ShippingMethod.</p>
+    *  <p>User-specific unique identifier for the shipping method</p>
     */
     public String getKey() {
         return this.key;

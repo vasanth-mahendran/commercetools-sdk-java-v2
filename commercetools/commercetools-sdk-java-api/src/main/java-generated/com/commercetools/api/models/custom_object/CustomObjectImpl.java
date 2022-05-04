@@ -57,9 +57,6 @@ public class CustomObjectImpl implements CustomObject, ModelBase {
     public CustomObjectImpl() {
     }
 
-    /**
-    *  <p>Platform-generated unique identifier of the CustomObject.</p>
-    */
     public String getId() {
         return this.id;
     }
@@ -97,9 +94,6 @@ public class CustomObjectImpl implements CustomObject, ModelBase {
         return this.container;
     }
 
-    /**
-    *  <p>User-defined unique identifier of the CustomObject.</p>
-    */
     public String getKey() {
         return this.key;
     }

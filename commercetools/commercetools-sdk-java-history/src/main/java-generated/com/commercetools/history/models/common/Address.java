@@ -16,6 +16,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = AddressImpl.class)
 public interface Address {
 
+    /**
+    *  <p>Unique ID of the Address.</p>
+    */
     @NotNull
     @JsonProperty("id")
     public String getId();

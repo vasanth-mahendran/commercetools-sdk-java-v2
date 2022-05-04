@@ -26,9 +26,6 @@ public interface Payment extends BaseResource, com.commercetools.api.models.Doma
         com.commercetools.api.models.Referencable<Payment>, com.commercetools.api.models.ResourceIdentifiable<Payment>,
         com.commercetools.api.models.Customizable<Payment> {
 
-    /**
-    *  <p>Platform-generated unique identifier of the Payment.</p>
-    */
     @NotNull
     @JsonProperty("id")
     public String getId();
@@ -125,7 +122,8 @@ public interface Payment extends BaseResource, com.commercetools.api.models.Doma
     public CustomFields getCustom();
 
     /**
-    *  <p>User-defined unique identifier of the Payment.</p>
+    *  <p>User-specific unique identifier for the payment (max.
+    *  256 characters).</p>
     */
 
     @JsonProperty("key")

@@ -22,14 +22,14 @@ public interface ChannelResourceIdentifier
     String CHANNEL = "channel";
 
     /**
-    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:Channel">Channel</a>. Either <code>id</code> or <code>key</code> is required.</p>
+    *  <p>Unique ID of the referenced <a href="ctp:api:type:Channel">Channel</a>. Either <code>id</code> or <code>key</code> is required.</p>
     */
 
     @JsonProperty("id")
     public String getId();
 
     /**
-    *  <p>User-defined unique identifier of the referenced <a href="ctp:api:type:Channel">Channel</a>. Either <code>id</code> or <code>key</code> is required.</p>
+    *  <p>Unique key of the referenced <a href="ctp:api:type:Channel">Channel</a>. Either <code>id</code> or <code>key</code> is required.</p>
     */
 
     @JsonProperty("key")

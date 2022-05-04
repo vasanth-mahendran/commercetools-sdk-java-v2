@@ -26,10 +26,6 @@ public interface SubscriptionDraft {
     @JsonProperty("destination")
     public Destination getDestination();
 
-    /**
-    *  <p>User-defined unique identifier for the Subscription.</p>
-    */
-
     @JsonProperty("key")
     public String getKey();
 

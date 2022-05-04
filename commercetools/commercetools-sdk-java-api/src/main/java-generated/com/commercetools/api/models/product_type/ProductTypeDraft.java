@@ -18,7 +18,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface ProductTypeDraft {
 
     /**
-    *  <p>User-defined unique identifier for the ProductType.</p>
+    *  <p>User-specific unique identifier for the product type (min.
+    *  2 and max.
+    *  256 characters).</p>
     */
 
     @JsonProperty("key")

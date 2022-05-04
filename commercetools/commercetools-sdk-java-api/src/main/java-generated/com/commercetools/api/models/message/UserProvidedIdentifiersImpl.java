@@ -49,9 +49,6 @@ public class UserProvidedIdentifiersImpl implements UserProvidedIdentifiers, Mod
     public UserProvidedIdentifiersImpl() {
     }
 
-    /**
-    *  <p>User-provided unique identifier of the resource.</p>
-    */
     public String getKey() {
         return this.key;
     }
@@ -72,6 +69,9 @@ public class UserProvidedIdentifiersImpl implements UserProvidedIdentifiers, Mod
         return this.sku;
     }
 
+    /**
+    *  <p>JSON object where the keys are of <a href="https://en.wikipedia.org/wiki/IETF_language_tag">IETF language tag</a>, and the values are the corresponding strings used for that language.</p>
+    */
     public com.commercetools.api.models.common.LocalizedString getSlug() {
         return this.slug;
     }

@@ -29,7 +29,7 @@ public interface DiscountCode extends BaseResource, com.commercetools.api.models
         com.commercetools.api.models.Customizable<DiscountCode> {
 
     /**
-    *  <p>Platform-generated unique identifier of the DiscountCode.</p>
+    *  <p>The unique ID of the discount code.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -70,8 +70,9 @@ public interface DiscountCode extends BaseResource, com.commercetools.api.models
     public LocalizedString getDescription();
 
     /**
-    *  <p>User-defined unique identifier of the DiscountCode.
-    *  It is <a href="/../api/projects/carts#add-discountcode">added to a Cart</a> to enable the related CartDiscounts in that Cart.</p>
+    *  <p>Unique identifier of this discount code.
+    *  This value is added to the cart
+    *  to enable the related cart discounts in the cart.</p>
     */
     @NotNull
     @JsonProperty("code")

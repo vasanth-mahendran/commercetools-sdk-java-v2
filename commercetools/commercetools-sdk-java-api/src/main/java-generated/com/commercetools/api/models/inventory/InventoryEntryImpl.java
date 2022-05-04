@@ -78,7 +78,7 @@ public class InventoryEntryImpl implements InventoryEntry, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the InventoryEntry.</p>
+    *  <p>The unique ID of the inventory entry.</p>
     */
     public String getId() {
         return this.id;
@@ -111,7 +111,8 @@ public class InventoryEntryImpl implements InventoryEntry, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the InventoryEntry.</p>
+    *  <p>User-defined unique identifier for the InventoryEntry.
+    *  Keys can only contain alphanumeric characters, underscores, and hyphens.</p>
     */
     public String getKey() {
         return this.key;

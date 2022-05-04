@@ -163,7 +163,7 @@ public class CartImpl implements Cart, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the Cart.</p>
+    *  <p>The unique ID of the cart.</p>
     */
     public String getId() {
         return this.id;
@@ -185,7 +185,7 @@ public class CartImpl implements Cart, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the Cart.</p>
+    *  <p>User-specific unique identifier of the cart.</p>
     */
     public String getKey() {
         return this.key;

@@ -39,19 +39,22 @@ public class StateReferenceImpl implements StateReference, ModelBase {
         this.typeId = ReferenceTypeId.findEnum("state");
     }
 
+    /**
+    *  <p>Type of referenced resource.</p>
+    */
     public com.commercetools.api.models.common.ReferenceTypeId getTypeId() {
         return this.typeId;
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:State">State</a>.</p>
+    *  <p>Unique ID of the referenced <a href="ctp:api:type:State">State</a>.</p>
     */
     public String getId() {
         return this.id;
     }
 
     /**
-    *  <p>Contains the representation of the expanded State. Only present in responses to requests with <a href="/../api/general-concepts#reference-expansion">Reference Expansion</a> for States.</p>
+    *  <p>Contains the representation of the expanded State. Only present in responses to requests with <a href="/../api/general-concepts#reference-expansion">Reference Expansion</a> for State.</p>
     */
     public com.commercetools.api.models.state.State getObj() {
         return this.obj;

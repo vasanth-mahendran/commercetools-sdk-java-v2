@@ -28,9 +28,6 @@ public interface StagedOrderSetShippingAddressAndShippingMethodAction extends St
     @JsonProperty("address")
     public BaseAddress getAddress();
 
-    /**
-    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:ShippingMethod">ShippingMethod</a>.</p>
-    */
     @Valid
     @JsonProperty("shippingMethod")
     public ShippingMethodResourceIdentifier getShippingMethod();

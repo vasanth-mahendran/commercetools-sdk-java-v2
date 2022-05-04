@@ -95,7 +95,7 @@ public class ReviewImpl implements Review, ModelBase {
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the Review.</p>
+    *  <p>The unique ID of the review.</p>
     */
     public String getId() {
         return this.id;
@@ -131,7 +131,7 @@ public class ReviewImpl implements Review, ModelBase {
     }
 
     /**
-    *  <p>User-defined unique identifier of the Review.</p>
+    *  <p>User-specific unique identifier for the review.</p>
     */
     public String getKey() {
         return this.key;

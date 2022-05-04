@@ -40,9 +40,6 @@ public class CartSetShippingMethodActionImpl implements CartSetShippingMethodAct
         return this.action;
     }
 
-    /**
-    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:ShippingMethod">ShippingMethod</a>.</p>
-    */
     public com.commercetools.api.models.shipping_method.ShippingMethodResourceIdentifier getShippingMethod() {
         return this.shippingMethod;
     }

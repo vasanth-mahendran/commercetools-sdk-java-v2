@@ -35,6 +35,9 @@ public class GeoJsonPointImpl implements GeoJsonPoint, ModelBase {
         return this.type;
     }
 
+    /**
+    *  <p>Longitude and latitude of the <a href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.2">Point</a>.</p>
+    */
     public java.util.List<Double> getCoordinates() {
         return this.coordinates;
     }

@@ -39,12 +39,15 @@ public class ChannelReferenceImpl implements ChannelReference, ModelBase {
         this.typeId = ReferenceTypeId.findEnum("channel");
     }
 
+    /**
+    *  <p>Type of referenced resource.</p>
+    */
     public com.commercetools.api.models.common.ReferenceTypeId getTypeId() {
         return this.typeId;
     }
 
     /**
-    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:Channel">Channel</a>.</p>
+    *  <p>Unique ID of the referenced <a href="ctp:api:type:Channel">Channel</a>.</p>
     */
     public String getId() {
         return this.id;
