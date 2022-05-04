@@ -19,6 +19,9 @@ public interface ChannelSetGeoLocationAction extends ChannelUpdateAction {
 
     String SET_GEO_LOCATION = "setGeoLocation";
 
+    /**
+    *  <p>Value to set.</p>
+    */
     @Valid
     @JsonProperty("geoLocation")
     public GeoJson getGeoLocation();
@@ -45,5 +48,14 @@ public interface ChannelSetGeoLocationAction extends ChannelUpdateAction {
 
     default <T> T withChannelSetGeoLocationAction(Function<ChannelSetGeoLocationAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ChannelSetGeoLocationAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ChannelSetGeoLocationAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ChannelSetGeoLocationAction>";
+            }
+        };
     }
 }

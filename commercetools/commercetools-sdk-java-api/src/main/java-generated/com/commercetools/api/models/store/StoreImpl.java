@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class StoreImpl implements Store {
+public class StoreImpl implements Store, ModelBase {
 
     private String id;
 
@@ -38,6 +39,8 @@ public class StoreImpl implements Store {
 
     private java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels;
 
+    private java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections;
+
     private com.commercetools.api.models.type.CustomFields custom;
 
     @JsonCreator
@@ -51,6 +54,7 @@ public class StoreImpl implements Store {
             @JsonProperty("languages") final java.util.List<String> languages,
             @JsonProperty("distributionChannels") final java.util.List<com.commercetools.api.models.channel.ChannelReference> distributionChannels,
             @JsonProperty("supplyChannels") final java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels,
+            @JsonProperty("productSelections") final java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections,
             @JsonProperty("custom") final com.commercetools.api.models.type.CustomFields custom) {
         this.id = id;
         this.version = version;
@@ -63,6 +67,7 @@ public class StoreImpl implements Store {
         this.languages = languages;
         this.distributionChannels = distributionChannels;
         this.supplyChannels = supplyChannels;
+        this.productSelections = productSelections;
         this.custom = custom;
     }
 
@@ -133,6 +138,15 @@ public class StoreImpl implements Store {
         return this.supplyChannels;
     }
 
+    /**
+    *  <p>Set of References to Product Selections along with settings.
+    *  If <code>productSelections</code> is empty all products in the project are available in this Store.
+    *  If <code>productSelections</code> is not empty but there exists no <code>active</code> Product Selection then no Product is available in this Store.</p>
+    */
+    public java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> getProductSelections() {
+        return this.productSelections;
+    }
+
     public com.commercetools.api.models.type.CustomFields getCustom() {
         return this.custom;
     }
@@ -196,6 +210,16 @@ public class StoreImpl implements Store {
         this.supplyChannels = supplyChannels;
     }
 
+    public void setProductSelections(
+            final com.commercetools.api.models.store.ProductSelectionSetting... productSelections) {
+        this.productSelections = new ArrayList<>(Arrays.asList(productSelections));
+    }
+
+    public void setProductSelections(
+            final java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections) {
+        this.productSelections = productSelections;
+    }
+
     public void setCustom(final com.commercetools.api.models.type.CustomFields custom) {
         this.custom = custom;
     }
@@ -221,6 +245,7 @@ public class StoreImpl implements Store {
                 .append(languages, that.languages)
                 .append(distributionChannels, that.distributionChannels)
                 .append(supplyChannels, that.supplyChannels)
+                .append(productSelections, that.productSelections)
                 .append(custom, that.custom)
                 .isEquals();
     }
@@ -238,6 +263,7 @@ public class StoreImpl implements Store {
                 .append(languages)
                 .append(distributionChannels)
                 .append(supplyChannels)
+                .append(productSelections)
                 .append(custom)
                 .toHashCode();
     }

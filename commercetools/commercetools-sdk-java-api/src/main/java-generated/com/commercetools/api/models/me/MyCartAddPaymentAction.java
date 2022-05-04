@@ -20,6 +20,9 @@ public interface MyCartAddPaymentAction extends MyCartUpdateAction {
 
     String ADD_PAYMENT = "addPayment";
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Payment">Payment</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("payment")
@@ -47,5 +50,14 @@ public interface MyCartAddPaymentAction extends MyCartUpdateAction {
 
     default <T> T withMyCartAddPaymentAction(Function<MyCartAddPaymentAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<MyCartAddPaymentAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<MyCartAddPaymentAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<MyCartAddPaymentAction>";
+            }
+        };
     }
 }

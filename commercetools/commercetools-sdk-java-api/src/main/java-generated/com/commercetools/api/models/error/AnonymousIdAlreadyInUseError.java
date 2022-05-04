@@ -23,6 +23,7 @@ public interface AnonymousIdAlreadyInUseError extends ErrorObject {
     public static AnonymousIdAlreadyInUseError of(final AnonymousIdAlreadyInUseError template) {
         AnonymousIdAlreadyInUseErrorImpl instance = new AnonymousIdAlreadyInUseErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface AnonymousIdAlreadyInUseError extends ErrorObject {
 
     default <T> T withAnonymousIdAlreadyInUseError(Function<AnonymousIdAlreadyInUseError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<AnonymousIdAlreadyInUseError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<AnonymousIdAlreadyInUseError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<AnonymousIdAlreadyInUseError>";
+            }
+        };
     }
 }

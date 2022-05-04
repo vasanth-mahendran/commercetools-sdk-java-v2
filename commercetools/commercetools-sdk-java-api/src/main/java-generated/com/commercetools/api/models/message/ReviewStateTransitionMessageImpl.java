@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ReviewStateTransitionMessageImpl implements ReviewStateTransitionMessage {
+public class ReviewStateTransitionMessageImpl implements ReviewStateTransitionMessage, ModelBase {
 
     private String id;
 
@@ -89,6 +90,9 @@ public class ReviewStateTransitionMessageImpl implements ReviewStateTransitionMe
         this.type = REVIEW_STATE_TRANSITION;
     }
 
+    /**
+    *  <p>Platform-generated unique identifier of the Message.</p>
+    */
     public String getId() {
         return this.id;
     }
@@ -139,10 +143,16 @@ public class ReviewStateTransitionMessageImpl implements ReviewStateTransitionMe
         return this.resourceUserProvidedIdentifiers;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     public com.commercetools.api.models.state.StateReference getOldState() {
         return this.oldState;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     public com.commercetools.api.models.state.StateReference getNewState() {
         return this.newState;
     }

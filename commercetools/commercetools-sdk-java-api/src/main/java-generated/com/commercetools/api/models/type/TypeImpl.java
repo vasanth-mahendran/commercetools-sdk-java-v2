@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TypeImpl implements Type {
+public class TypeImpl implements Type, ModelBase {
 
     private String id;
 
@@ -66,64 +67,78 @@ public class TypeImpl implements Type {
     }
 
     /**
-    *  <p>The unique ID of the type.</p>
+    *  <p>Platform-generated unique identifier of the Type.</p>
     */
     public String getId() {
         return this.id;
     }
 
     /**
-    *  <p>The current version of the type.</p>
+    *  <p>Current version of the Type.</p>
     */
     public Long getVersion() {
         return this.version;
     }
 
+    /**
+    *  <p>Date and time (UTC) the Type was initially created.</p>
+    */
     public java.time.ZonedDateTime getCreatedAt() {
         return this.createdAt;
     }
 
+    /**
+    *  <p>Date and time (UTC) the Type was last updated.</p>
+    */
     public java.time.ZonedDateTime getLastModifiedAt() {
         return this.lastModifiedAt;
     }
 
     /**
-    *  <p>Present on resources created after 1 February 2019 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
+    *  <p>Present on resources created after 1 February 2019 except for <a href="/../api/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.LastModifiedBy getLastModifiedBy() {
         return this.lastModifiedBy;
     }
 
     /**
-    *  <p>Present on resources created after 1 February 2019 except for <a href="/client-logging#events-tracked">events not tracked</a>.</p>
+    *  <p>Present on resources created after 1 February 2019 except for <a href="/../api/client-logging#events-tracked">events not tracked</a>.</p>
     */
     public com.commercetools.api.models.common.CreatedBy getCreatedBy() {
         return this.createdBy;
     }
 
     /**
-    *  <p>Identifier for the type (max.
-    *  256 characters).</p>
+    *  <p>User-defined unique identifier of the Type.</p>
     */
     public String getKey() {
         return this.key;
     }
 
+    /**
+    *  <p>Name of the Type.</p>
+    */
     public com.commercetools.api.models.common.LocalizedString getName() {
         return this.name;
     }
 
+    /**
+    *  <p>Description of the Type.</p>
+    */
     public com.commercetools.api.models.common.LocalizedString getDescription() {
         return this.description;
     }
 
     /**
-    *  <p>Defines for which resource(s) the type is valid.</p>
+    *  <p>Resources and/or data types for which the Type is defined.</p>
     */
     public java.util.List<com.commercetools.api.models.type.ResourceTypeId> getResourceTypeIds() {
         return this.resourceTypeIds;
     }
 
+    /**
+    *  <p>Defines Custom Fields.</p>
+    */
     public java.util.List<com.commercetools.api.models.type.FieldDefinition> getFieldDefinitions() {
         return this.fieldDefinitions;
     }

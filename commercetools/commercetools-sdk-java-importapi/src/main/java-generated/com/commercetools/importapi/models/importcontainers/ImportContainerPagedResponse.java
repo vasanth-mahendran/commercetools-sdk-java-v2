@@ -22,7 +22,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface ImportContainerPagedResponse {
 
     /**
-    *  <p>The number of results requested in the query request.</p>
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
     */
     @NotNull
     @JsonProperty("limit")
@@ -95,5 +95,14 @@ public interface ImportContainerPagedResponse {
 
     default <T> T withImportContainerPagedResponse(Function<ImportContainerPagedResponse, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ImportContainerPagedResponse> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ImportContainerPagedResponse>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ImportContainerPagedResponse>";
+            }
+        };
     }
 }

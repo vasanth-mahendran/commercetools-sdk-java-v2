@@ -8,17 +8,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class MissingTaxRateForCountryErrorImpl implements MissingTaxRateForCountryError {
+public class MissingTaxRateForCountryErrorImpl implements MissingTaxRateForCountryError, ModelBase {
 
     private String code;
 
     private String message;
+
+    private Map<String, java.lang.Object> values;
 
     private String taxCategoryId;
 
@@ -28,9 +31,11 @@ public class MissingTaxRateForCountryErrorImpl implements MissingTaxRateForCount
 
     @JsonCreator
     MissingTaxRateForCountryErrorImpl(@JsonProperty("message") final String message,
+            @JsonProperty("values") final Map<String, java.lang.Object> values,
             @JsonProperty("taxCategoryId") final String taxCategoryId, @JsonProperty("country") final String country,
             @JsonProperty("state") final String state) {
         this.message = message;
+        this.values = values;
         this.taxCategoryId = taxCategoryId;
         this.country = country;
         this.state = state;
@@ -49,6 +54,10 @@ public class MissingTaxRateForCountryErrorImpl implements MissingTaxRateForCount
         return this.message;
     }
 
+    public Map<String, java.lang.Object> values() {
+        return values;
+    }
+
     public String getTaxCategoryId() {
         return this.taxCategoryId;
     }
@@ -63,6 +72,13 @@ public class MissingTaxRateForCountryErrorImpl implements MissingTaxRateForCount
 
     public void setMessage(final String message) {
         this.message = message;
+    }
+
+    public void setValue(String key, java.lang.Object value) {
+        if (values == null) {
+            values = new HashMap<>();
+        }
+        values.put(key, value);
     }
 
     public void setTaxCategoryId(final String taxCategoryId) {
@@ -89,6 +105,7 @@ public class MissingTaxRateForCountryErrorImpl implements MissingTaxRateForCount
 
         return new EqualsBuilder().append(code, that.code)
                 .append(message, that.message)
+                .append(values, that.values)
                 .append(taxCategoryId, that.taxCategoryId)
                 .append(country, that.country)
                 .append(state, that.state)
@@ -99,6 +116,7 @@ public class MissingTaxRateForCountryErrorImpl implements MissingTaxRateForCount
     public int hashCode() {
         return new HashCodeBuilder(17, 37).append(code)
                 .append(message)
+                .append(values)
                 .append(taxCategoryId)
                 .append(country)
                 .append(state)

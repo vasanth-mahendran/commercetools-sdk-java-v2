@@ -34,6 +34,7 @@ public interface DuplicateEnumValuesError extends ErrorObject {
     public static DuplicateEnumValuesError of(final DuplicateEnumValuesError template) {
         DuplicateEnumValuesErrorImpl instance = new DuplicateEnumValuesErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setDuplicates(template.getDuplicates());
         return instance;
     }
@@ -48,5 +49,14 @@ public interface DuplicateEnumValuesError extends ErrorObject {
 
     default <T> T withDuplicateEnumValuesError(Function<DuplicateEnumValuesError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<DuplicateEnumValuesError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<DuplicateEnumValuesError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<DuplicateEnumValuesError>";
+            }
+        };
     }
 }

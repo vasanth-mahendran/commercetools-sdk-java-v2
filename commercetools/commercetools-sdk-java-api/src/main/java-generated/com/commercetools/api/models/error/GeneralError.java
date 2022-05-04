@@ -23,6 +23,7 @@ public interface GeneralError extends ErrorObject {
     public static GeneralError of(final GeneralError template) {
         GeneralErrorImpl instance = new GeneralErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface GeneralError extends ErrorObject {
 
     default <T> T withGeneralError(Function<GeneralError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<GeneralError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<GeneralError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<GeneralError>";
+            }
+        };
     }
 }

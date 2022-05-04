@@ -21,10 +21,16 @@ public interface MissingRoleOnChannelError extends ErrorObject {
 
     String MISSING_ROLE_ON_CHANNEL = "MissingRoleOnChannel";
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("channel")
     public ChannelResourceIdentifier getChannel();
 
+    /**
+    *  <p>Describes the purpose and type of the Channel. A Channel can have one or more roles.</p>
+    */
     @NotNull
     @JsonProperty("missingRole")
     public ChannelRoleEnum getMissingRole();
@@ -40,6 +46,7 @@ public interface MissingRoleOnChannelError extends ErrorObject {
     public static MissingRoleOnChannelError of(final MissingRoleOnChannelError template) {
         MissingRoleOnChannelErrorImpl instance = new MissingRoleOnChannelErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setChannel(template.getChannel());
         instance.setMissingRole(template.getMissingRole());
         return instance;
@@ -55,5 +62,14 @@ public interface MissingRoleOnChannelError extends ErrorObject {
 
     default <T> T withMissingRoleOnChannelError(Function<MissingRoleOnChannelError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<MissingRoleOnChannelError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<MissingRoleOnChannelError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<MissingRoleOnChannelError>";
+            }
+        };
     }
 }

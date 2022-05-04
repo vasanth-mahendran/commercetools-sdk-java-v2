@@ -54,6 +54,7 @@ public interface DiscountCodeNonApplicableError extends ErrorObject {
     public static DiscountCodeNonApplicableError of(final DiscountCodeNonApplicableError template) {
         DiscountCodeNonApplicableErrorImpl instance = new DiscountCodeNonApplicableErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setDiscountCode(template.getDiscountCode());
         instance.setReason(template.getReason());
         instance.setDicountCodeId(template.getDicountCodeId());
@@ -73,5 +74,14 @@ public interface DiscountCodeNonApplicableError extends ErrorObject {
 
     default <T> T withDiscountCodeNonApplicableError(Function<DiscountCodeNonApplicableError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<DiscountCodeNonApplicableError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<DiscountCodeNonApplicableError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<DiscountCodeNonApplicableError>";
+            }
+        };
     }
 }

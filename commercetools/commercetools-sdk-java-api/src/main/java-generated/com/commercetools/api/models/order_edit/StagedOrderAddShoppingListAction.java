@@ -22,15 +22,24 @@ public interface StagedOrderAddShoppingListAction extends StagedOrderUpdateActio
 
     String ADD_SHOPPING_LIST = "addShoppingList";
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:ShoppingList">ShoppingList</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("shoppingList")
     public ShoppingListResourceIdentifier getShoppingList();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("supplyChannel")
     public ChannelResourceIdentifier getSupplyChannel();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("distributionChannel")
     public ChannelResourceIdentifier getDistributionChannel();
@@ -63,5 +72,14 @@ public interface StagedOrderAddShoppingListAction extends StagedOrderUpdateActio
 
     default <T> T withStagedOrderAddShoppingListAction(Function<StagedOrderAddShoppingListAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StagedOrderAddShoppingListAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StagedOrderAddShoppingListAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StagedOrderAddShoppingListAction>";
+            }
+        };
     }
 }

@@ -22,7 +22,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = StoreImpl.class)
-public interface Store extends BaseResource, com.commercetools.api.models.DomainResource<Store> {
+public interface Store extends BaseResource, com.commercetools.api.models.DomainResource<Store>,
+        com.commercetools.api.models.Referencable<Store>, com.commercetools.api.models.ResourceIdentifiable<Store>,
+        com.commercetools.api.models.Customizable<Store> {
 
     @NotNull
     @JsonProperty("id")
@@ -88,6 +90,15 @@ public interface Store extends BaseResource, com.commercetools.api.models.Domain
     @JsonProperty("supplyChannels")
     public List<ChannelReference> getSupplyChannels();
 
+    /**
+    *  <p>Set of References to Product Selections along with settings.
+    *  If <code>productSelections</code> is empty all products in the project are available in this Store.
+    *  If <code>productSelections</code> is not empty but there exists no <code>active</code> Product Selection then no Product is available in this Store.</p>
+    */
+    @Valid
+    @JsonProperty("productSelections")
+    public List<ProductSelectionSetting> getProductSelections();
+
     @Valid
     @JsonProperty("custom")
     public CustomFields getCustom();
@@ -123,6 +134,11 @@ public interface Store extends BaseResource, com.commercetools.api.models.Domain
 
     public void setSupplyChannels(final List<ChannelReference> supplyChannels);
 
+    @JsonIgnore
+    public void setProductSelections(final ProductSelectionSetting... productSelections);
+
+    public void setProductSelections(final List<ProductSelectionSetting> productSelections);
+
     public void setCustom(final CustomFields custom);
 
     public static Store of() {
@@ -142,6 +158,7 @@ public interface Store extends BaseResource, com.commercetools.api.models.Domain
         instance.setLanguages(template.getLanguages());
         instance.setDistributionChannels(template.getDistributionChannels());
         instance.setSupplyChannels(template.getSupplyChannels());
+        instance.setProductSelections(template.getProductSelections());
         instance.setCustom(template.getCustom());
         return instance;
     }
@@ -156,5 +173,24 @@ public interface Store extends BaseResource, com.commercetools.api.models.Domain
 
     default <T> T withStore(Function<Store, T> helper) {
         return helper.apply(this);
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.ResourceIdentifier toResourceIdentifier() {
+        return com.commercetools.api.models.store.StoreResourceIdentifier.builder().id(getId()).build();
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.Reference toReference() {
+        return com.commercetools.api.models.store.StoreReference.builder().id(getId()).build();
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<Store> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<Store>() {
+            @Override
+            public String toString() {
+                return "TypeReference<Store>";
+            }
+        };
     }
 }

@@ -116,11 +116,18 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
         return this;
     }
 
-    public ProductDraftBuilder withCategories(
-            Function<com.commercetools.api.models.category.CategoryResourceIdentifierBuilder, com.commercetools.api.models.category.CategoryResourceIdentifierBuilder> builder) {
-        this.categories = new ArrayList<>();
-        this.categories.add(
-            builder.apply(com.commercetools.api.models.category.CategoryResourceIdentifierBuilder.of()).build());
+    public ProductDraftBuilder categories(
+            @Nullable final java.util.List<com.commercetools.api.models.category.CategoryResourceIdentifier> categories) {
+        this.categories = categories;
+        return this;
+    }
+
+    public ProductDraftBuilder plusCategories(
+            @Nullable final com.commercetools.api.models.category.CategoryResourceIdentifier... categories) {
+        if (this.categories == null) {
+            this.categories = new ArrayList<>();
+        }
+        this.categories.addAll(Arrays.asList(categories));
         return this;
     }
 
@@ -134,9 +141,11 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
         return this;
     }
 
-    public ProductDraftBuilder categories(
-            @Nullable final java.util.List<com.commercetools.api.models.category.CategoryResourceIdentifier> categories) {
-        this.categories = categories;
+    public ProductDraftBuilder withCategories(
+            Function<com.commercetools.api.models.category.CategoryResourceIdentifierBuilder, com.commercetools.api.models.category.CategoryResourceIdentifierBuilder> builder) {
+        this.categories = new ArrayList<>();
+        this.categories.add(
+            builder.apply(com.commercetools.api.models.category.CategoryResourceIdentifierBuilder.of()).build());
         return this;
     }
 
@@ -208,10 +217,18 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
         return this;
     }
 
-    public ProductDraftBuilder withVariants(
-            Function<com.commercetools.api.models.product.ProductVariantDraftBuilder, com.commercetools.api.models.product.ProductVariantDraftBuilder> builder) {
-        this.variants = new ArrayList<>();
-        this.variants.add(builder.apply(com.commercetools.api.models.product.ProductVariantDraftBuilder.of()).build());
+    public ProductDraftBuilder variants(
+            @Nullable final java.util.List<com.commercetools.api.models.product.ProductVariantDraft> variants) {
+        this.variants = variants;
+        return this;
+    }
+
+    public ProductDraftBuilder plusVariants(
+            @Nullable final com.commercetools.api.models.product.ProductVariantDraft... variants) {
+        if (this.variants == null) {
+            this.variants = new ArrayList<>();
+        }
+        this.variants.addAll(Arrays.asList(variants));
         return this;
     }
 
@@ -224,9 +241,18 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
         return this;
     }
 
-    public ProductDraftBuilder variants(
-            @Nullable final java.util.List<com.commercetools.api.models.product.ProductVariantDraft> variants) {
-        this.variants = variants;
+    public ProductDraftBuilder withVariants(
+            Function<com.commercetools.api.models.product.ProductVariantDraftBuilder, com.commercetools.api.models.product.ProductVariantDraftBuilder> builder) {
+        this.variants = new ArrayList<>();
+        this.variants.add(builder.apply(com.commercetools.api.models.product.ProductVariantDraftBuilder.of()).build());
+        return this;
+    }
+
+    public ProductDraftBuilder taxCategory(
+            Function<com.commercetools.api.models.tax_category.TaxCategoryResourceIdentifierBuilder, com.commercetools.api.models.tax_category.TaxCategoryResourceIdentifierBuilder> builder) {
+        this.taxCategory = builder
+                .apply(com.commercetools.api.models.tax_category.TaxCategoryResourceIdentifierBuilder.of())
+                .build();
         return this;
     }
 
@@ -245,6 +271,12 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     public ProductDraftBuilder searchKeywords(
             @Nullable final com.commercetools.api.models.product.SearchKeywords searchKeywords) {
         this.searchKeywords = searchKeywords;
+        return this;
+    }
+
+    public ProductDraftBuilder state(
+            Function<com.commercetools.api.models.state.StateResourceIdentifierBuilder, com.commercetools.api.models.state.StateResourceIdentifierBuilder> builder) {
+        this.state = builder.apply(com.commercetools.api.models.state.StateResourceIdentifierBuilder.of()).build();
         return this;
     }
 

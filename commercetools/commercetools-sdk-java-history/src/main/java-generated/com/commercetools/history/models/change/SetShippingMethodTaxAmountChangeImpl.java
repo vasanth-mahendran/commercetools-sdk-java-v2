@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class SetShippingMethodTaxAmountChangeImpl implements SetShippingMethodTaxAmountChange {
+public class SetShippingMethodTaxAmountChangeImpl implements SetShippingMethodTaxAmountChange, ModelBase {
 
     private String type;
 
@@ -22,15 +23,15 @@ public class SetShippingMethodTaxAmountChangeImpl implements SetShippingMethodTa
 
     private com.commercetools.history.models.common.TaxMode taxMode;
 
-    private java.lang.Object nextValue;
+    private com.commercetools.history.models.change_value.ShippingMethodTaxAmountChangeValue nextValue;
 
-    private java.lang.Object previousValue;
+    private com.commercetools.history.models.change_value.ShippingMethodTaxAmountChangeValue previousValue;
 
     @JsonCreator
     SetShippingMethodTaxAmountChangeImpl(@JsonProperty("change") final String change,
             @JsonProperty("taxMode") final com.commercetools.history.models.common.TaxMode taxMode,
-            @JsonProperty("nextValue") final java.lang.Object nextValue,
-            @JsonProperty("previousValue") final java.lang.Object previousValue) {
+            @JsonProperty("nextValue") final com.commercetools.history.models.change_value.ShippingMethodTaxAmountChangeValue nextValue,
+            @JsonProperty("previousValue") final com.commercetools.history.models.change_value.ShippingMethodTaxAmountChangeValue previousValue) {
         this.change = change;
         this.taxMode = taxMode;
         this.nextValue = nextValue;
@@ -57,11 +58,11 @@ public class SetShippingMethodTaxAmountChangeImpl implements SetShippingMethodTa
         return this.taxMode;
     }
 
-    public java.lang.Object getNextValue() {
+    public com.commercetools.history.models.change_value.ShippingMethodTaxAmountChangeValue getNextValue() {
         return this.nextValue;
     }
 
-    public java.lang.Object getPreviousValue() {
+    public com.commercetools.history.models.change_value.ShippingMethodTaxAmountChangeValue getPreviousValue() {
         return this.previousValue;
     }
 
@@ -73,11 +74,13 @@ public class SetShippingMethodTaxAmountChangeImpl implements SetShippingMethodTa
         this.taxMode = taxMode;
     }
 
-    public void setNextValue(final java.lang.Object nextValue) {
+    public void setNextValue(
+            final com.commercetools.history.models.change_value.ShippingMethodTaxAmountChangeValue nextValue) {
         this.nextValue = nextValue;
     }
 
-    public void setPreviousValue(final java.lang.Object previousValue) {
+    public void setPreviousValue(
+            final com.commercetools.history.models.change_value.ShippingMethodTaxAmountChangeValue previousValue) {
         this.previousValue = previousValue;
     }
 

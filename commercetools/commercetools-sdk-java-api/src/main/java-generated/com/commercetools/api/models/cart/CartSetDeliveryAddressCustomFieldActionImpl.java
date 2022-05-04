@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CartSetDeliveryAddressCustomFieldActionImpl implements CartSetDeliveryAddressCustomFieldAction {
+public class CartSetDeliveryAddressCustomFieldActionImpl implements CartSetDeliveryAddressCustomFieldAction, ModelBase {
 
     private String action;
 
@@ -45,10 +46,18 @@ public class CartSetDeliveryAddressCustomFieldActionImpl implements CartSetDeliv
         return this.deliveryId;
     }
 
+    /**
+    *  <p>Name of the <a href="/../api/projects/custom-fields">Custom Field</a>.</p>
+    */
     public String getName() {
         return this.name;
     }
 
+    /**
+    *  <p>If <code>value</code> is absent or <code>null</code>, this field will be removed if it exists.
+    *  Trying to remove a field that does not exist will fail with an <a href="/../api/errors#general-400-invalid-operation">InvalidOperation</a> error.
+    *  If <code>value</code> is provided, it is set for the field defined by <code>name</code>.</p>
+    */
     public java.lang.Object getValue() {
         return this.value;
     }

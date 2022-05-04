@@ -23,6 +23,7 @@ public interface FeatureRemovedError extends ErrorObject {
     public static FeatureRemovedError of(final FeatureRemovedError template) {
         FeatureRemovedErrorImpl instance = new FeatureRemovedErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface FeatureRemovedError extends ErrorObject {
 
     default <T> T withFeatureRemovedError(Function<FeatureRemovedError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<FeatureRemovedError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<FeatureRemovedError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<FeatureRemovedError>";
+            }
+        };
     }
 }

@@ -23,6 +23,7 @@ public interface InvalidInputError extends ErrorObject {
     public static InvalidInputError of(final InvalidInputError template) {
         InvalidInputErrorImpl instance = new InvalidInputErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface InvalidInputError extends ErrorObject {
 
     default <T> T withInvalidInputError(Function<InvalidInputError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<InvalidInputError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<InvalidInputError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<InvalidInputError>";
+            }
+        };
     }
 }

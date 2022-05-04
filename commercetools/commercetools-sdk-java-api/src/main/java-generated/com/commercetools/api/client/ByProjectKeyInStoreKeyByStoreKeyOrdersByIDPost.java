@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -17,13 +17,13 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>Updates an order in the store specified by {storeKey}. The {storeKey} path parameter maps to a Store's key.
+*  <p>Updates an order in the store specified by {storeKey}.
 *  If the order exists in the commercetools project but does not have the store field,
 *  or the store field references a different store, this method returns a ResourceNotFound error.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost
-        extends ApiMethod<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost, com.commercetools.api.models.order.Order>
+public class ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost extends
+        BodyApiMethod<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost, com.commercetools.api.models.order.Order, com.commercetools.api.models.order.OrderUpdate>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost>,
         com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost>,
@@ -53,38 +53,29 @@ public class ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/in-store/key=%s/orders/%s", this.projectKey, this.storeKey,
             this.ID);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(orderUpdate);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(orderUpdate)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.order.Order.class).toCompletableFuture(), request,
-            timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.order.Order.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.order.Order.class);
     }
 
     public String getProjectKey() {
@@ -116,23 +107,51 @@ public class ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost withExpand(final String expand) {
+    public <TValue> ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost addExpand(final String expand) {
+    public <TValue> ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost withExpand(final List<String> expand) {
+    public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -141,9 +160,20 @@ public class ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
+    }
+
+    public com.commercetools.api.models.order.OrderUpdate getBody() {
+        return orderUpdate;
+    }
+
+    public ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost withBody(
+            com.commercetools.api.models.order.OrderUpdate orderUpdate) {
+        ByProjectKeyInStoreKeyByStoreKeyOrdersByIDPost t = copy();
+        t.orderUpdate = orderUpdate;
+        return t;
     }
 
     @Override

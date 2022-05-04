@@ -23,6 +23,7 @@ public interface PendingOperationError extends ErrorObject {
     public static PendingOperationError of(final PendingOperationError template) {
         PendingOperationErrorImpl instance = new PendingOperationErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface PendingOperationError extends ErrorObject {
 
     default <T> T withPendingOperationError(Function<PendingOperationError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<PendingOperationError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<PendingOperationError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<PendingOperationError>";
+            }
+        };
     }
 }

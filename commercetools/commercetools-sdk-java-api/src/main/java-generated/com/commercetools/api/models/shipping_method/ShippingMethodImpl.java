@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ShippingMethodImpl implements ShippingMethod {
+public class ShippingMethodImpl implements ShippingMethod, ModelBase {
 
     private String id;
 
@@ -84,7 +85,7 @@ public class ShippingMethodImpl implements ShippingMethod {
     }
 
     /**
-    *  <p>The unique ID of the shipping method.</p>
+    *  <p>Platform-generated unique identifier of the ShippingMethod.</p>
     */
     public String getId() {
         return this.id;
@@ -120,7 +121,7 @@ public class ShippingMethodImpl implements ShippingMethod {
     }
 
     /**
-    *  <p>User-specific unique identifier for the shipping method.</p>
+    *  <p>User-defined unique identifier of the ShippingMethod.</p>
     */
     public String getKey() {
         return this.key;

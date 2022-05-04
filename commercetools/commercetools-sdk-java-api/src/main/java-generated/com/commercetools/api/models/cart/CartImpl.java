@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CartImpl implements Cart {
+public class CartImpl implements Cart, ModelBase {
 
     private String id;
 
@@ -84,6 +85,8 @@ public class CartImpl implements Cart {
 
     private java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses;
 
+    private Long totalLineItemQuantity;
+
     @JsonCreator
     CartImpl(@JsonProperty("id") final String id, @JsonProperty("version") final Long version,
             @JsonProperty("createdAt") final java.time.ZonedDateTime createdAt,
@@ -117,7 +120,8 @@ public class CartImpl implements Cart {
             @JsonProperty("refusedGifts") final java.util.List<com.commercetools.api.models.cart_discount.CartDiscountReference> refusedGifts,
             @JsonProperty("origin") final com.commercetools.api.models.cart.CartOrigin origin,
             @JsonProperty("shippingRateInput") final com.commercetools.api.models.cart.ShippingRateInput shippingRateInput,
-            @JsonProperty("itemShippingAddresses") final java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses) {
+            @JsonProperty("itemShippingAddresses") final java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses,
+            @JsonProperty("totalLineItemQuantity") final Long totalLineItemQuantity) {
         this.id = id;
         this.version = version;
         this.createdAt = createdAt;
@@ -152,13 +156,14 @@ public class CartImpl implements Cart {
         this.origin = origin;
         this.shippingRateInput = shippingRateInput;
         this.itemShippingAddresses = itemShippingAddresses;
+        this.totalLineItemQuantity = totalLineItemQuantity;
     }
 
     public CartImpl() {
     }
 
     /**
-    *  <p>The unique ID of the cart.</p>
+    *  <p>Platform-generated unique identifier of the Cart.</p>
     */
     public String getId() {
         return this.id;
@@ -180,7 +185,7 @@ public class CartImpl implements Cart {
     }
 
     /**
-    *  <p>User-specific unique identifier of the cart.</p>
+    *  <p>User-defined unique identifier of the Cart.</p>
     */
     public String getKey() {
         return this.key;
@@ -360,6 +365,13 @@ public class CartImpl implements Cart {
         return this.itemShippingAddresses;
     }
 
+    /**
+    *  <p>The sum off all the <a href="ctp:api:type:LineItem">Line Items</a> quantities. Does not take <a href="ctp:api:type:CustomLineItem">Custom Line Items</a> into consideration.</p>
+    */
+    public Long getTotalLineItemQuantity() {
+        return this.totalLineItemQuantity;
+    }
+
     public void setId(final String id) {
         this.id = id;
     }
@@ -522,6 +534,10 @@ public class CartImpl implements Cart {
         this.itemShippingAddresses = itemShippingAddresses;
     }
 
+    public void setTotalLineItemQuantity(final Long totalLineItemQuantity) {
+        this.totalLineItemQuantity = totalLineItemQuantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -566,6 +582,7 @@ public class CartImpl implements Cart {
                 .append(origin, that.origin)
                 .append(shippingRateInput, that.shippingRateInput)
                 .append(itemShippingAddresses, that.itemShippingAddresses)
+                .append(totalLineItemQuantity, that.totalLineItemQuantity)
                 .isEquals();
     }
 
@@ -605,6 +622,7 @@ public class CartImpl implements Cart {
                 .append(origin)
                 .append(shippingRateInput)
                 .append(itemShippingAddresses)
+                .append(totalLineItemQuantity)
                 .toHashCode();
     }
 

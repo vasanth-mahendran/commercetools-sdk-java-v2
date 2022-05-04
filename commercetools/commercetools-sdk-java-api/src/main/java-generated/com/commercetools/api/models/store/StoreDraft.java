@@ -18,7 +18,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = StoreDraftImpl.class)
-public interface StoreDraft {
+public interface StoreDraft extends com.commercetools.api.models.CustomizableDraft<StoreDraft> {
 
     /**
     *  <p>User-specific unique identifier for the store.
@@ -53,6 +53,15 @@ public interface StoreDraft {
     @JsonProperty("supplyChannels")
     public List<ChannelResourceIdentifier> getSupplyChannels();
 
+    /**
+    *  <p>Set of ResourceIdentifiers of Product Selections along with settings.
+    *  If <code>productSelections</code> is empty all products in the project are available in this Store.
+    *  If <code>productSelections</code> is not empty but there exists no <code>active</code> Product Selection then no Product is available in this Store.</p>
+    */
+    @Valid
+    @JsonProperty("productSelections")
+    public List<ProductSelectionSettingDraft> getProductSelections();
+
     @Valid
     @JsonProperty("custom")
     public CustomFieldsDraft getCustom();
@@ -76,6 +85,11 @@ public interface StoreDraft {
 
     public void setSupplyChannels(final List<ChannelResourceIdentifier> supplyChannels);
 
+    @JsonIgnore
+    public void setProductSelections(final ProductSelectionSettingDraft... productSelections);
+
+    public void setProductSelections(final List<ProductSelectionSettingDraft> productSelections);
+
     public void setCustom(final CustomFieldsDraft custom);
 
     public static StoreDraft of() {
@@ -89,6 +103,7 @@ public interface StoreDraft {
         instance.setLanguages(template.getLanguages());
         instance.setDistributionChannels(template.getDistributionChannels());
         instance.setSupplyChannels(template.getSupplyChannels());
+        instance.setProductSelections(template.getProductSelections());
         instance.setCustom(template.getCustom());
         return instance;
     }
@@ -103,5 +118,14 @@ public interface StoreDraft {
 
     default <T> T withStoreDraft(Function<StoreDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StoreDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StoreDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StoreDraft>";
+            }
+        };
     }
 }

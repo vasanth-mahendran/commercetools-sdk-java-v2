@@ -20,6 +20,9 @@ public interface CartRemoveDiscountCodeAction extends CartUpdateAction {
 
     String REMOVE_DISCOUNT_CODE = "removeDiscountCode";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:DiscountCode">DiscountCode</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("discountCode")
@@ -47,5 +50,14 @@ public interface CartRemoveDiscountCodeAction extends CartUpdateAction {
 
     default <T> T withCartRemoveDiscountCodeAction(Function<CartRemoveDiscountCodeAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CartRemoveDiscountCodeAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CartRemoveDiscountCodeAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CartRemoveDiscountCodeAction>";
+            }
+        };
     }
 }

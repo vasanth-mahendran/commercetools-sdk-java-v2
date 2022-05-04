@@ -8,7 +8,7 @@ import java.util.function.Function;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.message.MessageConfigurationDraft;
+import com.commercetools.api.models.message.MessagesConfigurationDraft;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
@@ -20,12 +20,15 @@ public interface ProjectChangeMessagesConfigurationAction extends ProjectUpdateA
 
     String CHANGE_MESSAGES_CONFIGURATION = "changeMessagesConfiguration";
 
+    /**
+    *  <p>Configuration for the <a href="/../api/projects/messages">Messages Query</a> feature.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("messagesConfiguration")
-    public MessageConfigurationDraft getMessagesConfiguration();
+    public MessagesConfigurationDraft getMessagesConfiguration();
 
-    public void setMessagesConfiguration(final MessageConfigurationDraft messagesConfiguration);
+    public void setMessagesConfiguration(final MessagesConfigurationDraft messagesConfiguration);
 
     public static ProjectChangeMessagesConfigurationAction of() {
         return new ProjectChangeMessagesConfigurationActionImpl();
@@ -49,5 +52,14 @@ public interface ProjectChangeMessagesConfigurationAction extends ProjectUpdateA
     default <T> T withProjectChangeMessagesConfigurationAction(
             Function<ProjectChangeMessagesConfigurationAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ProjectChangeMessagesConfigurationAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ProjectChangeMessagesConfigurationAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ProjectChangeMessagesConfigurationAction>";
+            }
+        };
     }
 }

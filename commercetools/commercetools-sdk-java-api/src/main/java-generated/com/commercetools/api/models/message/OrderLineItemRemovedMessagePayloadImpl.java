@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class OrderLineItemRemovedMessagePayloadImpl implements OrderLineItemRemovedMessagePayload {
+public class OrderLineItemRemovedMessagePayloadImpl implements OrderLineItemRemovedMessagePayload, ModelBase {
 
     private String type;
 
@@ -78,6 +79,9 @@ public class OrderLineItemRemovedMessagePayloadImpl implements OrderLineItemRemo
         return this.newState;
     }
 
+    /**
+    *  <p>Base polymorphic read-only Money type which is stored in cent precision or high precision. The actual type is determined by the <code>type</code> field.</p>
+    */
     public com.commercetools.api.models.common.TypedMoney getNewTotalPrice() {
         return this.newTotalPrice;
     }

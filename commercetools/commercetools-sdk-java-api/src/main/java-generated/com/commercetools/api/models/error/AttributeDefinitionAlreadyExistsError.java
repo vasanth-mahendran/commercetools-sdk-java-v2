@@ -43,6 +43,7 @@ public interface AttributeDefinitionAlreadyExistsError extends ErrorObject {
     public static AttributeDefinitionAlreadyExistsError of(final AttributeDefinitionAlreadyExistsError template) {
         AttributeDefinitionAlreadyExistsErrorImpl instance = new AttributeDefinitionAlreadyExistsErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setConflictingProductTypeId(template.getConflictingProductTypeId());
         instance.setConflictingProductTypeName(template.getConflictingProductTypeName());
         instance.setConflictingAttributeName(template.getConflictingAttributeName());
@@ -60,5 +61,14 @@ public interface AttributeDefinitionAlreadyExistsError extends ErrorObject {
 
     default <T> T withAttributeDefinitionAlreadyExistsError(Function<AttributeDefinitionAlreadyExistsError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<AttributeDefinitionAlreadyExistsError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<AttributeDefinitionAlreadyExistsError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<AttributeDefinitionAlreadyExistsError>";
+            }
+        };
     }
 }

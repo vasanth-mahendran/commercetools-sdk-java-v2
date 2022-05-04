@@ -21,11 +21,17 @@ public interface ReviewStateTransitionMessage extends Message {
 
     String REVIEW_STATE_TRANSITION = "ReviewStateTransition";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("oldState")
     public StateReference getOldState();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("newState")
@@ -95,5 +101,14 @@ public interface ReviewStateTransitionMessage extends Message {
 
     default <T> T withReviewStateTransitionMessage(Function<ReviewStateTransitionMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ReviewStateTransitionMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ReviewStateTransitionMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ReviewStateTransitionMessage>";
+            }
+        };
     }
 }

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class PaymentStatusDraftImpl implements PaymentStatusDraft {
+public class PaymentStatusDraftImpl implements PaymentStatusDraft, ModelBase {
 
     private String interfaceCode;
 
@@ -42,6 +43,9 @@ public class PaymentStatusDraftImpl implements PaymentStatusDraft {
         return this.interfaceText;
     }
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     public com.commercetools.api.models.state.StateResourceIdentifier getState() {
         return this.state;
     }

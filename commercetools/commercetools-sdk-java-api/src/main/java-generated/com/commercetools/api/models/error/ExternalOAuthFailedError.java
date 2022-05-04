@@ -23,6 +23,7 @@ public interface ExternalOAuthFailedError extends ErrorObject {
     public static ExternalOAuthFailedError of(final ExternalOAuthFailedError template) {
         ExternalOAuthFailedErrorImpl instance = new ExternalOAuthFailedErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface ExternalOAuthFailedError extends ErrorObject {
 
     default <T> T withExternalOAuthFailedError(Function<ExternalOAuthFailedError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ExternalOAuthFailedError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ExternalOAuthFailedError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ExternalOAuthFailedError>";
+            }
+        };
     }
 }

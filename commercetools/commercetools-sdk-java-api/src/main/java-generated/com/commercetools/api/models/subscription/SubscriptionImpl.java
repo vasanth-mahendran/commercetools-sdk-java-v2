@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class SubscriptionImpl implements Subscription {
+public class SubscriptionImpl implements Subscription, ModelBase {
 
     private String id;
 
@@ -69,6 +70,9 @@ public class SubscriptionImpl implements Subscription {
     public SubscriptionImpl() {
     }
 
+    /**
+    *  <p>Platform-generated unique identifier of the Subscription.</p>
+    */
     public String getId() {
         return this.id;
     }
@@ -107,6 +111,9 @@ public class SubscriptionImpl implements Subscription {
         return this.destination;
     }
 
+    /**
+    *  <p>User-defined unique identifier of the Subscription.</p>
+    */
     public String getKey() {
         return this.key;
     }

@@ -24,6 +24,9 @@ public interface CartSetLineItemDistributionChannelAction extends CartUpdateActi
     @JsonProperty("lineItemId")
     public String getLineItemId();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("distributionChannel")
     public ChannelResourceIdentifier getDistributionChannel();
@@ -55,5 +58,14 @@ public interface CartSetLineItemDistributionChannelAction extends CartUpdateActi
     default <T> T withCartSetLineItemDistributionChannelAction(
             Function<CartSetLineItemDistributionChannelAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CartSetLineItemDistributionChannelAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CartSetLineItemDistributionChannelAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CartSetLineItemDistributionChannelAction>";
+            }
+        };
     }
 }

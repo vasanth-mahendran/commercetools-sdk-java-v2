@@ -8,19 +8,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class StagedOrderRemoveLineItemActionImpl implements StagedOrderRemoveLineItemAction {
+public class StagedOrderRemoveLineItemActionImpl implements StagedOrderRemoveLineItemAction, ModelBase {
 
     private String action;
 
     private String lineItemId;
 
-    private Double quantity;
+    private Long quantity;
 
     private com.commercetools.api.models.common.Money externalPrice;
 
@@ -30,7 +31,7 @@ public class StagedOrderRemoveLineItemActionImpl implements StagedOrderRemoveLin
 
     @JsonCreator
     StagedOrderRemoveLineItemActionImpl(@JsonProperty("lineItemId") final String lineItemId,
-            @JsonProperty("quantity") final Double quantity,
+            @JsonProperty("quantity") final Long quantity,
             @JsonProperty("externalPrice") final com.commercetools.api.models.common.Money externalPrice,
             @JsonProperty("externalTotalPrice") final com.commercetools.api.models.cart.ExternalLineItemTotalPrice externalTotalPrice,
             @JsonProperty("shippingDetailsToRemove") final com.commercetools.api.models.cart.ItemShippingDetailsDraft shippingDetailsToRemove) {
@@ -54,10 +55,14 @@ public class StagedOrderRemoveLineItemActionImpl implements StagedOrderRemoveLin
         return this.lineItemId;
     }
 
-    public Double getQuantity() {
+    public Long getQuantity() {
         return this.quantity;
     }
 
+    /**
+    *  <p>Draft type that stores amounts in cent precision for the specified currency.
+    *  For storing money values in fractions of the minor unit in a currency, use <a href="ctp:api:type:HighPrecisionMoneyDraft">HighPrecisionMoneyDraft</a> instead.</p>
+    */
     public com.commercetools.api.models.common.Money getExternalPrice() {
         return this.externalPrice;
     }
@@ -74,7 +79,7 @@ public class StagedOrderRemoveLineItemActionImpl implements StagedOrderRemoveLin
         this.lineItemId = lineItemId;
     }
 
-    public void setQuantity(final Double quantity) {
+    public void setQuantity(final Long quantity) {
         this.quantity = quantity;
     }
 

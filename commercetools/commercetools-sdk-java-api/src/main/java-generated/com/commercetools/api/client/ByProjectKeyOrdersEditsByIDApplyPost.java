@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -16,8 +14,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyOrdersEditsByIDApplyPost
-        extends ApiMethod<ByProjectKeyOrdersEditsByIDApplyPost, com.fasterxml.jackson.databind.JsonNode>
+public class ByProjectKeyOrdersEditsByIDApplyPost extends
+        BodyApiMethod<ByProjectKeyOrdersEditsByIDApplyPost, com.commercetools.api.models.order_edit.OrderEdit, com.commercetools.api.models.order_edit.OrderEditApply>
         implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersEditsByIDApplyPost> {
 
     private String projectKey;
@@ -41,37 +39,28 @@ public class ByProjectKeyOrdersEditsByIDApplyPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/orders/edits/%s/apply", this.projectKey, this.ID);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(orderEditApply);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(orderEditApply)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
-    public ApiHttpResponse<com.fasterxml.jackson.databind.JsonNode> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.fasterxml.jackson.databind.JsonNode.class).toCompletableFuture(), request,
-            timeout);
+    public ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit> executeBlocking(
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.order_edit.OrderEdit.class);
     }
 
     @Override
-    public CompletableFuture<ApiHttpResponse<com.fasterxml.jackson.databind.JsonNode>> execute(
+    public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order_edit.OrderEdit>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.fasterxml.jackson.databind.JsonNode.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.order_edit.OrderEdit.class);
     }
 
     public String getProjectKey() {
@@ -88,6 +77,17 @@ public class ByProjectKeyOrdersEditsByIDApplyPost
 
     public void setID(final String ID) {
         this.ID = ID;
+    }
+
+    public com.commercetools.api.models.order_edit.OrderEditApply getBody() {
+        return orderEditApply;
+    }
+
+    public ByProjectKeyOrdersEditsByIDApplyPost withBody(
+            com.commercetools.api.models.order_edit.OrderEditApply orderEditApply) {
+        ByProjectKeyOrdersEditsByIDApplyPost t = copy();
+        t.orderEditApply = orderEditApply;
+        return t;
     }
 
     @Override

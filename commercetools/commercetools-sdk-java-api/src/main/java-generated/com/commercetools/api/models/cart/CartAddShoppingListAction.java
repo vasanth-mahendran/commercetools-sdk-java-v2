@@ -21,15 +21,24 @@ public interface CartAddShoppingListAction extends CartUpdateAction {
 
     String ADD_SHOPPING_LIST = "addShoppingList";
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:ShoppingList">ShoppingList</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("shoppingList")
     public ShoppingListResourceIdentifier getShoppingList();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("supplyChannel")
     public ChannelResourceIdentifier getSupplyChannel();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("distributionChannel")
     public ChannelResourceIdentifier getDistributionChannel();
@@ -62,5 +71,14 @@ public interface CartAddShoppingListAction extends CartUpdateAction {
 
     default <T> T withCartAddShoppingListAction(Function<CartAddShoppingListAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CartAddShoppingListAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CartAddShoppingListAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CartAddShoppingListAction>";
+            }
+        };
     }
 }

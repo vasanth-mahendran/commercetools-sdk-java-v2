@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -21,7 +22,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  <p>An OrderImport is a snapshot of an order at the time it was imported.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class OrderImportImpl implements OrderImport {
+public class OrderImportImpl implements OrderImport, ModelBase {
 
     private String orderNumber;
 
@@ -150,7 +151,7 @@ public class OrderImportImpl implements OrderImport {
     }
 
     /**
-    *  <p>Maps to <code>Order.totalPrice</code>. TypedMoney is what is called BaseMoney in the HTTP API.</p>
+    *  <p>Maps to <code>Order.totalPrice</code>.</p>
     */
     public com.commercetools.importapi.models.common.TypedMoney getTotalPrice() {
         return this.totalPrice;

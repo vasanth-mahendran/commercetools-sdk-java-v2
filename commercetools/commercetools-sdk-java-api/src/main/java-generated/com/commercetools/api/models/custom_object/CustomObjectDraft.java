@@ -24,7 +24,7 @@ public interface CustomObjectDraft {
     public String getContainer();
 
     /**
-    *  <p>A user-defined key that is unique within the given container.</p>
+    *  <p>User-defined unique identifier for the CustomObject.</p>
     */
     @NotNull
     @JsonProperty("key")
@@ -68,5 +68,14 @@ public interface CustomObjectDraft {
 
     default <T> T withCustomObjectDraft(Function<CustomObjectDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomObjectDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomObjectDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomObjectDraft>";
+            }
+        };
     }
 }

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TermFacetResultImpl implements TermFacetResult {
+public class TermFacetResultImpl implements TermFacetResult, ModelBase {
 
     private com.commercetools.api.models.product.FacetTypes type;
 
@@ -26,14 +27,14 @@ public class TermFacetResultImpl implements TermFacetResult {
 
     private Long other;
 
-    private java.util.List<com.commercetools.api.models.product.FacetResultTerm> terms;
+    private java.util.List<com.commercetools.api.models.product.FacetTerm> terms;
 
     @JsonCreator
     TermFacetResultImpl(
             @JsonProperty("dataType") final com.commercetools.api.models.product.TermFacetResultType dataType,
             @JsonProperty("missing") final Long missing, @JsonProperty("total") final Long total,
             @JsonProperty("other") final Long other,
-            @JsonProperty("terms") final java.util.List<com.commercetools.api.models.product.FacetResultTerm> terms) {
+            @JsonProperty("terms") final java.util.List<com.commercetools.api.models.product.FacetTerm> terms) {
         this.dataType = dataType;
         this.missing = missing;
         this.total = total;
@@ -66,7 +67,7 @@ public class TermFacetResultImpl implements TermFacetResult {
         return this.other;
     }
 
-    public java.util.List<com.commercetools.api.models.product.FacetResultTerm> getTerms() {
+    public java.util.List<com.commercetools.api.models.product.FacetTerm> getTerms() {
         return this.terms;
     }
 
@@ -86,11 +87,11 @@ public class TermFacetResultImpl implements TermFacetResult {
         this.other = other;
     }
 
-    public void setTerms(final com.commercetools.api.models.product.FacetResultTerm... terms) {
+    public void setTerms(final com.commercetools.api.models.product.FacetTerm... terms) {
         this.terms = new ArrayList<>(Arrays.asList(terms));
     }
 
-    public void setTerms(final java.util.List<com.commercetools.api.models.product.FacetResultTerm> terms) {
+    public void setTerms(final java.util.List<com.commercetools.api.models.product.FacetTerm> terms) {
         this.terms = terms;
     }
 

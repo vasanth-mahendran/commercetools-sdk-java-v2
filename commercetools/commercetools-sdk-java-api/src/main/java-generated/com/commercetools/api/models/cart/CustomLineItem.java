@@ -21,10 +21,10 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = CustomLineItemImpl.class)
-public interface CustomLineItem {
+public interface CustomLineItem extends com.commercetools.api.models.Customizable<CustomLineItem> {
 
     /**
-    *  <p>The unique ID of this CustomLineItem.</p>
+    *  <p>Platform-generated unique identifier of the CustomLineItem.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -180,5 +180,14 @@ public interface CustomLineItem {
 
     default <T> T withCustomLineItem(Function<CustomLineItem, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomLineItem> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomLineItem>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomLineItem>";
+            }
+        };
     }
 }

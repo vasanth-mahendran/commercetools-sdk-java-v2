@@ -18,6 +18,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface CartDiscountPagedQueryResponse
         extends com.commercetools.api.models.ResourcePagedQueryResponse<CartDiscount> {
 
+    /**
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
+    */
     @NotNull
     @JsonProperty("limit")
     public Long getLimit();
@@ -75,5 +78,14 @@ public interface CartDiscountPagedQueryResponse
 
     default <T> T withCartDiscountPagedQueryResponse(Function<CartDiscountPagedQueryResponse, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CartDiscountPagedQueryResponse> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CartDiscountPagedQueryResponse>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CartDiscountPagedQueryResponse>";
+            }
+        };
     }
 }

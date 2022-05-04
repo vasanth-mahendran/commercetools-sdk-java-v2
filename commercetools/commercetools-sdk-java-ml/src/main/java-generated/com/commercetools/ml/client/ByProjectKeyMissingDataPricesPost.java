@@ -1,8 +1,6 @@
 
 package com.commercetools.ml.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -16,8 +14,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyMissingDataPricesPost
-        extends ApiMethod<ByProjectKeyMissingDataPricesPost, com.commercetools.ml.models.common.TaskToken> {
+public class ByProjectKeyMissingDataPricesPost extends
+        BodyApiMethod<ByProjectKeyMissingDataPricesPost, com.commercetools.ml.models.common.TaskToken, com.commercetools.ml.models.missing_data.MissingPricesSearchRequest> {
 
     private String projectKey;
 
@@ -37,37 +35,28 @@ public class ByProjectKeyMissingDataPricesPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/missing-data/prices", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(missingPricesSearchRequest);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils.executing(
+                () -> apiHttpClient().getSerializerService().toJsonByteArray(missingPricesSearchRequest)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.ml.models.common.TaskToken> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.ml.models.common.TaskToken.class).toCompletableFuture(), request,
-            timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.ml.models.common.TaskToken.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.ml.models.common.TaskToken>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.ml.models.common.TaskToken.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.ml.models.common.TaskToken.class);
     }
 
     public String getProjectKey() {
@@ -76,6 +65,17 @@ public class ByProjectKeyMissingDataPricesPost
 
     public void setProjectKey(final String projectKey) {
         this.projectKey = projectKey;
+    }
+
+    public com.commercetools.ml.models.missing_data.MissingPricesSearchRequest getBody() {
+        return missingPricesSearchRequest;
+    }
+
+    public ByProjectKeyMissingDataPricesPost withBody(
+            com.commercetools.ml.models.missing_data.MissingPricesSearchRequest missingPricesSearchRequest) {
+        ByProjectKeyMissingDataPricesPost t = copy();
+        t.missingPricesSearchRequest = missingPricesSearchRequest;
+        return t;
     }
 
     @Override

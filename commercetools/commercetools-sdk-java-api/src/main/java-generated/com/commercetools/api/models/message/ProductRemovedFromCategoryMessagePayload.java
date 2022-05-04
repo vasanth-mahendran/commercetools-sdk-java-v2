@@ -20,6 +20,9 @@ public interface ProductRemovedFromCategoryMessagePayload extends MessagePayload
 
     String PRODUCT_REMOVED_FROM_CATEGORY = "ProductRemovedFromCategory";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Category">Category</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("category")
@@ -56,5 +59,14 @@ public interface ProductRemovedFromCategoryMessagePayload extends MessagePayload
     default <T> T withProductRemovedFromCategoryMessagePayload(
             Function<ProductRemovedFromCategoryMessagePayload, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ProductRemovedFromCategoryMessagePayload> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ProductRemovedFromCategoryMessagePayload>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ProductRemovedFromCategoryMessagePayload>";
+            }
+        };
     }
 }

@@ -22,6 +22,11 @@ public interface ProductVariantDraft {
     @JsonProperty("sku")
     public String getSku();
 
+    /**
+    *  <p>User-defined unique identifier for the ProductVariant.
+    *  <em>ProductVariant keys are different from Product keys.</em></p>
+    */
+
     @JsonProperty("key")
     public String getKey();
 
@@ -90,5 +95,14 @@ public interface ProductVariantDraft {
 
     default <T> T withProductVariantDraft(Function<ProductVariantDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ProductVariantDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ProductVariantDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ProductVariantDraft>";
+            }
+        };
     }
 }

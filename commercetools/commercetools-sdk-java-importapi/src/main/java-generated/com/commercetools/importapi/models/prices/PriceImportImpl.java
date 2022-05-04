@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -17,7 +18,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  <p>The data representation for a Price to be imported that is persisted as a <a href="/../api/projects/products#price">Price</a> in the Project.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class PriceImportImpl implements PriceImport {
+public class PriceImportImpl implements PriceImport, ModelBase {
 
     private String key;
 
@@ -82,7 +83,7 @@ public class PriceImportImpl implements PriceImport {
     }
 
     /**
-    *  <p>Maps to <code>Price.value</code>. TypedMoney is what is called BaseMoney in the HTTP API.</p>
+    *  <p>Maps to <code>Price.value</code>.</p>
     */
     public com.commercetools.importapi.models.common.TypedMoney getValue() {
         return this.value;

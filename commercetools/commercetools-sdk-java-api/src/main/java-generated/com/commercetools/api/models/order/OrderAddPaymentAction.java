@@ -20,6 +20,9 @@ public interface OrderAddPaymentAction extends OrderUpdateAction {
 
     String ADD_PAYMENT = "addPayment";
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Payment">Payment</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("payment")
@@ -47,5 +50,14 @@ public interface OrderAddPaymentAction extends OrderUpdateAction {
 
     default <T> T withOrderAddPaymentAction(Function<OrderAddPaymentAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderAddPaymentAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderAddPaymentAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderAddPaymentAction>";
+            }
+        };
     }
 }

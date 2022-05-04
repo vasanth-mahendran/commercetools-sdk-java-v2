@@ -45,6 +45,7 @@ public interface InvalidFieldError extends ErrorObject {
     public static InvalidFieldError of(final InvalidFieldError template) {
         InvalidFieldErrorImpl instance = new InvalidFieldErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setField(template.getField());
         instance.setInvalidValue(template.getInvalidValue());
         instance.setAllowedValues(template.getAllowedValues());
@@ -61,5 +62,14 @@ public interface InvalidFieldError extends ErrorObject {
 
     default <T> T withInvalidFieldError(Function<InvalidFieldError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<InvalidFieldError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<InvalidFieldError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<InvalidFieldError>";
+            }
+        };
     }
 }

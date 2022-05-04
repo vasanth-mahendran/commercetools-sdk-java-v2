@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ExtensionSetKeyActionImpl implements ExtensionSetKeyAction {
+public class ExtensionSetKeyActionImpl implements ExtensionSetKeyAction, ModelBase {
 
     private String action;
 
@@ -35,7 +36,7 @@ public class ExtensionSetKeyActionImpl implements ExtensionSetKeyAction {
     }
 
     /**
-    *  <p>If <code>key</code> is absent or <code>null</code>, this field will be removed if it exists.</p>
+    *  <p>Value to set. If empty, any existing value will be removed.</p>
     */
     public String getKey() {
         return this.key;

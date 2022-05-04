@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class OrderStateTransitionMessagePayloadImpl implements OrderStateTransitionMessagePayload {
+public class OrderStateTransitionMessagePayloadImpl implements OrderStateTransitionMessagePayload, ModelBase {
 
     private String type;
 
@@ -43,10 +44,16 @@ public class OrderStateTransitionMessagePayloadImpl implements OrderStateTransit
         return this.type;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     public com.commercetools.api.models.state.StateReference getState() {
         return this.state;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     public com.commercetools.api.models.state.StateReference getOldState() {
         return this.oldState;
     }

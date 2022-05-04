@@ -45,7 +45,7 @@ public class CartDiscountDraftBuilder implements Builder<CartDiscountDraft> {
     private com.commercetools.api.models.cart_discount.StackingMode stackingMode;
 
     @Nullable
-    private com.commercetools.api.models.type.CustomFields custom;
+    private com.commercetools.api.models.type.CustomFieldsDraft custom;
 
     public CartDiscountDraftBuilder name(
             Function<com.commercetools.api.models.common.LocalizedStringBuilder, com.commercetools.api.models.common.LocalizedStringBuilder> builder) {
@@ -81,6 +81,13 @@ public class CartDiscountDraftBuilder implements Builder<CartDiscountDraft> {
         return this;
     }
 
+    public CartDiscountDraftBuilder value(
+            Function<com.commercetools.api.models.cart_discount.CartDiscountValueDraftBuilder, Builder<? extends com.commercetools.api.models.cart_discount.CartDiscountValueDraft>> builder) {
+        this.value = builder.apply(com.commercetools.api.models.cart_discount.CartDiscountValueDraftBuilder.of())
+                .build();
+        return this;
+    }
+
     public CartDiscountDraftBuilder cartPredicate(final String cartPredicate) {
         this.cartPredicate = cartPredicate;
         return this;
@@ -89,6 +96,12 @@ public class CartDiscountDraftBuilder implements Builder<CartDiscountDraft> {
     public CartDiscountDraftBuilder target(
             @Nullable final com.commercetools.api.models.cart_discount.CartDiscountTarget target) {
         this.target = target;
+        return this;
+    }
+
+    public CartDiscountDraftBuilder target(
+            Function<com.commercetools.api.models.cart_discount.CartDiscountTargetBuilder, Builder<? extends com.commercetools.api.models.cart_discount.CartDiscountTarget>> builder) {
+        this.target = builder.apply(com.commercetools.api.models.cart_discount.CartDiscountTargetBuilder.of()).build();
         return this;
     }
 
@@ -124,12 +137,12 @@ public class CartDiscountDraftBuilder implements Builder<CartDiscountDraft> {
     }
 
     public CartDiscountDraftBuilder custom(
-            Function<com.commercetools.api.models.type.CustomFieldsBuilder, com.commercetools.api.models.type.CustomFieldsBuilder> builder) {
-        this.custom = builder.apply(com.commercetools.api.models.type.CustomFieldsBuilder.of()).build();
+            Function<com.commercetools.api.models.type.CustomFieldsDraftBuilder, com.commercetools.api.models.type.CustomFieldsDraftBuilder> builder) {
+        this.custom = builder.apply(com.commercetools.api.models.type.CustomFieldsDraftBuilder.of()).build();
         return this;
     }
 
-    public CartDiscountDraftBuilder custom(@Nullable final com.commercetools.api.models.type.CustomFields custom) {
+    public CartDiscountDraftBuilder custom(@Nullable final com.commercetools.api.models.type.CustomFieldsDraft custom) {
         this.custom = custom;
         return this;
     }
@@ -191,7 +204,7 @@ public class CartDiscountDraftBuilder implements Builder<CartDiscountDraft> {
     }
 
     @Nullable
-    public com.commercetools.api.models.type.CustomFields getCustom() {
+    public com.commercetools.api.models.type.CustomFieldsDraft getCustom() {
         return this.custom;
     }
 

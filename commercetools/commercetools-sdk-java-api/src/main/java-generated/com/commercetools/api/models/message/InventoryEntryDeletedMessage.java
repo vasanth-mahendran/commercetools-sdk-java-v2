@@ -24,6 +24,9 @@ public interface InventoryEntryDeletedMessage extends Message {
     @JsonProperty("sku")
     public String getSku();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("supplyChannel")
     public ChannelReference getSupplyChannel();
@@ -63,5 +66,14 @@ public interface InventoryEntryDeletedMessage extends Message {
 
     default <T> T withInventoryEntryDeletedMessage(Function<InventoryEntryDeletedMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<InventoryEntryDeletedMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<InventoryEntryDeletedMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<InventoryEntryDeletedMessage>";
+            }
+        };
     }
 }

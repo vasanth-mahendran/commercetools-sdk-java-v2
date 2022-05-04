@@ -16,7 +16,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderLineItemAddedMessageImpl.class)
-public interface OrderLineItemAddedMessage extends Message {
+public interface OrderLineItemAddedMessage extends OrderMessage {
 
     String ORDER_LINE_ITEM_ADDED = "OrderLineItemAdded";
 
@@ -64,5 +64,14 @@ public interface OrderLineItemAddedMessage extends Message {
 
     default <T> T withOrderLineItemAddedMessage(Function<OrderLineItemAddedMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderLineItemAddedMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderLineItemAddedMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderLineItemAddedMessage>";
+            }
+        };
     }
 }

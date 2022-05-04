@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -17,8 +17,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyChannelsByIDPost
-        extends ApiMethod<ByProjectKeyChannelsByIDPost, com.commercetools.api.models.channel.Channel>
+public class ByProjectKeyChannelsByIDPost extends
+        BodyApiMethod<ByProjectKeyChannelsByIDPost, com.commercetools.api.models.channel.Channel, com.commercetools.api.models.channel.ChannelUpdate>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyChannelsByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyChannelsByIDPost>,
         com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyChannelsByIDPost>,
@@ -45,37 +45,28 @@ public class ByProjectKeyChannelsByIDPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/channels/%s", this.projectKey, this.ID);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(channelUpdate);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(channelUpdate)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.channel.Channel> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.channel.Channel.class).toCompletableFuture(), request,
-            timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.channel.Channel.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.channel.Channel>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.channel.Channel.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.channel.Channel.class);
     }
 
     public String getProjectKey() {
@@ -99,23 +90,51 @@ public class ByProjectKeyChannelsByIDPost
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyChannelsByIDPost withExpand(final String expand) {
+    public <TValue> ByProjectKeyChannelsByIDPost withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyChannelsByIDPost addExpand(final String expand) {
+    public <TValue> ByProjectKeyChannelsByIDPost addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyChannelsByIDPost withExpand(final List<String> expand) {
+    public ByProjectKeyChannelsByIDPost withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyChannelsByIDPost addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyChannelsByIDPost withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyChannelsByIDPost addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyChannelsByIDPost withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -124,9 +143,19 @@ public class ByProjectKeyChannelsByIDPost
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyChannelsByIDPost addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyChannelsByIDPost addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
+    }
+
+    public com.commercetools.api.models.channel.ChannelUpdate getBody() {
+        return channelUpdate;
+    }
+
+    public ByProjectKeyChannelsByIDPost withBody(com.commercetools.api.models.channel.ChannelUpdate channelUpdate) {
+        ByProjectKeyChannelsByIDPost t = copy();
+        t.channelUpdate = channelUpdate;
+        return t;
     }
 
     @Override

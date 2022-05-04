@@ -55,7 +55,7 @@ public class CompatRequest<TResult> extends ApiMethod<CompatRequest<TResult>, TR
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
 
         HttpRequest httpRequest = request.httpRequestIntent().toHttpRequest("/" + projectKey);
         List<Map.Entry<String, String>> headers = httpRequest.getHeaders()
@@ -86,9 +86,8 @@ public class CompatRequest<TResult> extends ApiMethod<CompatRequest<TResult>, TR
                 return entry.getName() + "=" + URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8.toString());
             }
             catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
+                throw new HttpException("Cannot encode request body " + body, e);
             }
-            throw new HttpException("Cannot encode request body " + body);
         }).collect(Collectors.joining("&"));
     }
 

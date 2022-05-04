@@ -23,6 +23,7 @@ public interface EnumValueIsUsedError extends ErrorObject {
     public static EnumValueIsUsedError of(final EnumValueIsUsedError template) {
         EnumValueIsUsedErrorImpl instance = new EnumValueIsUsedErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface EnumValueIsUsedError extends ErrorObject {
 
     default <T> T withEnumValueIsUsedError(Function<EnumValueIsUsedError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<EnumValueIsUsedError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<EnumValueIsUsedError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<EnumValueIsUsedError>";
+            }
+        };
     }
 }

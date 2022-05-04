@@ -1,8 +1,6 @@
 
 package com.commercetools.importapi.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -42,33 +40,26 @@ public class ByProjectKeyImportContainersByImportContainerKeyDelete extends
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/import-containers/%s", this.projectKey, this.importContainerKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-
         return new ApiHttpRequest(ApiHttpMethod.DELETE, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importcontainers.ImportContainer> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.importapi.models.importcontainers.ImportContainer.class)
-                    .toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout,
+            com.commercetools.importapi.models.importcontainers.ImportContainer.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importcontainers.ImportContainer>> execute(
             final ApiHttpClient client) {
-        return client
-                .execute(this.createHttpRequest(),
-                    com.commercetools.importapi.models.importcontainers.ImportContainer.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.importapi.models.importcontainers.ImportContainer.class);
     }
 
     public String getProjectKey() {

@@ -3,6 +3,7 @@ package com.commercetools.importapi.defaultconfig;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -17,6 +18,8 @@ import io.vrap.rmf.base.client.error.HttpExceptionFactory;
 import io.vrap.rmf.base.client.http.*;
 import io.vrap.rmf.base.client.oauth2.ClientCredentials;
 import io.vrap.rmf.base.client.oauth2.TokenSupplier;
+
+import org.slf4j.event.Level;
 
 public class ImportApiRootBuilder {
     private final ClientBuilder builder;
@@ -198,13 +201,13 @@ public class ImportApiRootBuilder {
         return this;
     }
 
-    public ImportApiRootBuilder withRetryMiddleware(Supplier<RetryMiddleware> retryMiddleware) {
+    public ImportApiRootBuilder withRetryMiddleware(Supplier<RetryRequestMiddleware> retryMiddleware) {
         builder.withRetryMiddleware(retryMiddleware);
 
         return this;
     }
 
-    public ImportApiRootBuilder withRetryMiddleware(RetryMiddleware retryMiddleware) {
+    public ImportApiRootBuilder withRetryMiddleware(RetryRequestMiddleware retryMiddleware) {
         builder.withRetryMiddleware(retryMiddleware);
 
         return this;
@@ -218,6 +221,28 @@ public class ImportApiRootBuilder {
 
     public ImportApiRootBuilder withRetryMiddleware(final int maxRetries, List<Integer> statusCodes) {
         builder.withRetryMiddleware(maxRetries, statusCodes);
+
+        return this;
+    }
+
+    public ImportApiRootBuilder withRetryMiddleware(final int maxRetries, List<Integer> statusCodes,
+            final List<Class<? extends Throwable>> failures) {
+        builder.withRetryMiddleware(maxRetries, statusCodes, failures);
+
+        return this;
+    }
+
+    public ImportApiRootBuilder withRetryMiddleware(final int maxRetries, final long delay, final long maxDelay,
+            List<Integer> statusCodes, final List<Class<? extends Throwable>> failures,
+            final FailsafeRetryPolicyBuilderOptions fn) {
+        builder.withRetryMiddleware(maxRetries, delay, maxDelay, statusCodes, failures, fn);
+
+        return this;
+    }
+
+    public ImportApiRootBuilder withRetryMiddleware(final int maxRetries, final long delay, final long maxDelay,
+            final FailsafeRetryPolicyBuilderOptions fn) {
+        builder.withRetryMiddleware(maxRetries, delay, maxDelay, fn);
 
         return this;
     }
@@ -254,6 +279,22 @@ public class ImportApiRootBuilder {
 
     public ImportApiRootBuilder withInternalLoggerFactory(final InternalLoggerFactory internalLoggerFactory) {
         builder.withInternalLoggerFactory(internalLoggerFactory);
+
+        return this;
+    }
+
+    public ImportApiRootBuilder withInternalLoggerFactory(final InternalLoggerFactory internalLoggerFactory,
+            final Level responseLogEvent, final Level deprecationLogEvent) {
+        builder.withInternalLoggerFactory(internalLoggerFactory, responseLogEvent, deprecationLogEvent);
+
+        return this;
+    }
+
+    public ImportApiRootBuilder withInternalLoggerFactory(final InternalLoggerFactory internalLoggerFactory,
+            final Level responseLogEvent, final Level deprecationLogEvent, final Level defaultExceptionLogEvent,
+            final Map<Class<? extends Throwable>, Level> exceptionLogEvents) {
+        builder.withInternalLoggerFactory(internalLoggerFactory, responseLogEvent, deprecationLogEvent,
+            defaultExceptionLogEvent, exceptionLogEvents);
 
         return this;
     }

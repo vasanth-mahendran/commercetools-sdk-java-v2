@@ -18,6 +18,9 @@ public interface ChannelSetRolesAction extends ChannelUpdateAction {
 
     String SET_ROLES = "setRoles";
 
+    /**
+    *  <p>Value to set. If not specified, then <code>InventorySupply</code> is assigned by default.</p>
+    */
     @NotNull
     @JsonProperty("roles")
     public List<ChannelRoleEnum> getRoles();
@@ -47,5 +50,14 @@ public interface ChannelSetRolesAction extends ChannelUpdateAction {
 
     default <T> T withChannelSetRolesAction(Function<ChannelSetRolesAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ChannelSetRolesAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ChannelSetRolesAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ChannelSetRolesAction>";
+            }
+        };
     }
 }

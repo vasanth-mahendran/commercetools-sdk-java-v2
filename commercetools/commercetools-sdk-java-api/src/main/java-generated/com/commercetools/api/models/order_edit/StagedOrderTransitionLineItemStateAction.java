@@ -30,11 +30,17 @@ public interface StagedOrderTransitionLineItemStateAction extends StagedOrderUpd
     @JsonProperty("quantity")
     public Long getQuantity();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("fromState")
     public StateResourceIdentifier getFromState();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("toState")
@@ -79,5 +85,14 @@ public interface StagedOrderTransitionLineItemStateAction extends StagedOrderUpd
     default <T> T withStagedOrderTransitionLineItemStateAction(
             Function<StagedOrderTransitionLineItemStateAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StagedOrderTransitionLineItemStateAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StagedOrderTransitionLineItemStateAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StagedOrderTransitionLineItemStateAction>";
+            }
+        };
     }
 }

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class OrderEditAppliedMessageImpl implements OrderEditAppliedMessage {
+public class OrderEditAppliedMessageImpl implements OrderEditAppliedMessage, ModelBase {
 
     private String id;
 
@@ -73,6 +74,9 @@ public class OrderEditAppliedMessageImpl implements OrderEditAppliedMessage {
         this.type = ORDER_EDIT_APPLIED;
     }
 
+    /**
+    *  <p>Platform-generated unique identifier of the Message.</p>
+    */
     public String getId() {
         return this.id;
     }
@@ -123,6 +127,9 @@ public class OrderEditAppliedMessageImpl implements OrderEditAppliedMessage {
         return this.resourceUserProvidedIdentifiers;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:OrderEdit">OrderEdit</a>.</p>
+    */
     public com.commercetools.api.models.order_edit.OrderEditReference getEdit() {
         return this.edit;
     }

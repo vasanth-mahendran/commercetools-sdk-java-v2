@@ -28,6 +28,9 @@ public interface StagedOrderSetShippingAddressAndShippingMethodAction extends St
     @JsonProperty("address")
     public BaseAddress getAddress();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:ShippingMethod">ShippingMethod</a>.</p>
+    */
     @Valid
     @JsonProperty("shippingMethod")
     public ShippingMethodResourceIdentifier getShippingMethod();
@@ -67,5 +70,14 @@ public interface StagedOrderSetShippingAddressAndShippingMethodAction extends St
     default <T> T withStagedOrderSetShippingAddressAndShippingMethodAction(
             Function<StagedOrderSetShippingAddressAndShippingMethodAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StagedOrderSetShippingAddressAndShippingMethodAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StagedOrderSetShippingAddressAndShippingMethodAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StagedOrderSetShippingAddressAndShippingMethodAction>";
+            }
+        };
     }
 }

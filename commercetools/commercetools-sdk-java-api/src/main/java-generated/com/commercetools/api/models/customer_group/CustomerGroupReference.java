@@ -15,11 +15,11 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
-*  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+*  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = CustomerGroupReferenceImpl.class)
-public interface CustomerGroupReference extends Reference {
+public interface CustomerGroupReference extends Reference, com.commercetools.api.models.Identifiable<CustomerGroup> {
 
     String CUSTOMER_GROUP = "customer-group";
 
@@ -31,7 +31,7 @@ public interface CustomerGroupReference extends Reference {
     public CustomerGroup getObj();
 
     /**
-    *  <p>Unique ID of the referenced <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -62,5 +62,14 @@ public interface CustomerGroupReference extends Reference {
 
     default <T> T withCustomerGroupReference(Function<CustomerGroupReference, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerGroupReference> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerGroupReference>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerGroupReference>";
+            }
+        };
     }
 }

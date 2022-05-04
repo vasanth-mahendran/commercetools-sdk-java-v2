@@ -16,6 +16,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = DeliveryItemImpl.class)
 public interface DeliveryItem {
 
+    /**
+    *  <p>Platform-generated unique identifier of the DeliveryItem.</p>
+    */
     @NotNull
     @JsonProperty("id")
     public String getId();
@@ -49,5 +52,14 @@ public interface DeliveryItem {
 
     default <T> T withDeliveryItem(Function<DeliveryItem, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<DeliveryItem> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<DeliveryItem>() {
+            @Override
+            public String toString() {
+                return "TypeReference<DeliveryItem>";
+            }
+        };
     }
 }

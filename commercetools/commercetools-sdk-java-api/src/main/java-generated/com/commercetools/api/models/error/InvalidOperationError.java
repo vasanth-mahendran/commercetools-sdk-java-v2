@@ -23,6 +23,7 @@ public interface InvalidOperationError extends ErrorObject {
     public static InvalidOperationError of(final InvalidOperationError template) {
         InvalidOperationErrorImpl instance = new InvalidOperationErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface InvalidOperationError extends ErrorObject {
 
     default <T> T withInvalidOperationError(Function<InvalidOperationError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<InvalidOperationError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<InvalidOperationError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<InvalidOperationError>";
+            }
+        };
     }
 }

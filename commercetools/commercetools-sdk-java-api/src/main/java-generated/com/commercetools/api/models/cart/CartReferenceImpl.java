@@ -9,13 +9,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+/**
+*  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Cart">Cart</a>.</p>
+*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CartReferenceImpl implements CartReference {
+public class CartReferenceImpl implements CartReference, ModelBase {
 
     private com.commercetools.api.models.common.ReferenceTypeId typeId;
 
@@ -40,12 +44,15 @@ public class CartReferenceImpl implements CartReference {
     }
 
     /**
-    *  <p>Unique ID of the referenced resource.</p>
+    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:Cart">Cart</a>.</p>
     */
     public String getId() {
         return this.id;
     }
 
+    /**
+    *  <p>Contains the representation of the expanded Cart. Only present in responses to requests with <a href="/../api/general-concepts#reference-expansion">Reference Expansion</a> for Carts.</p>
+    */
     public com.commercetools.api.models.cart.Cart getObj() {
         return this.obj;
     }

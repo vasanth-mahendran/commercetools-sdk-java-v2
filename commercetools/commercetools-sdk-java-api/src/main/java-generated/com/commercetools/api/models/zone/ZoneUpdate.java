@@ -15,10 +15,11 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = ZoneUpdateImpl.class)
-public interface ZoneUpdate extends com.commercetools.api.models.ResourceUpdate<ZoneUpdate, ZoneUpdateAction> {
+public interface ZoneUpdate
+        extends com.commercetools.api.models.ResourceUpdate<ZoneUpdate, ZoneUpdateAction, ZoneUpdateBuilder> {
 
     /**
-    *  <p>Expected version of the Zone on which the changes should be applied. If the expected version does not match the actual version, a 409 Conflict will be returned.</p>
+    *  <p>Expected version of the Zone on which the changes should be applied. If the expected version does not match the actual version, a <a href="/../api/errors#409-conflict">409 Conflict</a> will be returned.</p>
     */
     @NotNull
     @JsonProperty("version")
@@ -60,5 +61,14 @@ public interface ZoneUpdate extends com.commercetools.api.models.ResourceUpdate<
 
     default <T> T withZoneUpdate(Function<ZoneUpdate, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ZoneUpdate> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ZoneUpdate>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ZoneUpdate>";
+            }
+        };
     }
 }

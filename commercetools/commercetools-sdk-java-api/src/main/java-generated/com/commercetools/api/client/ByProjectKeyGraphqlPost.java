@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -19,8 +17,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  <p>Execute a GraphQL query</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyGraphqlPost
-        extends ApiMethod<ByProjectKeyGraphqlPost, com.commercetools.api.models.graph_ql.GraphQLResponse>
+public class ByProjectKeyGraphqlPost extends
+        BodyApiMethod<ByProjectKeyGraphqlPost, com.commercetools.api.models.graph_ql.GraphQLResponse, com.commercetools.api.models.graph_ql.GraphQLRequest>
         implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyGraphqlPost> {
 
     private String projectKey;
@@ -41,37 +39,28 @@ public class ByProjectKeyGraphqlPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/graphql", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(graphQLRequest);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(graphQLRequest)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.graph_ql.GraphQLResponse> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.graph_ql.GraphQLResponse.class).toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.graph_ql.GraphQLResponse.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.graph_ql.GraphQLResponse>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.graph_ql.GraphQLResponse.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.graph_ql.GraphQLResponse.class);
     }
 
     public String getProjectKey() {
@@ -80,6 +69,16 @@ public class ByProjectKeyGraphqlPost
 
     public void setProjectKey(final String projectKey) {
         this.projectKey = projectKey;
+    }
+
+    public com.commercetools.api.models.graph_ql.GraphQLRequest getBody() {
+        return graphQLRequest;
+    }
+
+    public ByProjectKeyGraphqlPost withBody(com.commercetools.api.models.graph_ql.GraphQLRequest graphQLRequest) {
+        ByProjectKeyGraphqlPost t = copy();
+        t.graphQLRequest = graphQLRequest;
+        return t;
     }
 
     @Override

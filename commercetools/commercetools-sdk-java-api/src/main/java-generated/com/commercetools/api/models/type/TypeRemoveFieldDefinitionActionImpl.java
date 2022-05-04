@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TypeRemoveFieldDefinitionActionImpl implements TypeRemoveFieldDefinitionAction {
+public class TypeRemoveFieldDefinitionActionImpl implements TypeRemoveFieldDefinitionAction, ModelBase {
 
     private String action;
 
@@ -34,6 +35,10 @@ public class TypeRemoveFieldDefinitionActionImpl implements TypeRemoveFieldDefin
         return this.action;
     }
 
+    /**
+    *  <p><code>name</code> of the <a href="ctp:api:type:FieldDefinition">FieldDefinition</a> to remove.
+    *  The removal of a FieldDefinition deletes <a href="/../api/general-concepts#eventual-consistency">asynchronously</a> all Custom Fields using the FieldDefinition as well.</p>
+    */
     public String getFieldName() {
         return this.fieldName;
     }

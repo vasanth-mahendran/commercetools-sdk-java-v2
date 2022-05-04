@@ -16,19 +16,20 @@ import io.vrap.rmf.base.client.utils.Generated;
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = CustomerGroupResourceIdentifierImpl.class)
-public interface CustomerGroupResourceIdentifier extends ResourceIdentifier {
+public interface CustomerGroupResourceIdentifier
+        extends ResourceIdentifier, com.commercetools.api.models.Identifiable<CustomerGroup> {
 
     String CUSTOMER_GROUP = "customer-group";
 
     /**
-    *  <p>Unique ID of the referenced <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>. Either <code>id</code> or <code>key</code> is required.</p>
+    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>. Either <code>id</code> or <code>key</code> is required.</p>
     */
 
     @JsonProperty("id")
     public String getId();
 
     /**
-    *  <p>Unique key of the referenced <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>. Either <code>id</code> or <code>key</code> is required.</p>
+    *  <p>User-defined unique identifier of the referenced <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>. Either <code>id</code> or <code>key</code> is required.</p>
     */
 
     @JsonProperty("key")
@@ -59,5 +60,14 @@ public interface CustomerGroupResourceIdentifier extends ResourceIdentifier {
 
     default <T> T withCustomerGroupResourceIdentifier(Function<CustomerGroupResourceIdentifier, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerGroupResourceIdentifier> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerGroupResourceIdentifier>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerGroupResourceIdentifier>";
+            }
+        };
     }
 }

@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 import com.commercetools.api.models.channel.ChannelReference;
 import com.commercetools.api.models.common.LocalizedString;
+import com.commercetools.api.models.store.ProductSelectionSetting;
 import com.commercetools.api.models.type.CustomFields;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
@@ -40,6 +41,14 @@ public interface StoreCreatedMessage extends Message {
     @JsonProperty("supplyChannels")
     public List<ChannelReference> getSupplyChannels();
 
+    @NotNull
+    @Valid
+    @JsonProperty("productSelections")
+    public List<ProductSelectionSetting> getProductSelections();
+
+    /**
+    *  <p>Serves as value of the <code>custom</code> field on a resource or data type customized with a <a href="ctp:api:type:Type">Type</a>.</p>
+    */
     @Valid
     @JsonProperty("custom")
     public CustomFields getCustom();
@@ -60,6 +69,11 @@ public interface StoreCreatedMessage extends Message {
     public void setSupplyChannels(final ChannelReference... supplyChannels);
 
     public void setSupplyChannels(final List<ChannelReference> supplyChannels);
+
+    @JsonIgnore
+    public void setProductSelections(final ProductSelectionSetting... productSelections);
+
+    public void setProductSelections(final List<ProductSelectionSetting> productSelections);
 
     public void setCustom(final CustomFields custom);
 
@@ -83,6 +97,7 @@ public interface StoreCreatedMessage extends Message {
         instance.setLanguages(template.getLanguages());
         instance.setDistributionChannels(template.getDistributionChannels());
         instance.setSupplyChannels(template.getSupplyChannels());
+        instance.setProductSelections(template.getProductSelections());
         instance.setCustom(template.getCustom());
         return instance;
     }
@@ -97,5 +112,14 @@ public interface StoreCreatedMessage extends Message {
 
     default <T> T withStoreCreatedMessage(Function<StoreCreatedMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StoreCreatedMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StoreCreatedMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StoreCreatedMessage>";
+            }
+        };
     }
 }

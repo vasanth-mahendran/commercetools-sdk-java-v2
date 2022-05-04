@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class OrderImportDraftImpl implements OrderImportDraft {
+public class OrderImportDraftImpl implements OrderImportDraft, ModelBase {
 
     private String orderNumber;
 
@@ -40,11 +41,15 @@ public class OrderImportDraftImpl implements OrderImportDraft {
 
     private com.commercetools.api.models.order.OrderState orderState;
 
+    private com.commercetools.api.models.state.StateReference state;
+
     private com.commercetools.api.models.order.ShipmentState shipmentState;
 
     private com.commercetools.api.models.order.PaymentState paymentState;
 
     private com.commercetools.api.models.order.ShippingInfoImportDraft shippingInfo;
+
+    private com.commercetools.api.models.order.PaymentInfo paymentInfo;
 
     private java.time.ZonedDateTime completedAt;
 
@@ -73,9 +78,11 @@ public class OrderImportDraftImpl implements OrderImportDraft {
             @JsonProperty("customerGroup") final com.commercetools.api.models.customer_group.CustomerGroupResourceIdentifier customerGroup,
             @JsonProperty("country") final String country,
             @JsonProperty("orderState") final com.commercetools.api.models.order.OrderState orderState,
+            @JsonProperty("state") final com.commercetools.api.models.state.StateReference state,
             @JsonProperty("shipmentState") final com.commercetools.api.models.order.ShipmentState shipmentState,
             @JsonProperty("paymentState") final com.commercetools.api.models.order.PaymentState paymentState,
             @JsonProperty("shippingInfo") final com.commercetools.api.models.order.ShippingInfoImportDraft shippingInfo,
+            @JsonProperty("paymentInfo") final com.commercetools.api.models.order.PaymentInfo paymentInfo,
             @JsonProperty("completedAt") final java.time.ZonedDateTime completedAt,
             @JsonProperty("custom") final com.commercetools.api.models.type.CustomFieldsDraft custom,
             @JsonProperty("inventoryMode") final com.commercetools.api.models.cart.InventoryMode inventoryMode,
@@ -95,9 +102,11 @@ public class OrderImportDraftImpl implements OrderImportDraft {
         this.customerGroup = customerGroup;
         this.country = country;
         this.orderState = orderState;
+        this.state = state;
         this.shipmentState = shipmentState;
         this.paymentState = paymentState;
         this.shippingInfo = shippingInfo;
+        this.paymentInfo = paymentInfo;
         this.completedAt = completedAt;
         this.custom = custom;
         this.inventoryMode = inventoryMode;
@@ -190,6 +199,13 @@ public class OrderImportDraftImpl implements OrderImportDraft {
         return this.orderState;
     }
 
+    /**
+    *  <p>This reference can point to a state in a custom workflow.</p>
+    */
+    public com.commercetools.api.models.state.StateReference getState() {
+        return this.state;
+    }
+
     public com.commercetools.api.models.order.ShipmentState getShipmentState() {
         return this.shipmentState;
     }
@@ -203,6 +219,10 @@ public class OrderImportDraftImpl implements OrderImportDraft {
     */
     public com.commercetools.api.models.order.ShippingInfoImportDraft getShippingInfo() {
         return this.shippingInfo;
+    }
+
+    public com.commercetools.api.models.order.PaymentInfo getPaymentInfo() {
+        return this.paymentInfo;
     }
 
     public java.time.ZonedDateTime getCompletedAt() {
@@ -307,6 +327,10 @@ public class OrderImportDraftImpl implements OrderImportDraft {
         this.orderState = orderState;
     }
 
+    public void setState(final com.commercetools.api.models.state.StateReference state) {
+        this.state = state;
+    }
+
     public void setShipmentState(final com.commercetools.api.models.order.ShipmentState shipmentState) {
         this.shipmentState = shipmentState;
     }
@@ -317,6 +341,10 @@ public class OrderImportDraftImpl implements OrderImportDraft {
 
     public void setShippingInfo(final com.commercetools.api.models.order.ShippingInfoImportDraft shippingInfo) {
         this.shippingInfo = shippingInfo;
+    }
+
+    public void setPaymentInfo(final com.commercetools.api.models.order.PaymentInfo paymentInfo) {
+        this.paymentInfo = paymentInfo;
     }
 
     public void setCompletedAt(final java.time.ZonedDateTime completedAt) {
@@ -375,9 +403,11 @@ public class OrderImportDraftImpl implements OrderImportDraft {
                 .append(customerGroup, that.customerGroup)
                 .append(country, that.country)
                 .append(orderState, that.orderState)
+                .append(state, that.state)
                 .append(shipmentState, that.shipmentState)
                 .append(paymentState, that.paymentState)
                 .append(shippingInfo, that.shippingInfo)
+                .append(paymentInfo, that.paymentInfo)
                 .append(completedAt, that.completedAt)
                 .append(custom, that.custom)
                 .append(inventoryMode, that.inventoryMode)
@@ -402,9 +432,11 @@ public class OrderImportDraftImpl implements OrderImportDraft {
                 .append(customerGroup)
                 .append(country)
                 .append(orderState)
+                .append(state)
                 .append(shipmentState)
                 .append(paymentState)
                 .append(shippingInfo)
+                .append(paymentInfo)
                 .append(completedAt)
                 .append(custom)
                 .append(inventoryMode)

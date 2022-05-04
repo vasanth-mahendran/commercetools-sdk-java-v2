@@ -20,6 +20,10 @@ public interface StateSetNameAction extends StateUpdateAction {
 
     String SET_NAME = "setName";
 
+    /**
+    *  <p>Value to set.
+    *  If empty, any existing value will be removed.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("name")
@@ -47,5 +51,14 @@ public interface StateSetNameAction extends StateUpdateAction {
 
     default <T> T withStateSetNameAction(Function<StateSetNameAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StateSetNameAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StateSetNameAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StateSetNameAction>";
+            }
+        };
     }
 }

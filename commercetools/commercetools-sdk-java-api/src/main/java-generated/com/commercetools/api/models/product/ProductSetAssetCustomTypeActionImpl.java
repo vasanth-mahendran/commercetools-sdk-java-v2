@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ProductSetAssetCustomTypeActionImpl implements ProductSetAssetCustomTypeAction {
+public class ProductSetAssetCustomTypeActionImpl implements ProductSetAssetCustomTypeAction, ModelBase {
 
     private String action;
 
@@ -30,14 +31,14 @@ public class ProductSetAssetCustomTypeActionImpl implements ProductSetAssetCusto
 
     private com.commercetools.api.models.type.TypeResourceIdentifier type;
 
-    private java.lang.Object fields;
+    private com.commercetools.api.models.type.FieldContainer fields;
 
     @JsonCreator
     ProductSetAssetCustomTypeActionImpl(@JsonProperty("variantId") final Long variantId,
             @JsonProperty("sku") final String sku, @JsonProperty("staged") final Boolean staged,
             @JsonProperty("assetId") final String assetId, @JsonProperty("assetKey") final String assetKey,
             @JsonProperty("type") final com.commercetools.api.models.type.TypeResourceIdentifier type,
-            @JsonProperty("fields") final java.lang.Object fields) {
+            @JsonProperty("fields") final com.commercetools.api.models.type.FieldContainer fields) {
         this.variantId = variantId;
         this.sku = sku;
         this.staged = staged;
@@ -77,17 +78,17 @@ public class ProductSetAssetCustomTypeActionImpl implements ProductSetAssetCusto
     }
 
     /**
-    *  <p>If set, the custom type is set to this new value.
-    *  If absent, the custom type and any existing custom fields are removed.</p>
+    *  <p>Defines the <a href="ctp:api:type:Type">Type</a> that extends the Asset with <a href="/../api/projects/custom-fields">Custom Fields</a>.
+    *  If absent, any existing Type and Custom Fields are removed from the Asset.</p>
     */
     public com.commercetools.api.models.type.TypeResourceIdentifier getType() {
         return this.type;
     }
 
     /**
-    *  <p>If set, the custom fields are set to this new value.</p>
+    *  <p>Sets the <a href="/../api/projects/custom-fields">Custom Fields</a> fields for the Asset.</p>
     */
-    public java.lang.Object getFields() {
+    public com.commercetools.api.models.type.FieldContainer getFields() {
         return this.fields;
     }
 
@@ -115,7 +116,7 @@ public class ProductSetAssetCustomTypeActionImpl implements ProductSetAssetCusto
         this.type = type;
     }
 
-    public void setFields(final java.lang.Object fields) {
+    public void setFields(final com.commercetools.api.models.type.FieldContainer fields) {
         this.fields = fields;
     }
 

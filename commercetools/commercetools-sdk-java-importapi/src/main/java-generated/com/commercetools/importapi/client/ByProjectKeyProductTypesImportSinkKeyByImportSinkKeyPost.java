@@ -1,8 +1,6 @@
 
 package com.commercetools.importapi.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyProductTypesImportSinkKeyByImportSinkKeyPost extends
-        ApiMethod<ByProjectKeyProductTypesImportSinkKeyByImportSinkKeyPost, com.commercetools.importapi.models.importrequests.ImportResponse>
+        BodyApiMethod<ByProjectKeyProductTypesImportSinkKeyByImportSinkKeyPost, com.commercetools.importapi.models.importrequests.ImportResponse, com.commercetools.importapi.models.importrequests.ProductTypeImportRequest>
         implements
         com.commercetools.importapi.client.Secured_by_manage_productsTrait<ByProjectKeyProductTypesImportSinkKeyByImportSinkKeyPost> {
 
@@ -47,41 +45,29 @@ public class ByProjectKeyProductTypesImportSinkKeyByImportSinkKeyPost extends
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/product-types/importSinkKey=%s", this.projectKey,
             this.importSinkKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(productTypeImportRequest);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(productTypeImportRequest)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importrequests.ImportResponse> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.importapi.models.importrequests.ImportResponse.class)
-                    .toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.importapi.models.importrequests.ImportResponse.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importrequests.ImportResponse>> execute(
             final ApiHttpClient client) {
-        return client
-                .execute(this.createHttpRequest(),
-                    com.commercetools.importapi.models.importrequests.ImportResponse.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.importapi.models.importrequests.ImportResponse.class);
     }
 
     public String getProjectKey() {
@@ -98,6 +84,17 @@ public class ByProjectKeyProductTypesImportSinkKeyByImportSinkKeyPost extends
 
     public void setImportSinkKey(final String importSinkKey) {
         this.importSinkKey = importSinkKey;
+    }
+
+    public com.commercetools.importapi.models.importrequests.ProductTypeImportRequest getBody() {
+        return productTypeImportRequest;
+    }
+
+    public ByProjectKeyProductTypesImportSinkKeyByImportSinkKeyPost withBody(
+            com.commercetools.importapi.models.importrequests.ProductTypeImportRequest productTypeImportRequest) {
+        ByProjectKeyProductTypesImportSinkKeyByImportSinkKeyPost t = copy();
+        t.productTypeImportRequest = productTypeImportRequest;
+        return t;
     }
 
     @Override

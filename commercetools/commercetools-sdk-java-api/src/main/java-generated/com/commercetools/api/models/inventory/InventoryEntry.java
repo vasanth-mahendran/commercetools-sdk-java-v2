@@ -21,10 +21,11 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = InventoryEntryImpl.class)
-public interface InventoryEntry extends BaseResource, com.commercetools.api.models.DomainResource<InventoryEntry> {
+public interface InventoryEntry extends BaseResource, com.commercetools.api.models.DomainResource<InventoryEntry>,
+        com.commercetools.api.models.Customizable<InventoryEntry> {
 
     /**
-    *  <p>The unique ID of the inventory entry.</p>
+    *  <p>Platform-generated unique identifier of the InventoryEntry.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -55,6 +56,13 @@ public interface InventoryEntry extends BaseResource, com.commercetools.api.mode
     @Valid
     @JsonProperty("createdBy")
     public CreatedBy getCreatedBy();
+
+    /**
+    *  <p>User-defined unique identifier of the InventoryEntry.</p>
+    */
+
+    @JsonProperty("key")
+    public String getKey();
 
     @NotNull
     @JsonProperty("sku")
@@ -113,6 +121,8 @@ public interface InventoryEntry extends BaseResource, com.commercetools.api.mode
 
     public void setCreatedBy(final CreatedBy createdBy);
 
+    public void setKey(final String key);
+
     public void setSku(final String sku);
 
     public void setSupplyChannel(final ChannelReference supplyChannel);
@@ -139,6 +149,7 @@ public interface InventoryEntry extends BaseResource, com.commercetools.api.mode
         instance.setLastModifiedAt(template.getLastModifiedAt());
         instance.setLastModifiedBy(template.getLastModifiedBy());
         instance.setCreatedBy(template.getCreatedBy());
+        instance.setKey(template.getKey());
         instance.setSku(template.getSku());
         instance.setSupplyChannel(template.getSupplyChannel());
         instance.setQuantityOnStock(template.getQuantityOnStock());
@@ -159,5 +170,14 @@ public interface InventoryEntry extends BaseResource, com.commercetools.api.mode
 
     default <T> T withInventoryEntry(Function<InventoryEntry, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<InventoryEntry> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<InventoryEntry>() {
+            @Override
+            public String toString() {
+                return "TypeReference<InventoryEntry>";
+            }
+        };
     }
 }

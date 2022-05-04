@@ -6,8 +6,10 @@ import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.function.Function;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.commercetools.api.models.type.CustomFields;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
@@ -17,9 +19,13 @@ import io.vrap.rmf.base.client.utils.Generated;
         @JsonSubTypes.Type(value = com.commercetools.api.models.order.CustomLineItemReturnItemImpl.class, name = CustomLineItemReturnItem.CUSTOM_LINE_ITEM_RETURN_ITEM),
         @JsonSubTypes.Type(value = com.commercetools.api.models.order.LineItemReturnItemImpl.class, name = LineItemReturnItem.LINE_ITEM_RETURN_ITEM) })
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type", defaultImpl = ReturnItemImpl.class, visible = true)
+@JsonDeserialize(as = ReturnItemImpl.class)
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public interface ReturnItem {
+public interface ReturnItem extends com.commercetools.api.models.Customizable<ReturnItem> {
 
+    /**
+    *  <p>Platform-generated unique identifier of the ReturnItem.</p>
+    */
     @NotNull
     @JsonProperty("id")
     public String getId();
@@ -43,6 +49,13 @@ public interface ReturnItem {
     @JsonProperty("paymentState")
     public ReturnPaymentState getPaymentState();
 
+    /**
+    *  <p>Custom Fields of this return item.</p>
+    */
+    @Valid
+    @JsonProperty("custom")
+    public CustomFields getCustom();
+
     @NotNull
     @JsonProperty("lastModifiedAt")
     public ZonedDateTime getLastModifiedAt();
@@ -61,11 +74,30 @@ public interface ReturnItem {
 
     public void setPaymentState(final ReturnPaymentState paymentState);
 
+    public void setCustom(final CustomFields custom);
+
     public void setLastModifiedAt(final ZonedDateTime lastModifiedAt);
 
     public void setCreatedAt(final ZonedDateTime createdAt);
 
+    public static com.commercetools.api.models.order.CustomLineItemReturnItemBuilder customLineItemReturnItemBuilder() {
+        return com.commercetools.api.models.order.CustomLineItemReturnItemBuilder.of();
+    }
+
+    public static com.commercetools.api.models.order.LineItemReturnItemBuilder lineItemReturnItemBuilder() {
+        return com.commercetools.api.models.order.LineItemReturnItemBuilder.of();
+    }
+
     default <T> T withReturnItem(Function<ReturnItem, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ReturnItem> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ReturnItem>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ReturnItem>";
+            }
+        };
     }
 }

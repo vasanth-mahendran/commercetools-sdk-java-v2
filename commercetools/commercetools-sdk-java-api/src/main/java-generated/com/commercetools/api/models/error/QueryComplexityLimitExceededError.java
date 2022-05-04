@@ -23,6 +23,7 @@ public interface QueryComplexityLimitExceededError extends ErrorObject {
     public static QueryComplexityLimitExceededError of(final QueryComplexityLimitExceededError template) {
         QueryComplexityLimitExceededErrorImpl instance = new QueryComplexityLimitExceededErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface QueryComplexityLimitExceededError extends ErrorObject {
 
     default <T> T withQueryComplexityLimitExceededError(Function<QueryComplexityLimitExceededError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<QueryComplexityLimitExceededError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<QueryComplexityLimitExceededError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<QueryComplexityLimitExceededError>";
+            }
+        };
     }
 }

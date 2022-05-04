@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CustomerDraftImpl implements CustomerDraft {
+public class CustomerDraftImpl implements CustomerDraft, ModelBase {
 
     private String customerNumber;
 
@@ -45,11 +46,11 @@ public class CustomerDraftImpl implements CustomerDraft {
 
     private java.util.List<com.commercetools.api.models.common.BaseAddress> addresses;
 
-    private Long defaultShippingAddress;
+    private Integer defaultShippingAddress;
 
     private java.util.List<Integer> shippingAddresses;
 
-    private Long defaultBillingAddress;
+    private Integer defaultBillingAddress;
 
     private java.util.List<Integer> billingAddresses;
 
@@ -69,6 +70,8 @@ public class CustomerDraftImpl implements CustomerDraft {
 
     private java.util.List<com.commercetools.api.models.store.StoreResourceIdentifier> stores;
 
+    private com.commercetools.api.models.customer.AuthenticationMode authenticationMode;
+
     @JsonCreator
     CustomerDraftImpl(@JsonProperty("customerNumber") final String customerNumber,
             @JsonProperty("email") final String email, @JsonProperty("password") final String password,
@@ -80,9 +83,9 @@ public class CustomerDraftImpl implements CustomerDraft {
             @JsonProperty("dateOfBirth") final java.time.LocalDate dateOfBirth,
             @JsonProperty("companyName") final String companyName, @JsonProperty("vatId") final String vatId,
             @JsonProperty("addresses") final java.util.List<com.commercetools.api.models.common.BaseAddress> addresses,
-            @JsonProperty("defaultShippingAddress") final Long defaultShippingAddress,
+            @JsonProperty("defaultShippingAddress") final Integer defaultShippingAddress,
             @JsonProperty("shippingAddresses") final java.util.List<Integer> shippingAddresses,
-            @JsonProperty("defaultBillingAddress") final Long defaultBillingAddress,
+            @JsonProperty("defaultBillingAddress") final Integer defaultBillingAddress,
             @JsonProperty("billingAddresses") final java.util.List<Integer> billingAddresses,
             @JsonProperty("isEmailVerified") final Boolean isEmailVerified,
             @JsonProperty("externalId") final String externalId,
@@ -90,7 +93,8 @@ public class CustomerDraftImpl implements CustomerDraft {
             @JsonProperty("custom") final com.commercetools.api.models.type.CustomFieldsDraft custom,
             @JsonProperty("locale") final String locale, @JsonProperty("salutation") final String salutation,
             @JsonProperty("key") final String key,
-            @JsonProperty("stores") final java.util.List<com.commercetools.api.models.store.StoreResourceIdentifier> stores) {
+            @JsonProperty("stores") final java.util.List<com.commercetools.api.models.store.StoreResourceIdentifier> stores,
+            @JsonProperty("authenticationMode") final com.commercetools.api.models.customer.AuthenticationMode authenticationMode) {
         this.customerNumber = customerNumber;
         this.email = email;
         this.password = password;
@@ -117,6 +121,7 @@ public class CustomerDraftImpl implements CustomerDraft {
         this.salutation = salutation;
         this.key = key;
         this.stores = stores;
+        this.authenticationMode = authenticationMode;
     }
 
     public CustomerDraftImpl() {
@@ -141,6 +146,9 @@ public class CustomerDraftImpl implements CustomerDraft {
         return this.email;
     }
 
+    /**
+    *  <p>Only optional with <code>authenticationMode</code> set to <code>ExternalAuth</code>.</p>
+    */
     public String getPassword() {
         return this.password;
     }
@@ -206,7 +214,7 @@ public class CustomerDraftImpl implements CustomerDraft {
     *  <p>The index of the address in the addresses array.
     *  The <code>defaultShippingAddressId</code> of the customer will be set to the ID of that address.</p>
     */
-    public Long getDefaultShippingAddress() {
+    public Integer getDefaultShippingAddress() {
         return this.defaultShippingAddress;
     }
 
@@ -222,7 +230,7 @@ public class CustomerDraftImpl implements CustomerDraft {
     *  <p>The index of the address in the addresses array.
     *  The <code>defaultBillingAddressId</code> of the customer will be set to the ID of that address.</p>
     */
-    public Long getDefaultBillingAddress() {
+    public Integer getDefaultBillingAddress() {
         return this.defaultBillingAddress;
     }
 
@@ -265,9 +273,7 @@ public class CustomerDraftImpl implements CustomerDraft {
     }
 
     /**
-    *  <p>User-specific unique identifier for a customer.
-    *  Must be unique across a project.
-    *  The field can be reset using the Set Key UpdateAction</p>
+    *  <p>User-defined unique identifier for the Customer.</p>
     */
     public String getKey() {
         return this.key;
@@ -280,6 +286,13 @@ public class CustomerDraftImpl implements CustomerDraft {
     */
     public java.util.List<com.commercetools.api.models.store.StoreResourceIdentifier> getStores() {
         return this.stores;
+    }
+
+    /**
+    *  <p>Defines whether a password is required for the Customer that is used for platform-internal authentication.</p>
+    */
+    public com.commercetools.api.models.customer.AuthenticationMode getAuthenticationMode() {
+        return this.authenticationMode;
     }
 
     public void setCustomerNumber(final String customerNumber) {
@@ -343,7 +356,7 @@ public class CustomerDraftImpl implements CustomerDraft {
         this.addresses = addresses;
     }
 
-    public void setDefaultShippingAddress(final Long defaultShippingAddress) {
+    public void setDefaultShippingAddress(final Integer defaultShippingAddress) {
         this.defaultShippingAddress = defaultShippingAddress;
     }
 
@@ -355,7 +368,7 @@ public class CustomerDraftImpl implements CustomerDraft {
         this.shippingAddresses = shippingAddresses;
     }
 
-    public void setDefaultBillingAddress(final Long defaultBillingAddress) {
+    public void setDefaultBillingAddress(final Integer defaultBillingAddress) {
         this.defaultBillingAddress = defaultBillingAddress;
     }
 
@@ -404,6 +417,11 @@ public class CustomerDraftImpl implements CustomerDraft {
         this.stores = stores;
     }
 
+    public void setAuthenticationMode(
+            final com.commercetools.api.models.customer.AuthenticationMode authenticationMode) {
+        this.authenticationMode = authenticationMode;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -440,6 +458,7 @@ public class CustomerDraftImpl implements CustomerDraft {
                 .append(salutation, that.salutation)
                 .append(key, that.key)
                 .append(stores, that.stores)
+                .append(authenticationMode, that.authenticationMode)
                 .isEquals();
     }
 
@@ -471,6 +490,7 @@ public class CustomerDraftImpl implements CustomerDraft {
                 .append(salutation)
                 .append(key)
                 .append(stores)
+                .append(authenticationMode)
                 .toHashCode();
     }
 

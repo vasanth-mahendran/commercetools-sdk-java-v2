@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CartValueTierImpl implements CartValueTier {
+public class CartValueTierImpl implements CartValueTier, ModelBase {
 
     private com.commercetools.api.models.shipping_method.ShippingRateTierType type;
 
@@ -38,6 +39,9 @@ public class CartValueTierImpl implements CartValueTier {
         this.type = ShippingRateTierType.findEnum("CartValue");
     }
 
+    /**
+    *  <p>Can be one of the following or absent.</p>
+    */
     public com.commercetools.api.models.shipping_method.ShippingRateTierType getType() {
         return this.type;
     }
@@ -46,6 +50,10 @@ public class CartValueTierImpl implements CartValueTier {
         return this.minimumCentAmount;
     }
 
+    /**
+    *  <p>Draft type that stores amounts in cent precision for the specified currency.
+    *  For storing money values in fractions of the minor unit in a currency, use <a href="ctp:api:type:HighPrecisionMoneyDraft">HighPrecisionMoneyDraft</a> instead.</p>
+    */
     public com.commercetools.api.models.common.Money getPrice() {
         return this.price;
     }

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class OrderCustomerGroupSetMessageImpl implements OrderCustomerGroupSetMessage {
+public class OrderCustomerGroupSetMessageImpl implements OrderCustomerGroupSetMessage, ModelBase {
 
     private String id;
 
@@ -73,6 +74,9 @@ public class OrderCustomerGroupSetMessageImpl implements OrderCustomerGroupSetMe
         this.type = ORDER_CUSTOMER_GROUP_SET;
     }
 
+    /**
+    *  <p>Platform-generated unique identifier of the Message.</p>
+    */
     public String getId() {
         return this.id;
     }
@@ -124,14 +128,14 @@ public class OrderCustomerGroupSetMessageImpl implements OrderCustomerGroupSetMe
     }
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     public com.commercetools.api.models.customer_group.CustomerGroupReference getCustomerGroup() {
         return this.customerGroup;
     }
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     public com.commercetools.api.models.customer_group.CustomerGroupReference getOldCustomerGroup() {
         return this.oldCustomerGroup;

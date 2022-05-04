@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -19,8 +17,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  <p>Create an Order by Import</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyOrdersImportPost
-        extends ApiMethod<ByProjectKeyOrdersImportPost, com.commercetools.api.models.order.Order>
+public class ByProjectKeyOrdersImportPost extends
+        BodyApiMethod<ByProjectKeyOrdersImportPost, com.commercetools.api.models.order.Order, com.commercetools.api.models.order.OrderImportDraft>
         implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyOrdersImportPost> {
 
     private String projectKey;
@@ -41,37 +39,28 @@ public class ByProjectKeyOrdersImportPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/orders/import", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(orderImportDraft);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(orderImportDraft)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.order.Order> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.order.Order.class).toCompletableFuture(), request,
-            timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.order.Order.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.order.Order>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.order.Order.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.order.Order.class);
     }
 
     public String getProjectKey() {
@@ -80,6 +69,16 @@ public class ByProjectKeyOrdersImportPost
 
     public void setProjectKey(final String projectKey) {
         this.projectKey = projectKey;
+    }
+
+    public com.commercetools.api.models.order.OrderImportDraft getBody() {
+        return orderImportDraft;
+    }
+
+    public ByProjectKeyOrdersImportPost withBody(com.commercetools.api.models.order.OrderImportDraft orderImportDraft) {
+        ByProjectKeyOrdersImportPost t = copy();
+        t.orderImportDraft = orderImportDraft;
+        return t;
     }
 
     @Override

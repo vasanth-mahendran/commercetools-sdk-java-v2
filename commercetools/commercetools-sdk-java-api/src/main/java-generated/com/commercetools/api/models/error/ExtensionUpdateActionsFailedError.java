@@ -46,6 +46,7 @@ public interface ExtensionUpdateActionsFailedError extends ErrorObject {
     public static ExtensionUpdateActionsFailedError of(final ExtensionUpdateActionsFailedError template) {
         ExtensionUpdateActionsFailedErrorImpl instance = new ExtensionUpdateActionsFailedErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setLocalizedMessage(template.getLocalizedMessage());
         instance.setExtensionExtraInfo(template.getExtensionExtraInfo());
         instance.setErrorByExtension(template.getErrorByExtension());
@@ -62,5 +63,14 @@ public interface ExtensionUpdateActionsFailedError extends ErrorObject {
 
     default <T> T withExtensionUpdateActionsFailedError(Function<ExtensionUpdateActionsFailedError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ExtensionUpdateActionsFailedError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ExtensionUpdateActionsFailedError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ExtensionUpdateActionsFailedError>";
+            }
+        };
     }
 }

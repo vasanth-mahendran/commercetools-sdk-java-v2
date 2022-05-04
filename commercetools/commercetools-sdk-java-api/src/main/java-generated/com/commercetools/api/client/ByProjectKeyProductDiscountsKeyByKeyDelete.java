@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -42,31 +42,25 @@ public class ByProjectKeyProductDiscountsKeyByKeyDelete extends
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/product-discounts/key=%s", this.projectKey, this.key);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-
         return new ApiHttpRequest(ApiHttpMethod.DELETE, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.product_discount.ProductDiscount> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(client.execute(request, com.commercetools.api.models.product_discount.ProductDiscount.class)
-                .toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.product_discount.ProductDiscount.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_discount.ProductDiscount>> execute(
             final ApiHttpClient client) {
-        return client
-                .execute(this.createHttpRequest(), com.commercetools.api.models.product_discount.ProductDiscount.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.product_discount.ProductDiscount.class);
     }
 
     public String getProjectKey() {
@@ -94,23 +88,51 @@ public class ByProjectKeyProductDiscountsKeyByKeyDelete extends
     }
 
     /**
-     * set version with the specificied value
+     * set version with the specified value
      */
-    public ByProjectKeyProductDiscountsKeyByKeyDelete withVersion(final long version) {
+    public <TValue> ByProjectKeyProductDiscountsKeyByKeyDelete withVersion(final TValue version) {
         return copy().withQueryParam("version", version);
     }
 
     /**
      * add additional version query parameter
      */
-    public ByProjectKeyProductDiscountsKeyByKeyDelete addVersion(final long version) {
+    public <TValue> ByProjectKeyProductDiscountsKeyByKeyDelete addVersion(final TValue version) {
         return copy().addQueryParam("version", version);
     }
 
     /**
-     * set version with the specificied values
+     * set version with the specified value
      */
-    public ByProjectKeyProductDiscountsKeyByKeyDelete withVersion(final List<Long> version) {
+    public ByProjectKeyProductDiscountsKeyByKeyDelete withVersion(final Supplier<Long> supplier) {
+        return copy().withQueryParam("version", supplier.get());
+    }
+
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyProductDiscountsKeyByKeyDelete addVersion(final Supplier<Long> supplier) {
+        return copy().addQueryParam("version", supplier.get());
+    }
+
+    /**
+     * set version with the specified value
+     */
+    public ByProjectKeyProductDiscountsKeyByKeyDelete withVersion(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("version", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional version query parameter
+     */
+    public ByProjectKeyProductDiscountsKeyByKeyDelete addVersion(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("version", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set version with the specified values
+     */
+    public <TValue> ByProjectKeyProductDiscountsKeyByKeyDelete withVersion(final List<TValue> version) {
         return copy().withoutQueryParam("version")
                 .addQueryParams(
                     version.stream().map(s -> new ParamEntry<>("version", s.toString())).collect(Collectors.toList()));
@@ -119,29 +141,57 @@ public class ByProjectKeyProductDiscountsKeyByKeyDelete extends
     /**
      * add additional version query parameters
      */
-    public ByProjectKeyProductDiscountsKeyByKeyDelete addVersion(final List<Long> version) {
+    public <TValue> ByProjectKeyProductDiscountsKeyByKeyDelete addVersion(final List<TValue> version) {
         return copy().addQueryParams(
             version.stream().map(s -> new ParamEntry<>("version", s.toString())).collect(Collectors.toList()));
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyProductDiscountsKeyByKeyDelete withExpand(final String expand) {
+    public <TValue> ByProjectKeyProductDiscountsKeyByKeyDelete withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyProductDiscountsKeyByKeyDelete addExpand(final String expand) {
+    public <TValue> ByProjectKeyProductDiscountsKeyByKeyDelete addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyProductDiscountsKeyByKeyDelete withExpand(final List<String> expand) {
+    public ByProjectKeyProductDiscountsKeyByKeyDelete withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyProductDiscountsKeyByKeyDelete addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyProductDiscountsKeyByKeyDelete withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyProductDiscountsKeyByKeyDelete addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyProductDiscountsKeyByKeyDelete withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -150,7 +200,7 @@ public class ByProjectKeyProductDiscountsKeyByKeyDelete extends
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyProductDiscountsKeyByKeyDelete addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyProductDiscountsKeyByKeyDelete addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
     }

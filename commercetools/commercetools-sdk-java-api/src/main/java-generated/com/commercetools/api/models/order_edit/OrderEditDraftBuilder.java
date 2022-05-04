@@ -34,6 +34,12 @@ public class OrderEditDraftBuilder implements Builder<OrderEditDraft> {
         return this;
     }
 
+    public OrderEditDraftBuilder resource(
+            Function<com.commercetools.api.models.order.OrderReferenceBuilder, com.commercetools.api.models.order.OrderReferenceBuilder> builder) {
+        this.resource = builder.apply(com.commercetools.api.models.order.OrderReferenceBuilder.of()).build();
+        return this;
+    }
+
     public OrderEditDraftBuilder resource(final com.commercetools.api.models.order.OrderReference resource) {
         this.resource = resource;
         return this;
@@ -48,6 +54,33 @@ public class OrderEditDraftBuilder implements Builder<OrderEditDraft> {
     public OrderEditDraftBuilder stagedActions(
             @Nullable final java.util.List<com.commercetools.api.models.order.StagedOrderUpdateAction> stagedActions) {
         this.stagedActions = stagedActions;
+        return this;
+    }
+
+    public OrderEditDraftBuilder plusStagedActions(
+            @Nullable final com.commercetools.api.models.order.StagedOrderUpdateAction... stagedActions) {
+        if (this.stagedActions == null) {
+            this.stagedActions = new ArrayList<>();
+        }
+        this.stagedActions.addAll(Arrays.asList(stagedActions));
+        return this;
+    }
+
+    public OrderEditDraftBuilder plusStagedActions(
+            Function<com.commercetools.api.models.order.StagedOrderUpdateActionBuilder, Builder<? extends com.commercetools.api.models.order.StagedOrderUpdateAction>> builder) {
+        if (this.stagedActions == null) {
+            this.stagedActions = new ArrayList<>();
+        }
+        this.stagedActions
+                .add(builder.apply(com.commercetools.api.models.order.StagedOrderUpdateActionBuilder.of()).build());
+        return this;
+    }
+
+    public OrderEditDraftBuilder withStagedActions(
+            Function<com.commercetools.api.models.order.StagedOrderUpdateActionBuilder, Builder<? extends com.commercetools.api.models.order.StagedOrderUpdateAction>> builder) {
+        this.stagedActions = new ArrayList<>();
+        this.stagedActions
+                .add(builder.apply(com.commercetools.api.models.order.StagedOrderUpdateActionBuilder.of()).build());
         return this;
     }
 

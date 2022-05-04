@@ -30,6 +30,9 @@ public interface CustomerSignin {
     @JsonProperty("anonymousCartId")
     public String getAnonymousCartId();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Cart">Cart</a>.</p>
+    */
     @Valid
     @JsonProperty("anonymousCart")
     public CartResourceIdentifier getAnonymousCart();
@@ -84,5 +87,14 @@ public interface CustomerSignin {
 
     default <T> T withCustomerSignin(Function<CustomerSignin, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerSignin> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerSignin>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerSignin>";
+            }
+        };
     }
 }

@@ -40,6 +40,9 @@ public class StoreBuilder implements Builder<Store> {
     private java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels;
 
     @Nullable
+    private java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections;
+
+    @Nullable
     private com.commercetools.api.models.type.CustomFields custom;
 
     public StoreBuilder id(final String id) {
@@ -111,17 +114,32 @@ public class StoreBuilder implements Builder<Store> {
         return this;
     }
 
+    public StoreBuilder plusLanguages(@Nullable final String... languages) {
+        if (this.languages == null) {
+            this.languages = new ArrayList<>();
+        }
+        this.languages.addAll(Arrays.asList(languages));
+        return this;
+    }
+
     public StoreBuilder distributionChannels(
             final com.commercetools.api.models.channel.ChannelReference... distributionChannels) {
         this.distributionChannels = new ArrayList<>(Arrays.asList(distributionChannels));
         return this;
     }
 
-    public StoreBuilder withDistributionChannels(
-            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
-        this.distributionChannels = new ArrayList<>();
-        this.distributionChannels
-                .add(builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of()).build());
+    public StoreBuilder distributionChannels(
+            final java.util.List<com.commercetools.api.models.channel.ChannelReference> distributionChannels) {
+        this.distributionChannels = distributionChannels;
+        return this;
+    }
+
+    public StoreBuilder plusDistributionChannels(
+            final com.commercetools.api.models.channel.ChannelReference... distributionChannels) {
+        if (this.distributionChannels == null) {
+            this.distributionChannels = new ArrayList<>();
+        }
+        this.distributionChannels.addAll(Arrays.asList(distributionChannels));
         return this;
     }
 
@@ -135,9 +153,11 @@ public class StoreBuilder implements Builder<Store> {
         return this;
     }
 
-    public StoreBuilder distributionChannels(
-            final java.util.List<com.commercetools.api.models.channel.ChannelReference> distributionChannels) {
-        this.distributionChannels = distributionChannels;
+    public StoreBuilder withDistributionChannels(
+            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
+        this.distributionChannels = new ArrayList<>();
+        this.distributionChannels
+                .add(builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of()).build());
         return this;
     }
 
@@ -147,11 +167,18 @@ public class StoreBuilder implements Builder<Store> {
         return this;
     }
 
-    public StoreBuilder withSupplyChannels(
-            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
-        this.supplyChannels = new ArrayList<>();
-        this.supplyChannels
-                .add(builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of()).build());
+    public StoreBuilder supplyChannels(
+            @Nullable final java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels) {
+        this.supplyChannels = supplyChannels;
+        return this;
+    }
+
+    public StoreBuilder plusSupplyChannels(
+            @Nullable final com.commercetools.api.models.channel.ChannelReference... supplyChannels) {
+        if (this.supplyChannels == null) {
+            this.supplyChannels = new ArrayList<>();
+        }
+        this.supplyChannels.addAll(Arrays.asList(supplyChannels));
         return this;
     }
 
@@ -165,9 +192,50 @@ public class StoreBuilder implements Builder<Store> {
         return this;
     }
 
-    public StoreBuilder supplyChannels(
-            @Nullable final java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels) {
-        this.supplyChannels = supplyChannels;
+    public StoreBuilder withSupplyChannels(
+            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
+        this.supplyChannels = new ArrayList<>();
+        this.supplyChannels
+                .add(builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of()).build());
+        return this;
+    }
+
+    public StoreBuilder productSelections(
+            @Nullable final com.commercetools.api.models.store.ProductSelectionSetting... productSelections) {
+        this.productSelections = new ArrayList<>(Arrays.asList(productSelections));
+        return this;
+    }
+
+    public StoreBuilder productSelections(
+            @Nullable final java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections) {
+        this.productSelections = productSelections;
+        return this;
+    }
+
+    public StoreBuilder plusProductSelections(
+            @Nullable final com.commercetools.api.models.store.ProductSelectionSetting... productSelections) {
+        if (this.productSelections == null) {
+            this.productSelections = new ArrayList<>();
+        }
+        this.productSelections.addAll(Arrays.asList(productSelections));
+        return this;
+    }
+
+    public StoreBuilder plusProductSelections(
+            Function<com.commercetools.api.models.store.ProductSelectionSettingBuilder, com.commercetools.api.models.store.ProductSelectionSettingBuilder> builder) {
+        if (this.productSelections == null) {
+            this.productSelections = new ArrayList<>();
+        }
+        this.productSelections
+                .add(builder.apply(com.commercetools.api.models.store.ProductSelectionSettingBuilder.of()).build());
+        return this;
+    }
+
+    public StoreBuilder withProductSelections(
+            Function<com.commercetools.api.models.store.ProductSelectionSettingBuilder, com.commercetools.api.models.store.ProductSelectionSettingBuilder> builder) {
+        this.productSelections = new ArrayList<>();
+        this.productSelections
+                .add(builder.apply(com.commercetools.api.models.store.ProductSelectionSettingBuilder.of()).build());
         return this;
     }
 
@@ -232,6 +300,11 @@ public class StoreBuilder implements Builder<Store> {
     }
 
     @Nullable
+    public java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> getProductSelections() {
+        return this.productSelections;
+    }
+
+    @Nullable
     public com.commercetools.api.models.type.CustomFields getCustom() {
         return this.custom;
     }
@@ -244,7 +317,7 @@ public class StoreBuilder implements Builder<Store> {
         Objects.requireNonNull(key, Store.class + ": key is missing");
         Objects.requireNonNull(distributionChannels, Store.class + ": distributionChannels is missing");
         return new StoreImpl(id, version, createdAt, lastModifiedAt, lastModifiedBy, createdBy, key, name, languages,
-            distributionChannels, supplyChannels, custom);
+            distributionChannels, supplyChannels, productSelections, custom);
     }
 
     /**
@@ -252,7 +325,7 @@ public class StoreBuilder implements Builder<Store> {
      */
     public Store buildUnchecked() {
         return new StoreImpl(id, version, createdAt, lastModifiedAt, lastModifiedBy, createdBy, key, name, languages,
-            distributionChannels, supplyChannels, custom);
+            distributionChannels, supplyChannels, productSelections, custom);
     }
 
     public static StoreBuilder of() {
@@ -272,6 +345,7 @@ public class StoreBuilder implements Builder<Store> {
         builder.languages = template.getLanguages();
         builder.distributionChannels = template.getDistributionChannels();
         builder.supplyChannels = template.getSupplyChannels();
+        builder.productSelections = template.getProductSelections();
         builder.custom = template.getCustom();
         return builder;
     }

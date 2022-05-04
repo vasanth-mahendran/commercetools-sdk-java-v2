@@ -25,9 +25,7 @@ public interface ProductDiscountDraft {
     public LocalizedString getName();
 
     /**
-    *  <p>User-specific unique identifier for a product discount.
-    *  Must be unique across a project.
-    *  The field can be reset using the Set Key UpdateAction</p>
+    *  <p>User-defined unique identifier for the ProductDiscount.</p>
     */
 
     @JsonProperty("key")
@@ -126,5 +124,14 @@ public interface ProductDiscountDraft {
 
     default <T> T withProductDiscountDraft(Function<ProductDiscountDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ProductDiscountDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ProductDiscountDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ProductDiscountDraft>";
+            }
+        };
     }
 }

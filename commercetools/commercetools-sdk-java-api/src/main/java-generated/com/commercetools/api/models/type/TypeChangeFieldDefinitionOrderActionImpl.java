@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TypeChangeFieldDefinitionOrderActionImpl implements TypeChangeFieldDefinitionOrderAction {
+public class TypeChangeFieldDefinitionOrderActionImpl implements TypeChangeFieldDefinitionOrderAction, ModelBase {
 
     private String action;
 
@@ -34,6 +35,9 @@ public class TypeChangeFieldDefinitionOrderActionImpl implements TypeChangeField
         return this.action;
     }
 
+    /**
+    *  <p>Must match the set of <code>name</code>s of FieldDefinitions (up to order).</p>
+    */
     public java.util.List<String> getFieldNames() {
         return this.fieldNames;
     }

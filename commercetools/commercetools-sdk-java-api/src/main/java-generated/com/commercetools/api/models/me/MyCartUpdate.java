@@ -15,7 +15,8 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = MyCartUpdateImpl.class)
-public interface MyCartUpdate extends com.commercetools.api.models.ResourceUpdate<MyCartUpdate, MyCartUpdateAction> {
+public interface MyCartUpdate
+        extends com.commercetools.api.models.ResourceUpdate<MyCartUpdate, MyCartUpdateAction, MyCartUpdateBuilder> {
 
     @NotNull
     @JsonProperty("version")
@@ -54,5 +55,14 @@ public interface MyCartUpdate extends com.commercetools.api.models.ResourceUpdat
 
     default <T> T withMyCartUpdate(Function<MyCartUpdate, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<MyCartUpdate> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<MyCartUpdate>() {
+            @Override
+            public String toString() {
+                return "TypeReference<MyCartUpdate>";
+            }
+        };
     }
 }

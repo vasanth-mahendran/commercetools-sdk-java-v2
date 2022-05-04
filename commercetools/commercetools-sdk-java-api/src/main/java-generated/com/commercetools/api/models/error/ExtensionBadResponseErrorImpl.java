@@ -8,17 +8,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ExtensionBadResponseErrorImpl implements ExtensionBadResponseError {
+public class ExtensionBadResponseErrorImpl implements ExtensionBadResponseError, ModelBase {
 
     private String code;
 
     private String message;
+
+    private Map<String, java.lang.Object> values;
 
     private com.commercetools.api.models.common.LocalizedString localizedMessage;
 
@@ -28,10 +31,12 @@ public class ExtensionBadResponseErrorImpl implements ExtensionBadResponseError 
 
     @JsonCreator
     ExtensionBadResponseErrorImpl(@JsonProperty("message") final String message,
+            @JsonProperty("values") final Map<String, java.lang.Object> values,
             @JsonProperty("localizedMessage") final com.commercetools.api.models.common.LocalizedString localizedMessage,
             @JsonProperty("extensionExtraInfo") final java.lang.Object extensionExtraInfo,
             @JsonProperty("errorByExtension") final com.commercetools.api.models.error.ErrorByExtension errorByExtension) {
         this.message = message;
+        this.values = values;
         this.localizedMessage = localizedMessage;
         this.extensionExtraInfo = extensionExtraInfo;
         this.errorByExtension = errorByExtension;
@@ -50,6 +55,10 @@ public class ExtensionBadResponseErrorImpl implements ExtensionBadResponseError 
         return this.message;
     }
 
+    public Map<String, java.lang.Object> values() {
+        return values;
+    }
+
     public com.commercetools.api.models.common.LocalizedString getLocalizedMessage() {
         return this.localizedMessage;
     }
@@ -64,6 +73,13 @@ public class ExtensionBadResponseErrorImpl implements ExtensionBadResponseError 
 
     public void setMessage(final String message) {
         this.message = message;
+    }
+
+    public void setValue(String key, java.lang.Object value) {
+        if (values == null) {
+            values = new HashMap<>();
+        }
+        values.put(key, value);
     }
 
     public void setLocalizedMessage(final com.commercetools.api.models.common.LocalizedString localizedMessage) {
@@ -90,6 +106,7 @@ public class ExtensionBadResponseErrorImpl implements ExtensionBadResponseError 
 
         return new EqualsBuilder().append(code, that.code)
                 .append(message, that.message)
+                .append(values, that.values)
                 .append(localizedMessage, that.localizedMessage)
                 .append(extensionExtraInfo, that.extensionExtraInfo)
                 .append(errorByExtension, that.errorByExtension)
@@ -100,6 +117,7 @@ public class ExtensionBadResponseErrorImpl implements ExtensionBadResponseError 
     public int hashCode() {
         return new HashCodeBuilder(17, 37).append(code)
                 .append(message)
+                .append(values)
                 .append(localizedMessage)
                 .append(extensionExtraInfo)
                 .append(errorByExtension)

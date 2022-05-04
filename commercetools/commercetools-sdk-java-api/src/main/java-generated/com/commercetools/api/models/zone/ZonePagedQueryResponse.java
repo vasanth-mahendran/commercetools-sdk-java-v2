@@ -21,7 +21,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface ZonePagedQueryResponse extends com.commercetools.api.models.ResourcePagedQueryResponse<Zone> {
 
     /**
-    *  <p>Number of results requested in the query request.</p>
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
     */
     @NotNull
     @JsonProperty("limit")
@@ -98,5 +98,14 @@ public interface ZonePagedQueryResponse extends com.commercetools.api.models.Res
 
     default <T> T withZonePagedQueryResponse(Function<ZonePagedQueryResponse, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ZonePagedQueryResponse> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ZonePagedQueryResponse>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ZonePagedQueryResponse>";
+            }
+        };
     }
 }

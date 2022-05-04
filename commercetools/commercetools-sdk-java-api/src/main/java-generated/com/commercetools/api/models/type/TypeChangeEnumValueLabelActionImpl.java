@@ -8,13 +8,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+/**
+*  <p>Changes the <code>label</code> of an <a href="ctp:api:type:CustomFieldEnumValue">EnumValue</a> of an <a href="ctp:api:type:CustomFieldEnumType">EnumType</a> FieldDefinition.</p>
+*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TypeChangeEnumValueLabelActionImpl implements TypeChangeEnumValueLabelAction {
+public class TypeChangeEnumValueLabelActionImpl implements TypeChangeEnumValueLabelAction, ModelBase {
 
     private String action;
 
@@ -38,10 +42,17 @@ public class TypeChangeEnumValueLabelActionImpl implements TypeChangeEnumValueLa
         return this.action;
     }
 
+    /**
+    *  <p><code>name</code> of the <a href="ctp:api:type:FieldDefinition">FieldDefinition</a> to update.</p>
+    */
     public String getFieldName() {
         return this.fieldName;
     }
 
+    /**
+    *  <p>New value to set.
+    *  Must not be empty.</p>
+    */
     public com.commercetools.api.models.type.CustomFieldEnumValue getValue() {
         return this.value;
     }

@@ -18,7 +18,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderLineItemDiscountSetMessagePayloadImpl.class)
-public interface OrderLineItemDiscountSetMessagePayload extends MessagePayload {
+public interface OrderLineItemDiscountSetMessagePayload extends OrderMessagePayload {
 
     String ORDER_LINE_ITEM_DISCOUNT_SET = "OrderLineItemDiscountSet";
 
@@ -31,6 +31,10 @@ public interface OrderLineItemDiscountSetMessagePayload extends MessagePayload {
     @JsonProperty("discountedPricePerQuantity")
     public List<DiscountedLineItemPriceForQuantity> getDiscountedPricePerQuantity();
 
+    /**
+    *  <p>Draft type that stores amounts in cent precision for the specified currency.
+    *  For storing money values in fractions of the minor unit in a currency, use <a href="ctp:api:type:HighPrecisionMoneyDraft">HighPrecisionMoneyDraft</a> instead.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("totalPrice")
@@ -77,5 +81,14 @@ public interface OrderLineItemDiscountSetMessagePayload extends MessagePayload {
     default <T> T withOrderLineItemDiscountSetMessagePayload(
             Function<OrderLineItemDiscountSetMessagePayload, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderLineItemDiscountSetMessagePayload> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderLineItemDiscountSetMessagePayload>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderLineItemDiscountSetMessagePayload>";
+            }
+        };
     }
 }

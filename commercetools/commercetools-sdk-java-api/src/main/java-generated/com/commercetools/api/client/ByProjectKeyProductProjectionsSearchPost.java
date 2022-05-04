@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
@@ -39,7 +37,7 @@ public class ByProjectKeyProductProjectionsSearchPost extends
                 new ApiHttpHeaders.StringHeaderEntry(ApiHttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded")),
             new ArrayList<>());
         this.projectKey = projectKey;
-        this.formParams = formParams;
+        this.formParams = formParams != null ? formParams : new ArrayList<>();
     }
 
     public ByProjectKeyProductProjectionsSearchPost(ByProjectKeyProductProjectionsSearchPost t) {
@@ -49,40 +47,27 @@ public class ByProjectKeyProductProjectionsSearchPost extends
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/product-projections/search", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-
-        try {
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
-                getFormParamUriString().getBytes(StandardCharsets.UTF_8));
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            getFormParamUriString().getBytes(StandardCharsets.UTF_8));
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.product.ProductProjectionPagedSearchResponse> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.product.ProductProjectionPagedSearchResponse.class)
-                    .toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout,
+            com.commercetools.api.models.product.ProductProjectionPagedSearchResponse.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product.ProductProjectionPagedSearchResponse>> execute(
             final ApiHttpClient client) {
-        return client
-                .execute(this.createHttpRequest(),
-                    com.commercetools.api.models.product.ProductProjectionPagedSearchResponse.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.product.ProductProjectionPagedSearchResponse.class);
     }
 
     public String getProjectKey() {

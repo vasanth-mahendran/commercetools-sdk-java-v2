@@ -9,13 +9,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CartClassificationTypeImpl implements CartClassificationType {
+public class CartClassificationTypeImpl implements CartClassificationType, ModelBase {
 
     private com.commercetools.api.models.shipping_method.ShippingRateTierType type;
 
@@ -32,10 +33,16 @@ public class CartClassificationTypeImpl implements CartClassificationType {
         this.type = ShippingRateTierType.findEnum("CartClassification");
     }
 
+    /**
+    *  <p>Can be one of the following or absent.</p>
+    */
     public com.commercetools.api.models.shipping_method.ShippingRateTierType getType() {
         return this.type;
     }
 
+    /**
+    *  <p>The classification items that can be used for specifiying any <a href="ctp:api:type:ShippingRatePriceTier">ShippingRatePriceTier</a>.</p>
+    */
     public java.util.List<com.commercetools.api.models.type.CustomFieldLocalizedEnumValue> getValues() {
         return this.values;
     }

@@ -8,13 +8,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+/**
+*  <p>Defines an allowed value of a <a href="ctp:api:type:CustomFieldEnumType">CustomFieldEnumType</a> field.</p>
+*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CustomFieldEnumValueImpl implements CustomFieldEnumValue {
+public class CustomFieldEnumValueImpl implements CustomFieldEnumValue, ModelBase {
 
     private String key;
 
@@ -29,10 +33,16 @@ public class CustomFieldEnumValueImpl implements CustomFieldEnumValue {
     public CustomFieldEnumValueImpl() {
     }
 
+    /**
+    *  <p>Key of the value used as a programmatic identifier.</p>
+    */
     public String getKey() {
         return this.key;
     }
 
+    /**
+    *  <p>Descriptive label of the value.</p>
+    */
     public String getLabel() {
         return this.label;
     }

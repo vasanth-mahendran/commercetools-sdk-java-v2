@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TypedMoneyDraftImpl implements TypedMoneyDraft {
+public class TypedMoneyDraftImpl implements TypedMoneyDraft, ModelBase {
 
     private Long centAmount;
 
@@ -38,6 +39,13 @@ public class TypedMoneyDraftImpl implements TypedMoneyDraft {
     public TypedMoneyDraftImpl() {
     }
 
+    /**
+    *  <p>amount in the smallest indivisible unit of a currency, such as</p>
+    *  <ul>
+    *  <li>cents for EUR and USD, pence for GBP, or centime for CHF (5 CHF is specified as 500).</li>
+    *  <li>the value in the major unit for currencies without minor units, like JPY (5 JPY is specified as 5).</li>
+    *  </ul>
+    */
     public Long getCentAmount() {
         return this.centAmount;
     }
@@ -49,10 +57,16 @@ public class TypedMoneyDraftImpl implements TypedMoneyDraft {
         return this.currencyCode;
     }
 
+    /**
+    *  <p>The platform supports two different types of Money, one for amounts in cent precision and another one for sub-cent amounts up to 12 fraction digits.</p>
+    */
     public com.commercetools.api.models.common.MoneyType getType() {
         return this.type;
     }
 
+    /**
+    *  <p>Must be equal to the default number of fraction digits for the specified currency.</p>
+    */
     public Integer getFractionDigits() {
         return this.fractionDigits;
     }

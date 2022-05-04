@@ -1,8 +1,6 @@
 
 package com.commercetools.importapi.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyImportContainersByImportContainerKeyPut extends
-        ApiMethod<ByProjectKeyImportContainersByImportContainerKeyPut, com.commercetools.importapi.models.importcontainers.ImportContainer>
+        BodyApiMethod<ByProjectKeyImportContainersByImportContainerKeyPut, com.commercetools.importapi.models.importcontainers.ImportContainer, com.commercetools.importapi.models.importcontainers.ImportContainerUpdateDraft>
         implements
         com.commercetools.importapi.client.Secured_by_manage_import_containersTrait<ByProjectKeyImportContainersByImportContainerKeyPut> {
 
@@ -46,40 +44,29 @@ public class ByProjectKeyImportContainersByImportContainerKeyPut extends
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/import-containers/%s", this.projectKey, this.importContainerKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(importContainerUpdateDraft);
-            return new ApiHttpRequest(ApiHttpMethod.PUT, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.PUT, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils.executing(
+                () -> apiHttpClient().getSerializerService().toJsonByteArray(importContainerUpdateDraft)));
 
-        return new ApiHttpRequest(ApiHttpMethod.PUT, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importcontainers.ImportContainer> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.importapi.models.importcontainers.ImportContainer.class)
-                    .toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout,
+            com.commercetools.importapi.models.importcontainers.ImportContainer.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importcontainers.ImportContainer>> execute(
             final ApiHttpClient client) {
-        return client
-                .execute(this.createHttpRequest(),
-                    com.commercetools.importapi.models.importcontainers.ImportContainer.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.importapi.models.importcontainers.ImportContainer.class);
     }
 
     public String getProjectKey() {
@@ -96,6 +83,17 @@ public class ByProjectKeyImportContainersByImportContainerKeyPut extends
 
     public void setImportContainerKey(final String importContainerKey) {
         this.importContainerKey = importContainerKey;
+    }
+
+    public com.commercetools.importapi.models.importcontainers.ImportContainerUpdateDraft getBody() {
+        return importContainerUpdateDraft;
+    }
+
+    public ByProjectKeyImportContainersByImportContainerKeyPut withBody(
+            com.commercetools.importapi.models.importcontainers.ImportContainerUpdateDraft importContainerUpdateDraft) {
+        ByProjectKeyImportContainersByImportContainerKeyPut t = copy();
+        t.importContainerUpdateDraft = importContainerUpdateDraft;
+        return t;
     }
 
     @Override

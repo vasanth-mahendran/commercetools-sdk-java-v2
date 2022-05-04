@@ -47,6 +47,7 @@ public interface DuplicateFieldWithConflictingResourceError extends ErrorObject 
             final DuplicateFieldWithConflictingResourceError template) {
         DuplicateFieldWithConflictingResourceErrorImpl instance = new DuplicateFieldWithConflictingResourceErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setField(template.getField());
         instance.setDuplicateValue(template.getDuplicateValue());
         instance.setConflictingResource(template.getConflictingResource());
@@ -65,5 +66,14 @@ public interface DuplicateFieldWithConflictingResourceError extends ErrorObject 
     default <T> T withDuplicateFieldWithConflictingResourceError(
             Function<DuplicateFieldWithConflictingResourceError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<DuplicateFieldWithConflictingResourceError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<DuplicateFieldWithConflictingResourceError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<DuplicateFieldWithConflictingResourceError>";
+            }
+        };
     }
 }

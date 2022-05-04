@@ -15,8 +15,8 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderEditUpdateImpl.class)
-public interface OrderEditUpdate
-        extends com.commercetools.api.models.ResourceUpdate<OrderEditUpdate, OrderEditUpdateAction> {
+public interface OrderEditUpdate extends
+        com.commercetools.api.models.ResourceUpdate<OrderEditUpdate, OrderEditUpdateAction, OrderEditUpdateBuilder> {
 
     @NotNull
     @JsonProperty("version")
@@ -61,5 +61,14 @@ public interface OrderEditUpdate
 
     default <T> T withOrderEditUpdate(Function<OrderEditUpdate, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderEditUpdate> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderEditUpdate>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderEditUpdate>";
+            }
+        };
     }
 }

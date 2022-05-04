@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -17,8 +17,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyZonesKeyByKeyPost
-        extends ApiMethod<ByProjectKeyZonesKeyByKeyPost, com.commercetools.api.models.zone.Zone>
+public class ByProjectKeyZonesKeyByKeyPost extends
+        BodyApiMethod<ByProjectKeyZonesKeyByKeyPost, com.commercetools.api.models.zone.Zone, com.commercetools.api.models.zone.ZoneUpdate>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyZonesKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyZonesKeyByKeyPost>,
         com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyZonesKeyByKeyPost>,
@@ -45,36 +45,28 @@ public class ByProjectKeyZonesKeyByKeyPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/zones/key=%s", this.projectKey, this.key);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(zoneUpdate);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(zoneUpdate)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.zone.Zone> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(client.execute(request, com.commercetools.api.models.zone.Zone.class).toCompletableFuture(),
-            request, timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.zone.Zone.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.zone.Zone>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.zone.Zone.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.zone.Zone.class);
     }
 
     public String getProjectKey() {
@@ -98,23 +90,51 @@ public class ByProjectKeyZonesKeyByKeyPost
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyZonesKeyByKeyPost withExpand(final String expand) {
+    public <TValue> ByProjectKeyZonesKeyByKeyPost withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyZonesKeyByKeyPost addExpand(final String expand) {
+    public <TValue> ByProjectKeyZonesKeyByKeyPost addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyZonesKeyByKeyPost withExpand(final List<String> expand) {
+    public ByProjectKeyZonesKeyByKeyPost withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyZonesKeyByKeyPost addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyZonesKeyByKeyPost withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyZonesKeyByKeyPost addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyZonesKeyByKeyPost withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -123,9 +143,19 @@ public class ByProjectKeyZonesKeyByKeyPost
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyZonesKeyByKeyPost addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyZonesKeyByKeyPost addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
+    }
+
+    public com.commercetools.api.models.zone.ZoneUpdate getBody() {
+        return zoneUpdate;
+    }
+
+    public ByProjectKeyZonesKeyByKeyPost withBody(com.commercetools.api.models.zone.ZoneUpdate zoneUpdate) {
+        ByProjectKeyZonesKeyByKeyPost t = copy();
+        t.zoneUpdate = zoneUpdate;
+        return t;
     }
 
     @Override

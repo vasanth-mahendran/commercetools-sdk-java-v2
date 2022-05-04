@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -17,8 +17,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyApiClientsPost
-        extends ApiMethod<ByProjectKeyApiClientsPost, com.commercetools.api.models.api_client.ApiClient>
+public class ByProjectKeyApiClientsPost extends
+        BodyApiMethod<ByProjectKeyApiClientsPost, com.commercetools.api.models.api_client.ApiClient, com.commercetools.api.models.api_client.ApiClientDraft>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyApiClientsPost>,
         com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyApiClientsPost>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyApiClientsPost> {
@@ -41,37 +41,28 @@ public class ByProjectKeyApiClientsPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/api-clients", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(apiClientDraft);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(apiClientDraft)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.api_client.ApiClient> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.api_client.ApiClient.class).toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.api_client.ApiClient.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.api_client.ApiClient>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.api_client.ApiClient.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.api_client.ApiClient.class);
     }
 
     public String getProjectKey() {
@@ -87,23 +78,51 @@ public class ByProjectKeyApiClientsPost
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyApiClientsPost withExpand(final String expand) {
+    public <TValue> ByProjectKeyApiClientsPost withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyApiClientsPost addExpand(final String expand) {
+    public <TValue> ByProjectKeyApiClientsPost addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyApiClientsPost withExpand(final List<String> expand) {
+    public ByProjectKeyApiClientsPost withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyApiClientsPost addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyApiClientsPost withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyApiClientsPost addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyApiClientsPost withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -112,9 +131,19 @@ public class ByProjectKeyApiClientsPost
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyApiClientsPost addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyApiClientsPost addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
+    }
+
+    public com.commercetools.api.models.api_client.ApiClientDraft getBody() {
+        return apiClientDraft;
+    }
+
+    public ByProjectKeyApiClientsPost withBody(com.commercetools.api.models.api_client.ApiClientDraft apiClientDraft) {
+        ByProjectKeyApiClientsPost t = copy();
+        t.apiClientDraft = apiClientDraft;
+        return t;
     }
 
     @Override

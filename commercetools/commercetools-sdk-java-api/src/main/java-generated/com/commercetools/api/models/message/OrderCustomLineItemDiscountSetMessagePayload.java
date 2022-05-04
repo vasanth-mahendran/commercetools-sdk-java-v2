@@ -17,7 +17,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderCustomLineItemDiscountSetMessagePayloadImpl.class)
-public interface OrderCustomLineItemDiscountSetMessagePayload extends MessagePayload {
+public interface OrderCustomLineItemDiscountSetMessagePayload extends OrderMessagePayload {
 
     String ORDER_CUSTOM_LINE_ITEM_DISCOUNT_SET = "OrderCustomLineItemDiscountSet";
 
@@ -69,5 +69,14 @@ public interface OrderCustomLineItemDiscountSetMessagePayload extends MessagePay
     default <T> T withOrderCustomLineItemDiscountSetMessagePayload(
             Function<OrderCustomLineItemDiscountSetMessagePayload, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderCustomLineItemDiscountSetMessagePayload> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderCustomLineItemDiscountSetMessagePayload>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderCustomLineItemDiscountSetMessagePayload>";
+            }
+        };
     }
 }

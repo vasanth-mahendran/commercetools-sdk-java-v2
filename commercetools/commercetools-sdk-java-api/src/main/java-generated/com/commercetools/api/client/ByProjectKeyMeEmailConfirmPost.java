@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -33,30 +31,25 @@ public class ByProjectKeyMeEmailConfirmPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/me/email/confirm", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-
         return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.fasterxml.jackson.databind.JsonNode> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.fasterxml.jackson.databind.JsonNode.class).toCompletableFuture(), request,
-            timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.fasterxml.jackson.databind.JsonNode.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.fasterxml.jackson.databind.JsonNode>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.fasterxml.jackson.databind.JsonNode.class)
-                .toCompletableFuture();
+        return execute(client, com.fasterxml.jackson.databind.JsonNode.class);
     }
 
     public String getProjectKey() {

@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.commercetools.api.models.common.Address;
+import com.commercetools.api.models.type.CustomFields;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
@@ -17,8 +18,11 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = DeliveryImpl.class)
-public interface Delivery {
+public interface Delivery extends com.commercetools.api.models.Customizable<Delivery> {
 
+    /**
+    *  <p>Platform-generated unique identifier of the Delivery.</p>
+    */
     @NotNull
     @JsonProperty("id")
     public String getId();
@@ -45,6 +49,13 @@ public interface Delivery {
     @JsonProperty("address")
     public Address getAddress();
 
+    /**
+    *  <p>Custom Fields for the Transaction.</p>
+    */
+    @Valid
+    @JsonProperty("custom")
+    public CustomFields getCustom();
+
     public void setId(final String id);
 
     public void setCreatedAt(final ZonedDateTime createdAt);
@@ -61,6 +72,8 @@ public interface Delivery {
 
     public void setAddress(final Address address);
 
+    public void setCustom(final CustomFields custom);
+
     public static Delivery of() {
         return new DeliveryImpl();
     }
@@ -72,6 +85,7 @@ public interface Delivery {
         instance.setItems(template.getItems());
         instance.setParcels(template.getParcels());
         instance.setAddress(template.getAddress());
+        instance.setCustom(template.getCustom());
         return instance;
     }
 
@@ -85,5 +99,14 @@ public interface Delivery {
 
     default <T> T withDelivery(Function<Delivery, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<Delivery> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<Delivery>() {
+            @Override
+            public String toString() {
+                return "TypeReference<Delivery>";
+            }
+        };
     }
 }

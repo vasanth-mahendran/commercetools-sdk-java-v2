@@ -20,6 +20,9 @@ public interface ProductAddedToCategoryMessage extends Message {
 
     String PRODUCT_ADDED_TO_CATEGORY = "ProductAddedToCategory";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Category">Category</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("category")
@@ -64,5 +67,14 @@ public interface ProductAddedToCategoryMessage extends Message {
 
     default <T> T withProductAddedToCategoryMessage(Function<ProductAddedToCategoryMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ProductAddedToCategoryMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ProductAddedToCategoryMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ProductAddedToCategoryMessage>";
+            }
+        };
     }
 }

@@ -81,6 +81,13 @@ public class CategoryDraftBuilder implements Builder<CategoryDraft> {
     }
 
     public CategoryDraftBuilder parent(
+            Function<com.commercetools.api.models.category.CategoryResourceIdentifierBuilder, com.commercetools.api.models.category.CategoryResourceIdentifierBuilder> builder) {
+        this.parent = builder.apply(com.commercetools.api.models.category.CategoryResourceIdentifierBuilder.of())
+                .build();
+        return this;
+    }
+
+    public CategoryDraftBuilder parent(
             @Nullable final com.commercetools.api.models.category.CategoryResourceIdentifier parent) {
         this.parent = parent;
         return this;
@@ -148,10 +155,17 @@ public class CategoryDraftBuilder implements Builder<CategoryDraft> {
         return this;
     }
 
-    public CategoryDraftBuilder withAssets(
-            Function<com.commercetools.api.models.common.AssetDraftBuilder, com.commercetools.api.models.common.AssetDraftBuilder> builder) {
-        this.assets = new ArrayList<>();
-        this.assets.add(builder.apply(com.commercetools.api.models.common.AssetDraftBuilder.of()).build());
+    public CategoryDraftBuilder assets(
+            @Nullable final java.util.List<com.commercetools.api.models.common.AssetDraft> assets) {
+        this.assets = assets;
+        return this;
+    }
+
+    public CategoryDraftBuilder plusAssets(@Nullable final com.commercetools.api.models.common.AssetDraft... assets) {
+        if (this.assets == null) {
+            this.assets = new ArrayList<>();
+        }
+        this.assets.addAll(Arrays.asList(assets));
         return this;
     }
 
@@ -164,9 +178,10 @@ public class CategoryDraftBuilder implements Builder<CategoryDraft> {
         return this;
     }
 
-    public CategoryDraftBuilder assets(
-            @Nullable final java.util.List<com.commercetools.api.models.common.AssetDraft> assets) {
-        this.assets = assets;
+    public CategoryDraftBuilder withAssets(
+            Function<com.commercetools.api.models.common.AssetDraftBuilder, com.commercetools.api.models.common.AssetDraftBuilder> builder) {
+        this.assets = new ArrayList<>();
+        this.assets.add(builder.apply(com.commercetools.api.models.common.AssetDraftBuilder.of()).build());
         return this;
     }
 

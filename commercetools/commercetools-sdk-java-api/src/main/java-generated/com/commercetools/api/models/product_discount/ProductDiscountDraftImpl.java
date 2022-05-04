@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ProductDiscountDraftImpl implements ProductDiscountDraft {
+public class ProductDiscountDraftImpl implements ProductDiscountDraft, ModelBase {
 
     private com.commercetools.api.models.common.LocalizedString name;
 
@@ -62,9 +63,7 @@ public class ProductDiscountDraftImpl implements ProductDiscountDraft {
     }
 
     /**
-    *  <p>User-specific unique identifier for a product discount.
-    *  Must be unique across a project.
-    *  The field can be reset using the Set Key UpdateAction</p>
+    *  <p>User-defined unique identifier for the ProductDiscount.</p>
     */
     public String getKey() {
         return this.key;

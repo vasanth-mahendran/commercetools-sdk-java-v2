@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -18,7 +19,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  Used as a response to a query request for <a href="#importcontainer">ImportContainers</a>.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ImportContainerPagedResponseImpl implements ImportContainerPagedResponse {
+public class ImportContainerPagedResponseImpl implements ImportContainerPagedResponse, ModelBase {
 
     private Integer limit;
 
@@ -46,7 +47,7 @@ public class ImportContainerPagedResponseImpl implements ImportContainerPagedRes
     }
 
     /**
-    *  <p>The number of results requested in the query request.</p>
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
     */
     public Integer getLimit() {
         return this.limit;

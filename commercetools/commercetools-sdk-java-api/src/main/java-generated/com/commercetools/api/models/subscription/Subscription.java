@@ -21,6 +21,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = SubscriptionImpl.class)
 public interface Subscription extends BaseResource, com.commercetools.api.models.DomainResource<Subscription> {
 
+    /**
+    *  <p>Platform-generated unique identifier of the Subscription.</p>
+    */
     @NotNull
     @JsonProperty("id")
     public String getId();
@@ -60,6 +63,10 @@ public interface Subscription extends BaseResource, com.commercetools.api.models
     @Valid
     @JsonProperty("destination")
     public Destination getDestination();
+
+    /**
+    *  <p>User-defined unique identifier of the Subscription.</p>
+    */
 
     @JsonProperty("key")
     public String getKey();
@@ -139,5 +146,14 @@ public interface Subscription extends BaseResource, com.commercetools.api.models
 
     default <T> T withSubscription(Function<Subscription, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<Subscription> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<Subscription>() {
+            @Override
+            public String toString() {
+                return "TypeReference<Subscription>";
+            }
+        };
     }
 }

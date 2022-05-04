@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -15,17 +16,17 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class StagedOrderChangeCustomLineItemQuantityActionImpl
-        implements StagedOrderChangeCustomLineItemQuantityAction {
+        implements StagedOrderChangeCustomLineItemQuantityAction, ModelBase {
 
     private String action;
 
     private String customLineItemId;
 
-    private Double quantity;
+    private Long quantity;
 
     @JsonCreator
     StagedOrderChangeCustomLineItemQuantityActionImpl(@JsonProperty("customLineItemId") final String customLineItemId,
-            @JsonProperty("quantity") final Double quantity) {
+            @JsonProperty("quantity") final Long quantity) {
         this.customLineItemId = customLineItemId;
         this.quantity = quantity;
         this.action = CHANGE_CUSTOM_LINE_ITEM_QUANTITY;
@@ -43,7 +44,7 @@ public class StagedOrderChangeCustomLineItemQuantityActionImpl
         return this.customLineItemId;
     }
 
-    public Double getQuantity() {
+    public Long getQuantity() {
         return this.quantity;
     }
 
@@ -51,7 +52,7 @@ public class StagedOrderChangeCustomLineItemQuantityActionImpl
         this.customLineItemId = customLineItemId;
     }
 
-    public void setQuantity(final Double quantity) {
+    public void setQuantity(final Long quantity) {
         this.quantity = quantity;
     }
 

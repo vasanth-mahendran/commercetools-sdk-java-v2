@@ -46,6 +46,7 @@ public interface ExtensionBadResponseError extends ErrorObject {
     public static ExtensionBadResponseError of(final ExtensionBadResponseError template) {
         ExtensionBadResponseErrorImpl instance = new ExtensionBadResponseErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setLocalizedMessage(template.getLocalizedMessage());
         instance.setExtensionExtraInfo(template.getExtensionExtraInfo());
         instance.setErrorByExtension(template.getErrorByExtension());
@@ -62,5 +63,14 @@ public interface ExtensionBadResponseError extends ErrorObject {
 
     default <T> T withExtensionBadResponseError(Function<ExtensionBadResponseError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ExtensionBadResponseError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ExtensionBadResponseError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ExtensionBadResponseError>";
+            }
+        };
     }
 }

@@ -15,11 +15,11 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = TaxCategoryUpdateImpl.class)
-public interface TaxCategoryUpdate
-        extends com.commercetools.api.models.ResourceUpdate<TaxCategoryUpdate, TaxCategoryUpdateAction> {
+public interface TaxCategoryUpdate extends
+        com.commercetools.api.models.ResourceUpdate<TaxCategoryUpdate, TaxCategoryUpdateAction, TaxCategoryUpdateBuilder> {
 
     /**
-    *  <p>Expected version of the TaxCategory on which the changes should be applied. If the expected version does not match the actual version, a 409 Conflict will be returned.</p>
+    *  <p>Expected version of the TaxCategory on which the changes should be applied. If the expected version does not match the actual version, a <a href="/../api/errors#409-conflict">409 Conflict</a> will be returned.</p>
     */
     @NotNull
     @JsonProperty("version")
@@ -61,5 +61,14 @@ public interface TaxCategoryUpdate
 
     default <T> T withTaxCategoryUpdate(Function<TaxCategoryUpdate, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<TaxCategoryUpdate> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<TaxCategoryUpdate>() {
+            @Override
+            public String toString() {
+                return "TypeReference<TaxCategoryUpdate>";
+            }
+        };
     }
 }

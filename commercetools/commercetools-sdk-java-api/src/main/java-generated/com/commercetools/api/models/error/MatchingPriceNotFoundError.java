@@ -36,12 +36,15 @@ public interface MatchingPriceNotFoundError extends ErrorObject {
     public String getCountry();
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     @Valid
     @JsonProperty("customerGroup")
     public CustomerGroupReference getCustomerGroup();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("channel")
     public ChannelReference getChannel();
@@ -65,6 +68,7 @@ public interface MatchingPriceNotFoundError extends ErrorObject {
     public static MatchingPriceNotFoundError of(final MatchingPriceNotFoundError template) {
         MatchingPriceNotFoundErrorImpl instance = new MatchingPriceNotFoundErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setProductId(template.getProductId());
         instance.setVariantId(template.getVariantId());
         instance.setCurrency(template.getCurrency());
@@ -84,5 +88,14 @@ public interface MatchingPriceNotFoundError extends ErrorObject {
 
     default <T> T withMatchingPriceNotFoundError(Function<MatchingPriceNotFoundError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<MatchingPriceNotFoundError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<MatchingPriceNotFoundError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<MatchingPriceNotFoundError>";
+            }
+        };
     }
 }

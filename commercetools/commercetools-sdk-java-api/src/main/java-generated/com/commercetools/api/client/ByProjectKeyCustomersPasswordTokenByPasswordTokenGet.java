@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -41,30 +41,25 @@ public class ByProjectKeyCustomersPasswordTokenByPasswordTokenGet extends
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/customers/password-token=%s", this.projectKey, this.passwordToken);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-
         return new ApiHttpRequest(ApiHttpMethod.GET, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.customer.Customer> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.customer.Customer.class).toCompletableFuture(),
-            request, timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.customer.Customer.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.Customer>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.customer.Customer.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.customer.Customer.class);
     }
 
     public String getProjectKey() {
@@ -88,23 +83,53 @@ public class ByProjectKeyCustomersPasswordTokenByPasswordTokenGet extends
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyCustomersPasswordTokenByPasswordTokenGet withExpand(final String expand) {
+    public <TValue> ByProjectKeyCustomersPasswordTokenByPasswordTokenGet withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyCustomersPasswordTokenByPasswordTokenGet addExpand(final String expand) {
+    public <TValue> ByProjectKeyCustomersPasswordTokenByPasswordTokenGet addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyCustomersPasswordTokenByPasswordTokenGet withExpand(final List<String> expand) {
+    public ByProjectKeyCustomersPasswordTokenByPasswordTokenGet withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyCustomersPasswordTokenByPasswordTokenGet addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyCustomersPasswordTokenByPasswordTokenGet withExpand(
+            final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyCustomersPasswordTokenByPasswordTokenGet addExpand(
+            final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyCustomersPasswordTokenByPasswordTokenGet withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -113,7 +138,7 @@ public class ByProjectKeyCustomersPasswordTokenByPasswordTokenGet extends
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyCustomersPasswordTokenByPasswordTokenGet addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyCustomersPasswordTokenByPasswordTokenGet addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
     }

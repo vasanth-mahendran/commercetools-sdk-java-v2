@@ -23,10 +23,11 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = ProductImpl.class)
-public interface Product extends BaseResource, com.commercetools.api.models.DomainResource<Product> {
+public interface Product extends BaseResource, com.commercetools.api.models.DomainResource<Product>,
+        com.commercetools.api.models.Referencable<Product>, com.commercetools.api.models.ResourceIdentifiable<Product> {
 
     /**
-    *  <p>The unique ID of the product.</p>
+    *  <p>Platform-generated unique identifier of the Product.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -62,8 +63,8 @@ public interface Product extends BaseResource, com.commercetools.api.models.Doma
     public CreatedBy getCreatedBy();
 
     /**
-    *  <p>User-specific unique identifier for the product.
-    *  <em>Product keys are different from product variant keys.</em></p>
+    *  <p>User-defined unique identifier of the Product.
+    *  <em>Product keys are different from ProductVariant keys.</em></p>
     */
 
     @JsonProperty("key")
@@ -152,5 +153,24 @@ public interface Product extends BaseResource, com.commercetools.api.models.Doma
 
     default <T> T withProduct(Function<Product, T> helper) {
         return helper.apply(this);
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.ResourceIdentifier toResourceIdentifier() {
+        return com.commercetools.api.models.product.ProductResourceIdentifier.builder().id(getId()).build();
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.Reference toReference() {
+        return com.commercetools.api.models.product.ProductReference.builder().id(getId()).build();
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<Product> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<Product>() {
+            @Override
+            public String toString() {
+                return "TypeReference<Product>";
+            }
+        };
     }
 }

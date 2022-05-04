@@ -17,6 +17,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = CustomerTokenImpl.class)
 public interface CustomerToken {
 
+    /**
+    *  <p>Platform-generated unique identifier of the CustomerToken.</p>
+    */
     @NotNull
     @JsonProperty("id")
     public String getId();
@@ -77,5 +80,14 @@ public interface CustomerToken {
 
     default <T> T withCustomerToken(Function<CustomerToken, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerToken> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerToken>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerToken>";
+            }
+        };
     }
 }

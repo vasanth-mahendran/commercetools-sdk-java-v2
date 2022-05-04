@@ -37,6 +37,7 @@ public interface EnumKeyDoesNotExistError extends ErrorObject {
     public static EnumKeyDoesNotExistError of(final EnumKeyDoesNotExistError template) {
         EnumKeyDoesNotExistErrorImpl instance = new EnumKeyDoesNotExistErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setConflictingEnumKey(template.getConflictingEnumKey());
         instance.setConflictingAttributeName(template.getConflictingAttributeName());
         return instance;
@@ -52,5 +53,14 @@ public interface EnumKeyDoesNotExistError extends ErrorObject {
 
     default <T> T withEnumKeyDoesNotExistError(Function<EnumKeyDoesNotExistError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<EnumKeyDoesNotExistError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<EnumKeyDoesNotExistError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<EnumKeyDoesNotExistError>";
+            }
+        };
     }
 }

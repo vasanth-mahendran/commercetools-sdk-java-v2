@@ -3,8 +3,10 @@ package io.vrap.rmf.base.client;
 
 import java.nio.charset.StandardCharsets;
 
-import org.junit.Assert;
-import org.junit.Test;
+import io.vrap.rmf.base.client.http.HttpStatusCode;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class ApiHttpResponseTest {
 
@@ -14,9 +16,9 @@ public class ApiHttpResponseTest {
 
         ApiHttpResponse<byte[]> newResponse = response.withStatusCode(201);
 
-        Assert.assertEquals(200, response.getStatusCode());
-        Assert.assertEquals(201, newResponse.getStatusCode());
-        Assert.assertNotEquals(response, newResponse);
+        Assertions.assertEquals(HttpStatusCode.OK_200, response.getStatusCode());
+        Assertions.assertEquals(HttpStatusCode.CREATED_201, newResponse.getStatusCode());
+        Assertions.assertNotEquals(response, newResponse);
 
     }
 
@@ -26,9 +28,9 @@ public class ApiHttpResponseTest {
 
         ApiHttpResponse<byte[]> newResponse = response.withMessage("bar");
 
-        Assert.assertEquals("foo", response.getMessage());
-        Assert.assertEquals("bar", newResponse.getMessage());
-        Assert.assertNotEquals(response, newResponse);
+        Assertions.assertEquals("foo", response.getMessage());
+        Assertions.assertEquals("bar", newResponse.getMessage());
+        Assertions.assertNotEquals(response, newResponse);
     }
 
     @Test
@@ -38,9 +40,9 @@ public class ApiHttpResponseTest {
 
         ApiHttpResponse<byte[]> newResponse = response.withBody("bar".getBytes(StandardCharsets.UTF_8));
 
-        Assert.assertEquals("foo", response.getSecuredBody());
-        Assert.assertEquals("bar", newResponse.getSecuredBody());
-        Assert.assertNotEquals(response, newResponse);
+        Assertions.assertEquals("foo", response.getSecuredBody());
+        Assertions.assertEquals("bar", newResponse.getSecuredBody());
+        Assertions.assertNotEquals(response, newResponse);
     }
 
     @Test
@@ -50,9 +52,9 @@ public class ApiHttpResponseTest {
 
         ApiHttpResponse<byte[]> newResponse = response.withHeaders(response.getHeaders().withHeader("foo", "bar"));
 
-        Assert.assertEquals("foo", response.getHeaders().getFirst("foo"));
-        Assert.assertEquals("bar", newResponse.getHeaders().getFirst("foo"));
-        Assert.assertNotEquals(response, newResponse);
+        Assertions.assertEquals("foo", response.getHeaders().getFirst("foo"));
+        Assertions.assertEquals("bar", newResponse.getHeaders().getFirst("foo"));
+        Assertions.assertNotEquals(response, newResponse);
     }
 
     @Test
@@ -62,6 +64,6 @@ public class ApiHttpResponseTest {
 
         response.getHeaders().addHeader("foo", "bar");
 
-        Assert.assertEquals(1, response.getHeaders().getHeaders("foo").size());
+        Assertions.assertEquals(1, response.getHeaders().getHeaders("foo").size());
     }
 }

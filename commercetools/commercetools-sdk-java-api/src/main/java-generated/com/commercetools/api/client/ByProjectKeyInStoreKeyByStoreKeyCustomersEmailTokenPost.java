@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 public class ByProjectKeyInStoreKeyByStoreKeyCustomersEmailTokenPost extends
-        ApiMethod<ByProjectKeyInStoreKeyByStoreKeyCustomersEmailTokenPost, com.commercetools.api.models.customer.CustomerToken>
+        BodyApiMethod<ByProjectKeyInStoreKeyByStoreKeyCustomersEmailTokenPost, com.commercetools.api.models.customer.CustomerToken, com.commercetools.api.models.customer.CustomerCreateEmailToken>
         implements
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyInStoreKeyByStoreKeyCustomersEmailTokenPost> {
 
@@ -46,38 +44,29 @@ public class ByProjectKeyInStoreKeyByStoreKeyCustomersEmailTokenPost extends
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/in-store/key=%s/customers/email-token", this.projectKey,
             this.storeKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(customerCreateEmailToken);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(customerCreateEmailToken)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.customer.CustomerToken> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.customer.CustomerToken.class).toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.customer.CustomerToken.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.CustomerToken>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.customer.CustomerToken.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.customer.CustomerToken.class);
     }
 
     public String getProjectKey() {
@@ -94,6 +83,17 @@ public class ByProjectKeyInStoreKeyByStoreKeyCustomersEmailTokenPost extends
 
     public void setStoreKey(final String storeKey) {
         this.storeKey = storeKey;
+    }
+
+    public com.commercetools.api.models.customer.CustomerCreateEmailToken getBody() {
+        return customerCreateEmailToken;
+    }
+
+    public ByProjectKeyInStoreKeyByStoreKeyCustomersEmailTokenPost withBody(
+            com.commercetools.api.models.customer.CustomerCreateEmailToken customerCreateEmailToken) {
+        ByProjectKeyInStoreKeyByStoreKeyCustomersEmailTokenPost t = copy();
+        t.customerCreateEmailToken = customerCreateEmailToken;
+        return t;
     }
 
     @Override

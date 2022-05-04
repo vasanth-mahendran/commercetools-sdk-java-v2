@@ -13,10 +13,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '8'
@@ -36,9 +36,22 @@ jobs:
         if: github.event_name == 'push' && github.ref != 'refs/heads/main'
         with:
             commit_message: "spotless: Fix code style"
-            commit_user_name: Auto Mation
+            commit_user_name: automation-commercetools
             commit_user_email: automation@commercetools.com
             commit_author: Auto Mation <automation@commercetools.com>
+
+      - name: License check
+        run: ./gradlew checkLicense
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        if: github.event_name == 'push'
+        with:
+            file_pattern: 'licenses/index.json licenses/**/index.json'
+            commit_message: "TASK: Updating license information"
+            commit_user_name: automation-commercetools
+            commit_user_email: automation@commercetools.com
+            commit_author: Auto Mation <automation@commercetools.com>
+            disable_globbing: true
 
       - name: Run integration tests for PR
         if: github.event_name == 'pull_request'

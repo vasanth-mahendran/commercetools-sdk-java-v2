@@ -17,10 +17,13 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderEditAppliedMessageImpl.class)
-public interface OrderEditAppliedMessage extends Message {
+public interface OrderEditAppliedMessage extends OrderMessage {
 
     String ORDER_EDIT_APPLIED = "OrderEditApplied";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:OrderEdit">OrderEdit</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("edit")
@@ -66,5 +69,14 @@ public interface OrderEditAppliedMessage extends Message {
 
     default <T> T withOrderEditAppliedMessage(Function<OrderEditAppliedMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderEditAppliedMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderEditAppliedMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderEditAppliedMessage>";
+            }
+        };
     }
 }

@@ -38,10 +38,12 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderImpl.class)
-public interface Order extends BaseResource, com.commercetools.api.models.DomainResource<Order> {
+public interface Order extends BaseResource, com.commercetools.api.models.DomainResource<Order>,
+        com.commercetools.api.models.Referencable<Order>, com.commercetools.api.models.ResourceIdentifiable<Order>,
+        com.commercetools.api.models.Customizable<Order>, com.commercetools.api.models.order.OrderLike<Order> {
 
     /**
-    *  <p>The unique ID of the order.</p>
+    *  <p>Platform-generated unique identifier of the Order.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -432,5 +434,24 @@ public interface Order extends BaseResource, com.commercetools.api.models.Domain
 
     default <T> T withOrder(Function<Order, T> helper) {
         return helper.apply(this);
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.ResourceIdentifier toResourceIdentifier() {
+        return com.commercetools.api.models.order.OrderResourceIdentifier.builder().id(getId()).build();
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.Reference toReference() {
+        return com.commercetools.api.models.order.OrderReference.builder().id(getId()).build();
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<Order> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<Order>() {
+            @Override
+            public String toString() {
+                return "TypeReference<Order>";
+            }
+        };
     }
 }

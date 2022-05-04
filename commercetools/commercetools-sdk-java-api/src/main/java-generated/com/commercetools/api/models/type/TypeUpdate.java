@@ -15,12 +15,20 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = TypeUpdateImpl.class)
-public interface TypeUpdate extends com.commercetools.api.models.ResourceUpdate<TypeUpdate, TypeUpdateAction> {
+public interface TypeUpdate
+        extends com.commercetools.api.models.ResourceUpdate<TypeUpdate, TypeUpdateAction, TypeUpdateBuilder> {
 
+    /**
+    *  <p>Expected version of the type on which the changes should be applied.
+    *  If the expected version does not match the actual version, a <a href="/../api/errors#409-conflict">409 Conflict</a> will be returned.</p>
+    */
     @NotNull
     @JsonProperty("version")
     public Long getVersion();
 
+    /**
+    *  <p>Update actions to be performed on the Type.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("actions")
@@ -54,5 +62,14 @@ public interface TypeUpdate extends com.commercetools.api.models.ResourceUpdate<
 
     default <T> T withTypeUpdate(Function<TypeUpdate, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<TypeUpdate> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<TypeUpdate>() {
+            @Override
+            public String toString() {
+                return "TypeReference<TypeUpdate>";
+            }
+        };
     }
 }

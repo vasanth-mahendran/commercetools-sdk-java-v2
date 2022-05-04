@@ -36,6 +36,9 @@ public interface InventoryEntryQuantitySetMessagePayload extends MessagePayload 
     @JsonProperty("newAvailableQuantity")
     public Long getNewAvailableQuantity();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("supplyChannel")
     public ChannelReference getSupplyChannel();
@@ -76,5 +79,14 @@ public interface InventoryEntryQuantitySetMessagePayload extends MessagePayload 
     default <T> T withInventoryEntryQuantitySetMessagePayload(
             Function<InventoryEntryQuantitySetMessagePayload, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<InventoryEntryQuantitySetMessagePayload> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<InventoryEntryQuantitySetMessagePayload>() {
+            @Override
+            public String toString() {
+                return "TypeReference<InventoryEntryQuantitySetMessagePayload>";
+            }
+        };
     }
 }

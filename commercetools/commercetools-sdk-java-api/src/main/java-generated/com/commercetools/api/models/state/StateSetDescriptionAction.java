@@ -20,6 +20,10 @@ public interface StateSetDescriptionAction extends StateUpdateAction {
 
     String SET_DESCRIPTION = "setDescription";
 
+    /**
+    *  <p>Value to set.
+    *  If empty, any existing value will be removed.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("description")
@@ -47,5 +51,14 @@ public interface StateSetDescriptionAction extends StateUpdateAction {
 
     default <T> T withStateSetDescriptionAction(Function<StateSetDescriptionAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StateSetDescriptionAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StateSetDescriptionAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StateSetDescriptionAction>";
+            }
+        };
     }
 }

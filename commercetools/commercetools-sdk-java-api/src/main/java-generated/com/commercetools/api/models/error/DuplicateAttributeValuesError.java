@@ -37,6 +37,7 @@ public interface DuplicateAttributeValuesError extends ErrorObject {
     public static DuplicateAttributeValuesError of(final DuplicateAttributeValuesError template) {
         DuplicateAttributeValuesErrorImpl instance = new DuplicateAttributeValuesErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setAttributes(template.getAttributes());
         return instance;
     }
@@ -51,5 +52,14 @@ public interface DuplicateAttributeValuesError extends ErrorObject {
 
     default <T> T withDuplicateAttributeValuesError(Function<DuplicateAttributeValuesError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<DuplicateAttributeValuesError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<DuplicateAttributeValuesError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<DuplicateAttributeValuesError>";
+            }
+        };
     }
 }

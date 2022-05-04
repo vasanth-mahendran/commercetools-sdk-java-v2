@@ -35,6 +35,7 @@ public interface CustomLineItemReturnItem extends ReturnItem {
         instance.setComment(template.getComment());
         instance.setShipmentState(template.getShipmentState());
         instance.setPaymentState(template.getPaymentState());
+        instance.setCustom(template.getCustom());
         instance.setLastModifiedAt(template.getLastModifiedAt());
         instance.setCreatedAt(template.getCreatedAt());
         instance.setCustomLineItemId(template.getCustomLineItemId());
@@ -51,5 +52,14 @@ public interface CustomLineItemReturnItem extends ReturnItem {
 
     default <T> T withCustomLineItemReturnItem(Function<CustomLineItemReturnItem, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomLineItemReturnItem> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomLineItemReturnItem>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomLineItemReturnItem>";
+            }
+        };
     }
 }

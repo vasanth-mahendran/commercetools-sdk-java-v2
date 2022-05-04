@@ -20,7 +20,7 @@ public interface CustomerGroupSetMessagePayload extends MessagePayload {
     String CUSTOMER_GROUP_SET = "CustomerGroupSet";
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     @Valid
     @JsonProperty("customerGroup")
@@ -48,5 +48,14 @@ public interface CustomerGroupSetMessagePayload extends MessagePayload {
 
     default <T> T withCustomerGroupSetMessagePayload(Function<CustomerGroupSetMessagePayload, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerGroupSetMessagePayload> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerGroupSetMessagePayload>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerGroupSetMessagePayload>";
+            }
+        };
     }
 }

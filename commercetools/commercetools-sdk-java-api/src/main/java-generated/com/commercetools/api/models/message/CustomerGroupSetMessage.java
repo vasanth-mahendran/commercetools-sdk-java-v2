@@ -20,7 +20,7 @@ public interface CustomerGroupSetMessage extends Message {
     String CUSTOMER_GROUP_SET = "CustomerGroupSet";
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     @Valid
     @JsonProperty("customerGroup")
@@ -58,5 +58,14 @@ public interface CustomerGroupSetMessage extends Message {
 
     default <T> T withCustomerGroupSetMessage(Function<CustomerGroupSetMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerGroupSetMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerGroupSetMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerGroupSetMessage>";
+            }
+        };
     }
 }

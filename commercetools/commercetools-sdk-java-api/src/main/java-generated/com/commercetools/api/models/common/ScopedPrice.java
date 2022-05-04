@@ -19,17 +19,23 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = ScopedPriceImpl.class)
-public interface ScopedPrice {
+public interface ScopedPrice extends com.commercetools.api.models.Customizable<ScopedPrice> {
 
     @NotNull
     @JsonProperty("id")
     public String getId();
 
+    /**
+    *  <p>Base polymorphic read-only Money type which is stored in cent precision or high precision. The actual type is determined by the <code>type</code> field.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("value")
     public TypedMoney getValue();
 
+    /**
+    *  <p>Base polymorphic read-only Money type which is stored in cent precision or high precision. The actual type is determined by the <code>type</code> field.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("currentValue")
@@ -43,12 +49,15 @@ public interface ScopedPrice {
     public String getCountry();
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     @Valid
     @JsonProperty("customerGroup")
     public CustomerGroupReference getCustomerGroup();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @Valid
     @JsonProperty("channel")
     public ChannelReference getChannel();
@@ -63,6 +72,9 @@ public interface ScopedPrice {
     @JsonProperty("discounted")
     public DiscountedPrice getDiscounted();
 
+    /**
+    *  <p>Serves as value of the <code>custom</code> field on a resource or data type customized with a <a href="ctp:api:type:Type">Type</a>.</p>
+    */
     @Valid
     @JsonProperty("custom")
     public CustomFields getCustom();
@@ -116,5 +128,14 @@ public interface ScopedPrice {
 
     default <T> T withScopedPrice(Function<ScopedPrice, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ScopedPrice> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ScopedPrice>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ScopedPrice>";
+            }
+        };
     }
 }

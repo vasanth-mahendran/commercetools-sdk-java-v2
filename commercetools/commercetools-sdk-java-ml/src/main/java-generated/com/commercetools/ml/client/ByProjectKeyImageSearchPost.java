@@ -1,8 +1,6 @@
 
 package com.commercetools.ml.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.net.URLConnection;
 import java.nio.file.Files;
@@ -11,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -23,8 +23,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  <p>Accepts an image file and returns similar products from product catalogue.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyImageSearchPost
-        extends ApiMethod<ByProjectKeyImageSearchPost, com.commercetools.ml.models.image_search.ImageSearchResponse> {
+public class ByProjectKeyImageSearchPost extends
+        BodyApiMethod<ByProjectKeyImageSearchPost, com.commercetools.ml.models.image_search.ImageSearchResponse, java.io.File> {
 
     private String projectKey;
 
@@ -43,44 +43,33 @@ public class ByProjectKeyImageSearchPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/image-search", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            ApiHttpHeaders headers = getHeaders();
-            if (headers.getFirst(ApiHttpHeaders.CONTENT_TYPE) == null) {
-                final String mimeType = Optional.ofNullable(URLConnection.guessContentTypeFromName(file.getName()))
-                        .orElse("application/octet-stream");
-                headers = headers.withHeader(ApiHttpHeaders.CONTENT_TYPE, mimeType);
-            }
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), headers,
-                Files.readAllBytes(file.toPath()));
+        ApiHttpHeaders headers = getHeaders();
+        if (headers.getFirst(ApiHttpHeaders.CONTENT_TYPE) == null) {
+            final String mimeType = Optional.ofNullable(URLConnection.guessContentTypeFromName(file.getName()))
+                    .orElse("application/octet-stream");
+            headers = headers.withHeader(ApiHttpHeaders.CONTENT_TYPE, mimeType);
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), headers,
+            io.vrap.rmf.base.client.utils.FileUtils.executing(() -> Files.readAllBytes(file.toPath())));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.ml.models.image_search.ImageSearchResponse> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(client.execute(request, com.commercetools.ml.models.image_search.ImageSearchResponse.class)
-                .toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.ml.models.image_search.ImageSearchResponse.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.ml.models.image_search.ImageSearchResponse>> execute(
             final ApiHttpClient client) {
-        return client
-                .execute(this.createHttpRequest(), com.commercetools.ml.models.image_search.ImageSearchResponse.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.ml.models.image_search.ImageSearchResponse.class);
     }
 
     public String getProjectKey() {
@@ -100,23 +89,51 @@ public class ByProjectKeyImageSearchPost
     }
 
     /**
-     * set limit with the specificied value
+     * set limit with the specified value
      */
-    public ByProjectKeyImageSearchPost withLimit(final int limit) {
+    public <TValue> ByProjectKeyImageSearchPost withLimit(final TValue limit) {
         return copy().withQueryParam("limit", limit);
     }
 
     /**
      * add additional limit query parameter
      */
-    public ByProjectKeyImageSearchPost addLimit(final int limit) {
+    public <TValue> ByProjectKeyImageSearchPost addLimit(final TValue limit) {
         return copy().addQueryParam("limit", limit);
     }
 
     /**
-     * set limit with the specificied values
+     * set limit with the specified value
      */
-    public ByProjectKeyImageSearchPost withLimit(final List<Integer> limit) {
+    public ByProjectKeyImageSearchPost withLimit(final Supplier<Integer> supplier) {
+        return copy().withQueryParam("limit", supplier.get());
+    }
+
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyImageSearchPost addLimit(final Supplier<Integer> supplier) {
+        return copy().addQueryParam("limit", supplier.get());
+    }
+
+    /**
+     * set limit with the specified value
+     */
+    public ByProjectKeyImageSearchPost withLimit(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("limit", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional limit query parameter
+     */
+    public ByProjectKeyImageSearchPost addLimit(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("limit", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set limit with the specified values
+     */
+    public <TValue> ByProjectKeyImageSearchPost withLimit(final List<TValue> limit) {
         return copy().withoutQueryParam("limit")
                 .addQueryParams(
                     limit.stream().map(s -> new ParamEntry<>("limit", s.toString())).collect(Collectors.toList()));
@@ -125,29 +142,57 @@ public class ByProjectKeyImageSearchPost
     /**
      * add additional limit query parameters
      */
-    public ByProjectKeyImageSearchPost addLimit(final List<Integer> limit) {
+    public <TValue> ByProjectKeyImageSearchPost addLimit(final List<TValue> limit) {
         return copy().addQueryParams(
             limit.stream().map(s -> new ParamEntry<>("limit", s.toString())).collect(Collectors.toList()));
     }
 
     /**
-     * set offset with the specificied value
+     * set offset with the specified value
      */
-    public ByProjectKeyImageSearchPost withOffset(final int offset) {
+    public <TValue> ByProjectKeyImageSearchPost withOffset(final TValue offset) {
         return copy().withQueryParam("offset", offset);
     }
 
     /**
      * add additional offset query parameter
      */
-    public ByProjectKeyImageSearchPost addOffset(final int offset) {
+    public <TValue> ByProjectKeyImageSearchPost addOffset(final TValue offset) {
         return copy().addQueryParam("offset", offset);
     }
 
     /**
-     * set offset with the specificied values
+     * set offset with the specified value
      */
-    public ByProjectKeyImageSearchPost withOffset(final List<Integer> offset) {
+    public ByProjectKeyImageSearchPost withOffset(final Supplier<Integer> supplier) {
+        return copy().withQueryParam("offset", supplier.get());
+    }
+
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyImageSearchPost addOffset(final Supplier<Integer> supplier) {
+        return copy().addQueryParam("offset", supplier.get());
+    }
+
+    /**
+     * set offset with the specified value
+     */
+    public ByProjectKeyImageSearchPost withOffset(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("offset", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional offset query parameter
+     */
+    public ByProjectKeyImageSearchPost addOffset(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("offset", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set offset with the specified values
+     */
+    public <TValue> ByProjectKeyImageSearchPost withOffset(final List<TValue> offset) {
         return copy().withoutQueryParam("offset")
                 .addQueryParams(
                     offset.stream().map(s -> new ParamEntry<>("offset", s.toString())).collect(Collectors.toList()));
@@ -156,9 +201,19 @@ public class ByProjectKeyImageSearchPost
     /**
      * add additional offset query parameters
      */
-    public ByProjectKeyImageSearchPost addOffset(final List<Integer> offset) {
+    public <TValue> ByProjectKeyImageSearchPost addOffset(final List<TValue> offset) {
         return copy().addQueryParams(
             offset.stream().map(s -> new ParamEntry<>("offset", s.toString())).collect(Collectors.toList()));
+    }
+
+    public java.io.File getBody() {
+        return file;
+    }
+
+    public ByProjectKeyImageSearchPost withBody(java.io.File file) {
+        ByProjectKeyImageSearchPost t = copy();
+        t.file = file;
+        return t;
     }
 
     @Override

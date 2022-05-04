@@ -18,6 +18,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface SubscriptionPagedQueryResponse
         extends com.commercetools.api.models.ResourcePagedQueryResponse<Subscription> {
 
+    /**
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
+    */
     @NotNull
     @JsonProperty("limit")
     public Long getLimit();
@@ -75,5 +78,14 @@ public interface SubscriptionPagedQueryResponse
 
     default <T> T withSubscriptionPagedQueryResponse(Function<SubscriptionPagedQueryResponse, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<SubscriptionPagedQueryResponse> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<SubscriptionPagedQueryResponse>() {
+            @Override
+            public String toString() {
+                return "TypeReference<SubscriptionPagedQueryResponse>";
+            }
+        };
     }
 }

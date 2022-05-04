@@ -23,6 +23,9 @@ public interface ClientLogging {
     @JsonProperty("externalUserId")
     public String getExternalUserId();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Customer">Customer</a>.</p>
+    */
     @Valid
     @JsonProperty("customer")
     public CustomerReference getCustomer();
@@ -61,5 +64,14 @@ public interface ClientLogging {
 
     default <T> T withClientLogging(Function<ClientLogging, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ClientLogging> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ClientLogging>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ClientLogging>";
+            }
+        };
     }
 }

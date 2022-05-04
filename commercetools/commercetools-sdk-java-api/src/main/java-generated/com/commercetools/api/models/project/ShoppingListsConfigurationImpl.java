@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ShoppingListsConfigurationImpl implements ShoppingListsConfiguration {
+public class ShoppingListsConfigurationImpl implements ShoppingListsConfiguration, ModelBase {
 
     private Long deleteDaysAfterLastModification;
 
@@ -28,7 +29,8 @@ public class ShoppingListsConfigurationImpl implements ShoppingListsConfiguratio
     }
 
     /**
-    *  <p>The default value for the deleteDaysAfterLastModification parameter of the ShoppingListDraft. Initially set to 360 for projects created after December 2019.</p>
+    *  <p>Default value for the <code>deleteDaysAfterLastModification</code> parameter of the <a href="ctp:api:type:ShoppingListDraft">ShoppingListDraft</a>.
+    *  This field may not be present on Projects created before January 2020.</p>
     */
     public Long getDeleteDaysAfterLastModification() {
         return this.deleteDaysAfterLastModification;

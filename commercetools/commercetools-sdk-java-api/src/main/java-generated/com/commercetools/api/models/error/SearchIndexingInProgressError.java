@@ -23,6 +23,7 @@ public interface SearchIndexingInProgressError extends ErrorObject {
     public static SearchIndexingInProgressError of(final SearchIndexingInProgressError template) {
         SearchIndexingInProgressErrorImpl instance = new SearchIndexingInProgressErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface SearchIndexingInProgressError extends ErrorObject {
 
     default <T> T withSearchIndexingInProgressError(Function<SearchIndexingInProgressError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<SearchIndexingInProgressError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<SearchIndexingInProgressError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<SearchIndexingInProgressError>";
+            }
+        };
     }
 }

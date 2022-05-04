@@ -15,13 +15,12 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = CustomerGroupUpdateImpl.class)
-public interface CustomerGroupUpdate
-        extends com.commercetools.api.models.ResourceUpdate<CustomerGroupUpdate, CustomerGroupUpdateAction> {
+public interface CustomerGroupUpdate extends
+        com.commercetools.api.models.ResourceUpdate<CustomerGroupUpdate, CustomerGroupUpdateAction, CustomerGroupUpdateBuilder> {
 
     /**
     *  <p>Expected version of the Customer Group on which the changes should be applied.
-    *  If the expected version does not match the actual version, a 409 Conflict
-    *  will be returned.</p>
+    *  If the expected version does not match the actual version, a <a href="/../api/errors#409-conflict">409 Conflict</a> will be returned.</p>
     */
     @NotNull
     @JsonProperty("version")
@@ -63,5 +62,14 @@ public interface CustomerGroupUpdate
 
     default <T> T withCustomerGroupUpdate(Function<CustomerGroupUpdate, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerGroupUpdate> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerGroupUpdate>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerGroupUpdate>";
+            }
+        };
     }
 }

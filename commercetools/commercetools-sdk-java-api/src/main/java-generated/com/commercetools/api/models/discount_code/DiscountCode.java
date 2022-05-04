@@ -23,10 +23,13 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = DiscountCodeImpl.class)
-public interface DiscountCode extends BaseResource, com.commercetools.api.models.DomainResource<DiscountCode> {
+public interface DiscountCode extends BaseResource, com.commercetools.api.models.DomainResource<DiscountCode>,
+        com.commercetools.api.models.Referencable<DiscountCode>,
+        com.commercetools.api.models.ResourceIdentifiable<DiscountCode>,
+        com.commercetools.api.models.Customizable<DiscountCode> {
 
     /**
-    *  <p>The unique ID of the discount code.</p>
+    *  <p>Platform-generated unique identifier of the DiscountCode.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -67,9 +70,8 @@ public interface DiscountCode extends BaseResource, com.commercetools.api.models
     public LocalizedString getDescription();
 
     /**
-    *  <p>Unique identifier of this discount code.
-    *  This value is added to the cart
-    *  to enable the related cart discounts in the cart.</p>
+    *  <p>User-defined unique identifier of the DiscountCode.
+    *  It is <a href="/../api/projects/carts#add-discountcode">added to a Cart</a> to enable the related CartDiscounts in that Cart.</p>
     */
     @NotNull
     @JsonProperty("code")
@@ -150,7 +152,7 @@ public interface DiscountCode extends BaseResource, com.commercetools.api.models
     *  It can change at any time due to internal and external factors.
     *  It should not be used in customer logic.</p>
     */
-    @NotNull
+
     @JsonProperty("applicationVersion")
     public Long getApplicationVersion();
 
@@ -242,5 +244,24 @@ public interface DiscountCode extends BaseResource, com.commercetools.api.models
 
     default <T> T withDiscountCode(Function<DiscountCode, T> helper) {
         return helper.apply(this);
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.ResourceIdentifier toResourceIdentifier() {
+        return com.commercetools.api.models.discount_code.DiscountCodeResourceIdentifier.builder().id(getId()).build();
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.Reference toReference() {
+        return com.commercetools.api.models.discount_code.DiscountCodeReference.builder().id(getId()).build();
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<DiscountCode> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<DiscountCode>() {
+            @Override
+            public String toString() {
+                return "TypeReference<DiscountCode>";
+            }
+        };
     }
 }

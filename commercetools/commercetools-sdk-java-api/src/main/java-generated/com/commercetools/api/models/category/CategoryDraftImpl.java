@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CategoryDraftImpl implements CategoryDraft {
+public class CategoryDraftImpl implements CategoryDraft, ModelBase {
 
     private com.commercetools.api.models.common.LocalizedString name;
 
@@ -131,8 +132,7 @@ public class CategoryDraftImpl implements CategoryDraft {
     }
 
     /**
-    *  <p>User-defined unique identifier for the category.
-    *  Keys can only contain alphanumeric characters (<code>a-Z, 0-9</code>), underscores and hyphens (<code>-, _</code>) and be between 2 and 256 characters.</p>
+    *  <p>User-defined unique identifier for the Category.</p>
     */
     public String getKey() {
         return this.key;

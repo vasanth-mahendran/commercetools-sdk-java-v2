@@ -39,4 +39,25 @@ public interface CentPrecisionMoneyDraft extends TypedMoneyDraft {
     default <T> T withCentPrecisionMoneyDraft(Function<CentPrecisionMoneyDraft, T> helper) {
         return helper.apply(this);
     }
+
+    public static CentPrecisionMoneyDraft of(final javax.money.MonetaryAmount monetaryAmount) {
+        return MoneyUtil.draftOf(monetaryAmount);
+    }
+
+    public static CentPrecisionMoneyDraft of(final CentPrecisionMoney template) {
+        CentPrecisionMoneyDraftImpl instance = new CentPrecisionMoneyDraftImpl();
+        instance.setCentAmount(template.getCentAmount());
+        instance.setCurrencyCode(template.getCurrencyCode());
+        instance.setFractionDigits(template.getFractionDigits());
+        return instance;
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CentPrecisionMoneyDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CentPrecisionMoneyDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CentPrecisionMoneyDraft>";
+            }
+        };
+    }
 }

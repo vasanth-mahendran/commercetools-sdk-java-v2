@@ -1,8 +1,6 @@
 
 package com.commercetools.importapi.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -40,33 +38,26 @@ public class ByProjectKeyImportOperationsByIdGet extends
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/import-operations/%s", this.projectKey, this.id);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-
         return new ApiHttpRequest(ApiHttpMethod.GET, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importoperations.ImportOperation> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.importapi.models.importoperations.ImportOperation.class)
-                    .toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout,
+            com.commercetools.importapi.models.importoperations.ImportOperation.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importoperations.ImportOperation>> execute(
             final ApiHttpClient client) {
-        return client
-                .execute(this.createHttpRequest(),
-                    com.commercetools.importapi.models.importoperations.ImportOperation.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.importapi.models.importoperations.ImportOperation.class);
     }
 
     public String getProjectKey() {

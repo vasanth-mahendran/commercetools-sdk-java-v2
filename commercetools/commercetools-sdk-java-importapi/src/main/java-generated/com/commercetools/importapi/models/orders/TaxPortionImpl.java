@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TaxPortionImpl implements TaxPortion {
+public class TaxPortionImpl implements TaxPortion, ModelBase {
 
     private String name;
 
@@ -41,9 +42,6 @@ public class TaxPortionImpl implements TaxPortion {
         return this.rate;
     }
 
-    /**
-    *  <p>TypedMoney is what is called BaseMoney in the HTTP API.</p>
-    */
     public com.commercetools.importapi.models.common.TypedMoney getAmount() {
         return this.amount;
     }

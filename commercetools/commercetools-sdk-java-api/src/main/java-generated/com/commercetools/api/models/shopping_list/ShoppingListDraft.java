@@ -44,7 +44,7 @@ public interface ShoppingListDraft {
     public LocalizedString getDescription();
 
     /**
-    *  <p>User-specific unique identifier for the shopping list.</p>
+    *  <p>User-defined unique identifier for the ShoppingList.</p>
     */
 
     @JsonProperty("key")
@@ -141,5 +141,14 @@ public interface ShoppingListDraft {
 
     default <T> T withShoppingListDraft(Function<ShoppingListDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ShoppingListDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ShoppingListDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ShoppingListDraft>";
+            }
+        };
     }
 }

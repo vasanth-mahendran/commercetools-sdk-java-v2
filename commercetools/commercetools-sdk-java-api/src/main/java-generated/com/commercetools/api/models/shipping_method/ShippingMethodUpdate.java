@@ -15,8 +15,8 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = ShippingMethodUpdateImpl.class)
-public interface ShippingMethodUpdate
-        extends com.commercetools.api.models.ResourceUpdate<ShippingMethodUpdate, ShippingMethodUpdateAction> {
+public interface ShippingMethodUpdate extends
+        com.commercetools.api.models.ResourceUpdate<ShippingMethodUpdate, ShippingMethodUpdateAction, ShippingMethodUpdateBuilder> {
 
     @NotNull
     @JsonProperty("version")
@@ -55,5 +55,14 @@ public interface ShippingMethodUpdate
 
     default <T> T withShippingMethodUpdate(Function<ShippingMethodUpdate, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ShippingMethodUpdate> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ShippingMethodUpdate>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ShippingMethodUpdate>";
+            }
+        };
     }
 }

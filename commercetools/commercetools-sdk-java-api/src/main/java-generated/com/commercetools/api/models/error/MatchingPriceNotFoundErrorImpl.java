@@ -8,17 +8,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class MatchingPriceNotFoundErrorImpl implements MatchingPriceNotFoundError {
+public class MatchingPriceNotFoundErrorImpl implements MatchingPriceNotFoundError, ModelBase {
 
     private String code;
 
     private String message;
+
+    private Map<String, java.lang.Object> values;
 
     private String productId;
 
@@ -34,11 +37,13 @@ public class MatchingPriceNotFoundErrorImpl implements MatchingPriceNotFoundErro
 
     @JsonCreator
     MatchingPriceNotFoundErrorImpl(@JsonProperty("message") final String message,
+            @JsonProperty("values") final Map<String, java.lang.Object> values,
             @JsonProperty("productId") final String productId, @JsonProperty("variantId") final Integer variantId,
             @JsonProperty("currency") final String currency, @JsonProperty("country") final String country,
             @JsonProperty("customerGroup") final com.commercetools.api.models.customer_group.CustomerGroupReference customerGroup,
             @JsonProperty("channel") final com.commercetools.api.models.channel.ChannelReference channel) {
         this.message = message;
+        this.values = values;
         this.productId = productId;
         this.variantId = variantId;
         this.currency = currency;
@@ -60,6 +65,10 @@ public class MatchingPriceNotFoundErrorImpl implements MatchingPriceNotFoundErro
         return this.message;
     }
 
+    public Map<String, java.lang.Object> values() {
+        return values;
+    }
+
     public String getProductId() {
         return this.productId;
     }
@@ -77,18 +86,28 @@ public class MatchingPriceNotFoundErrorImpl implements MatchingPriceNotFoundErro
     }
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     public com.commercetools.api.models.customer_group.CustomerGroupReference getCustomerGroup() {
         return this.customerGroup;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     public com.commercetools.api.models.channel.ChannelReference getChannel() {
         return this.channel;
     }
 
     public void setMessage(final String message) {
         this.message = message;
+    }
+
+    public void setValue(String key, java.lang.Object value) {
+        if (values == null) {
+            values = new HashMap<>();
+        }
+        values.put(key, value);
     }
 
     public void setProductId(final String productId) {
@@ -128,6 +147,7 @@ public class MatchingPriceNotFoundErrorImpl implements MatchingPriceNotFoundErro
 
         return new EqualsBuilder().append(code, that.code)
                 .append(message, that.message)
+                .append(values, that.values)
                 .append(productId, that.productId)
                 .append(variantId, that.variantId)
                 .append(currency, that.currency)
@@ -141,6 +161,7 @@ public class MatchingPriceNotFoundErrorImpl implements MatchingPriceNotFoundErro
     public int hashCode() {
         return new HashCodeBuilder(17, 37).append(code)
                 .append(message)
+                .append(values)
                 .append(productId)
                 .append(variantId)
                 .append(currency)

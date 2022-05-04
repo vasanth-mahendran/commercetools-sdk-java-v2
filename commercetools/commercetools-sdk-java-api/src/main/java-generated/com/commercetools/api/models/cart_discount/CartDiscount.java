@@ -22,10 +22,13 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = CartDiscountImpl.class)
-public interface CartDiscount extends BaseResource, com.commercetools.api.models.DomainResource<CartDiscount> {
+public interface CartDiscount extends BaseResource, com.commercetools.api.models.DomainResource<CartDiscount>,
+        com.commercetools.api.models.Referencable<CartDiscount>,
+        com.commercetools.api.models.ResourceIdentifiable<CartDiscount>,
+        com.commercetools.api.models.Customizable<CartDiscount> {
 
     /**
-    *  <p>The unique ID of the cart discount.</p>
+    *  <p>Platform-generated unique identifier of the CartDiscount.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -66,8 +69,7 @@ public interface CartDiscount extends BaseResource, com.commercetools.api.models
     public LocalizedString getName();
 
     /**
-    *  <p>User-specific unique identifier for a cart discount.
-    *  Must be unique across a project.</p>
+    *  <p>User-defined unique identifier of the CartDiscount.</p>
     */
 
     @JsonProperty("key")
@@ -229,5 +231,24 @@ public interface CartDiscount extends BaseResource, com.commercetools.api.models
 
     default <T> T withCartDiscount(Function<CartDiscount, T> helper) {
         return helper.apply(this);
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.ResourceIdentifier toResourceIdentifier() {
+        return com.commercetools.api.models.cart_discount.CartDiscountResourceIdentifier.builder().id(getId()).build();
+    }
+
+    @Override
+    public default com.commercetools.api.models.common.Reference toReference() {
+        return com.commercetools.api.models.cart_discount.CartDiscountReference.builder().id(getId()).build();
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CartDiscount> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CartDiscount>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CartDiscount>";
+            }
+        };
     }
 }

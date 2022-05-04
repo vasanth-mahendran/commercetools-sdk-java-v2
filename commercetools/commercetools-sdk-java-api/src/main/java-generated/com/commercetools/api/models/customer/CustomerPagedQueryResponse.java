@@ -17,6 +17,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = CustomerPagedQueryResponseImpl.class)
 public interface CustomerPagedQueryResponse extends com.commercetools.api.models.ResourcePagedQueryResponse<Customer> {
 
+    /**
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
+    */
     @NotNull
     @JsonProperty("limit")
     public Long getLimit();
@@ -74,5 +77,14 @@ public interface CustomerPagedQueryResponse extends com.commercetools.api.models
 
     default <T> T withCustomerPagedQueryResponse(Function<CustomerPagedQueryResponse, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerPagedQueryResponse> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerPagedQueryResponse>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerPagedQueryResponse>";
+            }
+        };
     }
 }

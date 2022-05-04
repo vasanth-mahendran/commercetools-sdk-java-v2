@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ProjectUpdateImpl implements ProjectUpdate {
+public class ProjectUpdateImpl implements ProjectUpdate, ModelBase {
 
     private Long version;
 
@@ -30,10 +31,16 @@ public class ProjectUpdateImpl implements ProjectUpdate {
     public ProjectUpdateImpl() {
     }
 
+    /**
+    *  <p>Expected version of the Project on which the changes should be applied. If the expected version does not match the actual version, a <a href="/../api/errors#409-conflict">409 Conflict</a> will be returned.</p>
+    */
     public Long getVersion() {
         return this.version;
     }
 
+    /**
+    *  <p>Update actions to be performed on the Project.</p>
+    */
     public java.util.List<com.commercetools.api.models.project.ProjectUpdateAction> getActions() {
         return this.actions;
     }

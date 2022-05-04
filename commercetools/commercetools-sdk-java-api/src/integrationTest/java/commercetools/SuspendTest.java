@@ -6,12 +6,12 @@ import static commercetools.utils.CommercetoolsTestUtils.*;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
-import net.jodah.failsafe.CircuitBreakerOpenException;
-
 import com.commercetools.api.client.ProjectApiRoot;
 import com.commercetools.api.defaultconfig.ApiRootBuilder;
 import com.commercetools.api.defaultconfig.ServiceRegion;
 import com.commercetools.api.models.project.Project;
+
+import dev.failsafe.CircuitBreakerOpenException;
 
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.error.UnauthorizedException;
@@ -19,8 +19,8 @@ import io.vrap.rmf.base.client.oauth2.AuthException;
 import io.vrap.rmf.base.client.oauth2.ClientCredentials;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -138,7 +138,7 @@ public class SuspendTest {
     }
 
     @Test
-    @Ignore("only to be executed locally")
+    @Disabled("only to be executed locally")
     public void testSuspendedProject() {
         ServiceRegion region = System.getenv("CTP_REGION") == null ? ServiceRegion.GCP_EUROPE_WEST1
                 : ServiceRegion.valueOf(System.getenv("CTP_REGION"));

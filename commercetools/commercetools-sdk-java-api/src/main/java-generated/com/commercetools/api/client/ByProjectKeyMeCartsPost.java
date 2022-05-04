@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -17,7 +17,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyMeCartsPost extends ApiMethod<ByProjectKeyMeCartsPost, com.commercetools.api.models.cart.Cart>
+public class ByProjectKeyMeCartsPost extends
+        BodyApiMethod<ByProjectKeyMeCartsPost, com.commercetools.api.models.cart.Cart, com.commercetools.api.models.me.MyCartDraft>
         implements com.commercetools.api.client.ExpandableTrait<ByProjectKeyMeCartsPost>,
         com.commercetools.api.client.Deprecatable201Trait<ByProjectKeyMeCartsPost>,
         com.commercetools.api.client.ErrorableTrait<ByProjectKeyMeCartsPost> {
@@ -40,36 +41,28 @@ public class ByProjectKeyMeCartsPost extends ApiMethod<ByProjectKeyMeCartsPost, 
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/me/carts", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(myCartDraft);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(myCartDraft)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.cart.Cart> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(client.execute(request, com.commercetools.api.models.cart.Cart.class).toCompletableFuture(),
-            request, timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.cart.Cart.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart.Cart>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.cart.Cart.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.cart.Cart.class);
     }
 
     public String getProjectKey() {
@@ -85,23 +78,51 @@ public class ByProjectKeyMeCartsPost extends ApiMethod<ByProjectKeyMeCartsPost, 
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyMeCartsPost withExpand(final String expand) {
+    public <TValue> ByProjectKeyMeCartsPost withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyMeCartsPost addExpand(final String expand) {
+    public <TValue> ByProjectKeyMeCartsPost addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyMeCartsPost withExpand(final List<String> expand) {
+    public ByProjectKeyMeCartsPost withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyMeCartsPost addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyMeCartsPost withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyMeCartsPost addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyMeCartsPost withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -110,9 +131,19 @@ public class ByProjectKeyMeCartsPost extends ApiMethod<ByProjectKeyMeCartsPost, 
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyMeCartsPost addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyMeCartsPost addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
+    }
+
+    public com.commercetools.api.models.me.MyCartDraft getBody() {
+        return myCartDraft;
+    }
+
+    public ByProjectKeyMeCartsPost withBody(com.commercetools.api.models.me.MyCartDraft myCartDraft) {
+        ByProjectKeyMeCartsPost t = copy();
+        t.myCartDraft = myCartDraft;
+        return t;
     }
 
     @Override

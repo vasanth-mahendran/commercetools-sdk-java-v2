@@ -15,7 +15,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderReturnInfoSetMessageImpl.class)
-public interface OrderReturnInfoSetMessage extends Message {
+public interface OrderReturnInfoSetMessage extends OrderMessage {
 
     String RETURN_INFO_SET = "ReturnInfoSet";
 
@@ -58,5 +58,14 @@ public interface OrderReturnInfoSetMessage extends Message {
 
     default <T> T withOrderReturnInfoSetMessage(Function<OrderReturnInfoSetMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderReturnInfoSetMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderReturnInfoSetMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderReturnInfoSetMessage>";
+            }
+        };
     }
 }

@@ -11,13 +11,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ReviewDraftImpl implements ReviewDraft {
+public class ReviewDraftImpl implements ReviewDraft, ModelBase {
 
     private String key;
 
@@ -67,7 +68,7 @@ public class ReviewDraftImpl implements ReviewDraft {
     }
 
     /**
-    *  <p>User-specific unique identifier for the review.</p>
+    *  <p>User-defined unique identifier for the Review.</p>
     */
     public String getKey() {
         return this.key;

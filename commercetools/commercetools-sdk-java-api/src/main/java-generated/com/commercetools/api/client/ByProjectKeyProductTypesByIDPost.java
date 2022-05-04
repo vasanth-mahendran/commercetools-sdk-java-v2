@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -17,8 +17,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyProductTypesByIDPost
-        extends ApiMethod<ByProjectKeyProductTypesByIDPost, com.commercetools.api.models.product_type.ProductType>
+public class ByProjectKeyProductTypesByIDPost extends
+        BodyApiMethod<ByProjectKeyProductTypesByIDPost, com.commercetools.api.models.product_type.ProductType, com.commercetools.api.models.product_type.ProductTypeUpdate>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyProductTypesByIDPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyProductTypesByIDPost>,
         com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyProductTypesByIDPost>,
@@ -45,37 +45,28 @@ public class ByProjectKeyProductTypesByIDPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/product-types/%s", this.projectKey, this.ID);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(productTypeUpdate);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(productTypeUpdate)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.product_type.ProductType> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.product_type.ProductType.class).toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.product_type.ProductType.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.product_type.ProductType>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.product_type.ProductType.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.product_type.ProductType.class);
     }
 
     public String getProjectKey() {
@@ -99,23 +90,51 @@ public class ByProjectKeyProductTypesByIDPost
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyProductTypesByIDPost withExpand(final String expand) {
+    public <TValue> ByProjectKeyProductTypesByIDPost withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyProductTypesByIDPost addExpand(final String expand) {
+    public <TValue> ByProjectKeyProductTypesByIDPost addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyProductTypesByIDPost withExpand(final List<String> expand) {
+    public ByProjectKeyProductTypesByIDPost withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyProductTypesByIDPost addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyProductTypesByIDPost withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyProductTypesByIDPost addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyProductTypesByIDPost withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -124,9 +143,20 @@ public class ByProjectKeyProductTypesByIDPost
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyProductTypesByIDPost addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyProductTypesByIDPost addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
+    }
+
+    public com.commercetools.api.models.product_type.ProductTypeUpdate getBody() {
+        return productTypeUpdate;
+    }
+
+    public ByProjectKeyProductTypesByIDPost withBody(
+            com.commercetools.api.models.product_type.ProductTypeUpdate productTypeUpdate) {
+        ByProjectKeyProductTypesByIDPost t = copy();
+        t.productTypeUpdate = productTypeUpdate;
+        return t;
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -17,7 +18,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  <p><a href="/../api/general-concepts#pagedqueryresult">PagedQueryResult</a> with <code>results</code> containing an array of <a href="ctp:api:type:TaxCategory">TaxCategory</a>.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TaxCategoryPagedQueryResponseImpl implements TaxCategoryPagedQueryResponse {
+public class TaxCategoryPagedQueryResponseImpl implements TaxCategoryPagedQueryResponse, ModelBase {
 
     private Long limit;
 
@@ -45,7 +46,7 @@ public class TaxCategoryPagedQueryResponseImpl implements TaxCategoryPagedQueryR
     }
 
     /**
-    *  <p>Number of results requested in the query request.</p>
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
     */
     public Long getLimit() {
         return this.limit;
@@ -71,7 +72,7 @@ public class TaxCategoryPagedQueryResponseImpl implements TaxCategoryPagedQueryR
     *  This number is an estimation that is not <a href="/../api/general-concepts#strong-consistency">strongly consistent</a>.
     *  This field is returned by default.
     *  For improved performance, calculating this field can be deactivated by using the query parameter <code>withTotal=false</code>.
-    *  When the results are filtered with a <a href="/../api/predicates/query">Query Predicate</a>, <code>total</code> is subject to a <a href="/../api/contract#queries">limit</a>.</p>
+    *  When the results are filtered with a <a href="/../api/predicates/query">Query Predicate</a>, <code>total</code> is subject to a <a href="/../api/limits#queries">limit</a>.</p>
     */
     public Long getTotal() {
         return this.total;

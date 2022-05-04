@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -17,7 +17,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
-*  <p>Returns a cart by its ID from a specific Store. The {storeKey} path parameter maps to a Store's key.
+*  <p>Returns a cart by its ID from a specific Store.
 *  If the cart exists in the commercetools project but does not have the store field,
 *  or the store field references a different store, this method returns a ResourceNotFound error.
 *  The cart may not contain up-to-date prices, discounts etc.
@@ -50,29 +50,25 @@ public class ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/in-store/key=%s/carts/%s", this.projectKey, this.storeKey, this.ID);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-
         return new ApiHttpRequest(ApiHttpMethod.GET, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.cart.Cart> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(client.execute(request, com.commercetools.api.models.cart.Cart.class).toCompletableFuture(),
-            request, timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.cart.Cart.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart.Cart>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.cart.Cart.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.cart.Cart.class);
     }
 
     public String getProjectKey() {
@@ -104,23 +100,51 @@ public class ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet withExpand(final String expand) {
+    public <TValue> ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet addExpand(final String expand) {
+    public <TValue> ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet withExpand(final List<String> expand) {
+    public ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -129,7 +153,7 @@ public class ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyInStoreKeyByStoreKeyCartsByIDGet addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
     }

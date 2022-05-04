@@ -23,6 +23,7 @@ public interface SemanticErrorError extends ErrorObject {
     public static SemanticErrorError of(final SemanticErrorError template) {
         SemanticErrorErrorImpl instance = new SemanticErrorErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface SemanticErrorError extends ErrorObject {
 
     default <T> T withSemanticErrorError(Function<SemanticErrorError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<SemanticErrorError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<SemanticErrorError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<SemanticErrorError>";
+            }
+        };
     }
 }

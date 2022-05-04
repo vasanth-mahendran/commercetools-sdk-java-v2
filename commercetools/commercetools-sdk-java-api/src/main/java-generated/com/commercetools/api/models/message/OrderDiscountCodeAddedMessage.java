@@ -16,10 +16,13 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderDiscountCodeAddedMessageImpl.class)
-public interface OrderDiscountCodeAddedMessage extends Message {
+public interface OrderDiscountCodeAddedMessage extends OrderMessage {
 
     String ORDER_DISCOUNT_CODE_ADDED = "OrderDiscountCodeAdded";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:DiscountCode">DiscountCode</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("discountCode")
@@ -57,5 +60,14 @@ public interface OrderDiscountCodeAddedMessage extends Message {
 
     default <T> T withOrderDiscountCodeAddedMessage(Function<OrderDiscountCodeAddedMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderDiscountCodeAddedMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderDiscountCodeAddedMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderDiscountCodeAddedMessage>";
+            }
+        };
     }
 }

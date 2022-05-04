@@ -25,10 +25,10 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = LineItemImpl.class)
-public interface LineItem {
+public interface LineItem extends com.commercetools.api.models.Customizable<LineItem> {
 
     /**
-    *  <p>The unique ID of this LineItem.</p>
+    *  <p>Platform-generated unique identifier of the LineItem.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -37,6 +37,14 @@ public interface LineItem {
     @NotNull
     @JsonProperty("productId")
     public String getProductId();
+
+    /**
+    *  <p>User-defined unique identifier of the <a href="ctp:api:type:Product">Product</a>.
+    *  Only present on Line Items in a <a href="ctp:api:type:Cart">Cart</a> when the <code>key</code> is available on that specific Product at the time the Line Item is created or updated on the Cart. On <a href="/ctp:api:type:Order">Order</a> resources this field is only present when the <code>key</code> is available on the specific Product at the time the Order is created from the Cart. This field is in general not present on Carts that had no updates until 3 December 2021 and on Orders created before this date.</p>
+    */
+
+    @JsonProperty("productKey")
+    public String getProductKey();
 
     /**
     *  <p>The product name.</p>
@@ -180,6 +188,8 @@ public interface LineItem {
 
     public void setProductId(final String productId);
 
+    public void setProductKey(final String productKey);
+
     public void setName(final LocalizedString name);
 
     public void setProductSlug(final LocalizedString productSlug);
@@ -233,6 +243,7 @@ public interface LineItem {
         LineItemImpl instance = new LineItemImpl();
         instance.setId(template.getId());
         instance.setProductId(template.getProductId());
+        instance.setProductKey(template.getProductKey());
         instance.setName(template.getName());
         instance.setProductSlug(template.getProductSlug());
         instance.setProductType(template.getProductType());
@@ -265,5 +276,14 @@ public interface LineItem {
 
     default <T> T withLineItem(Function<LineItem, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<LineItem> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<LineItem>() {
+            @Override
+            public String toString() {
+                return "TypeReference<LineItem>";
+            }
+        };
     }
 }

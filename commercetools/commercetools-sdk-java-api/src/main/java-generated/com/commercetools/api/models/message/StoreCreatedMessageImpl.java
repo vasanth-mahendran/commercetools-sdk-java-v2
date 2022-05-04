@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class StoreCreatedMessageImpl implements StoreCreatedMessage {
+public class StoreCreatedMessageImpl implements StoreCreatedMessage, ModelBase {
 
     private String id;
 
@@ -46,6 +47,8 @@ public class StoreCreatedMessageImpl implements StoreCreatedMessage {
 
     private java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels;
 
+    private java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections;
+
     private com.commercetools.api.models.type.CustomFields custom;
 
     @JsonCreator
@@ -62,6 +65,7 @@ public class StoreCreatedMessageImpl implements StoreCreatedMessage {
             @JsonProperty("languages") final java.util.List<String> languages,
             @JsonProperty("distributionChannels") final java.util.List<com.commercetools.api.models.channel.ChannelReference> distributionChannels,
             @JsonProperty("supplyChannels") final java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels,
+            @JsonProperty("productSelections") final java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections,
             @JsonProperty("custom") final com.commercetools.api.models.type.CustomFields custom) {
         this.id = id;
         this.version = version;
@@ -77,6 +81,7 @@ public class StoreCreatedMessageImpl implements StoreCreatedMessage {
         this.languages = languages;
         this.distributionChannels = distributionChannels;
         this.supplyChannels = supplyChannels;
+        this.productSelections = productSelections;
         this.custom = custom;
         this.type = STORE_CREATED;
     }
@@ -85,6 +90,9 @@ public class StoreCreatedMessageImpl implements StoreCreatedMessage {
         this.type = STORE_CREATED;
     }
 
+    /**
+    *  <p>Platform-generated unique identifier of the Message.</p>
+    */
     public String getId() {
         return this.id;
     }
@@ -151,6 +159,13 @@ public class StoreCreatedMessageImpl implements StoreCreatedMessage {
         return this.supplyChannels;
     }
 
+    public java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> getProductSelections() {
+        return this.productSelections;
+    }
+
+    /**
+    *  <p>Serves as value of the <code>custom</code> field on a resource or data type customized with a <a href="ctp:api:type:Type">Type</a>.</p>
+    */
     public com.commercetools.api.models.type.CustomFields getCustom() {
         return this.custom;
     }
@@ -227,6 +242,16 @@ public class StoreCreatedMessageImpl implements StoreCreatedMessage {
         this.supplyChannels = supplyChannels;
     }
 
+    public void setProductSelections(
+            final com.commercetools.api.models.store.ProductSelectionSetting... productSelections) {
+        this.productSelections = new ArrayList<>(Arrays.asList(productSelections));
+    }
+
+    public void setProductSelections(
+            final java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections) {
+        this.productSelections = productSelections;
+    }
+
     public void setCustom(final com.commercetools.api.models.type.CustomFields custom) {
         this.custom = custom;
     }
@@ -256,6 +281,7 @@ public class StoreCreatedMessageImpl implements StoreCreatedMessage {
                 .append(languages, that.languages)
                 .append(distributionChannels, that.distributionChannels)
                 .append(supplyChannels, that.supplyChannels)
+                .append(productSelections, that.productSelections)
                 .append(custom, that.custom)
                 .isEquals();
     }
@@ -277,6 +303,7 @@ public class StoreCreatedMessageImpl implements StoreCreatedMessage {
                 .append(languages)
                 .append(distributionChannels)
                 .append(supplyChannels)
+                .append(productSelections)
                 .append(custom)
                 .toHashCode();
     }

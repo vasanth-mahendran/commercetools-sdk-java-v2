@@ -18,11 +18,17 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = DiscountedPriceImpl.class)
 public interface DiscountedPrice {
 
+    /**
+    *  <p>Base polymorphic read-only Money type which is stored in cent precision or high precision. The actual type is determined by the <code>type</code> field.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("value")
     public TypedMoney getValue();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:ProductDiscount">ProductDiscount</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("discount")
@@ -53,5 +59,14 @@ public interface DiscountedPrice {
 
     default <T> T withDiscountedPrice(Function<DiscountedPrice, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<DiscountedPrice> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<DiscountedPrice>() {
+            @Override
+            public String toString() {
+                return "TypeReference<DiscountedPrice>";
+            }
+        };
     }
 }

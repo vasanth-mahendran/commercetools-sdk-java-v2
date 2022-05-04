@@ -16,6 +16,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = CustomerCreateEmailTokenImpl.class)
 public interface CustomerCreateEmailToken {
 
+    /**
+    *  <p>Platform-generated unique identifier of the email token.</p>
+    */
     @NotNull
     @JsonProperty("id")
     public String getId();
@@ -55,5 +58,14 @@ public interface CustomerCreateEmailToken {
 
     default <T> T withCustomerCreateEmailToken(Function<CustomerCreateEmailToken, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerCreateEmailToken> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerCreateEmailToken>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerCreateEmailToken>";
+            }
+        };
     }
 }

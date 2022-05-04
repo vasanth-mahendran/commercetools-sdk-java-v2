@@ -18,6 +18,9 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface OrderEditPagedQueryResponse
         extends com.commercetools.api.models.ResourcePagedQueryResponse<OrderEdit> {
 
+    /**
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
+    */
     @NotNull
     @JsonProperty("limit")
     public Long getLimit();
@@ -75,5 +78,14 @@ public interface OrderEditPagedQueryResponse
 
     default <T> T withOrderEditPagedQueryResponse(Function<OrderEditPagedQueryResponse, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderEditPagedQueryResponse> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderEditPagedQueryResponse>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderEditPagedQueryResponse>";
+            }
+        };
     }
 }

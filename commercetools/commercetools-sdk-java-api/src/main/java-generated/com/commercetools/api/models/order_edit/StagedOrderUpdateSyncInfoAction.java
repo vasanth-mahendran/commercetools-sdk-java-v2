@@ -22,6 +22,9 @@ public interface StagedOrderUpdateSyncInfoAction extends StagedOrderUpdateAction
 
     String UPDATE_SYNC_INFO = "updateSyncInfo";
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("channel")
@@ -61,5 +64,14 @@ public interface StagedOrderUpdateSyncInfoAction extends StagedOrderUpdateAction
 
     default <T> T withStagedOrderUpdateSyncInfoAction(Function<StagedOrderUpdateSyncInfoAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StagedOrderUpdateSyncInfoAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StagedOrderUpdateSyncInfoAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StagedOrderUpdateSyncInfoAction>";
+            }
+        };
     }
 }

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TypeUpdateImpl implements TypeUpdate {
+public class TypeUpdateImpl implements TypeUpdate, ModelBase {
 
     private Long version;
 
@@ -30,10 +31,17 @@ public class TypeUpdateImpl implements TypeUpdate {
     public TypeUpdateImpl() {
     }
 
+    /**
+    *  <p>Expected version of the type on which the changes should be applied.
+    *  If the expected version does not match the actual version, a <a href="/../api/errors#409-conflict">409 Conflict</a> will be returned.</p>
+    */
     public Long getVersion() {
         return this.version;
     }
 
+    /**
+    *  <p>Update actions to be performed on the Type.</p>
+    */
     public java.util.List<com.commercetools.api.models.type.TypeUpdateAction> getActions() {
         return this.actions;
     }

@@ -23,6 +23,7 @@ public interface ObjectNotFoundError extends ErrorObject {
     public static ObjectNotFoundError of(final ObjectNotFoundError template) {
         ObjectNotFoundErrorImpl instance = new ObjectNotFoundErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface ObjectNotFoundError extends ErrorObject {
 
     default <T> T withObjectNotFoundError(Function<ObjectNotFoundError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ObjectNotFoundError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ObjectNotFoundError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ObjectNotFoundError>";
+            }
+        };
     }
 }

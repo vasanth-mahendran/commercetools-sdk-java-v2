@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -20,8 +18,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  valid only for 10 minutes.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyCustomersPasswordTokenPost
-        extends ApiMethod<ByProjectKeyCustomersPasswordTokenPost, com.commercetools.api.models.customer.CustomerToken>
+public class ByProjectKeyCustomersPasswordTokenPost extends
+        BodyApiMethod<ByProjectKeyCustomersPasswordTokenPost, com.commercetools.api.models.customer.CustomerToken, com.commercetools.api.models.customer.CustomerCreatePasswordResetToken>
         implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyCustomersPasswordTokenPost> {
 
     private String projectKey;
@@ -42,38 +40,28 @@ public class ByProjectKeyCustomersPasswordTokenPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/customers/password-token", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService()
-                    .toJsonByteArray(customerCreatePasswordResetToken);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils.executing(
+                () -> apiHttpClient().getSerializerService().toJsonByteArray(customerCreatePasswordResetToken)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.customer.CustomerToken> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.customer.CustomerToken.class).toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.customer.CustomerToken.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.CustomerToken>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.customer.CustomerToken.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.customer.CustomerToken.class);
     }
 
     public String getProjectKey() {
@@ -82,6 +70,17 @@ public class ByProjectKeyCustomersPasswordTokenPost
 
     public void setProjectKey(final String projectKey) {
         this.projectKey = projectKey;
+    }
+
+    public com.commercetools.api.models.customer.CustomerCreatePasswordResetToken getBody() {
+        return customerCreatePasswordResetToken;
+    }
+
+    public ByProjectKeyCustomersPasswordTokenPost withBody(
+            com.commercetools.api.models.customer.CustomerCreatePasswordResetToken customerCreatePasswordResetToken) {
+        ByProjectKeyCustomersPasswordTokenPost t = copy();
+        t.customerCreatePasswordResetToken = customerCreatePasswordResetToken;
+        return t;
     }
 
     @Override

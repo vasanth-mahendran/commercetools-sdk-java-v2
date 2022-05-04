@@ -146,10 +146,18 @@ public class ProductProjectionBuilder implements Builder<ProductProjection> {
         return this;
     }
 
-    public ProductProjectionBuilder withCategories(
-            Function<com.commercetools.api.models.category.CategoryReferenceBuilder, com.commercetools.api.models.category.CategoryReferenceBuilder> builder) {
-        this.categories = new ArrayList<>();
-        this.categories.add(builder.apply(com.commercetools.api.models.category.CategoryReferenceBuilder.of()).build());
+    public ProductProjectionBuilder categories(
+            final java.util.List<com.commercetools.api.models.category.CategoryReference> categories) {
+        this.categories = categories;
+        return this;
+    }
+
+    public ProductProjectionBuilder plusCategories(
+            final com.commercetools.api.models.category.CategoryReference... categories) {
+        if (this.categories == null) {
+            this.categories = new ArrayList<>();
+        }
+        this.categories.addAll(Arrays.asList(categories));
         return this;
     }
 
@@ -162,9 +170,10 @@ public class ProductProjectionBuilder implements Builder<ProductProjection> {
         return this;
     }
 
-    public ProductProjectionBuilder categories(
-            final java.util.List<com.commercetools.api.models.category.CategoryReference> categories) {
-        this.categories = categories;
+    public ProductProjectionBuilder withCategories(
+            Function<com.commercetools.api.models.category.CategoryReferenceBuilder, com.commercetools.api.models.category.CategoryReferenceBuilder> builder) {
+        this.categories = new ArrayList<>();
+        this.categories.add(builder.apply(com.commercetools.api.models.category.CategoryReferenceBuilder.of()).build());
         return this;
     }
 
@@ -256,10 +265,18 @@ public class ProductProjectionBuilder implements Builder<ProductProjection> {
         return this;
     }
 
-    public ProductProjectionBuilder withVariants(
-            Function<com.commercetools.api.models.product.ProductVariantBuilder, com.commercetools.api.models.product.ProductVariantBuilder> builder) {
-        this.variants = new ArrayList<>();
-        this.variants.add(builder.apply(com.commercetools.api.models.product.ProductVariantBuilder.of()).build());
+    public ProductProjectionBuilder variants(
+            final java.util.List<com.commercetools.api.models.product.ProductVariant> variants) {
+        this.variants = variants;
+        return this;
+    }
+
+    public ProductProjectionBuilder plusVariants(
+            final com.commercetools.api.models.product.ProductVariant... variants) {
+        if (this.variants == null) {
+            this.variants = new ArrayList<>();
+        }
+        this.variants.addAll(Arrays.asList(variants));
         return this;
     }
 
@@ -272,15 +289,29 @@ public class ProductProjectionBuilder implements Builder<ProductProjection> {
         return this;
     }
 
-    public ProductProjectionBuilder variants(
-            final java.util.List<com.commercetools.api.models.product.ProductVariant> variants) {
-        this.variants = variants;
+    public ProductProjectionBuilder withVariants(
+            Function<com.commercetools.api.models.product.ProductVariantBuilder, com.commercetools.api.models.product.ProductVariantBuilder> builder) {
+        this.variants = new ArrayList<>();
+        this.variants.add(builder.apply(com.commercetools.api.models.product.ProductVariantBuilder.of()).build());
+        return this;
+    }
+
+    public ProductProjectionBuilder taxCategory(
+            Function<com.commercetools.api.models.tax_category.TaxCategoryReferenceBuilder, com.commercetools.api.models.tax_category.TaxCategoryReferenceBuilder> builder) {
+        this.taxCategory = builder.apply(com.commercetools.api.models.tax_category.TaxCategoryReferenceBuilder.of())
+                .build();
         return this;
     }
 
     public ProductProjectionBuilder taxCategory(
             @Nullable final com.commercetools.api.models.tax_category.TaxCategoryReference taxCategory) {
         this.taxCategory = taxCategory;
+        return this;
+    }
+
+    public ProductProjectionBuilder state(
+            Function<com.commercetools.api.models.state.StateReferenceBuilder, com.commercetools.api.models.state.StateReferenceBuilder> builder) {
+        this.state = builder.apply(com.commercetools.api.models.state.StateReferenceBuilder.of()).build();
         return this;
     }
 

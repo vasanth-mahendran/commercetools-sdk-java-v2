@@ -8,17 +8,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class MissingRoleOnChannelErrorImpl implements MissingRoleOnChannelError {
+public class MissingRoleOnChannelErrorImpl implements MissingRoleOnChannelError, ModelBase {
 
     private String code;
 
     private String message;
+
+    private Map<String, java.lang.Object> values;
 
     private com.commercetools.api.models.channel.ChannelResourceIdentifier channel;
 
@@ -26,9 +29,11 @@ public class MissingRoleOnChannelErrorImpl implements MissingRoleOnChannelError 
 
     @JsonCreator
     MissingRoleOnChannelErrorImpl(@JsonProperty("message") final String message,
+            @JsonProperty("values") final Map<String, java.lang.Object> values,
             @JsonProperty("channel") final com.commercetools.api.models.channel.ChannelResourceIdentifier channel,
             @JsonProperty("missingRole") final com.commercetools.api.models.channel.ChannelRoleEnum missingRole) {
         this.message = message;
+        this.values = values;
         this.channel = channel;
         this.missingRole = missingRole;
         this.code = MISSING_ROLE_ON_CHANNEL;
@@ -46,16 +51,33 @@ public class MissingRoleOnChannelErrorImpl implements MissingRoleOnChannelError 
         return this.message;
     }
 
+    public Map<String, java.lang.Object> values() {
+        return values;
+    }
+
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     public com.commercetools.api.models.channel.ChannelResourceIdentifier getChannel() {
         return this.channel;
     }
 
+    /**
+    *  <p>Describes the purpose and type of the Channel. A Channel can have one or more roles.</p>
+    */
     public com.commercetools.api.models.channel.ChannelRoleEnum getMissingRole() {
         return this.missingRole;
     }
 
     public void setMessage(final String message) {
         this.message = message;
+    }
+
+    public void setValue(String key, java.lang.Object value) {
+        if (values == null) {
+            values = new HashMap<>();
+        }
+        values.put(key, value);
     }
 
     public void setChannel(final com.commercetools.api.models.channel.ChannelResourceIdentifier channel) {
@@ -78,6 +100,7 @@ public class MissingRoleOnChannelErrorImpl implements MissingRoleOnChannelError 
 
         return new EqualsBuilder().append(code, that.code)
                 .append(message, that.message)
+                .append(values, that.values)
                 .append(channel, that.channel)
                 .append(missingRole, that.missingRole)
                 .isEquals();
@@ -87,6 +110,7 @@ public class MissingRoleOnChannelErrorImpl implements MissingRoleOnChannelError 
     public int hashCode() {
         return new HashCodeBuilder(17, 37).append(code)
                 .append(message)
+                .append(values)
                 .append(channel)
                 .append(missingRole)
                 .toHashCode();

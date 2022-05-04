@@ -18,6 +18,9 @@ public interface ChannelAddRolesAction extends ChannelUpdateAction {
 
     String ADD_ROLES = "addRoles";
 
+    /**
+    *  <p>Value to append to the array.</p>
+    */
     @NotNull
     @JsonProperty("roles")
     public List<ChannelRoleEnum> getRoles();
@@ -47,5 +50,14 @@ public interface ChannelAddRolesAction extends ChannelUpdateAction {
 
     default <T> T withChannelAddRolesAction(Function<ChannelAddRolesAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ChannelAddRolesAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ChannelAddRolesAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ChannelAddRolesAction>";
+            }
+        };
     }
 }

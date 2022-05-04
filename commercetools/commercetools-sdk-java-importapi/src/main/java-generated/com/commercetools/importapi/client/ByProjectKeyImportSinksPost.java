@@ -1,8 +1,6 @@
 
 package com.commercetools.importapi.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -19,8 +17,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  <p>Creates a new import sink.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyImportSinksPost
-        extends ApiMethod<ByProjectKeyImportSinksPost, com.commercetools.importapi.models.importsinks.ImportSink>
+public class ByProjectKeyImportSinksPost extends
+        BodyApiMethod<ByProjectKeyImportSinksPost, com.commercetools.importapi.models.importsinks.ImportSink, com.commercetools.importapi.models.importsinks.ImportSinkDraft>
         implements com.commercetools.importapi.client.Secured_by_manage_import_sinksTrait<ByProjectKeyImportSinksPost> {
 
     private String projectKey;
@@ -41,37 +39,28 @@ public class ByProjectKeyImportSinksPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/import-sinks", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(importSinkDraft);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(importSinkDraft)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.importapi.models.importsinks.ImportSink> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(client.execute(request, com.commercetools.importapi.models.importsinks.ImportSink.class)
-                .toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.importapi.models.importsinks.ImportSink.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.importapi.models.importsinks.ImportSink>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.importapi.models.importsinks.ImportSink.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.importapi.models.importsinks.ImportSink.class);
     }
 
     public String getProjectKey() {
@@ -80,6 +69,17 @@ public class ByProjectKeyImportSinksPost
 
     public void setProjectKey(final String projectKey) {
         this.projectKey = projectKey;
+    }
+
+    public com.commercetools.importapi.models.importsinks.ImportSinkDraft getBody() {
+        return importSinkDraft;
+    }
+
+    public ByProjectKeyImportSinksPost withBody(
+            com.commercetools.importapi.models.importsinks.ImportSinkDraft importSinkDraft) {
+        ByProjectKeyImportSinksPost t = copy();
+        t.importSinkDraft = importSinkDraft;
+        return t;
     }
 
     @Override

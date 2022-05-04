@@ -8,20 +8,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class DiscountedLineItemPriceForQuantityImpl implements DiscountedLineItemPriceForQuantity {
+public class DiscountedLineItemPriceForQuantityImpl implements DiscountedLineItemPriceForQuantity, ModelBase {
 
-    private Double quantity;
+    private Long quantity;
 
     private com.commercetools.api.models.cart.DiscountedLineItemPrice discountedPrice;
 
     @JsonCreator
-    DiscountedLineItemPriceForQuantityImpl(@JsonProperty("quantity") final Double quantity,
+    DiscountedLineItemPriceForQuantityImpl(@JsonProperty("quantity") final Long quantity,
             @JsonProperty("discountedPrice") final com.commercetools.api.models.cart.DiscountedLineItemPrice discountedPrice) {
         this.quantity = quantity;
         this.discountedPrice = discountedPrice;
@@ -30,7 +31,7 @@ public class DiscountedLineItemPriceForQuantityImpl implements DiscountedLineIte
     public DiscountedLineItemPriceForQuantityImpl() {
     }
 
-    public Double getQuantity() {
+    public Long getQuantity() {
         return this.quantity;
     }
 
@@ -38,7 +39,7 @@ public class DiscountedLineItemPriceForQuantityImpl implements DiscountedLineIte
         return this.discountedPrice;
     }
 
-    public void setQuantity(final Double quantity) {
+    public void setQuantity(final Long quantity) {
         this.quantity = quantity;
     }
 

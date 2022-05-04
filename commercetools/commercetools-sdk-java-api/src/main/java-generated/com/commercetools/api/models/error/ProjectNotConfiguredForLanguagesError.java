@@ -31,6 +31,7 @@ public interface ProjectNotConfiguredForLanguagesError extends ErrorObject {
     public static ProjectNotConfiguredForLanguagesError of(final ProjectNotConfiguredForLanguagesError template) {
         ProjectNotConfiguredForLanguagesErrorImpl instance = new ProjectNotConfiguredForLanguagesErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setLanguages(template.getLanguages());
         return instance;
     }
@@ -46,5 +47,14 @@ public interface ProjectNotConfiguredForLanguagesError extends ErrorObject {
 
     default <T> T withProjectNotConfiguredForLanguagesError(Function<ProjectNotConfiguredForLanguagesError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ProjectNotConfiguredForLanguagesError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ProjectNotConfiguredForLanguagesError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ProjectNotConfiguredForLanguagesError>";
+            }
+        };
     }
 }

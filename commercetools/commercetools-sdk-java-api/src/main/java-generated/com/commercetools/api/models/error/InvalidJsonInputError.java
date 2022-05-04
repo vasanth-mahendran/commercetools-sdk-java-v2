@@ -23,6 +23,7 @@ public interface InvalidJsonInputError extends ErrorObject {
     public static InvalidJsonInputError of(final InvalidJsonInputError template) {
         InvalidJsonInputErrorImpl instance = new InvalidJsonInputErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface InvalidJsonInputError extends ErrorObject {
 
     default <T> T withInvalidJsonInputError(Function<InvalidJsonInputError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<InvalidJsonInputError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<InvalidJsonInputError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<InvalidJsonInputError>";
+            }
+        };
     }
 }

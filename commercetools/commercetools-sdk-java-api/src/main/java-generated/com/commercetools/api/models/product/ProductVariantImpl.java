@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ProductVariantImpl implements ProductVariant {
+public class ProductVariantImpl implements ProductVariant, ModelBase {
 
     private Long id;
 
@@ -69,6 +70,9 @@ public class ProductVariantImpl implements ProductVariant {
     public ProductVariantImpl() {
     }
 
+    /**
+    *  <p>Platform-generated sequential and unique identifier of the ProductVariant within the Product.</p>
+    */
     public Long getId() {
         return this.id;
     }
@@ -77,6 +81,10 @@ public class ProductVariantImpl implements ProductVariant {
         return this.sku;
     }
 
+    /**
+    *  <p>User-defined unique identifier of the ProductVariant.
+    *  <em>ProductVariant keys are different from Product keys.</em></p>
+    */
     public String getKey() {
         return this.key;
     }

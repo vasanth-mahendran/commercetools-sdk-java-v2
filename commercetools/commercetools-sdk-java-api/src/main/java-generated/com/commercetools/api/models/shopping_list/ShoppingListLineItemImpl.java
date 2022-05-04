@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ShoppingListLineItemImpl implements ShoppingListLineItem {
+public class ShoppingListLineItemImpl implements ShoppingListLineItem, ModelBase {
 
     private java.time.ZonedDateTime addedAt;
 
@@ -70,6 +71,9 @@ public class ShoppingListLineItemImpl implements ShoppingListLineItem {
         return this.addedAt;
     }
 
+    /**
+    *  <p>Serves as value of the <code>custom</code> field on a resource or data type customized with a <a href="ctp:api:type:Type">Type</a>.</p>
+    */
     public com.commercetools.api.models.type.CustomFields getCustom() {
         return this.custom;
     }
@@ -78,6 +82,9 @@ public class ShoppingListLineItemImpl implements ShoppingListLineItem {
         return this.deactivatedAt;
     }
 
+    /**
+    *  <p>Platform-generated unique identifier of the ShoppingListLineItem.</p>
+    */
     public String getId() {
         return this.id;
     }
@@ -94,6 +101,9 @@ public class ShoppingListLineItemImpl implements ShoppingListLineItem {
         return this.productSlug;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:ProductType">ProductType</a>.</p>
+    */
     public com.commercetools.api.models.product_type.ProductTypeReference getProductType() {
         return this.productType;
     }

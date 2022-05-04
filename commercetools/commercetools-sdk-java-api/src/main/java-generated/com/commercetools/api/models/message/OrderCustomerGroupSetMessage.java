@@ -15,19 +15,19 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderCustomerGroupSetMessageImpl.class)
-public interface OrderCustomerGroupSetMessage extends Message {
+public interface OrderCustomerGroupSetMessage extends OrderMessage {
 
     String ORDER_CUSTOMER_GROUP_SET = "OrderCustomerGroupSet";
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     @Valid
     @JsonProperty("customerGroup")
     public CustomerGroupReference getCustomerGroup();
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     @Valid
     @JsonProperty("oldCustomerGroup")
@@ -68,5 +68,14 @@ public interface OrderCustomerGroupSetMessage extends Message {
 
     default <T> T withOrderCustomerGroupSetMessage(Function<OrderCustomerGroupSetMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderCustomerGroupSetMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderCustomerGroupSetMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderCustomerGroupSetMessage>";
+            }
+        };
     }
 }

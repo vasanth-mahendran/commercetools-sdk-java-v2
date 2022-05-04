@@ -16,15 +16,21 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderStateTransitionMessageImpl.class)
-public interface OrderStateTransitionMessage extends Message {
+public interface OrderStateTransitionMessage extends OrderMessage {
 
     String ORDER_STATE_TRANSITION = "OrderStateTransition";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("state")
     public StateReference getState();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @Valid
     @JsonProperty("oldState")
     public StateReference getOldState();
@@ -71,5 +77,14 @@ public interface OrderStateTransitionMessage extends Message {
 
     default <T> T withOrderStateTransitionMessage(Function<OrderStateTransitionMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderStateTransitionMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderStateTransitionMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderStateTransitionMessage>";
+            }
+        };
     }
 }

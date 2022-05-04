@@ -23,6 +23,7 @@ public interface BadGatewayError extends ErrorObject {
     public static BadGatewayError of(final BadGatewayError template) {
         BadGatewayErrorImpl instance = new BadGatewayErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -36,5 +37,14 @@ public interface BadGatewayError extends ErrorObject {
 
     default <T> T withBadGatewayError(Function<BadGatewayError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<BadGatewayError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<BadGatewayError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<BadGatewayError>";
+            }
+        };
     }
 }

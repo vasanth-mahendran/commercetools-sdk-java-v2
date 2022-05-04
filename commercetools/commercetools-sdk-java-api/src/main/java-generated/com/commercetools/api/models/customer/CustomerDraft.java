@@ -21,7 +21,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = CustomerDraftImpl.class)
-public interface CustomerDraft {
+public interface CustomerDraft extends com.commercetools.api.models.CustomizableDraft<CustomerDraft> {
 
     /**
     *  <p>String that uniquely identifies a customer.
@@ -42,7 +42,10 @@ public interface CustomerDraft {
     @JsonProperty("email")
     public String getEmail();
 
-    @NotNull
+    /**
+    *  <p>Only optional with <code>authenticationMode</code> set to <code>ExternalAuth</code>.</p>
+    */
+
     @JsonProperty("password")
     public String getPassword();
 
@@ -101,7 +104,7 @@ public interface CustomerDraft {
     */
 
     @JsonProperty("defaultShippingAddress")
-    public Long getDefaultShippingAddress();
+    public Integer getDefaultShippingAddress();
 
     /**
     *  <p>The indices of the shipping addresses in the addresses array.
@@ -117,7 +120,7 @@ public interface CustomerDraft {
     */
 
     @JsonProperty("defaultBillingAddress")
-    public Long getDefaultBillingAddress();
+    public Integer getDefaultBillingAddress();
 
     /**
     *  <p>The indices of the billing addresses in the addresses array.
@@ -155,9 +158,7 @@ public interface CustomerDraft {
     public String getSalutation();
 
     /**
-    *  <p>User-specific unique identifier for a customer.
-    *  Must be unique across a project.
-    *  The field can be reset using the Set Key UpdateAction</p>
+    *  <p>User-defined unique identifier for the Customer.</p>
     */
 
     @JsonProperty("key")
@@ -171,6 +172,13 @@ public interface CustomerDraft {
     @Valid
     @JsonProperty("stores")
     public List<StoreResourceIdentifier> getStores();
+
+    /**
+    *  <p>Defines whether a password is required for the Customer that is used for platform-internal authentication.</p>
+    */
+
+    @JsonProperty("authenticationMode")
+    public AuthenticationMode getAuthenticationMode();
 
     public void setCustomerNumber(final String customerNumber);
 
@@ -204,14 +212,14 @@ public interface CustomerDraft {
 
     public void setAddresses(final List<BaseAddress> addresses);
 
-    public void setDefaultShippingAddress(final Long defaultShippingAddress);
+    public void setDefaultShippingAddress(final Integer defaultShippingAddress);
 
     @JsonIgnore
     public void setShippingAddresses(final Integer... shippingAddresses);
 
     public void setShippingAddresses(final List<Integer> shippingAddresses);
 
-    public void setDefaultBillingAddress(final Long defaultBillingAddress);
+    public void setDefaultBillingAddress(final Integer defaultBillingAddress);
 
     @JsonIgnore
     public void setBillingAddresses(final Integer... billingAddresses);
@@ -236,6 +244,8 @@ public interface CustomerDraft {
     public void setStores(final StoreResourceIdentifier... stores);
 
     public void setStores(final List<StoreResourceIdentifier> stores);
+
+    public void setAuthenticationMode(final AuthenticationMode authenticationMode);
 
     public static CustomerDraft of() {
         return new CustomerDraftImpl();
@@ -269,6 +279,7 @@ public interface CustomerDraft {
         instance.setSalutation(template.getSalutation());
         instance.setKey(template.getKey());
         instance.setStores(template.getStores());
+        instance.setAuthenticationMode(template.getAuthenticationMode());
         return instance;
     }
 
@@ -282,5 +293,14 @@ public interface CustomerDraft {
 
     default <T> T withCustomerDraft(Function<CustomerDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CustomerDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CustomerDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CustomerDraft>";
+            }
+        };
     }
 }

@@ -18,6 +18,10 @@ public interface StateChangeTypeAction extends StateUpdateAction {
 
     String CHANGE_TYPE = "changeType";
 
+    /**
+    *  <p>Resource or object types the State shall be assigned to.
+    *  Must not be empty.</p>
+    */
     @NotNull
     @JsonProperty("type")
     public StateTypeEnum getType();
@@ -44,5 +48,14 @@ public interface StateChangeTypeAction extends StateUpdateAction {
 
     default <T> T withStateChangeTypeAction(Function<StateChangeTypeAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StateChangeTypeAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StateChangeTypeAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StateChangeTypeAction>";
+            }
+        };
     }
 }

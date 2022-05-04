@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class PriceDraftImpl implements PriceDraft {
+public class PriceDraftImpl implements PriceDraft, ModelBase {
 
     private com.commercetools.api.models.common.Money value;
 
@@ -58,6 +59,10 @@ public class PriceDraftImpl implements PriceDraft {
     public PriceDraftImpl() {
     }
 
+    /**
+    *  <p>Draft type that stores amounts in cent precision for the specified currency.
+    *  For storing money values in fractions of the minor unit in a currency, use <a href="ctp:api:type:HighPrecisionMoneyDraft">HighPrecisionMoneyDraft</a> instead.</p>
+    */
     public com.commercetools.api.models.common.Money getValue() {
         return this.value;
     }
@@ -76,6 +81,9 @@ public class PriceDraftImpl implements PriceDraft {
         return this.customerGroup;
     }
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     public com.commercetools.api.models.channel.ChannelResourceIdentifier getChannel() {
         return this.channel;
     }
@@ -88,6 +96,9 @@ public class PriceDraftImpl implements PriceDraft {
         return this.validUntil;
     }
 
+    /**
+    *  <p>The representation used when creating or updating a <a href="/../api/projects/types#list-of-customizable-data-types">customizable data type</a> with Custom Fields.</p>
+    */
     public com.commercetools.api.models.type.CustomFieldsDraft getCustom() {
         return this.custom;
     }

@@ -27,6 +27,9 @@ public class StoreDraftBuilder implements Builder<StoreDraft> {
     private java.util.List<com.commercetools.api.models.channel.ChannelResourceIdentifier> supplyChannels;
 
     @Nullable
+    private java.util.List<com.commercetools.api.models.store.ProductSelectionSettingDraft> productSelections;
+
+    @Nullable
     private com.commercetools.api.models.type.CustomFieldsDraft custom;
 
     public StoreDraftBuilder key(final String key) {
@@ -55,17 +58,32 @@ public class StoreDraftBuilder implements Builder<StoreDraft> {
         return this;
     }
 
+    public StoreDraftBuilder plusLanguages(@Nullable final String... languages) {
+        if (this.languages == null) {
+            this.languages = new ArrayList<>();
+        }
+        this.languages.addAll(Arrays.asList(languages));
+        return this;
+    }
+
     public StoreDraftBuilder distributionChannels(
             @Nullable final com.commercetools.api.models.channel.ChannelResourceIdentifier... distributionChannels) {
         this.distributionChannels = new ArrayList<>(Arrays.asList(distributionChannels));
         return this;
     }
 
-    public StoreDraftBuilder withDistributionChannels(
-            Function<com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder, com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder> builder) {
-        this.distributionChannels = new ArrayList<>();
-        this.distributionChannels
-                .add(builder.apply(com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder.of()).build());
+    public StoreDraftBuilder distributionChannels(
+            @Nullable final java.util.List<com.commercetools.api.models.channel.ChannelResourceIdentifier> distributionChannels) {
+        this.distributionChannels = distributionChannels;
+        return this;
+    }
+
+    public StoreDraftBuilder plusDistributionChannels(
+            @Nullable final com.commercetools.api.models.channel.ChannelResourceIdentifier... distributionChannels) {
+        if (this.distributionChannels == null) {
+            this.distributionChannels = new ArrayList<>();
+        }
+        this.distributionChannels.addAll(Arrays.asList(distributionChannels));
         return this;
     }
 
@@ -79,9 +97,11 @@ public class StoreDraftBuilder implements Builder<StoreDraft> {
         return this;
     }
 
-    public StoreDraftBuilder distributionChannels(
-            @Nullable final java.util.List<com.commercetools.api.models.channel.ChannelResourceIdentifier> distributionChannels) {
-        this.distributionChannels = distributionChannels;
+    public StoreDraftBuilder withDistributionChannels(
+            Function<com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder, com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder> builder) {
+        this.distributionChannels = new ArrayList<>();
+        this.distributionChannels
+                .add(builder.apply(com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder.of()).build());
         return this;
     }
 
@@ -91,11 +111,18 @@ public class StoreDraftBuilder implements Builder<StoreDraft> {
         return this;
     }
 
-    public StoreDraftBuilder withSupplyChannels(
-            Function<com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder, com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder> builder) {
-        this.supplyChannels = new ArrayList<>();
-        this.supplyChannels
-                .add(builder.apply(com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder.of()).build());
+    public StoreDraftBuilder supplyChannels(
+            @Nullable final java.util.List<com.commercetools.api.models.channel.ChannelResourceIdentifier> supplyChannels) {
+        this.supplyChannels = supplyChannels;
+        return this;
+    }
+
+    public StoreDraftBuilder plusSupplyChannels(
+            @Nullable final com.commercetools.api.models.channel.ChannelResourceIdentifier... supplyChannels) {
+        if (this.supplyChannels == null) {
+            this.supplyChannels = new ArrayList<>();
+        }
+        this.supplyChannels.addAll(Arrays.asList(supplyChannels));
         return this;
     }
 
@@ -109,9 +136,50 @@ public class StoreDraftBuilder implements Builder<StoreDraft> {
         return this;
     }
 
-    public StoreDraftBuilder supplyChannels(
-            @Nullable final java.util.List<com.commercetools.api.models.channel.ChannelResourceIdentifier> supplyChannels) {
-        this.supplyChannels = supplyChannels;
+    public StoreDraftBuilder withSupplyChannels(
+            Function<com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder, com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder> builder) {
+        this.supplyChannels = new ArrayList<>();
+        this.supplyChannels
+                .add(builder.apply(com.commercetools.api.models.channel.ChannelResourceIdentifierBuilder.of()).build());
+        return this;
+    }
+
+    public StoreDraftBuilder productSelections(
+            @Nullable final com.commercetools.api.models.store.ProductSelectionSettingDraft... productSelections) {
+        this.productSelections = new ArrayList<>(Arrays.asList(productSelections));
+        return this;
+    }
+
+    public StoreDraftBuilder productSelections(
+            @Nullable final java.util.List<com.commercetools.api.models.store.ProductSelectionSettingDraft> productSelections) {
+        this.productSelections = productSelections;
+        return this;
+    }
+
+    public StoreDraftBuilder plusProductSelections(
+            @Nullable final com.commercetools.api.models.store.ProductSelectionSettingDraft... productSelections) {
+        if (this.productSelections == null) {
+            this.productSelections = new ArrayList<>();
+        }
+        this.productSelections.addAll(Arrays.asList(productSelections));
+        return this;
+    }
+
+    public StoreDraftBuilder plusProductSelections(
+            Function<com.commercetools.api.models.store.ProductSelectionSettingDraftBuilder, com.commercetools.api.models.store.ProductSelectionSettingDraftBuilder> builder) {
+        if (this.productSelections == null) {
+            this.productSelections = new ArrayList<>();
+        }
+        this.productSelections.add(
+            builder.apply(com.commercetools.api.models.store.ProductSelectionSettingDraftBuilder.of()).build());
+        return this;
+    }
+
+    public StoreDraftBuilder withProductSelections(
+            Function<com.commercetools.api.models.store.ProductSelectionSettingDraftBuilder, com.commercetools.api.models.store.ProductSelectionSettingDraftBuilder> builder) {
+        this.productSelections = new ArrayList<>();
+        this.productSelections.add(
+            builder.apply(com.commercetools.api.models.store.ProductSelectionSettingDraftBuilder.of()).build());
         return this;
     }
 
@@ -151,20 +219,27 @@ public class StoreDraftBuilder implements Builder<StoreDraft> {
     }
 
     @Nullable
+    public java.util.List<com.commercetools.api.models.store.ProductSelectionSettingDraft> getProductSelections() {
+        return this.productSelections;
+    }
+
+    @Nullable
     public com.commercetools.api.models.type.CustomFieldsDraft getCustom() {
         return this.custom;
     }
 
     public StoreDraft build() {
         Objects.requireNonNull(key, StoreDraft.class + ": key is missing");
-        return new StoreDraftImpl(key, name, languages, distributionChannels, supplyChannels, custom);
+        return new StoreDraftImpl(key, name, languages, distributionChannels, supplyChannels, productSelections,
+            custom);
     }
 
     /**
      * builds StoreDraft without checking for non null required values
      */
     public StoreDraft buildUnchecked() {
-        return new StoreDraftImpl(key, name, languages, distributionChannels, supplyChannels, custom);
+        return new StoreDraftImpl(key, name, languages, distributionChannels, supplyChannels, productSelections,
+            custom);
     }
 
     public static StoreDraftBuilder of() {
@@ -178,6 +253,7 @@ public class StoreDraftBuilder implements Builder<StoreDraft> {
         builder.languages = template.getLanguages();
         builder.distributionChannels = template.getDistributionChannels();
         builder.supplyChannels = template.getSupplyChannels();
+        builder.productSelections = template.getProductSelections();
         builder.custom = template.getCustom();
         return builder;
     }

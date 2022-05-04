@@ -15,12 +15,19 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = ProjectUpdateImpl.class)
-public interface ProjectUpdate extends com.commercetools.api.models.ResourceUpdate<ProjectUpdate, ProjectUpdateAction> {
+public interface ProjectUpdate
+        extends com.commercetools.api.models.ResourceUpdate<ProjectUpdate, ProjectUpdateAction, ProjectUpdateBuilder> {
 
+    /**
+    *  <p>Expected version of the Project on which the changes should be applied. If the expected version does not match the actual version, a <a href="/../api/errors#409-conflict">409 Conflict</a> will be returned.</p>
+    */
     @NotNull
     @JsonProperty("version")
     public Long getVersion();
 
+    /**
+    *  <p>Update actions to be performed on the Project.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("actions")
@@ -54,5 +61,14 @@ public interface ProjectUpdate extends com.commercetools.api.models.ResourceUpda
 
     default <T> T withProjectUpdate(Function<ProjectUpdate, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ProjectUpdate> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ProjectUpdate>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ProjectUpdate>";
+            }
+        };
     }
 }

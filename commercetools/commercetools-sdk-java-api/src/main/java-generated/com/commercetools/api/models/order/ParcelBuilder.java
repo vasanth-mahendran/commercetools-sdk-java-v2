@@ -25,6 +25,9 @@ public class ParcelBuilder implements Builder<Parcel> {
     @Nullable
     private java.util.List<com.commercetools.api.models.order.DeliveryItem> items;
 
+    @Nullable
+    private com.commercetools.api.models.type.CustomFields custom;
+
     public ParcelBuilder id(final String id) {
         this.id = id;
         return this;
@@ -63,10 +66,16 @@ public class ParcelBuilder implements Builder<Parcel> {
         return this;
     }
 
-    public ParcelBuilder withItems(
-            Function<com.commercetools.api.models.order.DeliveryItemBuilder, com.commercetools.api.models.order.DeliveryItemBuilder> builder) {
-        this.items = new ArrayList<>();
-        this.items.add(builder.apply(com.commercetools.api.models.order.DeliveryItemBuilder.of()).build());
+    public ParcelBuilder items(@Nullable final java.util.List<com.commercetools.api.models.order.DeliveryItem> items) {
+        this.items = items;
+        return this;
+    }
+
+    public ParcelBuilder plusItems(@Nullable final com.commercetools.api.models.order.DeliveryItem... items) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
+        this.items.addAll(Arrays.asList(items));
         return this;
     }
 
@@ -79,8 +88,21 @@ public class ParcelBuilder implements Builder<Parcel> {
         return this;
     }
 
-    public ParcelBuilder items(@Nullable final java.util.List<com.commercetools.api.models.order.DeliveryItem> items) {
-        this.items = items;
+    public ParcelBuilder withItems(
+            Function<com.commercetools.api.models.order.DeliveryItemBuilder, com.commercetools.api.models.order.DeliveryItemBuilder> builder) {
+        this.items = new ArrayList<>();
+        this.items.add(builder.apply(com.commercetools.api.models.order.DeliveryItemBuilder.of()).build());
+        return this;
+    }
+
+    public ParcelBuilder custom(
+            Function<com.commercetools.api.models.type.CustomFieldsBuilder, com.commercetools.api.models.type.CustomFieldsBuilder> builder) {
+        this.custom = builder.apply(com.commercetools.api.models.type.CustomFieldsBuilder.of()).build();
+        return this;
+    }
+
+    public ParcelBuilder custom(@Nullable final com.commercetools.api.models.type.CustomFields custom) {
+        this.custom = custom;
         return this;
     }
 
@@ -107,17 +129,22 @@ public class ParcelBuilder implements Builder<Parcel> {
         return this.items;
     }
 
+    @Nullable
+    public com.commercetools.api.models.type.CustomFields getCustom() {
+        return this.custom;
+    }
+
     public Parcel build() {
         Objects.requireNonNull(id, Parcel.class + ": id is missing");
         Objects.requireNonNull(createdAt, Parcel.class + ": createdAt is missing");
-        return new ParcelImpl(id, createdAt, measurements, trackingData, items);
+        return new ParcelImpl(id, createdAt, measurements, trackingData, items, custom);
     }
 
     /**
      * builds Parcel without checking for non null required values
      */
     public Parcel buildUnchecked() {
-        return new ParcelImpl(id, createdAt, measurements, trackingData, items);
+        return new ParcelImpl(id, createdAt, measurements, trackingData, items, custom);
     }
 
     public static ParcelBuilder of() {
@@ -131,6 +158,7 @@ public class ParcelBuilder implements Builder<Parcel> {
         builder.measurements = template.getMeasurements();
         builder.trackingData = template.getTrackingData();
         builder.items = template.getItems();
+        builder.custom = template.getCustom();
         return builder;
     }
 

@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -25,8 +23,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  and invalid line items have been removed.).</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyLoginPost
-        extends ApiMethod<ByProjectKeyLoginPost, com.commercetools.api.models.customer.CustomerSignInResult>
+public class ByProjectKeyLoginPost extends
+        BodyApiMethod<ByProjectKeyLoginPost, com.commercetools.api.models.customer.CustomerSignInResult, com.commercetools.api.models.customer.CustomerSignin>
         implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyLoginPost> {
 
     private String projectKey;
@@ -47,38 +45,28 @@ public class ByProjectKeyLoginPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/login", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(customerSignin);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(customerSignin)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.customer.CustomerSignInResult> executeBlocking(
-            final ApiHttpClient client, Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(client.execute(request, com.commercetools.api.models.customer.CustomerSignInResult.class)
-                .toCompletableFuture(),
-            request, timeout);
+            final ApiHttpClient client, final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.customer.CustomerSignInResult.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.CustomerSignInResult>> execute(
             final ApiHttpClient client) {
-        return client
-                .execute(this.createHttpRequest(), com.commercetools.api.models.customer.CustomerSignInResult.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.customer.CustomerSignInResult.class);
     }
 
     public String getProjectKey() {
@@ -87,6 +75,16 @@ public class ByProjectKeyLoginPost
 
     public void setProjectKey(final String projectKey) {
         this.projectKey = projectKey;
+    }
+
+    public com.commercetools.api.models.customer.CustomerSignin getBody() {
+        return customerSignin;
+    }
+
+    public ByProjectKeyLoginPost withBody(com.commercetools.api.models.customer.CustomerSignin customerSignin) {
+        ByProjectKeyLoginPost t = copy();
+        t.customerSignin = customerSignin;
+        return t;
     }
 
     @Override

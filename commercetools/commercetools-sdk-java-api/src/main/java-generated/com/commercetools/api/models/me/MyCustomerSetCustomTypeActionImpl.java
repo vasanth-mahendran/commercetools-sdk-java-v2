@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class MyCustomerSetCustomTypeActionImpl implements MyCustomerSetCustomTypeAction {
+public class MyCustomerSetCustomTypeActionImpl implements MyCustomerSetCustomTypeAction, ModelBase {
 
     private String action;
 
@@ -39,10 +40,17 @@ public class MyCustomerSetCustomTypeActionImpl implements MyCustomerSetCustomTyp
         return this.action;
     }
 
+    /**
+    *  <p>Defines the <a href="ctp:api:type:Type">Type</a> that extends the MyCustomer with <a href="/../api/projects/custom-fields">Custom Fields</a>.
+    *  If absent, any existing Type and Custom Fields are removed from the MyCustomer.</p>
+    */
     public com.commercetools.api.models.type.TypeResourceIdentifier getType() {
         return this.type;
     }
 
+    /**
+    *  <p>Sets the <a href="/../api/projects/custom-fields">Custom Fields</a> fields for the MyCustomer.</p>
+    */
     public com.commercetools.api.models.type.FieldContainer getFields() {
         return this.fields;
     }

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TaxedPriceImpl implements TaxedPrice {
+public class TaxedPriceImpl implements TaxedPrice, ModelBase {
 
     private com.commercetools.api.models.common.TypedMoney totalNet;
 
@@ -22,13 +23,17 @@ public class TaxedPriceImpl implements TaxedPrice {
 
     private java.util.List<com.commercetools.api.models.cart.TaxPortion> taxPortions;
 
+    private com.commercetools.api.models.common.TypedMoney totalTax;
+
     @JsonCreator
     TaxedPriceImpl(@JsonProperty("totalNet") final com.commercetools.api.models.common.TypedMoney totalNet,
             @JsonProperty("totalGross") final com.commercetools.api.models.common.TypedMoney totalGross,
-            @JsonProperty("taxPortions") final java.util.List<com.commercetools.api.models.cart.TaxPortion> taxPortions) {
+            @JsonProperty("taxPortions") final java.util.List<com.commercetools.api.models.cart.TaxPortion> taxPortions,
+            @JsonProperty("totalTax") final com.commercetools.api.models.common.TypedMoney totalTax) {
         this.totalNet = totalNet;
         this.totalGross = totalGross;
         this.taxPortions = taxPortions;
+        this.totalTax = totalTax;
     }
 
     public TaxedPriceImpl() {
@@ -49,6 +54,13 @@ public class TaxedPriceImpl implements TaxedPrice {
         return this.taxPortions;
     }
 
+    /**
+    *  <p>Platform-calculated value as subtraction of <code>totalGross</code> - <code>totalNet</code>.</p>
+    */
+    public com.commercetools.api.models.common.TypedMoney getTotalTax() {
+        return this.totalTax;
+    }
+
     public void setTotalNet(final com.commercetools.api.models.common.TypedMoney totalNet) {
         this.totalNet = totalNet;
     }
@@ -65,6 +77,10 @@ public class TaxedPriceImpl implements TaxedPrice {
         this.taxPortions = taxPortions;
     }
 
+    public void setTotalTax(final com.commercetools.api.models.common.TypedMoney totalTax) {
+        this.totalTax = totalTax;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -78,12 +94,17 @@ public class TaxedPriceImpl implements TaxedPrice {
         return new EqualsBuilder().append(totalNet, that.totalNet)
                 .append(totalGross, that.totalGross)
                 .append(taxPortions, that.taxPortions)
+                .append(totalTax, that.totalTax)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(totalNet).append(totalGross).append(taxPortions).toHashCode();
+        return new HashCodeBuilder(17, 37).append(totalNet)
+                .append(totalGross)
+                .append(taxPortions)
+                .append(totalTax)
+                .toHashCode();
     }
 
 }

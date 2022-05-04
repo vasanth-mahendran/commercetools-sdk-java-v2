@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -16,8 +14,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyInStoreKeyByStoreKeyCartsReplicatePost
-        extends ApiMethod<ByProjectKeyInStoreKeyByStoreKeyCartsReplicatePost, com.commercetools.api.models.cart.Cart>
+public class ByProjectKeyInStoreKeyByStoreKeyCartsReplicatePost extends
+        BodyApiMethod<ByProjectKeyInStoreKeyByStoreKeyCartsReplicatePost, com.commercetools.api.models.cart.Cart, com.commercetools.api.models.cart.ReplicaCartDraft>
         implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyInStoreKeyByStoreKeyCartsReplicatePost> {
 
     private String projectKey;
@@ -41,36 +39,28 @@ public class ByProjectKeyInStoreKeyByStoreKeyCartsReplicatePost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/in-store/key=%s/carts/replicate", this.projectKey, this.storeKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(replicaCartDraft);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(replicaCartDraft)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.cart.Cart> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(client.execute(request, com.commercetools.api.models.cart.Cart.class).toCompletableFuture(),
-            request, timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.cart.Cart.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.cart.Cart>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.cart.Cart.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.cart.Cart.class);
     }
 
     public String getProjectKey() {
@@ -87,6 +77,17 @@ public class ByProjectKeyInStoreKeyByStoreKeyCartsReplicatePost
 
     public void setStoreKey(final String storeKey) {
         this.storeKey = storeKey;
+    }
+
+    public com.commercetools.api.models.cart.ReplicaCartDraft getBody() {
+        return replicaCartDraft;
+    }
+
+    public ByProjectKeyInStoreKeyByStoreKeyCartsReplicatePost withBody(
+            com.commercetools.api.models.cart.ReplicaCartDraft replicaCartDraft) {
+        ByProjectKeyInStoreKeyByStoreKeyCartsReplicatePost t = copy();
+        t.replicaCartDraft = replicaCartDraft;
+        return t;
     }
 
     @Override

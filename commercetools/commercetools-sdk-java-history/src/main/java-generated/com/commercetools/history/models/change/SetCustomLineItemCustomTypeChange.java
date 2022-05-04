@@ -38,6 +38,10 @@ public interface SetCustomLineItemCustomTypeChange extends Change {
     public LocalizedString getCustomLineItem();
 
     @NotNull
+    @JsonProperty("customLineItemId")
+    public String getCustomLineItemId();
+
+    @NotNull
     @Valid
     @JsonProperty("nextValue")
     public CustomFields getNextValue();
@@ -51,6 +55,8 @@ public interface SetCustomLineItemCustomTypeChange extends Change {
 
     public void setCustomLineItem(final LocalizedString customLineItem);
 
+    public void setCustomLineItemId(final String customLineItemId);
+
     public void setNextValue(final CustomFields nextValue);
 
     public void setPreviousValue(final CustomFields previousValue);
@@ -63,6 +69,7 @@ public interface SetCustomLineItemCustomTypeChange extends Change {
         SetCustomLineItemCustomTypeChangeImpl instance = new SetCustomLineItemCustomTypeChangeImpl();
         instance.setChange(template.getChange());
         instance.setCustomLineItem(template.getCustomLineItem());
+        instance.setCustomLineItemId(template.getCustomLineItemId());
         instance.setNextValue(template.getNextValue());
         instance.setPreviousValue(template.getPreviousValue());
         return instance;
@@ -78,5 +85,14 @@ public interface SetCustomLineItemCustomTypeChange extends Change {
 
     default <T> T withSetCustomLineItemCustomTypeChange(Function<SetCustomLineItemCustomTypeChange, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<SetCustomLineItemCustomTypeChange> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<SetCustomLineItemCustomTypeChange>() {
+            @Override
+            public String toString() {
+                return "TypeReference<SetCustomLineItemCustomTypeChange>";
+            }
+        };
     }
 }

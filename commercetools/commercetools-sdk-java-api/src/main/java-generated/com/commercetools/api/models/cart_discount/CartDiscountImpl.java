@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CartDiscountImpl implements CartDiscount {
+public class CartDiscountImpl implements CartDiscount, ModelBase {
 
     private String id;
 
@@ -101,7 +102,7 @@ public class CartDiscountImpl implements CartDiscount {
     }
 
     /**
-    *  <p>The unique ID of the cart discount.</p>
+    *  <p>Platform-generated unique identifier of the CartDiscount.</p>
     */
     public String getId() {
         return this.id;
@@ -141,8 +142,7 @@ public class CartDiscountImpl implements CartDiscount {
     }
 
     /**
-    *  <p>User-specific unique identifier for a cart discount.
-    *  Must be unique across a project.</p>
+    *  <p>User-defined unique identifier of the CartDiscount.</p>
     */
     public String getKey() {
         return this.key;

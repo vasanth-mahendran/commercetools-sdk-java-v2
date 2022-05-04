@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.commercetools.api.models.common.LocalizedString;
-import com.commercetools.api.models.type.CustomFields;
+import com.commercetools.api.models.type.CustomFieldsDraft;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
@@ -18,7 +18,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = CartDiscountDraftImpl.class)
-public interface CartDiscountDraft {
+public interface CartDiscountDraft extends com.commercetools.api.models.CustomizableDraft<CartDiscountDraft> {
 
     @NotNull
     @Valid
@@ -26,9 +26,7 @@ public interface CartDiscountDraft {
     public LocalizedString getName();
 
     /**
-    *  <p>User-specific unique identifier for a cart discount.
-    *  Must be unique across a project.
-    *  The field can be reset using the Set Key UpdateAction.</p>
+    *  <p>User-defined unique identifier for the CartDiscount.</p>
     */
 
     @JsonProperty("key")
@@ -98,7 +96,7 @@ public interface CartDiscountDraft {
 
     @Valid
     @JsonProperty("custom")
-    public CustomFields getCustom();
+    public CustomFieldsDraft getCustom();
 
     public void setName(final LocalizedString name);
 
@@ -124,7 +122,7 @@ public interface CartDiscountDraft {
 
     public void setStackingMode(final StackingMode stackingMode);
 
-    public void setCustom(final CustomFields custom);
+    public void setCustom(final CustomFieldsDraft custom);
 
     public static CartDiscountDraft of() {
         return new CartDiscountDraftImpl();
@@ -158,5 +156,14 @@ public interface CartDiscountDraft {
 
     default <T> T withCartDiscountDraft(Function<CartDiscountDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CartDiscountDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CartDiscountDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CartDiscountDraft>";
+            }
+        };
     }
 }

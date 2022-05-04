@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class MyCartChangeLineItemQuantityActionImpl implements MyCartChangeLineItemQuantityAction {
+public class MyCartChangeLineItemQuantityActionImpl implements MyCartChangeLineItemQuantityAction, ModelBase {
 
     private String action;
 
@@ -54,6 +55,10 @@ public class MyCartChangeLineItemQuantityActionImpl implements MyCartChangeLineI
         return this.quantity;
     }
 
+    /**
+    *  <p>Draft type that stores amounts in cent precision for the specified currency.
+    *  For storing money values in fractions of the minor unit in a currency, use <a href="ctp:api:type:HighPrecisionMoneyDraft">HighPrecisionMoneyDraft</a> instead.</p>
+    */
     public com.commercetools.api.models.common.Money getExternalPrice() {
         return this.externalPrice;
     }

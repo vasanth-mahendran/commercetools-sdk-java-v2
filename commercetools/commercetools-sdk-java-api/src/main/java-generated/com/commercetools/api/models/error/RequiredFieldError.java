@@ -31,6 +31,7 @@ public interface RequiredFieldError extends ErrorObject {
     public static RequiredFieldError of(final RequiredFieldError template) {
         RequiredFieldErrorImpl instance = new RequiredFieldErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setField(template.getField());
         return instance;
     }
@@ -45,5 +46,14 @@ public interface RequiredFieldError extends ErrorObject {
 
     default <T> T withRequiredFieldError(Function<RequiredFieldError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<RequiredFieldError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<RequiredFieldError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<RequiredFieldError>";
+            }
+        };
     }
 }

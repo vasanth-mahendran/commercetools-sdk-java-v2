@@ -2,6 +2,7 @@
 package com.commercetools.api.models.payment;
 
 import java.util.*;
+import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
@@ -26,6 +27,9 @@ public class TransactionBuilder implements Builder<Transaction> {
     @Nullable
     private com.commercetools.api.models.payment.TransactionState state;
 
+    @Nullable
+    private com.commercetools.api.models.type.CustomFields custom;
+
     public TransactionBuilder id(final String id) {
         this.id = id;
         return this;
@@ -46,6 +50,12 @@ public class TransactionBuilder implements Builder<Transaction> {
         return this;
     }
 
+    public TransactionBuilder amount(
+            Function<com.commercetools.api.models.common.TypedMoneyBuilder, Builder<? extends com.commercetools.api.models.common.TypedMoney>> builder) {
+        this.amount = builder.apply(com.commercetools.api.models.common.TypedMoneyBuilder.of()).build();
+        return this;
+    }
+
     public TransactionBuilder interactionId(@Nullable final String interactionId) {
         this.interactionId = interactionId;
         return this;
@@ -53,6 +63,17 @@ public class TransactionBuilder implements Builder<Transaction> {
 
     public TransactionBuilder state(@Nullable final com.commercetools.api.models.payment.TransactionState state) {
         this.state = state;
+        return this;
+    }
+
+    public TransactionBuilder custom(
+            Function<com.commercetools.api.models.type.CustomFieldsBuilder, com.commercetools.api.models.type.CustomFieldsBuilder> builder) {
+        this.custom = builder.apply(com.commercetools.api.models.type.CustomFieldsBuilder.of()).build();
+        return this;
+    }
+
+    public TransactionBuilder custom(@Nullable final com.commercetools.api.models.type.CustomFields custom) {
+        this.custom = custom;
         return this;
     }
 
@@ -83,18 +104,23 @@ public class TransactionBuilder implements Builder<Transaction> {
         return this.state;
     }
 
+    @Nullable
+    public com.commercetools.api.models.type.CustomFields getCustom() {
+        return this.custom;
+    }
+
     public Transaction build() {
         Objects.requireNonNull(id, Transaction.class + ": id is missing");
         Objects.requireNonNull(type, Transaction.class + ": type is missing");
         Objects.requireNonNull(amount, Transaction.class + ": amount is missing");
-        return new TransactionImpl(id, timestamp, type, amount, interactionId, state);
+        return new TransactionImpl(id, timestamp, type, amount, interactionId, state, custom);
     }
 
     /**
      * builds Transaction without checking for non null required values
      */
     public Transaction buildUnchecked() {
-        return new TransactionImpl(id, timestamp, type, amount, interactionId, state);
+        return new TransactionImpl(id, timestamp, type, amount, interactionId, state, custom);
     }
 
     public static TransactionBuilder of() {
@@ -109,6 +135,7 @@ public class TransactionBuilder implements Builder<Transaction> {
         builder.amount = template.getAmount();
         builder.interactionId = template.getInteractionId();
         builder.state = template.getState();
+        builder.custom = template.getCustom();
         return builder;
     }
 

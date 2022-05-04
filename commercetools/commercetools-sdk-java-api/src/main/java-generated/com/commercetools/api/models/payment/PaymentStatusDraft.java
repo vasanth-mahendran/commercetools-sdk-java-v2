@@ -23,6 +23,9 @@ public interface PaymentStatusDraft {
     @JsonProperty("interfaceText")
     public String getInterfaceText();
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @Valid
     @JsonProperty("state")
     public StateResourceIdentifier getState();
@@ -55,5 +58,14 @@ public interface PaymentStatusDraft {
 
     default <T> T withPaymentStatusDraft(Function<PaymentStatusDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<PaymentStatusDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<PaymentStatusDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<PaymentStatusDraft>";
+            }
+        };
     }
 }

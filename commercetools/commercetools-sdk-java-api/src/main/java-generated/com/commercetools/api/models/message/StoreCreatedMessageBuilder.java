@@ -44,6 +44,8 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
 
     private java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels;
 
+    private java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections;
+
     @Nullable
     private com.commercetools.api.models.type.CustomFields custom;
 
@@ -101,6 +103,12 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
         return this;
     }
 
+    public StoreCreatedMessageBuilder resource(
+            Function<com.commercetools.api.models.common.ReferenceBuilder, Builder<? extends com.commercetools.api.models.common.Reference>> builder) {
+        this.resource = builder.apply(com.commercetools.api.models.common.ReferenceBuilder.of()).build();
+        return this;
+    }
+
     public StoreCreatedMessageBuilder resourceVersion(final Long resourceVersion) {
         this.resourceVersion = resourceVersion;
         return this;
@@ -141,17 +149,32 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
         return this;
     }
 
+    public StoreCreatedMessageBuilder plusLanguages(final String... languages) {
+        if (this.languages == null) {
+            this.languages = new ArrayList<>();
+        }
+        this.languages.addAll(Arrays.asList(languages));
+        return this;
+    }
+
     public StoreCreatedMessageBuilder distributionChannels(
             final com.commercetools.api.models.channel.ChannelReference... distributionChannels) {
         this.distributionChannels = new ArrayList<>(Arrays.asList(distributionChannels));
         return this;
     }
 
-    public StoreCreatedMessageBuilder withDistributionChannels(
-            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
-        this.distributionChannels = new ArrayList<>();
-        this.distributionChannels
-                .add(builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of()).build());
+    public StoreCreatedMessageBuilder distributionChannels(
+            final java.util.List<com.commercetools.api.models.channel.ChannelReference> distributionChannels) {
+        this.distributionChannels = distributionChannels;
+        return this;
+    }
+
+    public StoreCreatedMessageBuilder plusDistributionChannels(
+            final com.commercetools.api.models.channel.ChannelReference... distributionChannels) {
+        if (this.distributionChannels == null) {
+            this.distributionChannels = new ArrayList<>();
+        }
+        this.distributionChannels.addAll(Arrays.asList(distributionChannels));
         return this;
     }
 
@@ -165,9 +188,11 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
         return this;
     }
 
-    public StoreCreatedMessageBuilder distributionChannels(
-            final java.util.List<com.commercetools.api.models.channel.ChannelReference> distributionChannels) {
-        this.distributionChannels = distributionChannels;
+    public StoreCreatedMessageBuilder withDistributionChannels(
+            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
+        this.distributionChannels = new ArrayList<>();
+        this.distributionChannels
+                .add(builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of()).build());
         return this;
     }
 
@@ -177,11 +202,18 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
         return this;
     }
 
-    public StoreCreatedMessageBuilder withSupplyChannels(
-            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
-        this.supplyChannels = new ArrayList<>();
-        this.supplyChannels
-                .add(builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of()).build());
+    public StoreCreatedMessageBuilder supplyChannels(
+            final java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels) {
+        this.supplyChannels = supplyChannels;
+        return this;
+    }
+
+    public StoreCreatedMessageBuilder plusSupplyChannels(
+            final com.commercetools.api.models.channel.ChannelReference... supplyChannels) {
+        if (this.supplyChannels == null) {
+            this.supplyChannels = new ArrayList<>();
+        }
+        this.supplyChannels.addAll(Arrays.asList(supplyChannels));
         return this;
     }
 
@@ -195,9 +227,50 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
         return this;
     }
 
-    public StoreCreatedMessageBuilder supplyChannels(
-            final java.util.List<com.commercetools.api.models.channel.ChannelReference> supplyChannels) {
-        this.supplyChannels = supplyChannels;
+    public StoreCreatedMessageBuilder withSupplyChannels(
+            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
+        this.supplyChannels = new ArrayList<>();
+        this.supplyChannels
+                .add(builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of()).build());
+        return this;
+    }
+
+    public StoreCreatedMessageBuilder productSelections(
+            final com.commercetools.api.models.store.ProductSelectionSetting... productSelections) {
+        this.productSelections = new ArrayList<>(Arrays.asList(productSelections));
+        return this;
+    }
+
+    public StoreCreatedMessageBuilder productSelections(
+            final java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> productSelections) {
+        this.productSelections = productSelections;
+        return this;
+    }
+
+    public StoreCreatedMessageBuilder plusProductSelections(
+            final com.commercetools.api.models.store.ProductSelectionSetting... productSelections) {
+        if (this.productSelections == null) {
+            this.productSelections = new ArrayList<>();
+        }
+        this.productSelections.addAll(Arrays.asList(productSelections));
+        return this;
+    }
+
+    public StoreCreatedMessageBuilder plusProductSelections(
+            Function<com.commercetools.api.models.store.ProductSelectionSettingBuilder, com.commercetools.api.models.store.ProductSelectionSettingBuilder> builder) {
+        if (this.productSelections == null) {
+            this.productSelections = new ArrayList<>();
+        }
+        this.productSelections
+                .add(builder.apply(com.commercetools.api.models.store.ProductSelectionSettingBuilder.of()).build());
+        return this;
+    }
+
+    public StoreCreatedMessageBuilder withProductSelections(
+            Function<com.commercetools.api.models.store.ProductSelectionSettingBuilder, com.commercetools.api.models.store.ProductSelectionSettingBuilder> builder) {
+        this.productSelections = new ArrayList<>();
+        this.productSelections
+                .add(builder.apply(com.commercetools.api.models.store.ProductSelectionSettingBuilder.of()).build());
         return this;
     }
 
@@ -272,6 +345,10 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
         return this.supplyChannels;
     }
 
+    public java.util.List<com.commercetools.api.models.store.ProductSelectionSetting> getProductSelections() {
+        return this.productSelections;
+    }
+
     @Nullable
     public com.commercetools.api.models.type.CustomFields getCustom() {
         return this.custom;
@@ -288,9 +365,10 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
         Objects.requireNonNull(languages, StoreCreatedMessage.class + ": languages is missing");
         Objects.requireNonNull(distributionChannels, StoreCreatedMessage.class + ": distributionChannels is missing");
         Objects.requireNonNull(supplyChannels, StoreCreatedMessage.class + ": supplyChannels is missing");
+        Objects.requireNonNull(productSelections, StoreCreatedMessage.class + ": productSelections is missing");
         return new StoreCreatedMessageImpl(id, version, createdAt, lastModifiedAt, lastModifiedBy, createdBy,
             sequenceNumber, resource, resourceVersion, resourceUserProvidedIdentifiers, name, languages,
-            distributionChannels, supplyChannels, custom);
+            distributionChannels, supplyChannels, productSelections, custom);
     }
 
     /**
@@ -299,7 +377,7 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
     public StoreCreatedMessage buildUnchecked() {
         return new StoreCreatedMessageImpl(id, version, createdAt, lastModifiedAt, lastModifiedBy, createdBy,
             sequenceNumber, resource, resourceVersion, resourceUserProvidedIdentifiers, name, languages,
-            distributionChannels, supplyChannels, custom);
+            distributionChannels, supplyChannels, productSelections, custom);
     }
 
     public static StoreCreatedMessageBuilder of() {
@@ -322,6 +400,7 @@ public class StoreCreatedMessageBuilder implements Builder<StoreCreatedMessage> 
         builder.languages = template.getLanguages();
         builder.distributionChannels = template.getDistributionChannels();
         builder.supplyChannels = template.getSupplyChannels();
+        builder.productSelections = template.getProductSelections();
         builder.custom = template.getCustom();
         return builder;
     }

@@ -15,7 +15,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderStateChangedMessageImpl.class)
-public interface OrderStateChangedMessage extends Message {
+public interface OrderStateChangedMessage extends OrderMessage {
 
     String ORDER_STATE_CHANGED = "OrderStateChanged";
 
@@ -62,5 +62,14 @@ public interface OrderStateChangedMessage extends Message {
 
     default <T> T withOrderStateChangedMessage(Function<OrderStateChangedMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderStateChangedMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderStateChangedMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderStateChangedMessage>";
+            }
+        };
     }
 }

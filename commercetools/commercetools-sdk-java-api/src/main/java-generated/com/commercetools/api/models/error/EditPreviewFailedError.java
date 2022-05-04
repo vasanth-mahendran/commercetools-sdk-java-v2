@@ -34,6 +34,7 @@ public interface EditPreviewFailedError extends ErrorObject {
     public static EditPreviewFailedError of(final EditPreviewFailedError template) {
         EditPreviewFailedErrorImpl instance = new EditPreviewFailedErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setResult(template.getResult());
         return instance;
     }
@@ -48,5 +49,14 @@ public interface EditPreviewFailedError extends ErrorObject {
 
     default <T> T withEditPreviewFailedError(Function<EditPreviewFailedError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<EditPreviewFailedError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<EditPreviewFailedError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<EditPreviewFailedError>";
+            }
+        };
     }
 }

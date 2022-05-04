@@ -21,6 +21,9 @@ public interface StagedOrderRemovePaymentAction extends StagedOrderUpdateAction 
 
     String REMOVE_PAYMENT = "removePayment";
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:Payment">Payment</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("payment")
@@ -48,5 +51,14 @@ public interface StagedOrderRemovePaymentAction extends StagedOrderUpdateAction 
 
     default <T> T withStagedOrderRemovePaymentAction(Function<StagedOrderRemovePaymentAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StagedOrderRemovePaymentAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StagedOrderRemovePaymentAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StagedOrderRemovePaymentAction>";
+            }
+        };
     }
 }

@@ -21,7 +21,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface ImportOperationPagedResponse {
 
     /**
-    *  <p>The number of results requested in the query request.</p>
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
     */
     @NotNull
     @JsonProperty("limit")
@@ -94,5 +94,14 @@ public interface ImportOperationPagedResponse {
 
     default <T> T withImportOperationPagedResponse(Function<ImportOperationPagedResponse, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ImportOperationPagedResponse> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ImportOperationPagedResponse>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ImportOperationPagedResponse>";
+            }
+        };
     }
 }

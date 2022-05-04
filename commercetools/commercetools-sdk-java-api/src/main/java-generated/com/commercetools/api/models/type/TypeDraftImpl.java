@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class TypeDraftImpl implements TypeDraft {
+public class TypeDraftImpl implements TypeDraft, ModelBase {
 
     private String key;
 
@@ -42,25 +43,37 @@ public class TypeDraftImpl implements TypeDraft {
     public TypeDraftImpl() {
     }
 
+    /**
+    *  <p>User-defined unique identifier for the Type.</p>
+    */
     public String getKey() {
         return this.key;
     }
 
+    /**
+    *  <p>Name of the Type.</p>
+    */
     public com.commercetools.api.models.common.LocalizedString getName() {
         return this.name;
     }
 
+    /**
+    *  <p>Description of the Type.</p>
+    */
     public com.commercetools.api.models.common.LocalizedString getDescription() {
         return this.description;
     }
 
     /**
-    *  <p>The IDs of the resources that can be customized with this type.</p>
+    *  <p>Resources and/or data types for which the Type is defined.</p>
     */
     public java.util.List<com.commercetools.api.models.type.ResourceTypeId> getResourceTypeIds() {
         return this.resourceTypeIds;
     }
 
+    /**
+    *  <p>Defines Custom Fields.</p>
+    */
     public java.util.List<com.commercetools.api.models.type.FieldDefinition> getFieldDefinitions() {
         return this.fieldDefinitions;
     }

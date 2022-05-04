@@ -1,22 +1,25 @@
 
 package com.commercetools;
 
+import static com.commercetools.TestUtils.stringFromResource;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import com.commercetools.api.client.ByProjectKeyProductProjectionsSearchPost;
 import com.commercetools.api.client.ByProjectKeyRequestBuilder;
 import com.commercetools.api.defaultconfig.ApiRootBuilder;
+import com.commercetools.api.models.product.*;
 
 import io.vrap.rmf.base.client.ApiHttpClient;
 import io.vrap.rmf.base.client.ApiHttpHeaders;
 import io.vrap.rmf.base.client.ApiHttpRequest;
 import io.vrap.rmf.base.client.ApiMethod;
+import io.vrap.rmf.base.client.utils.json.JsonUtils;
 
 import org.assertj.core.api.Assertions;
 import org.assertj.core.util.Lists;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class SearchTest {
 
@@ -49,12 +52,12 @@ public class SearchTest {
 
         ByProjectKeyProductProjectionsSearchPost newMethod = method.withFormParam("foo", "bar");
 
-        Assert.assertEquals(1, newMethod.getFormParams().size());
-        Assert.assertEquals(0, method.getFormParams().size());
-        Assert.assertEquals("bar", newMethod.getFormParam("foo").stream().findFirst().get());
-        Assert.assertNotEquals(method, newMethod);
-        Assert.assertEquals("", String.join("&", method.getFormParamUriStrings()));
-        Assert.assertEquals("foo=bar", String.join("&", newMethod.getFormParamUriStrings()));
+        Assertions.assertThat(1).isEqualTo(newMethod.getFormParams().size());
+        Assertions.assertThat(0).isEqualTo(method.getFormParams().size());
+        Assertions.assertThat("bar").isEqualTo(newMethod.getFormParam("foo").stream().findFirst().get());
+        Assertions.assertThat(method).isNotEqualTo(newMethod);
+        Assertions.assertThat("").isEqualTo(String.join("&", method.getFormParamUriStrings()));
+        Assertions.assertThat("foo=bar").isEqualTo(String.join("&", newMethod.getFormParamUriStrings()));
     }
 
     @Test
@@ -64,12 +67,12 @@ public class SearchTest {
 
         ByProjectKeyProductProjectionsSearchPost newMethod = method.withoutFormParam("foo");
 
-        Assert.assertEquals(1, method.getFormParams().size());
-        Assert.assertEquals(0, newMethod.getFormParams().size());
-        Assert.assertEquals("bar", method.getFormParam("foo").stream().findFirst().get());
-        Assert.assertNotEquals(method, newMethod);
-        Assert.assertEquals("foo=bar", String.join("&", method.getFormParamUriStrings()));
-        Assert.assertEquals("", String.join("&", newMethod.getFormParamUriStrings()));
+        Assertions.assertThat(1).isEqualTo(method.getFormParams().size());
+        Assertions.assertThat(0).isEqualTo(newMethod.getFormParams().size());
+        Assertions.assertThat("bar").isEqualTo(method.getFormParam("foo").stream().findFirst().get());
+        Assertions.assertThat(method).isNotEqualTo(newMethod);
+        Assertions.assertThat("foo=bar").isEqualTo(String.join("&", method.getFormParamUriStrings()));
+        Assertions.assertThat("").isEqualTo(String.join("&", newMethod.getFormParamUriStrings()));
     }
 
     @Test
@@ -80,13 +83,13 @@ public class SearchTest {
         ByProjectKeyProductProjectionsSearchPost newMethod = method
                 .withFormParams(Lists.newArrayList(new ApiMethod.ParamEntry<>("fooz", "barz")));
 
-        Assert.assertEquals(1, method.getFormParams().size());
-        Assert.assertEquals(1, newMethod.getFormParams().size());
-        Assert.assertEquals("bar", method.getFormParam("foo").stream().findFirst().get());
-        Assert.assertEquals("barz", newMethod.getFormParam("fooz").stream().findFirst().get());
-        Assert.assertNotEquals(method, newMethod);
-        Assert.assertEquals("foo=bar", String.join("&", method.getFormParamUriStrings()));
-        Assert.assertEquals("fooz=barz", String.join("&", newMethod.getFormParamUriStrings()));
+        Assertions.assertThat(1).isEqualTo(method.getFormParams().size());
+        Assertions.assertThat(1).isEqualTo(newMethod.getFormParams().size());
+        Assertions.assertThat("bar").isEqualTo(method.getFormParam("foo").stream().findFirst().get());
+        Assertions.assertThat("barz").isEqualTo(newMethod.getFormParam("fooz").stream().findFirst().get());
+        Assertions.assertThat(method).isNotEqualTo(newMethod);
+        Assertions.assertThat("foo=bar").isEqualTo(String.join("&", method.getFormParamUriStrings()));
+        Assertions.assertThat("fooz=barz").isEqualTo(String.join("&", newMethod.getFormParamUriStrings()));
     }
 
     @Test
@@ -96,14 +99,14 @@ public class SearchTest {
 
         ByProjectKeyProductProjectionsSearchPost newMethod = method.addFormParam("fooz", "barz");
 
-        Assert.assertEquals(1, method.getFormParams().size());
-        Assert.assertEquals(2, newMethod.getFormParams().size());
-        Assert.assertEquals("bar", method.getFormParam("foo").stream().findFirst().get());
-        Assert.assertEquals("bar", newMethod.getFormParam("foo").stream().findFirst().get());
-        Assert.assertEquals("barz", newMethod.getFormParam("fooz").stream().findFirst().get());
-        Assert.assertNotEquals(method, newMethod);
-        Assert.assertEquals("foo=bar", String.join("&", method.getFormParamUriStrings()));
-        Assert.assertEquals("foo=bar&fooz=barz", String.join("&", newMethod.getFormParamUriStrings()));
+        Assertions.assertThat(1).isEqualTo(method.getFormParams().size());
+        Assertions.assertThat(2).isEqualTo(newMethod.getFormParams().size());
+        Assertions.assertThat("bar").isEqualTo(method.getFormParam("foo").stream().findFirst().get());
+        Assertions.assertThat("bar").isEqualTo(newMethod.getFormParam("foo").stream().findFirst().get());
+        Assertions.assertThat("barz").isEqualTo(newMethod.getFormParam("fooz").stream().findFirst().get());
+        Assertions.assertThat(method).isNotEqualTo(newMethod);
+        Assertions.assertThat("foo=bar").isEqualTo(String.join("&", method.getFormParamUriStrings()));
+        Assertions.assertThat("foo=bar&fooz=barz").isEqualTo(String.join("&", newMethod.getFormParamUriStrings()));
     }
 
     @Test
@@ -114,11 +117,10 @@ public class SearchTest {
         final List<ApiMethod.ParamEntry<String, String>> formParams = method.getFormParams();
         formParams.add(new ApiMethod.ParamEntry<>("bar", "bar"));
 
-        Assert.assertEquals(1, method.getFormParams().size());
-
-        Assert.assertNull(method.getFirstFormParam("bar"));
-        Assert.assertEquals("foo", method.getFirstFormParam("foo"));
-        Assert.assertNotEquals(method.getFormParams(), formParams);
+        Assertions.assertThat(1).isEqualTo(method.getFormParams().size());
+        Assertions.assertThat(method.getFirstFormParam("bar")).isNull();
+        Assertions.assertThat("foo").isEqualTo(method.getFirstFormParam("foo"));
+        Assertions.assertThat(method.getFormParams()).isNotEqualTo(formParams);
     }
 
     @Test
@@ -129,10 +131,29 @@ public class SearchTest {
         final List<String> formParams = method.getFormParam("foo");
         formParams.add("bar");
 
-        Assert.assertEquals(1, method.getFormParams().size());
+        Assertions.assertThat(1).isEqualTo(method.getFormParams().size());
+        Assertions.assertThat(method.getFirstFormParam("bar")).isNull();
+        Assertions.assertThat("foo").isEqualTo(method.getFirstFormParam("foo"));
+    }
 
-        Assert.assertNull(method.getFirstFormParam("bar"));
-        Assert.assertEquals("foo", method.getFirstFormParam("foo"));
-        Assert.assertNotEquals(method.getFormParams(), formParams);
+    @Test
+    public void testFacetResultsAccessor() {
+        ProductProjectionPagedSearchResponse response = JsonUtils.fromJsonString(stringFromResource("facets.json"),
+            ProductProjectionPagedSearchResponse.class);
+
+        FacetResult redThings = response.getFacets()
+                .withFacetResults(FacetResultsAccessor::asFacetResultMap)
+                .get("red-things");
+        Assertions.assertThat(redThings).isInstanceOf(FilteredFacetResult.class);
+        Assertions.assertThat(redThings.getType()).isEqualTo(FacetTypes.FILTER);
+
+        FacetResult size = response.getFacets().values().get("variants.attributes.size");
+        Assertions.assertThat(redThings).isInstanceOf(FilteredFacetResult.class);
+        Assertions.assertThat(size.getType()).isEqualTo(FacetTypes.FILTER);
+
+        FacetResult prices = response.getFacets().values().get("size");
+        Assertions.assertThat(prices).isInstanceOf(TermFacetResult.class);
+        Assertions.assertThat(((TermFacetResult) prices).getTerms().size()).isEqualTo(3);
+        Assertions.assertThat(((TermFacetResult) prices).getTerms().get(0).getTerm()).isEqualTo("S");
     }
 }

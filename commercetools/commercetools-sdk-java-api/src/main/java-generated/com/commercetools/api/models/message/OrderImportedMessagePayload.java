@@ -16,7 +16,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderImportedMessagePayloadImpl.class)
-public interface OrderImportedMessagePayload extends MessagePayload {
+public interface OrderImportedMessagePayload extends OrderMessagePayload {
 
     String ORDER_IMPORTED = "OrderImported";
 
@@ -47,5 +47,14 @@ public interface OrderImportedMessagePayload extends MessagePayload {
 
     default <T> T withOrderImportedMessagePayload(Function<OrderImportedMessagePayload, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderImportedMessagePayload> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderImportedMessagePayload>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderImportedMessagePayload>";
+            }
+        };
     }
 }

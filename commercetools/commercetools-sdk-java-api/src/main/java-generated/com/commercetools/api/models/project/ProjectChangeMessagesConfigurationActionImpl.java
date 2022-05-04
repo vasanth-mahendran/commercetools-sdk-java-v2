@@ -8,21 +8,23 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ProjectChangeMessagesConfigurationActionImpl implements ProjectChangeMessagesConfigurationAction {
+public class ProjectChangeMessagesConfigurationActionImpl
+        implements ProjectChangeMessagesConfigurationAction, ModelBase {
 
     private String action;
 
-    private com.commercetools.api.models.message.MessageConfigurationDraft messagesConfiguration;
+    private com.commercetools.api.models.message.MessagesConfigurationDraft messagesConfiguration;
 
     @JsonCreator
     ProjectChangeMessagesConfigurationActionImpl(
-            @JsonProperty("messagesConfiguration") final com.commercetools.api.models.message.MessageConfigurationDraft messagesConfiguration) {
+            @JsonProperty("messagesConfiguration") final com.commercetools.api.models.message.MessagesConfigurationDraft messagesConfiguration) {
         this.messagesConfiguration = messagesConfiguration;
         this.action = CHANGE_MESSAGES_CONFIGURATION;
     }
@@ -35,12 +37,15 @@ public class ProjectChangeMessagesConfigurationActionImpl implements ProjectChan
         return this.action;
     }
 
-    public com.commercetools.api.models.message.MessageConfigurationDraft getMessagesConfiguration() {
+    /**
+    *  <p>Configuration for the <a href="/../api/projects/messages">Messages Query</a> feature.</p>
+    */
+    public com.commercetools.api.models.message.MessagesConfigurationDraft getMessagesConfiguration() {
         return this.messagesConfiguration;
     }
 
     public void setMessagesConfiguration(
-            final com.commercetools.api.models.message.MessageConfigurationDraft messagesConfiguration) {
+            final com.commercetools.api.models.message.MessagesConfigurationDraft messagesConfiguration) {
         this.messagesConfiguration = messagesConfiguration;
     }
 

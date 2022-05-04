@@ -36,6 +36,9 @@ public class OrderFromCartDraftBuilder implements Builder<OrderFromCartDraft> {
     @Nullable
     private com.commercetools.api.models.state.StateResourceIdentifier state;
 
+    @Nullable
+    private com.commercetools.api.models.type.CustomFieldsDraft custom;
+
     @Deprecated
     public OrderFromCartDraftBuilder id(@Nullable final String id) {
         this.id = id;
@@ -83,8 +86,26 @@ public class OrderFromCartDraftBuilder implements Builder<OrderFromCartDraft> {
     }
 
     public OrderFromCartDraftBuilder state(
+            Function<com.commercetools.api.models.state.StateResourceIdentifierBuilder, com.commercetools.api.models.state.StateResourceIdentifierBuilder> builder) {
+        this.state = builder.apply(com.commercetools.api.models.state.StateResourceIdentifierBuilder.of()).build();
+        return this;
+    }
+
+    public OrderFromCartDraftBuilder state(
             @Nullable final com.commercetools.api.models.state.StateResourceIdentifier state) {
         this.state = state;
+        return this;
+    }
+
+    public OrderFromCartDraftBuilder custom(
+            Function<com.commercetools.api.models.type.CustomFieldsDraftBuilder, com.commercetools.api.models.type.CustomFieldsDraftBuilder> builder) {
+        this.custom = builder.apply(com.commercetools.api.models.type.CustomFieldsDraftBuilder.of()).build();
+        return this;
+    }
+
+    public OrderFromCartDraftBuilder custom(
+            @Nullable final com.commercetools.api.models.type.CustomFieldsDraft custom) {
+        this.custom = custom;
         return this;
     }
 
@@ -128,10 +149,15 @@ public class OrderFromCartDraftBuilder implements Builder<OrderFromCartDraft> {
         return this.state;
     }
 
+    @Nullable
+    public com.commercetools.api.models.type.CustomFieldsDraft getCustom() {
+        return this.custom;
+    }
+
     public OrderFromCartDraft build() {
         Objects.requireNonNull(version, OrderFromCartDraft.class + ": version is missing");
         return new OrderFromCartDraftImpl(id, cart, version, orderNumber, paymentState, shipmentState, orderState,
-            state);
+            state, custom);
     }
 
     /**
@@ -139,7 +165,7 @@ public class OrderFromCartDraftBuilder implements Builder<OrderFromCartDraft> {
      */
     public OrderFromCartDraft buildUnchecked() {
         return new OrderFromCartDraftImpl(id, cart, version, orderNumber, paymentState, shipmentState, orderState,
-            state);
+            state, custom);
     }
 
     public static OrderFromCartDraftBuilder of() {
@@ -156,6 +182,7 @@ public class OrderFromCartDraftBuilder implements Builder<OrderFromCartDraft> {
         builder.shipmentState = template.getShipmentState();
         builder.orderState = template.getOrderState();
         builder.state = template.getState();
+        builder.custom = template.getCustom();
         return builder;
     }
 

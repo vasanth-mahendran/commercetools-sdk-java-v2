@@ -18,6 +18,10 @@ public interface StateSetRolesAction extends StateUpdateAction {
 
     String SET_ROLES = "setRoles";
 
+    /**
+    *  <p>Value to set.
+    *  If empty, any existing value will be removed.</p>
+    */
     @NotNull
     @JsonProperty("roles")
     public List<StateRoleEnum> getRoles();
@@ -47,5 +51,14 @@ public interface StateSetRolesAction extends StateUpdateAction {
 
     default <T> T withStateSetRolesAction(Function<StateSetRolesAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StateSetRolesAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StateSetRolesAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StateSetRolesAction>";
+            }
+        };
     }
 }

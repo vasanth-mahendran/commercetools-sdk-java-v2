@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class MyShoppingListAddTextLineItemActionImpl implements MyShoppingListAddTextLineItemAction {
+public class MyShoppingListAddTextLineItemActionImpl implements MyShoppingListAddTextLineItemAction, ModelBase {
 
     private String action;
 
@@ -67,6 +68,9 @@ public class MyShoppingListAddTextLineItemActionImpl implements MyShoppingListAd
         return this.addedAt;
     }
 
+    /**
+    *  <p>The representation used when creating or updating a <a href="/../api/projects/types#list-of-customizable-data-types">customizable data type</a> with Custom Fields.</p>
+    */
     public com.commercetools.api.models.type.CustomFieldsDraft getCustom() {
         return this.custom;
     }

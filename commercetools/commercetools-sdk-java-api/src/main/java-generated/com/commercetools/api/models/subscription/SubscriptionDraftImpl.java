@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class SubscriptionDraftImpl implements SubscriptionDraft {
+public class SubscriptionDraftImpl implements SubscriptionDraft, ModelBase {
 
     private java.util.List<com.commercetools.api.models.subscription.ChangeSubscription> changes;
 
@@ -51,6 +52,9 @@ public class SubscriptionDraftImpl implements SubscriptionDraft {
         return this.destination;
     }
 
+    /**
+    *  <p>User-defined unique identifier for the Subscription.</p>
+    */
     public String getKey() {
         return this.key;
     }

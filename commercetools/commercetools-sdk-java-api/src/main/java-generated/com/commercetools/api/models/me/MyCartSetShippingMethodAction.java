@@ -20,6 +20,9 @@ public interface MyCartSetShippingMethodAction extends MyCartUpdateAction {
 
     String SET_SHIPPING_METHOD = "setShippingMethod";
 
+    /**
+    *  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:ShippingMethod">ShippingMethod</a>.</p>
+    */
     @Valid
     @JsonProperty("shippingMethod")
     public ShippingMethodResourceIdentifier getShippingMethod();
@@ -53,5 +56,14 @@ public interface MyCartSetShippingMethodAction extends MyCartUpdateAction {
 
     default <T> T withMyCartSetShippingMethodAction(Function<MyCartSetShippingMethodAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<MyCartSetShippingMethodAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<MyCartSetShippingMethodAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<MyCartSetShippingMethodAction>";
+            }
+        };
     }
 }

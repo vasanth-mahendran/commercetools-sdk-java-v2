@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -17,8 +17,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyPaymentsKeyByKeyPost
-        extends ApiMethod<ByProjectKeyPaymentsKeyByKeyPost, com.commercetools.api.models.payment.Payment>
+public class ByProjectKeyPaymentsKeyByKeyPost extends
+        BodyApiMethod<ByProjectKeyPaymentsKeyByKeyPost, com.commercetools.api.models.payment.Payment, com.commercetools.api.models.payment.PaymentUpdate>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyPaymentsKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyPaymentsKeyByKeyPost>,
         com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyPaymentsKeyByKeyPost>,
@@ -45,37 +45,28 @@ public class ByProjectKeyPaymentsKeyByKeyPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/payments/key=%s", this.projectKey, this.key);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(paymentUpdate);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(paymentUpdate)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.payment.Payment> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.payment.Payment.class).toCompletableFuture(), request,
-            timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.payment.Payment.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.payment.Payment>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.payment.Payment.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.payment.Payment.class);
     }
 
     public String getProjectKey() {
@@ -99,23 +90,51 @@ public class ByProjectKeyPaymentsKeyByKeyPost
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyPaymentsKeyByKeyPost withExpand(final String expand) {
+    public <TValue> ByProjectKeyPaymentsKeyByKeyPost withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyPaymentsKeyByKeyPost addExpand(final String expand) {
+    public <TValue> ByProjectKeyPaymentsKeyByKeyPost addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyPaymentsKeyByKeyPost withExpand(final List<String> expand) {
+    public ByProjectKeyPaymentsKeyByKeyPost withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyPaymentsKeyByKeyPost addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyPaymentsKeyByKeyPost withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyPaymentsKeyByKeyPost addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyPaymentsKeyByKeyPost withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -124,9 +143,19 @@ public class ByProjectKeyPaymentsKeyByKeyPost
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyPaymentsKeyByKeyPost addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyPaymentsKeyByKeyPost addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
+    }
+
+    public com.commercetools.api.models.payment.PaymentUpdate getBody() {
+        return paymentUpdate;
+    }
+
+    public ByProjectKeyPaymentsKeyByKeyPost withBody(com.commercetools.api.models.payment.PaymentUpdate paymentUpdate) {
+        ByProjectKeyPaymentsKeyByKeyPost t = copy();
+        t.paymentUpdate = paymentUpdate;
+        return t;
     }
 
     @Override

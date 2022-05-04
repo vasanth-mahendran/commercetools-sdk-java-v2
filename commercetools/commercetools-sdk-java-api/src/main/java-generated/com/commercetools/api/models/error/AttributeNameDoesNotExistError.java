@@ -31,6 +31,7 @@ public interface AttributeNameDoesNotExistError extends ErrorObject {
     public static AttributeNameDoesNotExistError of(final AttributeNameDoesNotExistError template) {
         AttributeNameDoesNotExistErrorImpl instance = new AttributeNameDoesNotExistErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setInvalidAttributeName(template.getInvalidAttributeName());
         return instance;
     }
@@ -45,5 +46,14 @@ public interface AttributeNameDoesNotExistError extends ErrorObject {
 
     default <T> T withAttributeNameDoesNotExistError(Function<AttributeNameDoesNotExistError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<AttributeNameDoesNotExistError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<AttributeNameDoesNotExistError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<AttributeNameDoesNotExistError>";
+            }
+        };
     }
 }

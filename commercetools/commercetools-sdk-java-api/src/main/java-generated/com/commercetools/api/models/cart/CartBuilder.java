@@ -101,6 +101,9 @@ public class CartBuilder implements Builder<Cart> {
     @Nullable
     private java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses;
 
+    @Nullable
+    private Long totalLineItemQuantity;
+
     public CartBuilder id(final String id) {
         this.id = id;
         return this;
@@ -164,6 +167,12 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
+    public CartBuilder store(
+            Function<com.commercetools.api.models.store.StoreKeyReferenceBuilder, com.commercetools.api.models.store.StoreKeyReferenceBuilder> builder) {
+        this.store = builder.apply(com.commercetools.api.models.store.StoreKeyReferenceBuilder.of()).build();
+        return this;
+    }
+
     public CartBuilder store(@Nullable final com.commercetools.api.models.store.StoreKeyReference store) {
         this.store = store;
         return this;
@@ -174,10 +183,16 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
-    public CartBuilder withLineItems(
-            Function<com.commercetools.api.models.cart.LineItemBuilder, com.commercetools.api.models.cart.LineItemBuilder> builder) {
-        this.lineItems = new ArrayList<>();
-        this.lineItems.add(builder.apply(com.commercetools.api.models.cart.LineItemBuilder.of()).build());
+    public CartBuilder lineItems(final java.util.List<com.commercetools.api.models.cart.LineItem> lineItems) {
+        this.lineItems = lineItems;
+        return this;
+    }
+
+    public CartBuilder plusLineItems(final com.commercetools.api.models.cart.LineItem... lineItems) {
+        if (this.lineItems == null) {
+            this.lineItems = new ArrayList<>();
+        }
+        this.lineItems.addAll(Arrays.asList(lineItems));
         return this;
     }
 
@@ -190,8 +205,10 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
-    public CartBuilder lineItems(final java.util.List<com.commercetools.api.models.cart.LineItem> lineItems) {
-        this.lineItems = lineItems;
+    public CartBuilder withLineItems(
+            Function<com.commercetools.api.models.cart.LineItemBuilder, com.commercetools.api.models.cart.LineItemBuilder> builder) {
+        this.lineItems = new ArrayList<>();
+        this.lineItems.add(builder.apply(com.commercetools.api.models.cart.LineItemBuilder.of()).build());
         return this;
     }
 
@@ -200,10 +217,17 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
-    public CartBuilder withCustomLineItems(
-            Function<com.commercetools.api.models.cart.CustomLineItemBuilder, com.commercetools.api.models.cart.CustomLineItemBuilder> builder) {
-        this.customLineItems = new ArrayList<>();
-        this.customLineItems.add(builder.apply(com.commercetools.api.models.cart.CustomLineItemBuilder.of()).build());
+    public CartBuilder customLineItems(
+            final java.util.List<com.commercetools.api.models.cart.CustomLineItem> customLineItems) {
+        this.customLineItems = customLineItems;
+        return this;
+    }
+
+    public CartBuilder plusCustomLineItems(final com.commercetools.api.models.cart.CustomLineItem... customLineItems) {
+        if (this.customLineItems == null) {
+            this.customLineItems = new ArrayList<>();
+        }
+        this.customLineItems.addAll(Arrays.asList(customLineItems));
         return this;
     }
 
@@ -216,14 +240,21 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
-    public CartBuilder customLineItems(
-            final java.util.List<com.commercetools.api.models.cart.CustomLineItem> customLineItems) {
-        this.customLineItems = customLineItems;
+    public CartBuilder withCustomLineItems(
+            Function<com.commercetools.api.models.cart.CustomLineItemBuilder, com.commercetools.api.models.cart.CustomLineItemBuilder> builder) {
+        this.customLineItems = new ArrayList<>();
+        this.customLineItems.add(builder.apply(com.commercetools.api.models.cart.CustomLineItemBuilder.of()).build());
         return this;
     }
 
     public CartBuilder totalPrice(final com.commercetools.api.models.common.TypedMoney totalPrice) {
         this.totalPrice = totalPrice;
+        return this;
+    }
+
+    public CartBuilder totalPrice(
+            Function<com.commercetools.api.models.common.TypedMoneyBuilder, Builder<? extends com.commercetools.api.models.common.TypedMoney>> builder) {
+        this.totalPrice = builder.apply(com.commercetools.api.models.common.TypedMoneyBuilder.of()).build();
         return this;
     }
 
@@ -287,6 +318,14 @@ public class CartBuilder implements Builder<Cart> {
     }
 
     public CartBuilder customerGroup(
+            Function<com.commercetools.api.models.customer_group.CustomerGroupReferenceBuilder, com.commercetools.api.models.customer_group.CustomerGroupReferenceBuilder> builder) {
+        this.customerGroup = builder
+                .apply(com.commercetools.api.models.customer_group.CustomerGroupReferenceBuilder.of())
+                .build();
+        return this;
+    }
+
+    public CartBuilder customerGroup(
             @Nullable final com.commercetools.api.models.customer_group.CustomerGroupReference customerGroup) {
         this.customerGroup = customerGroup;
         return this;
@@ -314,10 +353,18 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
-    public CartBuilder withDiscountCodes(
-            Function<com.commercetools.api.models.cart.DiscountCodeInfoBuilder, com.commercetools.api.models.cart.DiscountCodeInfoBuilder> builder) {
-        this.discountCodes = new ArrayList<>();
-        this.discountCodes.add(builder.apply(com.commercetools.api.models.cart.DiscountCodeInfoBuilder.of()).build());
+    public CartBuilder discountCodes(
+            @Nullable final java.util.List<com.commercetools.api.models.cart.DiscountCodeInfo> discountCodes) {
+        this.discountCodes = discountCodes;
+        return this;
+    }
+
+    public CartBuilder plusDiscountCodes(
+            @Nullable final com.commercetools.api.models.cart.DiscountCodeInfo... discountCodes) {
+        if (this.discountCodes == null) {
+            this.discountCodes = new ArrayList<>();
+        }
+        this.discountCodes.addAll(Arrays.asList(discountCodes));
         return this;
     }
 
@@ -330,9 +377,10 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
-    public CartBuilder discountCodes(
-            @Nullable final java.util.List<com.commercetools.api.models.cart.DiscountCodeInfo> discountCodes) {
-        this.discountCodes = discountCodes;
+    public CartBuilder withDiscountCodes(
+            Function<com.commercetools.api.models.cart.DiscountCodeInfoBuilder, com.commercetools.api.models.cart.DiscountCodeInfoBuilder> builder) {
+        this.discountCodes = new ArrayList<>();
+        this.discountCodes.add(builder.apply(com.commercetools.api.models.cart.DiscountCodeInfoBuilder.of()).build());
         return this;
     }
 
@@ -374,11 +422,18 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
-    public CartBuilder withRefusedGifts(
-            Function<com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder, com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder> builder) {
-        this.refusedGifts = new ArrayList<>();
-        this.refusedGifts.add(
-            builder.apply(com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder.of()).build());
+    public CartBuilder refusedGifts(
+            final java.util.List<com.commercetools.api.models.cart_discount.CartDiscountReference> refusedGifts) {
+        this.refusedGifts = refusedGifts;
+        return this;
+    }
+
+    public CartBuilder plusRefusedGifts(
+            final com.commercetools.api.models.cart_discount.CartDiscountReference... refusedGifts) {
+        if (this.refusedGifts == null) {
+            this.refusedGifts = new ArrayList<>();
+        }
+        this.refusedGifts.addAll(Arrays.asList(refusedGifts));
         return this;
     }
 
@@ -392,9 +447,11 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
-    public CartBuilder refusedGifts(
-            final java.util.List<com.commercetools.api.models.cart_discount.CartDiscountReference> refusedGifts) {
-        this.refusedGifts = refusedGifts;
+    public CartBuilder withRefusedGifts(
+            Function<com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder, com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder> builder) {
+        this.refusedGifts = new ArrayList<>();
+        this.refusedGifts.add(
+            builder.apply(com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder.of()).build());
         return this;
     }
 
@@ -409,16 +466,30 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
+    public CartBuilder shippingRateInput(
+            Function<com.commercetools.api.models.cart.ShippingRateInputBuilder, Builder<? extends com.commercetools.api.models.cart.ShippingRateInput>> builder) {
+        this.shippingRateInput = builder.apply(com.commercetools.api.models.cart.ShippingRateInputBuilder.of()).build();
+        return this;
+    }
+
     public CartBuilder itemShippingAddresses(
             @Nullable final com.commercetools.api.models.common.Address... itemShippingAddresses) {
         this.itemShippingAddresses = new ArrayList<>(Arrays.asList(itemShippingAddresses));
         return this;
     }
 
-    public CartBuilder withItemShippingAddresses(
-            Function<com.commercetools.api.models.common.AddressBuilder, com.commercetools.api.models.common.AddressBuilder> builder) {
-        this.itemShippingAddresses = new ArrayList<>();
-        this.itemShippingAddresses.add(builder.apply(com.commercetools.api.models.common.AddressBuilder.of()).build());
+    public CartBuilder itemShippingAddresses(
+            @Nullable final java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses) {
+        this.itemShippingAddresses = itemShippingAddresses;
+        return this;
+    }
+
+    public CartBuilder plusItemShippingAddresses(
+            @Nullable final com.commercetools.api.models.common.Address... itemShippingAddresses) {
+        if (this.itemShippingAddresses == null) {
+            this.itemShippingAddresses = new ArrayList<>();
+        }
+        this.itemShippingAddresses.addAll(Arrays.asList(itemShippingAddresses));
         return this;
     }
 
@@ -431,9 +502,15 @@ public class CartBuilder implements Builder<Cart> {
         return this;
     }
 
-    public CartBuilder itemShippingAddresses(
-            @Nullable final java.util.List<com.commercetools.api.models.common.Address> itemShippingAddresses) {
-        this.itemShippingAddresses = itemShippingAddresses;
+    public CartBuilder withItemShippingAddresses(
+            Function<com.commercetools.api.models.common.AddressBuilder, com.commercetools.api.models.common.AddressBuilder> builder) {
+        this.itemShippingAddresses = new ArrayList<>();
+        this.itemShippingAddresses.add(builder.apply(com.commercetools.api.models.common.AddressBuilder.of()).build());
+        return this;
+    }
+
+    public CartBuilder totalLineItemQuantity(@Nullable final Long totalLineItemQuantity) {
+        this.totalLineItemQuantity = totalLineItemQuantity;
         return this;
     }
 
@@ -594,6 +671,11 @@ public class CartBuilder implements Builder<Cart> {
         return this.itemShippingAddresses;
     }
 
+    @Nullable
+    public Long getTotalLineItemQuantity() {
+        return this.totalLineItemQuantity;
+    }
+
     public Cart build() {
         Objects.requireNonNull(id, Cart.class + ": id is missing");
         Objects.requireNonNull(version, Cart.class + ": version is missing");
@@ -612,7 +694,7 @@ public class CartBuilder implements Builder<Cart> {
             customerEmail, anonymousId, store, lineItems, customLineItems, totalPrice, taxedPrice, cartState,
             shippingAddress, billingAddress, inventoryMode, taxMode, taxRoundingMode, taxCalculationMode, customerGroup,
             country, shippingInfo, discountCodes, custom, paymentInfo, locale, deleteDaysAfterLastModification,
-            refusedGifts, origin, shippingRateInput, itemShippingAddresses);
+            refusedGifts, origin, shippingRateInput, itemShippingAddresses, totalLineItemQuantity);
     }
 
     /**
@@ -623,7 +705,7 @@ public class CartBuilder implements Builder<Cart> {
             customerEmail, anonymousId, store, lineItems, customLineItems, totalPrice, taxedPrice, cartState,
             shippingAddress, billingAddress, inventoryMode, taxMode, taxRoundingMode, taxCalculationMode, customerGroup,
             country, shippingInfo, discountCodes, custom, paymentInfo, locale, deleteDaysAfterLastModification,
-            refusedGifts, origin, shippingRateInput, itemShippingAddresses);
+            refusedGifts, origin, shippingRateInput, itemShippingAddresses, totalLineItemQuantity);
     }
 
     public static CartBuilder of() {
@@ -666,6 +748,7 @@ public class CartBuilder implements Builder<Cart> {
         builder.origin = template.getOrigin();
         builder.shippingRateInput = template.getShippingRateInput();
         builder.itemShippingAddresses = template.getItemShippingAddresses();
+        builder.totalLineItemQuantity = template.getTotalLineItemQuantity();
         return builder;
     }
 

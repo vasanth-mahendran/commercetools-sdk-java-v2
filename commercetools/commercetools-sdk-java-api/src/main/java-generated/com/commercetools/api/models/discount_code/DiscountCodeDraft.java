@@ -19,7 +19,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = DiscountCodeDraftImpl.class)
-public interface DiscountCodeDraft {
+public interface DiscountCodeDraft extends com.commercetools.api.models.CustomizableDraft<DiscountCodeDraft> {
 
     @Valid
     @JsonProperty("name")
@@ -30,9 +30,8 @@ public interface DiscountCodeDraft {
     public LocalizedString getDescription();
 
     /**
-    *  <p>Unique identifier of this discount code.
-    *  This value is added to the cart
-    *  to enable the related cart discounts in the cart.</p>
+    *  <p>User-defined unique identifier for the DiscountCode.
+    *  <a href="/../api/projects/carts#add-discountcode">Add it to a Cart</a> to enable the related CartDiscounts in that Cart.</p>
     */
     @NotNull
     @JsonProperty("code")
@@ -151,5 +150,14 @@ public interface DiscountCodeDraft {
 
     default <T> T withDiscountCodeDraft(Function<DiscountCodeDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<DiscountCodeDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<DiscountCodeDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<DiscountCodeDraft>";
+            }
+        };
     }
 }

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class MyCustomerDraftImpl implements MyCustomerDraft {
+public class MyCustomerDraftImpl implements MyCustomerDraft, ModelBase {
 
     private String email;
 
@@ -40,7 +41,7 @@ public class MyCustomerDraftImpl implements MyCustomerDraft {
 
     private Long defaultBillingAddress;
 
-    private com.commercetools.api.models.type.CustomFields custom;
+    private com.commercetools.api.models.type.CustomFieldsDraft custom;
 
     private String locale;
 
@@ -55,7 +56,7 @@ public class MyCustomerDraftImpl implements MyCustomerDraft {
             @JsonProperty("addresses") final java.util.List<com.commercetools.api.models.common.BaseAddress> addresses,
             @JsonProperty("defaultShippingAddress") final Long defaultShippingAddress,
             @JsonProperty("defaultBillingAddress") final Long defaultBillingAddress,
-            @JsonProperty("custom") final com.commercetools.api.models.type.CustomFields custom,
+            @JsonProperty("custom") final com.commercetools.api.models.type.CustomFieldsDraft custom,
             @JsonProperty("locale") final String locale,
             @JsonProperty("stores") final java.util.List<com.commercetools.api.models.store.StoreResourceIdentifier> stores) {
         this.email = email;
@@ -140,7 +141,7 @@ public class MyCustomerDraftImpl implements MyCustomerDraft {
     /**
     *  <p>The custom fields.</p>
     */
-    public com.commercetools.api.models.type.CustomFields getCustom() {
+    public com.commercetools.api.models.type.CustomFieldsDraft getCustom() {
         return this.custom;
     }
 
@@ -204,7 +205,7 @@ public class MyCustomerDraftImpl implements MyCustomerDraft {
         this.defaultBillingAddress = defaultBillingAddress;
     }
 
-    public void setCustom(final com.commercetools.api.models.type.CustomFields custom) {
+    public void setCustom(final com.commercetools.api.models.type.CustomFieldsDraft custom) {
         this.custom = custom;
     }
 

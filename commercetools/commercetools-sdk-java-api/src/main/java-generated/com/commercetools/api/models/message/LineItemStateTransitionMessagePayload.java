@@ -17,7 +17,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = LineItemStateTransitionMessagePayloadImpl.class)
-public interface LineItemStateTransitionMessagePayload extends MessagePayload {
+public interface LineItemStateTransitionMessagePayload extends OrderMessagePayload {
 
     String LINE_ITEM_STATE_TRANSITION = "LineItemStateTransition";
 
@@ -33,11 +33,17 @@ public interface LineItemStateTransitionMessagePayload extends MessagePayload {
     @JsonProperty("quantity")
     public Long getQuantity();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("fromState")
     public StateReference getFromState();
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("toState")
@@ -78,5 +84,14 @@ public interface LineItemStateTransitionMessagePayload extends MessagePayload {
 
     default <T> T withLineItemStateTransitionMessagePayload(Function<LineItemStateTransitionMessagePayload, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<LineItemStateTransitionMessagePayload> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<LineItemStateTransitionMessagePayload>() {
+            @Override
+            public String toString() {
+                return "TypeReference<LineItemStateTransitionMessagePayload>";
+            }
+        };
     }
 }

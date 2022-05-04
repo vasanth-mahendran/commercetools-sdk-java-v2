@@ -1,13 +1,13 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
@@ -17,8 +17,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyTypesKeyByKeyPost
-        extends ApiMethod<ByProjectKeyTypesKeyByKeyPost, com.commercetools.api.models.type.Type>
+public class ByProjectKeyTypesKeyByKeyPost extends
+        BodyApiMethod<ByProjectKeyTypesKeyByKeyPost, com.commercetools.api.models.type.Type, com.commercetools.api.models.type.TypeUpdate>
         implements com.commercetools.api.client.ConflictingTrait<ByProjectKeyTypesKeyByKeyPost>,
         com.commercetools.api.client.ExpandableTrait<ByProjectKeyTypesKeyByKeyPost>,
         com.commercetools.api.client.Deprecatable200Trait<ByProjectKeyTypesKeyByKeyPost>,
@@ -45,36 +45,28 @@ public class ByProjectKeyTypesKeyByKeyPost
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/types/key=%s", this.projectKey, this.key);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
-        try {
-            final byte[] body = apiHttpClient().getSerializerService().toJsonByteArray(typeUpdate);
-            return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), body);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(typeUpdate)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.type.Type> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(client.execute(request, com.commercetools.api.models.type.Type.class).toCompletableFuture(),
-            request, timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.type.Type.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.type.Type>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.type.Type.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.type.Type.class);
     }
 
     public String getProjectKey() {
@@ -98,23 +90,51 @@ public class ByProjectKeyTypesKeyByKeyPost
     }
 
     /**
-     * set expand with the specificied value
+     * set expand with the specified value
      */
-    public ByProjectKeyTypesKeyByKeyPost withExpand(final String expand) {
+    public <TValue> ByProjectKeyTypesKeyByKeyPost withExpand(final TValue expand) {
         return copy().withQueryParam("expand", expand);
     }
 
     /**
      * add additional expand query parameter
      */
-    public ByProjectKeyTypesKeyByKeyPost addExpand(final String expand) {
+    public <TValue> ByProjectKeyTypesKeyByKeyPost addExpand(final TValue expand) {
         return copy().addQueryParam("expand", expand);
     }
 
     /**
-     * set expand with the specificied values
+     * set expand with the specified value
      */
-    public ByProjectKeyTypesKeyByKeyPost withExpand(final List<String> expand) {
+    public ByProjectKeyTypesKeyByKeyPost withExpand(final Supplier<String> supplier) {
+        return copy().withQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyTypesKeyByKeyPost addExpand(final Supplier<String> supplier) {
+        return copy().addQueryParam("expand", supplier.get());
+    }
+
+    /**
+     * set expand with the specified value
+     */
+    public ByProjectKeyTypesKeyByKeyPost withExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().withQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * add additional expand query parameter
+     */
+    public ByProjectKeyTypesKeyByKeyPost addExpand(final Function<StringBuilder, StringBuilder> op) {
+        return copy().addQueryParam("expand", op.apply(new StringBuilder()));
+    }
+
+    /**
+     * set expand with the specified values
+     */
+    public <TValue> ByProjectKeyTypesKeyByKeyPost withExpand(final List<TValue> expand) {
         return copy().withoutQueryParam("expand")
                 .addQueryParams(
                     expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
@@ -123,9 +143,19 @@ public class ByProjectKeyTypesKeyByKeyPost
     /**
      * add additional expand query parameters
      */
-    public ByProjectKeyTypesKeyByKeyPost addExpand(final List<String> expand) {
+    public <TValue> ByProjectKeyTypesKeyByKeyPost addExpand(final List<TValue> expand) {
         return copy().addQueryParams(
             expand.stream().map(s -> new ParamEntry<>("expand", s.toString())).collect(Collectors.toList()));
+    }
+
+    public com.commercetools.api.models.type.TypeUpdate getBody() {
+        return typeUpdate;
+    }
+
+    public ByProjectKeyTypesKeyByKeyPost withBody(com.commercetools.api.models.type.TypeUpdate typeUpdate) {
+        ByProjectKeyTypesKeyByKeyPost t = copy();
+        t.typeUpdate = typeUpdate;
+        return t;
     }
 
     @Override

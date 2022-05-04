@@ -60,6 +60,7 @@ public class DiscountCodeBuilder implements Builder<DiscountCode> {
     @Nullable
     private java.time.ZonedDateTime validUntil;
 
+    @Nullable
     private Long applicationVersion;
 
     public DiscountCodeBuilder id(final String id) {
@@ -139,11 +140,18 @@ public class DiscountCodeBuilder implements Builder<DiscountCode> {
         return this;
     }
 
-    public DiscountCodeBuilder withCartDiscounts(
-            Function<com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder, com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder> builder) {
-        this.cartDiscounts = new ArrayList<>();
-        this.cartDiscounts.add(
-            builder.apply(com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder.of()).build());
+    public DiscountCodeBuilder cartDiscounts(
+            final java.util.List<com.commercetools.api.models.cart_discount.CartDiscountReference> cartDiscounts) {
+        this.cartDiscounts = cartDiscounts;
+        return this;
+    }
+
+    public DiscountCodeBuilder plusCartDiscounts(
+            final com.commercetools.api.models.cart_discount.CartDiscountReference... cartDiscounts) {
+        if (this.cartDiscounts == null) {
+            this.cartDiscounts = new ArrayList<>();
+        }
+        this.cartDiscounts.addAll(Arrays.asList(cartDiscounts));
         return this;
     }
 
@@ -157,9 +165,11 @@ public class DiscountCodeBuilder implements Builder<DiscountCode> {
         return this;
     }
 
-    public DiscountCodeBuilder cartDiscounts(
-            final java.util.List<com.commercetools.api.models.cart_discount.CartDiscountReference> cartDiscounts) {
-        this.cartDiscounts = cartDiscounts;
+    public DiscountCodeBuilder withCartDiscounts(
+            Function<com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder, com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder> builder) {
+        this.cartDiscounts = new ArrayList<>();
+        this.cartDiscounts.add(
+            builder.apply(com.commercetools.api.models.cart_discount.CartDiscountReferenceBuilder.of()).build());
         return this;
     }
 
@@ -181,6 +191,30 @@ public class DiscountCodeBuilder implements Builder<DiscountCode> {
     public DiscountCodeBuilder references(
             final java.util.List<com.commercetools.api.models.common.Reference> references) {
         this.references = references;
+        return this;
+    }
+
+    public DiscountCodeBuilder plusReferences(final com.commercetools.api.models.common.Reference... references) {
+        if (this.references == null) {
+            this.references = new ArrayList<>();
+        }
+        this.references.addAll(Arrays.asList(references));
+        return this;
+    }
+
+    public DiscountCodeBuilder plusReferences(
+            Function<com.commercetools.api.models.common.ReferenceBuilder, Builder<? extends com.commercetools.api.models.common.Reference>> builder) {
+        if (this.references == null) {
+            this.references = new ArrayList<>();
+        }
+        this.references.add(builder.apply(com.commercetools.api.models.common.ReferenceBuilder.of()).build());
+        return this;
+    }
+
+    public DiscountCodeBuilder withReferences(
+            Function<com.commercetools.api.models.common.ReferenceBuilder, Builder<? extends com.commercetools.api.models.common.Reference>> builder) {
+        this.references = new ArrayList<>();
+        this.references.add(builder.apply(com.commercetools.api.models.common.ReferenceBuilder.of()).build());
         return this;
     }
 
@@ -215,6 +249,14 @@ public class DiscountCodeBuilder implements Builder<DiscountCode> {
         return this;
     }
 
+    public DiscountCodeBuilder plusGroups(final String... groups) {
+        if (this.groups == null) {
+            this.groups = new ArrayList<>();
+        }
+        this.groups.addAll(Arrays.asList(groups));
+        return this;
+    }
+
     public DiscountCodeBuilder validFrom(@Nullable final java.time.ZonedDateTime validFrom) {
         this.validFrom = validFrom;
         return this;
@@ -225,7 +267,7 @@ public class DiscountCodeBuilder implements Builder<DiscountCode> {
         return this;
     }
 
-    public DiscountCodeBuilder applicationVersion(final Long applicationVersion) {
+    public DiscountCodeBuilder applicationVersion(@Nullable final Long applicationVersion) {
         this.applicationVersion = applicationVersion;
         return this;
     }
@@ -316,6 +358,7 @@ public class DiscountCodeBuilder implements Builder<DiscountCode> {
         return this.validUntil;
     }
 
+    @Nullable
     public Long getApplicationVersion() {
         return this.applicationVersion;
     }
@@ -330,7 +373,6 @@ public class DiscountCodeBuilder implements Builder<DiscountCode> {
         Objects.requireNonNull(isActive, DiscountCode.class + ": isActive is missing");
         Objects.requireNonNull(references, DiscountCode.class + ": references is missing");
         Objects.requireNonNull(groups, DiscountCode.class + ": groups is missing");
-        Objects.requireNonNull(applicationVersion, DiscountCode.class + ": applicationVersion is missing");
         return new DiscountCodeImpl(id, version, createdAt, lastModifiedAt, lastModifiedBy, createdBy, name,
             description, code, cartDiscounts, cartPredicate, isActive, references, maxApplications,
             maxApplicationsPerCustomer, custom, groups, validFrom, validUntil, applicationVersion);

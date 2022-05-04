@@ -20,6 +20,9 @@ public interface ProductStateTransitionMessage extends Message {
 
     String PRODUCT_STATE_TRANSITION = "ProductStateTransition";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("state")
@@ -64,5 +67,14 @@ public interface ProductStateTransitionMessage extends Message {
 
     default <T> T withProductStateTransitionMessage(Function<ProductStateTransitionMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ProductStateTransitionMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ProductStateTransitionMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ProductStateTransitionMessage>";
+            }
+        };
     }
 }

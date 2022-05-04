@@ -1,8 +1,6 @@
 
 package com.commercetools.api.client;
 
-import static io.vrap.rmf.base.client.utils.ClientUtils.blockingWait;
-
 import java.net.URI;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -16,47 +14,50 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ByProjectKeyMePasswordResetPost
-        extends ApiMethod<ByProjectKeyMePasswordResetPost, com.commercetools.api.models.customer.Customer>
+public class ByProjectKeyMePasswordResetPost extends
+        BodyApiMethod<ByProjectKeyMePasswordResetPost, com.commercetools.api.models.customer.Customer, com.commercetools.api.models.customer.MyCustomerResetPassword>
         implements com.commercetools.api.client.ErrorableTrait<ByProjectKeyMePasswordResetPost> {
 
     private String projectKey;
 
-    public ByProjectKeyMePasswordResetPost(final ApiHttpClient apiHttpClient, String projectKey) {
+    private com.commercetools.api.models.customer.MyCustomerResetPassword myCustomerResetPassword;
+
+    public ByProjectKeyMePasswordResetPost(final ApiHttpClient apiHttpClient, String projectKey,
+            com.commercetools.api.models.customer.MyCustomerResetPassword myCustomerResetPassword) {
         super(apiHttpClient);
         this.projectKey = projectKey;
+        this.myCustomerResetPassword = myCustomerResetPassword;
     }
 
     public ByProjectKeyMePasswordResetPost(ByProjectKeyMePasswordResetPost t) {
         super(t);
         this.projectKey = t.projectKey;
+        this.myCustomerResetPassword = t.myCustomerResetPassword;
     }
 
     @Override
-    public ApiHttpRequest createHttpRequest() {
+    protected ApiHttpRequest buildHttpRequest() {
         List<String> params = new ArrayList<>(getQueryParamUriStrings());
         String httpRequestPath = String.format("/%s/me/password/reset", this.projectKey);
         if (!params.isEmpty()) {
             httpRequestPath += "?" + String.join("&", params);
         }
+        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(),
+            io.vrap.rmf.base.client.utils.json.JsonUtils
+                    .executing(() -> apiHttpClient().getSerializerService().toJsonByteArray(myCustomerResetPassword)));
 
-        return new ApiHttpRequest(ApiHttpMethod.POST, URI.create(httpRequestPath), getHeaders(), null);
     }
 
     @Override
     public ApiHttpResponse<com.commercetools.api.models.customer.Customer> executeBlocking(final ApiHttpClient client,
-            Duration timeout) {
-        ApiHttpRequest request = this.createHttpRequest();
-        return blockingWait(
-            client.execute(request, com.commercetools.api.models.customer.Customer.class).toCompletableFuture(),
-            request, timeout);
+            final Duration timeout) {
+        return executeBlocking(client, timeout, com.commercetools.api.models.customer.Customer.class);
     }
 
     @Override
     public CompletableFuture<ApiHttpResponse<com.commercetools.api.models.customer.Customer>> execute(
             final ApiHttpClient client) {
-        return client.execute(this.createHttpRequest(), com.commercetools.api.models.customer.Customer.class)
-                .toCompletableFuture();
+        return execute(client, com.commercetools.api.models.customer.Customer.class);
     }
 
     public String getProjectKey() {
@@ -65,6 +66,17 @@ public class ByProjectKeyMePasswordResetPost
 
     public void setProjectKey(final String projectKey) {
         this.projectKey = projectKey;
+    }
+
+    public com.commercetools.api.models.customer.MyCustomerResetPassword getBody() {
+        return myCustomerResetPassword;
+    }
+
+    public ByProjectKeyMePasswordResetPost withBody(
+            com.commercetools.api.models.customer.MyCustomerResetPassword myCustomerResetPassword) {
+        ByProjectKeyMePasswordResetPost t = copy();
+        t.myCustomerResetPassword = myCustomerResetPassword;
+        return t;
     }
 
     @Override
@@ -77,12 +89,14 @@ public class ByProjectKeyMePasswordResetPost
 
         ByProjectKeyMePasswordResetPost that = (ByProjectKeyMePasswordResetPost) o;
 
-        return new EqualsBuilder().append(projectKey, that.projectKey).isEquals();
+        return new EqualsBuilder().append(projectKey, that.projectKey)
+                .append(myCustomerResetPassword, that.myCustomerResetPassword)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(projectKey).toHashCode();
+        return new HashCodeBuilder(17, 37).append(projectKey).append(myCustomerResetPassword).toHashCode();
     }
 
     @Override

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ScopedPriceImpl implements ScopedPrice {
+public class ScopedPriceImpl implements ScopedPrice, ModelBase {
 
     private String id;
 
@@ -66,10 +67,16 @@ public class ScopedPriceImpl implements ScopedPrice {
         return this.id;
     }
 
+    /**
+    *  <p>Base polymorphic read-only Money type which is stored in cent precision or high precision. The actual type is determined by the <code>type</code> field.</p>
+    */
     public com.commercetools.api.models.common.TypedMoney getValue() {
         return this.value;
     }
 
+    /**
+    *  <p>Base polymorphic read-only Money type which is stored in cent precision or high precision. The actual type is determined by the <code>type</code> field.</p>
+    */
     public com.commercetools.api.models.common.TypedMoney getCurrentValue() {
         return this.currentValue;
     }
@@ -82,12 +89,15 @@ public class ScopedPriceImpl implements ScopedPrice {
     }
 
     /**
-    *  <p><a href="/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:CustomerGroup">CustomerGroup</a>.</p>
     */
     public com.commercetools.api.models.customer_group.CustomerGroupReference getCustomerGroup() {
         return this.customerGroup;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Channel">Channel</a>.</p>
+    */
     public com.commercetools.api.models.channel.ChannelReference getChannel() {
         return this.channel;
     }
@@ -104,6 +114,9 @@ public class ScopedPriceImpl implements ScopedPrice {
         return this.discounted;
     }
 
+    /**
+    *  <p>Serves as value of the <code>custom</code> field on a resource or data type customized with a <a href="ctp:api:type:Type">Type</a>.</p>
+    */
     public com.commercetools.api.models.type.CustomFields getCustom() {
         return this.custom;
     }

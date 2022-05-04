@@ -2,6 +2,7 @@
 package com.commercetools.api.models.store;
 
 import java.util.*;
+import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
@@ -15,7 +16,13 @@ public class StoreSetCustomTypeActionBuilder implements Builder<StoreSetCustomTy
     private com.commercetools.api.models.type.TypeResourceIdentifier type;
 
     @Nullable
-    private java.lang.Object fields;
+    private com.commercetools.api.models.type.FieldContainer fields;
+
+    public StoreSetCustomTypeActionBuilder type(
+            Function<com.commercetools.api.models.type.TypeResourceIdentifierBuilder, com.commercetools.api.models.type.TypeResourceIdentifierBuilder> builder) {
+        this.type = builder.apply(com.commercetools.api.models.type.TypeResourceIdentifierBuilder.of()).build();
+        return this;
+    }
 
     public StoreSetCustomTypeActionBuilder type(
             @Nullable final com.commercetools.api.models.type.TypeResourceIdentifier type) {
@@ -23,7 +30,14 @@ public class StoreSetCustomTypeActionBuilder implements Builder<StoreSetCustomTy
         return this;
     }
 
-    public StoreSetCustomTypeActionBuilder fields(@Nullable final java.lang.Object fields) {
+    public StoreSetCustomTypeActionBuilder fields(
+            Function<com.commercetools.api.models.type.FieldContainerBuilder, com.commercetools.api.models.type.FieldContainerBuilder> builder) {
+        this.fields = builder.apply(com.commercetools.api.models.type.FieldContainerBuilder.of()).build();
+        return this;
+    }
+
+    public StoreSetCustomTypeActionBuilder fields(
+            @Nullable final com.commercetools.api.models.type.FieldContainer fields) {
         this.fields = fields;
         return this;
     }
@@ -34,7 +48,7 @@ public class StoreSetCustomTypeActionBuilder implements Builder<StoreSetCustomTy
     }
 
     @Nullable
-    public java.lang.Object getFields() {
+    public com.commercetools.api.models.type.FieldContainer getFields() {
         return this.fields;
     }
 

@@ -36,6 +36,7 @@ public interface ExtensionNoResponseError extends ErrorObject {
     public static ExtensionNoResponseError of(final ExtensionNoResponseError template) {
         ExtensionNoResponseErrorImpl instance = new ExtensionNoResponseErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setExtensionId(template.getExtensionId());
         instance.setExtensionKey(template.getExtensionKey());
         return instance;
@@ -51,5 +52,14 @@ public interface ExtensionNoResponseError extends ErrorObject {
 
     default <T> T withExtensionNoResponseError(Function<ExtensionNoResponseError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ExtensionNoResponseError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ExtensionNoResponseError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ExtensionNoResponseError>";
+            }
+        };
     }
 }

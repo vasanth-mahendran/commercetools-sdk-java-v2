@@ -20,6 +20,9 @@ public interface PaymentStatusStateTransitionMessagePayload extends MessagePaylo
 
     String PAYMENT_STATUS_STATE_TRANSITION = "PaymentStatusStateTransition";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("state")
@@ -57,5 +60,14 @@ public interface PaymentStatusStateTransitionMessagePayload extends MessagePaylo
     default <T> T withPaymentStatusStateTransitionMessagePayload(
             Function<PaymentStatusStateTransitionMessagePayload, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<PaymentStatusStateTransitionMessagePayload> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<PaymentStatusStateTransitionMessagePayload>() {
+            @Override
+            public String toString() {
+                return "TypeReference<PaymentStatusStateTransitionMessagePayload>";
+            }
+        };
     }
 }

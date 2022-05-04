@@ -20,7 +20,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderLineItemRemovedMessageImpl.class)
-public interface OrderLineItemRemovedMessage extends Message {
+public interface OrderLineItemRemovedMessage extends OrderMessage {
 
     String ORDER_LINE_ITEM_REMOVED = "OrderLineItemRemoved";
 
@@ -41,6 +41,9 @@ public interface OrderLineItemRemovedMessage extends Message {
     @JsonProperty("newState")
     public List<ItemState> getNewState();
 
+    /**
+    *  <p>Base polymorphic read-only Money type which is stored in cent precision or high precision. The actual type is determined by the <code>type</code> field.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("newTotalPrice")
@@ -114,5 +117,14 @@ public interface OrderLineItemRemovedMessage extends Message {
 
     default <T> T withOrderLineItemRemovedMessage(Function<OrderLineItemRemovedMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderLineItemRemovedMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderLineItemRemovedMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderLineItemRemovedMessage>";
+            }
+        };
     }
 }

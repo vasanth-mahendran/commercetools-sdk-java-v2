@@ -19,6 +19,9 @@ public interface ChannelSetAddressAction extends ChannelUpdateAction {
 
     String SET_ADDRESS = "setAddress";
 
+    /**
+    *  <p>Value to set. If empty, any existing value will be removed.</p>
+    */
     @Valid
     @JsonProperty("address")
     public BaseAddress getAddress();
@@ -45,5 +48,14 @@ public interface ChannelSetAddressAction extends ChannelUpdateAction {
 
     default <T> T withChannelSetAddressAction(Function<ChannelSetAddressAction, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ChannelSetAddressAction> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ChannelSetAddressAction>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ChannelSetAddressAction>";
+            }
+        };
     }
 }

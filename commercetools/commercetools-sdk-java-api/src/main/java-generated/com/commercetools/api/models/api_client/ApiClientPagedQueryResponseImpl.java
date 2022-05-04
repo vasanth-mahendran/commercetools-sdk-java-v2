@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -17,7 +18,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 *  <p><a href="/general-concepts#pagedqueryresult">PagedQueryResult</a> with <code>results</code> containing an array of <a href="ctp:api:type:ApiClient">APIClient</a>.</p>
 */
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class ApiClientPagedQueryResponseImpl implements ApiClientPagedQueryResponse {
+public class ApiClientPagedQueryResponseImpl implements ApiClientPagedQueryResponse, ModelBase {
 
     private Long limit;
 
@@ -44,7 +45,7 @@ public class ApiClientPagedQueryResponseImpl implements ApiClientPagedQueryRespo
     }
 
     /**
-    *  <p>Number of results requested in the query request.</p>
+    *  <p>Number of <a href="/../api/general-concepts#limit">results requested</a>.</p>
     */
     public Long getLimit() {
         return this.limit;

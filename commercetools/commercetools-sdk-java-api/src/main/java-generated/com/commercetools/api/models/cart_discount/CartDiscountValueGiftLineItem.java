@@ -21,6 +21,9 @@ public interface CartDiscountValueGiftLineItem extends CartDiscountValue {
 
     String GIFT_LINE_ITEM = "giftLineItem";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:Product">Product</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("product")
@@ -75,5 +78,14 @@ public interface CartDiscountValueGiftLineItem extends CartDiscountValue {
 
     default <T> T withCartDiscountValueGiftLineItem(Function<CartDiscountValueGiftLineItem, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<CartDiscountValueGiftLineItem> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<CartDiscountValueGiftLineItem>() {
+            @Override
+            public String toString() {
+                return "TypeReference<CartDiscountValueGiftLineItem>";
+            }
+        };
     }
 }

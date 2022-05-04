@@ -12,7 +12,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = OrderCustomerEmailSetMessageImpl.class)
-public interface OrderCustomerEmailSetMessage extends Message {
+public interface OrderCustomerEmailSetMessage extends OrderMessage {
 
     String ORDER_CUSTOMER_EMAIL_SET = "OrderCustomerEmailSet";
 
@@ -57,5 +57,14 @@ public interface OrderCustomerEmailSetMessage extends Message {
 
     default <T> T withOrderCustomerEmailSetMessage(Function<OrderCustomerEmailSetMessage, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<OrderCustomerEmailSetMessage> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<OrderCustomerEmailSetMessage>() {
+            @Override
+            public String toString() {
+                return "TypeReference<OrderCustomerEmailSetMessage>";
+            }
+        };
     }
 }

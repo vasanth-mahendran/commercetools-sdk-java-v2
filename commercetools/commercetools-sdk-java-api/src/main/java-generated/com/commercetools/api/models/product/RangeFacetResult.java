@@ -22,12 +22,12 @@ public interface RangeFacetResult extends FacetResult {
     @NotNull
     @Valid
     @JsonProperty("ranges")
-    public List<FacetResultRange> getRanges();
+    public List<FacetRange> getRanges();
 
     @JsonIgnore
-    public void setRanges(final FacetResultRange... ranges);
+    public void setRanges(final FacetRange... ranges);
 
-    public void setRanges(final List<FacetResultRange> ranges);
+    public void setRanges(final List<FacetRange> ranges);
 
     public static RangeFacetResult of() {
         return new RangeFacetResultImpl();
@@ -49,5 +49,14 @@ public interface RangeFacetResult extends FacetResult {
 
     default <T> T withRangeFacetResult(Function<RangeFacetResult, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<RangeFacetResult> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<RangeFacetResult>() {
+            @Override
+            public String toString() {
+                return "TypeReference<RangeFacetResult>";
+            }
+        };
     }
 }

@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class CustomLineItemStateTransitionMessageImpl implements CustomLineItemStateTransitionMessage {
+public class CustomLineItemStateTransitionMessageImpl implements CustomLineItemStateTransitionMessage, ModelBase {
 
     private String id;
 
@@ -86,6 +87,9 @@ public class CustomLineItemStateTransitionMessageImpl implements CustomLineItemS
         this.type = CUSTOM_LINE_ITEM_STATE_TRANSITION;
     }
 
+    /**
+    *  <p>Platform-generated unique identifier of the Message.</p>
+    */
     public String getId() {
         return this.id;
     }
@@ -148,10 +152,16 @@ public class CustomLineItemStateTransitionMessageImpl implements CustomLineItemS
         return this.quantity;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     public com.commercetools.api.models.state.StateReference getFromState() {
         return this.fromState;
     }
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:State">State</a>.</p>
+    */
     public com.commercetools.api.models.state.StateReference getToState() {
         return this.toState;
     }

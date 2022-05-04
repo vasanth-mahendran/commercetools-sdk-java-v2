@@ -17,7 +17,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface MyOrderFromCartDraft {
 
     /**
-    *  <p>The unique ID of the cart from which an order is created.</p>
+    *  <p>Platform-generated unique identifier of the Cart from which the Platform creates an Order.</p>
     */
     @NotNull
     @JsonProperty("id")
@@ -52,5 +52,14 @@ public interface MyOrderFromCartDraft {
 
     default <T> T withMyOrderFromCartDraft(Function<MyOrderFromCartDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<MyOrderFromCartDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<MyOrderFromCartDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<MyOrderFromCartDraft>";
+            }
+        };
     }
 }

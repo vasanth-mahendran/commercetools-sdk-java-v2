@@ -15,12 +15,19 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = StateUpdateImpl.class)
-public interface StateUpdate extends com.commercetools.api.models.ResourceUpdate<StateUpdate, StateUpdateAction> {
+public interface StateUpdate
+        extends com.commercetools.api.models.ResourceUpdate<StateUpdate, StateUpdateAction, StateUpdateBuilder> {
 
+    /**
+    *  <p>Expected version of the State on which the changes should be applied. If the expected version does not match the actual version, a <a href="/../api/errors#409-conflict">409 Conflict</a> will be returned.</p>
+    */
     @NotNull
     @JsonProperty("version")
     public Long getVersion();
 
+    /**
+    *  <p>Update actions to be performed on the State.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("actions")
@@ -54,5 +61,14 @@ public interface StateUpdate extends com.commercetools.api.models.ResourceUpdate
 
     default <T> T withStateUpdate(Function<StateUpdate, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<StateUpdate> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<StateUpdate>() {
+            @Override
+            public String toString() {
+                return "TypeReference<StateUpdate>";
+            }
+        };
     }
 }

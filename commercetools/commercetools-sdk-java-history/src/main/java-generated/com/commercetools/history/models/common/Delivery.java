@@ -35,10 +35,16 @@ public interface Delivery {
     @JsonProperty("parcels")
     public List<Parcel> getParcels();
 
-    @NotNull
     @Valid
     @JsonProperty("address")
     public Address getAddress();
+
+    /**
+    *  <p>Custom Fields for the Transaction.</p>
+    */
+    @Valid
+    @JsonProperty("custom")
+    public CustomFields getCustom();
 
     public void setId(final String id);
 
@@ -56,6 +62,8 @@ public interface Delivery {
 
     public void setAddress(final Address address);
 
+    public void setCustom(final CustomFields custom);
+
     public static Delivery of() {
         return new DeliveryImpl();
     }
@@ -67,6 +75,7 @@ public interface Delivery {
         instance.setItems(template.getItems());
         instance.setParcels(template.getParcels());
         instance.setAddress(template.getAddress());
+        instance.setCustom(template.getCustom());
         return instance;
     }
 
@@ -80,5 +89,14 @@ public interface Delivery {
 
     default <T> T withDelivery(Function<Delivery, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<Delivery> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<Delivery>() {
+            @Override
+            public String toString() {
+                return "TypeReference<Delivery>";
+            }
+        };
     }
 }

@@ -8,17 +8,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class InvalidFieldErrorImpl implements InvalidFieldError {
+public class InvalidFieldErrorImpl implements InvalidFieldError, ModelBase {
 
     private String code;
 
     private String message;
+
+    private Map<String, java.lang.Object> values;
 
     private String field;
 
@@ -27,10 +30,13 @@ public class InvalidFieldErrorImpl implements InvalidFieldError {
     private java.util.List<java.lang.Object> allowedValues;
 
     @JsonCreator
-    InvalidFieldErrorImpl(@JsonProperty("message") final String message, @JsonProperty("field") final String field,
+    InvalidFieldErrorImpl(@JsonProperty("message") final String message,
+            @JsonProperty("values") final Map<String, java.lang.Object> values,
+            @JsonProperty("field") final String field,
             @JsonProperty("invalidValue") final java.lang.Object invalidValue,
             @JsonProperty("allowedValues") final java.util.List<java.lang.Object> allowedValues) {
         this.message = message;
+        this.values = values;
         this.field = field;
         this.invalidValue = invalidValue;
         this.allowedValues = allowedValues;
@@ -49,6 +55,10 @@ public class InvalidFieldErrorImpl implements InvalidFieldError {
         return this.message;
     }
 
+    public Map<String, java.lang.Object> values() {
+        return values;
+    }
+
     public String getField() {
         return this.field;
     }
@@ -63,6 +73,13 @@ public class InvalidFieldErrorImpl implements InvalidFieldError {
 
     public void setMessage(final String message) {
         this.message = message;
+    }
+
+    public void setValue(String key, java.lang.Object value) {
+        if (values == null) {
+            values = new HashMap<>();
+        }
+        values.put(key, value);
     }
 
     public void setField(final String field) {
@@ -93,6 +110,7 @@ public class InvalidFieldErrorImpl implements InvalidFieldError {
 
         return new EqualsBuilder().append(code, that.code)
                 .append(message, that.message)
+                .append(values, that.values)
                 .append(field, that.field)
                 .append(invalidValue, that.invalidValue)
                 .append(allowedValues, that.allowedValues)
@@ -103,6 +121,7 @@ public class InvalidFieldErrorImpl implements InvalidFieldError {
     public int hashCode() {
         return new HashCodeBuilder(17, 37).append(code)
                 .append(message)
+                .append(values)
                 .append(field)
                 .append(invalidValue)
                 .append(allowedValues)

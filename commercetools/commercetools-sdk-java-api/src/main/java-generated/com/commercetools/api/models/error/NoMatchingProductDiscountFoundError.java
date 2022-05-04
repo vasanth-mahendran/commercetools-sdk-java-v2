@@ -23,6 +23,7 @@ public interface NoMatchingProductDiscountFoundError extends ErrorObject {
     public static NoMatchingProductDiscountFoundError of(final NoMatchingProductDiscountFoundError template) {
         NoMatchingProductDiscountFoundErrorImpl instance = new NoMatchingProductDiscountFoundErrorImpl();
         instance.setMessage(template.getMessage());
+
         return instance;
     }
 
@@ -37,5 +38,14 @@ public interface NoMatchingProductDiscountFoundError extends ErrorObject {
 
     default <T> T withNoMatchingProductDiscountFoundError(Function<NoMatchingProductDiscountFoundError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<NoMatchingProductDiscountFoundError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<NoMatchingProductDiscountFoundError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<NoMatchingProductDiscountFoundError>";
+            }
+        };
     }
 }

@@ -9,13 +9,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
 
+import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+/**
+*  <p><a href="/../api/types#resourceidentifier">ResourceIdentifier</a> to a <a href="ctp:api:type:OrderEdit">OrderEdit</a>.</p>
+*/
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
-public class OrderEditResourceIdentifierImpl implements OrderEditResourceIdentifier {
+public class OrderEditResourceIdentifierImpl implements OrderEditResourceIdentifier, ModelBase {
 
     private com.commercetools.api.models.common.ReferenceTypeId typeId;
 
@@ -39,14 +43,14 @@ public class OrderEditResourceIdentifierImpl implements OrderEditResourceIdentif
     }
 
     /**
-    *  <p>Unique ID of the referenced resource. Either <code>id</code> or <code>key</code> is required.</p>
+    *  <p>Platform-generated unique identifier of the referenced <a href="ctp:api:type:OrderEdit">OrderEdit</a>. Either <code>id</code> or <code>key</code> is required.</p>
     */
     public String getId() {
         return this.id;
     }
 
     /**
-    *  <p>Unique key of the referenced resource. Either <code>id</code> or <code>key</code> is required.</p>
+    *  <p>User-defined unique identifier of the referenced <a href="ctp:api:type:OrderEdit">OrderEdit</a>. Either <code>id</code> or <code>key</code> is required.</p>
     */
     public String getKey() {
         return this.key;

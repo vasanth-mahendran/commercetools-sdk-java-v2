@@ -16,6 +16,9 @@ public class LineItemBuilder implements Builder<LineItem> {
 
     private String productId;
 
+    @Nullable
+    private String productKey;
+
     private com.commercetools.api.models.common.LocalizedString name;
 
     @Nullable
@@ -73,6 +76,11 @@ public class LineItemBuilder implements Builder<LineItem> {
         return this;
     }
 
+    public LineItemBuilder productKey(@Nullable final String productKey) {
+        this.productKey = productKey;
+        return this;
+    }
+
     public LineItemBuilder name(
             Function<com.commercetools.api.models.common.LocalizedStringBuilder, com.commercetools.api.models.common.LocalizedStringBuilder> builder) {
         this.name = builder.apply(com.commercetools.api.models.common.LocalizedStringBuilder.of()).build();
@@ -93,6 +101,13 @@ public class LineItemBuilder implements Builder<LineItem> {
     public LineItemBuilder productSlug(
             @Nullable final com.commercetools.api.models.common.LocalizedString productSlug) {
         this.productSlug = productSlug;
+        return this;
+    }
+
+    public LineItemBuilder productType(
+            Function<com.commercetools.api.models.product_type.ProductTypeReferenceBuilder, com.commercetools.api.models.product_type.ProductTypeReferenceBuilder> builder) {
+        this.productType = builder.apply(com.commercetools.api.models.product_type.ProductTypeReferenceBuilder.of())
+                .build();
         return this;
     }
 
@@ -140,6 +155,12 @@ public class LineItemBuilder implements Builder<LineItem> {
         return this;
     }
 
+    public LineItemBuilder totalPrice(
+            Function<com.commercetools.api.models.common.TypedMoneyBuilder, Builder<? extends com.commercetools.api.models.common.TypedMoney>> builder) {
+        this.totalPrice = builder.apply(com.commercetools.api.models.common.TypedMoneyBuilder.of()).build();
+        return this;
+    }
+
     public LineItemBuilder quantity(final Long quantity) {
         this.quantity = quantity;
         return this;
@@ -155,10 +176,16 @@ public class LineItemBuilder implements Builder<LineItem> {
         return this;
     }
 
-    public LineItemBuilder withState(
-            Function<com.commercetools.api.models.order.ItemStateBuilder, com.commercetools.api.models.order.ItemStateBuilder> builder) {
-        this.state = new ArrayList<>();
-        this.state.add(builder.apply(com.commercetools.api.models.order.ItemStateBuilder.of()).build());
+    public LineItemBuilder state(final java.util.List<com.commercetools.api.models.order.ItemState> state) {
+        this.state = state;
+        return this;
+    }
+
+    public LineItemBuilder plusState(final com.commercetools.api.models.order.ItemState... state) {
+        if (this.state == null) {
+            this.state = new ArrayList<>();
+        }
+        this.state.addAll(Arrays.asList(state));
         return this;
     }
 
@@ -171,8 +198,10 @@ public class LineItemBuilder implements Builder<LineItem> {
         return this;
     }
 
-    public LineItemBuilder state(final java.util.List<com.commercetools.api.models.order.ItemState> state) {
-        this.state = state;
+    public LineItemBuilder withState(
+            Function<com.commercetools.api.models.order.ItemStateBuilder, com.commercetools.api.models.order.ItemStateBuilder> builder) {
+        this.state = new ArrayList<>();
+        this.state.add(builder.apply(com.commercetools.api.models.order.ItemStateBuilder.of()).build());
         return this;
     }
 
@@ -188,8 +217,21 @@ public class LineItemBuilder implements Builder<LineItem> {
     }
 
     public LineItemBuilder supplyChannel(
+            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
+        this.supplyChannel = builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of()).build();
+        return this;
+    }
+
+    public LineItemBuilder supplyChannel(
             @Nullable final com.commercetools.api.models.channel.ChannelReference supplyChannel) {
         this.supplyChannel = supplyChannel;
+        return this;
+    }
+
+    public LineItemBuilder distributionChannel(
+            Function<com.commercetools.api.models.channel.ChannelReferenceBuilder, com.commercetools.api.models.channel.ChannelReferenceBuilder> builder) {
+        this.distributionChannel = builder.apply(com.commercetools.api.models.channel.ChannelReferenceBuilder.of())
+                .build();
         return this;
     }
 
@@ -205,11 +247,18 @@ public class LineItemBuilder implements Builder<LineItem> {
         return this;
     }
 
-    public LineItemBuilder withDiscountedPricePerQuantity(
-            Function<com.commercetools.api.models.cart.DiscountedLineItemPriceForQuantityBuilder, com.commercetools.api.models.cart.DiscountedLineItemPriceForQuantityBuilder> builder) {
-        this.discountedPricePerQuantity = new ArrayList<>();
-        this.discountedPricePerQuantity.add(
-            builder.apply(com.commercetools.api.models.cart.DiscountedLineItemPriceForQuantityBuilder.of()).build());
+    public LineItemBuilder discountedPricePerQuantity(
+            final java.util.List<com.commercetools.api.models.cart.DiscountedLineItemPriceForQuantity> discountedPricePerQuantity) {
+        this.discountedPricePerQuantity = discountedPricePerQuantity;
+        return this;
+    }
+
+    public LineItemBuilder plusDiscountedPricePerQuantity(
+            final com.commercetools.api.models.cart.DiscountedLineItemPriceForQuantity... discountedPricePerQuantity) {
+        if (this.discountedPricePerQuantity == null) {
+            this.discountedPricePerQuantity = new ArrayList<>();
+        }
+        this.discountedPricePerQuantity.addAll(Arrays.asList(discountedPricePerQuantity));
         return this;
     }
 
@@ -223,9 +272,11 @@ public class LineItemBuilder implements Builder<LineItem> {
         return this;
     }
 
-    public LineItemBuilder discountedPricePerQuantity(
-            final java.util.List<com.commercetools.api.models.cart.DiscountedLineItemPriceForQuantity> discountedPricePerQuantity) {
-        this.discountedPricePerQuantity = discountedPricePerQuantity;
+    public LineItemBuilder withDiscountedPricePerQuantity(
+            Function<com.commercetools.api.models.cart.DiscountedLineItemPriceForQuantityBuilder, com.commercetools.api.models.cart.DiscountedLineItemPriceForQuantityBuilder> builder) {
+        this.discountedPricePerQuantity = new ArrayList<>();
+        this.discountedPricePerQuantity.add(
+            builder.apply(com.commercetools.api.models.cart.DiscountedLineItemPriceForQuantityBuilder.of()).build());
         return this;
     }
 
@@ -273,6 +324,11 @@ public class LineItemBuilder implements Builder<LineItem> {
 
     public String getProductId() {
         return this.productId;
+    }
+
+    @Nullable
+    public String getProductKey() {
+        return this.productKey;
     }
 
     public com.commercetools.api.models.common.LocalizedString getName() {
@@ -373,18 +429,18 @@ public class LineItemBuilder implements Builder<LineItem> {
         Objects.requireNonNull(discountedPricePerQuantity, LineItem.class + ": discountedPricePerQuantity is missing");
         Objects.requireNonNull(priceMode, LineItem.class + ": priceMode is missing");
         Objects.requireNonNull(lineItemMode, LineItem.class + ": lineItemMode is missing");
-        return new LineItemImpl(id, productId, name, productSlug, productType, variant, price, taxedPrice, totalPrice,
-            quantity, addedAt, state, taxRate, supplyChannel, distributionChannel, discountedPricePerQuantity,
-            priceMode, lineItemMode, custom, shippingDetails, lastModifiedAt);
+        return new LineItemImpl(id, productId, productKey, name, productSlug, productType, variant, price, taxedPrice,
+            totalPrice, quantity, addedAt, state, taxRate, supplyChannel, distributionChannel,
+            discountedPricePerQuantity, priceMode, lineItemMode, custom, shippingDetails, lastModifiedAt);
     }
 
     /**
      * builds LineItem without checking for non null required values
      */
     public LineItem buildUnchecked() {
-        return new LineItemImpl(id, productId, name, productSlug, productType, variant, price, taxedPrice, totalPrice,
-            quantity, addedAt, state, taxRate, supplyChannel, distributionChannel, discountedPricePerQuantity,
-            priceMode, lineItemMode, custom, shippingDetails, lastModifiedAt);
+        return new LineItemImpl(id, productId, productKey, name, productSlug, productType, variant, price, taxedPrice,
+            totalPrice, quantity, addedAt, state, taxRate, supplyChannel, distributionChannel,
+            discountedPricePerQuantity, priceMode, lineItemMode, custom, shippingDetails, lastModifiedAt);
     }
 
     public static LineItemBuilder of() {
@@ -395,6 +451,7 @@ public class LineItemBuilder implements Builder<LineItem> {
         LineItemBuilder builder = new LineItemBuilder();
         builder.id = template.getId();
         builder.productId = template.getProductId();
+        builder.productKey = template.getProductKey();
         builder.name = template.getName();
         builder.productSlug = template.getProductSlug();
         builder.productType = template.getProductType();

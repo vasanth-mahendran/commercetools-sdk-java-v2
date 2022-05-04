@@ -16,9 +16,16 @@ import io.vrap.rmf.base.client.utils.Generated;
 @JsonDeserialize(as = ErrorByExtensionImpl.class)
 public interface ErrorByExtension {
 
+    /**
+    *  <p>Platform-generated unique identifier of the Extension.</p>
+    */
     @NotNull
     @JsonProperty("id")
     public String getId();
+
+    /**
+    *  <p>User-defined unique identifier of the Extension.</p>
+    */
 
     @JsonProperty("key")
     public String getKey();
@@ -48,5 +55,14 @@ public interface ErrorByExtension {
 
     default <T> T withErrorByExtension(Function<ErrorByExtension, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ErrorByExtension> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ErrorByExtension>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ErrorByExtension>";
+            }
+        };
     }
 }

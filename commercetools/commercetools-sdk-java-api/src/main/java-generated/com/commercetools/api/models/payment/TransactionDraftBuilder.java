@@ -25,6 +25,9 @@ public class TransactionDraftBuilder implements Builder<TransactionDraft> {
     @Nullable
     private com.commercetools.api.models.payment.TransactionState state;
 
+    @Nullable
+    private com.commercetools.api.models.type.CustomFieldsDraft custom;
+
     public TransactionDraftBuilder timestamp(@Nullable final java.time.ZonedDateTime timestamp) {
         this.timestamp = timestamp;
         return this;
@@ -56,6 +59,17 @@ public class TransactionDraftBuilder implements Builder<TransactionDraft> {
         return this;
     }
 
+    public TransactionDraftBuilder custom(
+            Function<com.commercetools.api.models.type.CustomFieldsDraftBuilder, com.commercetools.api.models.type.CustomFieldsDraftBuilder> builder) {
+        this.custom = builder.apply(com.commercetools.api.models.type.CustomFieldsDraftBuilder.of()).build();
+        return this;
+    }
+
+    public TransactionDraftBuilder custom(@Nullable final com.commercetools.api.models.type.CustomFieldsDraft custom) {
+        this.custom = custom;
+        return this;
+    }
+
     @Nullable
     public java.time.ZonedDateTime getTimestamp() {
         return this.timestamp;
@@ -79,17 +93,22 @@ public class TransactionDraftBuilder implements Builder<TransactionDraft> {
         return this.state;
     }
 
+    @Nullable
+    public com.commercetools.api.models.type.CustomFieldsDraft getCustom() {
+        return this.custom;
+    }
+
     public TransactionDraft build() {
         Objects.requireNonNull(type, TransactionDraft.class + ": type is missing");
         Objects.requireNonNull(amount, TransactionDraft.class + ": amount is missing");
-        return new TransactionDraftImpl(timestamp, type, amount, interactionId, state);
+        return new TransactionDraftImpl(timestamp, type, amount, interactionId, state, custom);
     }
 
     /**
      * builds TransactionDraft without checking for non null required values
      */
     public TransactionDraft buildUnchecked() {
-        return new TransactionDraftImpl(timestamp, type, amount, interactionId, state);
+        return new TransactionDraftImpl(timestamp, type, amount, interactionId, state, custom);
     }
 
     public static TransactionDraftBuilder of() {
@@ -103,6 +122,7 @@ public class TransactionDraftBuilder implements Builder<TransactionDraft> {
         builder.amount = template.getAmount();
         builder.interactionId = template.getInteractionId();
         builder.state = template.getState();
+        builder.custom = template.getCustom();
         return builder;
     }
 

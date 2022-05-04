@@ -43,6 +43,7 @@ public interface AttributeDefinitionTypeConflictError extends ErrorObject {
     public static AttributeDefinitionTypeConflictError of(final AttributeDefinitionTypeConflictError template) {
         AttributeDefinitionTypeConflictErrorImpl instance = new AttributeDefinitionTypeConflictErrorImpl();
         instance.setMessage(template.getMessage());
+
         instance.setConflictingProductTypeId(template.getConflictingProductTypeId());
         instance.setConflictingProductTypeName(template.getConflictingProductTypeName());
         instance.setConflictingAttributeName(template.getConflictingAttributeName());
@@ -60,5 +61,14 @@ public interface AttributeDefinitionTypeConflictError extends ErrorObject {
 
     default <T> T withAttributeDefinitionTypeConflictError(Function<AttributeDefinitionTypeConflictError, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<AttributeDefinitionTypeConflictError> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<AttributeDefinitionTypeConflictError>() {
+            @Override
+            public String toString() {
+                return "TypeReference<AttributeDefinitionTypeConflictError>";
+            }
+        };
     }
 }

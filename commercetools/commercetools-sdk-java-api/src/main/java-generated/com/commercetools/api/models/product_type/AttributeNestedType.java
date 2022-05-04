@@ -19,6 +19,9 @@ public interface AttributeNestedType extends AttributeType {
 
     String NESTED = "nested";
 
+    /**
+    *  <p><a href="/../api/types#reference">Reference</a> to a <a href="ctp:api:type:ProductType">ProductType</a>.</p>
+    */
     @NotNull
     @Valid
     @JsonProperty("typeReference")
@@ -46,5 +49,14 @@ public interface AttributeNestedType extends AttributeType {
 
     default <T> T withAttributeNestedType(Function<AttributeNestedType, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<AttributeNestedType> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<AttributeNestedType>() {
+            @Override
+            public String toString() {
+                return "TypeReference<AttributeNestedType>";
+            }
+        };
     }
 }

@@ -48,7 +48,7 @@ public interface ProductDraft {
     public LocalizedString getSlug();
 
     /**
-    *  <p>User-specific unique identifier for the product.</p>
+    *  <p>User-defined unique identifier for the Product.</p>
     */
 
     @JsonProperty("key")
@@ -188,5 +188,14 @@ public interface ProductDraft {
 
     default <T> T withProductDraft(Function<ProductDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<ProductDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<ProductDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<ProductDraft>";
+            }
+        };
     }
 }

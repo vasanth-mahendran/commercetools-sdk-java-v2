@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import com.commercetools.api.models.common.Money;
 import com.commercetools.api.models.payment.TransactionType;
+import com.commercetools.api.models.type.CustomFieldsDraft;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
@@ -18,7 +19,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 
 @Generated(value = "io.vrap.rmf.codegen.rendring.CoreCodeGenerator", comments = "https://github.com/vrapio/rmf-codegen")
 @JsonDeserialize(as = MyTransactionDraftImpl.class)
-public interface MyTransactionDraft {
+public interface MyTransactionDraft extends com.commercetools.api.models.CustomizableDraft<MyTransactionDraft> {
 
     /**
     *  <p>The time at which the transaction took place.</p>
@@ -51,6 +52,13 @@ public interface MyTransactionDraft {
     @JsonProperty("interactionId")
     public String getInteractionId();
 
+    /**
+    *  <p>Custom Fields for the Transaction.</p>
+    */
+    @Valid
+    @JsonProperty("custom")
+    public CustomFieldsDraft getCustom();
+
     public void setTimestamp(final ZonedDateTime timestamp);
 
     public void setType(final TransactionType type);
@@ -58,6 +66,8 @@ public interface MyTransactionDraft {
     public void setAmount(final Money amount);
 
     public void setInteractionId(final String interactionId);
+
+    public void setCustom(final CustomFieldsDraft custom);
 
     public static MyTransactionDraft of() {
         return new MyTransactionDraftImpl();
@@ -69,6 +79,7 @@ public interface MyTransactionDraft {
         instance.setType(template.getType());
         instance.setAmount(template.getAmount());
         instance.setInteractionId(template.getInteractionId());
+        instance.setCustom(template.getCustom());
         return instance;
     }
 
@@ -82,5 +93,14 @@ public interface MyTransactionDraft {
 
     default <T> T withMyTransactionDraft(Function<MyTransactionDraft, T> helper) {
         return helper.apply(this);
+    }
+
+    public static com.fasterxml.jackson.core.type.TypeReference<MyTransactionDraft> typeReference() {
+        return new com.fasterxml.jackson.core.type.TypeReference<MyTransactionDraft>() {
+            @Override
+            public String toString() {
+                return "TypeReference<MyTransactionDraft>";
+            }
+        };
     }
 }
