@@ -178,8 +178,34 @@
             ]
         },
         {
+            "moduleName": "org.apache.logging.log4j:log4j-api",
+            "moduleVersion": "2.17.2",
+            "moduleUrls": [
+                "https://www.apache.org/"
+            ],
+            "moduleLicenses": [
+                {
+                    "moduleLicense": "Apache License, Version 2.0",
+                    "moduleLicenseUrl": "https://www.apache.org/licenses/LICENSE-2.0"
+                }
+            ]
+        },
+        {
+            "moduleName": "org.apache.logging.log4j:log4j-to-slf4j",
+            "moduleVersion": "2.17.2",
+            "moduleUrls": [
+                "https://www.apache.org/"
+            ],
+            "moduleLicenses": [
+                {
+                    "moduleLicense": "Apache License, Version 2.0",
+                    "moduleLicenseUrl": "https://www.apache.org/licenses/LICENSE-2.0"
+                }
+            ]
+        },
+        {
             "moduleName": "org.slf4j:slf4j-api",
-            "moduleVersion": "1.7.32",
+            "moduleVersion": "1.7.35",
             "moduleUrls": [
                 "http://www.slf4j.org"
             ],
