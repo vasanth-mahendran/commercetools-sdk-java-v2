@@ -23,13 +23,13 @@ import io.vrap.rmf.base.client.http.InternalLogger;
 import io.vrap.rmf.base.client.utils.json.JsonException;
 import io.vrap.rmf.base.client.utils.json.JsonUtils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ConcurrentModificationMiddlewareImpl implements ConcurrentModificationMiddleware {
     static final String loggerName = ClientBuilder.COMMERCETOOLS + ".retry.concurrent_modification";
     private static final InternalLogger logger = InternalLogger.getLogger(loggerName);
-    private static final Logger classLogger = LoggerFactory.getLogger(ConcurrentModificationMiddleware.class);
+    private static final Logger classLogger = LogManager.getLogger(ConcurrentModificationMiddleware.class);
 
     public static final String VERSION = "version";
     public static final int DEFAULT_MAX_DELAY = 60000;

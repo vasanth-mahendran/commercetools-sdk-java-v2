@@ -4,10 +4,14 @@ package com.commercetools.api.client;
 import io.vrap.rmf.base.client.ApiHttpRequest;
 import io.vrap.rmf.base.client.http.InternalLogger;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 public class ApiInternalLogger extends InternalLogger {
     public ApiInternalLogger(Logger underlyingLogger) {
+        super(underlyingLogger);
+    }
+
+    public ApiInternalLogger(org.slf4j.Logger underlyingLogger) {
         super(underlyingLogger);
     }
 

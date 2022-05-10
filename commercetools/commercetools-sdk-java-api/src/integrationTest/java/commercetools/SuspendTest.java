@@ -18,14 +18,14 @@ import io.vrap.rmf.base.client.error.UnauthorizedException;
 import io.vrap.rmf.base.client.oauth2.AuthException;
 import io.vrap.rmf.base.client.oauth2.ClientCredentials;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class SuspendTest {
-    private static Logger LOGGER = LoggerFactory.getLogger(SuspendTest.class);
+    private static Logger LOGGER = LogManager.getLogger(SuspendTest.class);
     @Test
     public void testSuspension() throws InterruptedException {
         ServiceRegion region = System.getenv("CTP_REGION") == null ? ServiceRegion.GCP_EUROPE_WEST1

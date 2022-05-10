@@ -15,7 +15,7 @@ import io.vrap.rmf.base.client.http.*;
 import io.vrap.rmf.base.client.oauth2.*;
 
 import org.apache.commons.lang3.SystemUtils;
-import org.slf4j.event.Level;
+import org.apache.logging.log4j.Level;
 
 /**
     <p>The ClientBuilder is used to configure and create an {@link ApiHttpClient}. As the ApiHttpClient uses a {@link HandlerStack stack}
@@ -498,6 +498,20 @@ public class ClientBuilder implements Builder<ApiHttpClient> {
     public ClientBuilder withInternalLoggerFactory(final InternalLoggerFactory internalLoggerFactory,
             final Level responseLogEvent, final Level deprecationLogEvent, final Level defaultExceptionLogEvent,
             final Map<Class<? extends Throwable>, Level> exceptionLogEvents) {
+        return withInternalLoggerMiddleware(InternalLoggerMiddleware.of(internalLoggerFactory, responseLogEvent,
+            deprecationLogEvent, defaultExceptionLogEvent, exceptionLogEvents));
+    }
+
+    public ClientBuilder withInternalLoggerFactory(final InternalLoggerFactory internalLoggerFactory,
+            final org.slf4j.event.Level responseLogEvent, final org.slf4j.event.Level deprecationLogEvent) {
+        return withInternalLoggerMiddleware(
+            InternalLoggerMiddleware.of(internalLoggerFactory, responseLogEvent, deprecationLogEvent));
+    }
+
+    public ClientBuilder withInternalLoggerFactory(final InternalLoggerFactory internalLoggerFactory,
+            final org.slf4j.event.Level responseLogEvent, final org.slf4j.event.Level deprecationLogEvent,
+            final org.slf4j.event.Level defaultExceptionLogEvent,
+            final Map<Class<? extends Throwable>, org.slf4j.event.Level> exceptionLogEvents) {
         return withInternalLoggerMiddleware(InternalLoggerMiddleware.of(internalLoggerFactory, responseLogEvent,
             deprecationLogEvent, defaultExceptionLogEvent, exceptionLogEvents));
     }

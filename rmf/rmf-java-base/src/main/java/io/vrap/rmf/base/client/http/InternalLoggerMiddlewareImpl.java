@@ -4,20 +4,21 @@ package io.vrap.rmf.base.client.http;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.json.JsonException;
 import io.vrap.rmf.base.client.utils.json.JsonUtils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.event.Level;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Default implementation for the {@link InternalLoggerMiddleware}
  */
 class InternalLoggerMiddlewareImpl implements InternalLoggerMiddleware {
-    private static final Logger classLogger = LoggerFactory.getLogger(InternalLoggerMiddlewareImpl.class);
+    private static final Logger classLogger = LogManager.getLogger(InternalLoggerMiddlewareImpl.class);
     private final InternalLoggerFactory factory;
     private final Level deprecationLogEvent;
     private final Level responseLogEvent;
@@ -26,6 +27,28 @@ class InternalLoggerMiddlewareImpl implements InternalLoggerMiddleware {
 
     public InternalLoggerMiddlewareImpl(final InternalLoggerFactory factory) {
         this(factory, Level.INFO, Level.INFO);
+    }
+
+    public InternalLoggerMiddlewareImpl(final InternalLoggerFactory factory,
+            final org.slf4j.event.Level responseLogEvent, org.slf4j.event.Level deprecationLogEvent) {
+        this(factory, Level.forName(responseLogEvent.name(), responseLogEvent.toInt()),
+            Level.forName(deprecationLogEvent.name(), deprecationLogEvent.toInt()), Level.ERROR,
+            Collections.singletonMap(ConcurrentModificationException.class, Level.INFO));
+    }
+
+    public InternalLoggerMiddlewareImpl(final InternalLoggerFactory factory,
+            final org.slf4j.event.Level responseLogEvent, final org.slf4j.event.Level deprecationLogEvent,
+            final org.slf4j.event.Level defaultExceptionLogEvent,
+            final Map<Class<? extends Throwable>, org.slf4j.event.Level> exceptionLogEvents) {
+        this.factory = factory;
+        this.responseLogEvent = Level.forName(responseLogEvent.name(), responseLogEvent.toInt());
+        this.deprecationLogEvent = Level.forName(deprecationLogEvent.name(), deprecationLogEvent.toInt());
+        this.defaultExceptionLogEvent = Level.forName(defaultExceptionLogEvent.name(),
+            defaultExceptionLogEvent.toInt());
+        this.exceptionLogEvents = exceptionLogEvents.entrySet()
+                .stream()
+                .collect(Collectors.toMap(Map.Entry::getKey,
+                    entry -> Level.forName(entry.getValue().toString(), entry.getValue().toInt())));
     }
 
     public InternalLoggerMiddlewareImpl(final InternalLoggerFactory factory, final Level responseLogEvent,
@@ -91,20 +114,10 @@ class InternalLoggerMiddlewareImpl implements InternalLoggerMiddleware {
                             .getResponse();
                     final Level level = Optional.ofNullable(exceptionLogEvents.get(throwable.getCause().getClass()))
                             .orElse(defaultExceptionLogEvent);
-                    responseLogger.log(level, () -> String
-                            .format("%s %s %s %s %s %s", request.getMethod().name(), request.getUrl(),
-                                errorResponse.getStatusCode(), executionTime,
-                                Optional.ofNullable(errorResponse.getHeaders().getFirst(ApiHttpHeaders.SERVER_TIMING))
-                                        .orElse("-"),
-                                Optional.ofNullable(
-                                    errorResponse.getHeaders().getFirst(ApiHttpHeaders.X_CORRELATION_ID)).orElse("-"))
-                            .trim());
-                    final List<Map.Entry<String, String>> notices = errorResponse.getHeaders()
-                            .getHeaders(ApiHttpHeaders.X_DEPRECATION_NOTICE);
-                    if (notices != null) {
-                        notices.forEach(
-                            message -> logger.log(deprecationLogEvent, () -> "Deprecation notice: " + message));
-                    }
+                    responseLogger.log(level, new ResponseLogMessage(request, errorResponse, executionTime));
+                    Optional.ofNullable(response.getHeaders().getHeaders(ApiHttpHeaders.X_DEPRECATION_NOTICE))
+                            .ifPresent(notices -> notices.forEach(
+                                message -> logger.log(deprecationLogEvent, () -> "Deprecation notice: " + message)));
                     responseLogger.debug(() -> errorResponse, throwable);
                     responseLogger.trace(() -> errorResponse.getStatusCode() + "\n"
                             + Optional.ofNullable(errorResponse.getBody())
@@ -118,16 +131,10 @@ class InternalLoggerMiddlewareImpl implements InternalLoggerMiddleware {
                 }
             }
             else {
-                responseLogger.log(responseLogEvent, () -> String.format("%s %s %s %s %s %s",
-                    request.getMethod().name(), request.getUrl(), response.getStatusCode(), executionTime,
-                    Optional.ofNullable(response.getHeaders().getFirst(ApiHttpHeaders.SERVER_TIMING)).orElse("-"),
-                    Optional.ofNullable(response.getHeaders().getFirst(ApiHttpHeaders.X_CORRELATION_ID)).orElse("-"))
-                        .trim());
-                final List<Map.Entry<String, String>> notices = response.getHeaders()
-                        .getHeaders(ApiHttpHeaders.X_DEPRECATION_NOTICE);
-                if (notices != null) {
-                    notices.forEach(message -> logger.log(deprecationLogEvent, () -> "Deprecation notice: " + message));
-                }
+                responseLogger.log(responseLogEvent, () -> new ResponseLogMessage(request, response, executionTime));
+                Optional.ofNullable(response.getHeaders().getHeaders(ApiHttpHeaders.X_DEPRECATION_NOTICE))
+                        .ifPresent(notices -> notices.forEach(
+                            message -> logger.log(deprecationLogEvent, () -> "Deprecation notice: " + message)));
 
                 responseLogger.debug(() -> response);
                 responseLogger.trace(() -> response.getStatusCode() + "\n"

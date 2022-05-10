@@ -19,7 +19,7 @@ import io.vrap.rmf.base.client.http.*;
 import io.vrap.rmf.base.client.oauth2.ClientCredentials;
 import io.vrap.rmf.base.client.oauth2.TokenSupplier;
 
-import org.slf4j.event.Level;
+import org.apache.logging.log4j.Level;
 
 public class MLApiRootBuilder {
     private final ClientBuilder builder;
@@ -289,6 +289,23 @@ public class MLApiRootBuilder {
     public MLApiRootBuilder withInternalLoggerFactory(final InternalLoggerFactory internalLoggerFactory,
             final Level responseLogEvent, final Level deprecationLogEvent, final Level defaultExceptionLogEvent,
             final Map<Class<? extends Throwable>, Level> exceptionLogEvents) {
+        builder.withInternalLoggerFactory(internalLoggerFactory, responseLogEvent, deprecationLogEvent,
+            defaultExceptionLogEvent, exceptionLogEvents);
+
+        return this;
+    }
+
+    public MLApiRootBuilder withInternalLoggerFactory(final InternalLoggerFactory internalLoggerFactory,
+            final org.slf4j.event.Level responseLogEvent, final org.slf4j.event.Level deprecationLogEvent) {
+        builder.withInternalLoggerFactory(internalLoggerFactory, responseLogEvent, deprecationLogEvent);
+
+        return this;
+    }
+
+    public MLApiRootBuilder withInternalLoggerFactory(final InternalLoggerFactory internalLoggerFactory,
+            final org.slf4j.event.Level responseLogEvent, final org.slf4j.event.Level deprecationLogEvent,
+            final org.slf4j.event.Level defaultExceptionLogEvent,
+            final Map<Class<? extends Throwable>, org.slf4j.event.Level> exceptionLogEvents) {
         builder.withInternalLoggerFactory(internalLoggerFactory, responseLogEvent, deprecationLogEvent,
             defaultExceptionLogEvent, exceptionLogEvents);
 

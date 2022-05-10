@@ -3,9 +3,11 @@ package io.vrap.rmf.base.client.http;
 
 import java.util.function.Supplier;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.event.Level;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.message.Message;
+import org.apache.logging.slf4j.SLF4JLogger;
 
 /**
  * Unified logger instance to perform logging only for configured logging levels.
@@ -17,93 +19,97 @@ public class InternalLogger {
     public static final String TOPIC_REQUEST = "request";
     public static final String TOPIC_RESPONSE = "response";
 
+    protected InternalLogger(final org.slf4j.Logger underlyingLogger) {
+        this.underlyingLogger = new SLF4JLogger(underlyingLogger.getName(), underlyingLogger);
+    }
+
     protected InternalLogger(final Logger underlyingLogger) {
         this.underlyingLogger = underlyingLogger;
     }
 
     public static InternalLogger getLogger(final Class<?> clazz) {
-        return new InternalLogger(LoggerFactory.getLogger(clazz));
+        return new InternalLogger(LogManager.getLogger(clazz));
     }
 
     public static InternalLogger getLogger(final String loggerName) {
-        return new InternalLogger(LoggerFactory.getLogger(loggerName));
+        return new InternalLogger(LogManager.getLogger(loggerName));
     }
 
     public boolean isTraceEnabled() {
         return underlyingLogger.isTraceEnabled();
     }
 
-    public InternalLogger debug(final Supplier<Object> message) {
-        if (underlyingLogger.isDebugEnabled()) {
-            underlyingLogger.debug(message.get().toString());
-        }
+    public InternalLogger debug(final Supplier<?> message) {
+        underlyingLogger.debug(message::get);
         return this;
     }
 
-    public InternalLogger debug(final Supplier<Object> message, final Throwable throwable) {
-        if (underlyingLogger.isDebugEnabled()) {
-            underlyingLogger.debug(message.get().toString(), throwable);
-        }
+    public InternalLogger debug(final Supplier<?> message, final Throwable throwable) {
+        underlyingLogger.debug(message::get, throwable);
         return this;
     }
 
-    public InternalLogger info(final Supplier<Object> message) {
-        if (underlyingLogger.isInfoEnabled()) {
-            underlyingLogger.info(message.get().toString());
-        }
+    public InternalLogger info(final Supplier<?> message) {
+        underlyingLogger.info(message::get);
         return this;
     }
 
-    public InternalLogger info(final Supplier<Object> message, final Throwable throwable) {
-        if (underlyingLogger.isInfoEnabled()) {
-            underlyingLogger.info(message.get().toString(), throwable);
-        }
+    public InternalLogger info(final Supplier<?> message, final Throwable throwable) {
+        underlyingLogger.info(message::get, throwable);
         return this;
     }
 
-    public InternalLogger trace(final Supplier<Object> message) {
-        if (isTraceEnabled()) {
-            underlyingLogger.trace(message.get().toString());
-        }
+    public InternalLogger trace(final Supplier<?> message) {
+        underlyingLogger.trace(message::get);
         return this;
     }
 
-    public InternalLogger trace(final Supplier<Object> message, final Throwable throwable) {
-        if (underlyingLogger.isTraceEnabled()) {
-            underlyingLogger.trace(message.get().toString(), throwable);
-        }
+    public InternalLogger trace(final Supplier<?> message, final Throwable throwable) {
+        underlyingLogger.trace(message::get, throwable);
         return this;
     }
 
-    public InternalLogger warn(final Supplier<Object> message) {
-        if (underlyingLogger.isWarnEnabled()) {
-            underlyingLogger.warn(message.get().toString());
-        }
+    public InternalLogger warn(final Supplier<?> message) {
+        underlyingLogger.warn(message::get);
         return this;
     }
 
-    public InternalLogger warn(final Supplier<Object> message, final Throwable throwable) {
-        if (underlyingLogger.isWarnEnabled()) {
-            underlyingLogger.warn(message.get().toString(), throwable);
-        }
+    public InternalLogger warn(final Supplier<?> message, final Throwable throwable) {
+        underlyingLogger.warn(message::get, throwable);
         return this;
     }
 
-    public InternalLogger error(final Supplier<Object> message) {
-        if (underlyingLogger.isErrorEnabled()) {
-            underlyingLogger.error(message.get().toString());
-        }
+    public InternalLogger error(final Supplier<?> message) {
+        underlyingLogger.error(message);
         return this;
     }
 
-    public InternalLogger error(final Supplier<Object> message, final Throwable throwable) {
-        if (underlyingLogger.isErrorEnabled()) {
-            underlyingLogger.error(message.get().toString(), throwable);
-        }
+    public InternalLogger error(final Supplier<?> message, final Throwable throwable) {
+        underlyingLogger.error(message::get, throwable);
         return this;
     }
 
-    public InternalLogger log(final Level level, final Supplier<Object> message) {
+    public InternalLogger log(final Level level, final Supplier<?> message) {
+        underlyingLogger.log(level, message::get);
+        return this;
+    }
+
+    public InternalLogger log(final Level level, final Supplier<?> message, final Throwable throwable) {
+        underlyingLogger.log(level, message::get, throwable);
+        return this;
+    }
+
+    public InternalLogger log(final Level level, final Message message) {
+        underlyingLogger.log(level, message);
+        return this;
+    }
+
+    public InternalLogger log(final Level level, final Message message, final Throwable throwable) {
+        underlyingLogger.log(level, message, throwable);
+        return this;
+    }
+
+    public InternalLogger log(final org.slf4j.event.Level level, final Supplier<?> message) {
         switch (level) {
             case INFO:
                 return info(message);
@@ -119,7 +125,7 @@ public class InternalLogger {
         return this;
     }
 
-    public InternalLogger log(final Level level, final Supplier<Object> message, final Throwable throwable) {
+    public InternalLogger log(final org.slf4j.event.Level level, final Supplier<?> message, final Throwable throwable) {
         switch (level) {
             case INFO:
                 return info(message, throwable);

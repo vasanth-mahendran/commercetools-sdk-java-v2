@@ -16,8 +16,8 @@ import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.utils.json.JsonException;
 import io.vrap.rmf.base.client.utils.json.JsonUtils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Implementation for a retry of a requests upon configured response status codes
@@ -41,7 +41,7 @@ public class RetryMiddleware implements RetryRequestMiddleware, AutoCloseable {
     @Deprecated
     public static final List<Integer> DEFAULT_RETRY_STATUS_CODES = RetryRequestMiddleware.DEFAULT_RETRY_STATUS_CODES;
     private static final InternalLogger logger = InternalLogger.getLogger(loggerName);
-    private static final Logger classLogger = LoggerFactory.getLogger(RetryMiddleware.class);
+    private static final Logger classLogger = LogManager.getLogger(RetryMiddleware.class);
 
     private final FailsafeExecutor<ApiHttpResponse<byte[]>> failsafeExecutor;
 
