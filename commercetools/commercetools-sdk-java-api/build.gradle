@@ -7,6 +7,8 @@ dependencies {
     implementation "com.google.code.findbugs:jsr305:${versions.findbugs}"
     implementation "javax.validation:validation-api:${versions.validation}"
     api "org.slf4j:slf4j-api:${versions.slf4j}"
+    api "org.apache.logging.log4j:log4j-api:${versions.log4j}"
+    api "org.apache.logging.log4j:log4j-to-slf4j:${versions.log4j}"
     api commons.lang3
 
     testImplementation project(':commercetools:commercetools-http-client')
