@@ -12,6 +12,9 @@ import com.commercetools.api.models.me.MyCartDraftBuilder;
 import com.commercetools.api.models.me.MyCartUpdateBuilder;
 import com.commercetools.api.models.me.MyLineItemDraftBuilder;
 
+import com.newrelic.api.agent.NewRelic;
+import com.newrelic.api.agent.Token;
+import com.newrelic.api.agent.Trace;
 import io.vrap.rmf.base.client.ApiHttpResponse;
 
 import org.springframework.web.server.WebSession;
@@ -55,8 +58,11 @@ public class MeRepository {
         return addToCart(sku, 1);
     }
 
+    @Trace(async = true)
     public Mono<Cart> addToCart(final String sku, final long quantity) {
+        Token t = NewRelic.getAgent().getTransaction().getToken();
         return meCart().flatMap(cart -> {
+            t.link();
             if (cart.getId() == null) {
                 return Mono
                         .fromFuture(apiRoot.me()
@@ -70,7 +76,8 @@ public class MeRepository {
                         .doOnSuccess(c -> {
                             session.getAttributes().put(SESSION_CART, c.getId());
                             session.getAttributes().put(SESSION_CART_ITEMS, c.getTotalLineItemQuantity());
-                        });
+                        })
+                        .doFinally(cartSignal -> t.linkAndExpire());
             }
             return Mono.fromFuture(apiRoot.me()
                     .carts()
@@ -80,12 +87,16 @@ public class MeRepository {
                             .actions(MyCartAddLineItemActionBuilder.of().sku(sku).quantity(quantity).build())
                             .build())
                     .execute()
-                    .thenApply(ApiHttpResponse::getBody));
+                    .thenApply(ApiHttpResponse::getBody))
+                    .doFinally(cartSignal -> t.linkAndExpire());
         });
     }
 
+    @Trace(async = true)
     public Mono<Cart> removeFromCart(final String lineItemId) {
+        Token t = NewRelic.getAgent().getTransaction().getToken();
         return meCart().flatMap(cart -> {
+            t.link();
             if (cart.getId() == null) {
                 return Mono.just(emptyCart());
             }
@@ -97,7 +108,8 @@ public class MeRepository {
                             .withActions(actionBuilder -> actionBuilder.removeLineItemBuilder().lineItemId(lineItemId))
                             .build())
                     .execute()
-                    .thenApply(ApiHttpResponse::getBody));
+                    .thenApply(ApiHttpResponse::getBody))
+                    .doFinally(signalType -> t.linkAndExpire());
         });
     }
 }

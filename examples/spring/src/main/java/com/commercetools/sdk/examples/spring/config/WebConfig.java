@@ -34,7 +34,6 @@ public class WebConfig implements ApplicationContextAware, WebFluxConfigurer {
     }
 
     public void addViewControllers(ViewControllerRegistry registry) {
-        //        registry.addViewController("/home").setViewName("home");
         registry.addViewController("/").setViewName("home");
         registry.addViewController("/login").setViewName("login");
     }
@@ -63,7 +62,6 @@ public class WebConfig implements ApplicationContextAware, WebFluxConfigurer {
 
     }
 
-
     @Bean
     public ISpringWebFluxTemplateEngine thymeleafTemplateEngine() {
         // We override here the SpringTemplateEngine instance that would otherwise be
@@ -81,8 +79,6 @@ public class WebConfig implements ApplicationContextAware, WebFluxConfigurer {
     public ThymeleafReactiveViewResolver thymeleafChunkedAndDataDrivenViewResolver() {
         final ThymeleafReactiveViewResolver viewResolver = new ThymeleafReactiveViewResolver();
         viewResolver.setTemplateEngine(thymeleafTemplateEngine());
-        //        viewResolver.setOrder(1);
-        //        viewResolver.setViewNames(new String[]{"home"});
         viewResolver.setResponseMaxChunkSizeBytes(8192); // OUTPUT BUFFER size limit
         return viewResolver;
     }

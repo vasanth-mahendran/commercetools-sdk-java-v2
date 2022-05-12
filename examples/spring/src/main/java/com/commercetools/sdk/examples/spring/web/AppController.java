@@ -10,10 +10,10 @@ import com.commercetools.api.models.product.ProductProjection;
 import com.commercetools.sdk.examples.spring.service.MeRepository;
 import com.commercetools.sdk.examples.spring.service.ProductsRepository;
 import com.commercetools.sdk.examples.spring.service.ProjectRepository;
+import com.newrelic.api.agent.Trace;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,11 +41,11 @@ public class AppController {
     @GetMapping("/login")
     public String viewLoginPage(ServerWebExchange exchange, Model model) {
         // custom logic before showing login page...
-//        Mono<CsrfToken> token = exchange.getAttributeOrDefault(CsrfToken.class.getName(), Mono.empty());
-//        return token.map(t -> {
-//            model.addAttribute("_csrf", t);
-//            return "login";
-//        });
+        //        Mono<CsrfToken> token = exchange.getAttributeOrDefault(CsrfToken.class.getName(), Mono.empty());
+        //        return token.map(t -> {
+        //            model.addAttribute("_csrf", t);
+        //            return "login";
+        //        });
         return "login";
     }
 
@@ -61,6 +61,7 @@ public class AppController {
     }
 
     @GetMapping("/p")
+    @Trace(dispatcher = true)
     public String pop(@RequestAttribute("meClient") ProjectApiRoot client, Model model, WebSession session) {
 
         Mono<List<ProductProjection>> products = productsRepository.products();
@@ -72,6 +73,7 @@ public class AppController {
     }
 
     @GetMapping("/cart")
+    @Trace(dispatcher = true)
     public String myCart(@RequestAttribute("meClient") ProjectApiRoot client, Model model, WebSession session) {
         final Mono<Cart> cart = new MeRepository(client, session).meCart();
 
@@ -80,7 +82,9 @@ public class AppController {
     }
 
     @GetMapping("/cart/add")
-    public RedirectView addToCart(@RequestAttribute("meClient") ProjectApiRoot client, String sku, Model model, WebSession session) {
+    @Trace(dispatcher = true)
+    public RedirectView addToCart(@RequestAttribute("meClient") ProjectApiRoot client, String sku, Model model,
+            WebSession session) {
         MeRepository repository = new MeRepository(client, session);
 
         final Mono<Cart> cart = repository.addToCart(sku);
@@ -90,7 +94,9 @@ public class AppController {
     }
 
     @GetMapping("/cart/del")
-    public RedirectView removeFromCart(@RequestAttribute("meClient") ProjectApiRoot client, String lineItemId, Model model, WebSession session) {
+    @Trace(dispatcher = true)
+    public RedirectView removeFromCart(@RequestAttribute("meClient") ProjectApiRoot client, String lineItemId,
+            Model model, WebSession session) {
         MeRepository repository = new MeRepository(client, session);
 
         final Mono<Cart> cart = repository.removeFromCart(lineItemId);
@@ -100,6 +106,7 @@ public class AppController {
     }
 
     @GetMapping("/me")
+    @Trace(dispatcher = true)
     public String me(@RequestAttribute("meClient") ProjectApiRoot client, Model model, WebSession session) {
         final Mono<Customer> customer = new MeRepository(client, session).me();
         model.addAttribute("customer", customer);
