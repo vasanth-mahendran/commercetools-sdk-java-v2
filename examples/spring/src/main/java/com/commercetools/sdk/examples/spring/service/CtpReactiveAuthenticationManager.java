@@ -72,7 +72,7 @@ public class CtpReactiveAuthenticationManager implements ReactiveAuthenticationM
                         return Mono.fromFuture(supplier.getToken().exceptionally(throwable -> null));
                     })
                     .switchIfEmpty(Mono.defer(() -> Mono.error(new BadCredentialsException("Invalid Credentials"))))
-                    .<Authentication>map(token -> {
+                    .<Authentication> map(token -> {
                         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
                         GrantedAuthority authority = new TokenGrantedAuthority("ROLE_USER", token);
                         Collection<GrantedAuthority> updatedAuthorities = new ArrayList<>();
@@ -81,8 +81,10 @@ public class CtpReactiveAuthenticationManager implements ReactiveAuthenticationM
 
                         return new UsernamePasswordAuthenticationToken(authentication.getPrincipal(), "",
                             updatedAuthorities);
-                    }).doAfterTerminate(t::expire);
+                    })
+                    .doAfterTerminate(t::expire);
         }
-        return Mono.<Authentication>defer(() -> Mono.error(new BadCredentialsException("Invalid authentication"))).doAfterTerminate(t::expire);
+        return Mono.<Authentication> defer(() -> Mono.error(new BadCredentialsException("Invalid authentication")))
+                .doAfterTerminate(t::expire);
     }
 }
