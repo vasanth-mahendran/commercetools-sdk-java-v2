@@ -2,6 +2,7 @@
 package com.commercetools.sdk.examples.spring.service;
 
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import java.util.stream.Collectors;

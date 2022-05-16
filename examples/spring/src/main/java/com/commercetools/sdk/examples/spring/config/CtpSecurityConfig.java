@@ -1,6 +1,8 @@
 
 package com.commercetools.sdk.examples.spring.config;
 
+import java.time.Duration;
+
 import com.commercetools.api.models.cart.CartResourceIdentifierBuilder;
 import com.commercetools.sdk.examples.spring.service.MeRepository;
 
@@ -19,6 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.WebFilterExchange;
 import org.springframework.security.web.server.authentication.*;
+import org.springframework.security.web.server.authentication.logout.*;
 import org.springframework.security.web.server.context.ServerSecurityContextRepository;
 import org.springframework.security.web.server.context.WebSessionServerSecurityContextRepository;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
@@ -41,8 +44,17 @@ public class CtpSecurityConfig {
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) throws Exception {
         ServerSecurityContextRepository securityContextRepository = new WebSessionServerSecurityContextRepository();
         return http.securityContextRepository(securityContextRepository)
+                .anonymous()
+                .and()
                 .addFilterBefore(new LoginWebFilter(authenticationManager, securityContextRepository),
                     SecurityWebFiltersOrder.FORM_LOGIN)
+                .logout()
+                .logoutUrl("/logout")
+                .requiresLogout(ServerWebExchangeMatchers.pathMatchers(HttpMethod.GET, "/logout"))
+                .logoutHandler(new DelegatingServerLogoutHandler(new WebSessionServerLogoutHandler(),
+                    new SecurityContextServerLogoutHandler()))
+                .logoutSuccessHandler(new RedirectServerLogoutSuccessHandler())
+                .and()
                 .formLogin()
                 .loginPage("/login")
                 .requiresAuthenticationMatcher(ServerWebExchangeMatchers.pathMatchers("none"))
@@ -112,8 +124,15 @@ public class CtpSecurityConfig {
                     .findFirst()
                     .get();
             storage.setToken(authority.getToken());
+
+            if (authentication.getPrincipal() instanceof CtpUserDetails) {
+                exchange.getSession().blockOptional(Duration.ofMillis(500)).ifPresent(session -> {
+                    session.getAttributes()
+                            .put(MeRepository.SESSION_CART, ((CtpUserDetails) authentication.getPrincipal()).getCart());
+                    session.save();
+                });
+            }
             return webFilterExchange.getChain().filter(exchange);
         }
-
     }
 }
