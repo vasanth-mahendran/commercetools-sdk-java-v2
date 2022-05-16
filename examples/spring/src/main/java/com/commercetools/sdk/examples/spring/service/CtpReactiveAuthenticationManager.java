@@ -16,38 +16,30 @@ import com.newrelic.api.agent.NewRelic;
 import com.newrelic.api.agent.Token;
 
 import io.vrap.rmf.base.client.*;
+import io.vrap.rmf.base.client.oauth2.ClientCredentials;
 import io.vrap.rmf.base.client.oauth2.GlobalCustomerPasswordTokenSupplier;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
-@Component
-@EnableAutoConfiguration
 public class CtpReactiveAuthenticationManager implements ReactiveAuthenticationManager {
     VrapHttpClient client;
     ProjectApiRoot apiRoot;
 
-    @Value(value = "${ctp.client.id}")
-    private String clientId;
+    private final ClientCredentials credentials;
 
-    @Value(value = "${ctp.client.secret}")
-    private String clientSecret;
+    private final String projectKey;
 
-    @Value(value = "${ctp.project.key}")
-    private String projectKey;
-
-    @Autowired
-    public CtpReactiveAuthenticationManager(ProjectApiRoot apiRoot) {
+    public CtpReactiveAuthenticationManager(final ProjectApiRoot apiRoot, final ClientCredentials credentials,
+            final String projectKey) {
         this.apiRoot = apiRoot;
         this.client = HttpClientSupplier.of().get();
+        this.credentials = credentials;
+        this.projectKey = projectKey;
     }
 
     @Override
@@ -69,8 +61,9 @@ public class CtpReactiveAuthenticationManager implements ReactiveAuthenticationM
                             .execute()
                             .exceptionally(throwable -> null))
                     .flatMap(customerSignInResultApiHttpResponse -> {
-                        GlobalCustomerPasswordTokenSupplier supplier = new GlobalCustomerPasswordTokenSupplier(clientId,
-                            clientSecret, authentication.getName(), authentication.getCredentials().toString(), null,
+                        GlobalCustomerPasswordTokenSupplier supplier = new GlobalCustomerPasswordTokenSupplier(
+                            credentials.getClientId(), credentials.getClientSecret(), authentication.getName(),
+                            authentication.getCredentials().toString(), null,
                             ServiceRegion.GCP_EUROPE_WEST1.getPasswordFlowTokenURL(projectKey), client);
 
                         return Mono.zip(Mono.fromFuture(supplier.getToken().exceptionally(throwable -> null)),
