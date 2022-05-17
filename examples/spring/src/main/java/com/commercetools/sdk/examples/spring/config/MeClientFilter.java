@@ -4,8 +4,8 @@ package com.commercetools.sdk.examples.spring.config;
 import com.commercetools.api.client.ProjectApiRoot;
 import com.commercetools.api.defaultconfig.ApiRootBuilder;
 import com.commercetools.api.defaultconfig.ServiceRegion;
-
 import com.commercetools.sdk.examples.spring.service.CtpClientBeanService;
+
 import io.vrap.rmf.base.client.ApiHttpClient;
 import io.vrap.rmf.base.client.oauth2.ClientCredentials;
 import io.vrap.rmf.base.client.oauth2.TokenStorage;

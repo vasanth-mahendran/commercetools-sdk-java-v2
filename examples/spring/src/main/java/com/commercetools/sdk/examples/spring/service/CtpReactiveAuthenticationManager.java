@@ -6,9 +6,10 @@ import java.util.Collection;
 
 import com.commercetools.api.client.ProjectApiRoot;
 import com.commercetools.api.defaultconfig.ServiceRegion;
-import com.commercetools.api.models.customer.CustomerSigninBuilder;
-import com.commercetools.sdk.examples.spring.config.CustomerAuthenticationToken;
+import com.commercetools.api.models.customer.MyCustomerSigninBuilder;
 import com.commercetools.sdk.examples.spring.config.TokenGrantedAuthority;
+import com.newrelic.api.agent.NewRelic;
+import com.newrelic.api.agent.Token;
 
 import io.vrap.rmf.base.client.*;
 import io.vrap.rmf.base.client.oauth2.GlobalCustomerPasswordTokenSupplier;
@@ -47,20 +48,22 @@ public class CtpReactiveAuthenticationManager implements ReactiveAuthenticationM
 
     @Override
     public Mono<Authentication> authenticate(Authentication authentication) {
+        Token t = NewRelic.getAgent().getTransaction().getToken();
         if (authentication instanceof UsernamePasswordAuthenticationToken) {
             if (authentication.getCredentials() == null || authentication.getPrincipal() == null) {
                 return Mono.defer(() -> Mono.error(new BadCredentialsException("Invalid Credentials")));
             }
-            CustomerSigninBuilder customerSignin = CustomerSigninBuilder.of()
+            MyCustomerSigninBuilder customerSignin = MyCustomerSigninBuilder.of()
                     .email(authentication.getName())
                     .password(authentication.getCredentials().toString());
-            if (authentication instanceof CustomerAuthenticationToken) {
-                customerSignin.anonymousCart(((CustomerAuthenticationToken) authentication).getCart());
-            }
 
             return Mono
-                    .fromFuture(
-                        apiRoot.me().login().post(customerSignin.build()).execute().exceptionally(throwable -> null))
+                    .fromFuture(apiRoot.me()
+                            .login()
+                            .post(customerSignin.build())
+                            .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
+                            .execute()
+                            .exceptionally(throwable -> null))
                     .flatMap(customerSignInResultApiHttpResponse -> {
                         GlobalCustomerPasswordTokenSupplier supplier = new GlobalCustomerPasswordTokenSupplier(clientId,
                             clientSecret, authentication.getName(), authentication.getCredentials().toString(), null,
@@ -69,7 +72,7 @@ public class CtpReactiveAuthenticationManager implements ReactiveAuthenticationM
                         return Mono.fromFuture(supplier.getToken().exceptionally(throwable -> null));
                     })
                     .switchIfEmpty(Mono.defer(() -> Mono.error(new BadCredentialsException("Invalid Credentials"))))
-                    .map(token -> {
+                    .<Authentication>map(token -> {
                         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
                         GrantedAuthority authority = new TokenGrantedAuthority("ROLE_USER", token);
                         Collection<GrantedAuthority> updatedAuthorities = new ArrayList<>();
@@ -78,8 +81,8 @@ public class CtpReactiveAuthenticationManager implements ReactiveAuthenticationM
 
                         return new UsernamePasswordAuthenticationToken(authentication.getPrincipal(), "",
                             updatedAuthorities);
-                    });
+                    }).doAfterTerminate(t::expire);
         }
-        return Mono.defer(() -> Mono.error(new BadCredentialsException("Invalid authentication")));
+        return Mono.<Authentication>defer(() -> Mono.error(new BadCredentialsException("Invalid authentication"))).doAfterTerminate(t::expire);
     }
 }

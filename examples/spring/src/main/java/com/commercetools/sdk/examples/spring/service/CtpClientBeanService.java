@@ -49,8 +49,12 @@ public class CtpClientBeanService {
         @Override
         public CompletableFuture<ApiHttpResponse<byte[]>> invoke(ApiHttpRequest request,
                 Function<ApiHttpRequest, CompletableFuture<ApiHttpResponse<byte[]>>> next) {
+            if (request.getContext() instanceof Token) {
+                ((Token) request.getContext()).link();
+            }
             Segment segment = NewRelic.getAgent().getTransaction().startSegment("commercetools");
-            List<String> pathInfo = Arrays.stream(request.getUri().getPath().replaceFirst("/", "").split("/")).collect(Collectors.toList());
+            List<String> pathInfo = Arrays.stream(request.getUri().getPath().replaceFirst("/", "").split("/"))
+                    .collect(Collectors.toList());
             String projectKey = pathInfo.size() > 0 ? pathInfo.get(0) : "-";
             String domainEndpoint = pathInfo.size() > 1 ? pathInfo.get(1) : "-";
             String op = "-";
@@ -58,7 +62,8 @@ public class CtpClientBeanService {
                 case 2:
                     if (request.getMethod() == ApiHttpMethod.GET) {
                         op = "query";
-                    } else if (request.getMethod() == ApiHttpMethod.POST) {
+                    }
+                    else if (request.getMethod() == ApiHttpMethod.POST) {
                         op = "create";
                     }
                     break;
@@ -66,14 +71,18 @@ public class CtpClientBeanService {
                     if (pathInfo.get(1).equals("me")) {
                         if (request.getMethod() == ApiHttpMethod.GET) {
                             op = "get";
-                        } else if (request.getMethod() == ApiHttpMethod.POST) {
+                        }
+                        else if (request.getMethod() == ApiHttpMethod.POST) {
                             op = "create";
                         }
-                    } else if (request.getMethod() == ApiHttpMethod.GET) {
+                    }
+                    else if (request.getMethod() == ApiHttpMethod.GET) {
                         op = "get";
-                    } else if (request.getMethod() == ApiHttpMethod.POST) {
+                    }
+                    else if (request.getMethod() == ApiHttpMethod.POST) {
                         op = "update";
-                    } else if (request.getMethod() == ApiHttpMethod.DELETE) {
+                    }
+                    else if (request.getMethod() == ApiHttpMethod.DELETE) {
                         op = "delete";
                     }
                     break;
@@ -81,9 +90,11 @@ public class CtpClientBeanService {
                     if (pathInfo.get(1).equals("me")) {
                         if (request.getMethod() == ApiHttpMethod.GET) {
                             op = "get";
-                        } else if (request.getMethod() == ApiHttpMethod.POST) {
+                        }
+                        else if (request.getMethod() == ApiHttpMethod.POST) {
                             op = "update";
-                        } else if (request.getMethod() == ApiHttpMethod.DELETE) {
+                        }
+                        else if (request.getMethod() == ApiHttpMethod.DELETE) {
                             op = "delete";
                         }
                     }
@@ -106,8 +117,12 @@ public class CtpClientBeanService {
                                 .noInboundHeaders()
                                 .status(errorResponse.getStatusCode(), errorResponse.getMessage())
                                 .build();
-                        segment.addCustomAttribute("serverTiming", Optional.ofNullable(response.getHeaders().getFirst(ApiHttpHeaders.SERVER_TIMING)).orElse("-"));
-                        segment.addCustomAttribute("correlationId", Optional.ofNullable(errorResponse.getHeaders().getFirst(ApiHttpHeaders.X_CORRELATION_ID)).orElse("-"));
+                        segment.addCustomAttribute("serverTiming",
+                            Optional.ofNullable(response.getHeaders().getFirst(ApiHttpHeaders.SERVER_TIMING))
+                                    .orElse("-"));
+                        segment.addCustomAttribute("correlationId",
+                            Optional.ofNullable(errorResponse.getHeaders().getFirst(ApiHttpHeaders.X_CORRELATION_ID))
+                                    .orElse("-"));
                         segment.reportAsExternal(p);
                         segment.endAsync();
                     }
@@ -120,8 +135,10 @@ public class CtpClientBeanService {
                         .noInboundHeaders()
                         .status(response.getStatusCode(), response.getMessage())
                         .build();
-                segment.addCustomAttribute("serverTiming", Optional.ofNullable(response.getHeaders().getFirst(ApiHttpHeaders.SERVER_TIMING)).orElse("-"));
-                segment.addCustomAttribute("correlationId", Optional.ofNullable(response.getHeaders().getFirst(ApiHttpHeaders.X_CORRELATION_ID)).orElse("-"));
+                segment.addCustomAttribute("serverTiming",
+                    Optional.ofNullable(response.getHeaders().getFirst(ApiHttpHeaders.SERVER_TIMING)).orElse("-"));
+                segment.addCustomAttribute("correlationId",
+                    Optional.ofNullable(response.getHeaders().getFirst(ApiHttpHeaders.X_CORRELATION_ID)).orElse("-"));
                 segment.reportAsExternal(p);
                 segment.endAsync();
             });
@@ -132,7 +149,10 @@ public class CtpClientBeanService {
     @Autowired
     public ProjectApiRoot apiRoot(ApiHttpClient client) {
 
-        final ProjectApiRoot apiRoot = ApiRootBuilder.of(client).withApiBaseUrl(ServiceRegion.GCP_EUROPE_WEST1.getApiUrl()).withMiddleware(new NewRelicMiddleware()).build(projectKey);
+        final ProjectApiRoot apiRoot = ApiRootBuilder.of(client)
+                .withApiBaseUrl(ServiceRegion.GCP_EUROPE_WEST1.getApiUrl())
+                .withMiddleware(new NewRelicMiddleware())
+                .build(projectKey);
 
         return apiRoot;
     }

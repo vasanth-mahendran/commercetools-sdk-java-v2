@@ -18,6 +18,8 @@ public class ApiHttpRequest extends Base {
     private ApiHttpHeaders headers;
     private byte[] body;
 
+    private Object context;
+
     public ApiHttpRequest() {
     }
 
@@ -28,11 +30,31 @@ public class ApiHttpRequest extends Base {
         this.body = body;
     }
 
+    public ApiHttpRequest(final ApiHttpMethod method, final URI uri, final ApiHttpHeaders headers, final byte[] body, final Object context) {
+        this.method = method;
+        this.uri = uri;
+        this.headers = headers;
+        this.body = body;
+        this.context = context;
+    }
+
     public ApiHttpRequest(final ApiHttpRequest r) {
         this.method = r.method;
         this.uri = r.uri;
         this.headers = r.headers;
         this.body = r.body;
+        this.context = r.context;
+    }
+
+    public Object getContext() {
+        return context;
+    }
+
+    public ApiHttpRequest withContext(Object context) {
+        ApiHttpRequest request = copy();
+        request.context = context;
+
+        return request;
     }
 
     public ApiHttpMethod getMethod() {

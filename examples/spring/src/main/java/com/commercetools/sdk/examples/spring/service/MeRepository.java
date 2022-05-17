@@ -11,10 +11,10 @@ import com.commercetools.api.models.me.MyCartAddLineItemActionBuilder;
 import com.commercetools.api.models.me.MyCartDraftBuilder;
 import com.commercetools.api.models.me.MyCartUpdateBuilder;
 import com.commercetools.api.models.me.MyLineItemDraftBuilder;
-
 import com.newrelic.api.agent.NewRelic;
 import com.newrelic.api.agent.Token;
 import com.newrelic.api.agent.Trace;
+
 import io.vrap.rmf.base.client.ApiHttpResponse;
 
 import org.springframework.web.server.WebSession;
@@ -38,10 +38,21 @@ public class MeRepository {
     }
 
     public Mono<Cart> meCart() {
+        Token t = NewRelic.getAgent().getTransaction().getToken();
+        return meCart(t).doAfterTerminate(t::expire);
+    }
+
+    public Mono<Cart> meCart(Token t) {
         if (session.getAttribute(SESSION_CART) == null) {
             return Mono.just(emptyCart());
         }
-        return Mono.fromFuture(apiRoot.me().activeCart().get().execute().thenApply(ApiHttpResponse::getBody))
+        return Mono
+                .fromFuture(apiRoot.me()
+                        .activeCart()
+                        .get()
+                        .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
+                        .execute()
+                        .thenApply(ApiHttpResponse::getBody))
                 .doOnSuccess(cart -> {
                     session.getAttributes().put(SESSION_CART, cart.getId());
                     session.getAttributes().put(SESSION_CART_ITEMS, cart.getTotalLineItemQuantity());
@@ -50,8 +61,15 @@ public class MeRepository {
     }
 
     public Mono<Customer> me() {
-        return Mono.fromFuture(
-            apiRoot.me().get().execute().thenApply(ApiHttpResponse::getBody).exceptionally(throwable -> null));
+        Token t = NewRelic.getAgent().getTransaction().getToken();
+        return Mono
+                .fromFuture(apiRoot.me()
+                        .get()
+                        .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
+                        .execute()
+                        .thenApply(ApiHttpResponse::getBody)
+                        .exceptionally(throwable -> null))
+                .doAfterTerminate(t::expire);
     }
 
     public Mono<Cart> addToCart(final String sku) {
@@ -61,7 +79,7 @@ public class MeRepository {
     @Trace(async = true)
     public Mono<Cart> addToCart(final String sku, final long quantity) {
         Token t = NewRelic.getAgent().getTransaction().getToken();
-        return meCart().flatMap(cart -> {
+        return meCart(t).flatMap(cart -> {
             t.link();
             if (cart.getId() == null) {
                 return Mono
@@ -71,45 +89,51 @@ public class MeRepository {
                                         .currency("EUR")
                                         .lineItems(MyLineItemDraftBuilder.of().sku(sku).quantity(quantity).build())
                                         .build())
+                                .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
                                 .execute()
                                 .thenApply(ApiHttpResponse::getBody))
                         .doOnSuccess(c -> {
                             session.getAttributes().put(SESSION_CART, c.getId());
                             session.getAttributes().put(SESSION_CART_ITEMS, c.getTotalLineItemQuantity());
                         })
-                        .doFinally(cartSignal -> t.linkAndExpire());
+                        .doAfterTerminate(t::expire);
             }
-            return Mono.fromFuture(apiRoot.me()
-                    .carts()
-                    .withId(cart.getId())
-                    .post(MyCartUpdateBuilder.of()
-                            .version(cart.getVersion())
-                            .actions(MyCartAddLineItemActionBuilder.of().sku(sku).quantity(quantity).build())
-                            .build())
-                    .execute()
-                    .thenApply(ApiHttpResponse::getBody))
-                    .doFinally(cartSignal -> t.linkAndExpire());
+            return Mono
+                    .fromFuture(apiRoot.me()
+                            .carts()
+                            .withId(cart.getId())
+                            .post(MyCartUpdateBuilder.of()
+                                    .version(cart.getVersion())
+                                    .actions(MyCartAddLineItemActionBuilder.of().sku(sku).quantity(quantity).build())
+                                    .build())
+                            .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
+                            .execute()
+                            .thenApply(ApiHttpResponse::getBody))
+                    .doAfterTerminate(t::expire);
         });
     }
 
     @Trace(async = true)
     public Mono<Cart> removeFromCart(final String lineItemId) {
         Token t = NewRelic.getAgent().getTransaction().getToken();
-        return meCart().flatMap(cart -> {
+        return meCart(t).flatMap(cart -> {
             t.link();
             if (cart.getId() == null) {
                 return Mono.just(emptyCart());
             }
-            return Mono.fromFuture(apiRoot.me()
-                    .carts()
-                    .withId(cart.getId())
-                    .post(MyCartUpdateBuilder.of()
-                            .version(cart.getVersion())
-                            .withActions(actionBuilder -> actionBuilder.removeLineItemBuilder().lineItemId(lineItemId))
-                            .build())
-                    .execute()
-                    .thenApply(ApiHttpResponse::getBody))
-                    .doFinally(signalType -> t.linkAndExpire());
+            return Mono
+                    .fromFuture(apiRoot.me()
+                            .carts()
+                            .withId(cart.getId())
+                            .post(MyCartUpdateBuilder.of()
+                                    .version(cart.getVersion())
+                                    .withActions(
+                                        actionBuilder -> actionBuilder.removeLineItemBuilder().lineItemId(lineItemId))
+                                    .build())
+                            .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
+                            .execute()
+                            .thenApply(ApiHttpResponse::getBody))
+                    .doAfterTerminate(t::expire);
         });
     }
 }

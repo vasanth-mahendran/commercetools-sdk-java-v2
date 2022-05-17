@@ -3,6 +3,8 @@ package com.commercetools.sdk.examples.spring.service;
 
 import com.commercetools.api.client.ProjectApiRoot;
 import com.commercetools.api.models.project.Project;
+import com.newrelic.api.agent.NewRelic;
+import com.newrelic.api.agent.Token;
 
 import io.vrap.rmf.base.client.ApiHttpResponse;
 
@@ -22,6 +24,12 @@ public class ProjectRepository {
     }
 
     public Mono<Project> get() {
-        return Mono.fromFuture(apiRoot.get().execute().thenApply(ApiHttpResponse::getBody));
+        Token t = NewRelic.getAgent().getTransaction().getToken();
+        return Mono
+                .fromFuture(apiRoot.get()
+                        .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
+                        .execute()
+                        .thenApply(ApiHttpResponse::getBody))
+                .doAfterTerminate(t::expire);
     }
 }
