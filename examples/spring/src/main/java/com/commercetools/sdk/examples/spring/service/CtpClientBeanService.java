@@ -46,7 +46,7 @@ public class CtpClientBeanService {
 
     public static class NewRelicMiddleware implements Middleware {
 
-        @Trace(dispatcher = true)
+        @Trace(dispatcher = true, async = true)
         @Override
         public CompletableFuture<ApiHttpResponse<byte[]>> invoke(ApiHttpRequest request,
                 Function<ApiHttpRequest, CompletableFuture<ApiHttpResponse<byte[]>>> next) {

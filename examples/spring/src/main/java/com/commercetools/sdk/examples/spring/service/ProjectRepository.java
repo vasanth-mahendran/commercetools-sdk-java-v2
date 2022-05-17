@@ -30,6 +30,6 @@ public class ProjectRepository {
                         .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
                         .execute()
                         .thenApply(ApiHttpResponse::getBody))
-                .doAfterTerminate(t::expire);
+                .doFinally(s -> t.expire());
     }
 }

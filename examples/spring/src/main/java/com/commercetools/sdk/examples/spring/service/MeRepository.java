@@ -39,9 +39,10 @@ public class MeRepository {
 
     public Mono<Cart> meCart() {
         Token t = NewRelic.getAgent().getTransaction().getToken();
-        return meCart(t).doAfterTerminate(t::expire);
+        return meCart(t).doFinally(s -> t.expire());
     }
 
+    @Trace(async = true)
     public Mono<Cart> meCart(Token t) {
         if (session.getAttribute(SESSION_CART) == null) {
             return Mono.just(emptyCart());
@@ -60,6 +61,7 @@ public class MeRepository {
                 .onErrorReturn(emptyCart());
     }
 
+    @Trace(async = true)
     public Mono<Customer> me() {
         Token t = NewRelic.getAgent().getTransaction().getToken();
         return Mono
@@ -69,7 +71,7 @@ public class MeRepository {
                         .execute()
                         .thenApply(ApiHttpResponse::getBody)
                         .exceptionally(throwable -> null))
-                .doAfterTerminate(t::expire);
+                .doFinally(s -> t.expire());
     }
 
     public Mono<Cart> addToCart(final String sku) {
@@ -96,7 +98,7 @@ public class MeRepository {
                             session.getAttributes().put(SESSION_CART, c.getId());
                             session.getAttributes().put(SESSION_CART_ITEMS, c.getTotalLineItemQuantity());
                         })
-                        .doAfterTerminate(t::expire);
+                        .doFinally(s -> t.expire());
             }
             return Mono
                     .fromFuture(apiRoot.me()
@@ -109,7 +111,7 @@ public class MeRepository {
                             .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
                             .execute()
                             .thenApply(ApiHttpResponse::getBody))
-                    .doAfterTerminate(t::expire);
+                    .doFinally(s -> t.expire());
         });
     }
 
@@ -133,7 +135,7 @@ public class MeRepository {
                             .withHttpRequest(apiHttpRequest -> apiHttpRequest.withContext(t))
                             .execute()
                             .thenApply(ApiHttpResponse::getBody))
-                    .doAfterTerminate(t::expire);
+                    .doFinally(s -> t.expire());
         });
     }
 }

@@ -34,7 +34,8 @@ public class ProductsRepository {
                 .execute()
                 .thenApply(ApiHttpResponse::getBody)
                 .thenApply(ProductProjectionPagedSearchResponse::getResults);
-        return Mono.fromFuture(products).doAfterTerminate(t::expire);
+        return Mono.fromFuture(products).doFinally(s -> t.expire());
+
     }
 
 }

@@ -86,9 +86,9 @@ public class CtpReactiveAuthenticationManager implements ReactiveAuthenticationM
                                     .orElse(null),
                             updatedAuthorities), "", updatedAuthorities);
                     })
-                    .doAfterTerminate(t::expire);
+                    .doFinally(s -> t.expire());
         }
         return Mono.<Authentication> defer(() -> Mono.error(new BadCredentialsException("Invalid authentication")))
-                .doAfterTerminate(t::expire);
+                .doFinally(s -> t.expire());
     }
 }
