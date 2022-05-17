@@ -30,7 +30,8 @@ public class ApiHttpRequest extends Base {
         this.body = body;
     }
 
-    public ApiHttpRequest(final ApiHttpMethod method, final URI uri, final ApiHttpHeaders headers, final byte[] body, final Object context) {
+    public ApiHttpRequest(final ApiHttpMethod method, final URI uri, final ApiHttpHeaders headers, final byte[] body,
+            final Object context) {
         this.method = method;
         this.uri = uri;
         this.headers = headers;
