@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- *  <p>To make all included Products available to your customers of a given Store, add the Product Selections to the respective Store. This action has no effect if the given Product Selection is already present in the Store and has the same <code>active</code> flag.</p>
+ * StoreAddProductSelectionAction
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -34,7 +34,7 @@ public interface StoreAddProductSelectionAction extends StoreUpdateAction {
     String ADD_PRODUCT_SELECTION = "addProductSelection";
 
     /**
-     *  <p>Product Selection to add to the Store either activated or deactivated.</p>
+     *  <p>Resource Identifier of a Product Selection</p>
      */
     @NotNull
     @Valid
@@ -42,7 +42,7 @@ public interface StoreAddProductSelectionAction extends StoreUpdateAction {
     public ProductSelectionResourceIdentifier getProductSelection();
 
     /**
-     *  <p>Set to <code>true</code> to make all Products assigned to the referenced Product Selection available in the Store.</p>
+     *  <p>If <code>true</code> all Products assigned to this Product Selection become part of the Store's assortment.</p>
      */
 
     @JsonProperty("active")

@@ -4,6 +4,8 @@ package com.commercetools.api.models.store;
 import java.util.*;
 import java.util.function.Function;
 
+import javax.annotation.Nullable;
+
 import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -14,7 +16,6 @@ import io.vrap.rmf.base.client.utils.Generated;
  * <div class=code-example>
  * <pre><code class='java'>
  *     StoreAddSupplyChannelAction storeAddSupplyChannelAction = StoreAddSupplyChannelAction.builder()
- *             .supplyChannel(supplyChannelBuilder -> supplyChannelBuilder)
  *             .build()
  * </code></pre>
  * </div>
@@ -22,10 +23,11 @@ import io.vrap.rmf.base.client.utils.Generated;
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class StoreAddSupplyChannelActionBuilder implements Builder<StoreAddSupplyChannelAction> {
 
+    @Nullable
     private com.commercetools.api.models.channel.ChannelResourceIdentifier supplyChannel;
 
     /**
-     *  <p>Any attempt to use Channel without the <code>InventorySupply</code> ChannelRoleEnum will fail with a MissingRoleOnChannel error.</p>
+     *
      */
 
     public StoreAddSupplyChannelActionBuilder supplyChannel(
@@ -36,21 +38,21 @@ public class StoreAddSupplyChannelActionBuilder implements Builder<StoreAddSuppl
     }
 
     /**
-     *  <p>Any attempt to use Channel without the <code>InventorySupply</code> ChannelRoleEnum will fail with a MissingRoleOnChannel error.</p>
+     *
      */
 
     public StoreAddSupplyChannelActionBuilder supplyChannel(
-            final com.commercetools.api.models.channel.ChannelResourceIdentifier supplyChannel) {
+            @Nullable final com.commercetools.api.models.channel.ChannelResourceIdentifier supplyChannel) {
         this.supplyChannel = supplyChannel;
         return this;
     }
 
+    @Nullable
     public com.commercetools.api.models.channel.ChannelResourceIdentifier getSupplyChannel() {
         return this.supplyChannel;
     }
 
     public StoreAddSupplyChannelAction build() {
-        Objects.requireNonNull(supplyChannel, StoreAddSupplyChannelAction.class + ": supplyChannel is missing");
         return new StoreAddSupplyChannelActionImpl(supplyChannel);
     }
 

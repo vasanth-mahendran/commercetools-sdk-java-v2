@@ -17,7 +17,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- *
+ *  <p>Retrieves all the ShippingMethods that can ship to the shipping address of the given Cart in a given Store. Each ShippingMethod contains exactly one ShippingRate with the flag isMatching set to true. This ShippingRate will be used if the ShippingMethod is added to the Cart.</p>
  *
  * <hr>
  * <div class=code-example>

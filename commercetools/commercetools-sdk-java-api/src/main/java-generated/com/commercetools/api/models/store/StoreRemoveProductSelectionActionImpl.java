@@ -15,18 +15,18 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- *  <p>This action has no effect if the given Product Selection is not in the Store.</p>
+ * StoreRemoveProductSelectionAction
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class StoreRemoveProductSelectionActionImpl implements StoreRemoveProductSelectionAction, ModelBase {
 
     private String action;
 
-    private com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifier productSelection;
+    private com.commercetools.api.models.common.ResourceIdentifier productSelection;
 
     @JsonCreator
     StoreRemoveProductSelectionActionImpl(
-            @JsonProperty("productSelection") final com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifier productSelection) {
+            @JsonProperty("productSelection") final com.commercetools.api.models.common.ResourceIdentifier productSelection) {
         this.productSelection = productSelection;
         this.action = REMOVE_PRODUCT_SELECTION;
     }
@@ -44,15 +44,14 @@ public class StoreRemoveProductSelectionActionImpl implements StoreRemoveProduct
     }
 
     /**
-     *  <p>Value to remove. The removed Product Selection is made offline.</p>
+     *  <p>A Product Selection to be removed from the current Product Selections of this Store.</p>
      */
 
-    public com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifier getProductSelection() {
+    public com.commercetools.api.models.common.ResourceIdentifier getProductSelection() {
         return this.productSelection;
     }
 
-    public void setProductSelection(
-            final com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifier productSelection) {
+    public void setProductSelection(final com.commercetools.api.models.common.ResourceIdentifier productSelection) {
         this.productSelection = productSelection;
     }
 

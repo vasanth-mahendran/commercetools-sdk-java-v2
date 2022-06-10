@@ -22,31 +22,30 @@ import io.vrap.rmf.base.client.utils.Generated;
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class StoreRemoveProductSelectionActionBuilder implements Builder<StoreRemoveProductSelectionAction> {
 
-    private com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifier productSelection;
+    private com.commercetools.api.models.common.ResourceIdentifier productSelection;
 
     /**
-     *  <p>Value to remove. The removed Product Selection is made offline.</p>
+     *  <p>A Product Selection to be removed from the current Product Selections of this Store.</p>
      */
 
     public StoreRemoveProductSelectionActionBuilder productSelection(
-            Function<com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifierBuilder, com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifierBuilder> builder) {
-        this.productSelection = builder
-                .apply(com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifierBuilder.of())
-                .build();
-        return this;
-    }
-
-    /**
-     *  <p>Value to remove. The removed Product Selection is made offline.</p>
-     */
-
-    public StoreRemoveProductSelectionActionBuilder productSelection(
-            final com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifier productSelection) {
+            final com.commercetools.api.models.common.ResourceIdentifier productSelection) {
         this.productSelection = productSelection;
         return this;
     }
 
-    public com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifier getProductSelection() {
+    /**
+     *  <p>A Product Selection to be removed from the current Product Selections of this Store.</p>
+     */
+
+    public StoreRemoveProductSelectionActionBuilder productSelection(
+            Function<com.commercetools.api.models.common.ResourceIdentifierBuilder, Builder<? extends com.commercetools.api.models.common.ResourceIdentifier>> builder) {
+        this.productSelection = builder.apply(com.commercetools.api.models.common.ResourceIdentifierBuilder.of())
+                .build();
+        return this;
+    }
+
+    public com.commercetools.api.models.common.ResourceIdentifier getProductSelection() {
         return this.productSelection;
     }
 

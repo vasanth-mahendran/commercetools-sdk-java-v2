@@ -30,7 +30,7 @@ public class StoreAddProductSelectionActionBuilder implements Builder<StoreAddPr
     private Boolean active;
 
     /**
-     *  <p>Product Selection to add to the Store either activated or deactivated.</p>
+     *  <p>Resource Identifier of a Product Selection</p>
      */
 
     public StoreAddProductSelectionActionBuilder productSelection(
@@ -42,7 +42,7 @@ public class StoreAddProductSelectionActionBuilder implements Builder<StoreAddPr
     }
 
     /**
-     *  <p>Product Selection to add to the Store either activated or deactivated.</p>
+     *  <p>Resource Identifier of a Product Selection</p>
      */
 
     public StoreAddProductSelectionActionBuilder productSelection(
@@ -52,7 +52,7 @@ public class StoreAddProductSelectionActionBuilder implements Builder<StoreAddPr
     }
 
     /**
-     *  <p>Set to <code>true</code> to make all Products assigned to the referenced Product Selection available in the Store.</p>
+     *  <p>If <code>true</code> all Products assigned to this Product Selection become part of the Store's assortment.</p>
      */
 
     public StoreAddProductSelectionActionBuilder active(@Nullable final Boolean active) {

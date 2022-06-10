@@ -8,14 +8,14 @@ import java.util.function.Function;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.commercetools.api.models.product_selection.ProductSelectionResourceIdentifier;
+import com.commercetools.api.models.common.ResourceIdentifier;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- *  <p>This action has no effect if the given Product Selection is not in the Store.</p>
+ * StoreRemoveProductSelectionAction
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -34,14 +34,14 @@ public interface StoreRemoveProductSelectionAction extends StoreUpdateAction {
     String REMOVE_PRODUCT_SELECTION = "removeProductSelection";
 
     /**
-     *  <p>Value to remove. The removed Product Selection is made offline.</p>
+     *  <p>A Product Selection to be removed from the current Product Selections of this Store.</p>
      */
     @NotNull
     @Valid
     @JsonProperty("productSelection")
-    public ProductSelectionResourceIdentifier getProductSelection();
+    public ResourceIdentifier getProductSelection();
 
-    public void setProductSelection(final ProductSelectionResourceIdentifier productSelection);
+    public void setProductSelection(final ResourceIdentifier productSelection);
 
     public static StoreRemoveProductSelectionAction of() {
         return new StoreRemoveProductSelectionActionImpl();

@@ -24,16 +24,12 @@ public class ExtensionTriggerImpl implements ExtensionTrigger, ModelBase {
 
     private java.util.List<com.commercetools.api.models.extension.ExtensionAction> actions;
 
-    private String condition;
-
     @JsonCreator
     ExtensionTriggerImpl(
             @JsonProperty("resourceTypeId") final com.commercetools.api.models.extension.ExtensionResourceTypeId resourceTypeId,
-            @JsonProperty("actions") final java.util.List<com.commercetools.api.models.extension.ExtensionAction> actions,
-            @JsonProperty("condition") final String condition) {
+            @JsonProperty("actions") final java.util.List<com.commercetools.api.models.extension.ExtensionAction> actions) {
         this.resourceTypeId = resourceTypeId;
         this.actions = actions;
-        this.condition = condition;
     }
 
     public ExtensionTriggerImpl() {
@@ -55,14 +51,6 @@ public class ExtensionTriggerImpl implements ExtensionTrigger, ModelBase {
         return this.actions;
     }
 
-    /**
-     *  <p>Valid predicate that controls the conditions under which the API Extension is called. The Extension is not triggered when the specified condition is not fulfilled.</p>
-     */
-
-    public String getCondition() {
-        return this.condition;
-    }
-
     public void setResourceTypeId(final com.commercetools.api.models.extension.ExtensionResourceTypeId resourceTypeId) {
         this.resourceTypeId = resourceTypeId;
     }
@@ -75,10 +63,6 @@ public class ExtensionTriggerImpl implements ExtensionTrigger, ModelBase {
         this.actions = actions;
     }
 
-    public void setCondition(final String condition) {
-        this.condition = condition;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -89,15 +73,12 @@ public class ExtensionTriggerImpl implements ExtensionTrigger, ModelBase {
 
         ExtensionTriggerImpl that = (ExtensionTriggerImpl) o;
 
-        return new EqualsBuilder().append(resourceTypeId, that.resourceTypeId)
-                .append(actions, that.actions)
-                .append(condition, that.condition)
-                .isEquals();
+        return new EqualsBuilder().append(resourceTypeId, that.resourceTypeId).append(actions, that.actions).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(resourceTypeId).append(actions).append(condition).toHashCode();
+        return new HashCodeBuilder(17, 37).append(resourceTypeId).append(actions).toHashCode();
     }
 
 }
