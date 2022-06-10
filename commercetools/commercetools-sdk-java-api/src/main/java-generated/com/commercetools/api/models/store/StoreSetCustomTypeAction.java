@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- * StoreSetCustomTypeAction
+ *  <p>This action sets or removes the custom type for an existing Store. If present, this action overwrites any existing custom type and fields.</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern

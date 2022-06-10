@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * StoreSetCustomTypeAction
+ *  <p>This action sets or removes the custom type for an existing Store. If present, this action overwrites any existing custom type and fields.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class StoreSetCustomTypeActionImpl implements StoreSetCustomTypeAction, ModelBase {
