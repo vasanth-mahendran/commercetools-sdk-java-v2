@@ -85,6 +85,10 @@ subprojects { project ->
 
     group='com.commercetools.sdk'
 
+    if (project.name == "commercetools-http-client") {
+        description = "Please note: The default HTTP client of this package will be changed from OkHttp to Apache Async HTTP client with the next major version.\n\nThe e-commerce SDK from commercetools Composable Commerce for Java."
+    }
+
     version = globalVersion
 
     check.dependsOn(integrationTest)

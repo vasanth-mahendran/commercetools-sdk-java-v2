@@ -71,7 +71,7 @@ dependencies {
 
 ### Modules
 
-* `commercetools-http-client`: alias for commercetools-okhttp-client4
+* `commercetools-http-client`: alias for commercetools-okhttp-client4 (will be changed to commercetools-apachehttp-client)
 * `commercetools-okhttp-client3`: uses OkHttp client 3.0
 * `commercetools-okhttp-client4`: uses OkHttp client 4.0
 * `commercetools-apachehttp-client`: uses Apache HTTP async client 5.1
