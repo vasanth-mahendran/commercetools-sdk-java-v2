@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * AzureServiceBusDestination
+ *  <p>Azure Service Bus can be used as a pull-queue with Queues, or to fan-out messages with Topics and Subscriptions.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class AzureServiceBusDestinationImpl implements AzureServiceBusDestination, ModelBase {
@@ -43,7 +43,7 @@ public class AzureServiceBusDestinationImpl implements AzureServiceBusDestinatio
     }
 
     /**
-     *
+     *  <p>SharedAccessKey is partially hidden on retrieval for security reasons.</p>
      */
 
     public String getConnectionString() {

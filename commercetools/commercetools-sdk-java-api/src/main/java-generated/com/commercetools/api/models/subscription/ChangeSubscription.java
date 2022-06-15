@@ -20,7 +20,7 @@ import io.vrap.rmf.base.client.utils.Generated;
  * <div class=code-example>
  * <pre><code class='java'>
  *     ChangeSubscription changeSubscription = ChangeSubscription.builder()
- *             .resourceTypeId("{resourceTypeId}")
+ *             .resourceTypeId(SubscriptionResourceTypeId.CART)
  *             .build()
  * </code></pre>
  * </div>
@@ -30,13 +30,13 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface ChangeSubscription {
 
     /**
-     *
+     *  <p>Type of resource.</p>
      */
     @NotNull
     @JsonProperty("resourceTypeId")
-    public String getResourceTypeId();
+    public SubscriptionResourceTypeId getResourceTypeId();
 
-    public void setResourceTypeId(final String resourceTypeId);
+    public void setResourceTypeId(final SubscriptionResourceTypeId resourceTypeId);
 
     public static ChangeSubscription of() {
         return new ChangeSubscriptionImpl();

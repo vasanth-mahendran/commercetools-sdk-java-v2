@@ -24,7 +24,7 @@ public class CloudEventsFormatBuilder implements Builder<CloudEventsFormat> {
     private String cloudEventsVersion;
 
     /**
-     *
+     *  <p>Currently fixed to version 1.0.</p>
      */
 
     public CloudEventsFormatBuilder cloudEventsVersion(final String cloudEventsVersion) {

@@ -15,7 +15,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * MessageSubscription
+ *  <p>For supported resources and message types, see Message Types. Messages will be delivered even if the Messages Query HTTP API is not enabled.</p>
+ *  <p>The MessageDeliveryPayload is delivered.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class MessageSubscriptionImpl implements MessageSubscription, ModelBase {
@@ -43,7 +44,7 @@ public class MessageSubscriptionImpl implements MessageSubscription, ModelBase {
     }
 
     /**
-     *
+     *  <p>Must contain valid message types for the resource. For example, for resource type <code>product</code> the message type <code>ProductPublished</code> is valid. If no <code>types</code> of messages are given, the Subscription will receive all messages for this resource.</p>
      */
 
     public java.util.List<String> getTypes() {

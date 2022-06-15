@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * DeliveryPayload
+ *  <p>All payloads for the PlatformFormat share these common fields.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class DeliveryPayloadImpl implements DeliveryPayload, ModelBase {
@@ -43,7 +43,7 @@ public class DeliveryPayloadImpl implements DeliveryPayload, ModelBase {
     }
 
     /**
-     *
+     *  <p>Key of the Project. Useful if the destination receives events from multiple Projects.</p>
      */
 
     public String getProjectKey() {
@@ -51,7 +51,7 @@ public class DeliveryPayloadImpl implements DeliveryPayload, ModelBase {
     }
 
     /**
-     *
+     *  <p>Identifies the payload.</p>
      */
 
     public String getNotificationType() {
@@ -59,7 +59,7 @@ public class DeliveryPayloadImpl implements DeliveryPayload, ModelBase {
     }
 
     /**
-     *  <p>A Reference represents a loose reference to another resource in the same Project identified by its <code>id</code>. The <code>typeId</code> indicates the type of the referenced resource. Each resource type has its corresponding Reference type, like ChannelReference. A referenced resource can be embedded through Reference Expansion. The expanded reference is the value of an additional <code>obj</code> field then.</p>
+     *  <p>Reference to the resource that triggered the message.</p>
      */
 
     public com.commercetools.api.models.common.Reference getResource() {
@@ -67,7 +67,7 @@ public class DeliveryPayloadImpl implements DeliveryPayload, ModelBase {
     }
 
     /**
-     *
+     *  <p>User-defined unique identifier of the resource.</p>
      */
 
     public com.commercetools.api.models.message.UserProvidedIdentifiers getResourceUserProvidedIdentifiers() {

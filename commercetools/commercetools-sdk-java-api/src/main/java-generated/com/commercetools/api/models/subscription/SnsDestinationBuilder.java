@@ -30,7 +30,7 @@ public class SnsDestinationBuilder implements Builder<SnsDestination> {
     private String topicArn;
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
 
     public SnsDestinationBuilder accessKey(final String accessKey) {
@@ -39,7 +39,7 @@ public class SnsDestinationBuilder implements Builder<SnsDestination> {
     }
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
 
     public SnsDestinationBuilder accessSecret(final String accessSecret) {
@@ -48,7 +48,7 @@ public class SnsDestinationBuilder implements Builder<SnsDestination> {
     }
 
     /**
-     *
+     *  <p>Amazon Resource Name (ARN) of the topic.</p>
      */
 
     public SnsDestinationBuilder topicArn(final String topicArn) {

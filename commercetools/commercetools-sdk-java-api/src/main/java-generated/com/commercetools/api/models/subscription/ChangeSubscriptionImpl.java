@@ -20,10 +20,11 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class ChangeSubscriptionImpl implements ChangeSubscription, ModelBase {
 
-    private String resourceTypeId;
+    private com.commercetools.api.models.subscription.SubscriptionResourceTypeId resourceTypeId;
 
     @JsonCreator
-    ChangeSubscriptionImpl(@JsonProperty("resourceTypeId") final String resourceTypeId) {
+    ChangeSubscriptionImpl(
+            @JsonProperty("resourceTypeId") final com.commercetools.api.models.subscription.SubscriptionResourceTypeId resourceTypeId) {
         this.resourceTypeId = resourceTypeId;
     }
 
@@ -31,14 +32,15 @@ public class ChangeSubscriptionImpl implements ChangeSubscription, ModelBase {
     }
 
     /**
-     *
+     *  <p>Type of resource.</p>
      */
 
-    public String getResourceTypeId() {
+    public com.commercetools.api.models.subscription.SubscriptionResourceTypeId getResourceTypeId() {
         return this.resourceTypeId;
     }
 
-    public void setResourceTypeId(final String resourceTypeId) {
+    public void setResourceTypeId(
+            final com.commercetools.api.models.subscription.SubscriptionResourceTypeId resourceTypeId) {
         this.resourceTypeId = resourceTypeId;
     }
 

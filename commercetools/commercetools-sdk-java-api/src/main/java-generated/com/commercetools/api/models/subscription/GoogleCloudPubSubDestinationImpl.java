@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * GoogleCloudPubSubDestination
+ *  <p>Destination for Google Cloud Pub/Sub that can be used for Pull subscriptions as well as for Push subscriptions.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class GoogleCloudPubSubDestinationImpl implements GoogleCloudPubSubDestination, ModelBase {
@@ -47,7 +47,7 @@ public class GoogleCloudPubSubDestinationImpl implements GoogleCloudPubSubDestin
     }
 
     /**
-     *
+     *  <p>ID of the Project that contains the Pub/Sub topic.</p>
      */
 
     public String getProjectId() {
@@ -55,7 +55,7 @@ public class GoogleCloudPubSubDestinationImpl implements GoogleCloudPubSubDestin
     }
 
     /**
-     *
+     *  <p>Name of the topic.</p>
      */
 
     public String getTopic() {

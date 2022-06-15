@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- * AzureServiceBusDestination
+ *  <p>Azure Service Bus can be used as a pull-queue with Queues, or to fan-out messages with Topics and Subscriptions.</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -32,7 +32,7 @@ public interface AzureServiceBusDestination extends Destination {
     String AZURE_SERVICE_BUS = "AzureServiceBus";
 
     /**
-     *
+     *  <p>SharedAccessKey is partially hidden on retrieval for security reasons.</p>
      */
     @NotNull
     @JsonProperty("connectionString")

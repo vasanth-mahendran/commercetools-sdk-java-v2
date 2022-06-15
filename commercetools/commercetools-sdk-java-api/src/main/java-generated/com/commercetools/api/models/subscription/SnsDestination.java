@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- * SnsDestination
+ *  <p>AWS SNS can be used to push messages to AWS Lambda, HTTP endpoints (webhooks), or fan-out messages to SQS queues.</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -34,21 +34,21 @@ public interface SnsDestination extends Destination {
     String SNS = "SNS";
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
     @NotNull
     @JsonProperty("accessKey")
     public String getAccessKey();
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
     @NotNull
     @JsonProperty("accessSecret")
     public String getAccessSecret();
 
     /**
-     *
+     *  <p>Amazon Resource Name (ARN) of the topic.</p>
      */
     @NotNull
     @JsonProperty("topicArn")

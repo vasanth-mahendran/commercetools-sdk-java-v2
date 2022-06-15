@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * SqsDestination
+ *  <p>AWS SQS is a pull-queue on AWS. We support the Standard queue type, but not the FIFO queue type.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class SqsDestinationImpl implements SqsDestination, ModelBase {
@@ -54,7 +54,7 @@ public class SqsDestinationImpl implements SqsDestination, ModelBase {
     }
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
 
     public String getAccessKey() {
@@ -62,7 +62,7 @@ public class SqsDestinationImpl implements SqsDestination, ModelBase {
     }
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
 
     public String getAccessSecret() {
@@ -70,7 +70,7 @@ public class SqsDestinationImpl implements SqsDestination, ModelBase {
     }
 
     /**
-     *
+     *  <p>URL of the Amazon SQS queue.</p>
      */
 
     public String getQueueUrl() {
@@ -78,7 +78,7 @@ public class SqsDestinationImpl implements SqsDestination, ModelBase {
     }
 
     /**
-     *
+     *  <p>AWS Region the message queue is located in.</p>
      */
 
     public String getRegion() {

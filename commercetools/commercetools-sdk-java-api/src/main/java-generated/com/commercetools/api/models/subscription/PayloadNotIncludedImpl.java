@@ -35,7 +35,7 @@ public class PayloadNotIncludedImpl implements PayloadNotIncluded, ModelBase {
     }
 
     /**
-     *
+     *  <p>Reason the payload is not included.</p>
      */
 
     public String getReason() {
@@ -43,7 +43,7 @@ public class PayloadNotIncludedImpl implements PayloadNotIncluded, ModelBase {
     }
 
     /**
-     *
+     *  <p>Value of the <code>type</code> field in the original payload.</p>
      */
 
     public String getPayloadType() {

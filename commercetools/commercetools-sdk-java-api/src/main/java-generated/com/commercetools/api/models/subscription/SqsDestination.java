@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- * SqsDestination
+ *  <p>AWS SQS is a pull-queue on AWS. We support the Standard queue type, but not the FIFO queue type.</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -35,28 +35,28 @@ public interface SqsDestination extends Destination {
     String SQS = "SQS";
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
     @NotNull
     @JsonProperty("accessKey")
     public String getAccessKey();
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
     @NotNull
     @JsonProperty("accessSecret")
     public String getAccessSecret();
 
     /**
-     *
+     *  <p>URL of the Amazon SQS queue.</p>
      */
     @NotNull
     @JsonProperty("queueUrl")
     public String getQueueUrl();
 
     /**
-     *
+     *  <p>AWS Region the message queue is located in.</p>
      */
     @NotNull
     @JsonProperty("region")

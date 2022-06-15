@@ -38,7 +38,7 @@ public class MessageSubscriptionBuilder implements Builder<MessageSubscription> 
     }
 
     /**
-     *
+     *  <p>Must contain valid message types for the resource. For example, for resource type <code>product</code> the message type <code>ProductPublished</code> is valid. If no <code>types</code> of messages are given, the Subscription will receive all messages for this resource.</p>
      */
 
     public MessageSubscriptionBuilder types(@Nullable final String... types) {
@@ -47,7 +47,7 @@ public class MessageSubscriptionBuilder implements Builder<MessageSubscription> 
     }
 
     /**
-     *
+     *  <p>Must contain valid message types for the resource. For example, for resource type <code>product</code> the message type <code>ProductPublished</code> is valid. If no <code>types</code> of messages are given, the Subscription will receive all messages for this resource.</p>
      */
 
     public MessageSubscriptionBuilder types(@Nullable final java.util.List<String> types) {
@@ -56,7 +56,7 @@ public class MessageSubscriptionBuilder implements Builder<MessageSubscription> 
     }
 
     /**
-     *
+     *  <p>Must contain valid message types for the resource. For example, for resource type <code>product</code> the message type <code>ProductPublished</code> is valid. If no <code>types</code> of messages are given, the Subscription will receive all messages for this resource.</p>
      */
 
     public MessageSubscriptionBuilder plusTypes(@Nullable final String... types) {

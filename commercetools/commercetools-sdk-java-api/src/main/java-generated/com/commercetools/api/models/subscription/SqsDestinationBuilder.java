@@ -33,7 +33,7 @@ public class SqsDestinationBuilder implements Builder<SqsDestination> {
     private String region;
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
 
     public SqsDestinationBuilder accessKey(final String accessKey) {
@@ -42,7 +42,7 @@ public class SqsDestinationBuilder implements Builder<SqsDestination> {
     }
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
 
     public SqsDestinationBuilder accessSecret(final String accessSecret) {
@@ -51,7 +51,7 @@ public class SqsDestinationBuilder implements Builder<SqsDestination> {
     }
 
     /**
-     *
+     *  <p>URL of the Amazon SQS queue.</p>
      */
 
     public SqsDestinationBuilder queueUrl(final String queueUrl) {
@@ -60,7 +60,7 @@ public class SqsDestinationBuilder implements Builder<SqsDestination> {
     }
 
     /**
-     *
+     *  <p>AWS Region the message queue is located in.</p>
      */
 
     public SqsDestinationBuilder region(final String region) {

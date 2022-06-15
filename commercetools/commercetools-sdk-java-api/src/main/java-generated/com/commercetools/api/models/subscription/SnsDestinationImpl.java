@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * SnsDestination
+ *  <p>AWS SNS can be used to push messages to AWS Lambda, HTTP endpoints (webhooks), or fan-out messages to SQS queues.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class SnsDestinationImpl implements SnsDestination, ModelBase {
@@ -50,7 +50,7 @@ public class SnsDestinationImpl implements SnsDestination, ModelBase {
     }
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
 
     public String getAccessKey() {
@@ -58,7 +58,7 @@ public class SnsDestinationImpl implements SnsDestination, ModelBase {
     }
 
     /**
-     *
+     *  <p>Partially hidden on retrieval for security reasons.</p>
      */
 
     public String getAccessSecret() {
@@ -66,7 +66,7 @@ public class SnsDestinationImpl implements SnsDestination, ModelBase {
     }
 
     /**
-     *
+     *  <p>Amazon Resource Name (ARN) of the topic.</p>
      */
 
     public String getTopicArn() {
