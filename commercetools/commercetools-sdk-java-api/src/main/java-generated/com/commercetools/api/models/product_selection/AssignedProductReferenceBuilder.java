@@ -54,10 +54,8 @@ public class AssignedProductReferenceBuilder implements Builder<AssignedProductR
      */
 
     public AssignedProductReferenceBuilder variantSelection(
-            Function<com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder, com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder> builder) {
-        this.variantSelection = builder
-                .apply(com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder.of())
-                .build();
+            @Nullable final com.commercetools.api.models.product_selection.ProductVariantSelection variantSelection) {
+        this.variantSelection = variantSelection;
         return this;
     }
 
@@ -66,8 +64,10 @@ public class AssignedProductReferenceBuilder implements Builder<AssignedProductR
      */
 
     public AssignedProductReferenceBuilder variantSelection(
-            @Nullable final com.commercetools.api.models.product_selection.ProductVariantSelection variantSelection) {
-        this.variantSelection = variantSelection;
+            Function<com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder, Builder<? extends com.commercetools.api.models.product_selection.ProductVariantSelection>> builder) {
+        this.variantSelection = builder
+                .apply(com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder.of())
+                .build();
         return this;
     }
 

@@ -15,20 +15,23 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * ProductVariantSelection
+ * ProductVariantSelectionExclusion
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
-public class ProductVariantSelectionImpl implements ProductVariantSelection, ModelBase {
+public class ProductVariantSelectionExclusionImpl implements ProductVariantSelectionExclusion, ModelBase {
 
     private com.commercetools.api.models.product_selection.ProductVariantSelectionTypeEnum type;
 
+    private java.util.List<String> skus;
+
     @JsonCreator
-    ProductVariantSelectionImpl(
-            @JsonProperty("type") final com.commercetools.api.models.product_selection.ProductVariantSelectionTypeEnum type) {
-        this.type = type;
+    ProductVariantSelectionExclusionImpl(@JsonProperty("skus") final java.util.List<String> skus) {
+        this.skus = skus;
+        this.type = ProductVariantSelectionTypeEnum.findEnum("exclusion");
     }
 
-    public ProductVariantSelectionImpl() {
+    public ProductVariantSelectionExclusionImpl() {
+        this.type = ProductVariantSelectionTypeEnum.findEnum("exclusion");
     }
 
     /**
@@ -39,6 +42,22 @@ public class ProductVariantSelectionImpl implements ProductVariantSelection, Mod
         return this.type;
     }
 
+    /**
+     *  <p>Non-empty array of SKUs.</p>
+     */
+
+    public java.util.List<String> getSkus() {
+        return this.skus;
+    }
+
+    public void setSkus(final String... skus) {
+        this.skus = new ArrayList<>(Arrays.asList(skus));
+    }
+
+    public void setSkus(final java.util.List<String> skus) {
+        this.skus = skus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -47,14 +66,14 @@ public class ProductVariantSelectionImpl implements ProductVariantSelection, Mod
         if (o == null || getClass() != o.getClass())
             return false;
 
-        ProductVariantSelectionImpl that = (ProductVariantSelectionImpl) o;
+        ProductVariantSelectionExclusionImpl that = (ProductVariantSelectionExclusionImpl) o;
 
-        return new EqualsBuilder().append(type, that.type).isEquals();
+        return new EqualsBuilder().append(type, that.type).append(skus, that.skus).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(type).toHashCode();
+        return new HashCodeBuilder(17, 37).append(type).append(skus).toHashCode();
     }
 
 }

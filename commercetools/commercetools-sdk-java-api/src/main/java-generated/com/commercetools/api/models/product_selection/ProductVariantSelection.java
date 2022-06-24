@@ -16,58 +16,36 @@ import io.vrap.rmf.base.client.utils.Generated;
  * ProductVariantSelection
  *
  * <hr>
- * Example to create an instance using the builder pattern
+ * Example to create a subtype instance using the builder pattern
  * <div class=code-example>
  * <pre><code class='java'>
- *     ProductVariantSelection productVariantSelection = ProductVariantSelection.builder()
- *             .type("{type}")
- *             .plusSkus(skusBuilder -> skusBuilder)
+ *     ProductVariantSelection productVariantSelection = ProductVariantSelection.exclusionBuilder()
+ *             plusSkus(skusBuilder -> skusBuilder)
  *             .build()
  * </code></pre>
  * </div>
  */
-@Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = com.commercetools.api.models.product_selection.ProductVariantSelectionExclusionImpl.class, name = ProductVariantSelectionExclusion.EXCLUSION),
+        @JsonSubTypes.Type(value = com.commercetools.api.models.product_selection.ProductVariantSelectionInclusionImpl.class, name = ProductVariantSelectionInclusion.INCLUSION) })
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type", defaultImpl = ProductVariantSelectionImpl.class, visible = true)
 @JsonDeserialize(as = ProductVariantSelectionImpl.class)
+@Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public interface ProductVariantSelection {
 
     /**
-     *  <p>One of the values <code>inclusion</code>, or <code>exclusion</code>, that determines whether the SKUs are to be included in, or excluded from, the Product Selection.</p>
+     *  <p>Determines whether the SKUs are to be included in, or excluded from, the Product Selection.</p>
      */
     @NotNull
     @JsonProperty("type")
-    public String getType();
+    public ProductVariantSelectionTypeEnum getType();
 
-    /**
-     *  <p>Non-empty array of SKUs</p>
-     */
-    @NotNull
-    @JsonProperty("skus")
-    public List<String> getSkus();
-
-    public void setType(final String type);
-
-    @JsonIgnore
-    public void setSkus(final String... skus);
-
-    public void setSkus(final List<String> skus);
-
-    public static ProductVariantSelection of() {
-        return new ProductVariantSelectionImpl();
+    public static com.commercetools.api.models.product_selection.ProductVariantSelectionExclusionBuilder exclusionBuilder() {
+        return com.commercetools.api.models.product_selection.ProductVariantSelectionExclusionBuilder.of();
     }
 
-    public static ProductVariantSelection of(final ProductVariantSelection template) {
-        ProductVariantSelectionImpl instance = new ProductVariantSelectionImpl();
-        instance.setType(template.getType());
-        instance.setSkus(template.getSkus());
-        return instance;
-    }
-
-    public static ProductVariantSelectionBuilder builder() {
-        return ProductVariantSelectionBuilder.of();
-    }
-
-    public static ProductVariantSelectionBuilder builder(final ProductVariantSelection template) {
-        return ProductVariantSelectionBuilder.of(template);
+    public static com.commercetools.api.models.product_selection.ProductVariantSelectionInclusionBuilder inclusionBuilder() {
+        return com.commercetools.api.models.product_selection.ProductVariantSelectionInclusionBuilder.of();
     }
 
     default <T> T withProductVariantSelection(Function<ProductVariantSelection, T> helper) {

@@ -225,10 +225,8 @@ public class ProductSelectionVariantSelectionChangedMessageBuilder
      */
 
     public ProductSelectionVariantSelectionChangedMessageBuilder oldVariantSelection(
-            Function<com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder, com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder> builder) {
-        this.oldVariantSelection = builder
-                .apply(com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder.of())
-                .build();
+            @Nullable final com.commercetools.api.models.product_selection.ProductVariantSelection oldVariantSelection) {
+        this.oldVariantSelection = oldVariantSelection;
         return this;
     }
 
@@ -237,18 +235,8 @@ public class ProductSelectionVariantSelectionChangedMessageBuilder
      */
 
     public ProductSelectionVariantSelectionChangedMessageBuilder oldVariantSelection(
-            @Nullable final com.commercetools.api.models.product_selection.ProductVariantSelection oldVariantSelection) {
-        this.oldVariantSelection = oldVariantSelection;
-        return this;
-    }
-
-    /**
-     *  <p>The updated Product Variant Selection if any.</p>
-     */
-
-    public ProductSelectionVariantSelectionChangedMessageBuilder newVariantSelection(
-            Function<com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder, com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder> builder) {
-        this.newVariantSelection = builder
+            Function<com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder, Builder<? extends com.commercetools.api.models.product_selection.ProductVariantSelection>> builder) {
+        this.oldVariantSelection = builder
                 .apply(com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder.of())
                 .build();
         return this;
@@ -261,6 +249,18 @@ public class ProductSelectionVariantSelectionChangedMessageBuilder
     public ProductSelectionVariantSelectionChangedMessageBuilder newVariantSelection(
             @Nullable final com.commercetools.api.models.product_selection.ProductVariantSelection newVariantSelection) {
         this.newVariantSelection = newVariantSelection;
+        return this;
+    }
+
+    /**
+     *  <p>The updated Product Variant Selection if any.</p>
+     */
+
+    public ProductSelectionVariantSelectionChangedMessageBuilder newVariantSelection(
+            Function<com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder, Builder<? extends com.commercetools.api.models.product_selection.ProductVariantSelection>> builder) {
+        this.newVariantSelection = builder
+                .apply(com.commercetools.api.models.product_selection.ProductVariantSelectionBuilder.of())
+                .build();
         return this;
     }
 
