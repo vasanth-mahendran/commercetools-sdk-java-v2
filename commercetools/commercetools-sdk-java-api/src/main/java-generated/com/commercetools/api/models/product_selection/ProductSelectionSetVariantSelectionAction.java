@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- *  <p>Updates the Variant Selection of an existing Product Selection Assignment. If the given Product is not assigned to the Product Selection ProductAssignmentMissing is raised.'</p>
+ *  <p>Updates the Product Variant Selection of an existing Product Selection Assignment. If the given Product is not assigned to the Product Selection ProductAssignmentMissing error is raised.</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern

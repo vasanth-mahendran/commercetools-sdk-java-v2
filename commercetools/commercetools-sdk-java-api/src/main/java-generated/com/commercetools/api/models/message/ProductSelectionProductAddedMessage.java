@@ -50,7 +50,7 @@ public interface ProductSelectionProductAddedMessage extends Message {
     public ProductReference getProduct();
 
     /**
-     *
+     *  <p>Polymorphic base type for Product Variant Selections. The actual type is determined by the <code>type</code> field.</p>
      */
     @Valid
     @JsonProperty("variantSelection")

@@ -57,7 +57,7 @@ public class ProductSelectionProductAddedMessagePayloadImpl
     }
 
     /**
-     *
+     *  <p>Polymorphic base type for Product Variant Selections. The actual type is determined by the <code>type</code> field.</p>
      */
 
     public com.commercetools.api.models.product_selection.ProductVariantSelection getVariantSelection() {

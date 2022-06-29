@@ -43,7 +43,7 @@ public interface ProductSelectionProductAddedMessagePayload extends MessagePaylo
     public ProductReference getProduct();
 
     /**
-     *
+     *  <p>Polymorphic base type for Product Variant Selections. The actual type is determined by the <code>type</code> field.</p>
      */
     @Valid
     @JsonProperty("variantSelection")

@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * ProductVariantSelectionInclusion
+ *  <p>Only Product Variants with explicitly stated SKUs are part of the Product Selection.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class ProductVariantSelectionInclusionImpl implements ProductVariantSelectionInclusion, ModelBase {
@@ -35,7 +35,7 @@ public class ProductVariantSelectionInclusionImpl implements ProductVariantSelec
     }
 
     /**
-     *  <p>Determines whether the SKUs are to be included in, or excluded from, the Product Selection.</p>
+     *
      */
 
     public com.commercetools.api.models.product_selection.ProductVariantSelectionTypeEnum getType() {
@@ -43,7 +43,7 @@ public class ProductVariantSelectionInclusionImpl implements ProductVariantSelec
     }
 
     /**
-     *  <p>Non-empty array of SKUs.</p>
+     *  <p>Non-empty array of SKUs representing Product Variants to be included into the Product Selection.</p>
      */
 
     public java.util.List<String> getSkus() {

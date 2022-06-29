@@ -10,20 +10,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- *  <p>The following types of Product Variant Selections are supported:</p>
+ * ProductVariantSelectionTypeEnum
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public interface ProductVariantSelectionTypeEnum {
 
-    /**
-    	<p>Only Product Variants with explicitly stated SKUs are part of the Product Selection.</p>
-
-    */
     ProductVariantSelectionTypeEnum INCLUSION = ProductVariantSelectionTypeEnumEnum.INCLUSION;
-    /**
-    	<p>All Product Variants except the explicitly stated SKUs are part of the Product Selection.</p>
 
-    */
     ProductVariantSelectionTypeEnum EXCLUSION = ProductVariantSelectionTypeEnumEnum.EXCLUSION;
 
     enum ProductVariantSelectionTypeEnumEnum implements ProductVariantSelectionTypeEnum {

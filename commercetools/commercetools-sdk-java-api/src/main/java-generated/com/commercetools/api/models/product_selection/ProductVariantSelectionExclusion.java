@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- * ProductVariantSelectionExclusion
+ *  <p>All Product Variants except the explicitly stated SKUs are part of the Product Selection.</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -32,7 +32,14 @@ public interface ProductVariantSelectionExclusion extends ProductVariantSelectio
     String EXCLUSION = "exclusion";
 
     /**
-     *  <p>Non-empty array of SKUs.</p>
+     *
+     */
+    @NotNull
+    @JsonProperty("type")
+    public ProductVariantSelectionTypeEnum getType();
+
+    /**
+     *  <p>Non-empty array of SKUs representing Product Variants to be excluded from the Product Selection.</p>
      */
     @NotNull
     @JsonProperty("skus")

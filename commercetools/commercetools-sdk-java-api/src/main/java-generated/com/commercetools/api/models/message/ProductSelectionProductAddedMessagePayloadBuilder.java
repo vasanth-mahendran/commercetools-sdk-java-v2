@@ -51,7 +51,7 @@ public class ProductSelectionProductAddedMessagePayloadBuilder
     }
 
     /**
-     *
+     *  <p>Polymorphic base type for Product Variant Selections. The actual type is determined by the <code>type</code> field.</p>
      */
 
     public ProductSelectionProductAddedMessagePayloadBuilder variantSelection(
@@ -61,7 +61,7 @@ public class ProductSelectionProductAddedMessagePayloadBuilder
     }
 
     /**
-     *
+     *  <p>Polymorphic base type for Product Variant Selections. The actual type is determined by the <code>type</code> field.</p>
      */
 
     public ProductSelectionProductAddedMessagePayloadBuilder variantSelection(

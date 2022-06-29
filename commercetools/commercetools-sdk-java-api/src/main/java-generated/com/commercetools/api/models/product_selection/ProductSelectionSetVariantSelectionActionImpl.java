@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- *  <p>Updates the Variant Selection of an existing Product Selection Assignment. If the given Product is not assigned to the Product Selection ProductAssignmentMissing is raised.'</p>
+ *  <p>Updates the Product Variant Selection of an existing Product Selection Assignment. If the given Product is not assigned to the Product Selection ProductAssignmentMissing error is raised.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class ProductSelectionSetVariantSelectionActionImpl

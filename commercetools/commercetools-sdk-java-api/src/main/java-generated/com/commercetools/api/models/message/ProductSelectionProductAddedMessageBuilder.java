@@ -216,7 +216,7 @@ public class ProductSelectionProductAddedMessageBuilder implements Builder<Produ
     }
 
     /**
-     *
+     *  <p>Polymorphic base type for Product Variant Selections. The actual type is determined by the <code>type</code> field.</p>
      */
 
     public ProductSelectionProductAddedMessageBuilder variantSelection(
@@ -226,7 +226,7 @@ public class ProductSelectionProductAddedMessageBuilder implements Builder<Produ
     }
 
     /**
-     *
+     *  <p>Polymorphic base type for Product Variant Selections. The actual type is determined by the <code>type</code> field.</p>
      */
 
     public ProductSelectionProductAddedMessageBuilder variantSelection(
