@@ -195,7 +195,7 @@ public class ProductVariantAddedMessageBuilder implements Builder<ProductVariant
     }
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
 
     public ProductVariantAddedMessageBuilder variant(
@@ -205,7 +205,7 @@ public class ProductVariantAddedMessageBuilder implements Builder<ProductVariant
     }
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
 
     public ProductVariantAddedMessageBuilder variant(

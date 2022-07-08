@@ -28,7 +28,7 @@ public class ProductVariantDeletedMessagePayloadBuilder implements Builder<Produ
     private java.util.List<String> removedImageUrls;
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
 
     public ProductVariantDeletedMessagePayloadBuilder variant(
@@ -38,7 +38,7 @@ public class ProductVariantDeletedMessagePayloadBuilder implements Builder<Produ
     }
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
 
     public ProductVariantDeletedMessagePayloadBuilder variant(

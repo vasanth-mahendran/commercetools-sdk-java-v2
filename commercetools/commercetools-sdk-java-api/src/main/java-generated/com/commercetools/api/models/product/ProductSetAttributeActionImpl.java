@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * ProductSetAttributeAction
+ *  <p>Either <code>variantId</code> or <code>sku</code> is required.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class ProductSetAttributeActionImpl implements ProductSetAttributeAction, ModelBase {
@@ -57,7 +57,7 @@ public class ProductSetAttributeActionImpl implements ProductSetAttributeAction,
     }
 
     /**
-     *
+     *  <p>The <code>id</code> of the ProductVariant to update.</p>
      */
 
     public Long getVariantId() {
@@ -65,7 +65,7 @@ public class ProductSetAttributeActionImpl implements ProductSetAttributeAction,
     }
 
     /**
-     *
+     *  <p>The <code>sku</code> of the ProductVariant to update.</p>
      */
 
     public String getSku() {
@@ -73,7 +73,7 @@ public class ProductSetAttributeActionImpl implements ProductSetAttributeAction,
     }
 
     /**
-     *
+     *  <p>The name of the Attribute to set.</p>
      */
 
     public String getName() {
@@ -81,7 +81,7 @@ public class ProductSetAttributeActionImpl implements ProductSetAttributeAction,
     }
 
     /**
-     *  <p>If the attribute exists and the value is omitted or set to <code>null</code>, the attribute is removed. If the attribute exists and a value is provided, the new value is applied. If the attribute does not exist and a value is provided, it is added as a new attribute.</p>
+     *  <p>Value to set for the Attribute. If empty, any existing value will be removed.</p>
      */
 
     public java.lang.Object getValue() {
@@ -89,7 +89,7 @@ public class ProductSetAttributeActionImpl implements ProductSetAttributeAction,
     }
 
     /**
-     *
+     *  <p>If <code>true</code>, only the staged Attribute is set. If <code>false</code>, both current and staged Attribute is set.</p>
      */
 
     public Boolean getStaged() {

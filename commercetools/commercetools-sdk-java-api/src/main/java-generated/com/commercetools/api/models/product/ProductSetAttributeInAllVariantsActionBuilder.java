@@ -32,7 +32,7 @@ public class ProductSetAttributeInAllVariantsActionBuilder implements Builder<Pr
     private Boolean staged;
 
     /**
-     *
+     *  <p>The name of the Attribute to set.</p>
      */
 
     public ProductSetAttributeInAllVariantsActionBuilder name(final String name) {
@@ -41,7 +41,7 @@ public class ProductSetAttributeInAllVariantsActionBuilder implements Builder<Pr
     }
 
     /**
-     *  <p>The same update behavior as for Set Attribute applies.</p>
+     *  <p>Value to set for the Attributes. If empty, any existing value will be removed.</p>
      */
 
     public ProductSetAttributeInAllVariantsActionBuilder value(@Nullable final java.lang.Object value) {
@@ -50,7 +50,7 @@ public class ProductSetAttributeInAllVariantsActionBuilder implements Builder<Pr
     }
 
     /**
-     *
+     *  <p>If <code>true</code>, only the staged Attributes are set. If <code>false</code>, both the current and staged Attributes are set.</p>
      */
 
     public ProductSetAttributeInAllVariantsActionBuilder staged(@Nullable final Boolean staged) {

@@ -30,7 +30,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     private String key;
 
     @Nullable
-    private java.util.List<com.commercetools.api.models.common.PriceDraft> prices;
+    private java.util.List<com.commercetools.api.models.product.EmbeddedPriceDraft> prices;
 
     @Nullable
     private java.util.List<com.commercetools.api.models.product.Attribute> attributes;
@@ -42,7 +42,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     private java.util.List<com.commercetools.api.models.common.AssetDraft> assets;
 
     /**
-     *
+     *  <p>User-defined unique SKU of the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder sku(@Nullable final String sku) {
@@ -51,7 +51,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *  <p>User-defined unique identifier for the ProductVariant. <em>ProductVariant keys are different from Product keys.</em></p>
+     *  <p>User-defined unique identifier for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder key(@Nullable final String key) {
@@ -60,30 +60,31 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>EmbeddedPrices for the ProductVariant.</p>
      */
 
-    public ProductVariantDraftBuilder prices(@Nullable final com.commercetools.api.models.common.PriceDraft... prices) {
+    public ProductVariantDraftBuilder prices(
+            @Nullable final com.commercetools.api.models.product.EmbeddedPriceDraft... prices) {
         this.prices = new ArrayList<>(Arrays.asList(prices));
         return this;
     }
 
     /**
-     *
+     *  <p>EmbeddedPrices for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder prices(
-            @Nullable final java.util.List<com.commercetools.api.models.common.PriceDraft> prices) {
+            @Nullable final java.util.List<com.commercetools.api.models.product.EmbeddedPriceDraft> prices) {
         this.prices = prices;
         return this;
     }
 
     /**
-     *
+     *  <p>EmbeddedPrices for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder plusPrices(
-            @Nullable final com.commercetools.api.models.common.PriceDraft... prices) {
+            @Nullable final com.commercetools.api.models.product.EmbeddedPriceDraft... prices) {
         if (this.prices == null) {
             this.prices = new ArrayList<>();
         }
@@ -92,31 +93,39 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>EmbeddedPrices for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder plusPrices(
-            Function<com.commercetools.api.models.common.PriceDraftBuilder, com.commercetools.api.models.common.PriceDraftBuilder> builder) {
+            Function<com.commercetools.api.models.product.EmbeddedPriceDraftBuilder, com.commercetools.api.models.product.EmbeddedPriceDraftBuilder> builder) {
         if (this.prices == null) {
             this.prices = new ArrayList<>();
         }
-        this.prices.add(builder.apply(com.commercetools.api.models.common.PriceDraftBuilder.of()).build());
+        this.prices.add(builder.apply(com.commercetools.api.models.product.EmbeddedPriceDraftBuilder.of()).build());
         return this;
     }
 
     /**
-     *
+     *  <p>EmbeddedPrices for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder withPrices(
-            Function<com.commercetools.api.models.common.PriceDraftBuilder, com.commercetools.api.models.common.PriceDraftBuilder> builder) {
+            Function<com.commercetools.api.models.product.EmbeddedPriceDraftBuilder, com.commercetools.api.models.product.EmbeddedPriceDraftBuilder> builder) {
         this.prices = new ArrayList<>();
-        this.prices.add(builder.apply(com.commercetools.api.models.common.PriceDraftBuilder.of()).build());
+        this.prices.add(builder.apply(com.commercetools.api.models.product.EmbeddedPriceDraftBuilder.of()).build());
         return this;
     }
 
     /**
-     *
+     *  <p>AttributeType determines the format of the Attribute <code>value</code> to be provided:</p>
+     *  <ul>
+     *   <li>For AttributeEnumType and AttributeLocalizedEnumType Attributes, use the <code>key</code> of the AttributePlainEnumValue or AttributeLocalizedEnumValue objects, or the complete objects as <code>value</code>.</li>
+     *   <li>For AttributeLocalizableTextType Attributes, use the LocalizedString object as <code>value</code>.</li>
+     *   <li>For AttributeMoneyType Attributes, use the Money object as <code>value</code>.</li>
+     *   <li>For AttributeSetType Attributes, use the entire <code>set</code> object as <code>value</code>.</li>
+     *   <li>For AttributeNestedType Attributes, use the list of values of all Attributes of the nested Product as <code>value</code>.</li>
+     *   <li>For AttributeReferenceType Attributes, use the Reference object as <code>value</code>.</li>
+     *  </ul>
      */
 
     public ProductVariantDraftBuilder attributes(
@@ -126,7 +135,15 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>AttributeType determines the format of the Attribute <code>value</code> to be provided:</p>
+     *  <ul>
+     *   <li>For AttributeEnumType and AttributeLocalizedEnumType Attributes, use the <code>key</code> of the AttributePlainEnumValue or AttributeLocalizedEnumValue objects, or the complete objects as <code>value</code>.</li>
+     *   <li>For AttributeLocalizableTextType Attributes, use the LocalizedString object as <code>value</code>.</li>
+     *   <li>For AttributeMoneyType Attributes, use the Money object as <code>value</code>.</li>
+     *   <li>For AttributeSetType Attributes, use the entire <code>set</code> object as <code>value</code>.</li>
+     *   <li>For AttributeNestedType Attributes, use the list of values of all Attributes of the nested Product as <code>value</code>.</li>
+     *   <li>For AttributeReferenceType Attributes, use the Reference object as <code>value</code>.</li>
+     *  </ul>
      */
 
     public ProductVariantDraftBuilder attributes(
@@ -136,7 +153,15 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>AttributeType determines the format of the Attribute <code>value</code> to be provided:</p>
+     *  <ul>
+     *   <li>For AttributeEnumType and AttributeLocalizedEnumType Attributes, use the <code>key</code> of the AttributePlainEnumValue or AttributeLocalizedEnumValue objects, or the complete objects as <code>value</code>.</li>
+     *   <li>For AttributeLocalizableTextType Attributes, use the LocalizedString object as <code>value</code>.</li>
+     *   <li>For AttributeMoneyType Attributes, use the Money object as <code>value</code>.</li>
+     *   <li>For AttributeSetType Attributes, use the entire <code>set</code> object as <code>value</code>.</li>
+     *   <li>For AttributeNestedType Attributes, use the list of values of all Attributes of the nested Product as <code>value</code>.</li>
+     *   <li>For AttributeReferenceType Attributes, use the Reference object as <code>value</code>.</li>
+     *  </ul>
      */
 
     public ProductVariantDraftBuilder plusAttributes(
@@ -149,7 +174,15 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>AttributeType determines the format of the Attribute <code>value</code> to be provided:</p>
+     *  <ul>
+     *   <li>For AttributeEnumType and AttributeLocalizedEnumType Attributes, use the <code>key</code> of the AttributePlainEnumValue or AttributeLocalizedEnumValue objects, or the complete objects as <code>value</code>.</li>
+     *   <li>For AttributeLocalizableTextType Attributes, use the LocalizedString object as <code>value</code>.</li>
+     *   <li>For AttributeMoneyType Attributes, use the Money object as <code>value</code>.</li>
+     *   <li>For AttributeSetType Attributes, use the entire <code>set</code> object as <code>value</code>.</li>
+     *   <li>For AttributeNestedType Attributes, use the list of values of all Attributes of the nested Product as <code>value</code>.</li>
+     *   <li>For AttributeReferenceType Attributes, use the Reference object as <code>value</code>.</li>
+     *  </ul>
      */
 
     public ProductVariantDraftBuilder plusAttributes(
@@ -162,7 +195,15 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>AttributeType determines the format of the Attribute <code>value</code> to be provided:</p>
+     *  <ul>
+     *   <li>For AttributeEnumType and AttributeLocalizedEnumType Attributes, use the <code>key</code> of the AttributePlainEnumValue or AttributeLocalizedEnumValue objects, or the complete objects as <code>value</code>.</li>
+     *   <li>For AttributeLocalizableTextType Attributes, use the LocalizedString object as <code>value</code>.</li>
+     *   <li>For AttributeMoneyType Attributes, use the Money object as <code>value</code>.</li>
+     *   <li>For AttributeSetType Attributes, use the entire <code>set</code> object as <code>value</code>.</li>
+     *   <li>For AttributeNestedType Attributes, use the list of values of all Attributes of the nested Product as <code>value</code>.</li>
+     *   <li>For AttributeReferenceType Attributes, use the Reference object as <code>value</code>.</li>
+     *  </ul>
      */
 
     public ProductVariantDraftBuilder withAttributes(
@@ -173,7 +214,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Images for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder images(@Nullable final com.commercetools.api.models.common.Image... images) {
@@ -182,7 +223,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Images for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder images(
@@ -192,7 +233,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Images for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder plusImages(@Nullable final com.commercetools.api.models.common.Image... images) {
@@ -204,7 +245,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Images for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder plusImages(
@@ -217,7 +258,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Images for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder withImages(
@@ -228,7 +269,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Media assets for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder assets(@Nullable final com.commercetools.api.models.common.AssetDraft... assets) {
@@ -237,7 +278,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Media assets for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder assets(
@@ -247,7 +288,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Media assets for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder plusAssets(
@@ -260,7 +301,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Media assets for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder plusAssets(
@@ -273,7 +314,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     /**
-     *
+     *  <p>Media assets for the ProductVariant.</p>
      */
 
     public ProductVariantDraftBuilder withAssets(
@@ -294,7 +335,7 @@ public class ProductVariantDraftBuilder implements Builder<ProductVariantDraft> 
     }
 
     @Nullable
-    public java.util.List<com.commercetools.api.models.common.PriceDraft> getPrices() {
+    public java.util.List<com.commercetools.api.models.product.EmbeddedPriceDraft> getPrices() {
         return this.prices;
     }
 

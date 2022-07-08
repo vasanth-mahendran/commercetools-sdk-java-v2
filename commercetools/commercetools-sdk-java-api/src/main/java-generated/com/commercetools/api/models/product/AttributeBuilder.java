@@ -26,7 +26,7 @@ public class AttributeBuilder implements Builder<Attribute> {
     private java.lang.Object value;
 
     /**
-     *
+     *  <p>Name of the Attribute.</p>
      */
 
     public AttributeBuilder name(final String name) {
@@ -35,7 +35,7 @@ public class AttributeBuilder implements Builder<Attribute> {
     }
 
     /**
-     *  <p>A valid JSON value, based on an AttributeDefinition.</p>
+     *  <p>Valid JSON value based on an AttributeDefinition.</p>
      */
 
     public AttributeBuilder value(final java.lang.Object value) {

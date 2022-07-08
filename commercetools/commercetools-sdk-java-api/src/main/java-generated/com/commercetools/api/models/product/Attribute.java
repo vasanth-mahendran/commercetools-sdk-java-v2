@@ -30,14 +30,14 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface Attribute {
 
     /**
-     *
+     *  <p>Name of the Attribute.</p>
      */
     @NotNull
     @JsonProperty("name")
     public String getName();
 
     /**
-     *  <p>A valid JSON value, based on an AttributeDefinition.</p>
+     *  <p>Valid JSON value based on an AttributeDefinition.</p>
      */
     @NotNull
     @JsonProperty("value")

@@ -50,7 +50,7 @@ public class ProductSetAttributeInAllVariantsActionImpl implements ProductSetAtt
     }
 
     /**
-     *
+     *  <p>The name of the Attribute to set.</p>
      */
 
     public String getName() {
@@ -58,7 +58,7 @@ public class ProductSetAttributeInAllVariantsActionImpl implements ProductSetAtt
     }
 
     /**
-     *  <p>The same update behavior as for Set Attribute applies.</p>
+     *  <p>Value to set for the Attributes. If empty, any existing value will be removed.</p>
      */
 
     public java.lang.Object getValue() {
@@ -66,7 +66,7 @@ public class ProductSetAttributeInAllVariantsActionImpl implements ProductSetAtt
     }
 
     /**
-     *
+     *  <p>If <code>true</code>, only the staged Attributes are set. If <code>false</code>, both the current and staged Attributes are set.</p>
      */
 
     public Boolean getStaged() {

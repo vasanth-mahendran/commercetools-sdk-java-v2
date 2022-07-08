@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- * ProductDraft
+ *  <p>The representation sent to the server when creating a new Product.</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -38,7 +38,7 @@ import io.vrap.rmf.base.client.utils.Generated;
 public interface ProductDraft {
 
     /**
-     *  <p>A predefined product type assigned to the product. All products must have a product type.</p>
+     *  <p>ProductType of the Product.</p>
      */
     @NotNull
     @Valid
@@ -46,7 +46,7 @@ public interface ProductDraft {
     public ProductTypeResourceIdentifier getProductType();
 
     /**
-     *
+     *  <p>Name of the Product.</p>
      */
     @NotNull
     @Valid
@@ -54,7 +54,7 @@ public interface ProductDraft {
     public LocalizedString getName();
 
     /**
-     *  <p>Human-readable identifiers usually used as deep-link URLs for the product. A slug must be unique across a project, but a product can have the same slug for different languages. Slugs have a maximum size of 256. Valid characters are: alphabetic characters (<code>A-Z, a-z</code>), numeric characters (<code>0-9</code>), underscores (<code>_</code>) and hyphens (<code>-</code>).</p>
+     *  <p>User-defined identifier used in a deep-link URL for the Product. It must be unique across a Project, but a Product can have the same slug in different locales. It must match the pattern <code>[a-zA-Z0-9_\-]{2,256}</code>.</p>
      */
     @NotNull
     @Valid
@@ -69,91 +69,91 @@ public interface ProductDraft {
     public String getKey();
 
     /**
-     *
+     *  <p>Description of the Product.</p>
      */
     @Valid
     @JsonProperty("description")
     public LocalizedString getDescription();
 
     /**
-     *  <p>Categories assigned to the product.</p>
+     *  <p>Categories assigned to the Product.</p>
      */
     @Valid
     @JsonProperty("categories")
     public List<CategoryResourceIdentifier> getCategories();
 
     /**
-     *
+     *  <p>Controls the order of Products in Categories.</p>
      */
     @Valid
     @JsonProperty("categoryOrderHints")
     public CategoryOrderHints getCategoryOrderHints();
 
     /**
-     *
+     *  <p>Title of the Product displayed in search results.</p>
      */
     @Valid
     @JsonProperty("metaTitle")
     public LocalizedString getMetaTitle();
 
     /**
-     *
+     *  <p>Description of the Product displayed in search results.</p>
      */
     @Valid
     @JsonProperty("metaDescription")
     public LocalizedString getMetaDescription();
 
     /**
-     *
+     *  <p>Keywords that give additional information about the Product to search engines.</p>
      */
     @Valid
     @JsonProperty("metaKeywords")
     public LocalizedString getMetaKeywords();
 
     /**
-     *  <p>The master product variant. Required if the <code>variants</code> array has product variants.</p>
+     *  <p>Master ProductVariant. This field is required if <code>variants</code> is not empty.</p>
      */
     @Valid
     @JsonProperty("masterVariant")
     public ProductVariantDraft getMasterVariant();
 
     /**
-     *  <p>An array of related product variants.</p>
+     *  <p>ProductVariants of the Product.</p>
      */
     @Valid
     @JsonProperty("variants")
     public List<ProductVariantDraft> getVariants();
 
     /**
-     *
+     *  <p>TaxCategory assigned to the Product.</p>
      */
     @Valid
     @JsonProperty("taxCategory")
     public TaxCategoryResourceIdentifier getTaxCategory();
 
     /**
-     *
+     *  <p>Used by Product Suggestions, but is also considered for a full text search.</p>
      */
     @Valid
     @JsonProperty("searchKeywords")
     public SearchKeywords getSearchKeywords();
 
     /**
-     *
+     *  <p>State assigned to the Product.</p>
      */
     @Valid
     @JsonProperty("state")
     public StateResourceIdentifier getState();
 
     /**
-     *  <p>If <code>true</code>, the product is published immediately.</p>
+     *  <p>If <code>true</code>, the Product is published immediately to the current projection.</p>
      */
 
     @JsonProperty("publish")
     public Boolean getPublish();
 
     /**
-     *  <p>Specifies which type of prices should be used when looking up a price for this product. If not set, <code>Embedded</code> ProductPriceMode is used.</p>
+     *  <p>Specifies the type of prices used when looking up a price for the Product.</p>
      */
 
     @JsonProperty("priceMode")

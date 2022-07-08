@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * ProductData
+ *  <p>Contains all the data of a Product and its ProductVariants.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class ProductDataImpl implements ProductData, ModelBase {
@@ -71,7 +71,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Name of the Product.</p>
      */
 
     public com.commercetools.api.models.common.LocalizedString getName() {
@@ -79,7 +79,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *
+     *  <p>Reference to Categories assigned to the Product.</p>
      */
 
     public java.util.List<com.commercetools.api.models.category.CategoryReference> getCategories() {
@@ -87,7 +87,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *
+     *  <p>Order of Products in Categories.</p>
      */
 
     public com.commercetools.api.models.product.CategoryOrderHints getCategoryOrderHints() {
@@ -95,7 +95,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Description of the Product.</p>
      */
 
     public com.commercetools.api.models.common.LocalizedString getDescription() {
@@ -103,7 +103,8 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>User-defined identifier used in a deep-link URL for the Product. Must be unique across a Project, but can be the same for Products in different locales. Matches the pattern <code>[a-zA-Z0-9_\-]{2,256}</code>.</p>
+     *  <p>For good performance, indexes are provided for the first 15 <code>languages</code> set in the Project.</p>
      */
 
     public com.commercetools.api.models.common.LocalizedString getSlug() {
@@ -111,7 +112,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Title of the Product displayed in search results.</p>
      */
 
     public com.commercetools.api.models.common.LocalizedString getMetaTitle() {
@@ -119,7 +120,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Description of the Product displayed in search results below the meta title.</p>
      */
 
     public com.commercetools.api.models.common.LocalizedString getMetaDescription() {
@@ -127,7 +128,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Keywords that give additional information about the Product to search engines.</p>
      */
 
     public com.commercetools.api.models.common.LocalizedString getMetaKeywords() {
@@ -135,7 +136,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *
+     *  <p>Master ProductVariant.</p>
      */
 
     public com.commercetools.api.models.product.ProductVariant getMasterVariant() {
@@ -143,7 +144,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *
+     *  <p>Related ProductVariants.</p>
      */
 
     public java.util.List<com.commercetools.api.models.product.ProductVariant> getVariants() {
@@ -151,7 +152,7 @@ public class ProductDataImpl implements ProductData, ModelBase {
     }
 
     /**
-     *
+     *  <p>Used by Product Suggestions, but is also considered for a full text search.</p>
      */
 
     public com.commercetools.api.models.product.SearchKeywords getSearchKeywords() {

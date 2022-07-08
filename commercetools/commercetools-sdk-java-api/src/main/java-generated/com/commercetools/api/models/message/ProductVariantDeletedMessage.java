@@ -42,7 +42,7 @@ public interface ProductVariantDeletedMessage extends Message {
     String PRODUCT_VARIANT_DELETED = "ProductVariantDeleted";
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
     @NotNull
     @Valid

@@ -28,7 +28,7 @@ public class ProductVariantAddedMessagePayloadBuilder implements Builder<Product
     private Boolean staged;
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
 
     public ProductVariantAddedMessagePayloadBuilder variant(
@@ -38,7 +38,7 @@ public class ProductVariantAddedMessagePayloadBuilder implements Builder<Product
     }
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
 
     public ProductVariantAddedMessagePayloadBuilder variant(

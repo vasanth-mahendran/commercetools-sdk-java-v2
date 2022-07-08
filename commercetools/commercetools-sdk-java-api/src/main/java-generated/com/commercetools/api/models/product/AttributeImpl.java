@@ -34,7 +34,7 @@ public class AttributeImpl implements Attribute, ModelBase {
     }
 
     /**
-     *
+     *  <p>Name of the Attribute.</p>
      */
 
     public String getName() {
@@ -42,7 +42,7 @@ public class AttributeImpl implements Attribute, ModelBase {
     }
 
     /**
-     *  <p>A valid JSON value, based on an AttributeDefinition.</p>
+     *  <p>Valid JSON value based on an AttributeDefinition.</p>
      */
 
     public java.lang.Object getValue() {

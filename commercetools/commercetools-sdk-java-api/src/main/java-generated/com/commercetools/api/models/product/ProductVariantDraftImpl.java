@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * ProductVariantDraft
+ *  <p>Creates a ProductVariant when included in the <code>masterVariant</code> and <code>variants</code> fields of the ProductDraft.</p>
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class ProductVariantDraftImpl implements ProductVariantDraft, ModelBase {
@@ -24,7 +24,7 @@ public class ProductVariantDraftImpl implements ProductVariantDraft, ModelBase {
 
     private String key;
 
-    private java.util.List<com.commercetools.api.models.common.PriceDraft> prices;
+    private java.util.List<com.commercetools.api.models.product.EmbeddedPriceDraft> prices;
 
     private java.util.List<com.commercetools.api.models.product.Attribute> attributes;
 
@@ -34,7 +34,7 @@ public class ProductVariantDraftImpl implements ProductVariantDraft, ModelBase {
 
     @JsonCreator
     ProductVariantDraftImpl(@JsonProperty("sku") final String sku, @JsonProperty("key") final String key,
-            @JsonProperty("prices") final java.util.List<com.commercetools.api.models.common.PriceDraft> prices,
+            @JsonProperty("prices") final java.util.List<com.commercetools.api.models.product.EmbeddedPriceDraft> prices,
             @JsonProperty("attributes") final java.util.List<com.commercetools.api.models.product.Attribute> attributes,
             @JsonProperty("images") final java.util.List<com.commercetools.api.models.common.Image> images,
             @JsonProperty("assets") final java.util.List<com.commercetools.api.models.common.AssetDraft> assets) {
@@ -50,7 +50,7 @@ public class ProductVariantDraftImpl implements ProductVariantDraft, ModelBase {
     }
 
     /**
-     *
+     *  <p>User-defined unique SKU of the ProductVariant.</p>
      */
 
     public String getSku() {
@@ -58,7 +58,7 @@ public class ProductVariantDraftImpl implements ProductVariantDraft, ModelBase {
     }
 
     /**
-     *  <p>User-defined unique identifier for the ProductVariant. <em>ProductVariant keys are different from Product keys.</em></p>
+     *  <p>User-defined unique identifier for the ProductVariant.</p>
      */
 
     public String getKey() {
@@ -66,15 +66,23 @@ public class ProductVariantDraftImpl implements ProductVariantDraft, ModelBase {
     }
 
     /**
-     *
+     *  <p>EmbeddedPrices for the ProductVariant.</p>
      */
 
-    public java.util.List<com.commercetools.api.models.common.PriceDraft> getPrices() {
+    public java.util.List<com.commercetools.api.models.product.EmbeddedPriceDraft> getPrices() {
         return this.prices;
     }
 
     /**
-     *
+     *  <p>AttributeType determines the format of the Attribute <code>value</code> to be provided:</p>
+     *  <ul>
+     *   <li>For AttributeEnumType and AttributeLocalizedEnumType Attributes, use the <code>key</code> of the AttributePlainEnumValue or AttributeLocalizedEnumValue objects, or the complete objects as <code>value</code>.</li>
+     *   <li>For AttributeLocalizableTextType Attributes, use the LocalizedString object as <code>value</code>.</li>
+     *   <li>For AttributeMoneyType Attributes, use the Money object as <code>value</code>.</li>
+     *   <li>For AttributeSetType Attributes, use the entire <code>set</code> object as <code>value</code>.</li>
+     *   <li>For AttributeNestedType Attributes, use the list of values of all Attributes of the nested Product as <code>value</code>.</li>
+     *   <li>For AttributeReferenceType Attributes, use the Reference object as <code>value</code>.</li>
+     *  </ul>
      */
 
     public java.util.List<com.commercetools.api.models.product.Attribute> getAttributes() {
@@ -82,7 +90,7 @@ public class ProductVariantDraftImpl implements ProductVariantDraft, ModelBase {
     }
 
     /**
-     *
+     *  <p>Images for the ProductVariant.</p>
      */
 
     public java.util.List<com.commercetools.api.models.common.Image> getImages() {
@@ -90,7 +98,7 @@ public class ProductVariantDraftImpl implements ProductVariantDraft, ModelBase {
     }
 
     /**
-     *
+     *  <p>Media assets for the ProductVariant.</p>
      */
 
     public java.util.List<com.commercetools.api.models.common.AssetDraft> getAssets() {
@@ -105,11 +113,11 @@ public class ProductVariantDraftImpl implements ProductVariantDraft, ModelBase {
         this.key = key;
     }
 
-    public void setPrices(final com.commercetools.api.models.common.PriceDraft... prices) {
+    public void setPrices(final com.commercetools.api.models.product.EmbeddedPriceDraft... prices) {
         this.prices = new ArrayList<>(Arrays.asList(prices));
     }
 
-    public void setPrices(final java.util.List<com.commercetools.api.models.common.PriceDraft> prices) {
+    public void setPrices(final java.util.List<com.commercetools.api.models.product.EmbeddedPriceDraft> prices) {
         this.prices = prices;
     }
 

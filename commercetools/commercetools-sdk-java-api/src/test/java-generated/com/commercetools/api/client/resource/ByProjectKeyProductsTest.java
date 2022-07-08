@@ -131,6 +131,11 @@ public class ByProjectKeyProductsTest {
                         .createHttpRequest(), "get", "/test_projectKey/products?var.varName=var.varName", },
                 new Object[] { apiRoot.withProjectKey("test_projectKey").products().get().createHttpRequest(), "get",
                         "/test_projectKey/products", },
+                new Object[] { apiRoot.withProjectKey("test_projectKey")
+                        .products()
+                        .head()
+                        .withWhere("where")
+                        .createHttpRequest(), "head", "/test_projectKey/products?where=where", },
                 new Object[] { apiRoot.withProjectKey("test_projectKey").products().head().createHttpRequest(), "head",
                         "/test_projectKey/products", },
                 new Object[] {
@@ -211,6 +216,7 @@ public class ByProjectKeyProductsTest {
                         .get()
                         .withPredicateVar("varName", "var.varName"), },
                 new Object[] { apiRoot.withProjectKey("test_projectKey").products().get(), },
+                new Object[] { apiRoot.withProjectKey("test_projectKey").products().head().withWhere("where"), },
                 new Object[] { apiRoot.withProjectKey("test_projectKey").products().head(), },
                 new Object[] { apiRoot.withProjectKey("test_projectKey")
                         .products()

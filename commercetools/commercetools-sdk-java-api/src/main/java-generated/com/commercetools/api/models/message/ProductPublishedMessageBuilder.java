@@ -249,7 +249,7 @@ public class ProductPublishedMessageBuilder implements Builder<ProductPublishedM
     }
 
     /**
-     *
+     *  <p>Publishes a Product based on the scope.</p>
      */
 
     public ProductPublishedMessageBuilder scope(final com.commercetools.api.models.cart.ProductPublishScope scope) {

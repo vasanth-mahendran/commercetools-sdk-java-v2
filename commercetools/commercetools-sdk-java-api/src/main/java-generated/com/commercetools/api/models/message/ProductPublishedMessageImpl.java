@@ -186,7 +186,7 @@ public class ProductPublishedMessageImpl implements ProductPublishedMessage, Mod
     }
 
     /**
-     *
+     *  <p>Publishes a Product based on the scope.</p>
      */
 
     public com.commercetools.api.models.cart.ProductPublishScope getScope() {

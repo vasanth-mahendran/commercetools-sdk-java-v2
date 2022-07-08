@@ -82,7 +82,7 @@ public class ProductPublishedMessagePayloadBuilder implements Builder<ProductPub
     }
 
     /**
-     *
+     *  <p>Publishes a Product based on the scope.</p>
      */
 
     public ProductPublishedMessagePayloadBuilder scope(

@@ -67,7 +67,7 @@ public class ProductPublishedMessagePayloadImpl implements ProductPublishedMessa
     }
 
     /**
-     *
+     *  <p>Publishes a Product based on the scope.</p>
      */
 
     public com.commercetools.api.models.cart.ProductPublishScope getScope() {

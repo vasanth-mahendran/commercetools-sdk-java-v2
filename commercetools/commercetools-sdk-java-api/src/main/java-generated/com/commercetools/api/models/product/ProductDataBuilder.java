@@ -57,7 +57,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     private com.commercetools.api.models.product.SearchKeywords searchKeywords;
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Name of the Product.</p>
      */
 
     public ProductDataBuilder name(
@@ -67,7 +67,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Name of the Product.</p>
      */
 
     public ProductDataBuilder name(final com.commercetools.api.models.common.LocalizedString name) {
@@ -76,7 +76,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Reference to Categories assigned to the Product.</p>
      */
 
     public ProductDataBuilder categories(final com.commercetools.api.models.category.CategoryReference... categories) {
@@ -85,7 +85,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Reference to Categories assigned to the Product.</p>
      */
 
     public ProductDataBuilder categories(
@@ -95,7 +95,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Reference to Categories assigned to the Product.</p>
      */
 
     public ProductDataBuilder plusCategories(
@@ -108,7 +108,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Reference to Categories assigned to the Product.</p>
      */
 
     public ProductDataBuilder plusCategories(
@@ -121,7 +121,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Reference to Categories assigned to the Product.</p>
      */
 
     public ProductDataBuilder withCategories(
@@ -132,7 +132,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Order of Products in Categories.</p>
      */
 
     public ProductDataBuilder categoryOrderHints(
@@ -143,7 +143,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Order of Products in Categories.</p>
      */
 
     public ProductDataBuilder categoryOrderHints(
@@ -153,7 +153,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Description of the Product.</p>
      */
 
     public ProductDataBuilder description(
@@ -163,7 +163,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Description of the Product.</p>
      */
 
     public ProductDataBuilder description(
@@ -173,7 +173,8 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>User-defined identifier used in a deep-link URL for the Product. Must be unique across a Project, but can be the same for Products in different locales. Matches the pattern <code>[a-zA-Z0-9_\-]{2,256}</code>.</p>
+     *  <p>For good performance, indexes are provided for the first 15 <code>languages</code> set in the Project.</p>
      */
 
     public ProductDataBuilder slug(
@@ -183,7 +184,8 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>User-defined identifier used in a deep-link URL for the Product. Must be unique across a Project, but can be the same for Products in different locales. Matches the pattern <code>[a-zA-Z0-9_\-]{2,256}</code>.</p>
+     *  <p>For good performance, indexes are provided for the first 15 <code>languages</code> set in the Project.</p>
      */
 
     public ProductDataBuilder slug(final com.commercetools.api.models.common.LocalizedString slug) {
@@ -192,7 +194,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Title of the Product displayed in search results.</p>
      */
 
     public ProductDataBuilder metaTitle(
@@ -202,7 +204,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Title of the Product displayed in search results.</p>
      */
 
     public ProductDataBuilder metaTitle(@Nullable final com.commercetools.api.models.common.LocalizedString metaTitle) {
@@ -211,7 +213,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Description of the Product displayed in search results below the meta title.</p>
      */
 
     public ProductDataBuilder metaDescription(
@@ -221,7 +223,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Description of the Product displayed in search results below the meta title.</p>
      */
 
     public ProductDataBuilder metaDescription(
@@ -231,7 +233,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Keywords that give additional information about the Product to search engines.</p>
      */
 
     public ProductDataBuilder metaKeywords(
@@ -241,7 +243,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *  <p>JSON object where the keys are of type Locale, and the values are the strings used for the corresponding language.</p>
+     *  <p>Keywords that give additional information about the Product to search engines.</p>
      */
 
     public ProductDataBuilder metaKeywords(
@@ -251,7 +253,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Master ProductVariant.</p>
      */
 
     public ProductDataBuilder masterVariant(
@@ -261,7 +263,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Master ProductVariant.</p>
      */
 
     public ProductDataBuilder masterVariant(final com.commercetools.api.models.product.ProductVariant masterVariant) {
@@ -270,7 +272,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Related ProductVariants.</p>
      */
 
     public ProductDataBuilder variants(final com.commercetools.api.models.product.ProductVariant... variants) {
@@ -279,7 +281,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Related ProductVariants.</p>
      */
 
     public ProductDataBuilder variants(
@@ -289,7 +291,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Related ProductVariants.</p>
      */
 
     public ProductDataBuilder plusVariants(final com.commercetools.api.models.product.ProductVariant... variants) {
@@ -301,7 +303,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Related ProductVariants.</p>
      */
 
     public ProductDataBuilder plusVariants(
@@ -314,7 +316,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Related ProductVariants.</p>
      */
 
     public ProductDataBuilder withVariants(
@@ -325,7 +327,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Used by Product Suggestions, but is also considered for a full text search.</p>
      */
 
     public ProductDataBuilder searchKeywords(
@@ -335,7 +337,7 @@ public class ProductDataBuilder implements Builder<ProductData> {
     }
 
     /**
-     *
+     *  <p>Used by Product Suggestions, but is also considered for a full text search.</p>
      */
 
     public ProductDataBuilder searchKeywords(final com.commercetools.api.models.product.SearchKeywords searchKeywords) {

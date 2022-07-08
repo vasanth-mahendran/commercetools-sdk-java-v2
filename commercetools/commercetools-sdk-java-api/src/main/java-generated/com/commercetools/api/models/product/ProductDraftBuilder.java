@@ -75,7 +75,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     private com.commercetools.api.models.product.ProductPriceModeEnum priceMode;
 
     /**
-     *  <p>A predefined product type assigned to the product. All products must have a product type.</p>
+     *  <p>ProductType of the Product.</p>
      */
 
     public ProductDraftBuilder productType(
@@ -87,7 +87,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>A predefined product type assigned to the product. All products must have a product type.</p>
+     *  <p>ProductType of the Product.</p>
      */
 
     public ProductDraftBuilder productType(
@@ -97,7 +97,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Name of the Product.</p>
      */
 
     public ProductDraftBuilder name(
@@ -107,7 +107,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Name of the Product.</p>
      */
 
     public ProductDraftBuilder name(final com.commercetools.api.models.common.LocalizedString name) {
@@ -116,7 +116,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>Human-readable identifiers usually used as deep-link URLs for the product. A slug must be unique across a project, but a product can have the same slug for different languages. Slugs have a maximum size of 256. Valid characters are: alphabetic characters (<code>A-Z, a-z</code>), numeric characters (<code>0-9</code>), underscores (<code>_</code>) and hyphens (<code>-</code>).</p>
+     *  <p>User-defined identifier used in a deep-link URL for the Product. It must be unique across a Project, but a Product can have the same slug in different locales. It must match the pattern <code>[a-zA-Z0-9_\-]{2,256}</code>.</p>
      */
 
     public ProductDraftBuilder slug(
@@ -126,7 +126,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>Human-readable identifiers usually used as deep-link URLs for the product. A slug must be unique across a project, but a product can have the same slug for different languages. Slugs have a maximum size of 256. Valid characters are: alphabetic characters (<code>A-Z, a-z</code>), numeric characters (<code>0-9</code>), underscores (<code>_</code>) and hyphens (<code>-</code>).</p>
+     *  <p>User-defined identifier used in a deep-link URL for the Product. It must be unique across a Project, but a Product can have the same slug in different locales. It must match the pattern <code>[a-zA-Z0-9_\-]{2,256}</code>.</p>
      */
 
     public ProductDraftBuilder slug(final com.commercetools.api.models.common.LocalizedString slug) {
@@ -144,7 +144,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Description of the Product.</p>
      */
 
     public ProductDraftBuilder description(
@@ -154,7 +154,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Description of the Product.</p>
      */
 
     public ProductDraftBuilder description(
@@ -164,7 +164,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>Categories assigned to the product.</p>
+     *  <p>Categories assigned to the Product.</p>
      */
 
     public ProductDraftBuilder categories(
@@ -174,7 +174,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>Categories assigned to the product.</p>
+     *  <p>Categories assigned to the Product.</p>
      */
 
     public ProductDraftBuilder categories(
@@ -184,7 +184,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>Categories assigned to the product.</p>
+     *  <p>Categories assigned to the Product.</p>
      */
 
     public ProductDraftBuilder plusCategories(
@@ -197,7 +197,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>Categories assigned to the product.</p>
+     *  <p>Categories assigned to the Product.</p>
      */
 
     public ProductDraftBuilder plusCategories(
@@ -211,7 +211,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>Categories assigned to the product.</p>
+     *  <p>Categories assigned to the Product.</p>
      */
 
     public ProductDraftBuilder withCategories(
@@ -223,7 +223,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Controls the order of Products in Categories.</p>
      */
 
     public ProductDraftBuilder categoryOrderHints(
@@ -234,7 +234,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Controls the order of Products in Categories.</p>
      */
 
     public ProductDraftBuilder categoryOrderHints(
@@ -244,7 +244,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Title of the Product displayed in search results.</p>
      */
 
     public ProductDraftBuilder metaTitle(
@@ -254,7 +254,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Title of the Product displayed in search results.</p>
      */
 
     public ProductDraftBuilder metaTitle(
@@ -264,7 +264,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Description of the Product displayed in search results.</p>
      */
 
     public ProductDraftBuilder metaDescription(
@@ -274,7 +274,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Description of the Product displayed in search results.</p>
      */
 
     public ProductDraftBuilder metaDescription(
@@ -284,7 +284,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Keywords that give additional information about the Product to search engines.</p>
      */
 
     public ProductDraftBuilder metaKeywords(
@@ -294,7 +294,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Keywords that give additional information about the Product to search engines.</p>
      */
 
     public ProductDraftBuilder metaKeywords(
@@ -304,7 +304,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>The master product variant. Required if the <code>variants</code> array has product variants.</p>
+     *  <p>Master ProductVariant. This field is required if <code>variants</code> is not empty.</p>
      */
 
     public ProductDraftBuilder masterVariant(
@@ -315,7 +315,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>The master product variant. Required if the <code>variants</code> array has product variants.</p>
+     *  <p>Master ProductVariant. This field is required if <code>variants</code> is not empty.</p>
      */
 
     public ProductDraftBuilder masterVariant(
@@ -325,7 +325,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>An array of related product variants.</p>
+     *  <p>ProductVariants of the Product.</p>
      */
 
     public ProductDraftBuilder variants(
@@ -335,7 +335,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>An array of related product variants.</p>
+     *  <p>ProductVariants of the Product.</p>
      */
 
     public ProductDraftBuilder variants(
@@ -345,7 +345,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>An array of related product variants.</p>
+     *  <p>ProductVariants of the Product.</p>
      */
 
     public ProductDraftBuilder plusVariants(
@@ -358,7 +358,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>An array of related product variants.</p>
+     *  <p>ProductVariants of the Product.</p>
      */
 
     public ProductDraftBuilder plusVariants(
@@ -371,7 +371,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>An array of related product variants.</p>
+     *  <p>ProductVariants of the Product.</p>
      */
 
     public ProductDraftBuilder withVariants(
@@ -382,7 +382,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>TaxCategory assigned to the Product.</p>
      */
 
     public ProductDraftBuilder taxCategory(
@@ -394,7 +394,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>TaxCategory assigned to the Product.</p>
      */
 
     public ProductDraftBuilder taxCategory(
@@ -404,7 +404,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Used by Product Suggestions, but is also considered for a full text search.</p>
      */
 
     public ProductDraftBuilder searchKeywords(
@@ -414,7 +414,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>Used by Product Suggestions, but is also considered for a full text search.</p>
      */
 
     public ProductDraftBuilder searchKeywords(
@@ -424,7 +424,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>State assigned to the Product.</p>
      */
 
     public ProductDraftBuilder state(
@@ -434,7 +434,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *
+     *  <p>State assigned to the Product.</p>
      */
 
     public ProductDraftBuilder state(@Nullable final com.commercetools.api.models.state.StateResourceIdentifier state) {
@@ -443,7 +443,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>If <code>true</code>, the product is published immediately.</p>
+     *  <p>If <code>true</code>, the Product is published immediately to the current projection.</p>
      */
 
     public ProductDraftBuilder publish(@Nullable final Boolean publish) {
@@ -452,7 +452,7 @@ public class ProductDraftBuilder implements Builder<ProductDraft> {
     }
 
     /**
-     *  <p>Specifies which type of prices should be used when looking up a price for this product. If not set, <code>Embedded</code> ProductPriceMode is used.</p>
+     *  <p>Specifies the type of prices used when looking up a price for the Product.</p>
      */
 
     public ProductDraftBuilder priceMode(

@@ -48,7 +48,7 @@ public class ProductVariantDeletedMessagePayloadImpl implements ProductVariantDe
     }
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
 
     public com.commercetools.api.models.product.ProductVariant getVariant() {

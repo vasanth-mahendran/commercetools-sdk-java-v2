@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- * ProductChangeMasterVariantAction
+ *  <p>Either <code>variantId</code> or <code>sku</code> is required. The specified Product Variant is removed from <code>variants</code> and the current Master Variant is moved to <code>variants</code>.</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -29,21 +29,21 @@ public interface ProductChangeMasterVariantAction extends ProductUpdateAction {
     String CHANGE_MASTER_VARIANT = "changeMasterVariant";
 
     /**
-     *
+     *  <p>The <code>id</code> of the ProductVariant to become the Master Variant.</p>
      */
 
     @JsonProperty("variantId")
     public Long getVariantId();
 
     /**
-     *
+     *  <p>The <code>sku</code> of the ProductVariant to become the Master Variant.</p>
      */
 
     @JsonProperty("sku")
     public String getSku();
 
     /**
-     *
+     *  <p>If <code>true</code>, only the staged Master Variant is changed. If <code>false</code>, both the current and staged Master Variant are changed.</p>
      */
 
     @JsonProperty("staged")

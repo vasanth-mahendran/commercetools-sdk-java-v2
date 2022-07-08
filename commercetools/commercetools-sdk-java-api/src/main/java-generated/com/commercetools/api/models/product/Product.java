@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- * Product
+ *  <p>A single representation is a combination of the <em>current</em> and <em>staged</em> representations.</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -52,21 +52,21 @@ public interface Product extends BaseResource, com.commercetools.api.models.Doma
     public String getId();
 
     /**
-     *  <p>The current version of the product.</p>
+     *  <p>Current version of the Product.</p>
      */
     @NotNull
     @JsonProperty("version")
     public Long getVersion();
 
     /**
-     *
+     *  <p>Date and time (UTC) the Product was initially created.</p>
      */
     @NotNull
     @JsonProperty("createdAt")
     public ZonedDateTime getCreatedAt();
 
     /**
-     *
+     *  <p>Date and time (UTC) the Product was last updated.</p>
      */
     @NotNull
     @JsonProperty("lastModifiedAt")
@@ -87,14 +87,15 @@ public interface Product extends BaseResource, com.commercetools.api.models.Doma
     public CreatedBy getCreatedBy();
 
     /**
-     *  <p>User-defined unique identifier of the Product. <em>Product keys are different from ProductVariant keys.</em></p>
+     *  <p>User-defined unique identifier of the Product.</p>
+     *  <p>This is different from ProductVariant key.</p>
      */
 
     @JsonProperty("key")
     public String getKey();
 
     /**
-     *
+     *  <p>Reference to ProductType.</p>
      */
     @NotNull
     @Valid
@@ -102,7 +103,7 @@ public interface Product extends BaseResource, com.commercetools.api.models.Doma
     public ProductTypeReference getProductType();
 
     /**
-     *  <p>The product data in the master catalog.</p>
+     *  <p>Product data in the master catalog.</p>
      */
     @NotNull
     @Valid
@@ -110,28 +111,28 @@ public interface Product extends BaseResource, com.commercetools.api.models.Doma
     public ProductCatalogData getMasterData();
 
     /**
-     *
+     *  <p>Reference to TaxCategory.</p>
      */
     @Valid
     @JsonProperty("taxCategory")
     public TaxCategoryReference getTaxCategory();
 
     /**
-     *
+     *  <p>Reference to State.</p>
      */
     @Valid
     @JsonProperty("state")
     public StateReference getState();
 
     /**
-     *  <p>Statistics about the review ratings taken into account for this product.</p>
+     *  <p>Review statistics of the Product.</p>
      */
     @Valid
     @JsonProperty("reviewRatingStatistics")
     public ReviewRatingStatistics getReviewRatingStatistics();
 
     /**
-     *  <p>Specifies which type of prices should be used when looking up a price for this product. If not set, <code>Embedded</code> ProductPriceMode is used.</p>
+     *  <p>Type of Price to be used when looking up a price for the Product.</p>
      */
 
     @JsonProperty("priceMode")

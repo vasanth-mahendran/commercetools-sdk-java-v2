@@ -42,7 +42,7 @@ public interface ProductVariantAddedMessage extends Message {
     String PRODUCT_VARIANT_ADDED = "ProductVariantAdded";
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
     @NotNull
     @Valid

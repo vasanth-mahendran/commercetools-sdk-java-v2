@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import io.vrap.rmf.base.client.utils.Generated;
 
 /**
- * ProductVariant
+ *  <p>Represents a single sellable product (often an individual SKU).</p>
  *
  * <hr>
  * Example to create an instance using the builder pattern
@@ -42,77 +42,78 @@ public interface ProductVariant {
     public Long getId();
 
     /**
-     *
+     *  <p>User-defined unique SKU of the ProductVariant.</p>
      */
 
     @JsonProperty("sku")
     public String getSku();
 
     /**
-     *  <p>User-defined unique identifier of the ProductVariant. <em>ProductVariant keys are different from Product keys.</em></p>
+     *  <p>User-defined unique identifier of the ProductVariant.</p>
+     *  <p>This is different from Product key.</p>
      */
 
     @JsonProperty("key")
     public String getKey();
 
     /**
-     *
+     *  <p>EmbeddedPrices of the ProductVariant. Cannot contain two Prices of the same Price scope (with same currency, country, Customer Group, and Channel).</p>
      */
     @Valid
     @JsonProperty("prices")
-    public List<Price> getPrices();
+    public List<EmbeddedPrice> getPrices();
 
     /**
-     *
+     *  <p>Attributes of the ProductVariant.</p>
      */
     @Valid
     @JsonProperty("attributes")
     public List<Attribute> getAttributes();
 
     /**
-     *
+     *  <p>Only available when Price selection is used. Cannot be used in a Query Predicate.</p>
      */
     @Valid
     @JsonProperty("price")
     public Price getPrice();
 
     /**
-     *
+     *  <p>Images of the ProductVariant.</p>
      */
     @Valid
     @JsonProperty("images")
     public List<Image> getImages();
 
     /**
-     *
+     *  <p>Media assets of the ProductVariant.</p>
      */
     @Valid
     @JsonProperty("assets")
     public List<Asset> getAssets();
 
     /**
-     *
+     *  <p>Set if the ProductVariant is tracked by Inventory. Can be used as an optimization to reduce calls to the Inventory service. May not contain the latest Inventory State (it is eventually consistent).</p>
      */
     @Valid
     @JsonProperty("availability")
     public ProductVariantAvailability getAvailability();
 
     /**
-     *
+     *  <p>Only available in response to a Product Projection Search request to mark this ProductVariant as one that matches the search query.</p>
      */
 
     @JsonProperty("isMatchingVariant")
     public Boolean getIsMatchingVariant();
 
     /**
-     *
+     *  <p>Only available in response to a Product Projection Search request with price selection. Can be used to sort, filter, and facet.</p>
      */
     @Valid
     @JsonProperty("scopedPrice")
     public ScopedPrice getScopedPrice();
 
     /**
-     *
+     *  <p>Only available in response to a Product Projection Search request with price selection.</p>
      */
 
     @JsonProperty("scopedPriceDiscounted")
@@ -125,9 +126,9 @@ public interface ProductVariant {
     public void setKey(final String key);
 
     @JsonIgnore
-    public void setPrices(final Price... prices);
+    public void setPrices(final EmbeddedPrice... prices);
 
-    public void setPrices(final List<Price> prices);
+    public void setPrices(final List<EmbeddedPrice> prices);
 
     @JsonIgnore
     public void setAttributes(final Attribute... attributes);

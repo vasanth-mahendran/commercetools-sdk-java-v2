@@ -36,9 +36,9 @@ public interface ScoreShippingRateInputDraft extends ShippingRateInputDraft {
      */
     @NotNull
     @JsonProperty("score")
-    public Long getScore();
+    public Double getScore();
 
-    public void setScore(final Long score);
+    public void setScore(final Double score);
 
     public static ScoreShippingRateInputDraft of() {
         return new ScoreShippingRateInputDraftImpl();

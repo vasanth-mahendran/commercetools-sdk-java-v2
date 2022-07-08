@@ -181,7 +181,7 @@ public class ShoppingListLineItemBuilder implements Builder<ShoppingListLineItem
     }
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
 
     public ShoppingListLineItemBuilder variant(
@@ -191,7 +191,7 @@ public class ShoppingListLineItemBuilder implements Builder<ShoppingListLineItem
     }
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
 
     public ShoppingListLineItemBuilder variant(

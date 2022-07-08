@@ -106,7 +106,7 @@ public interface ShoppingListLineItem extends com.commercetools.api.models.Custo
     public Integer getQuantity();
 
     /**
-     *
+     *  <p>Represents a single sellable product (often an individual SKU).</p>
      */
     @Valid
     @JsonProperty("variant")
