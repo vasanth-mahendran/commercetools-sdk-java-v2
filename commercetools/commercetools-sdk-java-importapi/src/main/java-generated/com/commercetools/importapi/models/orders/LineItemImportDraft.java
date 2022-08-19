@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import com.commercetools.importapi.models.common.ChannelKeyReference;
 import com.commercetools.importapi.models.common.LocalizedString;
 import com.commercetools.importapi.models.common.ProductKeyReference;
+import com.commercetools.importapi.models.customfields.Custom;
 import com.commercetools.importapi.models.prices.TaxRate;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
@@ -111,6 +112,13 @@ public interface LineItemImportDraft {
     @JsonProperty("shippingDetails")
     public ItemShippingDetailsDraft getShippingDetails();
 
+    /**
+     *  <p>Maps to <code>Order.custom</code>.</p>
+     */
+    @Valid
+    @JsonProperty("custom")
+    public Custom getCustom();
+
     public void setProduct(final ProductKeyReference product);
 
     public void setName(final LocalizedString name);
@@ -133,6 +141,7 @@ public interface LineItemImportDraft {
     public void setTaxRate(final TaxRate taxRate);
 
     public void setShippingDetails(final ItemShippingDetailsDraft shippingDetails);
+    public void setCustom(final Custom custom);
 
     public static LineItemImportDraft of() {
         return new LineItemImportDraftImpl();
@@ -150,6 +159,7 @@ public interface LineItemImportDraft {
         instance.setDistributionChannel(template.getDistributionChannel());
         instance.setTaxRate(template.getTaxRate());
         instance.setShippingDetails(template.getShippingDetails());
+        instance.setCustom(template.getCustom());
         return instance;
     }
 

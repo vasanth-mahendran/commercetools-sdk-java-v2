@@ -53,6 +53,9 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
     @Nullable
     private com.commercetools.importapi.models.orders.ItemShippingDetailsDraft shippingDetails;
 
+    @Nullable
+    private com.commercetools.importapi.models.customfields.Custom custom;
+
     /**
      *  <p>Maps to <code>LineItem.productId</code>.</p>
      */
@@ -330,13 +333,32 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
         return this.shippingDetails;
     }
 
+    /**
+     *  <p>Maps to <code>Order.custom</code>.</p>
+     */
+
+    public LineItemImportDraftBuilder custom(
+            Function<com.commercetools.importapi.models.customfields.CustomBuilder, com.commercetools.importapi.models.customfields.CustomBuilder> builder) {
+        this.custom = builder.apply(com.commercetools.importapi.models.customfields.CustomBuilder.of()).build();
+        return this;
+    }
+
+    /**
+     *  <p>Maps to <code>Order.custom</code>.</p>
+     */
+
+    public LineItemImportDraftBuilder custom(@Nullable final com.commercetools.importapi.models.customfields.Custom custom) {
+        this.custom = custom;
+        return this;
+    }
+
     public LineItemImportDraft build() {
         Objects.requireNonNull(name, LineItemImportDraft.class + ": name is missing");
         Objects.requireNonNull(variant, LineItemImportDraft.class + ": variant is missing");
         Objects.requireNonNull(price, LineItemImportDraft.class + ": price is missing");
         Objects.requireNonNull(quantity, LineItemImportDraft.class + ": quantity is missing");
         return new LineItemImportDraftImpl(product, name, variant, price, quantity, state, supplyChannel,
-            distributionChannel, taxRate, shippingDetails);
+            distributionChannel, taxRate, shippingDetails,custom);
     }
 
     /**
@@ -344,7 +366,7 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
      */
     public LineItemImportDraft buildUnchecked() {
         return new LineItemImportDraftImpl(product, name, variant, price, quantity, state, supplyChannel,
-            distributionChannel, taxRate, shippingDetails);
+            distributionChannel, taxRate, shippingDetails,custom);
     }
 
     public static LineItemImportDraftBuilder of() {
@@ -363,6 +385,7 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
         builder.distributionChannel = template.getDistributionChannel();
         builder.taxRate = template.getTaxRate();
         builder.shippingDetails = template.getShippingDetails();
+        builder.custom = template.getCustom();
         return builder;
     }
 
