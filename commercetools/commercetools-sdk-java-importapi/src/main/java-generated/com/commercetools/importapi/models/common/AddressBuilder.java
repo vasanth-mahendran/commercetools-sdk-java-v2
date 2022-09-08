@@ -2,9 +2,12 @@
 package com.commercetools.importapi.models.common;
 
 import java.util.*;
+import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
+import com.commercetools.importapi.models.customers.CustomerAddressBuilder;
+import com.commercetools.importapi.models.customfields.CustomBuilder;
 import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -96,6 +99,9 @@ public class AddressBuilder implements Builder<Address> {
 
     @Nullable
     private String externalId;
+
+    @Nullable
+    private com.commercetools.importapi.models.customfields.Custom custom;
 
     /**
      *
@@ -322,6 +328,25 @@ public class AddressBuilder implements Builder<Address> {
         return this;
     }
 
+    /**
+     *  <p>The custom fields for this Customer.</p>
+     */
+
+    public AddressBuilder custom(
+            Function<CustomBuilder, CustomBuilder> builder) {
+        this.custom = builder.apply(com.commercetools.importapi.models.customfields.CustomBuilder.of()).build();
+        return this;
+    }
+
+    /**
+     *  <p>The custom fields for this Customer.</p>
+     */
+
+    public AddressBuilder custom(@Nullable final com.commercetools.importapi.models.customfields.Custom custom) {
+        this.custom = custom;
+        return this;
+    }
+
     @Nullable
     public String getId() {
         return this.id;
@@ -446,11 +471,16 @@ public class AddressBuilder implements Builder<Address> {
         return this.externalId;
     }
 
+    @Nullable
+    public com.commercetools.importapi.models.customfields.Custom getCustom() {
+        return this.custom;
+    }
+
     public Address build() {
         Objects.requireNonNull(country, Address.class + ": country is missing");
         return new AddressImpl(id, key, title, salutation, firstName, lastName, streetName, streetNumber,
             additionalStreetInfo, postalCode, city, region, state, country, company, department, building, apartment,
-            pOBox, phone, mobile, email, fax, additionalAddressInfo, externalId);
+            pOBox, phone, mobile, email, fax, additionalAddressInfo, externalId,custom);
     }
 
     /**
@@ -459,7 +489,7 @@ public class AddressBuilder implements Builder<Address> {
     public Address buildUnchecked() {
         return new AddressImpl(id, key, title, salutation, firstName, lastName, streetName, streetNumber,
             additionalStreetInfo, postalCode, city, region, state, country, company, department, building, apartment,
-            pOBox, phone, mobile, email, fax, additionalAddressInfo, externalId);
+            pOBox, phone, mobile, email, fax, additionalAddressInfo, externalId,custom);
     }
 
     public static AddressBuilder of() {
@@ -493,6 +523,7 @@ public class AddressBuilder implements Builder<Address> {
         builder.fax = template.getFax();
         builder.additionalAddressInfo = template.getAdditionalAddressInfo();
         builder.externalId = template.getExternalId();
+        builder.custom = template.getCustom();
         return builder;
     }
 

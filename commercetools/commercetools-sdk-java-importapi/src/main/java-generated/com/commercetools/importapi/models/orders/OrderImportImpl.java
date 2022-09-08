@@ -4,6 +4,8 @@ package com.commercetools.importapi.models.orders;
 import java.time.*;
 import java.util.*;
 
+import com.commercetools.importapi.models.common.StateKeyReference;
+import com.commercetools.importapi.models.common.StoreKeyReference;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.*;
@@ -65,6 +67,8 @@ public class OrderImportImpl implements OrderImport, ModelBase {
     private com.commercetools.importapi.models.orders.CartOrigin origin;
 
     private java.util.List<com.commercetools.importapi.models.common.Address> itemShippingAddresses;
+    private StateKeyReference state;
+    private StoreKeyReference store;
 
     @JsonCreator
     OrderImportImpl(@JsonProperty("orderNumber") final String orderNumber,
@@ -88,7 +92,9 @@ public class OrderImportImpl implements OrderImport, ModelBase {
             @JsonProperty("taxRoundingMode") final com.commercetools.importapi.models.orders.RoundingMode taxRoundingMode,
             @JsonProperty("taxCalculationMode") final com.commercetools.importapi.models.orders.TaxCalculationMode taxCalculationMode,
             @JsonProperty("origin") final com.commercetools.importapi.models.orders.CartOrigin origin,
-            @JsonProperty("itemShippingAddresses") final java.util.List<com.commercetools.importapi.models.common.Address> itemShippingAddresses) {
+            @JsonProperty("itemShippingAddresses") final java.util.List<com.commercetools.importapi.models.common.Address> itemShippingAddresses,
+            @JsonProperty("state") final StateKeyReference state,
+            @JsonProperty("store") final StoreKeyReference store) {
         this.orderNumber = orderNumber;
         this.customer = customer;
         this.customerEmail = customerEmail;
@@ -111,6 +117,8 @@ public class OrderImportImpl implements OrderImport, ModelBase {
         this.taxCalculationMode = taxCalculationMode;
         this.origin = origin;
         this.itemShippingAddresses = itemShippingAddresses;
+        this.state = state;
+        this.store = store;
     }
 
     public OrderImportImpl() {
@@ -399,6 +407,22 @@ public class OrderImportImpl implements OrderImport, ModelBase {
         this.itemShippingAddresses = itemShippingAddresses;
     }
 
+    public StateKeyReference getState() {
+        return state;
+    }
+
+    public void setState(StateKeyReference state) {
+        this.state = state;
+    }
+
+    public StoreKeyReference getStore() {
+        return store;
+    }
+
+    public void setStore(StoreKeyReference store) {
+        this.store = store;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -431,6 +455,8 @@ public class OrderImportImpl implements OrderImport, ModelBase {
                 .append(taxCalculationMode, that.taxCalculationMode)
                 .append(origin, that.origin)
                 .append(itemShippingAddresses, that.itemShippingAddresses)
+                .append(state,that.state)
+                .append(store,that.store)
                 .isEquals();
     }
 
@@ -458,6 +484,8 @@ public class OrderImportImpl implements OrderImport, ModelBase {
                 .append(taxCalculationMode)
                 .append(origin)
                 .append(itemShippingAddresses)
+                .append(state)
+                .append(store)
                 .toHashCode();
     }
 

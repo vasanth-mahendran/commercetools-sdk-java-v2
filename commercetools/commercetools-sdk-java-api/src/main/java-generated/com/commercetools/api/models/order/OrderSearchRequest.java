@@ -43,7 +43,7 @@ public interface OrderSearchRequest {
      */
 
     @JsonProperty("sort")
-    public String getSort();
+    public List<Sort> getSort();
 
     /**
      *  <p>The maximum number of search results to be returned.</p>
@@ -61,7 +61,7 @@ public interface OrderSearchRequest {
 
     public void setQuery(final OrderSearchQuery query);
 
-    public void setSort(final String sort);
+    public void setSort(final List<Sort> sort);
 
     public void setLimit(final Integer limit);
 

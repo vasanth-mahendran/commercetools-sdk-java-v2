@@ -27,7 +27,7 @@ public class OrderSearchRequestBuilder implements Builder<OrderSearchRequest> {
     private com.commercetools.api.models.order.OrderSearchQuery query;
 
     @Nullable
-    private String sort;
+    private List<Sort> sort;
 
     @Nullable
     private Integer limit;
@@ -58,7 +58,7 @@ public class OrderSearchRequestBuilder implements Builder<OrderSearchRequest> {
      *  <p>Controls how results to your query are sorted. If not provided, the results are sorted by relevance in descending order.</p>
      */
 
-    public OrderSearchRequestBuilder sort(@Nullable final String sort) {
+    public OrderSearchRequestBuilder sort(@Nullable final List<Sort> sort) {
         this.sort = sort;
         return this;
     }
@@ -86,7 +86,7 @@ public class OrderSearchRequestBuilder implements Builder<OrderSearchRequest> {
     }
 
     @Nullable
-    public String getSort() {
+    public List<Sort> getSort() {
         return this.sort;
     }
 
@@ -98,6 +98,13 @@ public class OrderSearchRequestBuilder implements Builder<OrderSearchRequest> {
     @Nullable
     public Integer getOffset() {
         return this.offset;
+    }
+
+    public OrderSearchRequestBuilder plusSort(Sort sort){
+        if(this.sort==null)
+            this.sort = new ArrayList<>();
+        this.sort.add(sort);
+        return this;
     }
 
     public OrderSearchRequest build() {

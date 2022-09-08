@@ -1,11 +1,9 @@
 
 package com.commercetools.api.models.order;
 
-import java.time.*;
-import java.util.*;
-
+import com.commercetools.api.models.common.Wildcard;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.vrap.rmf.base.client.ModelBase;
 import io.vrap.rmf.base.client.utils.Generated;
@@ -18,9 +16,14 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  */
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class OrderSearchQueryImpl implements OrderSearchQuery, ModelBase {
-
+    @JsonProperty("wildcard")
+    private Wildcard wildcard;
     @JsonCreator
     OrderSearchQueryImpl() {
+    }
+
+    public OrderSearchQueryImpl(@JsonProperty("wildcard") final Wildcard wildcard) {
+        this.wildcard=wildcard;
     }
 
     @Override
@@ -41,4 +44,11 @@ public class OrderSearchQueryImpl implements OrderSearchQuery, ModelBase {
         return new HashCodeBuilder(17, 37).toHashCode();
     }
 
+    public Wildcard getWildcard() {
+        return wildcard;
+    }
+
+    public void setWildcard(Wildcard wildcard) {
+        this.wildcard = wildcard;
+    }
 }

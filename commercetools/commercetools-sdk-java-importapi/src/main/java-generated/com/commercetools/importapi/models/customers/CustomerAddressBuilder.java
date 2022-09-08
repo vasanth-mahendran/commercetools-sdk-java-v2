@@ -2,9 +2,11 @@
 package com.commercetools.importapi.models.customers;
 
 import java.util.*;
+import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
+import com.commercetools.importapi.models.customfields.CustomBuilder;
 import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -93,6 +95,9 @@ public class CustomerAddressBuilder implements Builder<CustomerAddress> {
 
     @Nullable
     private String externalId;
+
+    @Nullable
+    private com.commercetools.importapi.models.customfields.Custom custom;
 
     /**
      *  <p>User-defined identifier for the address. Must follow the pattern <code>[a-zA-Z0-9_\-]{2,256}</code> and must be unique per customer.</p>
@@ -310,6 +315,25 @@ public class CustomerAddressBuilder implements Builder<CustomerAddress> {
         return this;
     }
 
+    /**
+     *  <p>The custom fields for this Customer.</p>
+     */
+
+    public CustomerAddressBuilder custom(
+            Function<CustomBuilder, CustomBuilder> builder) {
+        this.custom = builder.apply(com.commercetools.importapi.models.customfields.CustomBuilder.of()).build();
+        return this;
+    }
+
+    /**
+     *  <p>The custom fields for this Customer.</p>
+     */
+
+    public CustomerAddressBuilder custom(@Nullable final com.commercetools.importapi.models.customfields.Custom custom) {
+        this.custom = custom;
+        return this;
+    }
+
     public String getKey() {
         return this.key;
     }
@@ -428,12 +452,17 @@ public class CustomerAddressBuilder implements Builder<CustomerAddress> {
         return this.externalId;
     }
 
+    @Nullable
+    public com.commercetools.importapi.models.customfields.Custom getCustom() {
+        return this.custom;
+    }
+
     public CustomerAddress build() {
         Objects.requireNonNull(key, CustomerAddress.class + ": key is missing");
         Objects.requireNonNull(country, CustomerAddress.class + ": country is missing");
         return new CustomerAddressImpl(key, title, salutation, firstName, lastName, streetName, streetNumber,
             additionalStreetInfo, postalCode, city, region, state, country, company, department, building, apartment,
-            pOBox, phone, mobile, email, fax, additionalAddressInfo, externalId);
+            pOBox, phone, mobile, email, fax, additionalAddressInfo, externalId,custom);
     }
 
     /**
@@ -442,7 +471,7 @@ public class CustomerAddressBuilder implements Builder<CustomerAddress> {
     public CustomerAddress buildUnchecked() {
         return new CustomerAddressImpl(key, title, salutation, firstName, lastName, streetName, streetNumber,
             additionalStreetInfo, postalCode, city, region, state, country, company, department, building, apartment,
-            pOBox, phone, mobile, email, fax, additionalAddressInfo, externalId);
+            pOBox, phone, mobile, email, fax, additionalAddressInfo, externalId,custom);
     }
 
     public static CustomerAddressBuilder of() {
@@ -475,6 +504,7 @@ public class CustomerAddressBuilder implements Builder<CustomerAddress> {
         builder.fax = template.getFax();
         builder.additionalAddressInfo = template.getAdditionalAddressInfo();
         builder.externalId = template.getExternalId();
+        builder.custom = template.getCustom();
         return builder;
     }
 

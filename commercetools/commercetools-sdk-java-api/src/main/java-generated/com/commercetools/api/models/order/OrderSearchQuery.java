@@ -5,6 +5,7 @@ import java.time.*;
 import java.util.*;
 import java.util.function.Function;
 
+import com.commercetools.api.models.common.Wildcard;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
@@ -55,4 +56,6 @@ public interface OrderSearchQuery {
             }
         };
     }
+    public Wildcard getWildcard();
+    public void setWildcard(Wildcard wildcard);
 }

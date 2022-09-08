@@ -119,6 +119,10 @@ public interface LineItemImportDraft {
     @JsonProperty("custom")
     public Custom getCustom();
 
+    @Valid
+    @JsonProperty("discountedPricePerQuantity")
+    public List<DiscountedLineItemPriceDraft> getDiscountedPricePerQuantity();
+
     public void setProduct(final ProductKeyReference product);
 
     public void setName(final LocalizedString name);
@@ -143,6 +147,10 @@ public interface LineItemImportDraft {
     public void setShippingDetails(final ItemShippingDetailsDraft shippingDetails);
     public void setCustom(final Custom custom);
 
+    @JsonIgnore
+    public void setDiscountedPricePerQuantity(final DiscountedLineItemPriceDraft... discountedPricePerQuantity);
+    public void setDiscountedPricePerQuantity(final List<DiscountedLineItemPriceDraft> discountedPricePerQuantity);
+
     public static LineItemImportDraft of() {
         return new LineItemImportDraftImpl();
     }
@@ -160,6 +168,7 @@ public interface LineItemImportDraft {
         instance.setTaxRate(template.getTaxRate());
         instance.setShippingDetails(template.getShippingDetails());
         instance.setCustom(template.getCustom());
+        instance.setDiscountedPricePerQuantity(template.getDiscountedPricePerQuantity());
         return instance;
     }
 

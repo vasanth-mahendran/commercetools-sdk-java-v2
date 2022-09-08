@@ -42,6 +42,7 @@ public class LineItemImportDraftImpl implements LineItemImportDraft, ModelBase {
     private com.commercetools.importapi.models.orders.ItemShippingDetailsDraft shippingDetails;
 
     private com.commercetools.importapi.models.customfields.Custom custom;
+    private java.util.List<com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft> discountedPricePerQuantity;
 
     @JsonCreator
     LineItemImportDraftImpl(
@@ -55,7 +56,8 @@ public class LineItemImportDraftImpl implements LineItemImportDraft, ModelBase {
             @JsonProperty("distributionChannel") final com.commercetools.importapi.models.common.ChannelKeyReference distributionChannel,
             @JsonProperty("taxRate") final com.commercetools.importapi.models.prices.TaxRate taxRate,
             @JsonProperty("shippingDetails") final com.commercetools.importapi.models.orders.ItemShippingDetailsDraft shippingDetails,
-            @JsonProperty("custom") final com.commercetools.importapi.models.customfields.Custom custom) {
+            @JsonProperty("custom") final com.commercetools.importapi.models.customfields.Custom custom,
+            @JsonProperty("discountedPricePerQuantity") final java.util.List<com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft> discountedPricePerQuantity) {
         this.product = product;
         this.name = name;
         this.variant = variant;
@@ -67,6 +69,7 @@ public class LineItemImportDraftImpl implements LineItemImportDraft, ModelBase {
         this.taxRate = taxRate;
         this.shippingDetails = shippingDetails;
         this.custom = custom;
+        this.discountedPricePerQuantity = discountedPricePerQuantity;
     }
 
     public LineItemImportDraftImpl() {
@@ -160,6 +163,10 @@ public class LineItemImportDraftImpl implements LineItemImportDraft, ModelBase {
         return this.custom;
     }
 
+    public java.util.List<com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft> getDiscountedPricePerQuantity() {
+        return this.discountedPricePerQuantity;
+    }
+
     public void setProduct(final com.commercetools.importapi.models.common.ProductKeyReference product) {
         this.product = product;
     }
@@ -209,6 +216,16 @@ public class LineItemImportDraftImpl implements LineItemImportDraft, ModelBase {
         this.custom = custom;
     }
 
+    public void setDiscountedPricePerQuantity(
+            final com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft... discountedPricePerQuantity) {
+        this.discountedPricePerQuantity = new ArrayList<>(Arrays.asList(discountedPricePerQuantity));
+    }
+
+    public void setDiscountedPricePerQuantity(
+            final java.util.List<com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft> discountedPricePerQuantity) {
+        this.discountedPricePerQuantity = discountedPricePerQuantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -230,6 +247,7 @@ public class LineItemImportDraftImpl implements LineItemImportDraft, ModelBase {
                 .append(taxRate, that.taxRate)
                 .append(shippingDetails, that.shippingDetails)
                 .append(custom,that.custom)
+                .append(discountedPricePerQuantity, that.discountedPricePerQuantity)
                 .isEquals();
     }
 
@@ -246,6 +264,7 @@ public class LineItemImportDraftImpl implements LineItemImportDraft, ModelBase {
                 .append(taxRate)
                 .append(shippingDetails)
                 .append(custom)
+                .append(discountedPricePerQuantity)
                 .toHashCode();
     }
 

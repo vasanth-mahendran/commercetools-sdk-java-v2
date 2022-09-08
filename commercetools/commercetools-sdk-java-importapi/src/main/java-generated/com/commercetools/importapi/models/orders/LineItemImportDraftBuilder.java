@@ -56,6 +56,8 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
     @Nullable
     private com.commercetools.importapi.models.customfields.Custom custom;
 
+    private java.util.List<com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft> discountedPricePerQuantity;
+
     /**
      *  <p>Maps to <code>LineItem.productId</code>.</p>
      */
@@ -287,6 +289,53 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
         return this;
     }
 
+    public LineItemImportDraftBuilder discountedPricePerQuantity(
+            @Nullable final com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft... discountedPricePerQuantity) {
+        this.discountedPricePerQuantity = new ArrayList<>(Arrays.asList(discountedPricePerQuantity));
+        return this;
+    }
+
+    /**
+     *
+     */
+
+    public LineItemImportDraftBuilder discountedPricePerQuantity(
+            @Nullable final java.util.List<com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft> discountedPricePerQuantity) {
+        this.discountedPricePerQuantity = discountedPricePerQuantity;
+        return this;
+    }
+
+    public LineItemImportDraftBuilder plusDiscountedPricePerQuantity(
+            @Nullable final com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft... discountedPricePerQuantity) {
+        if (this.discountedPricePerQuantity == null) {
+            this.discountedPricePerQuantity = new ArrayList<>();
+        }
+        this.discountedPricePerQuantity.addAll(Arrays.asList(discountedPricePerQuantity));
+        return this;
+    }
+
+    public LineItemImportDraftBuilder plusDiscountedPricePerQuantity(
+            Function<com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraftBuilder, com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraftBuilder> builder) {
+        if (this.discountedPricePerQuantity == null) {
+            this.discountedPricePerQuantity = new ArrayList<>();
+        }
+        this.discountedPricePerQuantity.add(
+                builder.apply(com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraftBuilder.of()).build());
+        return this;
+    }
+
+    /**
+     *
+     */
+
+    public LineItemImportDraftBuilder withDiscountedPricePerQuantity(
+            Function<com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraftBuilder, com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraftBuilder> builder) {
+        this.discountedPricePerQuantity = new ArrayList<>();
+        this.discountedPricePerQuantity.add(
+                builder.apply(com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraftBuilder.of()).build());
+        return this;
+    }
+
     @Nullable
     public com.commercetools.importapi.models.common.ProductKeyReference getProduct() {
         return this.product;
@@ -333,6 +382,11 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
         return this.shippingDetails;
     }
 
+    @Nullable
+    public java.util.List<com.commercetools.importapi.models.orders.DiscountedLineItemPriceDraft> getDiscountedPricePerQuantity() {
+        return this.discountedPricePerQuantity;
+    }
+
     /**
      *  <p>Maps to <code>Order.custom</code>.</p>
      */
@@ -358,7 +412,7 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
         Objects.requireNonNull(price, LineItemImportDraft.class + ": price is missing");
         Objects.requireNonNull(quantity, LineItemImportDraft.class + ": quantity is missing");
         return new LineItemImportDraftImpl(product, name, variant, price, quantity, state, supplyChannel,
-            distributionChannel, taxRate, shippingDetails,custom);
+            distributionChannel, taxRate, shippingDetails,custom,discountedPricePerQuantity);
     }
 
     /**
@@ -366,7 +420,7 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
      */
     public LineItemImportDraft buildUnchecked() {
         return new LineItemImportDraftImpl(product, name, variant, price, quantity, state, supplyChannel,
-            distributionChannel, taxRate, shippingDetails,custom);
+            distributionChannel, taxRate, shippingDetails,custom,discountedPricePerQuantity);
     }
 
     public static LineItemImportDraftBuilder of() {
@@ -386,6 +440,7 @@ public class LineItemImportDraftBuilder implements Builder<LineItemImportDraft> 
         builder.taxRate = template.getTaxRate();
         builder.shippingDetails = template.getShippingDetails();
         builder.custom = template.getCustom();
+        builder.discountedPricePerQuantity = template.getDiscountedPricePerQuantity();
         return builder;
     }
 

@@ -3,6 +3,7 @@ package com.commercetools.api.models.order;
 
 import java.util.*;
 
+import com.commercetools.api.models.common.Wildcard;
 import io.vrap.rmf.base.client.Builder;
 import io.vrap.rmf.base.client.utils.Generated;
 
@@ -20,8 +21,10 @@ import io.vrap.rmf.base.client.utils.Generated;
 @Generated(value = "io.vrap.rmf.codegen.rendering.CoreCodeGenerator", comments = "https://github.com/commercetools/rmf-codegen")
 public class OrderSearchQueryBuilder implements Builder<OrderSearchQuery> {
 
+    private Wildcard wildcard;
+
     public OrderSearchQuery build() {
-        return new OrderSearchQueryImpl();
+        return new OrderSearchQueryImpl(this.wildcard);
     }
 
     /**
@@ -40,4 +43,8 @@ public class OrderSearchQueryBuilder implements Builder<OrderSearchQuery> {
         return builder;
     }
 
+    public OrderSearchQueryBuilder withWildCard(Wildcard wildcard){
+        this.wildcard=wildcard;
+        return this;
+    }
 }

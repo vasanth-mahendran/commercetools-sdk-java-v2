@@ -5,8 +5,10 @@ import java.time.*;
 import java.util.*;
 import java.util.function.Function;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.commercetools.importapi.models.customfields.Custom;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.*;
 
@@ -198,6 +200,10 @@ public interface CustomerAddress {
     @JsonProperty("externalId")
     public String getExternalId();
 
+    @Valid
+    @JsonProperty("custom")
+    public Custom getCustom();
+
     public void setKey(final String key);
 
     public void setTitle(final String title);
@@ -245,6 +251,7 @@ public interface CustomerAddress {
     public void setAdditionalAddressInfo(final String additionalAddressInfo);
 
     public void setExternalId(final String externalId);
+    public void setCustom(final Custom custom);
 
     public static CustomerAddress of() {
         return new CustomerAddressImpl();
@@ -276,6 +283,7 @@ public interface CustomerAddress {
         instance.setFax(template.getFax());
         instance.setAdditionalAddressInfo(template.getAdditionalAddressInfo());
         instance.setExternalId(template.getExternalId());
+        instance.setCustom(template.getCustom());
         return instance;
     }
 
