@@ -58,4 +58,7 @@ public interface OrderSearchQuery {
     }
     public Wildcard getWildcard();
     public void setWildcard(Wildcard wildcard);
+
+    public String getWhere();
+    public void setWhere(String string);
 }

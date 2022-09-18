@@ -22,9 +22,10 @@ import io.vrap.rmf.base.client.utils.Generated;
 public class OrderSearchQueryBuilder implements Builder<OrderSearchQuery> {
 
     private Wildcard wildcard;
+    private String where;
 
     public OrderSearchQuery build() {
-        return new OrderSearchQueryImpl(this.wildcard);
+        return new OrderSearchQueryImpl(this.wildcard,this.where);
     }
 
     /**
@@ -45,6 +46,11 @@ public class OrderSearchQueryBuilder implements Builder<OrderSearchQuery> {
 
     public OrderSearchQueryBuilder withWildCard(Wildcard wildcard){
         this.wildcard=wildcard;
+        return this;
+    }
+
+    public OrderSearchQueryBuilder withWhere(String where){
+        this.where=where;
         return this;
     }
 }

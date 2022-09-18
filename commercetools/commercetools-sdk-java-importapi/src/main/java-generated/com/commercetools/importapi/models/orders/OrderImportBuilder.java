@@ -97,6 +97,8 @@ public class OrderImportBuilder implements Builder<OrderImport> {
     @Nullable
     private com.commercetools.importapi.models.common.StoreKeyReference store;
 
+    private PaymentInfo paymentInfo;
+
     /**
      *  <p>Maps to <code>Order.orderNumber</code>, String that uniquely identifies an order. It should be unique across a project. Once it's set it cannot be changed.</p>
      */

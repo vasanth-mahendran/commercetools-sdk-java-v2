@@ -70,6 +70,8 @@ public class OrderImportImpl implements OrderImport, ModelBase {
     private StateKeyReference state;
     private StoreKeyReference store;
 
+    private PaymentInfo paymentInfo;
+
     @JsonCreator
     OrderImportImpl(@JsonProperty("orderNumber") final String orderNumber,
             @JsonProperty("customer") final com.commercetools.importapi.models.common.CustomerKeyReference customer,

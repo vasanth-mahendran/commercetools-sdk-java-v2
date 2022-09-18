@@ -254,6 +254,10 @@ public interface OrderImport {
     public void setState(final StateKeyReference state);
     public void setStore(final StoreKeyReference store);
 
+    public PaymentInfo getPaymentInfo();
+
+    public void setPaymentInfo();
+
     public static OrderImport of() {
         return new OrderImportImpl();
     }
